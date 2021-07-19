@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - shutter</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.shutter.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-09-17T14:17:00+08:00</updated><entry><title>Shutter 0.94-2 broken after Perl upgraded to 5.26 on Arch Linux</title><link href="https://blog.m157q.tw/posts/2017/09/15/shutter-0-94-2-broken-after-perl-upgraded-to-5-26-on-arch-linux/" rel="alternate"></link><published>2017-09-15T20:03:20+08:00</published><updated>2017-09-17T14:17:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-09-15:/posts/2017/09/15/shutter-0-94-2-broken-after-perl-upgraded-to-5-26-on-arch-linux/</id><summary type="html">&lt;p&gt;Note for the solution to fix this problem&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Error Message&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ shutter  
+Can&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;t locate Gnome2.pm in @INC &lt;span class="o"&gt;(&lt;/span&gt;you may need to install the Gnome2 module&lt;span class="o"&gt;)&lt;/span&gt;  
+&lt;span class="o"&gt;(&lt;/span&gt;@INC contains:  
+    /usr/lib/perl5/5.26/site_perl  
+    /usr/share/perl5/site_perl  
+    /usr/lib/perl5/5.26/vendor_perl  
+    /usr/share/perl5/vendor_perl  
+    /usr/lib/perl5/5.26/core_perl  
+    /usr/share/perl5/core_perl  
+&lt;span class="o"&gt;)&lt;/span&gt; at /usr/bin/shutter line &lt;span class="m"&gt;37&lt;/span&gt;.  
+BEGIN failed--compilation aborted at /usr/bin/shutter line &lt;span class="m"&gt;37&lt;/span&gt;.  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ yaourt -S gnomecanvas-perl  
+$ yaourt -S gnome-vfs-perl  
+$ pacman -Qqo &lt;span class="s1"&gt;&amp;#39;/usr/lib/perl5/vendor_perl&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; xargs yaourt -S --noconfirm  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://forum.manjaro.org/t/aur-install-packages-with-perl-broken-again/30913/9"&gt;AUR install packages with Perl broken again - Updating - Manjaro&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.archlinux.org/news/perl-library-path-change/"&gt;Arch Linux - News: Perl library path change&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="shutter"></category><category term="Perl"></category></entry><entry><title>Can't edit pictures while using Shutter</title><link href="https://blog.m157q.tw/posts/2013/06/08/cant-edit-pictures-while-using-shutter/" rel="alternate"></link><published>2013-06-08T12:42:00+08:00</published><updated>2017-09-15T17:55:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-06-08:/posts/2013/06/08/cant-edit-pictures-while-using-shutter/</id><summary type="html">&lt;p&gt;After upgraded my Arch Linux …&lt;/p&gt;</summary><content type="html">&lt;p&gt;After upgraded my Arch Linux, I just can't edit photos with Shutter while the function of taking screenshots is ok.  &lt;/p&gt;
+&lt;p&gt;So, I googled for "shutter can't edit archlinux" and found &lt;a href="http://shutter-project.org/downloads/dependencies/"&gt;this article&lt;/a&gt;.&lt;br&gt;
+The function of editing pics depends on libgoo-canvas-perl  &lt;/p&gt;
+&lt;p&gt;In Arch Linux, we just need to type this in terminal  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ yaourt -S libgoo-canvas-perl&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;to install the package from AUR.  &lt;/p&gt;
+&lt;p&gt;Then the function of editing pics works fine.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://shutter-project.org/downloads/dependencies/"&gt;Dependencies | Shutter - Feature-rich Screenshot Tool&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="shutter"></category><category term="perl"></category></entry></feed>

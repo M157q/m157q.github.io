@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  如何區分加密、壓縮、編碼
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/" rel="bookmark" title="Permalink to 如何區分加密、壓縮、編碼">如何區分加密、壓縮、編碼</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>主要是想簡單講一下這三者的差別，因為實在看過太多網站把這三者混淆了。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>base64 加密？base64 壓縮？base64 編碼？傻傻分不清？<br>
+究竟：  </p>
+<ul>
+<li>加密（Encrypt）  </li>
+<li>壓縮（Compress）  </li>
+<li>編碼（Encode）  </li>
+</ul>
+<p>到底有什麼差別？  </p>
+<p>明明不管是中文還是英文，<br>
+這 3 個詞長得一點都不像，<br>
+那到底為什麼很多人會把這 3 種東西都當成加密呢？  </p>
+<p>主要是因為透過這 3 種方式處理過後的資料，<br>
+都會長的跟原本不一樣，<br>
+一般人無法直接辨別，<br>
+就覺得是被加密處理過的密文天書。  </p>
+<p>然而，<br>
+並不是變成人看不懂的東西就叫作「加密」。<br>
+如果誤用的話，<br>
+很有可能你自以為加密了的東西，<br>
+實際上並沒有經過加密處理，<br>
+隨隨便便就可以被懂其中差異的人拿到你寶貴的原始文字（最有可能的就是你的密碼啦）。<br>
+以下就來簡單說明這 3 種東西各自的特性，<br>
+會特別拿 base64 來說，<br>
+希望能夠端正一下視聽。  </p>
+<hr>
+<h3>加密（Encryption）</h3>
+<ul>
+<li>特性  <ul>
+<li>首先得產生一個新的字串作為密鑰，也就是一把鑰匙。  </li>
+<li>原文與密鑰作為加密演算法的輸入，得到的輸出即為加密過後的密文。  </li>
+<li>可以想像成，加密演算法幫你打造出你給它的這把密鑰才可以開啟的寶箱，幫你把原文放入寶箱後，用這把密鑰上鎖，上鎖後的寶盒就是密文，看不到裡面的東西是什麼。  </li>
+<li>這種只有一把鑰匙的加密演算法被稱為對稱式加密（Symmetric Encryption）。  </li>
+<li>問題也很明顯，要是你沒有保管好你的鑰匙，或者你的鑰匙構造太簡單被人打造出一模一樣的鑰匙，別人就可以打開寶箱，拿到內容物。  <ul>
+<li>比如說你的密鑰是一個叫作 "5566" 的字串，因為太好猜了，所以很容易被解密回來。  </li>
+<li>這也是為什麼通常在生成密鑰的時候會建議長度愈長愈好，尤其現在電腦的運算能力愈來愈強，以往透過程式一個一個暴力猜測密鑰的方式，在相同單位時間內可以猜的數量變多了，密鑰長度太短的話，很容易就被猜到。  </li>
+</ul>
+</li>
+<li>因為對稱式加密的安全性以及在實際應用上不夠理想，於是乎，出現了安全性更高，應用範圍更廣的非對稱式加密（Asymmetric Encryption）。  </li>
+<li>非對稱式加密演算法會有兩把鑰匙，一把稱做公鑰（可以公開），另一把稱做私鑰（自己要藏好）。  </li>
+<li>非對稱式加密除了可以做到加密以外，還可以生成數位簽章，確認密文的傳送方身份真的是本人，這篇不會細談。  </li>
+<li>但這並不代表對稱式加密就沒有人用，兩者各有各的優缺點，所以實際應用上通常都是視情況而定，常常會有兩者一起使用的情形。  </li>
+</ul>
+</li>
+<li>常見演算法  <ul>
+<li>對稱式：DES, 3DES, AES  </li>
+<li>非對稱式：RSA, DSA, ECC  </li>
+</ul>
+</li>
+<li>結論  <ul>
+<li>沒有這把鑰匙（無論是拿到或猜到）就無法得知真正的訊息。  </li>
+<li>使用 base64 的時候不需要密鑰，而且任何人編碼的 base64 訊息，任何人都可以經過 base64 解碼回來，所以 base64 不是加密。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>壓縮（Compression）</h3>
+<ul>
+<li>特性  <ul>
+<li>輸入（通常是檔案）經過壓縮演算法後得到的輸出，大小比輸入來得小。  </li>
+<li>根據有無失真又區分為非破壞性（無損）壓縮與破壞性（有損）壓縮：  <ul>
+<li>無損壓縮：無失真、壓縮率沒辦法到太高，通常用在文件檔案這種不能缺少原始資料的東西。  </li>
+<li>有損壓縮：失真、壓縮率可以比較高，通常用在圖片、視訊、音訊，因為可以去掉人眼或人耳無法辨認出差異的部份，降低檔案大小可以有效提升傳輸時的效率。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常見演算法  <ul>
+<li>zip, gzip, rar, 7zip, jpg, mp3, mp4, Huffman coding  </li>
+</ul>
+</li>
+<li>結論  <ul>
+<li>沒有讓輸出比輸入小的演算法就不是壓縮。  </li>
+<li>經過 base64 編碼後得到的結果，實際上會比原檔案多三分之一左右，所以 base64 不是壓縮。  <ul>
+<li>base64 使用 64 個可顯示的 ASCII 字元來表示二進位資料。  </li>
+<li><code>2^6 = 64</code>，也就是一個 base64 單元表示 6 位元，即用 1 個 ASCII 字元（8 bits），表示 6 bits 資料，比例為 <code>4:3</code>，也就大概多了 <code>1/3</code> 出來。  </li>
+</ul>
+</li>
+<li>那為什麼很多地方會提到在網頁上用 base64 表示圖片可以加速？  <ul>
+<li>主要是因為把圖片直接以 base64 字串的形式呈現在網頁上的話，就不需要額外再發 request 去要圖片。  </li>
+<li>但因為 base64 會把檔案變大不少，所以很多人會先把圖片經過 gzip 壓縮後，再編碼成 base64 字串。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>編碼（Encoding）</h3>
+<p>編碼牽涉的範圍非常廣，<br>
+包含了：字元編碼（Character Encoding）、音訊編碼（Audio Encoding）、視訊編碼（Video Encoding）、…… 等等，<br>
+所以在這篇文章不會仔細講。<br>
+其實廣義上來說，<br>
+上述提到的加密與壓縮都算是編碼的其中一種，<br>
+但這裡就把上述兩個排除。  </p>
+<ul>
+<li>特性  <ul>
+<li>將原文轉換成另外一種表達方式。  </li>
+<li>不需要密鑰，只要知道你用哪個編碼演算法，任何人都可以解碼。  <ul>
+<li>這也是單純編碼被拿來誤用成加密演算法最危險的地方，因為完全不需要花時間猜密鑰。  </li>
+</ul>
+</li>
+<li>不同的編碼演算法有不同的特性  <ul>
+<li>錯誤偵測（Error Detection）  <ul>
+<li>檢查訊息在經過傳送後是否已經改變。  </li>
+</ul>
+</li>
+<li>錯誤校正（Error Correction）  <ul>
+<li>自動修正在經過傳送後錯誤的內容。  </li>
+</ul>
+</li>
+<li>方便資料進行傳輸  <ul>
+<li>以不同的形式表示相同的資料。  </li>
+<li>例如: base64 就把二進位的資料用 ASCII 來表示。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常見演算法  <ul>
+<li>base64, urlencode, hamming code,  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>結論</h2>
+<ul>
+<li>有密鑰：加密  </li>
+<li>輸出比輸入小：壓縮  </li>
+<li>其他：編碼  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E5%A6%82%E4%BD%95%E5%8D%80%E5%88%86%E5%8A%A0%E5%AF%86%E3%80%81%E5%A3%93%E7%B8%AE%E3%80%81%E7%B7%A8%E7%A2%BC%0Ahttps%3A//blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/&title=%E5%A6%82%E4%BD%95%E5%8D%80%E5%88%86%E5%8A%A0%E5%AF%86%E3%80%81%E5%A3%93%E7%B8%AE%E3%80%81%E7%B7%A8%E7%A2%BC&summary=%E4%B8%BB%E8%A6%81%E6%98%AF%E6%83%B3%E7%B0%A1%E5%96%AE%E8%AC%9B%E4%B8%80%E4%B8%8B%E9%80%99%E4%B8%89%E8%80%85%E7%9A%84%E5%B7%AE%E5%88%A5%EF%BC%8C%E5%9B%A0%E7%82%BA%E5%AF%A6%E5%9C%A8%E7%9C%8B%E9%81%8E%E5%A4%AA%E5%A4%9A%E7%B6%B2%E7%AB%99%E6%8A%8A%E9%80%99%E4%B8%89%E8%80%85%E6%B7%B7%E6%B7%86%E4%BA%86%E3%80%82&source=https%3A//blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E5%A6%82%E4%BD%95%E5%8D%80%E5%88%86%E5%8A%A0%E5%AF%86%E3%80%81%E5%A3%93%E7%B8%AE%E3%80%81%E7%B7%A8%E7%A2%BC&amp;body=https%3A//blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/25/differences-between-encryption-and-hashing/">加密和雜湊有什麼不一樣？</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/02/tips-about-facebook-url/">Facebook 網址的一些黑魔法</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/">利用 ngrok 直接在本機開發 chatbot</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/27/fetch-my-github-commits-in-one-organization-with-python-script/">用 Python 抓出我在前公司貢獻了多少 GitHub commits</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/24/i-love-open-source-because-someone-will-write-testings-for-me/">我愛開源，因為會遇到路人幫我寫測試。</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/12/23/differences-between-encryption-compression-and-encoding/";
+        var disqus_title = "如何區分加密、壓縮、編碼";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-12-23T23:47:55+08:00"><i class="fa fa-calendar"></i> Sat 23 December 2017</abbr></p>
+
+      <p><abbr title="2017-12-25T17:49:55+08:00"><i class="fa fa-pencil"></i>Mon 25 December 2017</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/encryption/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Encryption</a>
+  <br>
+            <a href="/tag/encoding/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Encoding</a>
+  <br>
+            <a href="/tag/compression/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Compression</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/" title="用 Python 寫個程式抓出我在 Twitter 上存了哪些 tweet"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/24/i-love-open-source-because-someone-will-write-testings-for-me/" title="我愛開源，因為會遇到路人幫我寫測試。"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

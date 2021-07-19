@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  新增幾項設定來防範 Clickjacking Frame Attack
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/" rel="bookmark" title="Permalink to 新增幾項設定來防範 Clickjacking Frame Attack">新增幾項設定來防範 Clickjacking Frame Attack</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>公司的 Bug Bounty Program 收到了 Clickjacking Frame Attack 的回報，以前學資安都偏攻擊面較多，最近比較有機會接觸到防禦的部分，想說紀錄一下。</p>
+  </blockquote>
+  <div>
+    <h2>TL;DR</h2>
+<p>Clickjacking 主要是在釣魚網站上嵌入正版網站（攻擊對象）的內容，並將一些物件隱藏在正版內容之上，讓受害者以為自己操作了正版網頁，但實際上卻是執行了隱藏物件上的動作。</p>
+<p>可以透過以下幾種設定和方法來防禦：</p>
+<ul>
+<li><a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Defending_with_Content_Security_Policy_.28CSP.29_frame-ancestors_directive">Content Security Policy (CSP)</a></li>
+<li><a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Defending_with_X-Frame-Options_Response_Headers"><code>X-Frame-Options</code> Header</a></li>
+<li><a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Best-for-now_Legacy_Browser_Frame_Breaking_Script">Frame Breaking Script</a></li>
+</ul>
+<p>其他還有 <code>window.confirm()</code> protection 和一些注意事項在 OWASP 的網頁都有說明：
+<a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet">Clickjacking Defense Cheat Sheet - OWASP</a></p>
+<hr>
+<h2><code>Firebase.json</code></h2>
+<p>關於 <code>Content-Security-Policy</code> 和 <code>X-Frame-Options</code> 的設定，在 Firebase 裡頭可以簡單作這樣的設定：</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;hosting&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;public&quot;</span><span class="p">:</span> <span class="s2">&quot;dist&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cleanUrls&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;**&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;Content-Security-Policy&quot;</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;frame-ancestors &#39;none&#39;&quot;</span><span class="p">},</span>
+                <span class="p">{</span><span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;X-Frame-Options&quot;</span><span class="p">,</span> <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;DENY&quot;</span><span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><code>Headers</code> 詳細的設定方式可以參考 Firebase 的官方網頁：<a href="https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-headers">Customize Hosting Behavior  |  Firebase</a></p>
+<hr>
+<h2>Content Security Policy (CSP)</h2>
+<ul>
+<li>功用：限制是否要讓其他網頁可以使用 <code>&lt;frame&gt;</code> 或 <code>&lt;iframe&gt;</code> 嵌入本頁面</li>
+<li>限制：有些瀏覽器並不支援此 Header</li>
+<li>我很懶惰，所以直接設定<ul>
+<li><code>Content-Security-Policy: frame-ancestors 'none';</code></li>
+<li>禁止網站所有頁面被嵌入在任何網站</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2><code>X-Frame-Options</code> Header</h2>
+<ul>
+<li>功用：限制是否要讓其他網頁可以使用 <code>&lt;frame&gt;</code> 或 <code>&lt;iframe&gt;</code> 嵌入本頁面</li>
+<li>限制：有些瀏覽器並不支援此 Header</li>
+<li>我很懶惰，所以直接設定<ul>
+<li><code>X-Frame-Options: DENY;</code></li>
+<li>禁止網站所有頁面被嵌入在任何網站</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Frame Breaking Script</h2>
+<ul>
+<li>功用：限制是否要讓其他網頁可以使用 <code>&lt;frame&gt;</code> 或 <code>&lt;iframe&gt;</code> 嵌入本頁面且在舊的瀏覽器上也適用，因為是直接使用 JavaScript 處理，而不是透過瀏覽器去解析 HTTP Header。</li>
+<li>限制：必須要手動修改網頁上執行的 JavaScript 才能作用，當然遇到不支援 JavaScript 的瀏覽器就無效了？</li>
+</ul>
+<p>節錄自 <a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Best-for-now_Legacy_Browser_Frame_Breaking_Script">Clickjacking Defense Cheat Sheet - OWASP</a>:</p>
+<blockquote>
+<p>In the document HEAD element, add the following:</p>
+<p>First apply an ID to the style element itself:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;antiClickjack&quot;</span><span class="p">&gt;</span><span class="nt">body</span><span class="p">{</span><span class="k">display</span><span class="p">:</span><span class="kc">none</span> <span class="cp">!important</span><span class="p">;}&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<blockquote>
+<p>And then delete that style by its ID immediately after in the script:</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nx">self</span> <span class="o">===</span> <span class="nx">top</span><span class="p">)</span> <span class="p">{</span>
+       <span class="kd">var</span> <span class="nx">antiClickjack</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;antiClickjack&quot;</span><span class="p">);</span>
+       <span class="nx">antiClickjack</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">antiClickjack</span><span class="p">);</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+       <span class="nx">top</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">location</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<blockquote>
+<p>This way, everything can be in the document HEAD and you only need one method/taglib in your API.</p>
+</blockquote>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet">Clickjacking Defense Cheat Sheet - OWASP</a></li>
+<li><a href="https://www.codemagi.com/blog/post/194">Clickjacking Defense</a></li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E6%96%B0%E5%A2%9E%E5%B9%BE%E9%A0%85%E8%A8%AD%E5%AE%9A%E4%BE%86%E9%98%B2%E7%AF%84%20Clickjacking%20Frame%20Attack%0Ahttps%3A//blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/&title=%E6%96%B0%E5%A2%9E%E5%B9%BE%E9%A0%85%E8%A8%AD%E5%AE%9A%E4%BE%86%E9%98%B2%E7%AF%84%20Clickjacking%20Frame%20Attack&summary=%E5%85%AC%E5%8F%B8%E7%9A%84%20Bug%20Bounty%20Program%20%E6%94%B6%E5%88%B0%E4%BA%86%20Clickjacking%20Frame%20Attack%20%E7%9A%84%E5%9B%9E%E5%A0%B1%EF%BC%8C%E4%BB%A5%E5%89%8D%E5%AD%B8%E8%B3%87%E5%AE%89%E9%83%BD%E5%81%8F%E6%94%BB%E6%93%8A%E9%9D%A2%E8%BC%83%E5%A4%9A%EF%BC%8C%E6%9C%80%E8%BF%91%E6%AF%94%E8%BC%83%E6%9C%89%E6%A9%9F%E6%9C%83%E6%8E%A5%E8%A7%B8%E5%88%B0%E9%98%B2%E7%A6%A6%E7%9A%84%E9%83%A8%E5%88%86%EF%BC%8C%E6%83%B3%E8%AA%AA%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%E3%80%82&source=https%3A//blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E6%96%B0%E5%A2%9E%E5%B9%BE%E9%A0%85%E8%A8%AD%E5%AE%9A%E4%BE%86%E9%98%B2%E7%AF%84%20Clickjacking%20Frame%20Attack&amp;body=https%3A//blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/11/20/owasp-taiwan-week-2017/">OWASP Taiwan Week 2017</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/01/22/mc-sqlr-amplification-attack/">MC-SQLR 放大攻擊</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/19/cve-2016-2662/">CVE-2016-2662</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/07/25/y2016w29/">Y2016W29</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/07/27/y2020w30/">Y2020W30</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/07/23/clickjacking-frame-attack-defense/";
+        var disqus_title = "新增幾項設定來防範 Clickjacking Frame Attack";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-07-23T05:34:59+08:00"><i class="fa fa-calendar"></i> Mon 23 July 2018</abbr></p>
+
+      <p><abbr title="2020-06-05T15:18:59+08:00"><i class="fa fa-pencil"></i>Fri 05 June 2020</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/security/" data-toggle="tooltip"
+      class="label label-default"
+      title="52 articles with this tag">security</a>
+  <br>
+            <a href="/tag/owasp/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">owasp</a>
+  <br>
+            <a href="/tag/x-frame-options/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">X-Frame-Options</a>
+  <br>
+            <a href="/tag/csp/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">CSP</a>
+  <br>
+            <a href="/tag/frame-breaking-script/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Frame Breaking Script</a>
+  <br>
+            <a href="/tag/clickjacking/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Clickjacking</a>
+  <br>
+            <a href="/tag/content-security-policy/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Content Security Policy</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/07/23/use-my-old-vimrc-for-neovim/" title="Use my old vimrc for NeoVim"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/07/24/upgrade-mongodb-from-3-2-to-3-4-on-debian-9/" title="Upgrade MongoDB from 3.2 to 3.4 on Debian 9"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

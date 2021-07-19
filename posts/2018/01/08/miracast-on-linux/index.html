@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  如何在 Linux 上使用 Miracast
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/01/08/miracast-on-linux/" rel="bookmark" title="Permalink to 如何在 Linux 上使用 Miracast">如何在 Linux 上使用 Miracast</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>紀錄一下在 Linux 上使用 Miracast 無線投影的方法</p>
+  </blockquote>
+  <div>
+    <h2>TL;DR</h2>
+<p>先說結論，試了以下兩個專案：  </p>
+<ul>
+<li><a href="https://github.com/albfan/miraclecast">GitHub - albfan/miraclecast: Connect external monitors to your system via Wifi-Display specification also known as Miracast</a>  <ul>
+<li><a href="https://github.com/derekdai/miraclecast">GitHub - derekdai/miraclecast: Connect external monitors to your system via Wifi-Display specification also known as Miracast</a> 這個 fork 出去修改的版本解決了比較多的問題，但最後嘗試了一番還是沒辦法順利使用。  </li>
+</ul>
+</li>
+<li><a href="https://github.com/intel/wds">GitHub - intel/wds: Wireless Display Software For Linux OS (WDS)</a>  <ul>
+<li>嗯，沒錯，是那個 Intel。  </li>
+<li>這個算是試到後來可以動的，但結果不盡理想，畫面非常卡，聲音也沒有出來，猜測是還得去調整其他 <code>gstreamer</code> 的參數，這篇會以紀錄 <code>wds</code> 為主。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>前言</h2>
+<p>2017 年 5 月換租屋處後，客廳有台螢幕，雖然不大，但至少比筆電的螢幕還大。想說有時候筆電或手機可以把畫面投到上面用大螢幕看比較爽，然後又懶的接有線的 VGA 或 HDMI，就想說來買個無線投影裝置。  </p>
+<p>於是就在 6 月初左右就上網買了便宜的無線投影裝置，該裝置對於 iOS 裝置的支援是使用 <a href="https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance">DLNA</a>，對於 Android 裝置的支援則是使用 <a href="https://en.wikipedia.org/wiki/Miracast">Miracast</a>，當時是我第一次知道 Miracast。  </p>
+<p>想說筆電是跑 Arch Linux，和 Android 一樣都是 based on Linux，所以應該也可以使用 Miracast 吧？才發現可以用的東西少的可憐，也不一定會動。在 GitHub 上找到了 2 看起來比較有希望的專案，花了好幾個小時，看程式碼、查閱相關文件，終於成功把筆電的畫面透過 Miracast 無線投影到螢幕上。  </p>
+<p>後來因為室友買了個攜帶型投影機送了 Chromecast 之後就沒有使用 Miracast 了，所以這篇算是個半殘文，但還是想紀錄一下，畢竟花了不少時間研究。  </p>
+<hr>
+<h2>關於 Miracast</h2>
+<ul>
+<li>可以把它想像成用 Wi-Fi 來傳輸 HDMI 訊號，所以可以不用接線就能把畫面投影到其他有支援 Miracast 的裝置上。  </li>
+<li>除了不用接線外，也不需要有其他的裝置或是要連接到某個 Wi-Fi Access Point。  <ul>
+<li>這點真的很方便啊，不用買其他裝置就能支援無線投影。  </li>
+</ul>
+</li>
+<li>2012 底，由 Wi-Fi Alliance 推出，也是 Android 4.2 的重要新功能之一，但在 2015 年推出的 Android 6.0 卻消失了。  </li>
+<li>Miracast 不知道為啥一直沒有成為標準。  </li>
+<li>Google 後來推出了 Chromecast，基本上這裝置的功能完全和 Miracast 衝突，而且我覺得沒有比較好，除了得額外多接一個 Chromecast 以外，Chromecast 還需要一個額外的 Wi-Fi Access Point，更別說 Chromecast 實際使用上的體驗真的是頗差的。  </li>
+<li>關於 Miracast 詳細介紹，可以參考這篇繁體中文的文章：<a href="http://www.2cm.com.tw/technologyshow_content.asp?sn=1304260008">以鏡射與Wi-Fi技術為基礎　Miracast實現多螢影音串流 - 技術前瞻 - 新通訊元件雜誌</a>  </li>
+</ul>
+<hr>
+<h2>紀錄</h2>
+<p>因為 <a href="https://github.com/derekdai/miraclecast">MiracleCast</a> 沒試成功，所以只會以紀錄 <a href="https://github.com/intel/wds">WDS</a> 為主。<br>
+其實還有找到一個 <a href="https://cgit.freedesktop.org/~dvdhrm/openwfd/">openwfd</a>，不過因為看起來已經年久失修了，所以就沒去試了。  </p>
+<hr>
+<h3>WDS 的裝置分類</h3>
+<p>首先，WDS 把使用 Miracast 的裝置區分為以下兩種：  </p>
+<ul>
+<li>Sink: 要呈現畫面的裝置。  </li>
+<li>Source: 要把畫面投影出去的裝置。  </li>
+</ul>
+<hr>
+<h3>我使用 WDS 時遇到的問題</h3>
+<p>然後把當時遇到的問題相關連結都先列出來一下：  </p>
+<ul>
+<li><a href="https://lists.01.org/pipermail/wysiwidi-dev/2015-April/000012.html">[wysiwidi-dev] desktop_source and mirroring display</a>  </li>
+<li><a href="https://github.com/intel/wds/issues/147">Working with Linux as Source and Miracast Dongle · Issue #147 · intel/wds · GitHub</a>  </li>
+<li><a href="https://github.com/intel/wds/issues/87">source video params should be tweaked for desktop mirroring use case · Issue #87 · intel/wds · GitHub</a>  </li>
+<li><a href="https://github.com/intel/wds/issues/133">Black/frozen screen · Issue #133 · intel/wds · GitHub</a>  </li>
+</ul>
+<hr>
+<h3>WDS 安裝與使用步驟</h3>
+<p>WDS 會用到以下幾個程式，必須預先安裝：  </p>
+<ul>
+<li><code>wpa_supplicant</code>  <ul>
+<li>2.4 以後的版本，且必須要在 build 的時候開啟 <code>CONFIG_P2P=y</code>, <code>CONFIG_WIFI_DISPLAY=y</code>, <code>CONFIG_CTRL_IFACE_DBUS_NEW=y</code> 這 3 個參數  </li>
+</ul>
+</li>
+<li><code>connman</code>  <ul>
+<li>必須是 1.28 以後的版本  </li>
+</ul>
+</li>
+<li><code>gstreamer</code>  </li>
+</ul>
+<p>接下來就可以照著以下步驟來嘗試：  </p>
+<ul>
+<li><code>git clone https://github.com/intel/wds.git</code>  </li>
+<li><code>cd wds</code>  </li>
+<li>修改程式碼  <ul>
+<li>根據 <a href="https://github.com/intel/wds/issues/87">source video params should be tweaked for desktop mirroring use case · Issue #87 · intel/wds · GitHub</a> 和 <a href="https://github.com/intel/wds/issues/133">Black/frozen screen · Issue #133 · intel/wds · GitHub</a> 這兩個 issues 裡頭提到的解法，我們得修改程式碼裡頭用到 <code>gstreamer</code> 的參數，不然只會出現黑的畫面，這部份可能因人而異，我只就我遇到的部份描述，附上 git diff，這個參數還有調整的空間就是。  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="gh">diff --git a/mirac_network/mirac-gst-test-source.cpp b/mirac_network/mirac-gst-test-source.cpp  </span>
+<span class="gh">index 12c2623..821e38a 100644  </span>
+<span class="gd">--- a/mirac_network/mirac-gst-test-source.cpp  </span>
+<span class="gi">+++ b/mirac_network/mirac-gst-test-source.cpp  </span>
+<span class="gu">@@ -42,7 +42,9 @@ MiracGstTestSource::MiracGstTestSource (wfd_test_stream_t wfd_stream_type, std::  </span>
+     } else if (wfd_stream_type == WFD_TEST_VIDEO) {  
+         gst_pipeline = &quot;videotestsrc ! videoconvert ! video/x-raw,format=I420 ! x264enc ! mpegtsmux ! rtpmp2tpay ! udpsink name=sink &quot; + hostname_port;  
+     } else if (wfd_stream_type == WFD_DESKTOP) {  
+<span class="gd">-        gst_pipeline = &quot;ximagesrc ! videoconvert ! video/x-raw,format=I420 ! x264enc tune=zerolatency ! mpegtsmux ! rtpmp2tpay ! udpsink name=sink &quot; + hostname_port;  </span>
+<span class="gi">+        gst_pipeline = &quot;ximagesrc use-damage=0 ! videoscale ! videoconvert ! video/x-raw,format=I420,width=1440,height=900,framerate=50/1 ! x264enc aud=false bitrate=2048 dct8x8=true vbv-buf-capacity=1000 tune=stillimage+zerolatency byte-stream=true ! video/x-h264,profile=high ! muxer. pulsesrc device=alsa_output.pci-0000_00_1b.0.analog-stereo.monitor ! audioconvert ! audio/x-raw,channels=2,rate=44100 ! faac ! audio/mpeg,mpegversion=4 ! muxer. mpegtsmux name=muxer alignment=0 ! rtpmp2tpay pt=33 ! udpsink name=sink sync=false &quot; + hostname_port;  </span>
+</pre></div>
+
+
+<ul>
+<li><code>cmake .</code>  </li>
+<li><code>make</code>  </li>
+<li><code>sudo wpa_supplicant -i wlp0s20u1 -ddt -u</code>  <ul>
+<li><code>wlp0s20u1</code> 請換成你的無線網卡裝置名稱  </li>
+<li><code>-ddt</code>: 用來開啟比較詳細的 debug 訊息，且在訊息加上 timestamp  </li>
+<li><code>-u</code> : 用來開啟 DBus control interface  <ul>
+<li>如果 <code>wpa_supplicant</code> 在編譯的時候沒有加入上面提到的 <code>CONFIG_CTRL_IFACE_DBUS_NEW=y</code> 的話，這個選項就不會有用。  </li>
+</ul>
+</li>
+<li>執行這行指令的時候最好是先把原本有在用的 network manager 關掉，避免衝突。  </li>
+</ul>
+</li>
+<li><code>sudo connmand -r -n -d -i wlp0s20u1</code>  <ul>
+<li><code>wlp0s20u1</code> 請換成你的無線網卡裝置名稱  </li>
+<li><code>-r</code>: 不要開啟 DNS proxy  <ul>
+<li>官方的 README 上沒有加這個選項，是我自己加上去的，我記得當時可以解掉一些問題，但現在忘了是什麼問題了。  </li>
+</ul>
+</li>
+<li><code>-n</code>: 不要在背景執行，方便看到 debug 訊息  </li>
+<li><code>-d</code>: 開啟 debug 模式  </li>
+</ul>
+</li>
+<li><code>sudo connmanctl</code>  <ul>
+<li>開啟 connman 的互動式介面  </li>
+</ul>
+</li>
+<li><code>connmanctl&gt; enable wifi</code>  </li>
+<li><code>connmanctl&gt; enable p2p</code>  <ul>
+<li><code>connmanctl&gt; scan p2p</code>  </li>
+<li><code>connmanctl&gt; peers</code>  </li>
+<li>檢查 p2p 功能是否正常  </li>
+</ul>
+</li>
+<li><code>connmanctl&gt; agent on</code>  </li>
+</ul>
+<p>如果以上都正常的話，應該就會像<a href="https://github.com/intel/wds/wiki">官方在其 GitHub repo 的 wiki 所列出的截圖</a>一樣：  </p>
+<ul>
+<li>Android 手機要無線投影到電腦 (Sink mode)  <ul>
+<li>打開 Miracast 選單應該就可以看到電腦裝置  </li>
+<li>選擇投影到電腦上  </li>
+<li>許可連線  </li>
+<li>沒問題的話應該就可以在電腦上跳出一個視窗顯示手機的畫面了  </li>
+</ul>
+</li>
+<li>電腦要無線投影到其他裝置 (Source mode)  <ul>
+<li><code>connmanctl&gt; scan</code> 可以重新掃描附近的裝置  </li>
+<li><code>connmanctl&gt; peers</code> 列出可以連線的裝置  </li>
+<li><code>connmanctl&gt; connect N</code> 連線到該裝置  </li>
+<li>許可連線  </li>
+<li>正常的話其他裝置應該就會顯示電腦上的畫面了  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>結論</h2>
+<p>還沒到完全能動，畫面有點卡，而且沒有聲音，猜測是還得去調整 <code>gstreamer</code> 的參數。  </p>
+<p>但就紀錄下來，也給可能有遇到這個問題想要解決的人參考，如果有幫助到你的話很歡迎留言跟我說一下，如果試出了更好的結果當然更棒就是。  </p>
+<hr>
+<h2>參考來源</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance">Digital Living Network Alliance - Wikipedia</a>  </li>
+<li><a href="https://en.wikipedia.org/wiki/Miracast">Miracast - Wikipedia</a>  </li>
+<li><a href="https://www.computerworld.com/article/3239864/android/android-nostalgia-old-features.html">Android nostalgia: 13 once-trumpeted features that quietly faded away | Computerworld</a>  </li>
+<li><a href="http://www.2cm.com.tw/technologyshow_content.asp?sn=1304260008">以鏡射與Wi-Fi技術為基礎　Miracast實現多螢影音串流 - 技術前瞻 - 新通訊元件雜誌</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E5%A6%82%E4%BD%95%E5%9C%A8%20Linux%20%E4%B8%8A%E4%BD%BF%E7%94%A8%20Miracast%0Ahttps%3A//blog.m157q.tw/posts/2018/01/08/miracast-on-linux/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/01/08/miracast-on-linux/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/01/08/miracast-on-linux/&title=%E5%A6%82%E4%BD%95%E5%9C%A8%20Linux%20%E4%B8%8A%E4%BD%BF%E7%94%A8%20Miracast&summary=%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%E5%9C%A8%20Linux%20%E4%B8%8A%E4%BD%BF%E7%94%A8%20Miracast%20%E7%84%A1%E7%B7%9A%E6%8A%95%E5%BD%B1%E7%9A%84%E6%96%B9%E6%B3%95&source=https%3A//blog.m157q.tw/posts/2018/01/08/miracast-on-linux/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E5%A6%82%E4%BD%95%E5%9C%A8%20Linux%20%E4%B8%8A%E4%BD%BF%E7%94%A8%20Miracast&amp;body=https%3A//blog.m157q.tw/posts/2018/01/08/miracast-on-linux/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/01/change-keymap-on-linux/">Linux 上如何透過指令更改鍵盤鍵位</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/31/mount-iphone-on-linux/">Linux 上如何拿到 iPhone 裡的資料</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/05/set-default-application-in-desktop-environment-on-linux/">Linux 設定桌面環境預設開啟程式</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/05/y2017w22/">Y2017W22</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2014/02/21/install-linux-mint-16-in-dual-boot-with-win8-on-notebook-with-uefi/">Install Linux Mint 16 in Dual Boot with Win8 on Notebook with UEFI</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/01/08/miracast-on-linux/";
+        var disqus_title = "如何在 Linux 上使用 Miracast";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/01/08/miracast-on-linux/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-01-08T23:10:36+08:00"><i class="fa fa-calendar"></i> Mon 08 January 2018</abbr></p>
+
+      <p><abbr title="2018-01-15T15:49:47+08:00"><i class="fa fa-pencil"></i>Mon 15 January 2018</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="44 articles with this tag">linux</a>
+  <br>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/miracast/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Miracast</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/08/types-of-referral/" title="Referral 的種類"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/09/tools-i-use/" title="我平常在電腦上用了哪些程式"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

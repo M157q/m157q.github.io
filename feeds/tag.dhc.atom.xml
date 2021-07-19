@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - DHC</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.dhc.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-02-11T18:27:00+08:00</updated><entry><title>DHC - REST/HTTP API Client</title><link href="https://blog.m157q.tw/posts/2015/01/21/dhc-rest-http-api-client/" rel="alternate"></link><published>2015-01-21T22:36:00+08:00</published><updated>2015-02-11T18:27:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-01-21:/posts/2015/01/21/dhc-rest-http-api-client/</id><summary type="html">&lt;p&gt;上週末打 CTCTF 才知道然後拿來用的 Chrome Extension&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://chrome.google.com/webstore/detail/dhc-resthttp-api-client/aejoelaoggembcahagimdiliamlcdmfm?hl=en"&gt;DHC - REST/HTTP API Client - Chrome Web Store&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;可以選 http/https 和不同的 method&lt;br&gt;
+然後自訂要送出的 request&lt;br&gt;
+send 之後會顯示 server 回傳內容的 source code&lt;br&gt;
+也會把該次 request 做記錄&lt;br&gt;
+方便之後修改&lt;br&gt;
+手動踹網站的時候蠻方便的  &lt;/p&gt;</content><category term="Chrome"></category><category term="CTF"></category><category term="DHC"></category><category term="Security"></category></entry></feed>

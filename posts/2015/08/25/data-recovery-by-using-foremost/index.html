@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Data recovery by using foremost
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2015/08/25/data-recovery-by-using-foremost/" rel="bookmark" title="Permalink to Data recovery by using foremost">Data recovery by using foremost</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>今天早上一個不小心手殘，把外接硬碟裡從 2009 年到 2013 年結尾為 .JPG 的檔案都清掉了，哀傷懊悔了大概半小時左右(恩，沒辦法，我的很多美好回憶都在那些年)，開始找尋有沒有可以救援的辦法，踏上一條短暫的資料救援之路(?)</p>
+  </blockquote>
+  <div>
+    <h3>溫馨小提醒</h3>
+<p>要把所有 *.JPG 轉成 *.jpg 的情況下<br>
+如果有 <code>rename</code> 的話，可以這樣用 <code>rename "s/JPG/jpg/" *.JPG</code><br>
+如果沒有的話，我是這樣用 <code>find | grep .JPG | xargs -I {}.JPG mv {}.JPG {}.jpg</code><br>
+然後就悲劇了，因為如果以 .JPG 結尾的檔案有空白或啥其他特殊的符號的話，就會出現恐怖的意外<br>
+所以改成 <code>find | grep .JPG | xargs -I {}.JPG mv "{}.JPG" "{}.jpg"</code> 才能避免悲劇發生<br>
+(應該吧?有錯請指正)  </p>
+<blockquote>
+<p>其實可以省略 grep  </p>
+</blockquote>
+<p><code>find -type f -name "*.JPG" | xargs -I {}.JPG mv "{}.JPG" "{}.jpg"</code>  </p>
+<h3>資料救援之路 with foremost</h3>
+<p>搜尋了一下相關資料<br>
+找到了 <a href="https://wiki.archlinux.org/index.php/File_recovery">File recovery - ArchWiki</a> 和 <a href="https://help.ubuntu.com/community/DataRecovery">DataRecovery - Community Help Wiki</a><br>
+一開始是裝了 <a href="http://extundelete.sourceforge.net/">extundelete</a><br>
+裝完以後才想到這顆外接硬碟是 NTFS 不是 ext4<br>
+所以看到底下的 <a href="http://foremost.sourceforge.net/">Foremost</a><br>
+在 <a href="https://help.ubuntu.com/community/DataRecovery">DataRecovery - Community Help Wiki</a> 裡頭寫著支援 fat, ext3 和 NTFS<br>
+所以才想裝來試試看  </p>
+<p>Arch Linux Official Package 裡頭有<br>
+所以直接 <code>sudo pacman -S foremost</code> 就能安裝了<br>
+使用方法也沒有很難  </p>
+<div class="highlight"><pre><span></span><span class="n">foremost</span> <span class="k">version</span> <span class="mi">1</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="mi">7</span> <span class="k">by</span> <span class="n">Jesse</span> <span class="n">Kornblum</span><span class="p">,</span> <span class="n">Kris</span> <span class="n">Kendall</span><span class="p">,</span> <span class="k">and</span> <span class="n">Nick</span> <span class="n">Mikus</span><span class="p">.</span>  
+<span class="err">$</span> <span class="n">foremost</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="o">|-</span><span class="n">V</span><span class="o">|-</span><span class="n">h</span><span class="o">|-</span><span class="n">T</span><span class="o">|-</span><span class="n">Q</span><span class="o">|-</span><span class="n">q</span><span class="o">|-</span><span class="n">a</span><span class="o">|-</span><span class="n">w</span><span class="o">-</span><span class="n">d</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span> <span class="o">&lt;</span><span class="k">type</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="o">&lt;</span><span class="n">blocks</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span> <span class="o">&lt;</span><span class="k">size</span><span class="o">&gt;</span><span class="p">]</span>  
+    <span class="p">[</span><span class="o">-</span><span class="n">b</span> <span class="o">&lt;</span><span class="k">size</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="k">c</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">o</span> <span class="o">&lt;</span><span class="n">dir</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="o">&lt;</span><span class="n">file</span><span class="p">]</span>  
+
+<span class="o">-</span><span class="n">V</span>  <span class="o">-</span> <span class="n">display</span> <span class="n">copyright</span> <span class="n">information</span> <span class="k">and</span> <span class="n">exit</span>  
+<span class="o">-</span><span class="n">t</span>  <span class="o">-</span> <span class="n">specify</span> <span class="n">file</span> <span class="k">type</span><span class="p">.</span>  <span class="p">(</span><span class="o">-</span><span class="n">t</span> <span class="n">jpeg</span><span class="p">,</span><span class="n">pdf</span> <span class="p">...)</span>  
+<span class="o">-</span><span class="n">d</span>  <span class="o">-</span> <span class="n">turn</span> <span class="k">on</span> <span class="n">indirect</span> <span class="n">block</span> <span class="n">detection</span> <span class="p">(</span><span class="k">for</span> <span class="n">UNIX</span> <span class="n">file</span><span class="o">-</span><span class="n">systems</span><span class="p">)</span>  
+<span class="o">-</span><span class="n">i</span>  <span class="o">-</span> <span class="n">specify</span> <span class="k">input</span> <span class="n">file</span> <span class="p">(</span><span class="k">default</span> <span class="k">is</span> <span class="k">stdin</span><span class="p">)</span>  
+<span class="o">-</span><span class="n">a</span>  <span class="o">-</span> <span class="k">Write</span> <span class="k">all</span> <span class="n">headers</span><span class="p">,</span> <span class="n">perform</span> <span class="k">no</span> <span class="n">error</span> <span class="n">detection</span> <span class="p">(</span><span class="n">corrupted</span> <span class="n">files</span><span class="p">)</span>  
+<span class="o">-</span><span class="n">w</span>  <span class="o">-</span> <span class="k">Only</span> <span class="k">write</span> <span class="n">the</span> <span class="n">audit</span> <span class="n">file</span><span class="p">,</span> <span class="k">do</span> <span class="k">not</span> <span class="k">write</span> <span class="k">any</span> <span class="n">detected</span> <span class="n">files</span> <span class="k">to</span> <span class="n">the</span> <span class="n">disk</span>  
+<span class="o">-</span><span class="n">o</span>  <span class="o">-</span> <span class="k">set</span> <span class="k">output</span> <span class="n">directory</span> <span class="p">(</span><span class="k">defaults</span> <span class="k">to</span> <span class="k">output</span><span class="p">)</span>  
+<span class="o">-</span><span class="k">c</span>  <span class="o">-</span> <span class="k">set</span> <span class="n">configuration</span> <span class="n">file</span> <span class="k">to</span> <span class="n">use</span> <span class="p">(</span><span class="k">defaults</span> <span class="k">to</span> <span class="n">foremost</span><span class="p">.</span><span class="n">conf</span><span class="p">)</span>  
+<span class="o">-</span><span class="n">q</span>  <span class="o">-</span> <span class="n">enables</span> <span class="n">quick</span> <span class="k">mode</span><span class="p">.</span> <span class="k">Search</span> <span class="k">are</span> <span class="n">performed</span> <span class="k">on</span> <span class="mi">512</span> <span class="n">byte</span> <span class="n">boundaries</span><span class="p">.</span>  
+<span class="o">-</span><span class="n">Q</span>  <span class="o">-</span> <span class="n">enables</span> <span class="n">quiet</span> <span class="k">mode</span><span class="p">.</span> <span class="n">Suppress</span> <span class="k">output</span> <span class="n">messages</span><span class="p">.</span>  
+<span class="o">-</span><span class="n">v</span>  <span class="o">-</span> <span class="k">verbose</span> <span class="k">mode</span><span class="p">.</span> <span class="n">Logs</span> <span class="k">all</span> <span class="n">messages</span> <span class="k">to</span> <span class="n">screen</span>  
+</pre></div>
+
+
+<p>使用前先把外接硬碟 <code>umount</code> 後<br>
+再 <code>foremost -t jpg -i /dev/sdb1 -o /recovery</code><br>
+這是我這次的使用情況: 把 sdb1 中的 .jpg 檔案還原到 /recovery 這個資料夾中<br>
+比較詳細一點的範例可以參考 <a href="https://help.ubuntu.com/community/DataRecovery#Foremost">https://help.ubuntu.com/community/DataRecovery#Foremost</a>  </p>
+<p>另外在 <a href="https://wiki.archlinux.org/index.php/File_recovery#Foremost">https://wiki.archlinux.org/index.php/File_recovery#Foremost</a> 也有寫到<br>
+<code>foremost</code> 會根據檔案的 headers, footers 以及內部的資料結構來進行檔案的回復<br>
+可以裝在 Live USB 上使用當作救援USB，也可以直接安裝來使用<br>
+並且可以透過 config file (<code>/etc/foremost.conf</code>)來決定要回復哪些類型的檔案<br>
+內建也有提供檔案類型可供選擇：<br>
+jpg, gif, png, bmp, avi, exe, mpg, wav, riff, wmv, mov, pdf, ole, doc, zip, rar, htm, cpp  </p>
+<ul>
+<li>如果沒有用 -t 指定檔案類型的話，預設就是回復所有檔案  </li>
+<li>-i 則是接要救援的東西(預設是 stdin，可以是單檔、磁區或是映像檔)  </li>
+<li>-o 就接要把復原的檔案放到哪裡  </li>
+<li>-v 的話可以把 log print 到 stdout  </li>
+</ul>
+<p>總之用法大概就是這樣<br>
+對了 要注意一下 -o 參數接的目標位置的容量夠不夠大，不夠大的話可能會悲劇(?)  </p>
+<h3>結果</h3>
+<p>程式大概執行了兩個半小時左右<br>
+總共回復了 24,481 個 jpg 檔<br>
+大小約 11G 左右<br>
+只有稍微看一下，但的確都是消失的檔案沒錯<br>
+之後應該就是慢慢將檔案重新分類就是  </p>
+<h3>結論</h3>
+<p>第一次自己搞檔案救援，還好沒把外接硬碟弄掛，不然我一定會哭死<br>
+畢竟這台外接硬碟也有點年紀了，大概也用了6年左右，很怕他哪天突然壞軌掛掉<br>
+然後 <code>extundelete</code> 我還沒試過，只是剛好看到順便提一下<br>
+至於 <code>foremost</code>，在 <a href="https://github.com/korczis/foremost">https://github.com/korczis/foremost</a> 有原始碼，<br>
+稍微瞄過了一下，覺得程式碼寫的蠻乾淨的，有空的時候想去理解一下裏面程式碼怎麼寫的<br>
+然後 README 裏面寫到  </p>
+<div class="highlight"><pre><span></span><span class="err">Foremost was written by Special Agent Kris Kendall and Special Agent Jesse  </span>
+<span class="err">Kornblum of the United States Air Force Office of Special Investigations  </span>
+<span class="err">starting in March 2001.  </span>
+</pre></div>
+
+
+<p>恩 沒錯 是美國空軍特別調查辦公室(AFOSI)的兩位特務(Special Agent)寫的<br>
+不愧是美國政府出品 真的蠻猛的 而且還是距今十幾年的 project<br>
+(真不知道我自己現在寫的這些程式 十多年後還能不能正常運作)<br>
+老實說我本來真的對回復這些檔案不抱任何期待<br>
+畢竟有點 UNIX-like system 使用經驗的人大概都知道 rm 跟 mv 不要亂下<br>
+下了就別抱太大的期待能救回來了，畢竟這不是丟到垃圾桶而已<br>
+但 foremost 真的幫我把圖片救回來了...<br>
+所以寫個文章紀錄一下這個好東西<br>
+(只是不知道 24,881 個圖片我要手動分類多久Orz)  </p>
+<h3>References</h3>
+<ul>
+<li><a href="https://github.com/korczis/foremost">https://github.com/korczis/foremost</a>  </li>
+<li><a href="https://help.ubuntu.com/community/DataRecovery">https://help.ubuntu.com/community/DataRecovery</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/File_recovery">https://wiki.archlinux.org/index.php/File_recovery</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Foremost">https://wiki.archlinux.org/index.php/Foremost</a>  </li>
+<li><a href="http://foremost.sourceforge.net/">http://foremost.sourceforge.net/</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Data%20recovery%20by%20using%20foremost%0Ahttps%3A//blog.m157q.tw/posts/2015/08/25/data-recovery-by-using-foremost/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2015/08/25/data-recovery-by-using-foremost/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2015/08/25/data-recovery-by-using-foremost/&title=Data%20recovery%20by%20using%20foremost&summary=%E4%BB%8A%E5%A4%A9%E6%97%A9%E4%B8%8A%E4%B8%80%E5%80%8B%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%89%8B%E6%AE%98%EF%BC%8C%E6%8A%8A%E5%A4%96%E6%8E%A5%E7%A1%AC%E7%A2%9F%E8%A3%A1%E5%BE%9E%202009%20%E5%B9%B4%E5%88%B0%202013%20%E5%B9%B4%E7%B5%90%E5%B0%BE%E7%82%BA%20.JPG%20%E7%9A%84%E6%AA%94%E6%A1%88%E9%83%BD%E6%B8%85%E6%8E%89%E4%BA%86%EF%BC%8C%E5%93%80%E5%82%B7%E6%87%8A%E6%82%94%E4%BA%86%E5%A4%A7%E6%A6%82%E5%8D%8A%E5%B0%8F%E6%99%82%E5%B7%A6%E5%8F%B3%28%E6%81%A9%EF%BC%8C%E6%B2%92%E8%BE%A6%E6%B3%95%EF%BC%8C%E6%88%91%E7%9A%84%E5%BE%88%E5%A4%9A%E7%BE%8E%E5%A5%BD%E5%9B%9E%E6%86%B6%E9%83%BD%E5%9C%A8%E9%82%A3%E4%BA%9B%E5%B9%B4%29%EF%BC%8C%E9%96%8B%E5%A7%8B%E6%89%BE%E5%B0%8B%E6%9C%89%E6%B2%92%E6%9C%89%E5%8F%AF%E4%BB%A5%E6%95%91%E6%8F%B4%E7%9A%84%E8%BE%A6%E6%B3%95%EF%BC%8C%E8%B8%8F%E4%B8%8A%E4%B8%80%E6%A2%9D%E7%9F%AD%E6%9A%AB%E7%9A%84%E8%B3%87%E6%96%99%E6%95%91%E6%8F%B4%E4%B9%8B%E8%B7%AF%28%3F%29&source=https%3A//blog.m157q.tw/posts/2015/08/25/data-recovery-by-using-foremost/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Data%20recovery%20by%20using%20foremost&amp;body=https%3A//blog.m157q.tw/posts/2015/08/25/data-recovery-by-using-foremost/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2020/10/19/y2020w42/">Y2020W42</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/21/y2016w46/">Y2016W46</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/10/05/y2020w40/">Y2020W40</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2014/04/12/life-ba-cheng-shi-xie-hao-rang-she-hui-bian-hao/">[Life] 把程式寫好 == 讓社會變好</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/09/14/y2020w37/">Y2020W37</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2015/08/25/data-recovery-by-using-foremost/";
+        var disqus_title = "Data recovery by using foremost";
+        var disqus_url = "https://blog.m157q.tw/posts/2015/08/25/data-recovery-by-using-foremost/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-08-25T19:02:31+08:00"><i class="fa fa-calendar"></i> Tue 25 August 2015</abbr></p>
+
+      <p><abbr title="2015-08-26T15:58:58+08:00"><i class="fa fa-pencil"></i>Wed 26 August 2015</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/life/" data-toggle="tooltip"
+      class="label label-default"
+      title="36 articles with this tag">life</a>
+  <br>
+            <a href="/tag/data-recovery/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">data recovery</a>
+  <br>
+            <a href="/tag/foremost/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">foremost</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2015/08/15/nice-series-of-cuda-tutorials-on-ptt-cc/" title="Nice Series of CUDA Tutorials on ptt.cc"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/" title="HITCON 2015 IOT Wargame"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

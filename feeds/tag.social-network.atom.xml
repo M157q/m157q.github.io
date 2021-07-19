@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Social Network</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.social-network.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2013-11-05T16:58:00+08:00</updated><entry><title>SNTT - week7</title><link href="https://blog.m157q.tw/posts/2013/11/05/sntt-week7/" rel="alternate"></link><published>2013-11-05T16:58:00+08:00</published><updated>2013-11-05T16:58:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-11-05:/posts/2013/11/05/sntt-week7/</id><summary type="html">&lt;p&gt;SNTT == Socail Network Technology and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;SNTT == Socail Network Technology and Trend  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://developer.facebook.com"&gt;facebook developer&lt;/a&gt;&lt;br&gt;
+Facebook App setup  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/facebook/facebook-php-sdk"&gt;Facebook PHP SDK&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Facebook PHP SDK&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Feed  &lt;/li&gt;
+&lt;li&gt;Graph API  &lt;/li&gt;
+&lt;li&gt;Checkin  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developers.facebook.com/roadmap/"&gt;Roadmap&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;Release the information about the large change of the facebook API  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Access Token  &lt;ul&gt;
+&lt;li&gt;Token Type  &lt;ul&gt;
+&lt;li&gt;long term  &lt;/li&gt;
+&lt;li&gt;short term  &lt;/li&gt;
+&lt;li&gt;for App  &lt;/li&gt;
+&lt;li&gt;for Website  &lt;/li&gt;
+&lt;li&gt;for fan page  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;//Access Token  &lt;/span&gt;
+&lt;span class="x"&gt;$access_token = $facebook-&amp;gt;getAccessToken();  &lt;/span&gt;
+&lt;span class="x"&gt;$facebook-&amp;gt;setAccessToken($access_token);  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Same Domain Policy  &lt;/li&gt;
+&lt;li&gt;Channel File  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Facebook"></category><category term="Social Network"></category></entry></feed>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - ntfs-3g</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.ntfs-3g.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T15:14:00+08:00</updated><entry><title>用 ntfs-3g 自動 mount Windows 裡的 D 槽</title><link href="https://blog.m157q.tw/posts/2013/02/17/automatically-mount-windows-partition-by-using-ntfs-3g/" rel="alternate"></link><published>2013-02-17T00:32:00+08:00</published><updated>2015-10-28T15:14:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-02-17:/posts/2013/02/17/automatically-mount-windows-partition-by-using-ntfs-3g/</id><summary type="html">&lt;p&gt;想在 Arch Linux 上 mount …&lt;/p&gt;</summary><content type="html">&lt;p&gt;想在 Arch Linux 上 mount windows 裏面的 D 槽&lt;br&gt;
+因為之前用 Ubuntu 的時候 就一直拿 D 槽當作是共用的存檔地方&lt;br&gt;
+所以灌其他作業系統的時候也不太需要做啥備份  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;fstab&lt;/h2&gt;
+&lt;p&gt;如果要讓 Linux 在開機的時候自動 mount D槽  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ sudoedit /etc/fstab&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;必須在 &lt;code&gt;/etc/fstab&lt;/code&gt; 中下寫類似這樣的 rule  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;# /dev/sda5 (win_D)  &lt;/span&gt;
+&lt;span class="err"&gt;    UUID=01CC0B74E1BC55F0 /win_D ntfs-3g defaults,umask=000  0  2  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;UUID&lt;/h2&gt;
+&lt;p&gt;之後使用 &lt;code&gt;$ lsblk -f&lt;/code&gt; 這個指令去察看要 &lt;code&gt;mount&lt;/code&gt; 的硬碟的 UUID&lt;br&gt;
+然後把該 UUID 填寫在 &lt;code&gt;UUID=&lt;/code&gt; 的後面&lt;br&gt;
+不知道什麼是 UUID 的可參考 &lt;a href="https://zh.wikipedia.org/zh-tw/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81"&gt;通用唯一識別碼 - 維基百科，自由的百科全書&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/win_D&lt;/code&gt; 是你要把 D 槽 mount 在哪個目錄底下 可以自行修改  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;ntfs-3g&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;ntfs-3g&lt;/code&gt; 不知道這是什麼的請見 &lt;a href="https://zh.wikipedia.org/zh-tw/NTFS-3G"&gt;NTFS-3G - 維基百科，自由的百科全書&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;這裡如果用 &lt;code&gt;ntfs&lt;/code&gt; 的話會造成無法寫入和修改權限&lt;br&gt;
+所以要用 &lt;code&gt;ntfs-3g&lt;/code&gt;&lt;br&gt;
+預設應該是沒安裝的&lt;br&gt;
+在 Arch Linux 請先  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ sudo pacman -S ntfs-3g&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;defaults,umask=000 0 2&lt;/code&gt; 後面這 3 個部份  &lt;/p&gt;
+&lt;p&gt;請參考  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Fstab"&gt;fstab - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://linux.vbird.org/linux_basic/0230filesystem.php#fstab"&gt;鳥哥的 Linux 私房菜 -- 第七章、Linux 磁碟與檔案系統管理&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;需要其他不同的設定的話可以參考後 自行修改 &lt;code&gt;options&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;code&gt;umask&lt;/code&gt; 用 &lt;code&gt;000&lt;/code&gt; 是因為我這台是個人使用的筆電&lt;br&gt;
+為了方便存取 D 槽才這樣設定&lt;br&gt;
+因為 &lt;code&gt;mount&lt;/code&gt; 起來的 &lt;code&gt;owner&lt;/code&gt; 和 &lt;code&gt;group&lt;/code&gt; 都會是 root&lt;br&gt;
+反正只有我一個人用&lt;br&gt;
+設 &lt;code&gt;777&lt;/code&gt; 會比較方便 但相對安全性就變低了Orz  &lt;/p&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="fstab"></category><category term="UUID"></category><category term="NTFS"></category><category term="ntfs-3g"></category></entry></feed>

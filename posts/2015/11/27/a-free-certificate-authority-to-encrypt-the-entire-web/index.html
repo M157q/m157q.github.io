@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  A Free Certificate Authority to Encrypt the Entire Web
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2015/11/27/a-free-certificate-authority-to-encrypt-the-entire-web/" rel="bookmark" title="Permalink to A Free Certificate Authority to Encrypt the Entire Web">A Free Certificate Authority to Encrypt the Entire Web</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>資訊與人權的交會: Seth Schoen 訪台系列活動之 11/27 專家講座</p>
+  </blockquote>
+  <div>
+    <p>KKTIX URL: <a href="http://ocftw.kktix.cc/events/imhp">專家講座：資訊與人權的交會</a>  </p>
+<hr>
+<h1>Let's Encrypt: A Free Certificate Authority to Encrypt the Entire Web</h1>
+<ul>
+<li>Seth Schoen - Senior staff at Electronic Frontier Foundation  </li>
+</ul>
+<h2>Acronyms</h2>
+<p>SSL, TLS, HTTPS, X.509, PKI, CA  </p>
+<ul>
+<li>SSL (Secure Sockets Layer)  <ul>
+<li>The old name for the main security layer for TCP  </li>
+</ul>
+</li>
+<li>TLS (Transport Layer Security)  <ul>
+<li>The modern name of SSL  </li>
+</ul>
+</li>
+</ul>
+<h2>Importance of TLS</h2>
+<ul>
+<li>Still occasionally dealing with the idea that it's only needed for finalncial data.  </li>
+<li>... more often these days, the idea that it's only needed for logins.  </li>
+<li>We need to articulate a stronger vision that networks are untrustworthy and commmunications need to be protected.  </li>
+<li>Networks are routinely attacking us and plain HTTP offers no defense.  </li>
+</ul>
+<p>We need security for everything on the Internet?  </p>
+<h2>Just a few examples</h2>
+<ul>
+<li>Sidejacking and location tracking  </li>
+<li>Integrity of software downloads  </li>
+<li>Reader privacy (although size of documents is still an enormous problem)  <ul>
+<li>ex: Medical info site with searchiin function but no HTTPS connection.  </li>
+</ul>
+</li>
+<li>Content-based censorship prevention  <ul>
+<li>Ad, Cookies  </li>
+</ul>
+</li>
+<li>Protection against ad injection, tracking-header-injection and even malware injection at ISP  </li>
+</ul>
+<h2>Barriers to adoption</h2>
+<ul>
+<li>Perception that TLS is slow (especially for session establishment) or is very computationally intensive  </li>
+<li>Difficulty integrating into some server and data center designs (like load balancing)  </li>
+<li>Cost and effort of obtaining and managing PKI certificates  </li>
+<li>Even a skilled person who understands PKI conceptually may take ~1 hour to get and deploy a cert... and then it may expire, or omit some vhosts.  <ul>
+<li>People say it's waste of my time and not worth it.  </li>
+</ul>
+</li>
+</ul>
+<h2>Let's Encrypt</h2>
+<ul>
+<li>Initially, a collaboration among EFF, University of Michigan, and Mozilla  <ul>
+<li>to create a fully automated CA to issus certificates to any site for any purpose, quickly and at no charge  </li>
+</ul>
+</li>
+<li>Aiming to be cheaper, easier, and more secure than existing CAs  </li>
+<li>Thanks to partners including Akamai, Cisco, and IdenTrust, we have publicly  </li>
+</ul>
+<h2>Cross-signing</h2>
+<ul>
+<li>Root CAs can and do delegate their authority to intermediate CAs - currently hundreds of named entities  </li>
+<li>Browsers then automatically trust these intermediates; end-entity certs are almost always signed by intermediates, not roots  </li>
+<li>Our CA is now cross-signed by IdenTrust; <em>mainstream browsers trust us today</em>;  </li>
+</ul>
+<h2>Let's Encrypt concept</h2>
+<ul>
+<li>Clien (User's Web Server), Sever (Let's Encrypt CA)  </li>
+<li>Lowest level of validation for PKIX certificates is DV (Domain Validation) - verification by the CA that the applicant controls the domain name (or a server that the domain name is pointed at)  </li>
+<li>Explicitly doesn't confirm the real-world identity of the applicant  </li>
+<li>Software on web server, and the server connect to the Let's Encrypt CA.  </li>
+<li>ACME (Automated Certificate Management Environment) to handle conversations about cert issuance  </li>
+<li>Client claims to control a particular name or names, and asks for a cert for them  </li>
+<li>Server issues one or more challenges to ask the client to prove its control (and/or possibly prove control of other cryptographic keys)  </li>
+<li>Client satisfies these challenges and server verifies this automatically then issues cert and sends it over  </li>
+</ul>
+<p>Normal users: Certificates just make browsers complain the wrong domain name or expired to users while browsing the Internet. (LOL)  </p>
+<h2>ACME</h2>
+<ul>
+<li>A JSON-based protocol  </li>
+</ul>
+<h2>Let's Encrypt status</h2>
+<ul>
+<li>Internet Security Resarch Group (ISRG)  <ul>
+<li>We don't want people to know about what we are doing, so we think this name is good.  </li>
+</ul>
+</li>
+</ul>
+<h2>DVFNI</h2>
+<ul>
+<li>Crypto  </li>
+</ul>
+<h2>Convenience</h2>
+<p>We anticipate people who administer their own web servers will run something like  </p>
+<div class="highlight"><pre><span></span>$ sudo apt-get install letsencrypt  
+$ sudo letsencrypt  
+</pre></div>
+
+
+<p>and the client will not only obtain, but also deploy, the new cert in less than a minute.  </p>
+<p>We're working on a client that will parse and write Apache and Nginx configs, and autorenew expiring certs.  </p>
+<p>Apache sever's config file is really hard to parse, so we made a lot of effort on it.  </p>
+<h2>Safety</h2>
+<ul>
+<li>We care a lot about avoiding misissuance and plan to adopt technologies to stop it  </li>
+<li>We are publishing all certs in Google's Certificate Transparency system  </li>
+<li>We're planning to prevent issuance for a domain that already has a valid cert unless the applicant can prove control of its subject key  </li>
+<li>We can also have mechanisms for domains to ask us never to issue for them  </li>
+</ul>
+<p>We can have records about all certificates we've issued, and people can also check the list. If we got hacked, we can easily see the compromised records.  </p>
+<h2>Wider integration</h2>
+<ul>
+<li>We'd like to be integrated on every server OS or web server and every hosting and application platform  </li>
+<li>The ACME protocol is in a standardization process at IETF and will be an open standard  </li>
+<li>You can use the protocol to request certs from us without using our client software.  <ul>
+<li>You can even write you own client.  </li>
+</ul>
+</li>
+<li>Contractual relationship isn't required, though we welcome new sponsors.  </li>
+</ul>
+<h2>Help!</h2>
+<ul>
+<li>Please join the beta test program  <ul>
+<li>Fill out a form with your domin names + e-mail address, then wait for e-mail confirmation  </li>
+</ul>
+</li>
+<li>Try out our service and report client or service bugs, and optionally send us pathces.  </li>
+<li>Beta certs are fully "real" and mainstream browsers accept them now  </li>
+<li>Integrating our client in your favorite OS or with your favorite web server  <ul>
+<li>Or other server (ESMTP, IMAP, XMPP, ...)  </li>
+</ul>
+</li>
+<li>Packaging our client  </li>
+<li>Integrating our client with your favorite hosting environment  </li>
+<li>Auditing our client or server  </li>
+<li>Writing more tests  </li>
+<li>Documenting our client (man pages, FAQ, introduction, explaining PKI, what key/cert/chain are)  </li>
+</ul>
+<p>Client written in Python, Server written in Go.  </p>
+<hr>
+<h1>Real-world cryptography: What could possibly go wrong?</h1>
+<ul>
+<li>鄭振牟 （台大電機系副教授）  </li>
+</ul>
+<h2>EasyCard 2.0</h2>
+<h2>CDC (自然人憑證) - Citizen Digital Certificate</h2>
+<p>政府：「新的自然人憑證應該安全了」 「你信嗎？」 「反正我是信了。」  </p>
+<hr>
+<h2>Thought</h2>
+<p>後半段鄭教授講有關悠遊卡跟自然人憑證的部份我沒有聽的很仔細，<br>
+大致上是在講之前悠遊卡出包後，教授的研究團隊有投入補救，然後推出悠遊卡 2.0。<br>
+然後自然人憑證的部份有講到超大質數在以 Hexadecimal 顯示時會有過度規律的問題等等。<br>
+然後提供了許多論文，給想瞭解的人去參考。<br>
+我也沒有記下來，畢竟這次來主要是想瞭解 EFF 的資訊。  </p>
+<p>簡單來說 Let's Encrypt 在做的事情就是讓取得憑證這件事情變得愈簡單愈好，<br>
+方便架站者可以很快、很方便的取得並儘量自動化設定憑證，之後便能直接使用，<br>
+讓架站者可以迅速地提供使用者 HTTPS 加密連線，不要使用 plaintext 的 HTTP。<br>
+以往因為憑證的設定需要一連串繁瑣的步驟及有些複雜的指令，讓許多架站者覺得時間成本過高，<br>
+而且大多數的憑證是需要購買的，Let's Encrypt 則提供免費的憑證，且只需透過簡單的指令就可以迅速設定完成。<br>
+總之就是希望使用者在網路上的連線資料都是加密的，而不是使用 HTTP 在網路上裸奔，容易讓有心人士取得資料。  </p>
+<p>Let's Encrypt 的官方網站： <a href="https://letsencrypt.org/">Let's Encrypt</a><br>
+有興趣的人可以點進去瞧瞧，目前只有英文，也歡迎有興趣的人貢獻繁體中文的翻譯。<br>
+如果你覺得他們致力於網路安全的努力值得支持的話，也可以到官方網站的 donate 連結，小額贊助一些錢給他們。  </p>
+<p>從 2015/9/12 到目前都是 limited beta 測試中，採填表申請並等待的制度。<br>
+但從下禮拜 (12/3 Thu) 開始，進入 public beta 測試階段，<br>
+屆時系統會開放給任何想申請的人，無需等待回信。<br>
+詳細公告在此 <a href="https://letsencrypt.org/2015/11/12/public-beta-timing.html">Public Beta: December 3, 2015</a><br>
+有興趣的人歡迎到時候申請來使用看看，遇到任何問題或 bug 都歡迎回報給他們。  </p>
+<p>順便附上他們的 Twitter： <a href="https://twitter.com/EFF">EFF (@EFF) | Twitter</a><br>
+可以比較快的知道一些新資訊  </p>
+<p>最後覆蓋海報一張結束這篇文章  </p>
+<p><img alt="Poster" src="/files/a-free-certificate-authority-to-encrypt-the-entire-web/poster.jpg">  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=A%20Free%20Certificate%20Authority%20to%20Encrypt%20the%20Entire%20Web%0Ahttps%3A//blog.m157q.tw/posts/2015/11/27/a-free-certificate-authority-to-encrypt-the-entire-web/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2015/11/27/a-free-certificate-authority-to-encrypt-the-entire-web/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2015/11/27/a-free-certificate-authority-to-encrypt-the-entire-web/&title=A%20Free%20Certificate%20Authority%20to%20Encrypt%20the%20Entire%20Web&summary=%E8%B3%87%E8%A8%8A%E8%88%87%E4%BA%BA%E6%AC%8A%E7%9A%84%E4%BA%A4%E6%9C%83%3A%20Seth%20Schoen%20%E8%A8%AA%E5%8F%B0%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%E4%B9%8B%2011/27%20%E5%B0%88%E5%AE%B6%E8%AC%9B%E5%BA%A7&source=https%3A//blog.m157q.tw/posts/2015/11/27/a-free-certificate-authority-to-encrypt-the-entire-web/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=A%20Free%20Certificate%20Authority%20to%20Encrypt%20the%20Entire%20Web&amp;body=https%3A//blog.m157q.tw/posts/2015/11/27/a-free-certificate-authority-to-encrypt-the-entire-web/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2014/01/14/pcman-speech-at-tedxnctu-2013/">那些年，我們一起上的 BBS: 洪任諭(PCMan) 於 TEDxNCTU 2013</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/20/github-talk-advanced-git-and-ci-in-nctu/">GitHub Talk - Advanced Git and CI in NCTU</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/05/computer-science-seminars-the-development-and-opportunities-about-the-it-in-taiwan/">資訊工程研討 - 台灣資訊與軟體產業未來之發展與機會</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/24/technology-entrepreneurship-week-5/">Technology Entrepreneurship Week 5</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2015/11/27/a-free-certificate-authority-to-encrypt-the-entire-web/";
+        var disqus_title = "A Free Certificate Authority to Encrypt the Entire Web";
+        var disqus_url = "https://blog.m157q.tw/posts/2015/11/27/a-free-certificate-authority-to-encrypt-the-entire-web/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-11-27T22:05:53+08:00"><i class="fa fa-calendar"></i> Fri 27 November 2015</abbr></p>
+
+      <p><abbr title="2015-11-29T09:33:00+08:00"><i class="fa fa-pencil"></i>Sun 29 November 2015</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/speech/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">Speech</a>
+  <br>
+            <a href="/tag/lets-encrypt/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Let's Encrypt</a>
+  <br>
+            <a href="/tag/eff/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">EFF</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2015/11/24/cyber-formula-within-my-childhood-memory/" title="童年回憶之閃電霹靂車"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/12/26/study-area-ansible-tutorial-note/" title="2015 12 月份 SA@Tainan 淺談 Ansible 自動化組態管理工具之筆記"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

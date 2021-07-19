@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  台灣資料科學年會之系列活動：手把手的深度學習實務
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/" rel="bookmark" title="Permalink to 台灣資料科學年會之系列活動：手把手的深度學習實務">台灣資料科學年會之系列活動：手把手的深度學習實務</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>《台灣資料科學年會之系列活動：手把手的深度學習實務》筆記</p>
+  </blockquote>
+  <div>
+    <ul>
+<li><a href="http://foundation.datasci.tw/step-by-step-dl-170813/">http://foundation.datasci.tw/step-by-step-dl-170813/</a>  </li>
+<li><a href="https://drive.google.com/file/d/0B9cCeTKOkfWIbWtjdWJaRl9YRmM/view?usp=sharing">Slides</a>  </li>
+</ul>
+<hr>
+<h3>六步完模 – 建立深度學習模型</h3>
+<ol>
+<li>決定 hidden layers 層數與其中的 neurons 數量  </li>
+<li>決定該層使用的 activation function  </li>
+<li>決定模型的 loss function  </li>
+<li>決定 optimizer  <ul>
+<li>Parameters: learning rate, momentum, decay  </li>
+</ul>
+</li>
+<li>編譯模型 (Compile model)  </li>
+<li>開始訓練囉!(Fit model)  </li>
+</ol>
+<hr>
+<h3>關於 <code>validation_split</code> 要注意的小地方</h3>
+<p>用 Keras 的 <code>validation_split</code> 之前要記得把資料先弄亂，<br>
+因為它會從資料的最尾端開始取，<br>
+如果沒有弄亂的話切出來的資料 bias 會很大。<br>
+可以使用 <code>np.shuffle</code> 來弄亂  </p>
+<hr>
+<h3>Functional API</h3>
+<ul>
+<li>Why “Functional API” ?  <ul>
+<li>All layers and models are callable (like function call)  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Dense</span>  
+<span class="nb">input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,))</span>  
+<span class="n">output</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">)(</span><span class="nb">input</span><span class="p">)</span>  
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">+ 類似 f(x) 的寫法  </span>
+<span class="err">    + Dense(10) == f  </span>
+<span class="err">    + input == x  </span>
+<span class="err">+ 好處是可以 assign 給自己後再用 for loop 很快建非常多層 layer，不用一直用 `model.add`  </span>
+<span class="err">+ Easy to manipulate various inpout sources</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">x1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,))</span><span class="w">  </span>
+<span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">)(</span><span class="n">x1</span><span class="p">)</span><span class="w">  </span>
+
+<span class="n">x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span><span class="w">  </span>
+<span class="n">new_x2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">concatenate</span><span class="p">(</span><span class="o">[</span><span class="n">y1,x2</span><span class="o">]</span><span class="p">)</span><span class="w">  </span>
+<span class="k">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dense</span><span class="p">(</span><span class="mi">200</span><span class="p">)(</span><span class="n">new_x2</span><span class="p">)</span><span class="w">  </span>
+
+<span class="n">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=[</span><span class="n">x1,x2</span><span class="o">]</span><span class="p">,</span><span class="n">outputs</span><span class="o">=[</span><span class="n">output</span><span class="o">]</span><span class="p">)</span><span class="w">  </span>
+</pre></div>
+
+
+<hr>
+<h3>Loss function</h3>
+<ul>
+<li>為什麼 Cross-entropy 比 Squared error 好？  <ul>
+<li>Cross-entropy 的 Gradient 比較大，學習速度比較快。  </li>
+<li><a href="http://www.complex-systems.com/pdf/02-6-1.pdf">The error surface of logarithmic functions is steeper than<br>
+that of quadratic functions.</a>  </li>
+</ul>
+</li>
+<li>How to select Loss function  <ul>
+<li>Classification 常用 cross-entropy  <ul>
+<li>搭配 softmax 當作 output layer 的 activation function  </li>
+</ul>
+</li>
+<li>Regression 常用 mean absolute/squared error  </li>
+<li>對特定問題定義 loss function  <ul>
+<li>Unbalanced dataset, class 0 : class 1 = 99 : 1  <ul>
+<li>Class 1 做錯的話，給它 penalty 99  </li>
+</ul>
+</li>
+<li>Self-defined loss function  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Learning Rate</h3>
+<ul>
+<li>觀察 Loss，如果有振盪的話，代表 learning rate 可能太大  </li>
+<li>觀察 Loss，下降的太緩慢的話，代表 learning rate 可能太小  </li>
+<li>選擇適合的 learning rate 對於 training model 會是很大的影響  </li>
+<li>通常不會大於 0.1  </li>
+<li>一次調整一個數量級  </li>
+</ul>
+<hr>
+<h3>Activation Function</h3>
+<blockquote>
+<p>Activation Function 可能是最重要的  </p>
+</blockquote>
+<ul>
+<li>Sigmoid, Tanh, Softsign  <ul>
+<li>Sigmoid 介於 0~1 之間  </li>
+<li>Tanh, Softsign 介於 -1~1 之間  </li>
+<li>值域是有限制的  <ul>
+<li>Input 過大或過小影響其實不大  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Derivatives of Sigmoid, Tanh, Softsign  <ul>
+<li>Input 過大或過小時，Gradient 太小，學習就會很慢  </li>
+<li>所以通常太深的 model 不建議用這 3 個 Activation Function  </li>
+</ul>
+</li>
+<li>Drawbacks of Sigmoid, Tanh, Softsign  <ul>
+<li>Vanishing gradient problem  <ul>
+<li>原因: input 被壓縮到一個相對很小的output range  </li>
+<li>結果: 很大的 input 變化只能產生很小的 output 變化 =&gt; Gradient 小 =&gt; 無法有效地學習  </li>
+</ul>
+</li>
+<li>特別不適用於深的深度學習模型  </li>
+</ul>
+</li>
+<li>ReLU, Softplus  <ul>
+<li>
+<blockquote>
+<p>在 TensorFlow 上用 Softplus 好像會遇到一些問題  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Derivatives of ReLU, Softplus  <ul>
+<li>ReLU 在輸入小於零時, gradient 等於零,會有問題嗎?  <ul>
+<li>小於 0 的時候可能就不學習了，所以有人提出了 Leaky ReLU  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Leaky ReLU  <ul>
+<li>Allow a small gradient while the input to activation function smaller than 0  </li>
+<li>在 input &lt; 0 時，還是給他一點些微的斜率  </li>
+<li>
+<blockquote>
+<p>在用 ReLU 的時候 Learning rate 可能要用小一點，效果會比較好。  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Optimizer</h3>
+<ul>
+<li>SGD – Stochastic Gradient Descent  <ul>
+<li>Stochastic gradient descent  </li>
+<li>支援 momentum, learning rate decay, Nesterov momentum  <ul>
+<li><code>keras.optimizer.SGD(lr=0.01, momentum=0.0, decay=0.0, nesterov=False)</code>  </li>
+</ul>
+</li>
+<li>Momentum 的影響  <ul>
+<li>無 momentum: <code>update = -lr*gradient</code>  </li>
+<li>有 momentum: <code>update = -lr*gradient + m*last_update</code>  </li>
+</ul>
+</li>
+<li>Learning rate decay after update once  <ul>
+<li>屬於 <code>1/t decay =&gt; lr = lr / (1 + decay*t)</code>  </li>
+<li>t: number of done updates  </li>
+</ul>
+</li>
+<li>Momentum vs Nesterov Momentum  <ul>
+<li>Momentum  <ul>
+<li>先算 gradient  </li>
+<li>加上 momentum  </li>
+<li>更新  </li>
+</ul>
+</li>
+<li>Nesterov Momentum  <ul>
+<li>加上 momentum  </li>
+<li>再算 gradient  </li>
+<li>更新  </li>
+</ul>
+</li>
+<li>兩者出來的效果沒有太大的差別，沒有誰比較好，只是聽到有人用 Nesterov 的時候要知道差別。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Adagrad – Adaptive Learning Rate  <ul>
+<li>因材施教:每個參數都有不同的 learning rate  </li>
+<li>根據之前所有 gradient 的 root mean square 修改  </li>
+<li>Feature scales 不同,需要不同的 learning rates  </li>
+<li>每個 weight 收斂的速度不一致  <ul>
+<li>但 learning rate 沒有隨著減少的話  bumpy  </li>
+</ul>
+</li>
+<li>根據之前所有 gradient 的 root mean square 修改  </li>
+<li>老馬識途,參考之前的經驗修正現在的步伐  </li>
+<li>不完全相信當下的 gradient  </li>
+</ul>
+</li>
+<li>RMSprop – Similar with Adagrad  <ul>
+<li>另一種參考過去 gradient 的方式  <ul>
+<li><code>keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-08, decay=0.0)</code>  </li>
+</ul>
+</li>
+<li>Adagrad 不管多久之前的經驗都把其權重視為相同的，RMSprop 就是針對這部份做改進，愈久之前的經驗其權重會變得愈低。  </li>
+<li>這個 Activation 是作者在 Coursera 授課時提出的，沒有論文，所以大家在論文使用這個 activation function 的時候都會 cite 那個 coursera 課程的網址，而且還不少人用的 XDDD  </li>
+</ul>
+</li>
+<li>Adam – Similar with RMSprop + Momentum  <ul>
+<li>Close to RMSprop + Momentum  </li>
+<li><a href="https://arxiv.org/pdf/1412.6980v8.pdf">ADAM: A Method For Stochastic Optimization</a>  </li>
+<li>In practice, 不改參數也會做得很好  <ul>
+<li><code>keras.optimizer.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Nadam – Adam + Nesterov Momentum  </li>
+<li>How to select Optimizer  <ul>
+<li>一般的起手式: Adam  <ul>
+<li>Adaptive learning rate for every weights  </li>
+<li>Momentum included  </li>
+</ul>
+</li>
+<li>Keras 推薦 RNN 使用 RMSProp  <ul>
+<li>在訓練 RNN 需要注意 explosive gradient 的問題 =&gt; clip gradient 的暴力美學  </li>
+</ul>
+</li>
+<li>RMSProp 與 Adam 的戰爭仍在延燒  <ul>
+<li>各有千秋  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>處理 Overfitting</h3>
+<ul>
+<li>Regularization  <ul>
+<li>限制 weights 的大小讓 output 曲線比較平滑  </li>
+<li>Weight 較小，input 的差異對 output 產生的影響比較沒有那麼大  </li>
+<li>α (Regularizer) 是用來調整 regularization 的比重  <ul>
+<li>避免顧此失彼 (降低 weights 的大小而犧牲模型準確性)<br>
+避免顧此失彼 (降低 weights 的大小而犧牲模型準確性)  </li>
+</ul>
+</li>
+<li>L1 and L2 Regularizers  <ul>
+<li>L1 norm: Sum of absolute values  </li>
+<li>L2 norm: Root mean square of absolute values  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Early Stopping  <ul>
+<li>希望在 Model overfitting 之前就停止 training  </li>
+<li>假如可以停在 loss 最低的點的話就好了  </li>
+<li>Early Stopping in Keras  <ul>
+<li><code>from keras.callbacks import EarlyStopping</code>  </li>
+<li><code>early_stopping=EarlyStopping(monitor='val_loss', patience=3)</code>  </li>
+<li>monitor: 要監控的 performance index  </li>
+<li>patience: 可以容忍連續幾次的不思長進  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Dropout  <ul>
+<li>What is Dropout  <ul>
+<li>原本為 neurons 跟 neurons 之間為 fully connected  </li>
+<li>在訓練過程中,隨機拿掉一些連結 (weight 設為0)  </li>
+</ul>
+</li>
+<li>會造成 training performance 變差  <ul>
+<li>Error 變大 =&gt; 每個 neuron 修正得越多 =&gt; 做得越好  </li>
+</ul>
+</li>
+<li>Implications  <ul>
+<li>增加訓練的難度，在真正的考驗時爆發  </li>
+<li>Dropout 可視為一種終極的 ensemble 方法，N 個 weights 會有 2^N 種 network structures  </li>
+</ul>
+</li>
+<li>通常只加在 hidden layer，不會加在 output layer，因為影響太大了，除非 output layer 的 dimension 很大。  </li>
+<li>注意事項  <ul>
+<li>「不要一開始就加入 Dropout」*3  </li>
+<li>確定有遇到 Overfitting 再加 Dropout  </li>
+<li>Dropout 會讓 training performance 變差  </li>
+<li>確定 performance 夠好再加 Dropout，不然 Performance 變低，就算解掉了 Overfitting，出來的結果也沒啥用。  </li>
+<li>Dropout 是在避免 overfitting，不是萬靈丹  </li>
+<li>參數少時，regularization  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Callbacks: 善用 Callbacks 幫助你躺著 train models</h3>
+<h4>Callback Class</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">Callbacks</span>  
+
+<span class="n">Class</span> <span class="n">LossHistory</span><span class="p">(</span><span class="n">Callbacks</span><span class="p">):</span>  
+    <span class="k">def</span> <span class="nf">on_train_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="p">{}):</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss</span> <span class="o">=</span> <span class="p">[]</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">acc</span> <span class="o">=</span> <span class="p">[]</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">val_loss</span> <span class="o">=</span> <span class="p">[]</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">val_acc</span> <span class="o">=</span> <span class="p">[]</span>  
+
+    <span class="k">def</span> <span class="nf">on_batch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="p">{}):</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">logs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">))</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">logs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;acc&#39;</span><span class="p">))</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">val_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">logs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;val_loss&#39;</span><span class="p">))</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">val_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">logs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;val_acc&#39;</span><span class="p">))</span>  
+
+    <span class="n">loss_history</span> <span class="o">=</span> <span class="n">LossHistory</span><span class="p">()</span>  
+</pre></div>
+
+
+<h4>Callback 的時機</h4>
+<ul>
+<li>on_train_begin  </li>
+<li>on_train_end  </li>
+<li>on_batch_begin  </li>
+<li>on_batch_end  </li>
+<li>on_epoch_begin  </li>
+<li>on_epoch_end  </li>
+</ul>
+<h4>LearningRateScheduler</h4>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">LearningRateScheduler</span>  
+
+<span class="k">def</span> <span class="nf">step_decay</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>  
+    <span class="n">initial_lrate</span> <span class="o">=</span> <span class="mf">0.1</span>  
+    <span class="n">lrate</span> <span class="o">=</span> <span class="n">initial_lrate</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.999</span><span class="o">^</span><span class="n">epoch</span><span class="p">)</span>  
+    <span class="k">return</span> <span class="n">lrate</span>  
+
+<span class="n">Lrate</span> <span class="o">=</span> <span class="n">LearningRateScheduler</span><span class="p">(</span><span class="n">step_decay</span><span class="p">)</span>  
+</pre></div>
+
+
+<h4>ModelCheckpoint</h4>
+<p>超級好用  </p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">ModelCheckpoint</span>  
+
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span>  
+    <span class="s1">&#39;model.h5&#39;</span><span class="p">,</span>  
+    <span class="n">monitor</span> <span class="o">=</span> <span class="s1">&#39;val_loss&#39;</span><span class="p">,</span>  
+    <span class="n">verbose</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>  
+    <span class="n">save_best_only</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>  
+    <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span>  
+<span class="p">)</span>  
+</pre></div>
+
+
+<ul>
+<li><code>mode</code> 可以設定成 <code>'auto'</code>  </li>
+</ul>
+<h4>在 <code>model.fit</code> 時加入 Callbacks</h4>
+<div class="highlight"><pre><span></span><span class="err">history = model.fit(  </span>
+<span class="err">    X_train,  </span>
+<span class="err">    Y_train,  </span>
+<span class="err">    batch_size=16,  </span>
+<span class="err">    verbose=0,  </span>
+<span class="err">    epochs=30,  </span>
+<span class="err">    shuffle=True,  </span>
+<span class="err">    validation_split=0.1,  </span>
+<span class="err">    callbacks=[  </span>
+<span class="err">        early_stopping,  </span>
+<span class="err">        loss_history,  </span>
+<span class="err">        lrate,  </span>
+<span class="err">        checkpoint,  </span>
+<span class="err">    ],  </span>
+<span class="err">)  </span>
+</pre></div>
+
+
+<p>但也不要一開始就加一堆 callbacks<br>
+尤其是 Learning Rate Scheduler<br>
+不好的 Learning Rate Scheduler 會導致不好的結果  </p>
+<hr>
+<h3>Semi-supervised Learning</h3>
+<ul>
+<li>解決的問題  <ul>
+<li>收集到的標籤遠少於實際擁有的資料量  <ul>
+<li>該如何增加 label 呢?  <ul>
+<li>Crowd-sourcing  </li>
+<li>Semi-supervised learning  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>步驟  <ul>
+<li>先用 labeled dataset to train model  <ul>
+<li>至少 train 到一定的程度 (良心事業)  </li>
+</ul>
+</li>
+<li>拿 unlabeled dataset 來測試，挑出預測好的 unlabeled dataset  </li>
+<li>假設預測的都是對的 (unlabeled =&gt; labeled)  <ul>
+<li>有更多 labeled dataset 了!  </li>
+</ul>
+</li>
+<li>Repeat the above steps  </li>
+</ul>
+</li>
+<li>注意事項  <ul>
+<li>加入品質不佳的 labels 反而會讓 model 變差  </li>
+<li>要注意加入的資料有沒有偏差的情況，否則最後 train 出來的 model 會變成只偏向某一類的結果  </li>
+<li>慎選要加入的 samples  </li>
+</ul>
+</li>
+</ul>
+<h3>Transfer Learning</h3>
+<ul>
+<li>“transfer”: use the knowledge learned from task A to tackle another task B  </li>
+<li>Use as Fixed Feature Extractor  <ul>
+<li>A known model, like VGG, trained on ImageNet  </li>
+<li>ImageNet: 10 millions images with labels  </li>
+<li>取某一個 layer output 當作 feature vectors  </li>
+<li>Train a classifier based on the features extracted by a known model  </li>
+<li>當資料很少的時候這招很好用  </li>
+</ul>
+</li>
+<li>Use as Initialization  <ul>
+<li>Initialize your net by the weights of a known model  </li>
+<li>Use your dataset to further train your model  </li>
+<li>Fine-tuning the known model  </li>
+</ul>
+</li>
+</ul>
+<h3>Short Summary</h3>
+<ul>
+<li>Unlabeled data (lack of y) =&gt; Semi-supervised learning  </li>
+<li>Insufficient data (lack of both x and y) =&gt; Transfer learning (focus on layer transfer)  <ul>
+<li>Use as fixed feature extractor  </li>
+<li>Use as initialization  </li>
+<li>Resources: https://keras.io/applications/  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Convolutional Neural Network (CNN)</h2>
+<ul>
+<li>只要 input 是二維以上，且要找特定的 Pattern 的話，就可以用 CNN，不侷限於影像。  </li>
+<li>DNN 的輸入是一維的向量,那二維的矩陣呢? 例如：圖形資料  </li>
+<li>將圖形轉換成一維向量  <ul>
+<li>Weight 數過多,造成 training 所需時間太長  </li>
+<li>左上的圖形跟右下的圖形真的有關係嗎?  <ul>
+<li>只要留下重要的地方就好了，不需要全部的 neuron 都連接起來  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>圖的構成  <ul>
+<li>線條 (Line Segment)  </li>
+<li>圖案 (Pattern)  </li>
+<li>物件 (Object)  </li>
+<li>場景 (Scene)  </li>
+</ul>
+</li>
+<li>辨識一個物件只需要幾個特定的圖案  </li>
+<li>Property  <ul>
+<li>What: 圖案的類型  </li>
+<li>Where: 重複的圖案可能出現在很多不同的地方  </li>
+<li>Size: 大小的變化並沒有太多的影響  <ul>
+<li>Subsampling  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Convolution in Computer Vision  <ul>
+<li>Common applications  <ul>
+<li>模糊化、銳利化、浮雕  </li>
+<li><a href="http://setosa.io/ev/image-kernels/">http://setosa.io/ev/image-kernels/</a>  </li>
+</ul>
+</li>
+<li>Adding each pixel and its local neighbors which are weighted by a filter (kernel)  </li>
+<li>Perform this convolution process to every pixels  <ul>
+<li>當 pixel 的 value 高的時候，代表 pattern 有出現在該位置  </li>
+<li>當 pixel 的 value 低的時候，代表 pattern 沒有出現在該位置  </li>
+</ul>
+</li>
+<li>A filter could be seen as a pattern  </li>
+<li>常拿來做 Edge Detection  <ul>
+<li>edge = 亮度變化大的地方  </li>
+<li>凸顯兩像素之間的差異  </li>
+<li>如果覺得 gap 太小的話，可以再乘上一個 constant 將其凸顯出來  </li>
+</ul>
+</li>
+<li>相鄰兩像素值差異越大,convolution 後新像素絕對值越大  </li>
+</ul>
+</li>
+<li>Convolutional Layer  <ul>
+<li>Convolution 執行越多次影像越小  </li>
+<li>Hyper-parameters of Convolutional Layer  <ul>
+<li>Filter size  </li>
+<li>Zero-padding  <ul>
+<li>Add additional zeros at the border of image  </li>
+<li>Zero-padding 不會影響 convolution 的性質  </li>
+</ul>
+</li>
+<li>Stride  <ul>
+<li>Shrink the output of the convolutional layer  </li>
+</ul>
+</li>
+<li>Depth (total number of filters)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pooling Layer  <ul>
+<li>Why do we need pooling layers?  <ul>
+<li>Reduce the number of weights  </li>
+<li>Prevent overfitting  </li>
+</ul>
+</li>
+<li>Max pooling  <ul>
+<li>Consider the existence of patterns in each region  </li>
+<li>在作 Classification 上用得到  <ul>
+<li>因為我們在做分類的時候會找尋特定的 pattern 是否有出現在該圖片中  </li>
+</ul>
+</li>
+<li>但是會有些資訊喪失  </li>
+</ul>
+</li>
+<li>Average Pooling  <ul>
+<li>因為是取平均的關係，所以出來的結果很高的話，代表該區域的值都很高，所以 pattern 出現在該位置的可能性也很高  </li>
+<li>用來找尋一再重複出現的 pattern  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>A CNN Example (Object Recognition)  <ul>
+<li><a href="http://cs231n.github.io/convolutional-networks/">CS321n, Standford</a>  </li>
+</ul>
+</li>
+<li>Filters Visualization  <ul>
+<li><a href="http://www.rsipvision.com/exploring-deep-learning/">RSIP VISION</a>  </li>
+</ul>
+</li>
+</ul>
+<h4>CNN in Keras</h4>
+<ul>
+<li>Concatenate Datasets by Numpy Functions  <ul>
+<li>hstack, dim(6,)  <ul>
+<li>[1, 2, 3, 4, 5, 6], Labels  </li>
+</ul>
+</li>
+<li>vstack, dim(2,3)  <ul>
+<li>[[1, 2, 3], [4, 5, 6]], Pixel values  </li>
+</ul>
+</li>
+<li>dstack, dim(1, 3, 2)  <ul>
+<li>[[1, 2], [3, 4], [5, 6]], Dimensions  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Concatenating Input Datasets  <ul>
+<li>利用 vstack 連接 pixel values;用 hstack 連接 labels  </li>
+</ul>
+</li>
+<li>Reshape the Training/Testing Inputs  <ul>
+<li>利用影像的長寬資訊先將 RGB 影像分開,再利用 reshape 函式將一維向量轉換為二維矩陣,最後用 dstack 將 RGB image 連接成三維陣列  </li>
+</ul>
+</li>
+<li>Saving Each Data as Image  <ul>
+<li><code>scipy.misc.imsave</code>  </li>
+<li><code>PIL.Image</code>  </li>
+</ul>
+</li>
+<li>Building Your Own CNN Model  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="s1">&#39;&#39;&#39;CNN model&#39;&#39;&#39;</span>  
+
+<span class="o">#</span> <span class="n">CNN</span>  
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span>  
+<span class="n">Convolution2D</span><span class="p">(</span>  
+    <span class="mi">32</span><span class="p">,</span>  
+    <span class="mi">3</span><span class="p">,</span>  
+    <span class="mi">3</span><span class="p">,</span>  
+    <span class="n">border_mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>  <span class="o">#</span> <span class="err">有做</span> <span class="n">zero</span><span class="o">-</span><span class="n">padding</span> <span class="err">的意思</span>  
+    <span class="n">input_shape</span><span class="o">=</span><span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">shape</span><span class="p">)</span>  
+<span class="p">)</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Convolution2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">))</span>  
+
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>  
+
+<span class="o">#</span> <span class="n">DNN</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">))</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">))</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  
+<span class="n">model</span><span class="p">.</span><span class="k">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>  
+</pre></div>
+
+
+<ul>
+<li>Tips for Setting Hyper-parameters  <ul>
+<li>影像的大小須要能夠被 2 整除數次  </li>
+<li>Convolutional Layer  <ul>
+<li>比起使用一個 size 較大的 filter (7x7),可以先嘗試連續使用數個 size 小的 filter (3x3)  </li>
+<li>Stride 的值與 filter size 相關,通常 stride ≤ (W_f - 1)/2  </li>
+</ul>
+</li>
+<li>Very deep CNN model (16+ Layers) 多使用 3x3 filter 與 stride 1  </li>
+<li>Zero-padding 與 pooling layer 是選擇性的結構  </li>
+<li>Zero-padding 的使用取決於是否要保留邊界的資訊  </li>
+<li>Pooling layer 旨在避免 overfitting 與降低 weights 的數量, 但也減少影像所包含資訊,一般不會大於 3x3  <ul>
+<li>像圍棋就不太適合用 Pooling，因為可能會失真。所以 AlphaGo 其實只有用 Convolutional Layer，沒有用 Pooling Layer。  </li>
+</ul>
+</li>
+<li>嘗試修改有不錯效能的 model,會比建立一個全新的模型容易收斂,且 model weights 越多越難 tune 出好的參數  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Deep Learning Applications</h3>
+<ul>
+<li><a href="http://visualqa.org/">Visual Question Answering</a>  </li>
+<li>Video Captioning  </li>
+<li><a href="https://arxiv.org/pdf/1701.00160.pdf">Text-To-Image</a>  </li>
+<li><a href="https://arxiv.org/pdf/1511.06434.pdf">Vector Arithmetic for Visual Concepts</a>  </li>
+<li>Go Deeper in Deep Learning  <ul>
+<li><a href="http://neuralnetworksanddeeplearning.com/">Neural Networks and Deep Learning</a>  </li>
+<li><a href="http://www.iro.umontreal.ca/~bengioy/dlbook/">Deep Learning</a>  </li>
+<li><a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLSD15_2.html">Course: Machine learning and having it deep and structured</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>References</h3>
+<ul>
+<li><a href="https://keras.io/">Keras documentation</a>  </li>
+<li><a href="https://github.com/fchollet/keras">Keras GitHub</a>  </li>
+<li><a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ">台大電機李宏毅教授 Youtube 頻道</a>  </li>
+<li><a href="http://cs231n.stanford.edu/">Convolutional Neural Networks for Visual Recognition cs231n</a>  </li>
+</ul>
+<hr>
+<h3>Q&amp;A</h3>
+<ul>
+<li>如果 feature 數量不夠的話，可以做些簡單的運算增加 feature 的量，尤其是已經知道這樣的 feature 會對 training 有幫助的話。  </li>
+<li>Keras model 相關的操作  <ul>
+<li>用 <code>model.save()</code> 來將訓練好的 model 存起來  </li>
+<li>之後可用 <code>keras.models.load_model()</code> 來讀入已經訓練好的 model  </li>
+<li>讀入之後可再用 <code>model.summary()</code> 來確認一下 model 的資訊  </li>
+<li><code>model.layers[0].get_weights()</code> 可以得到此 model 第 1 層的 weights  </li>
+<li>用 <code>model.predict()</code> 來預測結果  </li>
+</ul>
+</li>
+<li>當資料太大無法一次讀進來時，可以用 <a href="https://keras.io/models/sequential/#fit_generator">Fit Generator</a>。  <ul>
+<li>需要自己撰寫一個 generator  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E5%8F%B0%E7%81%A3%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%B9%B4%E6%9C%83%E4%B9%8B%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%EF%BC%9A%E6%89%8B%E6%8A%8A%E6%89%8B%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%AF%A6%E5%8B%99%0Ahttps%3A//blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/&title=%E5%8F%B0%E7%81%A3%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%B9%B4%E6%9C%83%E4%B9%8B%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%EF%BC%9A%E6%89%8B%E6%8A%8A%E6%89%8B%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%AF%A6%E5%8B%99&summary=%E3%80%8A%E5%8F%B0%E7%81%A3%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%B9%B4%E6%9C%83%E4%B9%8B%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%EF%BC%9A%E6%89%8B%E6%8A%8A%E6%89%8B%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%AF%A6%E5%8B%99%E3%80%8B%E7%AD%86%E8%A8%98&source=https%3A//blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E5%8F%B0%E7%81%A3%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%B9%B4%E6%9C%83%E4%B9%8B%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%EF%BC%9A%E6%89%8B%E6%8A%8A%E6%89%8B%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E5%AF%A6%E5%8B%99&amp;body=https%3A//blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/">台灣資料科學年會之系列活動：深入淺出深度學習 (Dive into Deep Learning)</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/">視訊訊號處理與深度學習應用</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/12/y2017w23/">Y2017W23</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/";
+        var disqus_title = "台灣資料科學年會之系列活動：手把手的深度學習實務";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-08-13T17:08:45+08:00"><i class="fa fa-calendar"></i> Sun 13 August 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/deep-learning/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">Deep Learning</a>
+  <br>
+            <a href="/tag/dnn/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">DNN</a>
+  <br>
+            <a href="/tag/cnn/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">CNN</a>
+  <br>
+            <a href="/tag/keras/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Keras</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/" title="台灣資料科學年會之系列活動：深入淺出深度學習 (Dive into Deep Learning)"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/08/14/y2017w32/" title="Y2017W32"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

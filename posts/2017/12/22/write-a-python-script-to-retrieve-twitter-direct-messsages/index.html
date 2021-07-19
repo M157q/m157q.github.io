@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  用 Python 寫個程式抓出我在 Twitter 上存了哪些 tweet
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/" rel="bookmark" title="Permalink to 用 Python 寫個程式抓出我在 Twitter 上存了哪些 tweet">用 Python 寫個程式抓出我在 Twitter 上存了哪些 tweet</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>用 Python 簡單寫個小程式，抓出我存在 Twitter 私訊裡的 tweet。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>身為一個邊緣人，<br>
+沒有 Instagram 帳號，<br>
+卻有台灣沒什麼人用的 Twitter 帳號也是很合理的。  </p>
+<p>其實 Twitter 上很容易得到國外第一手即時資訊，<br>
+常常看到好幾天之後才在 Facebook 或台灣的媒體看到消息，<br>
+很適合我這種資訊焦慮症的人（？  </p>
+<p>Twitter 也很容易跟一些很有名的人直接交流，<br>
+像上一篇翻譯文章的授權，<br>
+我就是直接在 Twitter 上問作者，<br>
+大概五分鐘之內，沒錯，就是短短幾分鐘之內，就收到作者同意的回覆。  </p>
+<p>總之，<br>
+我平常在用 Twitter 的時候有個習慣，<br>
+就是把我看到覺得值得保留下來的 tweet 分成兩類，<br>
+一類是比較不嚴肅的，把該 tweet 私訊給自己。<br>
+另一類是比較嚴肅的，把該 tweet 私訊給另外一個 RSS bot 帳號。<br>
+（這個 RSS bot 有機會的話會發篇文章講一下）  </p>
+<p>這裡要來用 Python 寫個程式，<br>
+把今年存下來的這兩大類 tweet 抓出來，<br>
+其實我不確定是不是一定會成功，<br>
+大概只有 87% 的把握，<br>
+總之接下來就一步步講一下要怎麼做。  </p>
+<p>（謎之音：最愛寫這種無用的小程式了。）  </p>
+<hr>
+<h2>步驟</h2>
+<h3>看有哪個 API 可以拿來用</h3>
+<ul>
+<li><a href="https://developer.twitter.com/en/docs/direct-messages/sending-and-receiving/api-reference/list-events">GET direct_messages/events/list — Twitter Developers</a>  <ul>
+<li>最多只能抓取最近的 200 則私訊（不限 30 天內。）  </li>
+<li>如果超過 200 則的話，只能抓取最近 30 天內的私訊。  </li>
+</ul>
+</li>
+</ul>
+<h3>取得 Access Token</h3>
+<ul>
+<li>到 <a href="https://apps.twitter.com/">https://apps.twitter.com/</a> 建立一個新的 App。  </li>
+<li>記下 Consumer Key (API Key) 和 Consumer Secret (API Secret)  </li>
+<li>點選 Permissions  <ul>
+<li>選取 Read, Write and Access direct messages。（原本只有 Read, Write）  </li>
+<li>選好之後按底下的 Update Settings  </li>
+</ul>
+</li>
+<li>點進去剛建立的 App，移到底下，點選建立 Access Token。  </li>
+<li>記下 Access Token 和 Access Token Secret  </li>
+</ul>
+<h3>安裝要使用的 Python 套件</h3>
+<ul>
+<li><a href="https://github.com/bear/python-twitter">https://github.com/bear/python-twitter</a>  </li>
+<li><code>pip install python-twitter</code>  </li>
+</ul>
+<h3>撰寫程式</h3>
+<p>因為兩個的作法類似，<br>
+這邊就以抓出比較嚴肅一點的 tweet 作為範例，<br>
+幾行就可以寫完了。  </p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3  </span>
+
+<span class="kn">import</span> <span class="nn">urllib</span>  
+
+<span class="kn">import</span> <span class="nn">twitter</span>  
+
+
+<span class="c1"># Fill these contants by yourself.  </span>
+<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  
+<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  
+<span class="n">ACCESS_TOKEN_KEY</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  
+<span class="n">ACCESS_TOKEN_SECRET</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  
+<span class="n">MY_TWITTER_ID</span> <span class="o">=</span> <span class="mi">0</span>  
+<span class="n">MY_BOT_TWITTER_ID</span> <span class="o">=</span> <span class="mi">0</span>  
+
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">twitter</span><span class="o">.</span><span class="n">Api</span><span class="p">(</span>  
+    <span class="n">consumer_key</span><span class="o">=</span><span class="n">CONSUMER_KEY</span><span class="p">,</span>  
+    <span class="n">consumer_secret</span><span class="o">=</span><span class="n">CONSUMER_SECRET</span><span class="p">,</span>  
+    <span class="n">access_token_key</span><span class="o">=</span><span class="n">ACCESS_TOKEN_KEY</span><span class="p">,</span>  
+    <span class="n">access_token_secret</span><span class="o">=</span><span class="n">ACCESS_TOKEN_SECRET</span><span class="p">,</span>  
+<span class="p">)</span>  
+
+<span class="c1"># Twitter API limitation:  </span>
+<span class="c1"># &quot;Last 30 days DMs&quot; or &quot;Up to 200 DMs which created before 30 days&quot;  </span>
+<span class="n">sent_direct_messages</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">GetSentDirectMessages</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>  
+<span class="k">for</span> <span class="n">dm</span> <span class="ow">in</span> <span class="n">sent_direct_messages</span><span class="p">:</span>  
+    <span class="k">if</span> <span class="n">dm</span><span class="o">.</span><span class="n">recipient_id</span> <span class="o">==</span> <span class="n">MY_BOT_TWITTER_ID</span><span class="p">:</span>  
+        <span class="k">try</span><span class="p">:</span>  
+            <span class="c1"># Got t.co url in DM, use urllib to get its real Twitter Status URL.  </span>
+            <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">dm</span><span class="o">.</span><span class="n">text</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>  
+                <span class="n">real_url</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">geturl</span><span class="p">()</span>  
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>  
+            <span class="k">raise</span>  
+        <span class="k">else</span><span class="p">:</span>  
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;+ &lt;</span><span class="si">{}</span><span class="s2">&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">real_url</span><span class="p">))</span>  
+</pre></div>
+
+
+<p>開一個 gist 放個程式碼：<a href="https://gist.github.com/M157q/a90f5d2948442dc482e35d671b074c6f">https://gist.github.com/M157q/a90f5d2948442dc482e35d671b074c6f</a>  </p>
+<hr>
+<h2>結果</h2>
+<p>直接以網址呈現：<br>
+（其實應該可以直接 embed tweet 啦，但我有點懶得弄。）  </p>
+<ul>
+<li><a href="https://twitter.com/yoyo0329/status/944230050399793152">https://twitter.com/yoyo0329/status/944230050399793152</a>  </li>
+<li><a href="https://twitter.com/rewoIf/status/943852230796484610">https://twitter.com/rewoIf/status/943852230796484610</a>  </li>
+<li><a href="https://twitter.com/zaticwu/status/943834445886267392">https://twitter.com/zaticwu/status/943834445886267392</a>  </li>
+<li><a href="https://twitter.com/zhusee2/status/943728354057887744">https://twitter.com/zhusee2/status/943728354057887744</a>  </li>
+<li><a href="https://twitter.com/TinyDenny/status/943332441699299328">https://twitter.com/TinyDenny/status/943332441699299328</a>  </li>
+<li><a href="https://twitter.com/CHl1XIB8ymdrKbC/status/943482302822150144">https://twitter.com/CHl1XIB8ymdrKbC/status/943482302822150144</a>  </li>
+<li><a href="https://twitter.com/jserv/status/942265803868487680">https://twitter.com/jserv/status/942265803868487680</a>  </li>
+<li><a href="https://twitter.com/rochacbruno/status/942419952300167169">https://twitter.com/rochacbruno/status/942419952300167169</a>  </li>
+<li><a href="https://twitter.com/daiwanhanji/status/942046653619478535">https://twitter.com/daiwanhanji/status/942046653619478535</a>  </li>
+<li><a href="https://twitter.com/thecat/status/942193282968305664">https://twitter.com/thecat/status/942193282968305664</a>  </li>
+<li><a href="https://twitter.com/riddle_ling/status/942271085495459840">https://twitter.com/riddle_ling/status/942271085495459840</a>  </li>
+<li><a href="https://twitter.com/c9s/status/942224140273987584">https://twitter.com/c9s/status/942224140273987584</a>  </li>
+<li><a href="https://twitter.com/sandokaishy/status/942057552577052672">https://twitter.com/sandokaishy/status/942057552577052672</a>  </li>
+<li><a href="https://twitter.com/johnroyer/status/941478195362119682">https://twitter.com/johnroyer/status/941478195362119682</a>  </li>
+<li><a href="https://twitter.com/ferrari_tw/status/941137503423119360">https://twitter.com/ferrari_tw/status/941137503423119360</a>  </li>
+<li><a href="https://twitter.com/lovecankill/status/940781592947048448">https://twitter.com/lovecankill/status/940781592947048448</a>  </li>
+<li><a href="https://twitter.com/linuxtoy/status/940780140081975298">https://twitter.com/linuxtoy/status/940780140081975298</a>  </li>
+<li><a href="https://twitter.com/Ignissfate/status/940453739718066177">https://twitter.com/Ignissfate/status/940453739718066177</a>  </li>
+<li><a href="https://twitter.com/schrockn/status/940037656494317568">https://twitter.com/schrockn/status/940037656494317568</a>  </li>
+<li><a href="https://twitter.com/M157q/status/939785465992953857">https://twitter.com/M157q/status/939785465992953857</a>  </li>
+<li><a href="https://twitter.com/welkineins/status/939541907612377089">https://twitter.com/welkineins/status/939541907612377089</a>  </li>
+<li><a href="https://twitter.com/WanCW/status/938624903724404736">https://twitter.com/WanCW/status/938624903724404736</a>  </li>
+<li><a href="https://twitter.com/jaceju/status/937497004690751488">https://twitter.com/jaceju/status/937497004690751488</a>  </li>
+<li><a href="https://twitter.com/ronnywang/status/937511877092847616">https://twitter.com/ronnywang/status/937511877092847616</a>  </li>
+<li><a href="https://twitter.com/hynek/status/937316249431928832">https://twitter.com/hynek/status/937316249431928832</a>  </li>
+<li><a href="https://twitter.com/Schnappiggg/status/936591006169890816">https://twitter.com/Schnappiggg/status/936591006169890816</a>  </li>
+<li><a href="https://twitter.com/tebeka/status/934013246226526210">https://twitter.com/tebeka/status/934013246226526210</a>  </li>
+<li><a href="https://twitter.com/riddle_ling/status/932499976193585152">https://twitter.com/riddle_ling/status/932499976193585152</a>  </li>
+<li><a href="https://twitter.com/PeterZaitsev/status/931485736855134213">https://twitter.com/PeterZaitsev/status/931485736855134213</a>  </li>
+<li><a href="https://twitter.com/TinyDenny/status/932093891368460288">https://twitter.com/TinyDenny/status/932093891368460288</a>  </li>
+<li><a href="https://twitter.com/ruanyf/status/931709967966412800">https://twitter.com/ruanyf/status/931709967966412800</a>  </li>
+<li><a href="https://twitter.com/dlackty/status/931328546664050689">https://twitter.com/dlackty/status/931328546664050689</a>  </li>
+<li><a href="https://twitter.com/joelgrus/status/931202032978948096">https://twitter.com/joelgrus/status/931202032978948096</a>  </li>
+<li><a href="https://twitter.com/x0rz/status/930016909231362048">https://twitter.com/x0rz/status/930016909231362048</a>  </li>
+<li><a href="https://twitter.com/TinyDenny/status/929187796752855040">https://twitter.com/TinyDenny/status/929187796752855040</a>  </li>
+<li><a href="https://twitter.com/dbader_org/status/927899530942668801">https://twitter.com/dbader_org/status/927899530942668801</a>  </li>
+<li><a href="https://twitter.com/M157q_News_RSS/status/925543091339010048">https://twitter.com/M157q_News_RSS/status/925543091339010048</a>  </li>
+<li><a href="https://twitter.com/WanCW/status/924993679156056064">https://twitter.com/WanCW/status/924993679156056064</a>  </li>
+<li><a href="https://twitter.com/jaceju/status/924455583587037184">https://twitter.com/jaceju/status/924455583587037184</a>  </li>
+<li><a href="https://twitter.com/LoveHyperApp/status/923523498743439360">https://twitter.com/LoveHyperApp/status/923523498743439360</a>  </li>
+<li><a href="https://twitter.com/suitingtseng/status/923917098233073664">https://twitter.com/suitingtseng/status/923917098233073664</a>  </li>
+</ul>
+<hr>
+<h2>題外話</h2>
+<p>在寫這篇的時候發現，<br>
+最近 Twitter 好像針對這需求有了一個<a href="https://techcrunch.com/2017/11/23/twitter-is-testing-bookmarks-a-feature-to-privately-flag-tweets-for-later/">新的 Bookmark 功能</a>，<br>
+看了一下，好像還不能分類就是，<br>
+所以我應該還是會繼續用這樣的方式當作 bookmark。  </p>
+<p>然後也發現好像多了個 <a href="https://developer.twitter.com/en/docs/accounts-and-users/subscribe-account-activity/overview">Account Activity API</a>，<br>
+可以設定 webhook 即時接收帳號的事件，<br>
+可能可以做到類似聊天機器人這樣事件觸發式的對話。  </p>
+<p>如果是這裡的用途的話，<br>
+可以在我每次發送私訊的時候，<br>
+就直接透過 webhook 把該 tweet 的內容存在資料庫裡，<br>
+這樣就不會受 Twitter API 的限制了，<br>
+有空的話再來弄吧。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E7%94%A8%20Python%20%E5%AF%AB%E5%80%8B%E7%A8%8B%E5%BC%8F%E6%8A%93%E5%87%BA%E6%88%91%E5%9C%A8%20Twitter%20%E4%B8%8A%E5%AD%98%E4%BA%86%E5%93%AA%E4%BA%9B%20tweet%0Ahttps%3A//blog.m157q.tw/posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/&title=%E7%94%A8%20Python%20%E5%AF%AB%E5%80%8B%E7%A8%8B%E5%BC%8F%E6%8A%93%E5%87%BA%E6%88%91%E5%9C%A8%20Twitter%20%E4%B8%8A%E5%AD%98%E4%BA%86%E5%93%AA%E4%BA%9B%20tweet&summary=%E7%94%A8%20Python%20%E7%B0%A1%E5%96%AE%E5%AF%AB%E5%80%8B%E5%B0%8F%E7%A8%8B%E5%BC%8F%EF%BC%8C%E6%8A%93%E5%87%BA%E6%88%91%E5%AD%98%E5%9C%A8%20Twitter%20%E7%A7%81%E8%A8%8A%E8%A3%A1%E7%9A%84%20tweet%E3%80%82&source=https%3A//blog.m157q.tw/posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E7%94%A8%20Python%20%E5%AF%AB%E5%80%8B%E7%A8%8B%E5%BC%8F%E6%8A%93%E5%87%BA%E6%88%91%E5%9C%A8%20Twitter%20%E4%B8%8A%E5%AD%98%E4%BA%86%E5%93%AA%E4%BA%9B%20tweet&amp;body=https%3A//blog.m157q.tw/posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/">關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/">嘗試在 Python 中做到 Golang fmt 的效果</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/">Python 中讓 urllib 使用 cookie 的方法</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/27/fetch-my-github-commits-in-one-organization-with-python-script/">用 Python 抓出我在前公司貢獻了多少 GitHub commits</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/">關於 Django REST framework 的一些筆記</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/";
+        var disqus_title = "用 Python 寫個程式抓出我在 Twitter 上存了哪些 tweet";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/12/22/write-a-python-script-to-retrieve-twitter-direct-messsages/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-12-22T23:57:08+08:00"><i class="fa fa-calendar"></i> Fri 22 December 2017</abbr></p>
+
+      <p><abbr title="2017-12-24T22:58:08+08:00"><i class="fa fa-pencil"></i>Sun 24 December 2017</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/twitter/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Twitter</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/21/how-to-answer-questions-in-a-helpful-way-zh-tw/" title="《回答的智慧》"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/" title="如何區分加密、壓縮、編碼"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

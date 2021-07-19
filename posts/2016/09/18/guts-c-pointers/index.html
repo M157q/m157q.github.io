@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  20160918 - 你所不知道的 C 語言：指標篇 復刻！
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/09/18/guts-c-pointers/" rel="bookmark" title="Permalink to 20160918 - 你所不知道的 C 語言：指標篇 復刻！">20160918 - 你所不知道的 C 語言：指標篇 復刻！</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Jserv 線上 C 語言講座《0918 - 你所不知道的 C 語言：指標篇 復刻！》筆記</p>
+  </blockquote>
+  <div>
+    <p>這篇嚴格來說不算筆記，<br>
+大概只算 jserv 語錄 （？）<br>
+想真的瞭解內容的話還是得看共筆就是。  </p>
+<p>從晚上九點才開始聽，<br>
+而且一開始在是剛到臺北下統聯後，<br>
+在要回租屋處的捷運上邊搭邊聽的，<br>
+所以其實無法太詳細紀錄。  </p>
+<hr>
+<h2>Links</h2>
+<ul>
+<li>影片：<a href="https://www.youtube.com/watch?v=Eiu2Le-xjmg">https://www.youtube.com/watch?v=Eiu2Le-xjmg</a>  </li>
+<li>共筆：<a href="http://hackfoldr.org/dykc/s0rlzR8wVtm">http://hackfoldr.org/dykc/s0rlzR8wVtm</a>  </li>
+<li>聊天室：<a href="https://gitter.im/embedded2015/guts-general">https://gitter.im/embedded2015/guts-general</a>  </li>
+</ul>
+<hr>
+<h2>Note</h2>
+<ul>
+<li>「我去天瓏書店翻書的時候，看到有些書提到『雙指標』，但其實根本沒有雙指標這種東西，只有『指標的指標』，這兩個是完全不同的東西，就像『雙馬尾』跟『馬尾的馬尾』是完全不同的東西，所以拜託看到有『雙指標』的 C 語言的書就不要買了。」  </li>
+<li>「要看懂 C 語言的規格書，你得先會微積分。所以微積分很重要的，趕快去複習一下。」(註：Function Designator 的部份)  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">// 這句應該是指 function designator 的這種狀況  </span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>  
+    <span class="k">return</span> <span class="p">(</span><span class="o">********</span><span class="n">puts</span><span class="p">)(</span><span class="s">&quot;Hello&quot;</span><span class="p">);</span>  
+<span class="p">}</span>  
+
+<span class="c1">// 不管有幾個 * 結果都一樣  </span>
+<span class="c1">// 就像 e^x 對 x 微分不管微幾次結果都是 e^x  </span>
+</pre></div>
+
+
+<ul>
+<li>「Function Designator 的 Designator 不要唸成跟 Design 一樣，它的 i 是短音的。」  <ul>
+<li>附上音標  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>$ zdict designator  
+designator  
+KK<span class="o">[</span>͵dɛzɪgˋnetɚ<span class="o">]</span> DJ<span class="o">[</span>͵dezigˋneitə<span class="o">]</span>  
+n.名詞  
+  <span class="m">1</span>. 指示者；指定者  
+</pre></div>
+
+
+<ul>
+<li>「lvalue 和 rvalue 是很複雜的東西，不是只有在等號左邊或等號右邊的意思，今天時間不夠，所以我不想跟你講。」  </li>
+<li>「很多人都以為字串很簡單，但不對，自從 C99 以後，字串非常複雜。」  </li>
+<li>「世界上有個很神奇的 Compiler 叫作 Microsoft C compiler，他不支援直接使用 UTF-8。」  </li>
+<li>「C 的 Array 只是 Pointer 的 syntax sugar，但寫法並不是所有情況都可以互換，只有當作 function definition 的 parameter 時可以互換。如果是 extern 的時候換成 pointer 方式的寫法的話，產生出來的組合語言是完全不一樣的，這件事說來慚愧，我是寫了程式 10 年以後才知道的，是某次在處理 JVM 的程式碼的時候發現的。」  </li>
+<li>「C 其實沒有 Array 這個東西，真正的名字是 Array Subscripting，它只是一種 pointer 的表示法。」  </li>
+<li>「你之所以看不懂 Linux Kernel，往往不是因為 Linux Kernel 很複雜，而是你不懂 C 語言。」  </li>
+<li>「在 C99，有個很麻煩的東西叫 lvalue，l 不是 left，不是在等號左邊的意思，而是 object locator, l 是 locator 的意思。然後這在 C++ 裏面又被重新定義了，這又是另外一回事了。」  </li>
+<li>「C 從 1972 被發明出來開始是沒有 float 的，只有 double，float 在 1985 的 IEEE754 制定時才出現，然後在 1989 年才確定。」  </li>
+<li>「C 和 C++ 在 1999 年以後就兵分兩路了，雖然他們還是有共同的地方，但請把他們兩個當作不同的語言來學。」  </li>
+<li>「如果你貿然得想從 Linux Kernel 去學習作業系統和 C 語言的話，往往會吃很大的虧，因為 Linux Kernel 用到了很多 C 語言的東西，而且還用到了不少 Undefined Behavior。」  </li>
+<li>和作業系統相關概念的共筆：<a href="http://hackfoldr.org/oscar">http://hackfoldr.org/oscar</a>。  </li>
+<li>歡迎訂閱這個粉絲專頁 <a href="https://www.facebook.com/JservFans/">https://www.facebook.com/JservFans/</a> 會不時的分享一些和 Open Source 有關的消息。  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=20160918%20-%20%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20C%20%E8%AA%9E%E8%A8%80%EF%BC%9A%E6%8C%87%E6%A8%99%E7%AF%87%20%E5%BE%A9%E5%88%BB%EF%BC%81%0Ahttps%3A//blog.m157q.tw/posts/2016/09/18/guts-c-pointers/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/09/18/guts-c-pointers/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/09/18/guts-c-pointers/&title=20160918%20-%20%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20C%20%E8%AA%9E%E8%A8%80%EF%BC%9A%E6%8C%87%E6%A8%99%E7%AF%87%20%E5%BE%A9%E5%88%BB%EF%BC%81&summary=Jserv%20%E7%B7%9A%E4%B8%8A%20C%20%E8%AA%9E%E8%A8%80%E8%AC%9B%E5%BA%A7%E3%80%8A0918%20-%20%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20C%20%E8%AA%9E%E8%A8%80%EF%BC%9A%E6%8C%87%E6%A8%99%E7%AF%87%20%E5%BE%A9%E5%88%BB%EF%BC%81%E3%80%8B%E7%AD%86%E8%A8%98&source=https%3A//blog.m157q.tw/posts/2016/09/18/guts-c-pointers/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=20160918%20-%20%E4%BD%A0%E6%89%80%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20C%20%E8%AA%9E%E8%A8%80%EF%BC%9A%E6%8C%87%E6%A8%99%E7%AF%87%20%E5%BE%A9%E5%88%BB%EF%BC%81&amp;body=https%3A//blog.m157q.tw/posts/2016/09/18/guts-c-pointers/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2015/06/02/static-extern-inline-function-variable-in-c/">static/extern/inline function/variable in C</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/05/30/estimate-program-execution-time-in-c/">Estimate program execution time in C</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/03/27/y2017w12/">Y2017W12</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/">Cat System Workshop #12: SkyPat: C++ Performance Analysis and Testing Framework</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/09/18/guts-c-pointers/";
+        var disqus_title = "20160918 - 你所不知道的 C 語言：指標篇 復刻！";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/09/18/guts-c-pointers/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-09-18T23:01:17+08:00"><i class="fa fa-calendar"></i> Sun 18 September 2016</abbr></p>
+
+      <p><abbr title="2016-09-20T01:17:00+08:00"><i class="fa fa-pencil"></i>Tue 20 September 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/c/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">c</a>
+  <br>
+            <a href="/tag/pointers/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">pointers</a>
+  <br>
+            <a href="/tag/jserv/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">jserv</a>
+  <br>
+            <a href="/tag/guts/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">GUTS</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/18/9-algorithms-that-changed-the-future/" title="《改變世界的九大演算法》"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/18/y2016w37/" title="Y2016W37"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

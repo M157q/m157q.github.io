@@ -1,0 +1,17 @@
+diff --git a/gcin/trunk/PKGBUILD b/gcin/trunk/PKGBUILD
+index ca08fcb57f3..7048c13411d 100644
+--- a/gcin/trunk/PKGBUILD
++++ b/gcin/trunk/PKGBUILD
+@@ -39,6 +39,12 @@ prepare() {
+         -e '/^MODVERSION=/a INCS+=-I/usr/include/qt/QtGui/$(MODVERSION) -I/usr/include/qt/QtCore/$(MODVERSION)' \
+         -i qt5-im/Makefile
+ 
++    # Patch to make gcin work in qt >= 5.9.x
++    # ref: <https://hyperrate.com/thread.php?tid=33785>
++      sed \
++          -e 's/org.qt-project.Qt.QPlatformInputContextFactoryInterface/&.5.1/' \
++          -i qt5-im/gcin-qt5.h.in
++
+     # FS#45732
+     patch -p1 -i ../qt-5.5.patch
+ 

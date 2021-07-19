@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - yaourt</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.yaourt.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-11-27T14:56:38+08:00</updated><entry><title>ERROR: One or more PGP signatures could not be verified</title><link href="https://blog.m157q.tw/posts/2017/11/27/one-or-more-pgp-signatures-could-not-be-verified/" rel="alternate"></link><published>2017-11-27T14:56:38+08:00</published><updated>2017-11-27T14:56:38+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-11-27:/posts/2017/11/27/one-or-more-pgp-signatures-could-not-be-verified/</id><summary type="html">&lt;p&gt;Solution for this error while installing packages from AUR.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;gpg --keyserver keys.gnupg.net --recv-keys ${PGP_PUBLIC_KEY}&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;Encountered this error while installing &lt;code&gt;firefox-nightly&lt;/code&gt; from AUR  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;==&amp;gt; Verifying source file signatures with gpg...  &lt;/span&gt;
+&lt;span class="err"&gt;    20171127-firefox-59.0a1.en-US.linux-x86_64.tar.bz2 ... FAILED (unknown public key BBBEBDBB24C6F355)  &lt;/span&gt;
+&lt;span class="err"&gt;==&amp;gt; ERROR: One or more PGP signatures could not be verified!  &lt;/span&gt;
+&lt;span class="err"&gt;==&amp;gt; ERROR: Makepkg was unable to build firefox-nightly.  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;gpg --keyserver keys.gnupg.net --recv-keys BBBEBDBB24C6F355&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bbs.archlinux.org/viewtopic.php?id=191954"&gt;One or more PGP signatures could not be verified! / AUR Issues, Discussion &amp;amp; PKGBUILD Requests / Arch Linux Forums&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://allanmcrae.com/2015/01/two-pgp-keyrings-for-package-management-in-arch-linux/"&gt;Two PGP Keyrings for Package Management in Arch Linux | Allan McRae&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Arch Linux"></category><category term="makepkg"></category><category term="yaourt"></category><category term="AUR"></category><category term="PGP"></category></entry></feed>

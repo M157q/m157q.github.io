@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - adb</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.adb.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-05-05T01:33:34+08:00</updated><entry><title>Factory Reset Android via ADB</title><link href="https://blog.m157q.tw/posts/2017/05/05/factory-reset-android-via-adb/" rel="alternate"></link><published>2017-05-05T01:33:34+08:00</published><updated>2017-05-05T01:33:34+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-05-05:/posts/2017/05/05/factory-reset-android-via-adb/</id><summary type="html">&lt;p&gt;Simple note for factory reset Android via ADB.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;Factory Reset from the GUI settings of my ASUS ZenFone 2 (ZE551ML) with CynagenMod 14 installed didn't work.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;p&gt;Before doing this:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Make sure your computer had already installed &lt;code&gt;adb&lt;/code&gt;.  &lt;ul&gt;
+&lt;li&gt;For Arch Linux users: &lt;code&gt;$ sudo pacman -S android-tools&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Make sure your Android phone had already enable the &lt;code&gt;Developer Options&lt;/code&gt; and enable the USB Debugging via ADB.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let's go:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Connect your Android phone to your computer.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ adb devices&lt;/code&gt; make sure your phone is listed.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ adb reboot bootloader&lt;/code&gt; to reboot the Android to bootloader.  &lt;/li&gt;
+&lt;li&gt;Wait until it reboot to bootloader.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo fastboot erase userdata&lt;/code&gt; to wipe all user data.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo fastboot erase cache&lt;/code&gt; to wipe all cache.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo fastboot reboot&lt;/code&gt; to reboot your phone.  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And that's it, it works for me.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ adb --version  
+Android Debug Bridge version &lt;span class="m"&gt;1&lt;/span&gt;.0.36  
+Revision &lt;span class="m"&gt;7&lt;/span&gt;.1.2_r6  
+&lt;/pre&gt;&lt;/div&gt;</content><category term="android"></category><category term="adb"></category><category term="factory reset"></category></entry></feed>

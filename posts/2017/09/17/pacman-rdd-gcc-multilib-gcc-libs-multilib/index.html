@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  pacman -Rdd gcc-multilib gcc-libs-multilib
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/" rel="bookmark" title="Permalink to pacman -Rdd gcc-multilib gcc-libs-multilib">pacman -Rdd gcc-multilib gcc-libs-multilib</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>A solution to save your ass if you broke pacman after force removed <code>gcc-multilib</code> and <code>gcc-libs-multilib</code> on your Arch Linux</p>
+  </blockquote>
+  <div>
+    <h3>Preface</h3>
+<p>If you've installed <code>gcc-libs-multilib</code> and <code>gcc-multilib</code> in your Arch Linux,<br>
+you might cannot <code>$ sudo pacman -Syu</code> because sometimes they will conflict with <code>gcc-libs</code> and <code>gcc</code> in <code>[core]</code> repository.  </p>
+<p>You have two choices:  </p>
+<ol>
+<li>Don't install <code>gcc</code> and <code>gcc-libs</code> to avoid the conflict, and wait until <code>gcc-multilib</code> and <code>gcc-libs-multilib</code> have new version.  <ul>
+<li>Remove them from the list of packaged to install of this packages upgrade.  </li>
+</ul>
+</li>
+<li>Force remove <code>gcc-multilib</code> and <code>gcc-libs-multilib</code> with <code>$ sudo pacman -Rdd gcc-multilib gcc-libs-multilib</code>.  </li>
+</ol>
+<p>If you do the latter, and break your <code>pacman</code>, then this blog post may be your salvation.<br>
+I just encountered this situation and that's why I wrote down this blog post.  </p>
+<hr>
+<h3>Error Message</h3>
+<blockquote>
+<p>pacman: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory  </p>
+</blockquote>
+<hr>
+<div class="highlight"><pre><span></span>$ ldd <span class="k">$(</span>which pacman<span class="k">)</span>  
+
+...  
+
+libstdc++.so.6 <span class="o">=</span>&gt; not found  
+libgcc_s.so.1 <span class="o">=</span>&gt; not found  
+</pre></div>
+
+
+<p>These two share objects are gone which make <code>pacman</code> broken.  </p>
+<hr>
+<h3>Solution</h3>
+<p>Copy <code>libstdc++.so.6</code> and <code>libgcc_s.so.1</code> from other Arch Linux computer with same architecture.  </p>
+<p>If you have nothing to copy from, I've backed up these two shared objects with x86_64  architecutre below.  </p>
+<p>(If somehow you cannot download these two files or these doesn't work for you,<br>
+you can try the following link in the reference part.<br>
+Someone also backed up these two files and uploaded them in the reply of the forum thread.)  </p>
+<ol>
+<li>Download these 2 share objects:  <ul>
+<li><a href="/files/pacman-rdd-gcc-multilib-gcc-libs-multilib/libstdc++.so.6">libstdc++.so.6</a>  <ul>
+<li>sha256sum: 30c1b6ae5936f5f4afdba39f44465efc84422e957db13580e1891f081b615d0e  </li>
+</ul>
+</li>
+<li><a href="/files/pacman-rdd-gcc-multilib-gcc-libs-multilib/libgcc_s.so.1">libgcc_s.so.1</a>  <ul>
+<li>sha256sum: 95298eef28aca7cef5b28d8388ef0ea3721add9e7c19df74054d7b1c41bcca2e  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>$ sudo mv libstdc++.so.6 libgcc_s.so.1 /usr/lib</code>  </li>
+<li><code>$ sudo pacman -S --force gcc gcc-libs</code>  <ul>
+<li>Make sure you use <code>--force</code> option, or pacman will complain about these two files are conflict.  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3>Reference</h3>
+<ul>
+<li><a href="https://www.reddit.com/r/archlinux/comments/6e2no7/pacman_error_libstdcso6/">pacman error: libstdc++.so.6 : archlinux</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=pacman%20-Rdd%20gcc-multilib%20gcc-libs-multilib%0Ahttps%3A//blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/&title=pacman%20-Rdd%20gcc-multilib%20gcc-libs-multilib&summary=A%20solution%20to%20save%20your%20ass%20if%20you%20broke%20pacman%20after%20force%20removed%20gcc-multilib%20and%20gcc-libs-multilib%20on%20your%20Arch%20Linux&source=https%3A//blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=pacman%20-Rdd%20gcc-multilib%20gcc-libs-multilib&amp;body=https%3A//blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2014/10/29/pacman-mirrorlist-taiwan-vs-taiwan-province-of-china/">pacman mirrorlist - Taiwan vs. Taiwan (Province of China)</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/16/change-docker-storage-driver-from-devicemapper-to-overlay2-to-free-your-disk-space-on-arch-linux/">在 Arch Linux 上將 Docker 的 Storage Driver 從 devicemapper 改為 overlay2 以釋放硬碟空間</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/14/y2017w32/">Y2017W32</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/02/25/setup-static-ip-wired-network-in-arch-linux/">Setup Static Ip Wired Network in Arch Linux</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/11/27/one-or-more-pgp-signatures-could-not-be-verified/">ERROR: One or more PGP signatures could not be verified</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/";
+        var disqus_title = "pacman -Rdd gcc-multilib gcc-libs-multilib";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-09-17T17:50:32+08:00"><i class="fa fa-calendar"></i> Sun 17 September 2017</abbr></p>
+
+      <p><abbr title="2018-07-24T22:04:32+08:00"><i class="fa fa-pencil"></i>Tue 24 July 2018</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/arch-linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="18 articles with this tag">Arch Linux</a>
+  <br>
+            <a href="/tag/pacman/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">pacman</a>
+  <br>
+            <a href="/tag/gcc-libs/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">gcc-libs</a>
+  <br>
+            <a href="/tag/gcc/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">gcc</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/09/15/shutter-0-94-2-broken-after-perl-upgraded-to-5-26-on-arch-linux/" title="Shutter 0.94-2 broken after Perl upgraded to 5.26 on Arch Linux"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/" title="CloudMile Google Cloud Ad Tech Seminar"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

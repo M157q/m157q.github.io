@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Python 中讓 urllib 使用 cookie 的方法
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/" rel="bookmark" title="Permalink to Python 中讓 urllib 使用 cookie 的方法">Python 中讓 urllib 使用 cookie 的方法</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>紀錄一下在 urllib 使用 cookie 的方法。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>其實一般來說只要用 <a href="https://github.com/requests/requests"><code>requests</code></a> 這個超強的 third-party library 就可以解了，<code>requests</code> 已經把 Cookie 的部份處理好了，那為什麼要紀錄這篇？其實這問題也是約莫一年前在前公司工作時遇到的問題，以下說明一下：  </p>
+<p>Google App Engine Standard Environment 除了預設使用 Python 2 以外，加上因為是 PaaS 的關係，做了不少限制，直接拿 <code>requests</code> 來用的話會無法使用，必須再搭配 <a href="https://github.com/requests/toolbelt"><code>requests-toolbelt</code></a> 這個工具，讓 <code>requests</code> 在 GAE Standard 上使用的時候，底層會抽換成 GAE 提供的 <code>urlfetch</code>，這樣才能使用，而在 GAE Standard 上預設可以使用 <code>urlfetch</code> 和 <code>urllib2</code>。  </p>
+<p>那為什麼不用 <code>requests</code> 就好了？因為 Legacy code 的緣故，無法很輕易使用 <code>requests</code>，所以採用 <code>urllib2</code>，但又遇到有需要使用 Cookie 的需求，而 <code>urllib2</code> 是沒有支援 Cookie 的，所以就必須再搭配 <code>cookielib</code> 來使用。  </p>
+<p>就用這篇文章紀錄一下作法，順便連 Python 3 的寫法也順便紀錄一下，因為 Python 2 裡的 <code>urllib2</code> 和 <code>cookielib</code> 在 Python 3 裡頭都有做更動。順便也把最簡單的 <code>requests</code> 的寫法也一併附上。  </p>
+<hr>
+<h2>Python 2: <code>urllib2</code> + <code>cookielib</code></h2>
+<p><strong>Python 2 中的 <code>urllib2</code> 是 <code>urllib</code> 的加強版，在實際使用上比較常使用 <code>urllib2</code>，所以這裡直接講 <code>urllib2</code> 的寫法。</strong>  </p>
+<h3>基本使用</h3>
+<p>範例其實在官方網站的說明文件最底下的範例就有了：<a href="https://docs.python.org/2/library/cookielib.html#examples">20.21. cookielib — Cookie handling for HTTP clients — Python 2.7.14 documentation</a>，其實也不會很複雜。  </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cookielib</span><span class="o">,</span> <span class="nn">urllib2</span>  
+<span class="n">cj</span> <span class="o">=</span> <span class="n">cookielib</span><span class="o">.</span><span class="n">CookieJar</span><span class="p">()</span>  
+<span class="n">opener</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPCookieProcessor</span><span class="p">(</span><span class="n">cj</span><span class="p">))</span>  
+<span class="n">r</span> <span class="o">=</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;http://example.com/&quot;</span><span class="p">)</span>  
+</pre></div>
+
+
+<h3>不從檔案匯入，直接設定 Cookie</h3>
+<p>但如果今天我們沒有一份先存好的 Cookie 設定檔，卻又想在發送 request 前預先設定一些 Cookie 的 value 怎麼辦？先講結論：「有辦法做到，但不推薦使用。」（如果是要改 "User-Agent" 的話，這個是 request header，而不是 cookie，所以是 <code>urllib</code> 要處理，而不是 <code>cookielib</code> 處理，請勿搞混。）  </p>
+<p><code>cookielib.CookieJar</code> 有個 <code>set_cookie()</code> 的函式，其預設接收的參數是 <code>cookielib.Cookie</code>，但 <code>cookielib.Cookie</code> 的文件中卻有著以下這段說明：  </p>
+<blockquote>
+<p>This class represents Netscape, RFC 2109 and RFC 2965 cookies. It is not expected that users of <code>cookielib</code> construct their own <code>Cookie</code> instances. Instead, if necessary, call <code>make_cookies()</code> on a <code>CookieJar</code> instance.  </p>
+</blockquote>
+<p>也就是說，預設其實是不期望使用者自己設定 Cookie 的，但並不是不能做到，這個在 StackOverflow 上的回答有給出範例：<a href="https://stackoverflow.com/questions/4685337/python-add-cookie-to-cookiejar#12682437">python - add cookie to cookiejar - Stack Overflow</a>，但我自己是覺得非常的不直觀，用這種開發方式應該很難維護，除非初始化 <code>cookielib.Cookie</code> 的時候把參數的 key 都加上去。順待一提，這篇文章的提問者誤把 <code>Cookie.SimpleCooke</code> 丟給 <code>cookielib.CookieJar.set_cookie()</code> 當參數餵入，但這個函式可以接受的參數必須是 <code>cookielib.Cookie</code>，而不是 <code>Cookie.SimpleCookie</code>，所以出了錯，而且這兩者並沒有任何關係，完全是繼承自不同的 class。  </p>
+<h3>從檔案匯入/匯出到檔案</h3>
+<ul>
+<li><a href="https://docs.python.org/2/library/cookielib.html#cookielib.FileCookieJar.save"><code>cookielib.FileCookieJar.save</code></a>  <ul>
+<li>將現有的 Cookie export 到檔案中。  </li>
+</ul>
+</li>
+<li><a href="https://docs.python.org/2/library/cookielib.html#cookielib.FileCookieJar.load"><code>cookielib.FileCookieJar.load</code></a>  <ul>
+<li>從檔案中 import Cookie 的設定進來。  </li>
+</ul>
+</li>
+</ul>
+<p>這樣一來在實作爬蟲時，遇到會利用 Cookie 來判斷使用者是否登入的網站時就很方便。  </p>
+<hr>
+<h2>Python 3: <code>urllib.request</code> + <code>http.cookiejar</code></h2>
+<h3>基本使用</h3>
+<p>一樣在 Python 官方的說明文件底下就有範例可以參考了：<a href="https://docs.python.org/3/library/http.cookiejar.html?highlight=cookiejar#examples">21.24. http.cookiejar — Cookie handling for HTTP clients — Python 3.6.4 documentation</a>  </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">http.cookiejar</span><span class="o">,</span> <span class="nn">urllib.request</span>  
+<span class="n">cj</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">cookiejar</span><span class="o">.</span><span class="n">CookieJar</span><span class="p">()</span>  
+<span class="n">opener</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">HTTPCookieProcessor</span><span class="p">(</span><span class="n">cj</span><span class="p">))</span>  
+<span class="n">r</span> <span class="o">=</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;http://example.com/&quot;</span><span class="p">)</span>  
+</pre></div>
+
+
+<p>其實可以看到跟 Python 2 的寫法一模一樣，只是把 <code>cookielib</code> 換成 <code>http.cookiejar</code>，<code>urllib2</code> 換成 <code>urllib.request</code> 而已。  </p>
+<h3>不從檔案匯入，直接設定 Cookie。</h3>
+<p>這部份跟 Python 2 一樣，可以做到，但不推薦，就不贅述。  </p>
+<h3>從檔案匯入/匯出到檔案</h3>
+<ul>
+<li><a href="https://docs.python.org/3/library/http.cookiejar.html?highlight=cookiejar#http.cookiejar.FileCookieJar.save"><code>http.cookiejar.FileCookieJar.save</code></a>  <ul>
+<li>將目前的 Cookie 匯出到檔案。  </li>
+</ul>
+</li>
+<li><a href="https://docs.python.org/3/library/http.cookiejar.html?highlight=cookiejar#http.cookiejar.FileCookieJar.load"><code>http.cookiejar.FileCookieJar.load</code></a>  <ul>
+<li>從現有的檔案中匯入 Cookie。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>requests</h2>
+<p>官方文件的 Quickstart 就有一個關於 Cookies 的部份：<a href="http://docs.python-requests.org/en/master/user/quickstart/#cookies">Quickstart — Requests 2.18.4 documentation</a>  </p>
+<p><code>requests</code> 本身就自帶 Cookie 的處理了，用法簡單了許多：  </p>
+<h3>基本使用</h3>
+<blockquote>
+<p>If a response contains some Cookies, you can quickly access them:  </p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://example.com/some/cookie/setting/url&#39;</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>  
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">cookies</span><span class="p">[</span><span class="s1">&#39;example_cookie_name&#39;</span><span class="p">]</span>  
+<span class="s1">&#39;example_cookie_value&#39;</span>  
+</pre></div>
+
+
+<blockquote>
+<p>To send your own cookies to the server, you can use the cookies parameter:  </p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://httpbin.org/cookies&#39;</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cookies</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">cookies_are</span><span class="o">=</span><span class="s1">&#39;working&#39;</span><span class="p">)</span>  
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="n">cookies</span><span class="p">)</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>  
+<span class="s1">&#39;{&quot;cookies&quot;: {&quot;cookies_are&quot;: &quot;working&quot;}}&#39;</span>  
+</pre></div>
+
+
+<h3>不從檔案匯入，直接設定 Cookie。</h3>
+<p>基本上這邊的作法就是上面 Python 2 那邊提到的作法，不過 <code>requests</code> 把剛剛說的加上參數 key  這件事情稍微處理了一下。  </p>
+<blockquote>
+<p>Cookies are returned in a <code>RequestsCookieJar</code>, which acts like a <code>dict</code> but also offers a more complete interface, suitable for use over multiple domains or paths. Cookie jars can also be passed in to requests:  </p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">jar</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">cookies</span><span class="o">.</span><span class="n">RequestsCookieJar</span><span class="p">()</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jar</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;tasty_cookie&#39;</span><span class="p">,</span> <span class="s1">&#39;yum&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;httpbin.org&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/cookies&#39;</span><span class="p">)</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">jar</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;gross_cookie&#39;</span><span class="p">,</span> <span class="s1">&#39;blech&#39;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;httpbin.org&#39;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/elsewhere&#39;</span><span class="p">)</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://httpbin.org/cookies&#39;</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">cookies</span><span class="o">=</span><span class="n">jar</span><span class="p">)</span>  
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>  
+<span class="s1">&#39;{&quot;cookies&quot;: {&quot;tasty_cookie&quot;: &quot;yum&quot;}}&#39;</span>  
+</pre></div>
+
+
+<h3>從檔案匯入/匯出到檔案</h3>
+<p>這部份在 <code>requests</code> 就比較麻煩一點，但也不難，需要額外用到 <code>requests.utils.dict_from_cookiejar()</code>，詳細可以參考這篇 StackOverflow 的解答：<a href="https://stackoverflow.com/questions/13030095/how-to-save-requests-python-cookies-to-a-file/13031628#13031628">How to save requests (python) cookies to a file? - Stack Overflow</a>，它還有用到 <code>pickle</code> 這個函式庫。  </p>
+<ul>
+<li>無論是 <code>requests.Response.cookies</code> 或 <code>requests.Sessions.Session.cookies</code> 都是 <code>requests.cookies.cookiejar_from_dict()</code> 的輸出結果。  </li>
+<li>可以用 <code>requests.utils.dict_from_cookiejar()</code> 這個函式，將 <code>response.cookies</code> 或是 <code>session.cookies</code> 當作輸入，就可以得到該 Cookie 以 <code>dict</code> 方式呈現結果，當然也就可以匯出到檔案。  </li>
+<li>要匯入的話，可以使用 <code>requests.utils.cookiejar_from_dict()</code> 這個參數來把 <code>dict</code> 轉成 <code>RequestsCookieJar</code>。  <ul>
+<li><code>requests.utils.cookiejar_from_dict()</code> 是從 <code>requests.cookies</code> import 來的。  </li>
+</ul>
+</li>
+<li>使用到 <code>pickle</code> 只是方便以 <code>pickle</code> 的形式儲存而已。  </li>
+</ul>
+<hr>
+<h2>結論</h2>
+<p>能用 <code>requests</code> 的話當然就直接用吧，如果遇到我提到的這種狀況才會需要特殊的解法。  </p>
+<hr>
+<h2>參考來源</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/2018026/what-are-the-differences-between-the-urllib-urllib2-and-requests-module">python - What are the differences between the urllib, urllib2, and requests module? - Stack Overflow</a>  </li>
+<li><a href="https://github.com/requests/requests">GitHub - requests/requests: Python HTTP Requests for Humans™ ✨🍰✨</a>  </li>
+<li><a href="https://github.com/requests/toolbelt">GitHub - requests/toolbelt: A toolbelt of useful classes and functions to be used with python-requests</a>  </li>
+<li><a href="https://docs.python.org/2.7/library/urllib.html?highlight=urllib">20.5. urllib — Open arbitrary resources by URL — Python 2.7.14 documentation</a>  </li>
+<li><a href="https://docs.python.org/2.7/library/urllib2.html">20.6. urllib2 — extensible library for opening URLs — Python 2.7.14 documentation</a>  </li>
+<li><a href="https://docs.python.org/2/library/cookielib.html">20.21. cookielib — Cookie handling for HTTP clients — Python 2.7.14 documentation</a>  </li>
+<li><a href="https://docs.python.org/3/library/urllib.html?highlight=urllib">21.5. urllib — URL handling modules — Python 3.6.4 documentation</a>  </li>
+<li><a href="https://docs.python.org/3/library/http.cookiejar.html?highlight=cookiejar#module-http.cookiejar">21.24. http.cookiejar — Cookie handling for HTTP clients — Python 3.6.4 documentation</a>  </li>
+<li><a href="http://docs.python-requests.org/en/master/user/quickstart/#cookies">Quickstart — Requests 2.18.4 documentation</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Python%20%E4%B8%AD%E8%AE%93%20urllib%20%E4%BD%BF%E7%94%A8%20cookie%20%E7%9A%84%E6%96%B9%E6%B3%95%0Ahttps%3A//blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/&title=Python%20%E4%B8%AD%E8%AE%93%20urllib%20%E4%BD%BF%E7%94%A8%20cookie%20%E7%9A%84%E6%96%B9%E6%B3%95&summary=%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%E5%9C%A8%20urllib%20%E4%BD%BF%E7%94%A8%20cookie%20%E7%9A%84%E6%96%B9%E6%B3%95%E3%80%82&source=https%3A//blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Python%20%E4%B8%AD%E8%AE%93%20urllib%20%E4%BD%BF%E7%94%A8%20cookie%20%E7%9A%84%E6%96%B9%E6%B3%95&amp;body=https%3A//blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/08/28/convert-html-string-to-xml-string-with-python/">Convert HTML string to XML string with Python</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/27/fetch-my-github-commits-in-one-organization-with-python-script/">用 Python 抓出我在前公司貢獻了多少 GitHub commits</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/06/05/python-mutable-vs-hashable/">[Python] Mutable v.s Hashable</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/">關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/">嘗試在 Python 中做到 Golang fmt 的效果</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/01/06/use-cookie-with-urllib-in-python/";
+        var disqus_title = "Python 中讓 urllib 使用 cookie 的方法";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-01-06T23:57:00+08:00"><i class="fa fa-calendar"></i> Sat 06 January 2018</abbr></p>
+
+      <p><abbr title="2018-01-07T01:42:00+08:00"><i class="fa fa-pencil"></i>Sun 07 January 2018</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/python-3/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">Python 3</a>
+  <br>
+            <a href="/tag/python-2/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Python 2</a>
+  <br>
+            <a href="/tag/cookie/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">cookie</a>
+  <br>
+            <a href="/tag/urllib/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">urllib</a>
+  <br>
+            <a href="/tag/requests/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">requests</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/05/set-default-application-in-desktop-environment-on-linux/" title="Linux 設定桌面環境預設開啟程式"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/" title="關於 Django REST framework 的一些筆記"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

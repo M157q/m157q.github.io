@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  ITC week10 - Key Management and Distribution
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.course.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Course - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2013/11/27/itc-week10-key-management-and-distribution/" rel="bookmark" title="Permalink to ITC week10 - Key Management and Distribution">ITC week10 - Key Management and Distribution</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <h2>NCTUCS 2013-Fall Introduction to Cryptography …</h2>
+  </blockquote>
+  <div>
+    <h2>NCTUCS 2013-Fall Introduction to Cryptography by Professor Rong-Jaye Chen.</h2>
+<p>今天是 liuyh 講課!  </p>
+<p>Master key, Session key, X.509, PKI  </p>
+<ul>
+<li>Symmetric Key Distribution Using Symmetric Encryption  </li>
+<li>Symmetric Key Distribution Using Asymmetric Encryption  </li>
+<li>Distribution Of Public Keys  </li>
+<li>X.509 Certificates  </li>
+<li>Public-Key Infrastructure  </li>
+</ul>
+<hr>
+<h2>Symmetric Key Distribution Using Symmetric Encryption</h2>
+<p>加密：public key or private key<br>
+簽章：private key  </p>
+<p>symmetric key: 速度較快<br>
+asymmetric key: 速度較慢  </p>
+<p><img alt="p.6" src="/files/itc-week10-key-management-and-distribution/p6.jpg"><br>
+現今網路環境使用上圖的 Option 4<br>
+KDC = Key Distribution Center  </p>
+<p>Session Key =&gt; 加密 Communication<br>
+Master Key =&gt; 加密 Session Key  </p>
+<blockquote>
+<p>只需要 N 個 Master Key  </p>
+</blockquote>
+<p>Data =&gt; 有加密<br>
+Session Key =&gt; 有加密<br>
+Master Key =&gt; <strong>沒加密</strong>  </p>
+<p>Key Distribution 的步驟<br>
+<img alt="p.10" src="/files/itc-week10-key-management-and-distribution/p10.jpg">  </p>
+<h3>Hierarchical Key Control</h3>
+<ul>
+<li>Single LAN  </li>
+<li>KDC 和 KDC 之間有自己的方法作訊息交換  </li>
+<li>把 KDC 切開的好處：當某個 KDC 出事時，影響範圍較小  </li>
+</ul>
+<h3>Session Key Lifetime</h3>
+<ul>
+<li>Session Key 換的越頻繁，則越安全。  </li>
+<li>但一直交換 Session Key 也會造成 Overhead  </li>
+<li>所以要在換與不換之間找到平衡點  </li>
+<li>如果 Connection 會進行很長的一段時間  </li>
+<li>傳輸過程會跟資料及封包的格式有關  </li>
+<li>UDP =&gt; connectionless =&gt; 一個連線不太需要換 Session Key<br>
+=&gt; 改成每次交換都用新的 Session Key =&gt; 不符合 connectionless 需要快速的原則<br>
+=&gt; 改用有時效性的 Session Key 會是比較好的作法  </li>
+</ul>
+<h3>A Transparent Key Control Scheme</h3>
+<ul>
+<li><img alt="p.13" src="/files/itc-week10-key-management-and-distribution/p13.jpg">  </li>
+</ul>
+<h3>Decentralized Key Control</h3>
+<ul>
+<li>Fully Decentralized =&gt; 每個 host 兩兩之間都會有一個 Master Key =&gt; 沒有中央化的存在  </li>
+<li>缺點： N 個 hosts 需要 N(N-1)/2 個 Master Key =&gt; 又回到了原本的數量級  </li>
+<li>優點： 較安全  </li>
+</ul>
+<h3>Controlling Key Usage</h3>
+<p>如果把 Master Key 當成 Session Key 來用的話，在安全性上可能會洩漏用該 Master Key 加密的 Session Key  </p>
+<h4>到此為止，還是沒交代 Master Key 從何而來</h4>
+<hr>
+<h2>Symmetric Key Distribution Using Asymmetric Encryption</h2>
+<ul>
+<li>效率較差  </li>
+<li>用來加密並傳輸 secret key  </li>
+<li><img alt="p.18" src="/files/itc-week10-key-management-and-distribution/p18.jpg">  </li>
+<li>優點  <ul>
+<li>安全性較高，Key 被破解了，只會影響該次傳輸，不會影響該次前後的傳輸。  </li>
+</ul>
+</li>
+<li>缺點  <ul>
+<li>有 Man-in-the-middle-attack 的風險<br>
+<img alt="p.19" src="/files/itc-week10-key-management-and-distribution/p19.jpg">  </li>
+</ul>
+</li>
+</ul>
+<h3>為了抵抗 Man-in-middle-attack 修改之前的方法</h3>
+<p>前提：A 和 B 必須先交換過彼此的 Public Key<br>
+1. A 將 identifier 加上 N1 再用 B 的 public key 加密，丟給 B<br>
+2. B 收到後解開，得到 N1，再把 N1 加上 N2，用 A 的 Public key 加密，丟給 A。 (證明自己是B)<br>
+3. A 將 N2 用 B 的 Public Key 加密後，丟給 B。(證明自己是 A)<br>
+4. A 將 secret key 用 A 的 private key 加密，再用 B 的 Public key 加密後，丟給 B  </p>
+<p>如此可以確定雙方都是真的 A 和 B。  </p>
+<h3>A Hybrid Scheme</h3>
+<p>見投影片 p.21  </p>
+<hr>
+<h2>Distribution Of Public Keys</h2>
+<h3>Public Announcement of Public Key</h3>
+<ul>
+<li>每個人都可以假裝是別人，然後發別人的 Public Key，所以拿到的 Public Key 可能是假的。  </li>
+</ul>
+<blockquote>
+<p>太危險，不能用。  </p>
+</blockquote>
+<h3>Publicly Available Directory</h3>
+<ul>
+<li>Authority maintain {name, public key}，確保 Public Key 是正確的。  </li>
+<li>當面或用其他可以確認的安全方法跟 Authority 註冊  </li>
+<li>使用者要跟 Authority 拿 Key 必須透過強制的加密連線  </li>
+<li><img alt="p.25" src="/files/itc-week10-key-management-and-distribution/p25.jpg">  </li>
+</ul>
+<blockquote>
+<p>Key 仍然可能會被使用者洩漏  </p>
+</blockquote>
+<h3>Public-Key Authority</h3>
+<ul>
+<li>Authority 會有 Public Key 和 Private Key  </li>
+<li>T1, T2 =&gt; Timestamp  </li>
+<li>N1, N2 =&gt; nounce  </li>
+<li><img alt="p.27" src="/files/itc-week10-key-management-and-distribution/p27.jpg">  </li>
+</ul>
+<blockquote>
+<p>只要 Authority 被攻破，這個方法基本上就毀了。<br>
+Authority 也是 Bottleneck 的主因  </p>
+</blockquote>
+<h3>Public-Key Certificates</h3>
+<ul>
+<li>目前最常用的方法  </li>
+<li>1978年出現，Kohnfelder  </li>
+<li>直接用 certificate 讓雙方交換彼此的 key，不用透過 public-key authority  </li>
+<li>透過 Timestamp 可以得知此 certificate 是否已經過期  </li>
+<li><img alt="p.29" src="/files/itc-week10-key-management-and-distribution/p29.jpg">  </li>
+<li><img alt="p.30" src="/files/itc-week10-key-management-and-distribution/p30.jpg">  </li>
+</ul>
+<hr>
+<h2>X.509 Certificates</h2>
+<blockquote>
+<p>User 的 public-key + CA 的 private-key + Hash = Certificate  </p>
+</blockquote>
+<ul>
+<li><img alt="p.33" src="/files/itc-week10-key-management-and-distribution/p33.jpg">  </li>
+</ul>
+<h3>X.509 的格式</h3>
+<ul>
+<li><img alt="p.34" src="/files/itc-week10-key-management-and-distribution/p34.jpg">  </li>
+<li>有分 version 1, 2, 3  </li>
+<li>Subject Name: 這個 Certificate 是誰的  </li>
+<li>Period of validity: 有效期間  </li>
+<li>Issuer name: CA 的名字  </li>
+<li>Certificate serial number: CA 給的流水號，不會重複  </li>
+<li>Subjects's public key info: user 的 public-key 相關資訊  </li>
+<li>Signature: CA 簽章  </li>
+</ul>
+<p><code>Y&lt;&lt;X&gt;&gt; 代表由 Y 這個 CA 簽署 X 的 public-key 的 certificate</code><br>
+<code>Y&lt;&lt;X&gt;&gt; = the certificate of user X issued by certification authority Y</code>  </p>
+<h3>Obtaining a user's certificate</h3>
+<ul>
+<li>每個 User 都會相信幫其簽署 Certificate 的 CA，因此會接受所有由同一個 CA 簽署的 Certificate  </li>
+</ul>
+<h4>那由不同 CA 簽署的 Certificate 彼此之間要如何認證？</h4>
+<p>有 <code>X1&lt;&lt;A&gt;&gt;</code> 和  <code>X2&lt;&lt;B&gt;&gt;</code> 要如何讓 A 和 B 互相信任？<br>
+for A: <code>X1&lt;&lt;X2&gt;&gt;X2&lt;&lt;B&gt;&gt;</code><br>
+for B: <code>X2&lt;&lt;X1&gt;&gt;X1&lt;&lt;A&gt;&gt;</code>  </p>
+<ul>
+<li>CA 之間彼此簽署 Certificate  </li>
+</ul>
+<h3>Revocation Of Certificates</h3>
+<ul>
+<li>舊的 Certificate 時間到期，必須廢除。  </li>
+<li><img alt="p.40" src="/files/itc-week10-key-management-and-distribution/p40.jpg">  </li>
+</ul>
+<h2>Public-Key Infrastructure (PKI)</h2>
+<p>RFC 2828, RFC 4949, RFC 5280  </p>
+<ul>
+<li>PKI Users  </li>
+<li>CA  </li>
+<li><img alt="p.43" src="/files/itc-week10-key-management-and-distribution/p43.jpg">  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=ITC%20week10%20-%20Key%20Management%20and%20Distribution%0Ahttps%3A//blog.m157q.tw/posts/2013/11/27/itc-week10-key-management-and-distribution/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2013/11/27/itc-week10-key-management-and-distribution/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2013/11/27/itc-week10-key-management-and-distribution/&title=ITC%20week10%20-%20Key%20Management%20and%20Distribution&summary=NCTUCS%202013-Fall%20Introduction%20to%20Cryptography%20%E2%80%A6&source=https%3A//blog.m157q.tw/posts/2013/11/27/itc-week10-key-management-and-distribution/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=ITC%20week10%20-%20Key%20Management%20and%20Distribution&amp;body=https%3A//blog.m157q.tw/posts/2013/11/27/itc-week10-key-management-and-distribution/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/20/itc-week8-lfsr-based-stream-cipher/">ITC week8 - LFSR-based Stream Cipher</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/11/itc-hw2/">ITC Hw2</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/22/itc-week9-hash/">ITC week9 - Hash</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/06/itc-week7/">ITC - week7</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/12/17/computer-science-seminars-the-status-of-computer-security-in-taiwan/">資訊工程研討 - 台灣資安防護及技術發展現況</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2013/11/27/itc-week10-key-management-and-distribution/";
+        var disqus_title = "ITC week10 - Key Management and Distribution";
+        var disqus_url = "https://blog.m157q.tw/posts/2013/11/27/itc-week10-key-management-and-distribution/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2013-11-27T04:09:00+08:00"><i class="fa fa-calendar"></i> Wed 27 November 2013</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/course/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="37 articles in this category">Course</a>
+              </p>
+            <a href="/tag/security/" data-toggle="tooltip"
+      class="label label-default"
+      title="52 articles with this tag">security</a>
+  <br>
+            <a href="/tag/infosec/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">InfoSec</a>
+  <br>
+            <a href="/tag/cryptography/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">Cryptography</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/26/computer-science-seminars-science-technology-and-philosophy/" title="資訊工程研討 - 科學技術與哲學"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2013/12/10/sntt-week13-introduction-to-advertisement-eco-system/" title="SNTT week13 - Introduction to Advertisement Eco System"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.course.atom.xml"><i class="fa fa-rss"></i> Category: Course (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

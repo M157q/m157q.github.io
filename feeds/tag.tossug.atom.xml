@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - TOSSUG</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.tossug.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2016-06-29T01:23:54+08:00</updated><entry><title>TOSSUG 20160628</title><link href="https://blog.m157q.tw/posts/2016/06/29/tossug-20160628/" rel="alternate"></link><published>2016-06-29T01:23:54+08:00</published><updated>2016-06-29T01:23:54+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2016-06-29:/posts/2016/06/29/tossug-20160628/</id><summary type="html">&lt;p&gt;Just a note for 2016/06/28 Taipei Open Source Software User Group.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;如何打包一個 .deb&lt;/h1&gt;
+&lt;h2&gt;Debian Package&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ar - 壓縮  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Ar_(Unix)"&gt;ar (Unix) - Wikipedia, the free encyclopedia&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Debian binary package / Debian source package  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Build tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;fakeroot, debian/rules, binary  &lt;/li&gt;
+&lt;li&gt;dpkg-buildpackage  &lt;/li&gt;
+&lt;li&gt;debuild / pbuild  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://lintian.debian.org/"&gt;Lintian&lt;/a&gt; check  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;chroot  &lt;/li&gt;
+&lt;li&gt;pbuilder / sbuild  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://ubuntuforums.org/showthread.php?t=910717"&gt;http://ubuntuforums.org/showthread.php?t=910717&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.debian.org/HowToPackageForDebian"&gt;https://wiki.debian.org/HowToPackageForDebian&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://unix.stackexchange.com/questions/30303/how-to-create-a-deb-file-manually"&gt;https://unix.stackexchange.com/questions/30303/how-to-create-a-deb-file-manually&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/zzz00072/debian-39338832"&gt;淺談Debian套件打包&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wiki.ubuntu-tw.org/index.php?title=DebPackaging"&gt;DebPackaging - Ubuntu 正體中文 Wiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=flat&amp;amp;order=DESC&amp;amp;type=&amp;amp;topic_id=97286&amp;amp;forum=14"&gt;[影片教學][TOSSUG] Debian 套件打包工作坊 [論壇 - Ubuntu 文件資源] | Ubuntu 正體中文站&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wen00072.github.io/blog/2014/06/12/package-debian-packages-set-after-list-of-debian-packages/"&gt;[Debian套件打包] 設定好debian目錄後的打包 - My code works, I don’t know why.&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://szlin.wordpress.com/2016/06/11/debian-%E5%A5%97%E4%BB%B6%E6%89%93%E5%8C%85%E6%95%99%E5%AD%B8%E6%8C%87%E5%8D%97-%E7%B9%81%E9%AB%94%E4%B8%AD%E6%96%87%E7%BF%BB%E8%AD%AF/"&gt;Debian 套件打包教學指南 – 繁體中文翻譯 – SZ Lin  &amp;amp; Embedded Linux&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/szlin/debian-62284588"&gt;Debian 套件打包教學指南 - 繁體中文翻譯&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="TOSSUG"></category><category term="Debian"></category></entry></feed>

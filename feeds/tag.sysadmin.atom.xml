@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - sysadmin</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.sysadmin.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T14:41:00+08:00</updated><entry><title>Boot LiveUSB in VirtualBox 4.3.18</title><link href="https://blog.m157q.tw/posts/2014/12/04/boot-liveusb-in-virtualbox-4-3-18/" rel="alternate"></link><published>2014-12-04T04:21:00+08:00</published><updated>2015-10-28T14:36:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-12-04:/posts/2014/12/04/boot-liveusb-in-virtualbox-4-3-18/</id><summary type="html">&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;h3&gt;1.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo chown m157q …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;h3&gt;1.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo chown m157q /dev/disk1  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ VBoxManage internalcommands createrawvmdk -filename ~/VirtualBox&lt;span class="se"&gt;\ &lt;/span&gt;VMs/win7_test.vmdk -rawdisk /dev/disk1  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Create New Machine in VirtualBox and select the generated .vmdk file as the hard drive.  &lt;ul&gt;
+&lt;li&gt;Use an existing virtual hard drive file while addding the Hard drive.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;4.&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Boot the virtual machine.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://blog.xuite.net/yh96301/blog/64131045-VirtualBox+4.3.4%E4%BD%BF%E7%94%A8USB%E9%9A%A8%E8%BA%AB%E7%A2%9F%E9%96%8B%E6%A9%9F"&gt;VirtualBox 4.3.4使用USB隨身碟開機 @ 軟體使用教學 :: 隨意窩 Xuite日誌&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://gordon168.tw/?p=324"&gt;VirtualBox設定由USB隨身碟開機 « 高登工作室&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://forums.virtualbox.org/viewtopic.php?t=9223"&gt;virtualbox.org • View topic - Using a raw hard disk on Mac OS X&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://forums.virtualbox.org/viewtopic.php?f=8&amp;amp;p=99406"&gt;virtualbox.org • View topic - VERR_ACCESS_DENIED&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="VirtualBox"></category><category term="LiveUSB"></category><category term="sysadmin"></category></entry><entry><title>VirtualBox Guest additions upgrade: install_x11_startup_app: no script given</title><link href="https://blog.m157q.tw/posts/2014/11/10/virtualbox-guest-additions-upgrade-install_x11_startup_app-no-script-given/" rel="alternate"></link><published>2014-11-10T11:14:00+08:00</published><updated>2015-10-28T14:41:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-11-10:/posts/2014/11/10/virtualbox-guest-additions-upgrade-install_x11_startup_app-no-script-given/</id><summary type="html">&lt;p&gt;I encountered this problem while …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I encountered this problem while I was doing the upgrade for the guest additions of VirtualBox.  &lt;/p&gt;
+&lt;h3&gt;Guest OS: Ubuntu 14.04&lt;/h3&gt;
+&lt;p&gt;Remove the following symlinks before you install the new version of the Guest addtions  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;# rm /usr/lib/x86_64-linux-gnu/VBoxGuestAdditions&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;# rm /usr/lib/VBoxGuestAdditions&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;# rm /usr/share/VBoxGuestAdditions&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://gallinar.blogspot.tw/2012/07/virtualbox-guest-additions-upgrade.html"&gt;A bozo's blog: VirtualBox Guest additions upgrade: install_x11_startup_app: no script given&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="VirtualBox"></category><category term="Guest Additions"></category><category term="install_x11_startup_app"></category><category term="sysadmin"></category></entry><entry><title>Some Problems Encountered During MySQL Migration</title><link href="https://blog.m157q.tw/posts/2014/08/31/some-problems-encountered-during-mysql-migration/" rel="alternate"></link><published>2014-08-31T23:19:00+08:00</published><updated>2015-10-26T14:48:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-08-31:/posts/2014/08/31/some-problems-encountered-during-mysql-migration/</id><summary type="html">&lt;h3&gt;Some encountered errors&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ERROR 1215 …&lt;/code&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h3&gt;Some encountered errors&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;ERROR 1215 (HY000): Cannot add foreign key constraint&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;in mysql shell: &lt;code&gt;SET GLOBAL FOREIGN_KEY_CHECKS = 0;&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;in mysql =&amp;gt; not worked  &lt;/li&gt;
+&lt;li&gt;add into backup.sql =&amp;gt; not worked  &lt;/li&gt;
+&lt;li&gt;finally deleted the foreign key constraint line in &lt;code&gt;backup.sql&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ERROR 1367 (22007): Illegal double&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ replace 1.79769313486232e+308 \'1.79769313486232e+308\' -- backup.sql&lt;/code&gt; can solve the problem (bug).  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3&gt;Backup&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;On local server  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mysqldump -f --all-databases --password='xxx' &amp;gt; /tmp/bakcup.sql&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Use &lt;code&gt;scp&lt;/code&gt; or other command to transfter the &lt;code&gt;backup.sql&lt;/code&gt; to destination server  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Restore&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;On destination server  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mysql -u user -p &amp;lt; /tmp/backup.sql&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Use the Force&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;mysql --force -u user -p &amp;lt; /tmp/backup.sql&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Backup / Restore  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://snipt.net/danfreak/backup-and-restore-all-mysql-databases-with-2-simple-commands/"&gt;https://snipt.net/danfreak/backup-and-restore-all-mysql-databases-with-2-simple-commands/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ERROR 1215 (HY000): Cannot add foreign key constraint  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://forums.mysql.com/read.php?35,581311,581311#msg-581311"&gt;http://forums.mysql.com/read.php?35,581311,581311#msg-581311&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/16608042/error-1215-hy000-cannot-add-foreign-key-constraint"&gt;http://stackoverflow.com/questions/16608042/error-1215-hy000-cannot-add-foreign-key-constraint&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/18930084/mysql-error-1215-hy000-cannot-add-foreign-key-constraint"&gt;http://stackoverflow.com/questions/18930084/mysql-error-1215-hy000-cannot-add-foreign-key-constraint&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_foreign_key_checks"&gt;http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_foreign_key_checks&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ERROR 1367 (22007): Illegal double  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://dba.stackexchange.com/questions/7885/error-on-import-of-mysqldump-file-illegal-double-value-found-during-parsing"&gt;http://dba.stackexchange.com/questions/7885/error-on-import-of-mysqldump-file-illegal-double-value-found-during-parsing&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://bugs.mysql.com/bug.php?id=44995"&gt;http://bugs.mysql.com/bug.php?id=44995&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="MySQL"></category><category term="Database"></category><category term="sysadmin"></category></entry><entry><title>Manage /etc/group and /etc/gshadow</title><link href="https://blog.m157q.tw/posts/2014/08/12/manage-etcgroup-and-etcgshadow/" rel="alternate"></link><published>2014-08-12T20:45:00+08:00</published><updated>2014-08-12T20:45:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-08-12:/posts/2014/08/12/manage-etcgroup-and-etcgshadow/</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;# vigr&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;edit &lt;code&gt;/etc/group&lt;/code&gt; file …&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;# vigr&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;edit &lt;code&gt;/etc/group&lt;/code&gt; file  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;# grpconv&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;generate new &lt;code&gt;/etc/gshadow&lt;/code&gt; file based on &lt;code&gt;/etc/group&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;# grpck&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;cross-comparison the members in groups of &lt;code&gt;/etc/group&lt;/code&gt; and &lt;code&gt;/etc/gshadow&lt;/code&gt;, it will also detect wrong or useless syntax.  &lt;/li&gt;
+&lt;li&gt;(For me, it's a little bit like tell you the result of &lt;code&gt;vimdiff /etc/group /etc/gshadow&lt;/code&gt; directly)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="sysadmin"></category><category term="vigr"></category><category term="grpck"></category><category term="grpconv"></category><category term="gshadow"></category></entry><entry><title>find 指令排除指定路徑</title><link href="https://blog.m157q.tw/posts/2014/05/21/exclude-path-in-find-command/" rel="alternate"></link><published>2014-05-21T15:10:00+08:00</published><updated>2015-10-28T14:29:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-05-21:/posts/2014/05/21/exclude-path-in-find-command/</id><summary type="html">&lt;p&gt;為了寫作業用到的&lt;br&gt;
+參考 &lt;a href="http://stackoverflow.com/questions/4210042/exclude-directory-from-find-command"&gt;linux - Exclude directory …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;為了寫作業用到的&lt;br&gt;
+參考 &lt;a href="http://stackoverflow.com/questions/4210042/exclude-directory-from-find-command"&gt;linux - Exclude directory from find . command - Stack Overflow&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;基本上就是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find &lt;span class="nv"&gt;$target_path&lt;/span&gt; -path &lt;span class="nv"&gt;$exclude_path&lt;/span&gt; -prune -o &lt;span class="o"&gt;[&lt;/span&gt;condition&lt;span class="o"&gt;]&lt;/span&gt; -print  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;我自己的用法是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find / -path /proc -prune -o -perm &lt;span class="nv"&gt;o&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;w -type f -print  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;用來 print 出整個 &lt;code&gt;/&lt;/code&gt; 底下除了 &lt;code&gt;/proc&lt;/code&gt; 以外所有的 global writable 的 file  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;解答中甚至給出了要排除多個資料夾路徑的寫法  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find &lt;span class="nv"&gt;$target_path&lt;/span&gt; -type d &lt;span class="se"&gt;\(&lt;/span&gt; -path &lt;span class="nv"&gt;$exclude_path1&lt;/span&gt; -o -path &lt;span class="nv"&gt;$exclude_path2&lt;/span&gt; -o -path &lt;span class="nv"&gt;$exclude_path3&lt;/span&gt; &lt;span class="se"&gt;\)&lt;/span&gt; -prune -o -print  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Appendix&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-prune&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;This primary always evaluates to true.  It causes find to not descend into the current file.  Note, the -prune primary has no effect if the -d option was specified.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="find"></category><category term="sysadmin"></category></entry><entry><title>GHC 7.8.2 造成 Arch Linux 無法升級的解法</title><link href="https://blog.m157q.tw/posts/2014/05/21/the-solution-for-system-upgrade-failure-caused-by-ghc-7-8-2/" rel="alternate"></link><published>2014-05-21T14:50:00+08:00</published><updated>2015-10-27T13:10:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-05-21:/posts/2014/05/21/the-solution-for-system-upgrade-failure-caused-by-ghc-7-8-2/</id><summary type="html">&lt;p&gt;官方公告 &lt;a href="https://www.archlinux.org/news/managing-haskell-packages-with-ghc-782/"&gt;Managing Haskell packages with …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;官方公告 &lt;a href="https://www.archlinux.org/news/managing-haskell-packages-with-ghc-782/"&gt;Managing Haskell packages with GHC 7.8.2&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;裡面寫了  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Moving every package that is not ghc or cabal-install to [community]. This will allow better support of the core common haskell libraries since I do not actually use these packages due to cabal-install.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其實我根本看不懂該怎麼做= ="&lt;br&gt;
+反正我一定不是唯一一個看不懂的(?)&lt;br&gt;
+所以就查到了這篇 &lt;a href="https://bbs.archlinux.org/viewtopic.php?pid=1412908"&gt;[SOLVED] Problems upgrading some haskell packages&lt;/a&gt;&lt;br&gt;
+遇到的情形似乎跟我一樣&lt;br&gt;
+下了 &lt;code&gt;sudo pacman -Syu&lt;/code&gt; 後噴了  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:: haskell-transformers: requires ghc=7.6.3-1  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然後  &lt;code&gt;pacman -Qs ghc&lt;/code&gt; 後也一樣已經安裝了&lt;br&gt;
+然後底下有人提供了解法  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pacman -Rcs haskell-transformers  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;把跟 &lt;code&gt;haskell-transformers&lt;/code&gt; 有關的套件都移除掉以後&lt;br&gt;
+再重新下一次 &lt;code&gt;sudo pacman -Syu&lt;/code&gt; 就可以了  &lt;/p&gt;
+&lt;p&gt;底下的回覆有人的解釋是  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;haskell-transformers was recently removed from extra.&lt;br&gt;
+It depends on a specific version of ghc.&lt;br&gt;
+There is a newer version of ghc in the repos.&lt;br&gt;
+Since haskell-transformers was removed there's no upgrade path to resolve the issue.&lt;br&gt;
+You'll have to do it manually.&lt;br&gt;
+Edit: Removed from the repos entirely.&lt;br&gt;
+Not moved from extra to community like the other haskell packages.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;恩 應該就是這樣吧  &lt;/p&gt;</content><category term="Linux"></category><category term="Haskell"></category><category term="Arch Linux"></category><category term="GHC"></category><category term="sysadmin"></category></entry><entry><title>Enable mCrypt in PHP5 on Ubuntu 13.10 for Apache</title><link href="https://blog.m157q.tw/posts/2014/03/27/enable-mcrypt-in-php5-on-ubuntu-1310-for-apache/" rel="alternate"></link><published>2014-03-27T18:48:00+08:00</published><updated>2015-10-26T14:59:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-03-27:/posts/2014/03/27/enable-mcrypt-in-php5-on-ubuntu-1310-for-apache/</id><summary type="html">&lt;p&gt;幫室友解決網安作業的問題&lt;/p&gt;</summary><content type="html">&lt;p&gt;剛剛室友問網安作業  &lt;/p&gt;
+&lt;p&gt;弄了老半天 網頁都是一片空白  &lt;/p&gt;
+&lt;p&gt;後來乾脆直接寫在 .php 裏面  &lt;/p&gt;
+&lt;p&gt;然後用 command line php 執行  &lt;/p&gt;
+&lt;p&gt;結果問題出在  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;PHP Fatal Error: Undefined function mcrypt_encrypt()&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;看起來就是 mcrypt module 沒被 include 進來  &lt;/p&gt;
+&lt;p&gt;環境是 Ubuntu 13.10  &lt;/p&gt;
+&lt;p&gt;開 &lt;code&gt;/etc/php5/apache2/php.ini&lt;/code&gt; 也沒看到 &lt;code&gt;mcrypt.so&lt;/code&gt; 可以拿掉註解  &lt;/p&gt;
+&lt;p&gt;最後請教 Google 大神  &lt;/p&gt;
+&lt;p&gt;發現這篇 &lt;a href="http://stackoverflow.com/questions/19446679/mcrypt-not-present-after-ubuntu-upgrade-to-13-10"&gt;mCrypt not present after Ubuntu upgrade to 13.10&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;看起來是 Ubuntu 13.10 特有的問題 應該是位置改了之類的吧  &lt;/p&gt;
+&lt;p&gt;底下有回應提到解法  &lt;/p&gt;
+&lt;p&gt;簡記一下：  &lt;/p&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;$ sudo apt-get install php5-mcrypt&lt;/code&gt; 確認有安裝 &lt;code&gt;php5-mcrypt&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo php5enmod mcrypt&lt;/code&gt; 這個指令會自動幫你在 &lt;code&gt;/etc/php5/apache2/conf.d&lt;/code&gt; 底下建一個 &lt;code&gt;mcrypt.ini&lt;/code&gt; 指向 &lt;code&gt;/etc/php5/mods-available/mcrypt.ini&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo service apache2 restart&lt;/code&gt; 重啟 Apache server  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;應該就可以在網頁上順利使用 mcrypt 系列的 function 了  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;--珍惜生命，遠離 Ubuntu--&lt;/h4&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/19446679/mcrypt-not-present-after-ubuntu-upgrade-to-13-10"&gt;mCrypt not present after Ubuntu upgrade to 13.10&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="PHP"></category><category term="Ubuntu"></category><category term="Apache"></category><category term="mCrypt"></category><category term="sysadmin"></category></entry><entry><title>vsftpd virtual user broken after upgrade pam from 1.1.8-2 to 1.1.8-3 in Arch Linux</title><link href="https://blog.m157q.tw/posts/2014/02/21/vsftpd-virtual-user-broken-after-upgrade-pam-from-1-1-8-2-to-1-1-8-3-in-arch-linux/" rel="alternate"></link><published>2014-02-21T01:53:00+08:00</published><updated>2015-10-27T13:14:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-02-21:/posts/2014/02/21/vsftpd-virtual-user-broken-after-upgrade-pam-from-1-1-8-2-to-1-1-8-3-in-arch-linux/</id><summary type="html">&lt;p&gt;pam 升到 1.1.8-3 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;pam 升到 1.1.8-3 後，vsftpd 的 virtual user 功能就爛掉了  &lt;/p&gt;
+&lt;p&gt;檢查了 &lt;code&gt;auth.log&lt;/code&gt; 以後，發現噴了  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Feb 20 00:35:49 localhost vsftpd:  &lt;/span&gt;
+&lt;span class="err"&gt;PAM unable to dlopen(/usr/lib/security/pam_userdb.so):  &lt;/span&gt;
+&lt;span class="err"&gt;/usr/lib/security/pam_userdb.so: cannot open shared object file:  &lt;/span&gt;
+&lt;span class="err"&gt;No such file or directory  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;進 &lt;code&gt;/usr/lib/security&lt;/code&gt; 裡查看，發現 &lt;code&gt;pam_userdb.so&lt;/code&gt; 消失了  &lt;/p&gt;
+&lt;p&gt;推測問題出在這，到 Google 丟了 &lt;code&gt;/usr/lib/security/pam_userdb.so&lt;/code&gt; 進行搜尋  &lt;/p&gt;
+&lt;p&gt;查到這兩篇文章  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bbs.archlinux.org/viewtopic.php?pid=1382541"&gt;pam_userdb.so gone after upgrading pam-1.1.8-2 -&amp;gt; pam-1.1.8-3&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bugs.archlinux.org/task/38848"&gt;FS#38848 - [pam] /usr/lib/security/pam_userdb.so missing&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;原來是被移除掉了  &lt;/p&gt;
+&lt;p&gt;從底下的回應看起來好像只看到 vsftpd 的 virtual user 功能受到影響  &lt;/p&gt;
+&lt;p&gt;兩篇的回應都有人提到 &lt;code&gt;pam_pwdfile&lt;/code&gt; 這個套件，&lt;br&gt;
+不過是在 AUR 上而非官方套件，而且用的人好像有點少，所以不考慮。  &lt;/p&gt;
+&lt;p&gt;目前的解法還是用  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pacman -U /var/cache/pacman/pkg/pam-1.1.8-2-x86_64.pkg.tar.xz  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;將 pam 先降級回 &lt;code&gt;pam 1.1.8-2&lt;/code&gt;  &lt;/p&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="vsftpd"></category><category term="pam"></category><category term="sysadmin"></category></entry><entry><title>Network Administration Hw1: Setup DHCP, NAT, Firewall</title><link href="https://blog.m157q.tw/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/" rel="alternate"></link><published>2013-04-09T15:29:00+08:00</published><updated>2015-10-27T21:31:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-04-09:/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/</id><summary type="html">&lt;p&gt;NCTUCS 2013 Spring Network Administration Homework1&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Setup DHCP, NAT, Firewall&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I done this homework in Arch Linux  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2&gt;SPEC&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Server - dhcp server, NAT, Firewall, ftp-proxy, transparent http proxy (TP)  &lt;/span&gt;
+&lt;span class="err"&gt;(home-q) dhcp server =&amp;gt; dhcpd;  &lt;/span&gt;
+&lt;span class="err"&gt;         NAT, Firewall, ftp-proxy =&amp;gt; iptables;  &lt;/span&gt;
+&lt;span class="err"&gt;         transparent http proxy =&amp;gt; squid;  &lt;/span&gt;
+&lt;span class="err"&gt;         外網網卡 enp0s18 140.113.27.37  &lt;/span&gt;
+&lt;span class="err"&gt;         內網網卡 enp0s19 172.16.1.254  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;HostA -  dhcp client with private ip (172.16.1.101~172.16.1.200)  &lt;/span&gt;
+&lt;span class="err"&gt;(www-q)  http client browse through Server&amp;#39;s TP  &lt;/span&gt;
+&lt;span class="err"&gt;         dhcp client =&amp;gt; dhcpcd;  &lt;/span&gt;
+&lt;span class="err"&gt;         內網網卡 enp0s18  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;HostB -  dhcp client with static private ip (172.16.1.30)  &lt;/span&gt;
+&lt;span class="err"&gt;(mail-q) provide ssh service (bind on Server&amp;#39;s 222 port)  &lt;/span&gt;
+&lt;span class="err"&gt;         provide ftp service (bind on Server&amp;#39;s 21 port)  &lt;/span&gt;
+&lt;span class="err"&gt;         ftp service =&amp;gt; vsftpd;  &lt;/span&gt;
+&lt;span class="err"&gt;         內網網卡 enp0s18; MAC 5a:49:97:32:c3:13 (拿來給 dhcpd 發 static private ip)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;DHCP server (on home-q)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Dhcpd"&gt;https://wiki.archlinux.org/index.php/Dhcpd&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://linux.vbird.org/linux_server/0340dhcp.php"&gt;http://linux.vbird.org/linux_server/0340dhcp.php&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;基本上就照著 Arch wiki 作&lt;br&gt;
+&lt;code&gt;# ip addr add 172.16.1.254/24 dev enp0s19&lt;/code&gt;&lt;br&gt;
+然後在 &lt;code&gt;/etc/dhcpd.conf&lt;/code&gt; 中寫下規則  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;option domain-name &amp;quot;nctucs.net&amp;quot;;                                                  &lt;/span&gt;
+&lt;span class="err"&gt;option domain-name-servers 8.8.8.8, 140.113.1.1;                                  &lt;/span&gt;
+&lt;span class="err"&gt;option subnet-mask 255.255.255.0;                                                  &lt;/span&gt;
+&lt;span class="err"&gt;option routers 172.16.1.254;                                                      &lt;/span&gt;
+&lt;span class="err"&gt;option broadcast-address 172.16.1.255;                                            &lt;/span&gt;
+&lt;span class="err"&gt;                                                                                   &lt;/span&gt;
+&lt;span class="err"&gt;default-lease-time 3600;                                                          &lt;/span&gt;
+&lt;span class="err"&gt;max-lease-time 7200;                                                              &lt;/span&gt;
+&lt;span class="err"&gt;ddns-update-style none;                                                            &lt;/span&gt;
+&lt;span class="err"&gt;log-facility local7;                                                              &lt;/span&gt;
+&lt;span class="err"&gt;                                                                                   &lt;/span&gt;
+&lt;span class="err"&gt;#pool                                                                              &lt;/span&gt;
+&lt;span class="err"&gt;subnet 172.16.1.0 netmask 255.255.255.0 {                                          &lt;/span&gt;
+&lt;span class="err"&gt;    range 172.16.1.101 172.16.1.200;                                              &lt;/span&gt;
+&lt;span class="err"&gt;}                                                                                  &lt;/span&gt;
+&lt;span class="err"&gt;                                                                                   &lt;/span&gt;
+&lt;span class="err"&gt;#static private ip                                                                &lt;/span&gt;
+&lt;span class="err"&gt;host mail-q {                                                                      &lt;/span&gt;
+&lt;span class="err"&gt;    hardware ethernet 5a:49:97:32:c3:13;                                          &lt;/span&gt;
+&lt;span class="err"&gt;    fixed-address 172.16.1.30;                                                    &lt;/span&gt;
+&lt;span class="err"&gt;}  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;為了讓 dhcpd 只 listen 特定的 interface&lt;br&gt;
+在 &lt;code&gt;/etc/conf.d/dhcp&lt;/code&gt; 中 把 &lt;code&gt;DHCP4_ARGS="-q"&lt;/code&gt; 改成 &lt;code&gt;DHCP4_ARGS="-q enp0s19"&lt;/code&gt;&lt;br&gt;
+然後 &lt;code&gt;# systemctl start dhcpd4&lt;/code&gt; 應該就能成功當起 dhcp server 了  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;DHCP client (on www-q and mail-q)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Network_Configuration#Dynamic_IP_address"&gt;https://wiki.archlinux.org/index.php/Network_Configuration#Dynamic_IP_address&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一樣照著 arch wiki 作 預設應該就有裝 dhcpcd 了&lt;br&gt;
+&lt;code&gt;# dhcpcd enp0s18&lt;/code&gt;&lt;br&gt;
+這裡的 enp0s18 是內網網卡&lt;br&gt;
+然後 &lt;code&gt;# systemctl start dhcpcd@enp0s18&lt;/code&gt;&lt;br&gt;
+用 &lt;code&gt;$ lspci -k&lt;/code&gt; 察看跟網卡相關的 modules&lt;br&gt;
+結果如下  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;13.0&lt;/span&gt; &lt;span class="n"&gt;Ethernet&lt;/span&gt; &lt;span class="n"&gt;controller&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Realtek&lt;/span&gt; &lt;span class="n"&gt;Semiconductor&lt;/span&gt; &lt;span class="n"&gt;Co&lt;/span&gt;&lt;span class="o"&gt;.,&lt;/span&gt; &lt;span class="n"&gt;Ltd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;RTL&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8139&lt;/span&gt;&lt;span class="sr"&gt;/8139C/&lt;/span&gt;&lt;span class="mi"&gt;8139&lt;/span&gt;&lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rev&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;  
+&lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="n"&gt;Subsystem&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Red&lt;/span&gt; &lt;span class="n"&gt;Hat&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Inc&lt;/span&gt; &lt;span class="n"&gt;Device&lt;/span&gt; &lt;span class="mi"&gt;1100&lt;/span&gt;  
+&lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="n"&gt;Kernel&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;use&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;8139&lt;/span&gt;&lt;span class="n"&gt;cp&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;所以可以知道在 &lt;code&gt;/etc/modules-load/realtek.conf&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;Note&lt;/h3&gt;
+&lt;p&gt;這邊卡關了一下是因為 dv 也在 140.113.27 網段底下架了一台 dhcp Server&lt;br&gt;
+結果我的 client 一直拿到他的 server 發出來的 ip 而不是我自己架的&lt;br&gt;
+看了鳥哥的網頁&lt;br&gt;
+&lt;a href="http://linux.vbird.org/linux_server/0340dhcp.php#client_linux"&gt;http://linux.vbird.org/linux_server/0340dhcp.php#client_linux&lt;/a&gt;&lt;br&gt;
+裏面有提到在 client 端上的 /var/lib/dhclient/ 裏面有跟租約相關的檔案&lt;br&gt;
+可以用 vim 開啟直接改寫&lt;br&gt;
+&lt;code&gt;option dhcp-server-identifier 172.16.1.254&lt;/code&gt; 指定 dhcp Server&lt;br&gt;
+可是在 archlinux 底下無法直接這樣改寫，用vim開起來會是亂碼&lt;br&gt;
+後來是在 client 端的 &lt;code&gt;/etc/dhcpcd.conf&lt;/code&gt; 中加上 &lt;code&gt;static routers=172.16.1.254&lt;/code&gt; 解決  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;NAT &amp;amp; Firewall&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In Linux we use iptables, while in FreeBSD we use PF  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://linux.vbird.org/linux_server/0250simple_firewall.php"&gt;http://linux.vbird.org/linux_server/0250simple_firewall.php&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Internet_Share"&gt;https://wiki.archlinux.org/index.php/Internet_Share&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Simple_Stateful_Firewall"&gt;https://wiki.archlinux.org/index.php/Simple_Stateful_Firewall&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Iptables"&gt;https://wiki.archlinux.org/index.php/Iptables&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Router"&gt;https://wiki.archlinux.org/index.php/Router&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.revsys.com/writings/quicktips/nat.html"&gt;http://www.revsys.com/writings/quicktips/nat.html&lt;/a&gt;&lt;br&gt;
+&lt;br&gt;
+參考了以上的連結之後，目前 iptables 的設定如下  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;# Generated by iptables-save v1.4.18 on Tue Apr  9 04:40:40 2013                &lt;/span&gt;
+&lt;span class="err"&gt;*mangle                                                                        &lt;/span&gt;
+&lt;span class="err"&gt;:PREROUTING ACCEPT [369:34165]                                                  &lt;/span&gt;
+&lt;span class="err"&gt;:INPUT ACCEPT [278:20862]                                                      &lt;/span&gt;
+&lt;span class="err"&gt;:FORWARD ACCEPT [91:13303]                                                      &lt;/span&gt;
+&lt;span class="err"&gt;:OUTPUT ACCEPT [153:20248]                                                      &lt;/span&gt;
+&lt;span class="err"&gt;:POSTROUTING ACCEPT [244:33551]                                                &lt;/span&gt;
+&lt;span class="err"&gt;COMMIT                                                                          &lt;/span&gt;
+&lt;span class="err"&gt;# Completed on Tue Apr  9 04:40:40 2013                                        &lt;/span&gt;
+&lt;span class="err"&gt;# Generated by iptables-save v1.4.18 on Tue Apr  9 04:40:40 2013                &lt;/span&gt;
+&lt;span class="err"&gt;*filter                                                                        &lt;/span&gt;
+&lt;span class="err"&gt;:INPUT ACCEPT [3:418]                                                          &lt;/span&gt;
+&lt;span class="err"&gt;:FORWARD ACCEPT [91:13303]                                                      &lt;/span&gt;
+&lt;span class="err"&gt;:OUTPUT ACCEPT [153:20248]                                                      &lt;/span&gt;
+&lt;span class="err"&gt;:BADHOST - [0:0]                                                                &lt;/span&gt;
+&lt;span class="err"&gt;-A INPUT -j BADHOST                                                            &lt;/span&gt;
+&lt;span class="err"&gt;-A BADHOST -s 140.113.101.10 -j DROP                                            &lt;/span&gt;
+&lt;span class="err"&gt;-A INPUT -i enp0s18 -p icmp -m icmp --icmp-type 8 -j DROP                      &lt;/span&gt;
+&lt;span class="err"&gt;-A INPUT -m state --state INVALID -j DROP                                      &lt;/span&gt;
+&lt;span class="err"&gt;-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT                        &lt;/span&gt;
+&lt;span class="err"&gt;-A INPUT -i lo -j ACCEPT                                                        &lt;/span&gt;
+&lt;span class="err"&gt;-A INPUT -i enp0s18 -s 140.113.230.88 -j ACCEPT                                &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -m state --state INVALID -j DROP                                    &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -s 140.113.17.0/24 -d 172.16.1.30 -p tcp --dport 21 -j REJECT --reject-with tcp-reset  &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT  &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -s 140.113.230.88 -d 172.16.1.30 -p tcp --dport 21:22 -j ACCEPT      &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -s 140.113.27.47 -d 172.16.1.30 -p tcp --dport 22 -j ACCEPT        &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -s 140.113.235.0/24 -d 172.16.1.30 -p tcp --dport 21 -j ACCEPT      &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -s 140.113.17.0/24 -d 172.16.1.30 -p tcp --dport 22 -j ACCEPT        &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -d 172.16.1.30 -p tcp --dport 21 -j DROP                            &lt;/span&gt;
+&lt;span class="err"&gt;-A FORWARD -d 172.16.1.30 -p tcp --dport 22 -j DROP                            &lt;/span&gt;
+&lt;span class="err"&gt;COMMIT                                                                          &lt;/span&gt;
+&lt;span class="err"&gt;# Completed on Tue Apr  9 04:40:40 2013                                        &lt;/span&gt;
+&lt;span class="err"&gt;# Generated by iptables-save v1.4.18 on Tue Apr  9 04:40:40 2013                &lt;/span&gt;
+&lt;span class="err"&gt;*nat                                                                            &lt;/span&gt;
+&lt;span class="err"&gt;:PREROUTING ACCEPT [2:426]                                                      &lt;/span&gt;
+&lt;span class="err"&gt;:INPUT ACCEPT [1:354]                                                          &lt;/span&gt;
+&lt;span class="err"&gt;:OUTPUT ACCEPT [0:0]                                                            &lt;/span&gt;
+&lt;span class="err"&gt;:POSTROUTING ACCEPT [1:60]                                                      &lt;/span&gt;
+&lt;span class="err"&gt;-A PREROUTING -i enp0s18 -p tcp --dport 21 -j DNAT --to-destination 172.16.1.30:21  &lt;/span&gt;
+&lt;span class="err"&gt;-A PREROUTING -i enp0s18 -p tcp --dport 222 -j DNAT --to-destination 172.16.1.30:22  &lt;/span&gt;
+&lt;span class="err"&gt;-A PREROUTING -s 172.16.1.0/24 -i enp0s19 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3128  &lt;/span&gt;
+&lt;span class="err"&gt;-A POSTROUTING -s 172.16.1.0/24 -o enp0s18 -j MASQUERADE                        &lt;/span&gt;
+&lt;span class="err"&gt;COMMIT                                                                          &lt;/span&gt;
+&lt;span class="err"&gt;# Completed on Tue Apr  9 04:40:40 2013  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;140.113.230.88 是寢室的 ip&lt;br&gt;
+140.113.27.47 是社窩無網的ip&lt;br&gt;
+為了方便操作用  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2&gt;Proxy&lt;/h2&gt;
+&lt;h3&gt;ftp-proxy&lt;/h3&gt;
+&lt;p&gt;好像在 iptables 就設定完了 根本不用像 FreeBSD 還要用 ftp-proxy&lt;br&gt;
+猜測是因為 &lt;code&gt;-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT&lt;/code&gt; 的緣故  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Squid"&gt;https://wiki.archlinux.org/index.php/Squid&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://linux.vbird.org/linux_server/0420squid.php"&gt;http://linux.vbird.org/linux_server/0420squid.php&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;transparent http proxy&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;/etc/squid/squid.conf&lt;/code&gt; 中 &lt;code&gt;http_port&lt;/code&gt; 後面加上 &lt;code&gt;intercept&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;http_port 3128 intercept&lt;/code&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;鳥哥裏面是寫 &lt;code&gt;http_port 3128 transparent&lt;/code&gt;&lt;br&gt;
+在 &lt;a href="http://www.squid-cache.org/Doc/config/http_port/"&gt;http://www.squid-cache.org/Doc/config/http_port/&lt;/a&gt; 有寫到在 3.1 的版本以後&lt;br&gt;
+intercept - Rename of old 'transparent' option to indicate proper functionality.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;把 &lt;code&gt;cache_dir ufs /var/cache/squid 256 16 256&lt;/code&gt; 的註解取消&lt;br&gt;
+再加上 &lt;code&gt;cache_mem 8 MB&lt;/code&gt; (預設是 8 MB 可以自己改)  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;# squid -z&lt;/code&gt; (在 &lt;code&gt;/var/cache/squid/&lt;/code&gt; 建立資料夾)&lt;br&gt;
+&lt;code&gt;# squid -k check&lt;/code&gt; (檢查 &lt;code&gt;/etc/squid/squid.conf&lt;/code&gt; 有沒有問題)&lt;br&gt;
+&lt;code&gt;# systemctl start squid&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;之後在 iptables 的 nat table 中加上新的 rule,&lt;br&gt;
+把內網往外傳的 http request 轉到 squid 上&lt;br&gt;
+&lt;code&gt;-A PREROUTING -i enp0s19 -s 172.16.1.0/24 -p tcp --dport 80 -j REDIRECT --to-ports 3128&lt;/code&gt;&lt;br&gt;
+然後 reload iptables  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;vsftpd&lt;/h2&gt;
+&lt;p&gt;遇到兩個錯誤  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;500 OOPS: priv_sock_get_cmd&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;解決方法  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bbs.archlinux.org/viewtopic.php?id=147074"&gt;https://bbs.archlinux.org/viewtopic.php?id=147074&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;/etc/vsftpd.conf&lt;/code&gt; 加上 &lt;code&gt;seccomp_sandbox=0&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;500 OOPS: vsftpd: refusing to run with writable root inside chroot()&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;解決方法  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?post_id=236642"&gt;http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?post_id=236642&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;chmod a-w $dir&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;該 root dir 不可有寫入的權限  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;感想&lt;/h2&gt;
+&lt;p&gt;用 Arch Linux 蠻方便的&lt;br&gt;
+基本上就照著鳥哥和 Arch Wiki 的教學邊做邊學應該就差不多了&lt;br&gt;
+不過跟上課教的好像差蠻多的XD&lt;br&gt;
+教的是 FreeBSD, PF&lt;br&gt;
+結果我用 Linux, iptables&lt;br&gt;
+這樣期中考真的沒問題嗎w?  &lt;/p&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="iptables"></category><category term="Firewall"></category><category term="DHCP"></category><category term="NAT"></category><category term="sysadmin"></category></entry><entry><title>Setup Static Ip Wired Network in Arch Linux</title><link href="https://blog.m157q.tw/posts/2013/02/25/setup-static-ip-wired-network-in-arch-linux/" rel="alternate"></link><published>2013-02-25T02:05:00+08:00</published><updated>2015-10-27T22:11:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-02-25:/posts/2013/02/25/setup-static-ip-wired-network-in-arch-linux/</id><summary type="html">&lt;p&gt;因為之前安裝 Arch 的時候是用 wireless network …&lt;/p&gt;</summary><content type="html">&lt;p&gt;因為之前安裝 Arch 的時候是用 wireless network 只要用就好  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo wifi-menu  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或者是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo wicd-gtk  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;Arch 預設沒有裝 wicd,&lt;br&gt;
+要使用的話請先用 &lt;code&gt;$ sudo pacman -S wicd-gtk&lt;/code&gt; 安裝 wicd 後就可以解決&lt;br&gt;
+在執行 wicd-gtk 之前 要先  &lt;code&gt;$ sudo wicd&lt;/code&gt;  把 wicd run 起來&lt;br&gt;
+不然會有錯誤訊息顯示  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;以上是無線網路的部份 設定很簡單 有線網路的設定就比較麻煩一點  &lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;寒假在家裡上網用 ADSL&lt;br&gt;
+照著上一篇的 &lt;a href="/posts/2013/02/20/setup-pppoe-wired-network-in-arch-linux/"&gt;[Arch Linux] Set up wired network with pppoe-setup&lt;/a&gt; 就可以完成  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;開學後回到宿舍 得設定 static ip&lt;br&gt;
+一開始想說用 &lt;code&gt;wicd-gtk&lt;/code&gt; 新增一個 wired connection&lt;br&gt;
+然後把該設定的 property 設定完應該就能用了&lt;br&gt;
+結果就是連不上 然後發現  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://wiki.archlinux.org/index.php/Beginners%27_guide#Wired"&gt;Beginners' guide - ArchWiki&lt;/a&gt; 其實有講&lt;br&gt;
+不過我這裡的方法不太一樣就是 但基本上大同小異  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;以下是我的作法：  &lt;/p&gt;
+&lt;p&gt;在 &lt;code&gt;/etc/network.d/&lt;/code&gt; 底下建立設定檔  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vim /etc/network.d/ethernet-dorm  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其內容如下 #為註解部分  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CONNECTION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ethernet&amp;#39;&lt;/span&gt;  
+&lt;span class="n"&gt;DESCRIPTION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;A basic static ethernet connection using iproute&amp;#39;&lt;/span&gt;  
+&lt;span class="n"&gt;INTERFACE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;enp2s0&amp;#39;&lt;/span&gt;  
+&lt;span class="n"&gt;IP&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;  
+&lt;span class="n"&gt;ADDR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;140.113.69.103&amp;#39;&lt;/span&gt;  
+&lt;span class="n"&gt;GATEWAY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;140.113.69.254&amp;#39;&lt;/span&gt;  
+&lt;span class="n"&gt;DNS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;8.8.8.8&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;8.8.4.4&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;140.113.1.1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;140.113.6.2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+
+&lt;span class="o"&gt;##&lt;/span&gt; &lt;span class="k"&gt;For&lt;/span&gt; &lt;span class="n"&gt;IPv6&lt;/span&gt; &lt;span class="n"&gt;autoconfiguration&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;IP6&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;stateless&lt;/span&gt;  
+
+&lt;span class="o"&gt;##&lt;/span&gt; &lt;span class="k"&gt;For&lt;/span&gt; &lt;span class="n"&gt;IPv6&lt;/span&gt; &lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="n"&gt;address&lt;/span&gt; &lt;span class="n"&gt;configuration&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;IP6&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;static&amp;#39;&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;ADDR6&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1234:5678:9abc:def::1/64&amp;#39;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1234:3456::123/96&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;ROUTES6&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;abcd::1234&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;GATEWAY6&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;1234:0:123::abcd&amp;#39;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用 &lt;code&gt;netcfg&lt;/code&gt; 這個指令  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo netcfg -u ethernet-dorm  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這樣應該就可以啟動該網路連線了，如果設定都 OK 的話應該就會正常運作。  &lt;/p&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="sysadmin"></category><category term="Network"></category></entry></feed>

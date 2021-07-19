@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  GCPUG.TW 20160706
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/07/06/gcpug-tw-20160706/" rel="bookmark" title="Permalink to GCPUG.TW 20160706">GCPUG.TW 20160706</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for GCPUG.TW Meetup 20160706</p>
+  </blockquote>
+  <div>
+    <h2>Firebase</h2>
+<ul>
+<li>Restful  </li>
+<li>Real-time database  </li>
+<li>Easily authentication with OAuth<br>
+<code>ref.authWithOAuthPopup("twitter", function (error, authData) {  
+    ...  
+}</code>  </li>
+<li>Offline support  <ul>
+<li>Offline 的時候仍可繼續更改，有網路的時候會自動做 background sync  </li>
+<li>有個要注意的問題是如果有多個人以上修改的話，會以最後修改的那個為主。  </li>
+</ul>
+</li>
+<li>Demo  <ul>
+<li><a href="https://mmoasteroids.firebaseapp.com/">https://mmoasteroids.firebaseapp.com/</a>  </li>
+<li><a href="https://ray-tetris.firebaseapp.com/">https://ray-tetris.firebaseapp.com/</a>  </li>
+<li><a href="https://firechess-demo.firebaseapp.com/#TzA4m">https://firechess-demo.firebaseapp.com/#TzA4m</a>  </li>
+<li><a href="https://ray-livecode.firebaseapp.com/">https://ray-livecode.firebaseapp.com/</a>  </li>
+</ul>
+</li>
+<li>Related Links  <ul>
+<li><a href="https://firebase.googleblog.com/2014/06/geofire-20.html">https://firebase.googleblog.com/2014/06/geofire-20.html</a>  <ul>
+<li><a href="https://github.com/firebase/geofire-js">https://github.com/firebase/geofire-js</a>  </li>
+<li><a href="https://www.sflivebus.com/">https://www.sflivebus.com/</a>  </li>
+</ul>
+</li>
+<li><a href="https://firepad.io">https://firepad.io</a>  <ul>
+<li><a href="https://github.com/firebase/firepad/">https://github.com/firebase/firepad/</a>  </li>
+</ul>
+</li>
+<li><a href="https://firebase.google.com/pricing/">https://firebase.google.com/pricing/</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Kubernetes</h2>
+<ul>
+<li><a href="https://github.com/kubernetes/kubernetes/wiki/Release-1.3">Kubernetes 1.3</a>  <ul>
+<li>Pet Sets  </li>
+<li>Init Containers  <ul>
+<li>Sequential Pod Initialization  </li>
+<li>開啟真正的 Application 的時候必須經過一些初始化步驟，1.3 以後可以使用 Init containers 來達到這個功能。  </li>
+</ul>
+</li>
+<li>Jobs  <ul>
+<li>Work Queue with Pod per work  </li>
+</ul>
+</li>
+<li>Cluster Federation  <ul>
+<li>Manage clusters across region and providers  </li>
+</ul>
+</li>
+<li><a href="https://github.com/kubernetes/minikube">minikube</a>  </li>
+</ul>
+</li>
+<li>Related Links  <ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/cloud-hello-kubernetes/index.html?index=..%2F..%2Findex#0">Hello Node Kubernetes Codelab</a>  </li>
+<li><a href="https://codelabs.developers.google.com/codelabs/cloud-orchestrate-with-kubernetes/index.html?index=..%2F..%#0">Orchestrating the Cloud with Kubernetes</a>  </li>
+<li><a href="https://codelabs.developers.google.com/codelabs/cloud-slack-bot/index.html?index=..%2F..%2Findex#0">Build a Slack Bot with Node.js on Kubernetes</a>  </li>
+<li><a href="https://codelabs.developers.google.com/codelabs/cloud-compute-kubernetes/index.html?index=..%2F..%2Findex#0">Compute Engine &amp; Kubernetes (Container Engine)</a>  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=GCPUG.TW%2020160706%0Ahttps%3A//blog.m157q.tw/posts/2016/07/06/gcpug-tw-20160706/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/07/06/gcpug-tw-20160706/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/07/06/gcpug-tw-20160706/&title=GCPUG.TW%2020160706&summary=Note%20for%20GCPUG.TW%20Meetup%2020160706&source=https%3A//blog.m157q.tw/posts/2016/07/06/gcpug-tw-20160706/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=GCPUG.TW%2020160706&amp;body=https%3A//blog.m157q.tw/posts/2016/07/06/gcpug-tw-20160706/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2021/06/07/y2021w22/">Y2021W22</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/10/docker-travis-ci-kubernetes-gke/">Docker + Travis CI + Kubernetes + GKE</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/07/11/things-that-kubernetes-tutorials-didnt-teach-you/">Things that Kubernetes tutorials didn't teach you</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/24/y2016w42/">Y2016W42</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/07/06/gcpug-tw-20160706/";
+        var disqus_title = "GCPUG.TW 20160706";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/07/06/gcpug-tw-20160706/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-07-06T22:59:41+08:00"><i class="fa fa-calendar"></i> Wed 06 July 2016</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/kubernetes/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">kubernetes</a>
+  <br>
+            <a href="/tag/firebase/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">firebase</a>
+  <br>
+            <a href="/tag/gcpugtw/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">GCPUG.TW</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/07/03/y2016w26/" title="Y2016W26"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/07/11/y2016w27/" title="Y2016W27"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

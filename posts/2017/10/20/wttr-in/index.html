@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  wttr.in - 一個讓你用網頁或終端機看天氣或月亮圓缺的有趣網站
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/10/20/wttr-in/" rel="bookmark" title="Permalink to wttr.in - 一個讓你用網頁或終端機看天氣或月亮圓缺的有趣網站">wttr.in - 一個讓你用網頁或終端機看天氣或月亮圓缺的有趣網站</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>關於 <a href="http://wttr.in">wttr.in</a> 的一點小介紹</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>最近不知道為啥身邊一堆人在傳 <a href="http://wttr.in">wttr.in</a>，<br>
+才發現好像有很多人不知道。<br>
+自己是有陣子之前就開始用了，<br>
+當時有花一點時間亂看過<a href="https://github.com/chubin/wttr.in">這個專案的程式碼</a>，<br>
+依稀記得 wttr.in 有一些比較少人知道的小功能，<br>
+回朋友的某個跟 wttr.in 相關的 Facebook 動態時又去找了一下。<br>
+查著查著突然心血來潮，<br>
+乾脆寫這篇廢文筆記一下。  </p>
+<p>反正邊緣人的週五晚上沒事做。（嗚嗚  </p>
+<h2>TL;DR</h2>
+<ul>
+<li><code>curl wttr.in</code> &amp;&amp; <code>curl wttr.in/:help</code>  </li>
+<li><a href="http://wttr.in">http://wttr.in</a> &amp;&amp; <a href="http://wttr.in/:help">http://wttr.in/:help</a>  </li>
+<li>專案的原始碼在這：<a href="https://github.com/chubin/wttr.in">https://github.com/chubin/wttr.in</a>  </li>
+</ul>
+<hr>
+<h2>介紹</h2>
+<p>最簡單的用法就是 <code>curl wttr.in</code><br>
+或用網頁瀏覽器直接連到 <a href="http://wttr.in">http://wttr.in</a><br>
+就會得到像這樣精美的 ASCII Art 天氣預報圖。  </p>
+<p><img alt="wttr-web" src="/files/wttr-in/wttr-web.jpg"><br>
+<img alt="wttr-cli" src="/files/wttr-in/wttr-cli.jpg">  </p>
+<p>但基本上要用等寬字型才會比較正確的顯示，<br>
+否則排版會亂掉。  </p>
+<hr>
+<h2>比較少人知道的功能</h2>
+<h3>支援 UTF-8</h3>
+<p>所以其實可以直接用中文  </p>
+<p><code>curl wttr.in/台北</code> 或 <a href="http://wttr.in/台北">http://wttr.in/台北</a>  </p>
+<hr>
+<h3>可以用不同的形式指定想查的城市天氣</h3>
+<blockquote>
+<p>Supported location types:  </p>
+<div class="highlight"><pre><span></span><span class="err">/paris                  # city name  </span>
+<span class="err">/~Eiffel+tower          # any location  </span>
+<span class="err">/Москва                 # Unicode name of any location in any language  </span>
+<span class="err">/muc                    # airport code (3 letters)  </span>
+<span class="err">/@stackoverflow.com     # domain name  </span>
+<span class="err">/94107                  # area codes  </span>
+<span class="err">/-78.46,106.79          # GPS coordinates</span>
+</pre></div>
+
+
+</blockquote>
+<ul>
+<li>城市名稱（含 UTF-8，不一定要用英文）  </li>
+<li>~地標  </li>
+<li>機場代號  </li>
+<li>@域名 （透過 DNS 去搜尋該域名所註冊的城市）  </li>
+<li>IP 位址  </li>
+<li>美國郵遞區號  </li>
+<li>經緯度  </li>
+</ul>
+<hr>
+<h3>支援不同語言顯示</h3>
+<blockquote>
+<p>Localization:  </p>
+<div class="highlight"><pre><span></span>$ curl fr.wttr.in/Paris  
+$ curl wttr.in/paris?lang<span class="o">=</span>fr  
+$ curl -H <span class="s2">&quot;Accept-Language: fr&quot;</span> wttr.in/paris
+</pre></div>
+
+
+</blockquote>
+<p>可以用中文顯示，<br>
+用法是這樣  </p>
+<ul>
+<li><a href="http://zh.wttr.in/taipei">http://zh.wttr.in/taipei</a>  </li>
+<li><a href="http://wttr.in/taipei?lang=zh">http://wttr.in/taipei?lang=zh</a>  </li>
+<li><code>curl -H "Accept-Language: zh" wttr.in/taipei</code>  </li>
+</ul>
+<p>不過這部份還在持續開發中，<br>
+目前是神奇的簡繁混雜的狀況。  </p>
+<p><img alt="wttr-cli-zh" src="/files/wttr-in/wttr-cli-zh.jpg">  </p>
+<p>中文翻譯的 Issue <a href="https://github.com/chubin/wttr.in/issues/83">在此</a><br>
+追了一下，<br>
+應該是中間的討論產生了一些誤解，<br>
+原本有人給簡中翻譯，<br>
+結果後來有人以為是繁中，<br>
+所以就變這樣哩，<br>
+是個可以發 PR 的機會。  </p>
+<hr>
+<h3>可以直接產生 PNG 圖片</h3>
+<blockquote>
+<p>PNG options:  </p>
+<div class="highlight"><pre><span></span><span class="err">/paris.png              # generate a PNG file  </span>
+<span class="err">?p                      # add frame arond the output  </span>
+<span class="err">?t                      # transparency 150  </span>
+<span class="err">transparency=...        # transparency from 0 to 255 (255 = not transparent)</span>
+</pre></div>
+
+
+</blockquote>
+<p><a href="http://wttr.in/taipei.png">http://wttr.in/taipei.png</a>  </p>
+<p>支援加邊框和調整透明度的參數<br>
+PS：圖片這邊也支援使用下面會提到的參數  </p>
+<hr>
+<h3>可以接受參數</h3>
+<blockquote>
+<p>Units:  </p>
+<div class="highlight"><pre><span></span><span class="err">?m     # metric (SI) (used by default everywhere except US)  </span>
+<span class="err">?u     # USCS (used by default in US)  </span>
+<span class="err">?M     # show wind speed in m/s</span>
+</pre></div>
+
+
+<p>View options:  </p>
+<div class="highlight"><pre><span></span><span class="err">?0     # only current weather  </span>
+<span class="err">?1     # current weather + 1 day  </span>
+<span class="err">?2     # current weather + 2 days  </span>
+<span class="err">?n     # narrow version (only day and night)  </span>
+<span class="err">?q     # quiet version (no &quot;Weather report&quot; text)  </span>
+<span class="err">?Q     # superquiet version (no &quot;Weather report&quot;, no city name)  </span>
+<span class="err">?T     # switch terminal sequences off (no colors)</span>
+</pre></div>
+
+
+</blockquote>
+<p>其實<a href="https://github.com/chubin/wttr.in/blob/ac939032fd593b14584ce5c38a86a68026a0190a/share/help.txt">這程式有吃不少參數</a>，<br>
+也可以用 <code>curl wttr.in/:help</code> 直接查看。<br>
+傳參數給它的方法是接在問號後面，<br>
+像 <code>curl "wttr.in/taipei?0"</code><br>
+大家可以自己試試看，<br>
+這邊就不一一介紹了。  </p>
+<p>我自己慣用的參數就以下這兩個：  </p>
+<ul>
+<li><code>0</code>: 只顯示現在天氣，不顯示未來幾天的預報  </li>
+<li><code>q</code>: 讓輸出不會顯示 "Weather Report" 的字串  </li>
+</ul>
+<p>加上這兩個參數以後輸出就會變得非常簡潔乾淨，<br>
+很適合拿來放在 motd<br>
+<code>curl "wttr.in/taipei?0q"</code><br>
+<img alt="wttr-cli-0q" src="/files/wttr-in/wttr-cli-0q.jpg">  </p>
+<hr>
+<h3>可以接多個參數</h3>
+<blockquote>
+<p>Options can be combined:  </p>
+<div class="highlight"><pre><span></span><span class="err">/Paris?0pq  </span>
+<span class="err">/Paris?0pq&amp;lang=fr  </span>
+<span class="err">/Paris_0pq.png          # in PNG the file mode are specified after _  </span>
+<span class="err">/Rome_0pq_lang=it.png   # long options are separated with underscore</span>
+</pre></div>
+
+
+</blockquote>
+<p>多個參數就直接接上去就好了，<br>
+<code>&amp;</code> 可加可不加，<br>
+除非遇到像有等號的 <code>lang=zh</code> 才得加 <code>&amp;</code><br>
+也就是說  </p>
+<ul>
+<li><code>/taipei?0q</code> 等同於 <code>/taipei?0&amp;q</code>  </li>
+<li><code>taipei?0&amp;q&amp;lang=zh</code> 等同於 <code>/taipei?0q&amp;lang=zh</code>  </li>
+</ul>
+<p>如果是要 png 圖片的話要變這樣  </p>
+<ul>
+<li><code>/taipei_0g.png</code> 等同於 <code>/taipei_0&amp;q.png</code>  </li>
+<li><code>/taipei_0&amp;q&amp;lang=zh.png</code> 等同於 <code>/taipei_0q&amp;lang=zh.png</code>  </li>
+</ul>
+<hr>
+<h3>可以包成一個簡單的 shell function</h3>
+<p>官方有<a href="https://github.com/chubin/wttr.in/blob/ac939032fd593b14584ce5c38a86a68026a0190a/share/bash-function.txt">推薦怎麼加一個簡單使用 wttr.in 的 bash function</a><br>
+也可以用 <code>curl "wttr.in/:bash.function"</code> 來察看  </p>
+<blockquote>
+<p><code>wttr()  
+{  
+    # change Paris to your default location  
+    curl -H "Accept-Language: ${LANG%_*}" wttr.in/"${1:-Paris}"  
+}</code>  </p>
+</blockquote>
+<p>很適合放在 shell 的 alias 裏面  </p>
+<p>我自己是改成自訂性再高一點，<br>
+可以自己決定要帶什麼參數。  </p>
+<div class="highlight"><pre><span></span><span class="s s-Atom">#</span> <span class="nv">Weather</span> <span class="s s-Atom">in</span> <span class="s s-Atom">terminal</span>  
+<span class="s s-Atom">function</span> <span class="nf">weather</span> <span class="p">()</span>  
+<span class="p">{</span>  
+    <span class="s s-Atom">curl</span> <span class="o">-</span><span class="nv">H</span> <span class="s2">&quot;Accept-Language: ${LANG%_*}&quot;</span> <span class="s s-Atom">wttr</span><span class="p">.</span><span class="s s-Atom">in/</span><span class="s2">&quot;${1:-Taipei}?${2:-0q}&quot;</span>  
+<span class="p">}</span>  
+</pre></div>
+
+
+<hr>
+<h3>可以拿來看月亮圓缺</h3>
+<blockquote>
+<p>Special locations:  </p>
+<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">moon</span>                   <span class="err">#</span> <span class="n">Moon</span> <span class="n">phase</span> <span class="p">(</span><span class="n">add</span> <span class="p">,</span><span class="o">+</span><span class="n">US</span> <span class="n">or</span> <span class="p">,</span><span class="o">+</span><span class="n">France</span> <span class="k">for</span> <span class="n">these</span> <span class="n">cities</span><span class="p">)</span>  
+<span class="o">/</span><span class="n">moon</span><span class="mi">@2016</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">25</span>        <span class="err">#</span> <span class="n">Moon</span> <span class="n">phase</span> <span class="k">for</span> <span class="n">the</span> <span class="n">date</span> <span class="p">(</span><span class="mi">@2016</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+
+
+</blockquote>
+<p>最後這個是跟天氣比較不太相關的功能  </p>
+<p><code>curl wttr.in/moon</code>  </p>
+<p>可以接受日期作為參數，<br>
+觀看不同時間的月相。  </p>
+<p><code>curl wttr.in/moon@2017-10-20</code>  </p>
+<p>關於這功能的實作在這 <a href="https://github.com/chubin/pyphoon">https://github.com/chubin/pyphoon</a>，<br>
+是用 Python 撰寫的。  </p>
+<hr>
+<h2>補充</h2>
+<p>程式的輸出其實來自另外一支用 Golang 寫的 CLI 程式，<br>
+<a href="https://github.com/schachmat/wego">https://github.com/schachmat/wego</a><br>
+wttr.in 主要只是把 <code>wego</code> 和 <code>pyphoon</code> 的輸出以 web server 的方式呈現。  </p>
+<p>然後它其實有點不太穩，<br>
+例如在寫這篇文章的時候，<br>
+大概寫了兩個半小時左右，<br>
+不知道為啥寫到最後 wttr.in 就掛了。<code>Q_Q</code><br>
+有興趣的人其實可以 fork 下來自己架（？<br>
+專案原始碼在這 <a href="https://github.com/chubin/wttr.in">https://github.com/chubin/wttr.in</a>。<br>
+用 Python 寫的，<br>
+Web server 用 Flask + gevent，<br>
+天氣的部份則是接 <a href="https://developer.worldweatheronline.com/api/">WorldWeatherOnline API</a> 來用。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=wttr.in%20-%20%E4%B8%80%E5%80%8B%E8%AE%93%E4%BD%A0%E7%94%A8%E7%B6%B2%E9%A0%81%E6%88%96%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%9C%8B%E5%A4%A9%E6%B0%A3%E6%88%96%E6%9C%88%E4%BA%AE%E5%9C%93%E7%BC%BA%E7%9A%84%E6%9C%89%E8%B6%A3%E7%B6%B2%E7%AB%99%0Ahttps%3A//blog.m157q.tw/posts/2017/10/20/wttr-in/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/10/20/wttr-in/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/10/20/wttr-in/&title=wttr.in%20-%20%E4%B8%80%E5%80%8B%E8%AE%93%E4%BD%A0%E7%94%A8%E7%B6%B2%E9%A0%81%E6%88%96%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%9C%8B%E5%A4%A9%E6%B0%A3%E6%88%96%E6%9C%88%E4%BA%AE%E5%9C%93%E7%BC%BA%E7%9A%84%E6%9C%89%E8%B6%A3%E7%B6%B2%E7%AB%99&summary=%E9%97%9C%E6%96%BC%20wttr.in%20%E7%9A%84%E4%B8%80%E9%BB%9E%E5%B0%8F%E4%BB%8B%E7%B4%B9&source=https%3A//blog.m157q.tw/posts/2017/10/20/wttr-in/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=wttr.in%20-%20%E4%B8%80%E5%80%8B%E8%AE%93%E4%BD%A0%E7%94%A8%E7%B6%B2%E9%A0%81%E6%88%96%E7%B5%82%E7%AB%AF%E6%A9%9F%E7%9C%8B%E5%A4%A9%E6%B0%A3%E6%88%96%E6%9C%88%E4%BA%AE%E5%9C%93%E7%BC%BA%E7%9A%84%E6%9C%89%E8%B6%A3%E7%B6%B2%E7%AB%99&amp;body=https%3A//blog.m157q.tw/posts/2017/10/20/wttr-in/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2014/10/16/bash-cheat-sheet/">Bash Cheat Sheet</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/21/y2016w46/">Y2016W46</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/07/y2016w44/">Y2016W44</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/06/24/embed-srt-subtitle-into-mkv-with-ffmpeg/">Embed .srt subtitle into .mkv with ffmpeg</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/01/16/y2017w02/">Y2017W02</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/10/20/wttr-in/";
+        var disqus_title = "wttr.in - 一個讓你用網頁或終端機看天氣或月亮圓缺的有趣網站";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/10/20/wttr-in/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-10-20T21:09:15+08:00"><i class="fa fa-calendar"></i> Fri 20 October 2017</abbr></p>
+
+      <p><abbr title="2017-10-20T23:35:15+08:00"><i class="fa fa-pencil"></i>Fri 20 October 2017</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/cli/" data-toggle="tooltip"
+      class="label label-default"
+      title="43 articles with this tag">cli</a>
+  <br>
+            <a href="/tag/weather/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Weather</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/09/27/facebook-developer-circle-taipei-meetup-4/" title="Facebook Developer Circle: Taipei - Meetup #4"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/10/31/make-bcm4360-14e4-43a0-rev-03-work-on-arch-linux-with-broadcom-wl-dkms/" title="用 broadcom-wl-dkms 讓 BCM4360 [14e4:43a0] (rev 03) 能順利在 Arch Linux 中使用"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

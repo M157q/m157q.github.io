@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Laravel</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.laravel.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T22:40:00+08:00</updated><entry><title>Laravel 4 Traditional Chinese Tutorial</title><link href="https://blog.m157q.tw/posts/2014/02/27/laravel-4-traditional-chinese-tutorial/" rel="alternate"></link><published>2014-02-27T14:14:00+08:00</published><updated>2015-10-27T22:40:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-02-27:/posts/2014/02/27/laravel-4-traditional-chinese-tutorial/</id><summary type="html">&lt;p&gt;這個超級年輕又火紅的 PHP Framework 竟然有繁體中文的教學  &lt;/p&gt;
+&lt;p&gt;身邊有用過的好像都說還不錯 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;這個超級年輕又火紅的 PHP Framework 竟然有繁體中文的教學  &lt;/p&gt;
+&lt;p&gt;身邊有用過的好像都說還不錯  &lt;/p&gt;
+&lt;p&gt;聽說是 RoR like ?  &lt;/p&gt;
+&lt;p&gt;稍微瞄了一下 好像還沒看到非常吸引我的地方  &lt;/p&gt;
+&lt;p&gt;之後再找時間繼續看  &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://kejyun.github.io/Laravel-4-Documentation-Traditional-Chinese/docs/introduction/"&gt;Laravel 4 中文文件&lt;/a&gt;  &lt;/p&gt;</content><category term="Web"></category><category term="PHP"></category><category term="Laravel"></category><category term="framework"></category></entry></feed>

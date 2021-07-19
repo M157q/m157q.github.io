@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - sqlmap</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.sqlmap.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2014-12-01T05:04:00+08:00</updated><entry><title>sqlmap Cheat Sheet</title><link href="https://blog.m157q.tw/posts/2014/12/01/sqlmap-cheat-sheet/" rel="alternate"></link><published>2014-12-01T05:04:00+08:00</published><updated>2014-12-01T05:04:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-12-01:/posts/2014/12/01/sqlmap-cheat-sheet/</id><summary type="html">&lt;h1&gt;Usage&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ sqlmap -u ${url}&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sqlmap …&lt;/code&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h1&gt;Usage&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ sqlmap -u ${url}&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sqlmap -u ${url} --dbs&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sqlmap -u ${url} -D ${database} --tables&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sqlmap -u ${url} -D ${database} -T ${table} --columns&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sqlmap -u ${url} -D ${database} -T ${table} -C ${col1},${col2} --dump&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Options&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--tor --tor-type=SOCKS5&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.nigesb.com/sqlmap-common-usage-and-examples.html"&gt;sqlmap注入常见用法一条龙&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sqlmapproject/sqlmap/wiki/Usage"&gt;sqlmap - Usage&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://oldmanlab.blogspot.tw/2012/03/sqlmap-tutorial-you-are-just.html"&gt;An Old man lab0ratory: Sqlmap tutorial - you are just unavoidable&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sqlmapproject/sqlmap/wiki/Usage"&gt;Usage · sqlmapproject/sqlmap Wiki · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="SQL Injection"></category><category term="sqlmap"></category><category term="Security"></category></entry></feed>

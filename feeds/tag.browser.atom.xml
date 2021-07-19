@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - browser</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.browser.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2021-03-22T10:28:46+08:00</updated><entry><title>Y2021W11</title><link href="https://blog.m157q.tw/posts/2021/03/22/y2021w11/" rel="alternate"></link><published>2021-03-22T10:28:46+08:00</published><updated>2021-03-22T10:28:46+08:00</updated><author><name>M157q</name></author><id>tag:blog.m157q.tw,2021-03-22:/posts/2021/03/22/y2021w11/</id><summary type="html">&lt;p&gt;Collections of Y2021W11 (2021-03-15 Mon 00:00:00+0800 ~ 2021-03-22 Mon 00:00:00+0800)&lt;/p&gt;</summary><content type="html">&lt;h2&gt;browser&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://medium.com/fast-company/for-the-first-time-in-years-someone-is-building-a-web-browser-from-scratch-bfcd0f35d1ad"&gt;For the First Time in Years, Someone Is Building a Web Browser From Scratch | by Fast Company | Fast Company | Mar, 2021 | Medium&lt;/a&gt;  &lt;blockquote&gt;
+&lt;p&gt;A small company called Ekioh is developing a browser called Flow.&lt;br&gt;
+It’s not based on Google’s Chromium or Apple’s WebKit open-source code.&lt;br&gt;
+Instead, Flow is starting with a blank slate and building its own rendering engine. Its goal is to make web-based apps run smoothly even on cheap microcomputers such as the Raspberry Pi.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;</content><category term="browser"></category></entry></feed>

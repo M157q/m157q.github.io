@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - SMS</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.sms.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-26T15:13:00+08:00</updated><entry><title>Hootsuite - Social Media Management</title><link href="https://blog.m157q.tw/posts/2014/02/27/hootsuite-social-media-management/" rel="alternate"></link><published>2014-02-27T14:46:00+08:00</published><updated>2015-10-26T15:13:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-02-27:/posts/2014/02/27/hootsuite-social-media-management/</id><summary type="html">&lt;p&gt;&lt;a href="https://hootsuite.com/"&gt;Social Media Management Dashboard - Hootsuite …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://hootsuite.com/"&gt;Social Media Management Dashboard - Hootsuite&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;聽說可以整合許多 SMS 一次發布訊息  &lt;/p&gt;
+&lt;p&gt;然後介面長得有點像 Trello  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;2015.10.26 後記&lt;/h2&gt;
+&lt;p&gt;當時是因為 Apua 在 PyCon 需要在 SMS 上面發文宣得知 &lt;code&gt;Hootsuite&lt;/code&gt;&lt;br&gt;
+最近得知另外一個也在做相同功能的網站是 &lt;a href="https://buffer.com/"&gt;Buffer - A Smarter Way to Share on Social Media&lt;/a&gt;  &lt;/p&gt;</content><category term="SMS"></category><category term="Hootsuite"></category></entry></feed>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - G suite</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.g-suite.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-07-04T02:09:19+08:00</updated><entry><title>為 G Suite 新增 SPF, DKIM 和 DMARC 設定以避免有心人士的釣魚攻擊</title><link href="https://blog.m157q.tw/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/" rel="alternate"></link><published>2018-07-04T02:09:19+08:00</published><updated>2018-07-04T02:09:19+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-07-04:/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/</id><summary type="html">&lt;p&gt;公司最近收到了漏洞回報，結果是因為 DNS 沒有設定 SPF record，導致有心人士可以偽裝成客服的電子郵件信箱寄信給任何人。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR 懶人包&lt;/h2&gt;
+&lt;p&gt;如果你正在使用 Google 的 G Suite 而且有在使用其 Gmail 功能的話，&lt;br&gt;
+請記得花點時間設定 Gmail 的 SPF, DKIM 和 DMARC，&lt;br&gt;
+以防止有心人士偽裝成你的公司寄電子郵件給別人。  &lt;/p&gt;
+&lt;p&gt;直接按照 G suite 的官方教學一步步進行設定就行了，&lt;br&gt;
+以下直接附上連結：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://support.google.com/a/answer/33786?hl=zh-Hant"&gt;使用 SPF 對寄件者授權 - G Suite 管理員說明&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://support.google.com/a/answer/174126?hl=zh-Hant"&gt;產生網域金鑰 - G Suite 管理員說明&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://support.google.com/a/answer/2466580?hl=zh-Hant"&gt;關於 DMARC - G Suite 管理員說明&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;設定好之後可以使用 Google 的網站來檢測：&lt;br&gt;
+&lt;a href="https://toolbox.googleapps.com/apps/checkmx/"&gt;Check MX: Check MX and SPF Records.&lt;/a&gt;&lt;br&gt;
+或者這個網站也可以&lt;br&gt;
+&lt;a href="https://www.kitterman.com/spf/validate.html"&gt;SPF Query Tool&lt;/a&gt;&lt;br&gt;
+但我比較推薦前者就是。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近公司的 contact 電子郵件帳號收到了漏洞回報，&lt;br&gt;
+告知 SPF record 沒設定好，&lt;br&gt;
+任何人都可以假冒公司的電子郵件地址寄信給別人進行釣魚攻擊。  &lt;/p&gt;
+&lt;p&gt;和同事都以為都用了 G suite 了，&lt;br&gt;
+Google 應該會幫你自動設定好這些東西，&lt;br&gt;
+但其實沒有。  &lt;/p&gt;
+&lt;p&gt;應該是因為是在 DNS 進行設定，&lt;br&gt;
+而 G suite 其實沒包含 DNS，&lt;br&gt;
+也沒權限動你的 DNS。  &lt;/p&gt;
+&lt;p&gt;所以真的要記得設定啊。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;紀錄&lt;/h2&gt;
+&lt;h3&gt;SPF&lt;/h3&gt;
+&lt;p&gt;設定了一下 SPF，其實不花多少時間，也不需要 G suite 管理員權限的帳號。&lt;br&gt;
+只要有可以改 DNS 的帳號即可，就加上一行 TXT record:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;host: @  &lt;/span&gt;
+&lt;span class="c"&gt;value: v=spf1 include:_spf.google.com ~all  &lt;/span&gt;
+&lt;span class="c"&gt;ttl: 3600  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;DigitalOcean 也有一篇關於 SPF 的文章：&lt;a href="https://www.digitalocean.com/community/tutorials/how-to-use-an-spf-record-to-prevent-spoofing-improve-e-mail-reliability"&gt;How To use an SPF Record to Prevent Spoofing &amp;amp; Improve E-mail Reliability | DigitalOcean&lt;/a&gt;&lt;br&gt;
+說明了 SPF (Sender Policy Framework) 的作用、語法和設定方式。&lt;br&gt;
+簡單來說就是讓人家知道收到你的網域的電子郵件時，&lt;br&gt;
+只有其 IP 來自於 SPF 中有寫到的 IP 才是認可的來源這樣。&lt;br&gt;
+其他都會被認定為 Spoofing。  &lt;/p&gt;
+&lt;p&gt;CloudFlare 也有一篇教學教你怎麼設定 SPF：&lt;a href="https://support.cloudflare.com/hc/en-us/articles/200168626-How-do-I-add-a-SPF-record-"&gt;How do I add a SPF record? – Cloudflare Support&lt;/a&gt;&lt;br&gt;
+其實就是一筆特殊格式的 DNS TXT 紀錄。  &lt;/p&gt;
+&lt;p&gt;想詳細知道 SPF 語法的人可以參考這個網站：&lt;a href="http://www.openspf.org/SPF_Record_Syntax"&gt;SPF: SPF Record Syntax&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;可以使用 &lt;code&gt;dig&lt;/code&gt; 指令來查詢是否設定好了：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dig TXT &lt;span class="o"&gt;[&lt;/span&gt;domain&lt;span class="o"&gt;]&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果有出現 &lt;code&gt;v=spf1&lt;/code&gt; 的 TXT 紀錄就是設定好了。  &lt;/p&gt;
+&lt;h3&gt;DKIM&lt;/h3&gt;
+&lt;p&gt;DKIM 則是用來簽署由此網域發出去的電子郵件，&lt;br&gt;
+設定步驟直接參考 G suite 官方教學：&lt;a href="https://support.google.com/a/answer/174126?hl=zh-Hant"&gt;產生網域金鑰 - G Suite 管理員說明&lt;/a&gt;&lt;br&gt;
+這個部份要在 G suite 管理介面做些設定，&lt;br&gt;
+所以會需要有 G suite 管理員權限的帳號。  &lt;/p&gt;
+&lt;p&gt;要先在 G suite 產生 DKIM 的金鑰後，&lt;br&gt;
+再把 DKIM 的公鑰設定在 DNS 的 TXT 紀錄中，&lt;br&gt;
+完成後即可開啟驗證，&lt;br&gt;
+供人日後做驗證使用。  &lt;/p&gt;
+&lt;p&gt;DNS TXT record 會長得像這樣：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;google&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;_domainkey&lt;/span&gt;  
+&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;DKIM1&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;rsa&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;=&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;encoded&lt;/span&gt; &lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;CloudFlare 也有篇文章教你怎麼設定 DKIM:&lt;a href="https://support.cloudflare.com/hc/en-us/articles/200168696-How-do-I-add-DKIM-records-"&gt;How do I add DKIM records? – Cloudflare Support&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;可以使用 &lt;code&gt;dig&lt;/code&gt; 指令來查詢是否設定好了：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dig TXT google._domainkey.&lt;span class="o"&gt;[&lt;/span&gt;domain&lt;span class="o"&gt;]&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;DMARC&lt;/h3&gt;
+&lt;p&gt;需先設定好 SPF 和 DKIM，DMARC 才有用。&lt;br&gt;
+簡單來說就是讓網域擁有者可以決定該如何處理從自己的網域寄出但未經驗證的郵件，&lt;br&gt;
+可以設定三種動作：不採取動作、隔離、拒絕，&lt;br&gt;
+並可設定要檢查的比例，預設是 100% 都要檢查。&lt;br&gt;
+然後可以設定要把這些未經過驗證的信件寄信到管理員的電子郵件，&lt;br&gt;
+讓網域管理員瞭解自己的網域有多少未經驗證的電子郵件發出。  &lt;/p&gt;
+&lt;p&gt;關於 DMARC 的介紹和格式可以參考以下網站：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://support.google.com/a/answer/2466580?hl=zh-Hant"&gt;關於 DMARC - G Suite 管理員說明&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dmarc.org/overview/"&gt;Overview – dmarc.org&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://dmarc.org//draft-dmarc-base-00-01.html#iana_dmarc_tags"&gt;DMARC.org: Domain-based Message Authentication, Reporting and Conformance (DMARC)&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;設定的步驟一樣按照 G suite 的官方教學即可：&lt;br&gt;
+&lt;a href="https://support.google.com/a/answer/2466563?hl=zh-Hant"&gt;新增 DMARC 記錄 - G Suite 管理員說明&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;設定好的話大概會長這樣：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;host&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;_dmarc&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;domain&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="k"&gt;value&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;DMARC1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;reject&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rua&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nl"&gt;mailto&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;admin&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;domain&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;p&lt;/code&gt; 可以是 &lt;code&gt;none&lt;/code&gt;, &lt;code&gt;quarantine&lt;/code&gt;, &lt;code&gt;reject&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;none&lt;/code&gt; 是不採取任何動作，仍會進到收件人的信箱。&lt;br&gt;
+&lt;code&gt;quarantine&lt;/code&gt; 是隔離，未經驗證的信件會被標為垃圾信，仍會進到收件人的信箱。&lt;br&gt;
+&lt;code&gt;reject&lt;/code&gt; 是拒絕，會直接擋掉，不會進到收件人的信箱。  &lt;/p&gt;
+&lt;p&gt;如果要設定檢查的比例的話，&lt;br&gt;
+可以再加上 &lt;code&gt;pct&lt;/code&gt; 這個參數，&lt;br&gt;
+&lt;code&gt;pct=5&lt;/code&gt; 代表只檢查 5%，&lt;br&gt;
+不做設定的話，&lt;br&gt;
+預設是 &lt;code&gt;pct=100&lt;/code&gt;。  &lt;/p&gt;
+&lt;p&gt;可以使用 &lt;code&gt;dig&lt;/code&gt; 指令來查詢是否設定好了：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dig TXT _dmarc.&lt;span class="o"&gt;[&lt;/span&gt;domain&lt;span class="o"&gt;]&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;後記&lt;/h2&gt;
+&lt;p&gt;突然想起遙遠的 Network Administration 課程好像有講過這件事，&lt;br&gt;
+不過那時的作業是教你怎麼寄信到人家的 Gmail 信箱裏面啊，&lt;br&gt;
+有講這幾個 protocol 可以用來防禦，&lt;br&gt;
+但真的是到今天才想起來啊。  &lt;/p&gt;
+&lt;p&gt;不過印象中當時只有聽過 SPF 和 DKIM，&lt;br&gt;
+DMARC 應該是後來才出現的。  &lt;/p&gt;
+&lt;p&gt;總之是又學了一課啊。  &lt;/p&gt;</content><category term="G suite"></category><category term="Google"></category><category term="Mail"></category><category term="SPF"></category><category term="DKIM"></category><category term="DMARC"></category><category term="Security"></category></entry></feed>

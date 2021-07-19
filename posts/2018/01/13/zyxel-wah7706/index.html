@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  ZyXEL WAH7706 問題紀錄
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/01/13/zyxel-wah7706/" rel="bookmark" title="Permalink to ZyXEL WAH7706 問題紀錄">ZyXEL WAH7706 問題紀錄</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>2017/12/14 購入 ZyXEL WAH7706 攜帶型 4G 網路分享器後遇到的一些問題紀錄</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>在這篇 <a href="/posts/2017/12/20/4g-mobile-network-tw/">關於 4G 行動網路的一些筆記 | Just for noting</a> 有提到我買了一個攜帶型 4G 網路分享器，我買的就是 ZyXEL 的 WAH7706。  </p>
+<p>其實當時是在 NetGear AirCard 790S, ZyXEL WAH7706, D-Link DWR-933 這三台都有 2CA 的在比較：  </p>
+<ul>
+<li>雖然 AirCard 790S 便宜很多，也支援 2CA，但因為當時急著用，如果要用露天買的話要等上幾天，再加上 NetGear 在台灣的代理商沒有代理這個產品，所以都是有人改水貨來賣，然後簡訊又不一定有中文支援，所以就沒考慮，畢竟有時候還是得靠簡訊來知道電信商那邊的通知訊息。  </li>
+<li>D-Link DWR-933 和 WAH7706 我在 PChome 上看的價錢都是 4000 左右。  <ul>
+<li>DWR-933 號稱續航 12 小時，比 WAH7706 號稱續航 10 小時多了 2 小時  </li>
+<li>在頻段支援的部份比 WAH7706 少了 Band 38 和  Band 40  的部份  </li>
+<li>能支援最多 16 個裝置連線，WAH7706 則是 32 個。  </li>
+</ul>
+</li>
+</ul>
+<p>所以最後選了 ZyXEL WAH7706。  </p>
+<hr>
+<h2>摘要</h2>
+<p>使用後遇到了一些問題，查了一下竟然是用台灣大哥大的 SIM 卡才會遇到，打電話去合勤詢問後，客服要我寄封電子郵件描述狀況，工程師魂發作了一下，所以寄了一封描述算詳盡的的電子郵件過去，：  </p>
+<p><img alt="report-1" src="/files/zyxel-wah7706/report-1.jpg">  </p>
+<p><img alt="report-2" src="/files/zyxel-wah7706/report-2.jpg">  </p>
+<p>最後就是換貨處理。  </p>
+<p>想說就用這篇文章紀錄下來，給自己留個紀錄，也給之後有遇到這個問題的人可以在網路上查到，因為我自己查的時候只有找到幾個人有提到這問題。  </p>
+<hr>
+<h2>完整紀錄</h2>
+<blockquote>
+<p>這邊先附上您要的「電信業者 SIM 卡接入 WAH7706 無法收到訊號的網頁介面及 OLED 介面圖示」<br>
+網頁介面圖示【附 1】、OLED 介面圖示【附 2】<br>
+<img alt="attach-1" src="/files/zyxel-wah7706/attach-1.jpg"><br>
+<img alt="attach-2" src="/files/zyxel-wah7706/attach-2.jpg">  </p>
+<p>另外補充一下，我在電話中講錯了，我掛完電話後再次確認才發現，我出問題的韌體版本是 V1.00 (ABBC.6) C0。但不影響本次的回報，因為我後來有把韌體升級到最新的 V1.00 (ABBC.8) C0，依然沒有解決這問題【附 3】。<br>
+<img alt="attach-3" src="/files/zyxel-wah7706/attach-3.jpg">  </p>
+<p>以下我試著完整描述使用情況，以儘可能協助釐清產品問題。  </p>
+<p>我在 2017/12/14 於 PCHome 網購貴公司的 WAH7706【附 4】，並於 2017/12/15 開始搭配台灣大哥大的 4G SIM 卡使用，購買之前就有確認 WAH7706 支援台灣大哥大的 4G 頻段 B3, B28，使用狀況一切良好。<br>
+<img alt="attach-4" src="/files/zyxel-wah7706/attach-4.jpg">  </p>
+<p>直到 2017/12/18 晚上，發現 WAH7706 接收不到台灣大哥大的訊號，OLED 介面顯示 No Service【附 2】。截至此時，總使用流量約為 41 GB。無論 Reboot 或是 Reset WAH7706 都無法解決此問題。<br>
+<img alt="attach-2" src="/files/zyxel-wah7706/attach-2.jpg">  </p>
+<p>為了確認台灣大哥大的 4G SIM 卡是沒有被鎖卡的，我把台灣大哥大的 4G SIM 卡裝入 iPhone SE，確認是可以收到 4G 訊號且可以正常上網的。（今天透過電話回報完後也有再次確認，請見【附 5】)<br>
+<img alt="attach-5" src="/files/zyxel-wah7706/attach-5.png">  </p>
+<p>之後又為了確認 WAH7706 仍然可以正常收發 4G 訊號並連接網路，我把中華電信的 4G SIM 卡裝入 WAH7706，也確實可以正常運作。（今天透過電話回報完後也有再次確認，請見【附 6】)<br>
+<img alt="attach-6" src="/files/zyxel-wah7706/attach-6.jpg">  </p>
+<p>其後我又將台灣大哥大的 4G SIM 卡裝回 WAH7706 ，透過網頁後台做了一些嘗試，但都無效（截圖都是今天早上電話回報完後使用新版韌體的結果）。  </p>
+<p>一、把「蜂巢式網路模式」調成「自動」，有兩種狀況：  </p>
+<ol>
+<li>
+<p>依然接受不到 4G 訊號且大多數時間不會自動向下相容使用 3G 訊號。【附 7】<br>
+<img alt="attach-7" src="/files/zyxel-wah7706/attach-7.jpg">  </p>
+</li>
+<li>
+<p>少數時間會自動改成使用 3G 網路，雖然顯示是接收得到 3G 訊號的，但卻無法連線至網路。(左上角第 3 個連接網路圖示是斷開的。）【附 8】<br>
+<img alt="attach-8" src="/files/zyxel-wah7706/attach-8.jpg">  </p>
+</li>
+</ol>
+<p>二、將「蜂巢式網路模式」調成「3G  模式」，則有較高機會連上網路【附 9】，但有時候還是會有接收得到 3G 訊號卻無法連線的狀況。【附 10】<br>
+<img alt="attach-9" src="/files/zyxel-wah7706/attach-9.jpg"><br>
+<img alt="attach-10" src="/files/zyxel-wah7706/attach-10.jpg">  </p>
+<p>便於今天早上透過電話回報此問題，其後我也有打電話向台灣大哥大確認我使用的 4G SIM 卡是沒有被鎖卡的。且有進一步詢問是否可能同一張 SIM 卡但針對不同裝置進行限制，得到的答案是「沒有，沒有這樣的機制，只會直接鎖卡。」  </p>
+<p>另外在網路上也有找到其他使用貴公司 WAH7706 搭配台灣大哥大 4G SIM 卡的使用者遇到一樣的問題，附上連結供參考。  </p>
+<ul>
+<li><a href="https://www.ptt.cc/bbs/MobileComm/M.1469287236.A.E7C.html">[問題] WAH7706 使用上的疑問</a>  </li>
+<li><a href="https://www.ptt.cc/bbs/MobileComm/M.1476361987.A.072.html">Re: [問題] WAH7706 使用上的疑問</a>  </li>
+<li><a href="https://www.dcard.tw/f/3c/p/225104974">#求救 #ZYXEL WAH7706 陣亡</a>  </li>
+</ul>
+<p>再麻煩貴公司相關人員協助處理了，感謝。  </p>
+</blockquote>
+<hr>
+<h2>結果</h2>
+<p>在 2017/12/28 下午到 ZyXEL 代理商展碁國際在台北的據點換貨之後，一回去馬上先把韌體升級到最新版才開始使用，目前使用到今天大概兩個多禮拜都還正常，如果之後又遇到問題的話會再更新在這篇文章，畢竟有遇到有人是用了超過一個月才出問題的。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=ZyXEL%20WAH7706%20%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84%0Ahttps%3A//blog.m157q.tw/posts/2018/01/13/zyxel-wah7706/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/01/13/zyxel-wah7706/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/01/13/zyxel-wah7706/&title=ZyXEL%20WAH7706%20%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84&summary=2017/12/14%20%E8%B3%BC%E5%85%A5%20ZyXEL%20WAH7706%20%E6%94%9C%E5%B8%B6%E5%9E%8B%204G%20%E7%B6%B2%E8%B7%AF%E5%88%86%E4%BA%AB%E5%99%A8%E5%BE%8C%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84&source=https%3A//blog.m157q.tw/posts/2018/01/13/zyxel-wah7706/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=ZyXEL%20WAH7706%20%E5%95%8F%E9%A1%8C%E7%B4%80%E9%8C%84&amp;body=https%3A//blog.m157q.tw/posts/2018/01/13/zyxel-wah7706/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/02/tips-about-facebook-url/">Facebook 網址的一些黑魔法</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/27/fetch-my-github-commits-in-one-organization-with-python-script/">用 Python 抓出我在前公司貢獻了多少 GitHub commits</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/24/i-love-open-source-because-someone-will-write-testings-for-me/">我愛開源，因為會遇到路人幫我寫測試。</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/">如何區分加密、壓縮、編碼</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/01/change-keymap-on-linux/">Linux 上如何透過指令更改鍵盤鍵位</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/01/13/zyxel-wah7706/";
+        var disqus_title = "ZyXEL WAH7706 問題紀錄";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/01/13/zyxel-wah7706/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-01-13T21:52:00+08:00"><i class="fa fa-calendar"></i> Sat 13 January 2018</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/zyxel/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">ZyXEL</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/12/articles-related-to-interview/" title="整理一些跟面試相關的文章"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/14/soft-skiils-the-software-developers-life-manual/" title="《軟技能：代碼之外的生存指南》"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

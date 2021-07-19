@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  OS Ch1 - Introduction to Operating System
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.course.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Course - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2013/11/04/os-ch1-introduction-to-operating-system/" rel="bookmark" title="Permalink to OS Ch1 - Introduction to Operating System">OS Ch1 - Introduction to Operating System</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <ul>
+<li>
+<p>What is an Operating System …</p></li></ul>
+  </blockquote>
+  <div>
+    <ul>
+<li>
+<p>What is an Operating System?  </p>
+<ul>
+<li>A program that acts as an intermediary between an application and the computer hardware  </li>
+<li>A program that provides a convenient interface to the user  </li>
+<li>Controls and coordinates use of hardware among various applications and users  </li>
+<li>Provides a multi-user environment  <ul>
+<li>time-sharing  </li>
+</ul>
+</li>
+<li>Distributed computing  </li>
+<li>Cloud computing  </li>
+<li>a piece of program (or pieces of programs)  </li>
+<li>a resource allocator  </li>
+<li>a control program  </li>
+</ul>
+</li>
+<li>
+<p>Computer system can be divided into four components  </p>
+<ul>
+<li>Hardware  </li>
+<li>Operating system  </li>
+<li>Application programs  </li>
+<li>Users  </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>“The one program running at all times on the computer” is the kernel."<br>
+"Everything else is either a system program (ships with the operating system) or an application program."  </p>
+</blockquote>
+<ul>
+<li>Computer-System operation  <ul>
+<li>One or more CPUs, device controllers connect through common bus providing access to<br>
+  shared memory  </li>
+<li>Concurrent execution of CPUs and devices competing for memory cycles  </li>
+<li>I/O devices and the CPU can execute concurrently  </li>
+<li>Each device controller is in charge of a particular device type  </li>
+<li>Each device controller has a local buffer  </li>
+<li>CPU moves data from/to main memory to/from local buffers  </li>
+<li>I/O is from the device to local buffer of controller  </li>
+<li>Device controller informs CPU that it has finished its operation by causing an interrupt  </li>
+</ul>
+</li>
+<li>
+<p>￼Common Functions of Interrupts  </p>
+<ul>
+<li>Interrupt transfers control to the interrupt service routine generally, through the <strong>interrupt vector, which contains the addresses of all the service routines</strong>  </li>
+<li>Interrupt architecture must save the address of the interrupted instruction  </li>
+<li>Incoming interrupts are disabled while another interrupt is being processed to prevent       a lost interrupt  </li>
+<li>A <strong>trap is a software-generated interrupt caused either by an error or a user request</strong>  </li>
+<li>An operating system is <strong>interrupt driven</strong>  </li>
+</ul>
+</li>
+<li>
+<p>Interrupts<br>
+<img alt="Interrupt Vectors in Liunx" src="/files/os-ch1/interrupt-vectors-in-linux.png">  </p>
+</li>
+<li>
+<p>I/O structure  </p>
+<ul>
+<li>
+<p>After I/O starts, control returns to user program only upon I/O completion  </p>
+<ul>
+<li>Wait instruction idles the CPU until the next interrupt  </li>
+<li>At most one I/O request is outstanding at a time, no simultaneous I/O processing  </li>
+</ul>
+</li>
+<li>
+<p><strong>I/O muliplexing</strong> After I/O starts, control returns to user program without waiting f              or I/O completion  </p>
+<ul>
+<li><strong>System call</strong> – request to the operating system to allow user to wait for I/O<br>
+    completion  </li>
+<li><strong>Device-status table</strong> contains entry for each I/O device indicating its type,<br>
+    address, and state  </li>
+<li>Operating system indexes into I/O device table to determine device status and to<br>
+    modify table entry to include interrupt  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Direct Memory Access Structure (DMA)  </p>
+<ul>
+<li>Device controller transfers blocks of data from buffer storage directly to main<br>
+  memory without CPU intervention  </li>
+<li>Only one interrupt is generated per block, rather than the one interrupt per byte  </li>
+</ul>
+</li>
+<li>
+<p>Storage Structure  </p>
+</li>
+<li>Main memory  </li>
+<li>Secondary storage - extension of main memory that provides nonvolatile<br>
+     capacity  </li>
+<li>
+<p>Magnetic disks  </p>
+<ul>
+<li>Disk surface is logically divided into tracks, which are subdivided into sectors  </li>
+<li>The <strong>disk controller</strong> determines the logical interaction between the device<br>
+     and the computer  </li>
+<li>NCQ vs no NCQ  </li>
+</ul>
+</li>
+<li>
+<p>Storage Hierarchy  </p>
+<ul>
+<li>Speed  </li>
+<li>Cost  </li>
+<li>Volatility  </li>
+</ul>
+</li>
+<li>
+<p>Caching  </p>
+<ul>
+<li>copying information into faster storage system; main memory<br>
+  can be viewed as a last cache for secondary storage  </li>
+<li>Information in use copied from slower to faster storage temporarily  </li>
+<li>Faster storage (cache) checked first to determine if information is there  </li>
+<li>Cache smaller than storage being cached  <ul>
+<li>Cache management important design problem  </li>
+<li>Cache size and replacement policy  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Computer-System Architecture  </p>
+<ul>
+<li>single general-purpose processor (PDAs through mainframes)  </li>
+<li>special-purpose processors  </li>
+<li>Multiprocessors systems == parallel systems == tightly-coupled systems  <ul>
+<li>Increased throughput  </li>
+<li>Economy of scale  </li>
+<li>Increased reliability – graceful degradation or fault tolerance  </li>
+<li>Two types  <ul>
+<li>Asymmetric Multiprocessing  </li>
+<li>Symmetric Multiprocessing  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Clustered Systems  </p>
+<ul>
+<li>multiple systems working together  </li>
+<li>Usually sharing storage via a storage-area network (SAN)  </li>
+<li>Provides a high-availability service which survives failures  <ul>
+<li>Asymmetric clustering has one machine in hot-standby mode  </li>
+<li>Symmetric clustering has multiple nodes running applications, monitoring<br>
+  each other  </li>
+</ul>
+</li>
+<li>Some clusters are for high-performance computing (HPC). Applications must be written to        use parallelization  </li>
+</ul>
+</li>
+<li>
+<p>Computer Startup  </p>
+<ol>
+<li>bootstrap program is loaded at power-up or reboot  <ul>
+<li>Typically stored in ROM or EPROM, generally known as firmware  </li>
+<li>Initializes all aspects of system  </li>
+<li>Loads operating system kernel and starts execution  </li>
+</ul>
+</li>
+<li>Operating system probes and initializes hardware  </li>
+<li>Hardware provides the driving power  </li>
+<li>Operating system administers the power to system services and applications (jobs)  </li>
+</ol>
+</li>
+<li>
+<p>Operating System Structure  </p>
+<ul>
+<li>Multiprogramming  <ul>
+<li>Needed for efficiency  </li>
+<li>Single user cannot keep CPU and I/O devices busy at all times  </li>
+<li>Organizes jobs (code and data) so CPU always has one to execute  </li>
+<li>A subset of total jobs in system is kept in memory  </li>
+<li>One job selected and run via <strong>job scheduling</strong>  </li>
+<li>When it has to wait (for I/O for example), OS <strong>switches to another job</strong>  </li>
+</ul>
+</li>
+<li>Timesharing (multitasking)  <ul>
+<li>logical extension in which CPU switches jobs so frequently that users can interact<br>
+    with each job while it is running, creating <strong>interactive</strong> computing  </li>
+<li><strong>Response time</strong> should be &lt; 1 second  </li>
+<li>Each user has at least one <strong>program executing in memory =&gt; process</strong>  </li>
+<li>If several jobs ready to run at the same time =&gt; <strong>CPU scheduling</strong>  </li>
+<li>If processes don’t fit in memory, <strong>swapping</strong> moves them in and out to run  </li>
+<li><strong>Virtual memory</strong> allows execution of processes not completely in memory  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Operating-System Operations  </p>
+<ul>
+<li><strong>Interrupt</strong> driven by hardware  </li>
+<li>Software error or request creates <strong>exception</strong> or <strong>trap</strong>  <ul>
+<li>Division by zero, request for operating system service  </li>
+</ul>
+</li>
+<li><strong>Dual-mode</strong> operation allows OS to protect itself and other system components  <ul>
+<li><strong>User mode</strong> and <strong>kernel mode</strong>  </li>
+<li><strong>Mode bit</strong> provided by hardware  <ul>
+<li>Provides ability to distinguish when system is running user code or kernel code  </li>
+<li>Some instructions designated as <strong>privileged</strong>, only executable in kernel mode  </li>
+<li>System call changes mode to kernel, return from call resets it to user  </li>
+</ul>
+</li>
+<li>Transition from User to Kernel Mode  <ul>
+<li>Timer to prevent infinite loop / process hogging resources  <ul>
+<li>Set interrupt after specific period  </li>
+<li>Operating system decrements counter  </li>
+<li>When counter zero generate an interrupt  </li>
+<li>Set up before scheduling process to regain control or terminate program<br>
+  that exceeds allotted time  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Process Management  </p>
+<ul>
+<li>Single-threaded process has one <strong>program counter</strong> specifying location of<br>
+  next instruction to execute  <ul>
+<li>Process executes instructions sequentially, one at a time, until completion  </li>
+</ul>
+</li>
+<li><strong>Multi-threaded process has one program counter per thread</strong>  </li>
+<li>Concurrency by multiplexing the CPUs among the processes / threads  </li>
+<li>Process termination requires reclaim of any reusable resources  </li>
+<li>Activities  <ul>
+<li>Creating and deleting both user and system processes  </li>
+<li>Suspending and resuming processes  </li>
+<li>Process synchronization  </li>
+<li>Process communication  </li>
+<li>Deadlock handling  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Memory Management  </p>
+<ul>
+<li>Determines what is in memory when optimizing CPU utilization and computer response to<br>
+    users  </li>
+<li>Activities  <ul>
+<li>Keeping track of which parts of memory are currently being used and by whom  </li>
+<li>Deciding which processes (or parts thereof) and data to move into and out of memory  </li>
+<li>Allocating and deallocating memory space as needed  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Storage Management  </p>
+<ul>
+<li>OS provides uniform, logical view of information storage  <ul>
+<li><strong>file</strong> - Abstracts physical properties to logical storage unit  </li>
+<li>Each medium is controlled by device  <ul>
+<li>access speed  </li>
+<li>capacity  </li>
+<li>data-transfer rate  </li>
+<li>access method (sequential or random)  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>File-System management  </p>
+<ul>
+<li>Access control on most systems to determine who can access what  </li>
+<li>OS Activities  <ul>
+<li>Creating and deleting files and directories  </li>
+<li>Primitives to manipulate files and dirs  </li>
+<li>Mapping files onto secondary storage  </li>
+<li>Backup files onto stable (non-volatile) storage media  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Mass-Storage Management  </p>
+<ul>
+<li>Disks used to store data that does not fit in main memory or data that must be kept for<br>
+    a “long” period of time  </li>
+<li>WORM (write-once, read-many-times) and RW (read-write)  </li>
+<li>OS activities  <ul>
+<li>Free-space management  </li>
+<li>Storage allocation  </li>
+<li>Disk scheduling  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Performance of Various Levels of Storage<br>
+<img alt="Performance of Various Levels of Storage" src="/files/os-ch1/performance-of-various-levels-of-storage.png">  </p>
+</li>
+</ul>
+<blockquote>
+<p>Multitasking environments must be careful to use most recent value, no matter where it is stored in the storage hierarchy  </p>
+<p>Multiprocessor environment must provide cache coherency in hardware such that all CPUs have the most recent value in their cache  </p>
+</blockquote>
+<ul>
+<li>
+<p>I/O Subsystem  </p>
+<ul>
+<li>Memory management of I/O  <ul>
+<li>buffering (storing data temporarily while it is being transferred)  </li>
+<li>caching (storing parts of data in faster storage for performance)  </li>
+<li>spooling (the overlapping of output of one job with input of other jobs)  </li>
+</ul>
+</li>
+<li>General device-driver interface  </li>
+<li>Drivers for specific hardware devices  </li>
+</ul>
+</li>
+<li>
+<p>Protection and Security  </p>
+<ul>
+<li><strong>Protection</strong> – any mechanism for controlling access of processes or users to resources defined by the OS  </li>
+<li><strong>Security</strong> – defense of the system against internal and external attacks  <ul>
+<li>denial-of-service, worms, viruses, identity theft, theft of service  </li>
+</ul>
+</li>
+<li>Some properties to check  <ul>
+<li><strong>uid, sid</strong> - User identities (user IDs, security IDs), User ID then associated with all files, processes of that user to determine access control  </li>
+<li><strong>gid</strong> - Group identifier (group ID) allows set of users to be defined and controls managed, then also associated with each process, file  </li>
+<li><strong>euid, egid</strong> - <strong>Privilege escalation</strong> allows user to change to effective ID with more rights  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Computing Environments  </p>
+<ul>
+<li><strong>Compute-server</strong> provides an interface to client to request services (i.e. database)  </li>
+<li><strong>File-server</strong> provides interface for clients to store and retrieve files  </li>
+</ul>
+</li>
+<li>
+<p>Peer-to-Peer Computing  </p>
+<ul>
+<li>Another model of distributed system  </li>
+<li>P2P does not distinguish clients and servers  </li>
+<li>Node must join P2P network  </li>
+<li>Broadcast request for service and respond to requests for service via discovery protocol  </li>
+<li>Examples include Napster and Gnutella  </li>
+</ul>
+</li>
+<li>
+<p>Web-Based Computing  </p>
+</li>
+<li>
+<p>Cloud Computing  </p>
+</li>
+<li>
+<p>Open-Source Operating Systems  </p>
+<ul>
+<li>Operating systems made available in source-code format rather than just binary closed-source  </li>
+<li>Counter to the copy protection and Digital Rights Management (DRM) movement  </li>
+<li>Started by Free Software Foundation (FSF), which has “copyleft” GNU Public License (GPL)  </li>
+<li>Examples include <strong>GNU/Linux</strong>, <strong>BSD UNIX</strong> (including <strong>core of Mac OS X</strong>), and <strong>Sun Solaris</strong>  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=OS%20Ch1%20-%20Introduction%20to%20Operating%20System%0Ahttps%3A//blog.m157q.tw/posts/2013/11/04/os-ch1-introduction-to-operating-system/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2013/11/04/os-ch1-introduction-to-operating-system/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2013/11/04/os-ch1-introduction-to-operating-system/&title=OS%20Ch1%20-%20Introduction%20to%20Operating%20System&summary=What%20is%20an%20Operating%20System%20%E2%80%A6&source=https%3A//blog.m157q.tw/posts/2013/11/04/os-ch1-introduction-to-operating-system/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=OS%20Ch1%20-%20Introduction%20to%20Operating%20System&amp;body=https%3A//blog.m157q.tw/posts/2013/11/04/os-ch1-introduction-to-operating-system/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/19/os-ch7-deadlocks/">OS Ch7 - Deadlocks</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/26/os-ch8-memory-management/">OS Ch8 - Memory Management</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/05/os-ch6-synchronization/">OS Ch6 - Synchronization</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2013/11/04/os-ch1-introduction-to-operating-system/";
+        var disqus_title = "OS Ch1 - Introduction to Operating System";
+        var disqus_url = "https://blog.m157q.tw/posts/2013/11/04/os-ch1-introduction-to-operating-system/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2013-11-04T15:23:00+08:00"><i class="fa fa-calendar"></i> Mon 04 November 2013</abbr></p>
+
+      <p><abbr title="2015-10-26T15:30:00+08:00"><i class="fa fa-pencil"></i>Mon 26 October 2015</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/course/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="37 articles in this category">Course</a>
+              </p>
+            <a href="/tag/operating-system/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">Operating System</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/03/mount-windows-ntfs-filesystem-on-mac-osx/" title="Mount Windows NTFS filesystem on Mac OSX"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/05/os-ch6-synchronization/" title="OS Ch6 - Synchronization"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.course.atom.xml"><i class="fa fa-rss"></i> Category: Course (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

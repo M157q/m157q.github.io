@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Install Arch Linux on MacBook Air Mid 2013
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/" rel="bookmark" title="Permalink to Install Arch Linux on MacBook Air Mid 2013">Install Arch Linux on MacBook Air Mid 2013</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>參加完 COSCUP 2015，聽完 jserv 的封麥演說以及一句「Linux 使用者有錢以後就會投入 Mac 的懷抱」覺得自己深深中槍，備感慚愧。於是決定來做一件很久以前其實就想做的事：跟 Linus Torvalds 一樣，把 MacBook Air 上的 OS X 砍了，直接灌 Linux 來用。當然，Arch Linux 是首選。以下紀錄一下過程，給有需要的人參考。</p>
+  </blockquote>
+  <div>
+    <hr>
+<blockquote>
+<p>使用上遇到問題，才有動力去解決、改善、貢獻並回饋程式碼到上游。  </p>
+</blockquote>
+<p><code>警告: 把 OS X 砍掉的話，之後要更新 firmware 必須使用有安裝 OS X 的外接硬碟上開機才能更新。</code>  </p>
+<blockquote>
+<p>以下這段是一堆廢話，講了我為什麼決定要把 OS X 砍了然後灌 Linux 在 MacBook Air 上<br>
+不想看的可以直接跳過  </p>
+</blockquote>
+<p>改用 OS X 的這兩年，<br>
+也不是說就完全沒用 Linux 了，<br>
+舊的筆電退役成 Server 架在宿舍裡，<br>
+一個不用桌面環境的 Linux ，<br>
+使用起來基本上是不會遇到太多問題的。<br>
+而 OS X 的確遇到使用上的問題減少了。<br>
+用起來的確跟當初想的一樣，<br>
+是個問題比較沒那麼多的 UNIX-like System<br>
+但同時也在不知不覺中漸漸喪失了解決問題的能力，<br>
+就好像一把兩年前就不再磨的刀劍，愈發鈍鏽。<br>
+當初會買 MacBook Air 而不選擇 UltraBook 的原因<br>
+主要是因為價錢、續航力、重量都是 MacBook Air 勝出，<br>
+當然之後在使用上，我也對重量和續航力很滿意，<br>
+但其實在使用 OS X 上也遇過許多無法接受的問題，有些妥協了，有些沒有<br>
+例如：  </p>
+<ul>
+<li>原生的工具都非常老舊，舊版本代表著很多問題，無論是資安或是有無新功能。這對於一個從使用 Rolling Release 的 Arch Linux user 來說真的很不習慣。  <ul>
+<li>骨灰級的 Bash 真的令我印象深刻，如果沒有 Homebrew 的話，我肯定無法用這麼久，感謝 <code>mxcl</code>  </li>
+</ul>
+</li>
+<li>接網路線跟螢幕線得額外花錢買轉接頭  <ul>
+<li>兩個加起來新台幣 1,600 左右。恩，我跟很多人一樣都買了。  </li>
+</ul>
+</li>
+<li>OS X 10.9 以前的視窗放大真的很雞肋和令人哭笑不得，放大後不會佔滿整個桌面，有時候甚至比按完放大前更小。  <ul>
+<li>在 OS X 10.10 後，放大功能直接改成全螢幕了。恩，不意外，我在 10.9 以前早就都用全螢幕了。  </li>
+</ul>
+</li>
+<li>雙螢幕在 OS X 10.10 仍然有一個我常常踩到的詭異Bug，如果有程式被丟到外接螢幕那邊，在不拔掉螢幕線的情況下，把螢幕闔上進入休眠，接著把螢幕線拔掉，然後喚醒 Mac，這時候就會發現被丟到外接螢幕的應用程式仍然被認為是在外接螢幕的範圍。但因為早就沒有外接螢幕了，所以即便程式仍然在執行，使用者也根本看不到畫面，重點是重新執行該程式也無法解決這問題，只能登出、重開機或是重新接上外接螢幕在電腦喚醒的情況下拔掉螢幕線，或是把該程式拉回原生螢幕，才有辦法解決。  <ul>
+<li>我不確定 Reproduce 的機率是不是 100%，但就是偶爾會遇到，而寫這篇文章的時候已經把我手邊唯一的 OS X 砍了，所以也無從驗證。  </li>
+</ul>
+</li>
+<li>系統介面內建中文字型不好看，要改也很難改。  <ul>
+<li>還好 OS X 10.9 以前有 TCFail 能用，到了 OS X 10.10 只能去改系統檔案設定，而換成了我想用的字型以後，內建的中文輸入法就會掛掉，只好又改回原本的字型。  </li>
+</ul>
+</li>
+<li>輸入法也是個問題  <ul>
+<li>剛用 OS X 10.8 的時候就聽很多人說內建的中文輸入法不是很好用，所以很多人都裝開源的香草或是小麥注音，我本身也是注音輸入法的使用者，但我用了以後還是不太習慣(恩，當時明明用不習慣，卻沒有跳下去幫忙貢獻)。後來找到另一款開源的中州韻輸入法(RIME)，是對岸的中國人<a href="https://github.com/lotem">佛振</a>開發的，在 Windows, Linux, Mac 上都能使用。裝來用以後發現還不錯用，自訂性蠻強大的，由於在用 gcin 時，我習慣把選字鍵從常人慣用的 1234567890 改成 asdfghjkl; 以減少手指移動的距離，這款輸入法也能做到，於是就用了。(至於後來關於 dvorak 跟拼音輸入法又是另一個故事了)  </li>
+<li>到了 OS X 10.10 之後，不知怎的，非官方的中文輸入法都變得超級慢，慢到無法接受，於是又換回不是很好用的官方中文輸入法。(恩，又是一個妥協，沒去追根究底找出為什麼變得這麼慢的原因)  </li>
+</ul>
+</li>
+</ul>
+<p>一不小心好像離題寫了太多關於 OS X 的部份。<br>
+Anyway, 因為種種問題加上這次 COSCUP 的助力，<br>
+還是想回歸到 Linux Desktop Environment 的懷抱，<br>
+促使我把 Arch Linux 灌在我的 MacBook Air 2013 13' 上，<br>
+以下是紀錄。  </p>
+<hr>
+<p>以下流程皆在 <code>MacBookAir6,2 (Macbook Air mid 2013)</code> 上進行<br>
+不同 model 的 MacBook 會有不同的問題<br>
+詳見 <a href="https://wiki.archlinux.org/index.php/MacBook#Model-specific_information">https://wiki.archlinux.org/index.php/MacBook#Model-specific_information</a><br>
+由於我是採用把 OS X 洗掉直接裝 Arch Linux 的方式，並不是雙系統<br>
+所以安裝方式與一般的 Arch Linux 安裝並無太大不同，<br>
+故本篇文章會著重在裝好之後的一些調整  </p>
+<p>如果有人想灌成 Ubuntu 的話，可以參考 <a href="https://help.ubuntu.com/community/MacBookAir">https://help.ubuntu.com/community/MacBookAir</a><br>
+(但上面最新的資料似乎只有到 2013 年的機種就是，當然也歡迎勇者測試之後貢獻)  </p>
+<p><code>警告：MacbookAir6,2 的網卡在 Linux 上"有可能"不被支援(需視網卡型號)，  
+所以可能得另購 USB 無線網卡才有無線網路  
+詳情請見底下關於 Wi-Fi 的部份</code>  </p>
+<p><code>If you want to mute the MacBook firmware boot sound,  
+be sure you mute the volume of the MacBook before you eliminating OS X.</code>  </p>
+<h1>Install Arch Linux Only (No OS X Dual Boot) on MacBook Air</h1>
+<p><code>WARNING: After erasing OS X,  
+We can only update the MacBook Air firmware via the external drive which has already installed OS X.</code>  </p>
+<ol>
+<li>Make Arch Linux bootable Live USB  <ul>
+<li>Go to <a href="https://www.archlinux.org/download/">https://www.archlinux.org/download/</a> and download the newest Arch Linux iso.  </li>
+<li>Plug in a USB drive  </li>
+<li>use <code>diskutil list</code> to find the USB dirve <code>/dev/sdX</code>  </li>
+<li><code>dd if=$(path to arch linux iso) of=/dev/rsdX bs=1m</code>  <ul>
+<li>use raw disk (/dev/rsdX) make this quicker.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Go to AppStore for updating OS X to the newest version  <ul>
+<li>After the first update, reboot, and check for newest update again  </li>
+<li>Make sure it's newest update, espcially the firmware udpate  </li>
+</ul>
+</li>
+<li>Erase OS X  <ul>
+<li>Reboot MacBook Air  </li>
+<li>Press Command + R to enter the Reinstall mode  </li>
+<li>Choose DiskUtility and Erase the entire disk  </li>
+</ul>
+</li>
+<li>Entering Arch Linux Live USB installation  <ul>
+<li>Reboot MacBook Air  </li>
+<li>Press alt/option key for entering EFI bootloader  </li>
+<li>Choose EFI USB  </li>
+</ul>
+</li>
+<li>Install Arch Linux (Just like the normal installation with a little different)  <ul>
+<li><a href="https://wiki.archlinux.org/index.php/Beginners'_guide">Beginners' guide - ArchWiki</a>  </li>
+<li>Important =&gt; <a href="https://wiki.archlinux.org/index.php/MacBook#Arch_Only_Installation">MacBook - ArchWiki</a>  </li>
+<li>Need to be aware about the EFI related options  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>底下其實有些調整不是那麼必要<br>
+可能直接 <code>sudo pacman -S gnome-control-center</code> 就可以解掉許多問題<br>
+只是個人覺得 gnome 太肥，想要用些 light weight 的 packages<br>
+覺得麻煩的人可以直接裝個 gnome-control-center ，然後再視情況安裝需要的東西<br>
+應該可以節省一些時間  </p>
+</blockquote>
+<h1>Post-Install</h1>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/MacBook#Post-installation">https://wiki.archlinux.org/index.php/MacBook#Post-installation</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/General_recommendations">https://wiki.archlinux.org/index.php/General_recommendations</a>  </li>
+<li>Install <a href="https://aur.archlinux.org/packages/yaourt/">yaourt</a>  <ul>
+<li><code>sudo mkdir /var/cache/yaourt</code>  </li>
+<li>save tarball to <code>/var/cache/yaourt</code>  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">/etc/yaourtrc  </span>
+<span class="err">---  </span>
+<span class="err">EXPORT=1  </span>
+<span class="err">EXPORTDIR=&quot;/var/cache/yaourt&quot;  </span>
+</pre></div>
+
+
+<h2>Configs</h2>
+<h3>dotfiles</h3>
+<p>Download my dotfiles on <a href="https://github.com/M157q/dotfiles">https://github.com/M157q/dotfiles</a>  </p>
+<div class="highlight"><pre><span></span>git clone https://github.com/M157q/dotfiles  
+<span class="nb">cd</span> dotfiles  
+make install  
+</pre></div>
+
+
+<h3>Xorg</h3>
+<ul>
+<li><code>sudo pacman -S xcompmgr xorg-xrdb</code>  <ul>
+<li><a href="https://wiki.archlinux.org/index.php/Xcompmgr">xcommpgr</a>  <ul>
+<li>for simple effect, like transparency in <code>guake</code>  </li>
+</ul>
+</li>
+<li><a href="https://wiki.archlinux.org/index.php/X_resources">xorg-xrdb</a>  <ul>
+<li>for <code>.Xresources</code>, some config related to X Window  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Wi-Fi</h3>
+<p>不同型號的網卡會有不同的問題，這部份也需要多加注意。<br>
+光是參考 <a href="https://wiki.archlinux.org/index.php/MacBook#Wi-Fi">https://wiki.archlinux.org/index.php/MacBook#Wi-Fi</a> 可能不夠<br>
+必須再自行找些相關資料，我在這部份卡了一陣子。  </p>
+<p>先確認是哪張網卡<br>
+<code>MacBookAir6,2</code> 沒意外的話應該都是 <code>BCM4360</code> 這張<br>
+但還是有細節得注意  </p>
+<div class="highlight"><pre><span></span>$ lspci -vnn <span class="p">|</span>grep <span class="m">0280</span>  
+<span class="m">03</span>:00.0 Network controller <span class="o">[</span><span class="m">0280</span><span class="o">]</span>: Broadcom Corporation BCM4360 <span class="m">802</span>.11ac Wireless Network Adapter <span class="o">[</span>14e4:43a0<span class="o">]</span> <span class="o">(</span>rev <span class="m">03</span><span class="o">)</span>  
+</pre></div>
+
+
+<p><code>Broadcom BCM4360</code> 這張網卡有兩種<br>
+一種是 <code>14e4:43a0</code>, 另外一種是 <code>14e4:4360</code><br>
+根據 <a href="https://wireless.wiki.kernel.org/en/users/Drivers/b43?highlight=%28b43%29#Supported_devices">https://wireless.wiki.kernel.org/en/users/Drivers/b43?highlight=%28b43%29#Supported_devices</a><br>
+<code>43a0</code> 這張是被 wl 驅動程式支援的，所以如果是這張的話可以用無線網路<br>
+<code>4360</code> 這張則是不被支援的，所以可能需要另外購買無線網卡<br>
+(我沒有親自測試過，如果有勇者或是有經驗的人歡迎回覆告知)  </p>
+<p><code>43a0</code> 的話照著底下的指令做應該就可以使用無線網路連網了 (kernel 為 Linux 4.1.5-1)  </p>
+<ul>
+<li><code>yaourt -S broadcom-wl-dkms</code>  <ul>
+<li>after installation, follow the postinstall instructions.  </li>
+</ul>
+</li>
+<li><code>sudo pacman -S iw</code>  </li>
+<li><code>sudo pacman -S wicd-gtk</code>  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">==&gt; You need to restart the dbus service after  </span>
+<span class="err">==&gt; upgrading wicd.  </span>
+<span class="err">==&gt; Disable networkmanager, dhcpcd or other networking  </span>
+<span class="err">==&gt; utility and add &#39;wicd&#39; to your systemd configuration.  </span>
+</pre></div>
+
+
+<p>記得 <code>systemctl stop dhcpcd</code>, <code>sytemctl disable dhcpcd</code>,<br>
+<code>systemcl stop NetworkManager</code>, <code>systemctl disable NetworkManager</code>，<br>
+然後 <code>systemctl enable wicd</code>，<br>
+<code>dhcpcd</code> 或 <code>NetworkManager</code> 都會跟 <code>wicd</code> 衝突，<br>
+開著 <code>dhcpcd</code> 或 <code>NetworkManager</code> 的時候使用 <code>wicd</code> 的話，<br>
+會無法使用無線網路連線，<br>
+錯誤訊息也看不出啥端倪，<br>
+我就是卡在這很久 Orz  </p>
+<h4>2017.10.31 更新</h4>
+<div class="highlight"><pre><span></span><span class="n">Warning</span><span class="o">:</span> <span class="n">Running</span> <span class="n">multiple</span> <span class="n">network</span> <span class="n">managers</span> <span class="n">will</span> <span class="n">cause</span> <span class="n">problems</span><span class="o">,</span> <span class="n">so</span> <span class="n">it</span> <span class="k">is</span> <span class="n">important</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">all</span> <span class="n">other</span> <span class="n">network</span> <span class="n">management</span> <span class="n">daemons</span><span class="o">.</span>  
+
+<span class="n">First</span><span class="o">,</span> <span class="n">stop</span> <span class="n">all</span> <span class="n">previously</span> <span class="n">running</span> <span class="n">network</span> <span class="n">daemons</span> <span class="o">(</span><span class="n">like</span> <span class="n">netctl</span><span class="o">,</span> <span class="n">netcfg</span><span class="o">,</span> <span class="n">dhcpcd</span><span class="o">,</span> <span class="n">NetworkManager</span><span class="o">).</span>  
+
+<span class="n">Disable</span> <span class="n">any</span> <span class="n">existing</span> <span class="n">network</span> <span class="n">management</span> <span class="n">services</span><span class="o">,</span> <span class="n">including</span> <span class="n">netctl</span><span class="o">,</span> <span class="n">netcfg</span><span class="o">,</span> <span class="n">dhcpcd</span><span class="o">,</span> <span class="n">and</span> <span class="n">networkmanager</span><span class="o">.</span> <span class="n">Refer</span> <span class="n">to</span> <span class="n">Systemd</span><span class="err">#</span><span class="n">Using</span> <span class="n">units</span><span class="o">.</span>  
+<span class="n">Note</span><span class="o">:</span> <span class="n">You</span> <span class="n">might</span> <span class="n">need</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">and</span> <span class="n">disable</span> <span class="n">the</span> <span class="n">network</span> <span class="n">daemon</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">netctl</span><span class="o">,</span> <span class="n">which</span> <span class="k">is</span> <span class="n">a</span> <span class="n">current</span> <span class="n">replacement</span> <span class="k">for</span> <span class="n">network</span> <span class="n">service</span><span class="o">.</span> <span class="n">If</span> <span class="n">unsure</span><span class="o">,</span> <span class="k">try</span> <span class="n">disabling</span> <span class="n">both</span><span class="o">.</span>  
+</pre></div>
+
+
+<p>quote from <a href="https://wiki.archlinux.org/index.php/wicd#Initial_setup">Wicd - ArchWiki</a>  </p>
+<p>我猜不只 <code>wicd</code>，<br>
+其他的 Network Daemon 應該也是同理，<br>
+不要讓他們彼此起衝突。  </p>
+<p>主要是因為我在這裡是使用 <code>wicd</code><br>
+所以如果沒有把 <code>dhcpcd</code> 或 <code>NetworkManager</code> 都關掉的話，<br>
+在 <code>dmesg</code> 會看到以下相關的錯誤訊息：  </p>
+<div class="highlight"><pre><span></span><span class="err">[ 6677.574915] ERROR @wl_notify_scan_status :  </span>
+<span class="err">[ 6677.574919] wlp3s0 Scan_results error (-22)  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">[ 6560.346608] ERROR @wl_cfg80211_scan :  </span>
+<span class="err">[ 6560.346611] WLC_SCAN error (-22)  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">[ 6467.860408] ERROR @wl_notify_scan_status :  </span>
+<span class="err">[ 6467.860413] wlp3s0 Scan_results error (-22)  </span>
+</pre></div>
+
+
+<p>詳細請參考為這個問題而寫的新文章<br>
+<a href="/posts/2017/10/31/make-bcm4360-14e4-43a0-rev-03-work-on-arch-linux-with-broadcom-wl-dkms/">用 broadcom-wl-dkms 讓 BCM4360 [14e4:43a0] (rev 03) 能順利在 Arch Linux 中使用</a>  </p>
+<hr>
+<h4>Improve DHCP connect init speed</h4>
+<ul>
+<li>Add below into <code>/etc/dhcpcd.conf</code>  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err"># Disable IP ARP checking  </span>
+<span class="err">noarp  </span>
+</pre></div>
+
+
+<h4>Network Proxy Settings</h4>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Proxy_settings">https://wiki.archlinux.org/index.php/Proxy_settings</a>  </li>
+<li><code>wicd</code> has no proxy setting function, I can only set proxy configuration in <code>Firefox</code>.(This only works for web browsing)  </li>
+<li><code>networkmanager</code> can have proxy settings via install plugin <code>proxydriver</code>, check <a href="https://wiki.archlinux.org/index.php/NetworkManager">NetworkManager - ArchWiki</a> for how to setup.  </li>
+<li>I am kinda <code>wicd</code> lover and don't use proxy really often, so I think I'm just ok with it currently.  </li>
+<li>(Considering write the proxy setting functionality for <code>wicd</code>...)  </li>
+</ul>
+<h3>File Manager</h3>
+<ul>
+<li><code>sudo pacman -S pcmanfm</code>  </li>
+</ul>
+<h3>Keyboard</h3>
+<ul>
+<li><code>sudo pacman -S xorg-xmodmap</code>  <ul>
+<li>for changing keymap like swap Ctrl and Caps Lock  </li>
+</ul>
+</li>
+<li>Check /etc/mkinitcpio.conf if <code>HOOKS</code> have <code>keyboard</code>, if not, add it then <code>sudo mkinitcpio -p linux</code>  </li>
+<li>fix <code>~</code> problem  <ul>
+<li>if you press <code>~</code> on the keyboard, it will not print out <code>~</code> correctly.  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">/etc/modprobe.d/hid_apple.conf  </span>
+<span class="err">---  </span>
+<span class="err">options hid_apple iso_layout=0  </span>
+</pre></div>
+
+
+<h4>Backlight</h4>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/MacBook#Keyboard_Backlight">https://wiki.archlinux.org/index.php/MacBook#Keyboard_Backlight</a>  </li>
+<li><code>yaourt -S kbdlight</code>  </li>
+<li><code>sudo pacman -S xorg-xev</code>  <ul>
+<li>For chekcing the key value of keyboard  </li>
+</ul>
+</li>
+</ul>
+<h3>Synaptic (Touchpad)</h3>
+<ul>
+<li><code>sudo pacman -S xf86-input-synaptics</code>  <ul>
+<li>only basic functions<br>
+or  </li>
+</ul>
+</li>
+<li><code>yaourt -S xf86-input-mtrack-git</code>  <ul>
+<li><a href="https://github.com/BlueDragonX/xf86-input-mtrack">https://github.com/BlueDragonX/xf86-input-mtrack</a>  </li>
+<li>for OS X like touchpad and flexible configuration  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">X11</span><span class="o">/</span><span class="n">xorg</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">mtrack</span><span class="p">.</span><span class="n">conf</span>  
+<span class="c1">---  </span>
+<span class="n">Section</span> <span class="ss">&quot;InputClass&quot;</span>  
+    <span class="n">MatchIsTouchpad</span> <span class="ss">&quot;on&quot;</span>  
+    <span class="n">Identifier</span>      <span class="ss">&quot;Touchpads&quot;</span>  
+    <span class="n">Driver</span>          <span class="ss">&quot;mtrack&quot;</span>  
+
+    <span class="k">Option</span> <span class="ss">&quot;Thumbsize&quot;</span>      <span class="ss">&quot;50&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;ScrollDistance&quot;</span> <span class="ss">&quot;150&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;Sensitivity&quot;</span>    <span class="ss">&quot;0.9&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;MaxTapTime&quot;</span>     <span class="ss">&quot;120&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;IgnoreThumb&quot;</span>    <span class="ss">&quot;true&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;IgnorePalm&quot;</span>     <span class="ss">&quot;true&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;TapDragEnable&quot;</span>  <span class="ss">&quot;false&quot;</span>  
+
+    <span class="o">#</span> <span class="k">Natural</span> <span class="n">Scrolling</span>  
+    <span class="k">Option</span> <span class="ss">&quot;ScrollUpButton&quot;</span>     <span class="ss">&quot;5&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;ScrollDownButton&quot;</span>   <span class="ss">&quot;4&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;ScrollLeftButton&quot;</span>   <span class="ss">&quot;7&quot;</span>  
+    <span class="k">Option</span> <span class="ss">&quot;ScrollRightButton&quot;</span>  <span class="ss">&quot;6&quot;</span>  
+
+    <span class="o">#</span> <span class="n">Disable</span> <span class="n">tap</span><span class="o">-</span><span class="k">to</span><span class="o">-</span><span class="n">click</span>  
+    <span class="o">#</span> <span class="k">Option</span> <span class="ss">&quot;TapButton1&quot;</span> <span class="ss">&quot;0&quot;</span>  
+    <span class="o">#</span> <span class="k">Option</span> <span class="ss">&quot;TapButton2&quot;</span> <span class="ss">&quot;0&quot;</span>  
+    <span class="o">#</span> <span class="k">Option</span> <span class="ss">&quot;TapButton3&quot;</span> <span class="ss">&quot;0&quot;</span>  
+<span class="n">EndSection</span>  
+</pre></div>
+
+
+<h3>Bluetooth (Headset)</h3>
+<ul>
+<li>links  <ul>
+<li><a href="https://wiki.archlinux.org/index.php/Bluetooth">https://wiki.archlinux.org/index.php/Bluetooth</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Blueman">https://wiki.archlinux.org/index.php/Blueman</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Bluetooth_headset">https://wiki.archlinux.org/index.php/Bluetooth_headset</a>  </li>
+</ul>
+</li>
+<li><code>sudo pacman -S bluez bluez-utils bluez-libs bluez-firmware blueman pulseaudio-bluetooth pulseaudio-alsa pavucontrol</code>  </li>
+<li><code>sudo modprobe btusb</code>  </li>
+<li><code>sudo systemctl enable bluetooth</code>  </li>
+<li><code>sudo systemctl start bluetooth</code>  </li>
+<li><code>blueman-manager</code>  <ul>
+<li>scan, pair, connect  </li>
+</ul>
+</li>
+<li><code>pavucontrol</code>  <ul>
+<li>Change sound channel to bluetooth headset  </li>
+</ul>
+</li>
+<li>Sometimes the bluetooth device may be blocked  <ul>
+<li>use <code>rfkill list</code> to check if it is blocked.  </li>
+<li>use <code>sudo rfkill unblock bluetooth</code> to unblock.  </li>
+</ul>
+</li>
+</ul>
+<h3>Sound</h3>
+<ul>
+<li><code>sudo pacman -S xf86-video-intel alsa-utils</code>  <ul>
+<li>alsa-utils include alsamixer, amixer  </li>
+</ul>
+</li>
+<li>Add the content below to <code>/etc/asound.conf</code> //Important  <ul>
+<li><code>/etc/asound.conf</code> should be created after installed <code>pulseaudio-alsa</code>  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">/etc/asound.conf  </span>
+<span class="err">---  </span>
+<span class="err">defaults.pcm.card 1  </span>
+<span class="err">defaults.pcm.device 0  </span>
+<span class="err">defaults.ctl.card 1  </span>
+</pre></div>
+
+
+<h3>awesomewm</h3>
+<ul>
+<li><code>sudo pacman -S awesome vicious</code>  </li>
+<li><code>cp -r /usr/share/awesome/themes ~/.config/awesome/</code>  </li>
+</ul>
+<h3>Power Management</h3>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Power_management">https://wiki.archlinux.org/index.php/Power_management</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/MacBookPro11,x#Powersave">https://wiki.archlinux.org/index.php/MacBookPro11,x#Powersave</a>  </li>
+</ul>
+<h4>ACPI</h4>
+<ul>
+<li><code>sudo pacman -S acpi</code>  </li>
+</ul>
+<h4>Powertop</h4>
+<ul>
+<li><code>sudo pacman -S powertop</code>  </li>
+<li>Create <code>/etc/systemd/system/powertop.service</code>  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">Unit</span><span class="o">]</span><span class="w">  </span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Powertop</span><span class="w"> </span><span class="n">Service</span><span class="w">  </span>
+<span class="o">[</span><span class="n">Service</span><span class="o">]</span><span class="w">  </span>
+<span class="n">Type</span><span class="o">=</span><span class="n">oneshot</span><span class="w">  </span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">powertop</span><span class="w"> </span><span class="c1">--auto-tune  </span>
+<span class="o">[</span><span class="n">Install</span><span class="o">]</span><span class="w">  </span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="k">user</span><span class="p">.</span><span class="n">target</span><span class="w">  </span>
+</pre></div>
+
+
+<ul>
+<li><code>sudo systemctl enable powertop.service</code>  </li>
+<li><code>sudo systemctl start powertop.service</code>  </li>
+</ul>
+<h4>cpupower</h4>
+<ul>
+<li><a href="https://github.com/torvalds/linux/tree/master/tools/power/cpupower">https://github.com/torvalds/linux/tree/master/tools/power/cpupower</a>  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">sudo pacman -S cpupower  </span>
+<span class="err">sudo systemctl enable cpupower  </span>
+<span class="err">sudo systemctl start cpupower  </span>
+<span class="err">sudo cpupower frequency-set -g powersave  </span>
+</pre></div>
+
+
+<h4>thermald</h4>
+<ul>
+<li><a href="https://github.com/01org/thermal_daemon">01org/thermal_daemon · GitHub</a>  </li>
+<li>Thermal daemon for Intel Architecture  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">yaourt -S thermald  </span>
+<span class="err">sudo systemctl enable thermald  </span>
+<span class="err">sudo systemctl start thermald  </span>
+</pre></div>
+
+
+<h4>Fix the kworker CPU hug</h4>
+<p>"kworker" triggers some ACPI interrupts.<br>
+You can use <code>grep . -r /sys/firmware/acpi/interrupts/</code> to check.<br>
+For me, <code>gpe4E</code> triggered lots of ACPI interruptions.<br>
+So disable it via systemd.  </p>
+<p>Create <code>/etc/systemd/system/suppress-gpe4E.service</code><br>
+and add the following lines.  </p>
+<div class="highlight"><pre><span></span><span class="o">[</span><span class="n">Unit</span><span class="o">]</span><span class="w">  </span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Disables</span><span class="w"> </span><span class="n">GPE</span><span class="w"> </span><span class="mi">4</span><span class="n">E</span><span class="p">,</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">interrupt</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">going</span><span class="w"> </span><span class="n">crazy</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">Macs</span><span class="w">  </span>
+<span class="o">[</span><span class="n">Service</span><span class="o">]</span><span class="w">  </span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">bash</span><span class="w"> </span><span class="o">-</span><span class="n">c</span><span class="w"> </span><span class="s1">&#39;echo &quot;disable&quot; &gt; /sys/firmware/acpi/interrupts/gpe4E&#39;</span><span class="w">  </span>
+<span class="o">[</span><span class="n">Install</span><span class="o">]</span><span class="w">  </span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="k">user</span><span class="p">.</span><span class="n">target</span><span class="w">  </span>
+</pre></div>
+
+
+<p>then enable and start it:<br>
+<code>sudo systemctl enable suppress-gpe4E.service</code><br>
+<code>sudo systemctl start suppress-gpe4E.service</code>  </p>
+<h4>Enable power save mode on Intel Audio card</h4>
+<p>Create new hook:<br>
+<code>sudoedit /etc/modprobe.d/60-snd-hda-intel.conf</code><br>
+and add:  </p>
+<div class="highlight"><pre><span></span><span class="err"># Enable Power Saving on Intel HDA Audio  </span>
+<span class="err">options snd_hda_intel power_save=1  </span>
+</pre></div>
+
+
+<h4>Enable powersaving options for Intel Processor</h4>
+<p>Create new hook:<br>
+<code>sudoedit /etc/modprobe.d/60-i915.conf</code><br>
+and add:  </p>
+<div class="highlight"><pre><span></span><span class="err"># Experimental options to improve power saving on Intel Graphics  </span>
+<span class="err">options i915 enable_rc6=1 enable_fbc=1 lvds_downclock=1  </span>
+</pre></div>
+
+
+<h3>Suspend problem</h3>
+<h4>Prevent shutdown directly when power button is pressed</h4>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/MacBookPro11,x#Repurpose_the_power_key">https://wiki.archlinux.org/index.php/MacBookPro11,x#Repurpose_the_power_key</a>  </li>
+<li><code>/etc/systemd/logind.conf</code>  <ul>
+<li><code>HandlePowerKey=suspend</code>  </li>
+</ul>
+</li>
+</ul>
+<h4>Disable <a href="https://en.wikipedia.org/wiki/Swappiness">Swappiness</a></h4>
+<p>To save SSD and avoid kswapd using lots of CPU resource on finding available swap when there's no more virtual memory can be used.  </p>
+<ul>
+<li><a href="https://github.com/igorpecovnik/lib/issues/219">kswapd 100% CPU-usage · Issue #219 · igorpecovnik/lib · GitHub</a>  </li>
+<li><a href="https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/sysctl/vm.txt">https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/sysctl/vm.txt</a>  </li>
+<li><code>sudo sysctl vm.swappiness=0</code>  <ul>
+<li><code>The kernel will swap only to avoid an out of memory condition, when free memory will be below vm.min_free_kbytes limit. See the "VM Sysctl documentation"</code>  </li>
+<li><code>sudo sysctl vm.min_free_kbytes=0</code>  </li>
+</ul>
+</li>
+<li><code>sudoedit /etc/sysctl.d/99-sysctl.conf</code>  <ul>
+<li>Add <code>vm.swappiness=0</code>  </li>
+<li>Add <code>vm.min_free_kbytes=0</code>  </li>
+</ul>
+</li>
+</ul>
+<h4>Fixing suspend mode</h4>
+<p>Use <code>cat /proc/acpi/wakeup</code>.<br>
+There's a line saying <code>XHC1  S3  *enabled  pci:0000:00:14.0</code>.<br>
+We only want the <code>LID0  S4  *enabled   platform:PNP0C0D:00</code> to be enbaled.<br>
+So <code>sudoedit /etc/udev/rules.d/90-xhc_sleep.rules</code> and add the follwing lines.  </p>
+<div class="highlight"><pre><span></span><span class="err"># Disable wake from S3 on XHC1  </span>
+<span class="err">SUBSYSTEM==&quot;pci&quot;, KERNEL==&quot;0000:00:14.0&quot;, ATTR{device}==&quot;0x9c31&quot; RUN+=&quot;/bin/sh -c &#39;/bin/echo disabled &gt; /sys$env{DEVPATH}/power/wakeup&#39;&quot;  </span>
+</pre></div>
+
+
+<h4>Powersave</h4>
+<ul>
+<li><a href="https://github.com/Unia/powersave">GitHub - Unia/powersave: Linux power save settings, compatible with systemd</a>  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">sysctl</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">99</span><span class="o">-</span><span class="n">powersave</span><span class="p">.</span><span class="n">conf</span>  
+<span class="c1">---  </span>
+<span class="o">#</span> <span class="n">Disable</span> <span class="n">NMI</span> <span class="n">watchdog</span>  
+<span class="n">kernel</span><span class="p">.</span><span class="n">nmi_watchdog</span> <span class="o">=</span> <span class="mi">0</span>  
+
+<span class="o">#</span> <span class="n">laptop_mode</span> <span class="k">is</span> <span class="n">a</span> <span class="n">knob</span> <span class="n">that</span> <span class="n">controls</span> <span class="ss">&quot;laptop mode&quot;</span><span class="p">.</span> <span class="k">All</span> <span class="n">the</span> <span class="n">things</span> <span class="n">that</span> <span class="k">are</span> <span class="n">controlled</span> <span class="k">by</span> <span class="n">this</span>  
+<span class="o">#</span> <span class="n">knob</span> <span class="k">are</span> <span class="n">discussed</span> <span class="k">in</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="p">.</span><span class="n">kernel</span><span class="p">.</span><span class="n">org</span><span class="o">/</span><span class="n">doc</span><span class="o">/</span><span class="n">Documentation</span><span class="o">/</span><span class="n">laptops</span><span class="o">/</span><span class="n">laptop</span><span class="o">-</span><span class="k">mode</span><span class="p">.</span><span class="n">txt</span> <span class="p">(</span><span class="k">Default</span>  
+<span class="o">#</span> <span class="k">is</span> <span class="mi">0</span><span class="p">).</span>  
+<span class="n">vm</span><span class="p">.</span><span class="n">laptop_mode</span> <span class="o">=</span> <span class="mi">5</span>  
+
+<span class="o">#</span> <span class="k">Contains</span><span class="p">,</span> <span class="k">as</span> <span class="n">a</span> <span class="n">percentage</span> <span class="k">of</span> <span class="n">total</span> <span class="n">available</span> <span class="n">memory</span> <span class="n">that</span> <span class="k">contains</span> <span class="k">free</span> <span class="n">pages</span> <span class="k">and</span> <span class="n">reclaimable</span>  
+<span class="o">#</span> <span class="n">pages</span><span class="p">,</span> <span class="n">the</span> <span class="nb">number</span> <span class="k">of</span> <span class="n">pages</span> <span class="k">at</span> <span class="n">which</span> <span class="n">a</span> <span class="n">process</span> <span class="n">which</span> <span class="k">is</span> <span class="n">generating</span> <span class="n">disk</span> <span class="n">writes</span> <span class="n">will</span> <span class="n">itself</span> <span class="k">start</span>  
+<span class="o">#</span> <span class="n">writing</span> <span class="k">out</span> <span class="n">dirty</span> <span class="k">data</span> <span class="p">(</span><span class="k">Default</span> <span class="k">is</span> <span class="mi">20</span><span class="p">).</span>  
+<span class="o">#</span><span class="n">vm</span><span class="p">.</span><span class="n">dirty_ratio</span> <span class="o">=</span> <span class="mi">20</span>  
+
+<span class="o">#</span> <span class="k">Contains</span><span class="p">,</span> <span class="k">as</span> <span class="n">a</span> <span class="n">percentage</span> <span class="k">of</span> <span class="n">total</span> <span class="n">available</span> <span class="n">memory</span> <span class="n">that</span> <span class="k">contains</span> <span class="k">free</span> <span class="n">pages</span> <span class="k">and</span> <span class="n">reclaimable</span>  
+<span class="o">#</span> <span class="n">pages</span><span class="p">,</span> <span class="n">the</span> <span class="nb">number</span> <span class="k">of</span> <span class="n">pages</span> <span class="k">at</span> <span class="n">which</span> <span class="n">the</span> <span class="n">background</span> <span class="n">kernel</span> <span class="n">flusher</span> <span class="n">threads</span> <span class="n">will</span> <span class="k">start</span> <span class="n">writing</span> <span class="k">out</span>  
+<span class="o">#</span> <span class="n">dirty</span> <span class="k">data</span> <span class="p">(</span><span class="k">Default</span> <span class="k">is</span> <span class="mi">10</span><span class="p">).</span>  
+<span class="o">#</span><span class="n">vm</span><span class="p">.</span><span class="n">dirty_background_ratio</span> <span class="o">=</span> <span class="mi">10</span>  
+
+<span class="o">#</span> <span class="n">This</span> <span class="n">tunable</span> <span class="k">is</span> <span class="n">used</span> <span class="k">to</span> <span class="n">define</span> <span class="k">when</span> <span class="n">dirty</span> <span class="k">data</span> <span class="k">is</span> <span class="k">old</span> <span class="n">enough</span> <span class="k">to</span> <span class="n">be</span> <span class="n">eligible</span> <span class="k">for</span> <span class="n">writeout</span> <span class="k">by</span> <span class="n">the</span>  
+<span class="o">#</span> <span class="n">kernel</span> <span class="n">flusher</span> <span class="n">threads</span><span class="p">.</span>  <span class="n">It</span> <span class="k">is</span> <span class="n">expressed</span> <span class="k">in</span> <span class="mi">100</span><span class="s1">&#39;ths of a second.  Data which has been dirty  </span>
+<span class="s1"># in-memory for longer than this interval will be written out next time a flusher thread wakes up  </span>
+<span class="s1"># (Default is 3000).  </span>
+<span class="s1">#vm.dirty_expire_centisecs = 3000  </span>
+
+<span class="s1"># The kernel flusher threads will periodically wake up and write `old&#39;</span> <span class="k">data</span> <span class="k">out</span> <span class="k">to</span> <span class="n">disk</span><span class="p">.</span>  <span class="n">This</span>  
+<span class="o">#</span> <span class="n">tunable</span> <span class="n">expresses</span> <span class="n">the</span> <span class="nb">interval</span> <span class="k">between</span> <span class="n">those</span> <span class="n">wakeups</span><span class="p">,</span> <span class="k">in</span> <span class="mi">100</span><span class="err">&#39;</span><span class="n">ths</span> <span class="k">of</span> <span class="n">a</span> <span class="k">second</span> <span class="p">(</span><span class="k">Default</span> <span class="k">is</span> <span class="mi">500</span><span class="p">).</span>  
+<span class="n">vm</span><span class="p">.</span><span class="n">dirty_writeback_centisecs</span> <span class="o">=</span> <span class="mi">1500</span>  
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">/etc/udev/rules.d/50-powersave-brightness.rules  </span>
+<span class="err">---  </span>
+<span class="err"># Display Power Management Signaling  </span>
+<span class="err">SUBSYSTEM==&quot;power_supply&quot;, ENV{POWER_SUPPLY_ONLINE}==&quot;0&quot;, ENV{DISPLAY}=&quot;DPY&quot;, ENV{XAUTHORITY}=&quot;/home/USER/.Xauthority&quot;, RUN+=&quot;/usr/bin/xset dpms 120 240 360&quot;  </span>
+<span class="err">SUBSYSTEM==&quot;power_supply&quot;, ENV{POWER_SUPPLY_ONLINE}==&quot;1&quot;, ENV{DISPLAY}=&quot;DPY&quot;, ENV{XAUTHORITY}=&quot;/home/USER/.Xauthority&quot;, RUN+=&quot;/usr/bin/xset dpms 300 450 600&quot;  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">/etc/udev/rules.d/50-powersave-suspend.rules  </span>
+<span class="err">---  </span>
+<span class="err"># Suspend when battery is at 2%  </span>
+<span class="err">SUBSYSTEM==&quot;power_supply&quot;, ATTR{status}==&quot;Discharging&quot;, ATTR{capacity}==&quot;2&quot;, RUN+=&quot;/usr/bin/systemctl suspend&quot;  </span>
+</pre></div>
+
+
+<h3>Monitor</h3>
+<h4>Dual Display</h4>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Multihead">https://wiki.archlinux.org/index.php/Multihead</a>  </li>
+<li><code>sudo pacman -S xorg-xrandr</code>  <ul>
+<li><a href="https://wiki.archlinux.org/index.php/Xrandr">https://wiki.archlinux.org/index.php/Xrandr</a>  </li>
+<li>xrandr should work.  </li>
+</ul>
+</li>
+<li>For more friendly GUI setting, <code>sudo pacman -S lxrandr</code>  </li>
+</ul>
+<h5>But my 1920x1080 external display only get 1024x768 support</h5>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Xrandr#Adding_undetected_resolutions">https://wiki.archlinux.org/index.php/Xrandr#Adding_undetected_resolutions</a>  </li>
+</ul>
+<div class="highlight"><pre><span></span>$ cvt <span class="m">1920</span> <span class="m">1080</span>  
+<span class="c1"># 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz  </span>
+Modeline <span class="s2">&quot;1920x1080_60.00&quot;</span>  <span class="m">173</span>.00  <span class="m">1920</span> <span class="m">2048</span> <span class="m">2248</span> <span class="m">2576</span>  <span class="m">1080</span> <span class="m">1083</span> <span class="m">1088</span> <span class="m">1120</span> -hsync +vsync  
+
+$ xrandr --newmode <span class="s2">&quot;1920x1080_60.00&quot;</span>  <span class="m">173</span>.00  <span class="m">1920</span> <span class="m">2048</span> <span class="m">2248</span> <span class="m">2576</span>  <span class="m">1080</span> <span class="m">1083</span> <span class="m">1088</span> <span class="m">1120</span> -hsync +vsync  
+
+$ xrandr --addmode DP1 1920x1080_60.00  
+
+$ xrandr --output eDP1 --auto --output DP1 --mode 1920x1080_60.00 --left-of eDP1  
+</pre></div>
+
+
+<h5>Hotplug problem - xrandr won't detect hotplug mini-display port to VGA adapter</h5>
+<ul>
+<li>I'm pretty sure that <code>udev</code> indeed detect the hotplug event, but <code>xrandr</code> always shows that <code>DP1</code>(external VGA monitor) is disconnected.  </li>
+<li>This can be solved by adding mode for <code>DP1</code> (check commands above).  </li>
+<li>After adding modes, just type <code>xrandr --output eDP1 --auto --output DP1 --mode ${mode_name} --left-of eDP1</code> again, even if <code>xrandr</code> still shows that <code>DP1</code> is disconnected, it works.  </li>
+<li>So, add all modes we need (1920x1080, 1280x720, 1024x768, ...) can be a workaroud for this problem.  </li>
+<li>I think the problem is on <code>xrandr</code> cannot recongnize whether thunderbolt to VGA adapter is connected or not when hotplug.  </li>
+<li>Add below to <code>.xinitrc</code>  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">xrandr</span> <span class="c1">--newmode &quot;1920x1080_60.00&quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync  </span>
+<span class="n">xrandr</span> <span class="c1">--addmode DP1 1920x1080_60.00  </span>
+
+<span class="n">xrandr</span> <span class="c1">--newmode &quot;1280x720_60.00&quot;   74.50  1280 1344 1472 1664  720 723 728 748 -hsync +vsync  </span>
+<span class="n">xrandr</span> <span class="c1">--addmode DP1 1280x720_60.00  </span>
+
+<span class="n">xrandr</span> <span class="c1">--newmode &quot;1024x768_60.00&quot;   63.50  1024 1072 1176 1328  768 771 775 798 -hsync +vsync  </span>
+<span class="n">xrandr</span> <span class="c1">--addmode DP1 1024x768_60.00  </span>
+
+<span class="n">xrandr</span> <span class="c1">--output eDP1 --auto --output DP1 --mode 1920x1080_60.00 --left-of eDP1  </span>
+</pre></div>
+
+
+<h4>Birghtness</h4>
+<ul>
+<li><code>sudo pacman -S xorg-xbacklight</code>  </li>
+<li><code>yaourt -S mba6x_bl-dkms</code>  <ul>
+<li>(2016/12/02 update)  <ul>
+<li><code>mba6x_bl-dkms</code> now depends on <code>mba6x_bl_dkms-git</code>  </li>
+<li><code>mba6x_bl-dkms-git-48.055d50d-1</code> doesn't work with <code>linux-4.8.11-1</code>  </li>
+<li>Need to use <code>sudo rmmod mba6x_bl</code> to make <code>xbacklight</code> work.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>(optional) <code>yaourt -S lightum-git</code>  <ul>
+<li>For auto adjust keyboard and monitor birghtness by light sensor  </li>
+<li>The AUR version has bug, use this fork version <a href="https://github.com/esoleyman/lightum">https://github.com/esoleyman/lightum</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>USB</h3>
+<ul>
+<li><code>yaourt -S pmount</code>  </li>
+</ul>
+<h3>Fan</h3>
+<ul>
+<li><a href="https://github.com/MikaelStrom/macfanctld">https://github.com/MikaelStrom/macfanctld</a>  </li>
+</ul>
+<div class="highlight"><pre><span></span>$ yaourt -S macfanctld  
+$ sudo systemctl <span class="nb">enable</span> macfanctld  
+$ sudo systemctl start macfanctld  
+</pre></div>
+
+
+<h3>IME</h3>
+<ul>
+<li><code>sudo pacman -S gcin</code>  </li>
+<li><code>sudo pacman -S libchewing</code>  <ul>
+<li>for chewing input method  </li>
+</ul>
+</li>
+<li><code>sudo pacman -S anthy</code>  <ul>
+<li>for Japanese input method  </li>
+</ul>
+</li>
+<li><code>sudo gtk-query-immodules-2.0 --update-cache</code>  </li>
+</ul>
+<h3>Browser</h3>
+<ul>
+<li><code>sudo pacman -S firefox firefox-i18n-zh-tw</code>  </li>
+<li>Flash  <ul>
+<li><code>sudo pacman -S flashplugin</code>  </li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/flashblock/">https://addons.mozilla.org/en-US/firefox/addon/flashblock/</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>Fonts</h3>
+<ul>
+<li><code>sudo pacman -S wqy-zenhei adobe-source-han-sans-tw-fonts</code>  </li>
+</ul>
+<h3>Mobile</h3>
+<h4>USB-Tethering (Works out of box)</h4>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Android_tethering#USB_tethering">https://wiki.archlinux.org/index.php/Android_tethering#USB_tethering</a>  <ul>
+<li>Disconnect from other networks  </li>
+<li>Connect phone to computer via USB cable  </li>
+<li>Enable the tethering option from the phone  </li>
+<li>Use <code>ip link</code> and search <code>usb?</code> or <code>enp?s??u?</code> interface  </li>
+<li><code>sudo dhcpcd ${interface}</code>  </li>
+<li>Use <code>ip link</code> again to check if already got an ip on that interface  </li>
+</ul>
+</li>
+</ul>
+<h4>Mount Android phone</h4>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/MTP">https://wiki.archlinux.org/index.php/MTP</a>  </li>
+<li>install <code>libmtp</code>, <code>android-file-transfer</code>  </li>
+</ul>
+<div class="highlight"><pre><span></span>$ sudo pacman -S libmtp  
+$ yaourt -S android-file-transfer  
+
+<span class="o">(</span>connect Android phone to Arch Linux via USB<span class="o">)</span>  
+
+$ aft-mtp-mount ~/mnt   // mount android to ~/mnt  
+$ fusermount -u ~/mnt   // unmount  
+</pre></div>
+
+
+<h3>Webcam</h3>
+<blockquote>
+<p>[UPDATED] see the info below  </p>
+<p>The Facetime HD webcam (included on 2013 MBAs onwards) is no longer UVC device, and therefore, does not work out of the box.<br>
+It is actually a PCIE device.<br>
+While <a href="https://github.com/patjak/bcwc_pcie">a bcwc_pcie driver is being developed</a>, it will probably take some time before it is ready.<br>
+See also <a href="https://bugzilla.kernel.org/show_bug.cgi?id=71131">Linux bug #71131</a> and <a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1276811">Ubuntu bug #1276711</a>.  </p>
+</blockquote>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/MacBook#Webcam">https://wiki.archlinux.org/index.php/MacBook#Webcam</a>  </li>
+<li>(2017/12/08 update)  <ul>
+<li><a href="https://aur.archlinux.org/packages/bcwc-pcie-git/">bcwc-pcie-git</a> on AUR works.  <ul>
+<li>Use <code>yaourt -S bcwc-pcie-git</code> or download the tarball and use <code>makepkg -s</code> to install it.  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Disable MacBook Firmware Boot Sound</h3>
+<p><a href="https://wiki.archlinux.org/index.php/MacBook#Arch_Linux_only">https://wiki.archlinux.org/index.php/MacBook#Arch_Linux_only</a>  </p>
+<blockquote>
+<p>The only special consideration is the MacBook firmware boot sound.<br>
+To ensure that this sound is off: mute the volume in OS X before continuing further.  </p>
+</blockquote>
+<p>I forgot to mute the volume before deleting the OS X.<br>
+So, I have to get an OS X installed on USB drive.<br>
+In order to mute the firmware boot sound and for the firmware updating in the furture.  </p>
+<h3>Hotkey Settings</h3>
+<ul>
+<li>use <code>xev</code> to check the keymap  </li>
+<li>modify <code>rc.lua</code> instead using <code>sxhkd</code> if you are using awesomewm.  </li>
+<li><a href="https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control">https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control</a>  </li>
+<li>Add below to the globalkeys in <code>rc.lua</code>  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">-- MacBook Air function keys  </span>
+<span class="err">awful.key({ }, &quot;XF86MonBrightnessDown&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;xbacklight -dec 10&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">),  </span>
+<span class="err">awful.key({ }, &quot;XF86MonBrightnessUp&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;xbacklight -inc 10&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">),  </span>
+<span class="err">awful.key({ }, &quot;XF86LaunchA&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;xrandr --output eDP1 --auto --output DP1 --mode 1920x1080_60.00 --left-of eDP1&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">),  </span>
+<span class="err">awful.key({ }, &quot;XF86LaunchB&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;xrandr --output eDP1 --auto --output DP1 --mode 1920x1080_60.00 --same-as eDP1&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">),  </span>
+<span class="err">awful.key({ }, &quot;XF86KbdBrightnessDown&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;kbdlight down 10&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">),  </span>
+<span class="err">awful.key({ }, &quot;XF86KbdBrightnessUp&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;kbdlight up 10&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">),  </span>
+<span class="err">awful.key({ }, &quot;XF86AudioMute&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;pactl set-sink-mute 0 toggle&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">),  </span>
+<span class="err">awful.key({ }, &quot;XF86AudioLowerVolume&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;pactl set-sink-mute 0 false&quot;)  </span>
+<span class="err">        awful.util.spawn(&quot;pactl set-sink-volume 0 -5%&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">),  </span>
+<span class="err">awful.key({ }, &quot;XF86AudioRaiseVolume&quot;,  </span>
+<span class="err">    function ()  </span>
+<span class="err">        awful.util.spawn(&quot;pactl set-sink-mute 0 false&quot;)  </span>
+<span class="err">        awful.util.spawn(&quot;pactl set-sink-volume 0 +5%&quot;)  </span>
+<span class="err">    end  </span>
+<span class="err">)  </span>
+</pre></div>
+
+
+<h3>Kernel Upgrade</h3>
+<p>After the kernel upgrade,<br>
+there are no <code>wl</code> and <code>mba6x_bl</code> modules for the new kernel,<br>
+(Becasue these two modules are in AUR and not supported by the Official.)<br>
+so, we need to rebuild <code>broadcom-wl-dkms</code> and <code>mba6x_bl-dkms</code> again.<br>
+Otherwise, the wireless interface won't be detected and backlight cannot be tuned while using the new kernel.<br>
+Be sure to download the lastest version of these two packages before reboot to the new kernel.<br>
+Follow the instructions below should work.  </p>
+<div class="highlight"><pre><span></span>$ sudo pacman -S linux-headers linux  
+
+<span class="o">(</span>after kernel upgarde, download lastest version of these two packages<span class="o">)</span>  
+$ yaourt -S broadcom-wl-dkms mba6x_bl-dkms  
+$ reboot  
+
+<span class="o">(</span>after reboot, rebuild these two kernel modules <span class="k">for</span> the new kernel and load them<span class="o">)</span>  
+$ <span class="nb">cd</span> /var/cache/yaourt  
+$ sudo pacman -U <span class="si">${</span><span class="nv">broadcom</span><span class="p">-wl-dkms_package</span><span class="si">}</span> <span class="si">${</span><span class="nv">mba6x_bl</span><span class="p">-dkms_package</span><span class="si">}</span>  
+$ sudo modprobe wl mba6x_bl  
+
+$ reboot  //optional  
+<span class="o">(</span>reboot again, and make sure that everything goes right.<span class="o">)</span>  
+</pre></div>
+
+
+<ul>
+<li>Upgrade all packages  <ul>
+<li><code>yaourt -Syua</code>  </li>
+</ul>
+</li>
+<li>Upgrade all packages (with refetching and recompling all git packages  <ul>
+<li><code>yaourt -Syua --devel</code>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Misc</h2>
+<p>Below are my personal needed. It's optional.<br>
+<a href="https://wiki.archlinux.org/index.php/List_of_applications">https://wiki.archlinux.org/index.php/List_of_applications</a>  </p>
+<ul>
+<li><code>sudo pacman -S virtualbox virtualbox-host-modules</code>  </li>
+<li><code>sudo pacman -S unrar</code>  </li>
+</ul>
+<h3>Network</h3>
+<ul>
+<li><code>sudo pacman -S mosh mtr wget nmap</code>  </li>
+<li><code>sudo pacman -S dns-tools</code>  <ul>
+<li>for <code>dig</code>  </li>
+</ul>
+</li>
+</ul>
+<h3>Google Drive</h3>
+<p>There are lots of 3rd party GNU/Linux clients for Google Drive:  </p>
+<ul>
+<li><a href="https://github.com/google/skicka">https://github.com/google/skicka</a>  </li>
+<li><a href="https://github.com/odeke-em/drive">https://github.com/odeke-em/drive</a>  </li>
+<li><a href="https://github.com/vitalif/grive2">https://github.com/vitalif/grive2</a>  </li>
+<li><a href="https://github.com/astrada/google-drive-ocamlfuse">https://github.com/astrada/google-drive-ocamlfuse</a>  </li>
+</ul>
+<h4><a href="https://github.com/google/skicka">skicka</a></h4>
+<p>Here, I chose <code>skicka</code> because some of my friends had already tried it<br>
+and they felt good about it, espcially for the <code>encrypt</code> funciton.  </p>
+<p>To install <code>skicka</code> you need to install <code>go</code> and <code>mercurial</code> first.<br>
+Then, install <code>skicka</code>, follow instructions below should work.  </p>
+<div class="highlight"><pre><span></span>$ sudo pacman -S go mercurial  
+$ mkdir ~/go  
+$ <span class="nb">export</span> <span class="nv">GOPATH</span><span class="o">=</span>~/go  
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:~/go/bin  
+$ go get github.com/google/skicka  
+$ skicka init  
+$ skicka -no-browser-auth ls    // <span class="nb">set</span> authentication <span class="k">for</span> skicka  
+</pre></div>
+
+
+<p>You can check out <a href="https://github.com/google/skicka/blob/master/README.md">https://github.com/google/skicka/blob/master/README.md</a> for further info.  </p>
+<p>But, after I installed <code>skicka</code>, it didn't find all my directories on Google Drive.<br>
+So, I just changed to <code>drive</code>  </p>
+<h4><a href="https://github.com/odeke-em/drive">drive</a></h4>
+<p>use <code>yaourt -S drive</code> to install it.<br>
+then <code>drive init ${dir_for_google_drive}</code><br>
+copy and paste the token, then it should work.<br>
+Check <a href="https://github.com/odeke-em/drive/blob/master/README.md">https://github.com/odeke-em/drive/blob/master/README.md</a> for more info.<br>
+(This command usage is a bit like <code>git</code>)  </p>
+<h3>Python</h3>
+<ul>
+<li><code>sudo pacman -S python2 python-pip</code>  </li>
+<li><code>sudo pip install virtualenvwrapper</code>  </li>
+</ul>
+<h4>Pelican</h4>
+<ul>
+<li><code>pip2 install pelican markdown ghp-import</code>  </li>
+</ul>
+<h3>GitHub</h3>
+<ul>
+<li>Add SSH Key  <ul>
+<li><a href="https://help.github.com/articles/generating-ssh-keys/#platform-linux">https://help.github.com/articles/generating-ssh-keys/#platform-linux</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>Screenshot</h3>
+<ul>
+<li><code>sudo pacman -S shutter</code>  </li>
+</ul>
+<h3>Terminal</h3>
+<ul>
+<li><code>sudo pacman -S rxvt-unicode guake</code>  </li>
+</ul>
+<h3>Monitoring</h3>
+<ul>
+<li><code>sudo pacman -S htop glances lm_sensors</code>  <ul>
+<li><code>sudo sensors-detect</code>  </li>
+</ul>
+</li>
+</ul>
+<h3>Multi-Media</h3>
+<ul>
+<li><code>sudo pacman -S eog</code>  </li>
+<li><code>sudo pacman -S vlc</code>  </li>
+<li><code>yaourt -S wine-git</code>  <ul>
+<li>need to uncomment <code>multilib</code> in <code>/etc/pacman.conf</code> first  </li>
+</ul>
+</li>
+<li><code>sudo pacman -S playonlinux</code>  </li>
+</ul>
+<h3>Office</h3>
+<ul>
+<li><code>sudo pacman -S evince</code>  <ul>
+<li>for .pdf files  </li>
+</ul>
+</li>
+<li><code>sudo pacman -S libreoffice</code>  </li>
+</ul>
+<h2>App</h2>
+<ul>
+<li>TweetDeck  <ul>
+<li><code>yaourt -S nwjs-bin</code>  </li>
+<li><a href="https://github.com/passcod/twd">https://github.com/passcod/twd</a>  <ul>
+<li><code>git clone https://github.com/passcod/twd.git</code>  </li>
+<li><code>cd twd</code>  </li>
+<li><code>nw .</code>  </li>
+<li>Still buggy and need package on AUR  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Slack  <ul>
+<li><a href="https://github.com/raelgc/scudcloud">https://github.com/raelgc/scudcloud</a>  </li>
+<li><code>yaourt -S scudcloud</code>  </li>
+</ul>
+</li>
+<li>Gitter  <ul>
+<li><code>yaourt -S gitter</code>  </li>
+</ul>
+</li>
+<li>Facebook Messenger  <ul>
+<li><code>yaourt -S messengerfordesktop</code>  </li>
+</ul>
+</li>
+<li>Popcorn-Time  <ul>
+<li><code>yaourt -S popcorntime</code>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>References</h1>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/MacBook">MacBook - ArchWiki</a>  <ul>
+<li>Arch Linux Only, Dual Boot, Arch Linux + OS X + Windows  </li>
+</ul>
+</li>
+<li><a href="https://github.com/pandeiro/arch-on-air">pandeiro/arch-on-air · GitHub</a>  <ul>
+<li>Dual Boot  </li>
+</ul>
+</li>
+<li><a href="http://mandriva-usher.blogspot.tw/2014/02/gcin-firefox-stardic.html">Mandriva: gcin 無法使用於 firefox, stardic</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/General_recommendations">General recommendations - ArchWiki</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Beginners'_guide">Beginners' guide - ArchWiki</a>  </li>
+<li><a href="https://github.com/BlueDragonX/xf86-input-mtrack/blob/master/README.md">xf86-input-mtrack/README.md at master · BlueDragonX/xf86-input-mtrack · GitHub</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/MacBook#Mid_2013_13.22_-_Version_6.2C2">MacBook - ArchWiki</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/List_of_applications">List of applications - ArchWiki</a>  </li>
+<li><a href="https://help.ubuntu.com/community/MacBookAir6-2/Trusty">MacBookAir6-2/Trusty - Community Help Wiki</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Apple_Keyboard">Apple Keyboard - ArchWiki</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Sxhkd">Sxhkd - ArchWiki</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Bluetooth">Bluetooth - ArchWiki</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Bluetooth_headset">Bluetooth headset - ArchWiki</a>  </li>
+<li><a href="http://xatierlike.blogspot.tw/2015/05/skicka-google-drive-command-line-tool.html">(=..=)/: skicka: Google drive command line tool</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/MTP">MTP - ArchWiki</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control">PulseAudio - ArchWiki</a>  </li>
+<li><a href="https://medium.com/@PhilPlckthun/arch-linux-running-on-my-macbook-2ea525ebefe3">Arch Linux running on my MacBook — Medium</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Power_management">Power management - ArchWiki</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/MacBookPro11,x#Powersave">MacBookPro11,x - ArchWiki</a>  </li>
+<li><a href="https://github.com/Unia/powersave">GitHub - Unia/powersave: Linux power save settings, compatible with systemd</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Install%20Arch%20Linux%20on%20MacBook%20Air%20Mid%202013%0Ahttps%3A//blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/&title=Install%20Arch%20Linux%20on%20MacBook%20Air%20Mid%202013&summary=%E5%8F%83%E5%8A%A0%E5%AE%8C%20COSCUP%202015%EF%BC%8C%E8%81%BD%E5%AE%8C%20jserv%20%E7%9A%84%E5%B0%81%E9%BA%A5%E6%BC%94%E8%AA%AA%E4%BB%A5%E5%8F%8A%E4%B8%80%E5%8F%A5%E3%80%8CLinux%20%E4%BD%BF%E7%94%A8%E8%80%85%E6%9C%89%E9%8C%A2%E4%BB%A5%E5%BE%8C%E5%B0%B1%E6%9C%83%E6%8A%95%E5%85%A5%20Mac%20%E7%9A%84%E6%87%B7%E6%8A%B1%E3%80%8D%E8%A6%BA%E5%BE%97%E8%87%AA%E5%B7%B1%E6%B7%B1%E6%B7%B1%E4%B8%AD%E6%A7%8D%EF%BC%8C%E5%82%99%E6%84%9F%E6%85%9A%E6%84%A7%E3%80%82%E6%96%BC%E6%98%AF%E6%B1%BA%E5%AE%9A%E4%BE%86%E5%81%9A%E4%B8%80%E4%BB%B6%E5%BE%88%E4%B9%85%E4%BB%A5%E5%89%8D%E5%85%B6%E5%AF%A6%E5%B0%B1%E6%83%B3%E5%81%9A%E7%9A%84%E4%BA%8B%EF%BC%9A%E8%B7%9F%20Linus%20Torvalds%20%E4%B8%80%E6%A8%A3%EF%BC%8C%E6%8A%8A%20MacBook%20Air%20%E4%B8%8A%E7%9A%84%20OS%20X%20%E7%A0%8D%E4%BA%86%EF%BC%8C%E7%9B%B4%E6%8E%A5%E7%81%8C%20Linux%20%E4%BE%86%E7%94%A8%E3%80%82%E7%95%B6%E7%84%B6%EF%BC%8CArch%20Linux%20%E6%98%AF%E9%A6%96%E9%81%B8%E3%80%82%E4%BB%A5%E4%B8%8B%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%E9%81%8E%E7%A8%8B%EF%BC%8C%E7%B5%A6%E6%9C%89%E9%9C%80%E8%A6%81%E7%9A%84%E4%BA%BA%E5%8F%83%E8%80%83%E3%80%82&source=https%3A//blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Install%20Arch%20Linux%20on%20MacBook%20Air%20Mid%202013&amp;body=https%3A//blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2013/02/17/solution-for-usb-keyboard-and-mouse-not-working-in-arch-linux/">Arch Linux - USB鍵盤和USB滑鼠插上去卻無法使用的解法</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/10/31/make-bcm4360-14e4-43a0-rev-03-work-on-arch-linux-with-broadcom-wl-dkms/">用 broadcom-wl-dkms 讓 BCM4360 [14e4:43a0] (rev 03) 能順利在 Arch Linux 中使用</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/04/11/unzip-7zip-file-by-p7zip-on-arch-linux/">Unzip 7zip file by p7zip on Arch Linux</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2014/02/21/vsftpd-virtual-user-broken-after-upgrade-pam-from-1-1-8-2-to-1-1-8-3-in-arch-linux/">vsftpd virtual user broken after upgrade pam from 1.1.8-2 to 1.1.8-3 in Arch Linux</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2014/05/21/the-solution-for-system-upgrade-failure-caused-by-ghc-7-8-2/">GHC 7.8.2 造成 Arch Linux 無法升級的解法</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/";
+        var disqus_title = "Install Arch Linux on MacBook Air Mid 2013";
+        var disqus_url = "https://blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-09-10T05:21:04+08:00"><i class="fa fa-calendar"></i> Thu 10 September 2015</abbr></p>
+
+      <p><abbr title="2017-12-08T12:47:00+08:00"><i class="fa fa-pencil"></i>Fri 08 December 2017</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="44 articles with this tag">linux</a>
+  <br>
+            <a href="/tag/arch-linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="18 articles with this tag">Arch Linux</a>
+  <br>
+            <a href="/tag/coscup/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">Coscup</a>
+  <br>
+            <a href="/tag/macbook-air/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">MacBook Air</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/" title="HITCON 2015 IOT Wargame"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/09/15/tscc-2015-notes-and-thoughts/" title="TSCC 2015 Notes and Thoughts"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

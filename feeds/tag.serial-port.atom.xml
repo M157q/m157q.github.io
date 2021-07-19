@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - serial port</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.serial-port.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2014-10-16T08:12:00+08:00</updated><entry><title>Use screen Command to Access Serial Port</title><link href="https://blog.m157q.tw/posts/2014/10/16/use-screen-command-to-access-serial-port/" rel="alternate"></link><published>2014-10-16T08:12:00+08:00</published><updated>2014-10-16T08:12:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-10-16:/posts/2014/10/16/use-screen-command-to-access-serial-port/</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen /dev/ttyS0 &lt;span class="m"&gt;19200&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;This …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen /dev/ttyS0 &lt;span class="m"&gt;19200&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;This command simply opens up a connection to serial port 0 (ttyS0) with a baud speed/rate of 19200  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://apple.stackexchange.com/questions/32834/is-there-an-os-x-terminal-program-that-can-access-serial-ports"&gt;Is there an OS X terminal program that can access serial ports?&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://serverfault.com/questions/81544/hidden-features-of-screen/81548"&gt;Hidden Features of &lt;code&gt;screen&lt;/code&gt;&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="screen"></category><category term="serial port"></category></entry></feed>

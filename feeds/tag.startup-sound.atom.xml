@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Startup Sound</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.startup-sound.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2013-11-06T07:30:00+08:00</updated><entry><title>Disable Startup Sound of a Mac</title><link href="https://blog.m157q.tw/posts/2013/11/06/disable-startup-sound-of-a-mac/" rel="alternate"></link><published>2013-11-06T07:30:00+08:00</published><updated>2013-11-06T07:30:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-11-06:/posts/2013/11/06/disable-startup-sound-of-a-mac/</id><summary type="html">&lt;p&gt;The startup sound of Mac …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The startup sound of Mac won't disappear if I mute the speaker.&lt;br&gt;
+The startup sound just annoys me, so I wanna disable it.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Disable startup sound&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;$ sudo nvram SystemAudioVolume=%80&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;It should work.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Enable startup sound again&lt;/h2&gt;
+&lt;p&gt;To enable the startup sound  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo nvram -d SystemAudioVolume&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Just still don't know why &lt;code&gt;%80&lt;/code&gt; O_o?  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://www.cultofmac.com/200772/silence-your-mac-boot-startup-sound-altogether-os-x-tips/"&gt;Silence Your Mac Boot Startup Sound Altogether [OS X Tips]&lt;/a&gt;  &lt;/p&gt;</content><category term="OS X"></category><category term="Mac"></category><category term="Startup Sound"></category></entry></feed>

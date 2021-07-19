@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - ifuse</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.ifuse.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-12-31T19:01:07+08:00</updated><entry><title>Linux 上如何拿到 iPhone 裡的資料</title><link href="https://blog.m157q.tw/posts/2017/12/31/mount-iphone-on-linux/" rel="alternate"></link><published>2017-12-31T19:01:07+08:00</published><updated>2017-12-31T19:01:07+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-12-31:/posts/2017/12/31/mount-iphone-on-linux/</id><summary type="html">&lt;p&gt;透過 &lt;code&gt;ifuse&lt;/code&gt; 可以很容易把 iPhone mount 到 Linux 上，變可以存取 iPhone 裡頭的資料。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;今年 4 月換新手機，因為不愛大尺寸的手機，五吋以下的手機只剩 iPhone SE 和 Sony Xperia X Compact。但查了一下以後發現 Sony Xperia XC 似乎有過熱的問題，加上剛好當時在公司的時候有位同事幾週前才買 iPhone SE，跟他借來操作一下覺得還不錯，上網查了一些評價也都沒啥問題，而且又是秉持當初 Steve Jobs 的 iPhone 設計造型，於是就買了。  &lt;/p&gt;
+&lt;p&gt;因為之前都是用 Android 手機，所以對 iPhone 的生態系不太熟，花了一點時間熟悉，其中一個就是現在紀錄的這篇。以前 Android 手機用 USB 線接到電腦後，基本上只要用 &lt;code&gt;adb&lt;/code&gt; 就可以搞定一切了，但 iPhone 這邊我花了點時間熟悉一下，還好有 ArchWiki 上有一篇專門在講 iOS 的條目：&lt;a href="https://wiki.archlinux.org/index.php/IOS"&gt;iOS - ArchWiki&lt;/a&gt;，省事了不少。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;方法&lt;/h2&gt;
+&lt;p&gt;首先要安裝 &lt;code&gt;ifuse&lt;/code&gt;，如果是 Arch Linux 的使用者，可以直接用以下指令來安裝：  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo pacman -S ifuse&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;安裝好之後使用也很簡單，只要按照以下的步驟：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;將你的 iPhone 接上電腦的 USB 埠  &lt;/li&gt;
+&lt;li&gt;接上之後可以透過 &lt;code&gt;lsusb&lt;/code&gt; 或 &lt;code&gt;dmesg&lt;/code&gt; 來做確認  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ifuse ${PATH_FOR_IPHONE_DATA}&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;透過這個指令就可以 mount iPhone 的資料了  &lt;/li&gt;
+&lt;li&gt;以我來說的話，我是特別開了一個 &lt;code&gt;/media/iPhone-SE&lt;/code&gt; 的資料夾來使用，所以指令會是 &lt;code&gt;ifuse /media/iPhone-SE&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;記得資料夾的權限要設定好  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;umount ${PATH_FOR_IPHONE_DATA}&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;使用完了以後要 unmount 也很簡單，就直接透過上面這個指令就行了  &lt;/li&gt;
+&lt;li&gt;如果出現 Permission Denied 的話就加上 &lt;code&gt;sudo&lt;/code&gt; 吧  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;參考資料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/IOS"&gt;iOS - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Linux"></category><category term="iPhone"></category><category term="ifuse"></category><category term="2018 iT 邦幫忙鐵人賽"></category></entry></feed>

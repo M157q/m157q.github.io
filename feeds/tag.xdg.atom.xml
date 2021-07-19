@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - XDG</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.xdg.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-01-06T00:52:26+08:00</updated><entry><title>Linux 設定桌面環境預設開啟程式</title><link href="https://blog.m157q.tw/posts/2018/01/05/set-default-application-in-desktop-environment-on-linux/" rel="alternate"></link><published>2018-01-05T23:56:26+08:00</published><updated>2018-01-06T00:52:26+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-01-05:/posts/2018/01/05/set-default-application-in-desktop-environment-on-linux/</id><summary type="html">&lt;p&gt;可以利用 &lt;code&gt;xdg-settings&lt;/code&gt; 這個指令來設定桌面環境中特定應用檔案預設的開啟程式。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;xdg-settings {get | check | set} {property} [subproperty] [value]&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;其實主要是最近用了 qutebrowser 以後，要把預設瀏覽器從 Firefox 改成 qutebrowser，因為在 qutebrowser 的設定裡頭找不到，查了 qutebrowser 的說明也沒看到，後來發現一個指令就可以做掉了。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;正文&lt;/h2&gt;
+&lt;p&gt;如果是 CLI 環境的話，可以透過 &lt;code&gt;EDITOR&lt;/code&gt;, &lt;code&gt;BROWSER&lt;/code&gt; 等環境變數來做設定。  &lt;/p&gt;
+&lt;p&gt;如果是桌面環境的話，我通常是在我使用的應用程式裏面找看看有沒有可以把該程式設定為預設開啟程式的選項，但因為這在 qutebrowser 上行不通，所以用下面這個方法。  &lt;/p&gt;
+&lt;p&gt;只要是走 &lt;a href="https://specifications.freedesktop.org/mime-apps-spec/mime-apps-spec-1.0.html"&gt;XDG 標準&lt;/a&gt; 都可以用這個設定方式。（XDG 為 X Desktop Group 的縮寫）  &lt;/p&gt;
+&lt;p&gt;XDG 的設定檔有下面三種路徑：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;個別使用者設定檔  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;~/.config/mimeapps.list&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;所有使用者共用  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/etc/xdg/mimeapps.list&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;系統預設設定檔  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/usr/local/share/applications/mimeapps.list&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/usr/share/applications/mimeapps.list&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;但我修改了以後發現沒用，所以就直接透過 &lt;code&gt;xdg-settings&lt;/code&gt; 這個指令做設定，&lt;br&gt;
+後來用下面這一行解決：  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;xdg-settings set default-web-browser qutebrowser.desktop&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;使用 &lt;code&gt;xdg-settings --list&lt;/code&gt; 可以察看有哪些 XDG properties 可以設定。  &lt;/p&gt;
+&lt;p&gt;詳細內容可以參考這篇文章：&lt;a href="https://wiki.archlinux.org/index.php/Default_applications#xdg-utils"&gt;Default applications - ArchWiki&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;參考來源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Default_applications#xdg-utils"&gt;Default applications - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Freedesktop.org"&gt;freedesktop.org - Wikipedia&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Linux"></category><category term="Desktop"></category><category term="XDG"></category><category term="2018 iT 邦幫忙鐵人賽"></category></entry></feed>

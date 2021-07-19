@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - qutebrowser</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.qutebrowser.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-01-05T01:21:00+08:00</updated><entry><title>解決 Arch Linux 上 gcin 2.8.5-2 無法在 Qt 5.9.x 以後的應用程式中執行的問題</title><link href="https://blog.m157q.tw/posts/2018/01/04/solution-for-gcin-2-8-5-2-cannot-run-in-application-using-qt-after-5-9-x-on-arch-linux/" rel="alternate"></link><published>2018-01-04T23:10:00+08:00</published><updated>2018-01-05T01:21:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-01-04:/posts/2018/01/04/solution-for-gcin-2-8-5-2-cannot-run-in-application-using-qt-after-5-9-x-on-arch-linux/</id><summary type="html">&lt;p&gt;用了 qutebrowser 以後， 發現 gcin 沒辦法在其中使用，查了一下解法後順利解決了，寫這篇文章紀錄一下。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://hyperrate.com/thread.php?tid=33785"&gt;在基於較新版qt 5.9.1的軟體中無法輸入中文&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://github.com/qutebrowser/qutebrowser"&gt;qutebrowser&lt;/a&gt; 是一款以 Vim 操作流程為主、基於 PyQt5 上開發的的輕量化瀏覽器（有點類似 &lt;a href="https://bitbucket.org/portix/dwb"&gt;dwb&lt;/a&gt;）。2017 年中的時候就知道這款瀏覽器了，但沒有特別強烈的需求，因為我在使用 Firefox 或 Chromium 的時候都有安裝 Vimium 這個套件，所以可以做到一樣的事。  &lt;/p&gt;
+&lt;p&gt;2017 年後半從 Firefox 55.0 開始，使用 Quantum 之後，我就從 Chromium 又跳回 Firefox 的懷抱，但接近 2017 年年底的時候，這篇文章：&lt;a href="https://sircmpwn.github.io/2017/12/16/Firefox-is-on-a-slippery-slope.html"&gt;Firefox is on a slippery slope | Drew DeVault’s Blog&lt;/a&gt;，講到了 Firefox 和美國的 NBCUniversal "合作"，為該公司新一季的電視劇 "Mr.Robot" 作宣傳。其手法是當你在瀏覽網頁的時候，如果裏面文字有和該劇相關的關鍵字的話，就會被倒過來顯示，而且也會在你造訪某些特定網站的時候，在你的 HTTP request 加入特定的 Header。重點是這是在未經使用者同意就預設開啟的測試功能內，直接幫使用者安裝一個叫作 "Looking Glass" 的 plugin，而且如果你把它關掉的話，在下次更新 Firefox 的時候又會被自動開啟。  &lt;/p&gt;
+&lt;p&gt;再者是，討論這個功能的 ticket 是被鎖定的，只有 Mozilla 內部的人可以看到。這是非常不尊重使用者的行為，尤其 Firefox 又總是以不追蹤使用者、自由的開源軟體自居。雖然 Mozilla 在幾天後發了篇道歉文：&lt;a href="https://blog.mozilla.org/firefox/update-looking-glass-add/"&gt;Update: Looking Glass Add-on | The Firefox Frontier&lt;/a&gt;，但這件事還是讓滿多人留下不好的印象的，畢竟這代表專案主導人不尊重使用者，難保之後不會又發生。  &lt;/p&gt;
+&lt;p&gt;剛好這篇文章的作者有提到他已經換到 qutebrowser 一陣子了，覺得還不錯用。剛好我也有在考慮要不要換過去使用，因為用了 Firefox 一陣子，雖然有比以前快，但還是常常會 crash，而且貌似也有 Memory Leak 的問題，常常用了一陣子記憶體就會愈用愈多，得重開才能解決。所以今天就下定決心拿 qutebrowser 來當預設的瀏覽器。  &lt;/p&gt;
+&lt;p&gt;有機會的話可能會寫篇關於 qutebrowser 的介紹文，因為預設的 qutebrowser 其實不太好用，我花了點時間調整了設定才覺得比較能用。但這篇文章是要紀錄我在 Arch Linux 上安裝了基於 Qt5 開發的 qutebrowser 後，無法在其中使用 gcin 輸入法打中文字的問題。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;正文&lt;/h2&gt;
+&lt;p&gt;這篇應該只有在 Arch Linux 上的使用者可能會遇到，解法是在 gcin 論壇的這個討論串看到的：&lt;a href="https://hyperrate.com/thread.php?tid=33785"&gt;在基於較新版qt 5.9.1的軟體中無法輸入中文&lt;/a&gt;。  &lt;/p&gt;
+&lt;p&gt;先附上發生 bug 的軟體版本：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gcin 2.8.5-2  &lt;/li&gt;
+&lt;li&gt;Qt 5.10.0  &lt;/li&gt;
+&lt;li&gt;qutebrowser v1.0.4  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;步驟：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先到 &lt;a href="https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/gcin"&gt;https://git.archlinux.org/svntogit/packages.git/tree/trunk?h=packages/gcin&lt;/a&gt; 把要 build &lt;code&gt;gcin&lt;/code&gt; 需要的檔案都抓下來，開個資料夾放這些檔案。  &lt;/li&gt;
+&lt;li&gt;進到該資料夾內，根據討論串裡提到的解法修改 &lt;code&gt;PKGBUILD&lt;/code&gt;，加上這個 patch，&lt;a href="/files/solution-for-gcin-2-8-5-2-cannot-run-in-application-using-qt-after-5-9-x-on-arch-linux/qt-5.9.patch"&gt;這裡附上 patch 的純文字檔連結&lt;/a&gt;：  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;diff --git a/gcin/trunk/PKGBUILD b/gcin/trunk/PKGBUILD  &lt;/span&gt;
+&lt;span class="gh"&gt;index ca08fcb57f3..7048c13411d 100644  &lt;/span&gt;
+&lt;span class="gd"&gt;--- a/gcin/trunk/PKGBUILD  &lt;/span&gt;
+&lt;span class="gi"&gt;+++ b/gcin/trunk/PKGBUILD  &lt;/span&gt;
+&lt;span class="gu"&gt;@@ -39,6 +39,12 @@ prepare() {  &lt;/span&gt;
+         -e &amp;#39;/^MODVERSION=/a INCS+=-I/usr/include/qt/QtGui/$(MODVERSION) -I/usr/include/qt/QtCore/$(MODVERSION)&amp;#39; \  
+         -i qt5-im/Makefile  
+
+&lt;span class="gi"&gt;+    # Patch to make gcin work in qt &amp;gt;= 5.9.x  &lt;/span&gt;
+&lt;span class="gi"&gt;+    # ref: &amp;lt;https://hyperrate.com/thread.php?tid=33785&amp;gt;  &lt;/span&gt;
+&lt;span class="gi"&gt;+      sed \  &lt;/span&gt;
+&lt;span class="gi"&gt;+          -e &amp;#39;s/org.qt-project.Qt.QPlatformInputContextFactoryInterface/&amp;amp;.5.1/&amp;#39; \  &lt;/span&gt;
+&lt;span class="gi"&gt;+          -i qt5-im/gcin-qt5.h.in  &lt;/span&gt;
+&lt;span class="gi"&gt;+  &lt;/span&gt;
+     # FS#45732  
+     patch -p1 -i ../qt-5.5.patch  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;在該資料夾內下 &lt;code&gt;makepkg -s&lt;/code&gt; 這個指令，就會開始 build gcin  &lt;/li&gt;
+&lt;li&gt;build 好之後應該會出現 &lt;code&gt;gcin-2.8.5-2-x86_64.pkg.tar.xz&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;sudo pacman -U gcin-2.8.5-2-x86_64.pkg.tar.xz&lt;/code&gt; 來安裝 patch 過後的 gcin  &lt;/li&gt;
+&lt;li&gt;使用 &lt;code&gt;qtplugininfo /usr/lib/qt/plugins/platforminputcontexts/libgcinplatforminputcontextplugin.so&lt;/code&gt; 來檢查  &lt;ul&gt;
+&lt;li&gt;如果沒問題的話應該會得到下面這樣的輸出：  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ qtplugininfo /usr/lib/qt/plugins/platforminputcontexts/libgcinplatforminputcontextplugin.so  
+IID &lt;span class="s2"&gt;&amp;quot;org.qt-project.Qt.QPlatformInputContextFactoryInterface.5.1&amp;quot;&lt;/span&gt; Qt &lt;span class="m"&gt;5&lt;/span&gt;.10.0 &lt;span class="o"&gt;(&lt;/span&gt;debug&lt;span class="o"&gt;)&lt;/span&gt;  
+User Data: &lt;span class="o"&gt;{&lt;/span&gt;  
+    &lt;span class="s2"&gt;&amp;quot;Keys&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;[&lt;/span&gt;  
+        &lt;span class="s2"&gt;&amp;quot;gcin&amp;quot;&lt;/span&gt;  
+    &lt;span class="o"&gt;]&lt;/span&gt;  
+&lt;span class="o"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;重新開啟 gcin  &lt;/li&gt;
+&lt;li&gt;重開 qutebrowser  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這樣應該就沒問題了。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;結論&lt;/h2&gt;
+&lt;p&gt;總之，我發了一個 bug report: &lt;a href="https://bugs.archlinux.org/task/56949"&gt;FS#56949 : [gcin] gcin 2.8.5-2 cannot run in qutebrowser v1.0.4&lt;/a&gt;，希望這個 patch 會被加進去，這樣之後更新應該就沒問題了。  &lt;/p&gt;
+&lt;p&gt;好像有點久沒有自己 build package 了啊，原本打算用 &lt;code&gt;abs&lt;/code&gt;，然後才想起來 &lt;code&gt;abs&lt;/code&gt; 已經被 deprecated 了：&lt;a href="https://www.archlinux.org/news/deprecation-of-abs/"&gt;Arch Linux - News: Deprecation of ABS tool and rsync endpoint&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;參考來源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/qutebrowser/qutebrowser"&gt;GitHub - qutebrowser/qutebrowser: A keyboard-driven, vim-like browser based on PyQt5.&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bitbucket.org/portix/dwb"&gt;portix / dwb — Bitbucket&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sircmpwn.github.io/2017/12/16/Firefox-is-on-a-slippery-slope.html"&gt;Firefox is on a slippery slope | Drew DeVault’s Blog&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.mozilla.org/firefox/update-looking-glass-add/"&gt;Update: Looking Glass Add-on | The Firefox Frontier&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://hyperrate.com/thread.php?tid=33785"&gt;在基於較新版qt 5.9.1的軟體中無法輸入中文&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Arch Linux"></category><category term="Qt5"></category><category term="qutebrowser"></category><category term="gcin"></category><category term="2018 iT 邦幫忙鐵人賽"></category></entry></feed>

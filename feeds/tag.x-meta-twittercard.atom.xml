@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - X-Meta-Twitter:card</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.x-meta-twittercard.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T15:07:00+08:00</updated><entry><title>Illegal field name 'X-Meta-Twitter:card'</title><link href="https://blog.m157q.tw/posts/2013/05/08/illegal-field-name-x-meta-twittercard/" rel="alternate"></link><published>2013-05-08T07:44:00+08:00</published><updated>2015-10-28T15:07:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-05-08:/posts/2013/05/08/illegal-field-name-x-meta-twittercard/</id><summary type="html">&lt;p&gt;最近因為 NA 作業2 開始寫 Perl …&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近因為 NA 作業2 開始寫 Perl&lt;br&gt;
+其中一個是寫 IRC bot&lt;br&gt;
+作業 Demo 完後自己繼續開發新功能&lt;br&gt;
+要做檢查到 URL 就回應該 URL Html source 的 title label 和 縮網址&lt;br&gt;
+用了 CPAN 的 &lt;code&gt;WWW::Mechanize&lt;/code&gt;&lt;br&gt;
+結果 xatier 丟了 &lt;a href="https://gist.github.com/xatier/5538258"&gt;gist:5538258 · GitHub&lt;/a&gt; 出來後&lt;br&gt;
+IRC bot 就 die 了&lt;br&gt;
+噴出了這行錯誤  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Illegal field name 'X-Meta-Twitter:card' at .../HTML/HeadParser.pm line 207.&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Google 了一下 Error Message 發現不少人都有遇到  &lt;/p&gt;
+&lt;p&gt;根據這篇底下的 comment 找到了答案 (其實自己先 Trace code 之後也找到了同樣的地方  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/libwww-perl/http-message/issues/3#issuecomment-10118644"&gt;lwp-download fails with HTTP::Message 6.06 · Issue #3 · libwww-perl/http-message · GitHub&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;問題就出在 &lt;code&gt;perl5/lib/per5/HTTP/Headers.pm&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HTML::HeadParser&lt;/code&gt; 有用到 &lt;code&gt;HTTP::Headers&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;裏面有個叫 &lt;code&gt;_header&lt;/code&gt; 的 subroutine (不過在上面那篇的 comment 裏面好像是 header  &lt;/p&gt;
+&lt;p&gt;裏面有一行  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;Carp::&lt;/span&gt;&lt;span class="n"&gt;croak&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Illegal field name &amp;#39;$field&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;rindex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$field&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nb"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$field&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;問題就出在  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;rindex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$field&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;只要 &lt;code&gt;:&lt;/code&gt; 後面有東西的話就會回傳 &lt;code&gt;True&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Twiiter:card&lt;/code&gt; 的 &lt;code&gt;:&lt;/code&gt; 後面有 &lt;code&gt;card&lt;/code&gt; 所以被判定成 &lt;code&gt;Illegal field name&lt;/code&gt; 了  &lt;/p&gt;
+&lt;p&gt;要修正的話就照那個 comment 說的  &lt;/p&gt;
+&lt;p&gt;把該行改成  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;Carp::&lt;/span&gt;&lt;span class="n"&gt;croak&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Illegal field name &amp;#39;$field&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nv"&gt;$field&lt;/span&gt; &lt;span class="o"&gt;!~&lt;/span&gt; &lt;span class="sr"&gt;/^X-Meta/&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;rindex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$field&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nb"&gt;length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$field&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這樣就不會判斷 &lt;code&gt;X-Meta&lt;/code&gt; 開頭的了  &lt;/p&gt;
+&lt;p&gt;只是這問題己經 6~7 個月了 開發者最近 commit 的時間也還是 2 個月前  &lt;/p&gt;
+&lt;p&gt;不懂為啥這問題遲遲不解決@@  &lt;/p&gt;</content><category term="Perl"></category><category term="CPAN"></category><category term="WWW::Mechanize"></category><category term="X-Meta-Twitter:card"></category></entry></feed>

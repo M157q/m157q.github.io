@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - CI</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.ci.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-07-11T21:40:20+08:00</updated><entry><title>Change from Travis CI Build Matrix to Build Stages</title><link href="https://blog.m157q.tw/posts/2020/07/11/change-from-travis-ci-build-matrix-to-build-stages/" rel="alternate"></link><published>2020-07-11T21:40:20+08:00</published><updated>2020-07-11T21:40:20+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2020-07-11:/posts/2020/07/11/change-from-travis-ci-build-matrix-to-build-stages/</id><summary type="html">&lt;p&gt;How I changed from Travis CI Build Matrix to Build Stages for my side project.&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;CAULTION: This post was written in April, 2018. Build Stages feature is beta at that time. Things may have changed, but I still want to write it down.&lt;/strong&gt;  &lt;/p&gt;
+&lt;h1&gt;Preface&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.travis-ci.com/user/build-stages/"&gt;Build Stages - Travis CI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Official documents about how to migrate from Build Matrix to Build Stages are awful.&lt;br&gt;
+It took me lots of time and still don't know how to modify it until I met this: &lt;a href="https://stackoverflow.com/questions/49387696/travis-ci-stage-failed-in-matrix/49409551#49409551"&gt;Travis CI stage failed in matrix - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This beta feature is great, although I had already used CircleCI which already had build stages feature at that time.&lt;br&gt;
+Maybe write this down can help you save your time.&lt;/p&gt;
+&lt;h1&gt;TL;DR&lt;/h1&gt;
+&lt;p&gt;In the end, I found that the syntax of Build Stages is similar to Build Matrix.
+I don't know how to explain it, so I'll just put the diff picture and url below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/zdict/zdict/compare/7567afa...2209204"&gt;https://github.com/zdict/zdict/compare/7567afa...2209204&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img alt="Travis CI Build Matrix vs Build Stages" src="/files/change-from-travis-ci-build-matrix-to-build-stages/travis-ci-build-matrix-vs-build-stages.jpg"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Final Result&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/zdict/zdict/blob/2209204aa70e80720823f6c60d4be82d25a49232/.travis.yml"&gt;.travis.yml which already used Build Stages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://travis-ci.org/github/zdict/zdict/builds/364780102"&gt;Result on Travis CI&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;img alt="Result on Travis CI" src="/files/change-from-travis-ci-build-matrix-to-build-stages/result-on-travis-ci.jpg"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="CI"></category><category term="Travis CI"></category></entry></feed>

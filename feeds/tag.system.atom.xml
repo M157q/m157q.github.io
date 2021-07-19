@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - system</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.system.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-11-02T10:06:37+08:00</updated><entry><title>Y2020W44</title><link href="https://blog.m157q.tw/posts/2020/11/02/y2020w44/" rel="alternate"></link><published>2020-11-02T10:06:37+08:00</published><updated>2020-11-02T10:06:37+08:00</updated><author><name>M157q</name></author><id>tag:blog.m157q.tw,2020-11-02:/posts/2020/11/02/y2020w44/</id><summary type="html">&lt;p&gt;Collections of Y2020W44 (2020-10-26 Mon 00:00:00+0800 ~ 2020-11-02 Mon 00:00:00+0800)&lt;/p&gt;</summary><content type="html">&lt;h2&gt;system&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ithome.com.tw/article/140843"&gt;東京證交所史上最嚴重大當機深度剖析 | iThome&lt;/a&gt;&lt;br&gt;
+新一代的系統沿用第一代系統的參數&lt;br&gt;
+但預設行為已經改變&lt;br&gt;
+然後沒更新到新一代系統的操作手冊上&lt;br&gt;
+導致了一連串的災難&lt;br&gt;
+連手動救援操作流程都是以第一代的參數設定下去設計&lt;br&gt;
+所以也無法馬上修復  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;web&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ithome.com.tw/voice/128528"&gt;你的REST不是REST？ | iThome&lt;/a&gt;&lt;br&gt;
+看完這篇以後對 HATEOAS 的理解清楚多了  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;</content><category term="system"></category><category term="web"></category></entry></feed>

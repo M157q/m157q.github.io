@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - sort</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.sort.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T15:12:00+08:00</updated><entry><title>Sort hash by key or by value in Perl 5.16</title><link href="https://blog.m157q.tw/posts/2013/05/10/sort-hash-by-key-or-by-value-in-perl-5-16/" rel="alternate"></link><published>2013-05-10T16:38:00+08:00</published><updated>2015-10-28T15:12:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-05-10:/posts/2013/05/10/sort-hash-by-key-or-by-value-in-perl-5-16/</id><summary type="html">&lt;p&gt;&lt;code&gt;%h = hash, $key = keys in …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;code&gt;%h = hash, $key = keys in %h&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Sort by key&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# if key is int  &lt;/span&gt;
+    &lt;span class="c1"&gt;# ascending  &lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="nb"&gt;keys&lt;/span&gt; &lt;span class="nv"&gt;%hash&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$key: $hash{$key}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;  
+
+    &lt;span class="c1"&gt;# descending  &lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;reverse&lt;/span&gt; &lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="nb"&gt;keys&lt;/span&gt; &lt;span class="nv"&gt;%hash&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$key: $hash{$key}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;  
+
+&lt;span class="c1"&gt;# if key is str (represent number)  &lt;/span&gt;
+    &lt;span class="c1"&gt;# ascending  &lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt; &lt;span class="sr"&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="nb"&gt;keys&lt;/span&gt; &lt;span class="nv"&gt;%h&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$key: $h{$key}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;  
+
+    &lt;span class="c1"&gt;# descending  &lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt; &lt;span class="sr"&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="nb"&gt;keys&lt;/span&gt; &lt;span class="nv"&gt;%h&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$key: $h{$key}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Sort by value (int)&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="c1"&gt;# value of %h is int ($h{$key})  &lt;/span&gt;
+&lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="c1"&gt;# ascending order  &lt;/span&gt;
+&lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$hash&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="sr"&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$hash&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="p"&gt;};}&lt;/span&gt; &lt;span class="nb"&gt;keys&lt;/span&gt; &lt;span class="nv"&gt;%h&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$key: $h{$key}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;  
+
+&lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="c1"&gt;# descending order  &lt;/span&gt;
+&lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nv"&gt;$key&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sort&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$hash&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$b&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="sr"&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;$hash&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;$a&lt;/span&gt;&lt;span class="p"&gt;};}&lt;/span&gt; &lt;span class="nb"&gt;keys&lt;/span&gt; &lt;span class="nv"&gt;%h&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;say&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;$key: $h{$key}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;</content><category term="Perl"></category><category term="sort"></category></entry><entry><title>[Python] Sort dictionary by key or value</title><link href="https://blog.m157q.tw/posts/2013/05/10/python-sort-dictionary-by-key-or-value/" rel="alternate"></link><published>2013-05-10T16:33:00+08:00</published><updated>2013-05-10T16:33:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-05-10:/posts/2013/05/10/python-sort-dictionary-by-key-or-value/</id><summary type="html">&lt;h1&gt;in python3.3&lt;/h1&gt;
+&lt;p&gt;&lt;!--more--&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(k, v …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;h1&gt;in python3.3&lt;/h1&gt;
+&lt;p&gt;&lt;!--more--&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(k, v) == (key, value)  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h4&gt;sort by key&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;  
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;t[0] means key  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h4&gt;sort by value&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;  
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;t[1] means value  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;--  &lt;/p&gt;</content><category term="Python"></category><category term="Sort"></category><category term="Python 3"></category></entry></feed>

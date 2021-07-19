@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - GitHub Actions</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.github-actions.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-09-07T01:15:20+08:00</updated><entry><title>Make One GitHub Actions Workflow Trigger Another GitHub Actions Workflow</title><link href="https://blog.m157q.tw/posts/2020/07/16/make-one-github-actions-workflow-trigger-another-github-actions-workflow/" rel="alternate"></link><published>2020-07-16T16:35:20+08:00</published><updated>2020-09-07T01:15:20+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2020-07-16:/posts/2020/07/16/make-one-github-actions-workflow-trigger-another-github-actions-workflow/</id><summary type="html">&lt;p&gt;GitHub Actions restricts one workflow trigger another workflow in order to prevent users from accidentally creating recursive workflow. I spent some time on figuring how to do it.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Preface&lt;/h1&gt;
+&lt;p&gt;According to GitHub: &lt;a href="make-one-github-action-workflow-trigger-another-github-action-workflow"&gt;Users have to use Personal Access Token on the workflow which wants to trigger another GitHub Actions workflow.&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When you use the repository's &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; to perform tasks on behalf of the GitHub Actions app, events triggered by the &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; will not create a new workflow run. This prevents you from accidentally creating recursive workflow runs. For example, if a workflow pushes code using the repository's &lt;code&gt;GITHUB_TOKEN&lt;/code&gt;, a new workflow will not run even if that workflow in the same repository is configured to be executed when push events occur."&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It looks easily, but there are lots of traps while doing so actually. I tried many different ways to achieve this and finally made it work.&lt;/p&gt;
+&lt;p&gt;There are other approaches like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;using another bot user with new personal access token&lt;/li&gt;
+&lt;li&gt;using GitHub App access token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;But this post will only focus on using your own Personal Access Token.&lt;/p&gt;
+&lt;h1&gt;Solution&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a GitHub Personal Access Token with &lt;code&gt;repo&lt;/code&gt; permissons at &lt;a href="https://github.com/settings/tokens"&gt;https://github.com/settings/tokens&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Copy that access token and paste it in the &lt;code&gt;Secrets - Settings&lt;/code&gt; page of the target repo with the name &lt;code&gt;MY_GITHUB_TOKEN&lt;/code&gt;&lt;ul&gt;
+&lt;li&gt;You can name the Secret with a different name. Just make sure you type the name right later.&lt;/li&gt;
+&lt;li&gt;CAUTION: You cannot name your Secret starts with &lt;code&gt;GITHUB_&lt;/code&gt; &lt;a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets#naming-your-secrets"&gt;because its preserve for GitHub Actions internal usage&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Every GitHub Actions workflow has &lt;code&gt;GITHUB_TOKEN&lt;/code&gt; in default.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;In the &lt;code&gt;yml&lt;/code&gt; file of the workflow you want to trigger another workflow, you have to write these lines in the &lt;strong&gt;CHECKOUT&lt;/strong&gt; step:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    - name: Check out repo
+      uses: actions/checkout@v2
+      with:
+        token: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;secrets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MY_GITHUB_TOKEN&lt;/span&gt; &lt;span class="cp"&gt;}&lt;/span&gt;}
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;In the &lt;code&gt;yml&lt;/code&gt; file of the workflow you want to trigger another workflow, you have to write these lines in the &lt;strong&gt;PUSH&lt;/strong&gt; step:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;secrets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;MY_GITHUB_TOKEN&lt;/span&gt; &lt;span class="cp"&gt;}&lt;/span&gt;}
+        branch: &amp;#39;source&amp;#39;    # default using &amp;#39;master&amp;#39;, change it if you want to push to another branch
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Result &amp;amp; Example&lt;/h1&gt;
+&lt;p&gt;I am using one GitHub Actions workflow with &lt;code&gt;on:schedule&lt;/code&gt; to auto-generate weekly post for my blog.&lt;br&gt;
+Meanwhile, I have another workflow which will auto-build my blog when there is new commit being pushed. 
+I want it work finely after a new weekly post being pushed.
+Here's the &lt;code&gt;yml&lt;/code&gt; file of that "auto-generate weekly post" workflow: &lt;a href="https://github.com/M157q/m157q.github.io/blob/source/.github/workflows/generate_weekly_post.yml"&gt;https://github.com/M157q/m157q.github.io/blob/source/.github/workflows/generate_weekly_post.yml&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/ad-m/github-push-action"&gt;GitHub - ad-m/github-push-action: GitHub actions to push back to repository eg. updated code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/actions/checkout"&gt;GitHub - actions/checkout: Action for checking out a repo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.community/t/triggering-a-new-workflow-from-another-workflow/16250"&gt;Triggering a new workflow from another workflow - GitHub Actions - GitHub Support Community&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token"&gt;Events that trigger workflows - GitHub Docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on"&gt;Workflow syntax for GitHub Actions - GitHub Docs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token"&gt;Authenticating with the GITHUB_TOKEN - GitHub Docs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="GitHub"></category><category term="GitHub Actions"></category></entry></feed>

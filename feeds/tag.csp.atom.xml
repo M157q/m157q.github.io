@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - CSP</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.csp.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-06-05T15:18:59+08:00</updated><entry><title>新增幾項設定來防範 Clickjacking Frame Attack</title><link href="https://blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/" rel="alternate"></link><published>2018-07-23T05:34:59+08:00</published><updated>2020-06-05T15:18:59+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-07-23:/posts/2018/07/23/clickjacking-frame-attack-defense/</id><summary type="html">&lt;p&gt;公司的 Bug Bounty Program 收到了 Clickjacking Frame Attack 的回報，以前學資安都偏攻擊面較多，最近比較有機會接觸到防禦的部分，想說紀錄一下。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;Clickjacking 主要是在釣魚網站上嵌入正版網站（攻擊對象）的內容，並將一些物件隱藏在正版內容之上，讓受害者以為自己操作了正版網頁，但實際上卻是執行了隱藏物件上的動作。&lt;/p&gt;
+&lt;p&gt;可以透過以下幾種設定和方法來防禦：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Defending_with_Content_Security_Policy_.28CSP.29_frame-ancestors_directive"&gt;Content Security Policy (CSP)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Defending_with_X-Frame-Options_Response_Headers"&gt;&lt;code&gt;X-Frame-Options&lt;/code&gt; Header&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Best-for-now_Legacy_Browser_Frame_Breaking_Script"&gt;Frame Breaking Script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其他還有 &lt;code&gt;window.confirm()&lt;/code&gt; protection 和一些注意事項在 OWASP 的網頁都有說明：
+&lt;a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet"&gt;Clickjacking Defense Cheat Sheet - OWASP&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;code&gt;Firebase.json&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;關於 &lt;code&gt;Content-Security-Policy&lt;/code&gt; 和 &lt;code&gt;X-Frame-Options&lt;/code&gt; 的設定，在 Firebase 裡頭可以簡單作這樣的設定：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;hosting&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;public&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;dist&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;cleanUrls&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="nt"&gt;&amp;quot;headers&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+        &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;quot;source&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;**&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="nt"&gt;&amp;quot;headers&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+                &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;key&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Content-Security-Policy&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;frame-ancestors &amp;#39;none&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;
+                &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nt"&gt;&amp;quot;key&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;X-Frame-Options&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;DENY&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+            &lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;Headers&lt;/code&gt; 詳細的設定方式可以參考 Firebase 的官方網頁：&lt;a href="https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-headers"&gt;Customize Hosting Behavior  |  Firebase&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Content Security Policy (CSP)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;功用：限制是否要讓其他網頁可以使用 &lt;code&gt;&amp;lt;frame&amp;gt;&lt;/code&gt; 或 &lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt; 嵌入本頁面&lt;/li&gt;
+&lt;li&gt;限制：有些瀏覽器並不支援此 Header&lt;/li&gt;
+&lt;li&gt;我很懶惰，所以直接設定&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Content-Security-Policy: frame-ancestors 'none';&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;禁止網站所有頁面被嵌入在任何網站&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;code&gt;X-Frame-Options&lt;/code&gt; Header&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;功用：限制是否要讓其他網頁可以使用 &lt;code&gt;&amp;lt;frame&amp;gt;&lt;/code&gt; 或 &lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt; 嵌入本頁面&lt;/li&gt;
+&lt;li&gt;限制：有些瀏覽器並不支援此 Header&lt;/li&gt;
+&lt;li&gt;我很懶惰，所以直接設定&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;X-Frame-Options: DENY;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;禁止網站所有頁面被嵌入在任何網站&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Frame Breaking Script&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;功用：限制是否要讓其他網頁可以使用 &lt;code&gt;&amp;lt;frame&amp;gt;&lt;/code&gt; 或 &lt;code&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt; 嵌入本頁面且在舊的瀏覽器上也適用，因為是直接使用 JavaScript 處理，而不是透過瀏覽器去解析 HTTP Header。&lt;/li&gt;
+&lt;li&gt;限制：必須要手動修改網頁上執行的 JavaScript 才能作用，當然遇到不支援 JavaScript 的瀏覽器就無效了？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;節錄自 &lt;a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Best-for-now_Legacy_Browser_Frame_Breaking_Script"&gt;Clickjacking Defense Cheat Sheet - OWASP&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In the document HEAD element, add the following:&lt;/p&gt;
+&lt;p&gt;First apply an ID to the style element itself:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;style&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;antiClickjack&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;&lt;span class="nt"&gt;body&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="k"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="kc"&gt;none&lt;/span&gt; &lt;span class="cp"&gt;!important&lt;/span&gt;&lt;span class="p"&gt;;}&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;style&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;And then delete that style by its ID immediately after in the script:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+   &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;self&lt;/span&gt; &lt;span class="o"&gt;===&lt;/span&gt; &lt;span class="nx"&gt;top&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+       &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;antiClickjack&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getElementById&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;antiClickjack&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+       &lt;span class="nx"&gt;antiClickjack&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;parentNode&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;removeChild&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;antiClickjack&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+   &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+       &lt;span class="nx"&gt;top&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+   &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;This way, everything can be in the document HEAD and you only need one method/taglib in your API.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet"&gt;Clickjacking Defense Cheat Sheet - OWASP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.codemagi.com/blog/post/194"&gt;Clickjacking Defense&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Security"></category><category term="Clickjacking"></category><category term="owasp"></category><category term="Content Security Policy"></category><category term="CSP"></category><category term="X-Frame-Options"></category><category term="Frame Breaking Script"></category></entry></feed>

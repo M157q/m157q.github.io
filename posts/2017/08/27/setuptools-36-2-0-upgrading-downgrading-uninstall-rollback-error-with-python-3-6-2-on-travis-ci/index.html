@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  setuptools 36.2.0 upgrading/downgrading uninstall rollback error with Python 3.6.2 on Travis CI
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/08/27/setuptools-36-2-0-upgrading-downgrading-uninstall-rollback-error-with-python-3-6-2-on-travis-ci/" rel="bookmark" title="Permalink to setuptools 36.2.0 upgrading/downgrading uninstall rollback error with Python 3.6.2 on Travis CI">setuptools 36.2.0 upgrading/downgrading uninstall rollback error with Python 3.6.2 on Travis CI</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for situation and solution and more</p>
+  </blockquote>
+  <div>
+    <blockquote>
+<p>TL;DR: Just <code>pip install -U setuptools</code> before the package which depends on <code>setuptools</code> upgrade it.  </p>
+</blockquote>
+<hr>
+<h2>Preface</h2>
+<p>A build on Travis CI of one of my side projects got error <code>AttributeError: 'Distribution' object has no attribute 'install_requires'</code> while upgrading setuptools from 36.2.0 to 36.7.0 with Python 3.6.2 build job. This build also has Python 3.4 and Python 3.5 build jobs which have no erorr because they didn't need to upgrade <code>setuptools</code>.  </p>
+<hr>
+<h2>What's the problem</h2>
+<p>Travis CI image with <code>os: linux</code> and <code>python: 3.6</code> labels default installed <code>Python 3.6.2</code>, <code>pip 9.0.1</code> and <code>setuptools 36.2.0</code> in this time. The problem occured while <code>pip install -U pytest</code> was running because the default <code>--upgrade-strategy</code> of <code>-U / --upgrade</code> option of <code>pip</code> is <code>"eager"</code> which will upgrade all dependent packages to newest version.  </p>
+<blockquote>
+<p>See part of <code>pip install -h</code> for detail:<br>
+<code>-U, --upgrade               Upgrade all specified packages to the newest available version.  
+                              The handling of dependencies depends on the upgrade-strategy  
+                              used.  
+  --upgrade-strategy &lt;upgrade_strategy&gt;  
+                              Determines how dependency upgrading should be handled. "eager"  
+                              - dependencies are upgraded regardless of whether the currently  
+                              installed version satisfies the requirements of the upgraded  
+                              package(s). "only-if-needed" -  are upgraded only when they do  
+                              not satisfy the requirements of the upgraded package(s).</code>  </p>
+</blockquote>
+<p>This made <code>pip install -U pytest</code> upgrade <code>setuptools</code> from 36.2.0 to 36.7.0 while installing <code>pytest-3.2.1</code> and got the error below:  </p>
+<div class="highlight"><pre><span></span><span class="err">Found existing installation: setuptools 36.2.0  </span>
+<span class="err">    Uninstalling setuptools-36.2.0:  </span>
+<span class="err">      Successfully uninstalled setuptools-36.2.0  </span>
+<span class="err">  Rolling back uninstall of setuptools  </span>
+<span class="c">Exception:  </span>
+<span class="err">Traceback (most recent call last):  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/pip/basecommand.py&quot;, line 215, in main  </span>
+<span class="err">    status = self.run(options, args)  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/pip/commands/install.py&quot;, line 342, in run  </span>
+<span class="err">    prefix=options.prefix_path,  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/pip/req/req_set.py&quot;, line 784, in install  </span>
+<span class="err">    **kwargs  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/pip/req/req_install.py&quot;, line 851, in install  </span>
+<span class="err">    self.move_wheel_files(self.source_dir, root=root, prefix=prefix)  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/pip/req/req_install.py&quot;, line 1064, in move_wheel_files  </span>
+<span class="err">    isolated=self.isolated,  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/pip/wheel.py&quot;, line 247, in move_wheel_files  </span>
+<span class="err">    prefix=prefix,  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/pip/locations.py&quot;, line 140, in distutils_scheme  </span>
+<span class="err">    d = Distribution(dist_args)  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/setuptools/dist.py&quot;, line 365, in __init__  </span>
+<span class="err">    self._finalize_requires()  </span>
+<span class="err">  File &quot;/home/travis/virtualenv/python3.6.2/lib/python3.6/site-packages/setuptools/dist.py&quot;, line 372, in _finalize_requires  </span>
+<span class="err">    if not self.install_requires:  </span>
+<span class="c">AttributeError: &#39;Distribution&#39; object has no attribute &#39;install_requires&#39;  </span>
+</pre></div>
+
+
+<hr>
+<h2>How to fix it</h2>
+<p>Although there are many comments on <a href="https://github.com/pypa/setuptools/issues/1086">pypa/setuptools #1086</a> and <a href="https://github.com/pypa/setuptools/issues/1101">pypa/setuptools #1101</a>, I didn't know the exact reason after I read them. But after a little digging on the GitHub, I finally got some clues.  </p>
+<p>This problem had already been fixed in <a href="https://github.com/pypa/setuptools/pull/1089">pypa/setuptools #1089</a>, but why I still got this problem? Because this fix is <a href="https://github.com/pypa/setuptools/blob/ac7a33c84d74afd3b7453bd880943be9cb4c5787/setuptools/dist.py">in setuptools-36.2.1</a> not in <a href="https://github.com/pypa/setuptools/blob/1eec02038d28506a42bc45d14ef2d54b136cc8bc/setuptools/dist.py">setuptools-36.2.0</a>, if you use <code>setuptools-36.2.0</code> you will still encounter this problem.  </p>
+<p>Here's <a href="https://github.com/labgrid-project/labgrid/pull/119/files">a workarond for this problem</a> which is same as the TL;DR, just <code>pip install --upgrade setuptools</code> to upgrade it.  </p>
+<hr>
+<h2>Further Discussion</h2>
+<p>But why? why <code>pip install --upgrade setuptools</code> works? why <code>pip install -U pytest</code> doesn't? Aren't these two methods just remove <code>setuptools-36.2.0</code> and install a newer <code>setuptools</code>? According to the result, it's not.  </p>
+<p>I guess I might have to spend some time on figuring the workflow of <code>pip</code>?  </p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/45307110/pip-is-rolling-back-uninstall-of-setuptools">https://stackoverflow.com/questions/45307110/pip-is-rolling-back-uninstall-of-setuptools</a>  </li>
+<li><a href="https://github.com/pypa/setuptools/issues/1086">https://github.com/pypa/setuptools/issues/1086</a>  </li>
+<li><a href="https://github.com/pypa/setuptools/issues/1101">https://github.com/pypa/setuptools/issues/1101</a>  </li>
+<li><a href="https://github.com/pypa/setuptools/pull/1089">https://github.com/pypa/setuptools/pull/1089</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=setuptools%2036.2.0%20upgrading/downgrading%20uninstall%20rollback%20error%20with%20Python%203.6.2%20on%20Travis%20CI%0Ahttps%3A//blog.m157q.tw/posts/2017/08/27/setuptools-36-2-0-upgrading-downgrading-uninstall-rollback-error-with-python-3-6-2-on-travis-ci/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/08/27/setuptools-36-2-0-upgrading-downgrading-uninstall-rollback-error-with-python-3-6-2-on-travis-ci/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/08/27/setuptools-36-2-0-upgrading-downgrading-uninstall-rollback-error-with-python-3-6-2-on-travis-ci/&title=setuptools%2036.2.0%20upgrading/downgrading%20uninstall%20rollback%20error%20with%20Python%203.6.2%20on%20Travis%20CI&summary=Note%20for%20situation%20and%20solution%20and%20more&source=https%3A//blog.m157q.tw/posts/2017/08/27/setuptools-36-2-0-upgrading-downgrading-uninstall-rollback-error-with-python-3-6-2-on-travis-ci/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=setuptools%2036.2.0%20upgrading/downgrading%20uninstall%20rollback%20error%20with%20Python%203.6.2%20on%20Travis%20CI&amp;body=https%3A//blog.m157q.tw/posts/2017/08/27/setuptools-36-2-0-upgrading-downgrading-uninstall-rollback-error-with-python-3-6-2-on-travis-ci/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/05/08/use-travis-ci-to-publish-pelican-blog-on-github-pages-automatically/">用 Travis CI 自動化發佈 Pelican blog 到 GitHub Pages 上</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/07/03/y2016w26/">Y2016W26</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/07/11/no-more-requirements-test-txt-for-flit-or-poetry-while-using-tox-running-tests/">No more requirements-test.txt for Flit or Poetry while using Tox running tests</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/">Y2016W49</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/21/y2016w46/">Y2016W46</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/08/27/setuptools-36-2-0-upgrading-downgrading-uninstall-rollback-error-with-python-3-6-2-on-travis-ci/";
+        var disqus_title = "setuptools 36.2.0 upgrading/downgrading uninstall rollback error with Python 3.6.2 on Travis CI";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/08/27/setuptools-36-2-0-upgrading-downgrading-uninstall-rollback-error-with-python-3-6-2-on-travis-ci/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-08-27T18:12:22+08:00"><i class="fa fa-calendar"></i> Sun 27 August 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/travis-ci/" data-toggle="tooltip"
+      class="label label-default"
+      title="6 articles with this tag">Travis CI</a>
+  <br>
+            <a href="/tag/setuptools/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">setuptools</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/08/22/y2017w33/" title="Y2017W33"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/08/28/y2017w34/" title="Y2017W34"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

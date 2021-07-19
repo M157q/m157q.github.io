@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Cousre</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.cousre.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-03-19T16:00:00+08:00</updated><entry><title>Compiler Design Week 3</title><link href="https://blog.m157q.tw/posts/2015/03/10/compiler-design-week-3/" rel="alternate"></link><published>2015-03-10T15:47:17+08:00</published><updated>2015-03-19T16:00:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-03-10:/posts/2015/03/10/compiler-design-week-3/</id><summary type="html">&lt;p&gt;Note for Compiler Design Course in NTHU - Week 3&lt;/p&gt;</summary><content type="html">&lt;h2&gt;2015/03/10&lt;/h2&gt;
+&lt;h3&gt;Left-Recursion Grammar &amp;amp; Right-Recursion Grammar&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;兩者可以互轉&lt;/li&gt;
+&lt;li&gt;Left-Recursion =&amp;gt; Left Associate, Right-Recursion =&amp;gt; Right Associate.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Left-Recursion Conversion&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="err"&gt;α&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="err"&gt;β&lt;/span&gt;
+
+&lt;span class="k"&gt;to&lt;/span&gt;
+
+&lt;span class="n"&gt;S&lt;/span&gt;  &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;β&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;
+&lt;span class="s1"&gt;S&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="err"&gt;α&lt;/span&gt;&lt;span class="n"&gt;S&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="err"&gt;ɛ&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Parser for a Grammar&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Top-down Parser / LL(1) Parser&lt;/li&gt;
+&lt;li&gt;Bottom-up Parser / LR(1) Parser&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Chapter 3 - Regular Expression&lt;/h2&gt;
+&lt;h3&gt;Regular Expression&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Regular Expresssion aka Regular Grammar, Regular Language, Regular, Regex  &lt;/li&gt;
+&lt;li&gt;* - Kleene Closure&lt;ul&gt;
+&lt;li&gt;aka Kleene Operator, Kleene Star.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Kleene_star"&gt;Kleene star - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;FSA - Finite State Automata&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Regular Expression &amp;lt;=&amp;gt; Finite State Machine&lt;/li&gt;
+&lt;li&gt;5-tuple (Q, Σ, δ, q。, F)&lt;ul&gt;
+&lt;li&gt;Q - a set of states&lt;/li&gt;
+&lt;li&gt;Σ - an input alphabet, symbol.&lt;/li&gt;
+&lt;li&gt;δ - a transition function&lt;/li&gt;
+&lt;li&gt;q。 - the initial state&lt;/li&gt;
+&lt;li&gt;F - a set of final states&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;DFA vs NFA&lt;/li&gt;
+&lt;li&gt;Finite =&amp;gt; State 數量是有限的&lt;/li&gt;
+&lt;li&gt;沒有 Memory, 無法記憶 alphabet 的數量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Thompson Construction&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Thompson%27s_construction_algorithm"&gt;Thompson's construction algorithm - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Transforms a given regular expression into an equivalent nondeterministic finite automaton (NFA)&lt;/li&gt;
+&lt;li&gt;Establishing a conversion between two of many description formats for regular languages.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Cousre"></category><category term="Compiler"></category></entry></feed>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - mCrypt</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.mcrypt.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-26T14:59:00+08:00</updated><entry><title>Enable mCrypt in PHP5 on Ubuntu 13.10 for Apache</title><link href="https://blog.m157q.tw/posts/2014/03/27/enable-mcrypt-in-php5-on-ubuntu-1310-for-apache/" rel="alternate"></link><published>2014-03-27T18:48:00+08:00</published><updated>2015-10-26T14:59:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-03-27:/posts/2014/03/27/enable-mcrypt-in-php5-on-ubuntu-1310-for-apache/</id><summary type="html">&lt;p&gt;幫室友解決網安作業的問題&lt;/p&gt;</summary><content type="html">&lt;p&gt;剛剛室友問網安作業  &lt;/p&gt;
+&lt;p&gt;弄了老半天 網頁都是一片空白  &lt;/p&gt;
+&lt;p&gt;後來乾脆直接寫在 .php 裏面  &lt;/p&gt;
+&lt;p&gt;然後用 command line php 執行  &lt;/p&gt;
+&lt;p&gt;結果問題出在  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;PHP Fatal Error: Undefined function mcrypt_encrypt()&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;看起來就是 mcrypt module 沒被 include 進來  &lt;/p&gt;
+&lt;p&gt;環境是 Ubuntu 13.10  &lt;/p&gt;
+&lt;p&gt;開 &lt;code&gt;/etc/php5/apache2/php.ini&lt;/code&gt; 也沒看到 &lt;code&gt;mcrypt.so&lt;/code&gt; 可以拿掉註解  &lt;/p&gt;
+&lt;p&gt;最後請教 Google 大神  &lt;/p&gt;
+&lt;p&gt;發現這篇 &lt;a href="http://stackoverflow.com/questions/19446679/mcrypt-not-present-after-ubuntu-upgrade-to-13-10"&gt;mCrypt not present after Ubuntu upgrade to 13.10&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;看起來是 Ubuntu 13.10 特有的問題 應該是位置改了之類的吧  &lt;/p&gt;
+&lt;p&gt;底下有回應提到解法  &lt;/p&gt;
+&lt;p&gt;簡記一下：  &lt;/p&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;$ sudo apt-get install php5-mcrypt&lt;/code&gt; 確認有安裝 &lt;code&gt;php5-mcrypt&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo ln -s /etc/php5/conf.d/mcrypt.ini /etc/php5/mods-available&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo php5enmod mcrypt&lt;/code&gt; 這個指令會自動幫你在 &lt;code&gt;/etc/php5/apache2/conf.d&lt;/code&gt; 底下建一個 &lt;code&gt;mcrypt.ini&lt;/code&gt; 指向 &lt;code&gt;/etc/php5/mods-available/mcrypt.ini&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo service apache2 restart&lt;/code&gt; 重啟 Apache server  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;應該就可以在網頁上順利使用 mcrypt 系列的 function 了  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;--珍惜生命，遠離 Ubuntu--&lt;/h4&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/19446679/mcrypt-not-present-after-ubuntu-upgrade-to-13-10"&gt;mCrypt not present after Ubuntu upgrade to 13.10&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="PHP"></category><category term="Ubuntu"></category><category term="Apache"></category><category term="mCrypt"></category><category term="sysadmin"></category></entry></feed>

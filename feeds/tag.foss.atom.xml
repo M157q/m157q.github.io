@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - FOSS</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.foss.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-10-31T06:15:43+08:00</updated><entry><title>FOSSAPC 2015 Spring Week #2</title><link href="https://blog.m157q.tw/posts/2015/03/09/fossapc-2015-spring-week-2/" rel="alternate"></link><published>2015-03-09T23:40:43+08:00</published><updated>2018-10-31T06:15:43+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-03-09:/posts/2015/03/09/fossapc-2015-spring-week-2/</id><summary type="html">&lt;p&gt;A note for 2015 FOSS course in NCTU, Hsinchu, Taiwan&lt;/p&gt;</summary><content type="html">&lt;p&gt;因為配合課程的需求
+就直接看 Hackpad 吧&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;（舊連結）&lt;a href="https://fossapc.hackpad.com/2015-FOSS-Week-2-Note#2015-FOSS-Week-2-Note"&gt;2015 FOSS Week #2 Note - fossapc.hackpad.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;新連結：&lt;a href="https://paper.dropbox.com/doc/2015-FOSS-Week-2-Note--AQnq5MGikUiPlfXj5EBF4xCUAg-6hu43RXcaTrewq2ouWOO3"&gt;https://paper.dropbox.com/doc/2015-FOSS-Week-2-Note--AQnq5MGikUiPlfXj5EBF4xCUAg-6hu43RXcaTrewq2ouWOO3&lt;/a&gt;
+（Hackpad 已被 Dropbox Paper 買下）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之後應該就不另外再寫 markdown 記錄了
+雖然還是不太喜歡直接用 hackpad
+太多人的時候還是會噴 502
+以及同時多人中文輸入還是會有打架的問題
+也許可以考慮之後都用英文來記錄
+好像也是個不錯的選擇&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;2018.10.31 後記&lt;/h2&gt;
+&lt;p&gt;因為當時上課主要都是我在打字，花了不少時間。
+當時懶得再把內容記錄到自己的 blog 上，想說看 Hackpad 就好，
+結果後來 Hackpad 被 Dropbox 買下變成 Dropbox Paper 後，
+共筆變成都要登入後才看得到，
+所以還是想說記錄到這裡來，
+至少想看的時候可以看得到，
+誰知道 Dropbox 哪天會不會消失呢？&lt;/p&gt;
+&lt;p&gt;以下直接 export markdown 格式然後貼上：&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;2015 FOSS Week #2 Note&lt;/h1&gt;
+&lt;h1&gt;&lt;strong&gt;複習 Week #1: Revolution OS&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;共筆:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Week #1 NOTE&lt;/li&gt;
+&lt;li&gt;從 Revolution OS 看作業系統生態變化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;說明 &lt;a href="https://sites.google.com/site/fossapc/class-news/homework12015spring"&gt;Homework #1&lt;/a&gt; 進行方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;影片觀賞：
+[ ] 《&lt;a href="https://www.youtube.com/watch?v=jw8K460vx1c"&gt;Revolution OS&lt;/a&gt;》&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.catb.org/esr/writings/cathedral-bazaar/cathedral-bazaar/"&gt;esr - The Cathedral and the Bazaar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;1971, RMS 加入 MIT 的 AI Lab (現已改名為 &lt;a href="https://www.csail.mit.edu/"&gt;CSAI Lab&lt;/a&gt;) 裡頭全是當時非常活躍的 Hackers&lt;/li&gt;
+&lt;li&gt;[4:51] &lt;a href="http://www.baike.com/wiki/%E5%85%89%E7%AC%94"&gt;光筆&lt;/a&gt;與航空指揮中心&lt;/li&gt;
+&lt;li&gt;登月計劃的多人多工作業系統: CTSS (Compatible Time-Sharing System)&lt;/li&gt;
+&lt;li&gt;password 的出現&lt;/li&gt;
+&lt;li&gt;自製電腦俱樂部 &lt;a href="http://en.wikipedia.org/wiki/Homebrew_Computer_Club"&gt;Homebrew Computer Club&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;1976, &lt;a href="http://en.wikipedia.org/wiki/Open_Letter_to_Hobbyists"&gt;An Open Letter to Hobbyists&lt;/a&gt; (by Bill Gates)&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Open_Letter_to_Hobbyists#mediaviewer/File:Bill_Gates_Letter_to_Hobbyists.jpg"&gt;原檔截圖&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;當時有著作權，但是對於軟體的保護並未完善，主要是因為多數人認為軟體只是附屬品。&lt;/li&gt;
+&lt;li&gt;時薪兩美元：Bill Gates &amp;amp; &lt;a href="http://zh.wikipedia.org/wiki/%E4%BF%9D%E7%BD%97%C2%B7%E8%89%BE%E4%BC%A6"&gt;Paul Allen&lt;/a&gt; 在高中時就開始撰寫 BASIC 程式、為公司開發微處理器專用的 BASIC 編譯器，2 美元是他們高中時期的薪資。&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Open_Letter_to_Hobbyists"&gt;Altair BASIC&lt;/a&gt;：針對 MITS &lt;em&gt;Altair&lt;/em&gt; 小型電腦推出的 BASIC 系統&lt;/li&gt;
+&lt;li&gt;Bill Gates 說：軟體沒有付費就是偷來的&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Micro_Instrumentation_and_Telemetry_Systems"&gt;MITS&lt;/a&gt; : 70 年代微型電腦公司&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;在北歐，可以合法的對軟體做逆向工程。但在美國軟體商業化的觀念下，對軟體進行反組譯或是逆向工程是違法的。&lt;ul&gt;
+&lt;li&gt;EULA (End-User License Agreement) 制定的精神也不同&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;在當時，作業系統幾乎都是需要授權才能使用，而價格不盡相同。並且必須簽署協議，保證不將軟體分享給其他人&lt;ul&gt;
+&lt;li&gt;AT&amp;amp;T 的 Unix 需要高額授權金： 999 美元&lt;/li&gt;
+&lt;li&gt;DOS的授權金： 15 美元&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;[Book] &lt;a href="http://www.oreilly.com/openbook/opensources/book/"&gt;Open Sources: Voices from the Open Source Revolution&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;RMS 為了反制這種軟體私有化的文化，創造了一個可以自由分享的 OS 來作為 Unix 的替代品，並將名字取為 &lt;a href="https://www.gnu.org/"&gt;GNU: GNU's Not Unix&lt;/a&gt; 用來諷刺 UNIX&lt;/li&gt;
+&lt;li&gt;電話號碼： ITS-UNIX （從商標到電話，都視為資產來保護）&lt;ul&gt;
+&lt;li&gt;導致和 AT&amp;amp;T 的官司訴訟: &lt;a href="http://redhat.ecenter.idv.tw/bbs/showthread.php?postid=221810"&gt;http://redhat.ecenter.idv.tw/bbs/showthread.php?postid=221810&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;有一家公司 Berkeley Software Design, Inc.(BSDI)從事 4.4BSD 商業化。該公司產品名為 BSD/386，並宣稱 BSD/386 經過了Berkeley 的改寫,已經沒有 AT&amp;amp;T 的原始碼了，不過 AT&amp;amp;T 還是對Berkeley和BSDI提出告訴。導火線是 BSDI 的電話: 1-800-ITS-UNIX.此一訴訟延後了4.4BSD 的發表&lt;/li&gt;
+&lt;li&gt;終於 1994 年 2 月 4 日，雙方達成和解，撤銷告訴， BSDI 發表了不含 AT&amp;amp;T 宣稱的原始碼的4.4BSD 原始碼，稱為 4.4BSD-Lite.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Unix-like 與 POSIX 的出現&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/POSIX"&gt;POSIX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;P for Portable&lt;/li&gt;
+&lt;li&gt;O for Operating&lt;/li&gt;
+&lt;li&gt;S for System&lt;/li&gt;
+&lt;li&gt;I for Interface&lt;/li&gt;
+&lt;li&gt;X for Unix&lt;/li&gt;
+&lt;li&gt;POSIX 的規格是有分版本的，目前是由 &lt;a href="http://www.opengroup.org/"&gt;Open Group&lt;/a&gt; 制定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Berkeley_Software_Distribution"&gt;BSD&lt;/a&gt;: 全名為 Berkeley Software Distribution，為 Berkeley 開發的 Unix Operating System，因為 AT&amp;amp;T 授權問題，較晚被使用者接受。&lt;/li&gt;
+&lt;li&gt;Richard Stallman / FSF 當時收入來源：販售 Emacs 磁帶、接受捐贈、為公司進行教育訓練，算是實踐 GNU Manifesto  的「服務」性質收益，但一直到了 Cygnus Solutions 出現，才開始企業化經營 Free software 商業化&lt;/li&gt;
+&lt;li&gt;1991 年&lt;ul&gt;
+&lt;li&gt;GNU U許多程式替換完成&lt;/li&gt;
+&lt;li&gt;當時已有 gcc, gdb, yacc, emacs, TeX ... 等工具程式&lt;/li&gt;
+&lt;li&gt;這也是 Linux 釋出第一年&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;本片最帥型男 &lt;a href="http://en.wikipedia.org/wiki/Michael_Tiemann"&gt;Michael Tiemann&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://people.redhat.com/tiemann/"&gt;http://people.redhat.com/tiemann/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;早期與 RMS 合作開發 gcc 編譯器 (在他22歲的時候)&lt;/li&gt;
+&lt;li&gt;他和 RMS 現在都不寫 code 了&lt;/li&gt;
+&lt;li&gt;創立第一家以自由軟體形式獲利公司  &lt;a href="http://en.wikipedia.org/wiki/Cygnus_Solutions"&gt;Cygnus Solutions&lt;/a&gt;, 現為 &lt;a href="http://en.wikipedia.org/wiki/Red_Hat"&gt;Red Hat&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.csdn.net/jackjoy/article/details/2062414"&gt;Michael Tiemann：GNU C编译器发布20周年纪念&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://zh.wikipedia.org/wiki/%E6%AF%8F%E7%A7%92%E6%8C%87%E4%BB%A4"&gt;MIPS&lt;/a&gt; (Million Instructions per second&lt;strong&gt;)&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;e.g. 2009, AMD Phenom II X4 940 Black Edition&lt;/li&gt;
+&lt;li&gt;42,820 MIPS at 3.0 GHz ( 14.273 MIPS/MHz )&lt;/li&gt;
+&lt;li&gt;GCJ (GNU Compiler for Java) - 把 Java 對應到 C++ 的物件上，稱為 CNI: &lt;a href="https://gcc.gnu.org/onlinedocs/gcc-4.9.0/gcj/About-CNI.html"&gt;https://gcc.gnu.org/onlinedocs/gcc-4.9.0/gcj/About-CNI.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;GNU gold: 一個 Linker 實做，由 Google 工程師  Ian Lance Taylor 主導開發。Google 裡頭有些工程師來自 Cygnus / Red Hat，特別在編譯器小組&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Cygnus solution: gcc 輸出的符號中，以 cyg_ 開頭的函式，就是來自 Cygnus 公司的貢獻&lt;ul&gt;
+&lt;li&gt;gcc 的 -finstrument-functions 參數&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://ecos.sourceware.org/"&gt;eCos&lt;/a&gt; 嵌入式作業系統是 Cygnus 開發，其 kernel API 也是以 cyg_ 開頭
+[ ] 《&lt;a href="https://www.youtube.com/watch?v=VoLUvE-ny1k"&gt;Code Rush&lt;/a&gt;》(Netscape/Mozilla 的紀錄片)
+[ ] 《&lt;a href="https://www.youtube.com/watch?v=XvDZLjaCJuw"&gt;The Unix System: Making Computers Easier to Use&lt;/a&gt; 》
+[ ] 《&lt;a href="https://www.youtube.com/watch?v=ds77e3aO9nA"&gt;A Narrative History of BSD&lt;/a&gt;》
+[ ] 《&lt;a href="https://www.youtube.com/watch?v=iX7nSQDFbnQ"&gt;Pirates of Silicon Valley&lt;/a&gt;》- 講述 Bill Gates 與 Steve Jobs 的故事&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Pirates_of_Silicon_Valley"&gt;http://en.wikipedia.org/wiki/Pirates_of_Silicon_Valley&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.imdb.com/title/tt0168122/"&gt;http://www.imdb.com/title/tt0168122/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;&lt;strong&gt;Open Source Ecosystem &amp;amp; Business&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;課程網站：&lt;a href="https://sites.google.com/site/fossapc/list-of-lectures/20150309-opensourceecosystembusiness"&gt;20150309 - Open Source Ecosystem &amp;amp; Business - 自由開源軟體與專案協作&lt;/a&gt;
+對 P. McCoy Smith 和 Wayne R. Chang 論文 &lt;a href="https://wiki.oulu.fi/download/attachments/58197330/ossd_2015_luu_li_dong_samodelkin.pdf?version=1&amp;amp;modificationDate=1448956483000&amp;amp;api=v2"&gt;The Evolution of Business Models Using Open Source Software&lt;/a&gt; (2011 年) 進行導讀，探討以下企業的獲利模式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cygnus (現為 Red Hat)&lt;/li&gt;
+&lt;li&gt;Novell/SUSE&lt;/li&gt;
+&lt;li&gt;IBM&lt;/li&gt;
+&lt;li&gt;Sun Microsystems (現為 Oracle)&lt;/li&gt;
+&lt;li&gt;HP&lt;/li&gt;
+&lt;li&gt;Mozilla Foundation&lt;/li&gt;
+&lt;li&gt;MySQL&lt;/li&gt;
+&lt;li&gt;Google 的 Android&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;投影片:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/jserv/opensource-ecosystem"&gt;Open Sourcefrom Legend, Business, to Ecosystem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;淘寶年營收從 2003 年的 400 萬元台幣至 2010 年超過 40 億人民幣 (之前沒上市，只能看報導推敲)，成長速度之高，已經到了沒有現成的商業軟體可完美解決該公司面對的技術問題，只好重頭改善開放原始碼的技術，以符合自身需求&lt;ul&gt;
+&lt;li&gt;OaaS (Open-source As A Strategy)&lt;/li&gt;
+&lt;li&gt;舊有商業方案: IOE&lt;/li&gt;
+&lt;li&gt;I: IBM (server)&lt;/li&gt;
+&lt;li&gt;O: Oracle (database)&lt;/li&gt;
+&lt;li&gt;E: EMC (storage)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Microsoft 一開始 (2001) 否認 Open Source，認為它是一個軟體產業的「Cancer」，後來自己也推行一套 Open Source 的授權（2007）。&lt;/li&gt;
+&lt;li&gt;要去思考我們需要解決什麼樣的問題，如果沒有解決任何問題，則不會有商機。&lt;/li&gt;
+&lt;li&gt;Open Source 提供一個高度可見的協作框架,吸引大公司的關注&lt;/li&gt;
+&lt;li&gt;Open Source 作為公共財的形式,刺激了基礎軟體設施&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Symbian"&gt;Symbian&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;華冠電子：一間使用 Symbian 來代工功能手機的台灣公司。Symbian 作業系統的授權金行情價是台幣一億元，顯示在當時非開源的手機系統的開發成本極高無比&lt;/li&gt;
+&lt;li&gt;但是，Android 完全顛覆這樣的模式，把價值上億元的手機系統原始碼，當作廣告來免費放送&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;高通的專利傘&lt;ul&gt;
+&lt;li&gt;規定高通的客戶彼此之間不能互相提起法律訴訟&lt;/li&gt;
+&lt;li&gt;但這規則在去年消失了&lt;/li&gt;
+&lt;li&gt;這專利傘造成的封閉市場存在了十幾年&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.appledaily.com.tw/realtimenews/article/new/20141216/524954/"&gt;小米還有更壞的事？　恐失「高通傘」保護 | 即時新聞 | 20141216 | 蘋果日報&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/OpenStack"&gt;OpenStack&lt;/a&gt; - &lt;a href="https://www.openstack.org/"&gt;https://www.openstack.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Nokia 各種手機軟體從頭到腳都是自己開發，Android 這個 Open Source Project 的出現造成整個手機生態的改變。&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://events.linuxfoundation.org/sites/events/files/slides/lfcs15_hall.pdf"&gt;Open Source Software Business Models&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;&lt;strong&gt;GNU Autotools + Git&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;課程連結: &lt;a href="https://sites.google.com/site/fossapc/list-of-lectures/20150309-gnuautotools"&gt;20150309 - GNU Autotools - 自由開源軟體與專案協作&lt;/a&gt;
+簡報:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://sed.bordeaux.inria.fr/seminars/autotools_20140715.pdf"&gt;GNU Autotools Are What Your Users Need&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;auxiliary =&amp;gt; aux.c, 但 Windows 不允許這個字，aux, AUX 在 Windows 都是保留字&lt;/li&gt;
+&lt;li&gt;Is C really portable? (以下在 gdb 實驗，Linux/x86_64)
+    print 0 - 0 =&amp;gt; 0
+    print 0 - 1 =&amp;gt; -1
+    print 0U - 1 =&amp;gt; 4264697295
+    print 0 - 1U =&amp;gt; 4294967295&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the result depends on the architecture of CPU&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;探討案例: &lt;a href="https://code.google.com/p/pcmanx-gtk2/"&gt;pcmanx&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://code.google.com/p/pcmanx-gtk2/"&gt;https://code.google.com/p/pcmanx-gtk2/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pcman-bbs/pcmanx"&gt;https://github.com/pcman-bbs/pcmanx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;如何安裝 pcmanx
+    git clone https://github.com/pcman-bbs/pcmanx.git
+    cd pcmanx&lt;/li&gt;
+&lt;li&gt;請先詳細閱讀目錄中的 README 檔案，依據建議安裝必要的套件，否則後續無法進行&lt;/li&gt;
+&lt;li&gt;透過 GNU Autotools 來生成必要的編譯工具
+    ./autogen.sh
+    ./configure
+    make&lt;/li&gt;
+&lt;li&gt;測試 pcmanx
+    ./src/pcmanx&lt;/li&gt;
+&lt;li&gt;安裝 pcmanx 到系統目錄
+    sudo make install&lt;/li&gt;
+&lt;li&gt;當然也可以解除安裝
+    sudo make uninstall&lt;/li&gt;
+&lt;li&gt;倘若想清除所有由編譯器產生的檔案、中間過程的輸出 (包含由 configure 所產生的 Makefile)，可執行以下：
+    make distclean&lt;/li&gt;
+&lt;li&gt;小提示&lt;/li&gt;
+&lt;li&gt;在 configure 階段可以指定不同的 prefix
+    ./configure --prefix=/tmp/myhome (make install 安裝的目的地)&lt;/li&gt;
+&lt;li&gt;make 時，可以使用 4 核心來編譯
+    make -j4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Git version system&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/doggy8088/Learn-Git-in-30-days"&gt;30 天精通 Git 版本控管&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://dylandy.github.io/Easy-Git-Tutorial/"&gt;Git / GitHub 教學&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pcottle.github.io/learnGitBranching/"&gt;Learn Git Branching&lt;/a&gt; (精美動畫，必看)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;&lt;strong&gt;課堂問答&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;Q1: [Revolution OS 4:51] 這個螢幕叫什麼？
+Jserv: 這個設備叫做&lt;a href="http://terms.naer.edu.tw/detail/1281172/"&gt;光筆&lt;/a&gt;，跟一般觸控螢幕的原理不太一樣，有些是用磁感應的，有些是有接線的。（2002年 Jserv 當兵時用的設備）
+Q2: 你覺得有那些系統需要授權？
+[同學]: SunOS, BSD
+Jserv: 最早的 BSD 是在 UNIX 的基礎上，而 UNIX 需要去花錢買的，當年需要花 999 美元給 AT&amp;amp;T，後來 AT&amp;amp;T 就拆開了。
+&lt;em&gt;Q3: 你覺得 80 年代 DOS 需要多少錢？&lt;/em&gt;
+[同學1]2000?
+[同學2]500
+[同學3]300
+A3: Jserv：答案是 15 美元 (ODM 版本)，且 MS 睜一支眼閉一支眼，他們並沒有刻意去抓盜版的人，讓DOS更快速去擴散，不過他們把額外的功能放在別的地方（另外販售？）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1980 以前&lt;/li&gt;
+&lt;li&gt;Apple&lt;/li&gt;
+&lt;li&gt;Atair&lt;/li&gt;
+&lt;li&gt;Digital Research&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/CP/M"&gt;CP/M&lt;/a&gt; (Control Program for Microcomputers)&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Seattle_Computer_Products"&gt;Seattle Computer Products&lt;/a&gt; (SCP) 開發的 QDOS (Quick and Dirty Operating System)&lt;/li&gt;
+&lt;li&gt;1980 以後&lt;/li&gt;
+&lt;li&gt;MS-DOS 1.0 （單工）&lt;/li&gt;
+&lt;li&gt;DR-DOS （有多工的版本）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Q4: 在《&lt;a href="http://blog.sina.com.cn/s/blog_4dfa80d301008gfm.html"&gt;20年前的今天&lt;/a&gt;》中，什麼是RSI？
+Q5: Macbook Air 有多少 MIPS ?
+A5: 我用的是 MacBook AIr 2013 13-inch 的版本 =&amp;gt; &lt;strong&gt;52620 MIPS&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.digitaltrends.com/laptop-reviews/apple-macbook-air-13-inch-2013-review/"&gt;http://www.digitaltrends.com/laptop-reviews/apple-macbook-air-13-inch-2013-review/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;MacBook Air 13-inch boasts a Core i5-4250U processor&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.notebookcheck.net/Intel-Core-i5-4250U-Notebook-Processor.93564.0.html"&gt;http://www.notebookcheck.net/Intel-Core-i5-4250U-Notebook-Processor.93564.0.html&lt;/a&gt;
+&lt;img alt="" src="https://hackpad-attachments.imgix.net/hackpad.com_2015-FOSS-Week-2-Note_p.338452_1425881139753_Screen%20Shot%202015-03-09%20at%201.56.50%20PM.png?fit=max&amp;amp;w=882"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Q6: 有沒有聽過 Nortel ?
+A6: 沒聽過
+Jserv: Nortel 是加拿大的一間電信公司 (2009 年申請破產)，中文名叫做北電，一度是世界上最大的通訊製造商，對 free software 做了頗多貢獻
+&lt;a href="http://www.nortel.com"&gt;http://www.nortel.com&lt;/a&gt;
+Q7: 如何以C program寫字串"C:\windows\temp" ?
+A7: 跳脫字元, "C:\windows\temp"&lt;/p&gt;</content><category term="Course"></category><category term="FOSS"></category></entry><entry><title>FOSSAPC 2015 Spring Week #1</title><link href="https://blog.m157q.tw/posts/2015/03/02/fossapc-2015-spring-week-1/" rel="alternate"></link><published>2015-03-02T12:57:15+08:00</published><updated>2018-10-31T06:13:39+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-03-02:/posts/2015/03/02/fossapc-2015-spring-week-1/</id><summary type="html">&lt;p&gt;A note for 2015 FOSSAPC course in NCTU, Hsinchu, Taiwan&lt;/p&gt;</summary><content type="html">&lt;p&gt;配合課程使用 Hackpad
+後續更新請看：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;（舊連結）&lt;a href="https://fossapc.hackpad.com/2015-FOSS-Week-1-Note-JHXVNsJzbeX"&gt;2015 FOSS Week #1 Note - fossapc.hackpad.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://paper.dropbox.com/doc/2015-FOSS-Week-1-Note--AQlVn_zO14tiQjN8l3w~MBYyAg-3KJYdxX1ubAjMpLZyt7Qa"&gt;https://paper.dropbox.com/doc/2015-FOSS-Week-1-Note--AQlVn_zO14tiQjN8l3w~MBYyAg-3KJYdxX1ubAjMpLZyt7Qa&lt;/a&gt;
+（Hackpad 已被 Dropbox 買下來）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Android Bionic&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/android/platform_bionic"&gt;https://github.com/android/platform_bionic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Bionic_(software)"&gt;http://en.wikipedia.org/wiki/Bionic_(software)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;How A Compiler Works&lt;/h3&gt;
+&lt;h4&gt;課程連結：&lt;a href="https://sites.google.com/site/fossapc/list-of-lectures/fromsourcetobinarygnutoolchainshiruheyunzuo"&gt;20150302 - From Source to Binary: GNU Toolchain 是如何運作？ - 自由開源軟體與專案協作&lt;/a&gt;&lt;/h4&gt;
+&lt;h4&gt;投影片連結：&lt;a href="http://www.slideshare.net/jserv/how-a-compiler-works-gnu-toolchain"&gt;How A Compiler Works: GNU Toolchain&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;1985 - Richard Stallman - GNU FSF (GNU Free Software Foundation)&lt;/li&gt;
+&lt;li&gt;屠龍書 - Syntax Directed Translator (SDT)&lt;/li&gt;
+&lt;li&gt;Embedded System - Toolchain 太新或太舊都不行&lt;blockquote&gt;
+&lt;p&gt;在嵌入式系統中，Toolchain 的版本匹配度影響到個別軟體元件的正確性，如 kernel, libc, graphics framework 等等，而且通常開發者會從個別套件的原始碼一路編譯並建立 system/firmware image，就會遇到各式編譯錯誤、來自個別工具產生的潛在錯誤，或者需要 workaround 的狀況。於是，開發過程就會限定某個版本的 toolchain&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;第一版 gcc 是 RMS 寫的，之後的版本漸漸偏離 RMS 的初衷&lt;/li&gt;
+&lt;li&gt;Dead Code Elimination&lt;/li&gt;
+&lt;li&gt;Code Motion, Loop invariant, Pointer Aliasing&lt;ul&gt;
+&lt;li&gt;Pointer Aliasing 是 Compiler 最佳化瓶頸之一，如果不同的 Pointer 指向同個 address，會造成某些generic 的最佳化出錯&lt;/li&gt;
+&lt;li&gt;C99, Restrict Pointer Aliasing&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Pointer_aliasing"&gt;Pointer aliasing - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;In C99, the restrict keyword was added, which specifies that a pointer argument does not alias any other pointer argument.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Static Single Assignment (SSA)&lt;/li&gt;
+&lt;li&gt;cc1: 真正的 GNU C Compiler&lt;ul&gt;
+&lt;li&gt;Source Code&lt;/li&gt;
+&lt;li&gt;Simplified AST&lt;/li&gt;
+&lt;li&gt;Gimple IR&lt;/li&gt;
+&lt;li&gt;Tree SSA Form&lt;/li&gt;
+&lt;li&gt;RTL IR (LISP Style)&lt;/li&gt;
+&lt;li&gt;Final SAM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Pipeline Scheduling&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Classic_RISC_pipeline"&gt;http://en.wikipedia.org/wiki/Classic_RISC_pipeline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Instruction Fetch, Decode, Execute, Memory Access, Write Back&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Hazard_%28computer_architecture%29"&gt;Hazard (computer architecture) - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;LLVM&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;UIUC Vikram Adve, Chris Lattner in 2000&lt;/li&gt;
+&lt;li&gt;高度模組化&lt;/li&gt;
+&lt;li&gt;LLVM bitcode (IR)&lt;/li&gt;
+&lt;li&gt;LLVM 一開始是用 GCC 的 Front-end (GPLv2) 結合自己的 Back-end 成為 llvm-gcc，但 RMS 對 LLVM 這種行為感到非常不滿，並在 gcc43 時將授權改為 GPLv3 來反對 LLVM 這種偷幹 Front-end 的方式，導致後來 Apple 發展自己的 Front-end Clang&lt;blockquote&gt;
+&lt;p&gt;LLVM 的授權是 BSD License，沒有一定要 GPL 形式的強制釋出原始碼條款，但 llvm-gcc 實際上是一種「掏空」GPL 授權的 gcc 的方式，也就是讓 BSD 授權的部份在整個編譯器系統中越來越多，這是 Richard Stallman 不滿之處，他認為 GPL 在這樣的狀況下，不再保證 GPL 的效力。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;Clang 採模組化設計 (Clang C API)&lt;ul&gt;
+&lt;li&gt;可 export AST&lt;/li&gt;
+&lt;li&gt;改善錯誤訊息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;LLVM Bitcode 用來當傳遞格式還有很多問題&lt;ul&gt;
+&lt;li&gt;Binary Compatibility&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;目前效能已經逼近 GCC 但還差一點&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Objective-C&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1988&lt;/li&gt;
+&lt;li&gt;Steve Jobs&lt;/li&gt;
+&lt;li&gt;NeXT&lt;/li&gt;
+&lt;li&gt;GCC 2.7&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在 Open Source 圈中，誠信是很重要的，千萬別幹抄襲這種事。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Revolution OS&lt;/h3&gt;
+&lt;h4&gt;課程連結：&lt;a href="https://sites.google.com/site/fossapc/list-of-lectures/revolutionosyingpianbeijingzhishibuchong"&gt;20150302 - 《Revolution OS》影片背景知識補充 - 自由開源軟體與專案協作&lt;/a&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://fossapc.hackpad.com/-Revolution-OS--RrJpYEByzmr"&gt;從 Revolution OS 看作業系統生態變化 - fossapc.hackpad.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Revolution_OS"&gt;Revolution OS - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=jw8K460vx1c"&gt;Revolution OS - YouTube&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;影片裡同時出現了 RMS 和 Linus，可能以後都不會再看到他們同時出現在同個地方了。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RMS 是非常純的自由教義派，可以為了 Open Source BIOS 去用&lt;a href="http://zh.wikipedia.org/zh-tw/%E9%BE%99%E8%8A%AF"&gt;龍芯&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Linus 則是實用主義派，可以為了實用而向沒有 Open Source 妥協，這是 RMS 完全沒辦法接受的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GNU 早期最知名的軟體就是 Emacs&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;MicroSoft NBC 在 Linux 被大量採用的年代很多頭條都是跟 Linux 有關的，形成一股趣味的對比。ex: VA Linux&lt;ul&gt;
+&lt;li&gt;當年 UNIX 紅到幾乎只要沾上邊就能賺錢，連賣大同電鍋的大同公司當年都搞了一套叫做 MITUX 的 UNIX 系統。&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.ithome.com.tw/node/5632"&gt;SCO、IBM與Intel將合作開發IA-64架構的UNIX作業系統 | iThome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://bob.gddfpaper.com/COMPUTER/OS/UNIX/A18.htm"&gt;MITUX - MITUX系統漫談 # csj@pc2.hinet.net&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;microkernel 的 CMU Mach 影響了 MacOS X 10.0 (Darwin) 和 Windows NT，雖然因為 microkernel 效能太差而沒有採用，但還是取其 flexible 的優點併入 monolithic kernel 形成了結合兩者優點的 hybrid kernel&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Mach_(kernel)"&gt;Mach (kernel) - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Microkernel"&gt;Microkernel - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Hybrid_kernel"&gt;Hybrid kernel - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Monolithic_kernel"&gt;Monolithic kernel - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://en.wikipedia.org/wiki/Darwin_%28operating_system%29#Kernel"&gt;Darwin (operating system) - Wikipedia, the free encyclopedia&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Darwin is built around XNU, a hybrid kernel that combines the Mach 3 microkernel, ...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;關於 microkernel 的發展及介紹可以參考 jserv 的 slides &lt;a href="http://www.slideshare.net/jserv/microkernel-evolution"&gt;Microkernel Evolution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;Misc.&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://programmers.stackexchange.com/questions/226573/why-is-the-unix-linker-called-ld"&gt;history - Why is the Unix linker called "ld" - Programmers Stack Exchange&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Linkers in Linux were originally called loaders.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Linking the Object code File
+...Linux comes with its own linker, called ld. (The name is actually short for "load", and "loader" was what linkers were originally called, in the First Age of Unix, back in the 1970s.)&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="Course"></category><category term="FOSS"></category><category term="Open Source"></category><category term="Free Software"></category></entry></feed>

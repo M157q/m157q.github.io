@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  ITSE Ch1 - Software and Software Engineering
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.course.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Course - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2013/11/20/itse-ch1-software-and-software-engineering/" rel="bookmark" title="Permalink to ITSE Ch1 - Software and Software Engineering">ITSE Ch1 - Software and Software Engineering</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <h1>NCTUCS 2013-Fall Introduction to Software …</h1>
+  </blockquote>
+  <div>
+    <h1>NCTUCS 2013-Fall Introduction to Software Engineering by Professor Feng-Jian Wang</h1>
+<h1>Ch1 - Software &amp; Software Engineering</h1>
+<h2>Software—New Categories</h2>
+<ul>
+<li>Open world computing—pervasive, distributed computing  </li>
+<li>Ubiquitous computing—wireless networks  </li>
+<li>Netsourcing(cloud)—the Web as a computing engine  </li>
+<li>Open source—”free” source code open to the computing community (a blessing, but also a potential curse!)  </li>
+<li>Data mining  </li>
+<li>Grid computing  </li>
+<li>Cognitive machines  </li>
+<li>Software for nanotechnologies  </li>
+</ul>
+<h2>The Software Process</h2>
+<ul>
+<li>
+<p>A <strong>process</strong> is a collection of activities, actions, and tasks that are performed when some work product is to be created.  </p>
+</li>
+<li>
+<p>An <strong>activity</strong> strives to achieve a broad objective (e.g., communication with stakeholders) and is applied regardless of the application domain, size of the project, complexity of the effort, or degree of rigor with which software engineering is to be applied.  </p>
+</li>
+<li>
+<p>An <strong>action</strong> (e.g., architectural design) encompasses a set of tasks that produce a major work product (e.g., an architectural design model).  </p>
+</li>
+<li>
+<p>A <strong>task</strong> focuses on a small, but well-defined objective (e.g., conducting a unit test) that produces a tangible outcome.  </p>
+</li>
+<li>
+<p>A <strong>process framework</strong> establishes the foundation for a complete software engineering process by identifying a small number of <strong>framework activities</strong> that are applicable to all software projects, regardless of their size or complexity. In addition, the process framework encompasses a set of <strong>umbrella activities</strong> that are applicable across the entire software process.  </p>
+</li>
+<li>
+<p>A generic process framework for software engineering encompasses five activities:  </p>
+<ul>
+<li>Communication  <ul>
+<li>Before any technical work can commence, it is critically important to communicate and collaborate with the customer and other stakeholders.  </li>
+<li>The intent is to understand stakeholders’ objectives for the project and to gather requirements that help define software features and functions.  </li>
+</ul>
+</li>
+<li>Planning  <ul>
+<li>The planning activity creates a “map” that helps guide the team as it makes the journey.  </li>
+<li>The map—called a software project plan defines the software engineering work by describing the technical tasks to be conducted, the risks that are likely, the resources that will be required, the work products to be produced, and a work schedule.  </li>
+</ul>
+</li>
+<li>Modeling  <ul>
+<li>You create a “sketch” of the thing so that you’ll understand the big picture what it will look like architecturally, how the constituent parts fit together, and many other characteristics.  </li>
+<li>If required, you refine the sketch into greater and greater detail in an effort to better understand the problem and how you’re going to solve it.  </li>
+<li>A software engineer does the same thing by creating models to better understand software requirements and the design that will achieve those requirements.  </li>
+</ul>
+</li>
+<li>Construction  <ul>
+<li>This activity combines code generation (either manual or automated) and the testing that is required to uncover errors in the code.  </li>
+</ul>
+</li>
+<li>Deployment  <ul>
+<li>The software (as a complete entity or as a partially completed increment) is delivered to the customer who evaluates the delivered product and provides feedback based on the evaluation.  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>These five generic framework activities can be used during the development of small, simple programs, the creation of large Web applications, and for the engineering of large, complex computer-based systems.  </p>
+</blockquote>
+<hr>
+<h2>Umbrella activities</h2>
+<blockquote>
+<p>Software engineering process framework activities are complemented by a number of umbrella activities. In general, umbrella activities are applied throughout a software project and help a software team manage and control progress, quality, change, and risk. Typical umbrella activities include:  </p>
+</blockquote>
+<ul>
+<li><strong>Software project tracking and control</strong> — allows the software team to assess progress against the project plan and take any necessary action to maintain the schedule.  </li>
+<li><strong>Risk management</strong> — assesses risks that may affect the outcome of the project or the quality of the product.  </li>
+<li><strong>Software quality assurance</strong> — defines and conducts the activities required to ensure software quality.  </li>
+<li><strong>Technical reviews</strong> — assesses software engineering work products in an effort to uncover and remove errors before they are propagated to the next activity.  </li>
+<li><strong>Measurement</strong> — defines and collects process, project, and product measures that assist the team in delivering software that meets stakeholders’ needs; can be used in conjunction with all other framework and umbrella activities.  </li>
+<li><strong>Software configuration management</strong> — manages the effects of change throughout the software process.  </li>
+<li><strong>Reusability management</strong> — defines criteria for work product reuse (including software components) and establishes mechanisms to achieve reusable components.  </li>
+<li><strong>Work product preparation and production</strong> — encompasses the activities required to create work products such as models, documents, logs, forms, and lists.  </li>
+</ul>
+<hr>
+<h2>Hooker’s General Principles</h2>
+<ol>
+<li>The Reason It All Exists  </li>
+<li>KISS (Keep It Simple, Stupid!)  </li>
+<li>Maintain the Vision  </li>
+<li>What You Produce, Others Will Consume  </li>
+<li>Be Open to the Future  </li>
+<li>Plan Ahead for Reuse  </li>
+<li>Think!  </li>
+</ol>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=ITSE%20Ch1%20-%20Software%20and%20Software%20Engineering%0Ahttps%3A//blog.m157q.tw/posts/2013/11/20/itse-ch1-software-and-software-engineering/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2013/11/20/itse-ch1-software-and-software-engineering/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2013/11/20/itse-ch1-software-and-software-engineering/&title=ITSE%20Ch1%20-%20Software%20and%20Software%20Engineering&summary=NCTUCS%202013-Fall%20Introduction%20to%20Software%20%E2%80%A6&source=https%3A//blog.m157q.tw/posts/2013/11/20/itse-ch1-software-and-software-engineering/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=ITSE%20Ch1%20-%20Software%20and%20Software%20Engineering&amp;body=https%3A//blog.m157q.tw/posts/2013/11/20/itse-ch1-software-and-software-engineering/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/25/itse-ch8-conventional-techniques-of-design/">ITSE Ch8 - Conventional Techniques of Design</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/09/itse-ch2-process-models/">ITSE Ch2 - Process Models</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/31/y2016w43/">Y2016W43</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/02/13/y2017w06/">Y2017W06</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/10/y2016w40/">Y2016W40</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2013/11/20/itse-ch1-software-and-software-engineering/";
+        var disqus_title = "ITSE Ch1 - Software and Software Engineering";
+        var disqus_url = "https://blog.m157q.tw/posts/2013/11/20/itse-ch1-software-and-software-engineering/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2013-11-20T17:57:00+08:00"><i class="fa fa-calendar"></i> Wed 20 November 2013</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/course/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="37 articles in this category">Course</a>
+              </p>
+            <a href="/tag/software-engineering/" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">software engineering</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/20/itc-week8-lfsr-based-stream-cipher/" title="ITC week8 - LFSR-based Stream Cipher"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/22/itc-week9-hash/" title="ITC week9 - Hash"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.course.atom.xml"><i class="fa fa-rss"></i> Category: Course (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

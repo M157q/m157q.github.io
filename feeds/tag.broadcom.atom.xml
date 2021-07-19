@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Broadcom</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.broadcom.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-10-31T17:10:43+08:00</updated><entry><title>用 broadcom-wl-dkms 讓 BCM4360 [14e4:43a0] (rev 03) 能順利在 Arch Linux 中使用</title><link href="https://blog.m157q.tw/posts/2017/10/31/make-bcm4360-14e4-43a0-rev-03-work-on-arch-linux-with-broadcom-wl-dkms/" rel="alternate"></link><published>2017-10-31T17:10:43+08:00</published><updated>2017-10-31T17:10:43+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-10-31:/posts/2017/10/31/make-bcm4360-14e4-43a0-rev-03-work-on-arch-linux-with-broadcom-wl-dkms/</id><summary type="html">&lt;p&gt;紀錄一下在使用 BCM4360 14e4:43a0 (rev 03) 的 MacBook Air 2013 上裝 Arch Linux，用 wicd 使用無線網路會遇到問題的解法。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;sudo pacman -S broadcom-wl-dkms&lt;/code&gt; should be good.  &lt;/p&gt;
+&lt;p&gt;If you are using &lt;code&gt;wicd&lt;/code&gt; like me,&lt;br&gt;
+remember to &lt;a href="https://wiki.archlinux.org/index.php/wicd#Initial_setup"&gt;close other network management daemon&lt;/a&gt; like:  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;systemctl stop dhcpcd&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;systemctl disable dhcpcd&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;systemctl stop NetworkManager&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;systemctl disable NetworkManager&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;正文&lt;/h2&gt;
+&lt;p&gt;之前好一陣子都是一直用 &lt;code&gt;broadcom-wl-dkms-248-6.30.223.248-1-x86_64&lt;/code&gt; 撐著，&lt;br&gt;
+簡單來說就是之前從 AUR 上 download 這版的 &lt;code&gt;broadcom-wl-dkms&lt;/code&gt; 下來後，&lt;br&gt;
+之後每次更新用新版的都有問題，&lt;br&gt;
+就得一直 down grade 下來&lt;br&gt;
+所以我就一直留著舊版的以備不時之需，&lt;br&gt;
+救了我好幾次。  &lt;/p&gt;
+&lt;p&gt;而且因為 dkms 每次在 kernel upgrade 之後，&lt;br&gt;
+都會幫你重新 build 一次，&lt;br&gt;
+基本上不用理他，&lt;br&gt;
+所以我後來也把原本有從 AUR 上裝的 &lt;code&gt;broadcom-wl-dkms&lt;/code&gt; 刪掉了，&lt;br&gt;
+之後自動更新就不會需要一直 down grade。  &lt;/p&gt;
+&lt;p&gt;直到昨天升上 &lt;code&gt;Linux 4.13.9-1-ARCH&lt;/code&gt;，&lt;br&gt;
+dkms 無法成功 build &lt;code&gt;broadcom-wl-dkms-248-6.30.223.248-1-x86_64&lt;/code&gt;，&lt;br&gt;
+我在升級 kernel 的時候又沒去注意 kernel upgrade 的訊息，&lt;br&gt;
+於是我的無線網卡在重開機之後就消失在 &lt;code&gt;ip&lt;/code&gt;, &lt;code&gt;iwconfig&lt;/code&gt; 的 output 了。  &lt;/p&gt;
+&lt;p&gt;以前就遇過好幾次這狀況了，&lt;br&gt;
+所以並沒有特別的驚慌。&lt;br&gt;
+想說來試裝看看新版的 &lt;code&gt;broadcom-wl-dkms&lt;/code&gt;，&lt;br&gt;
+才發現&lt;a href="https://www.archlinux.org/packages/community/x86_64/broadcom-wl-dkms/"&gt;已經從 AUR 被移到 community repository 了&lt;/a&gt;，&lt;br&gt;
+用 &lt;code&gt;sudo pacman -S broadcom-wl-dkms&lt;/code&gt; 安裝後，&lt;br&gt;
+看了一下訊息，&lt;br&gt;
+看起來有成功 build 並安裝。  &lt;/p&gt;
+&lt;p&gt;重開機之後，&lt;br&gt;
+無線網卡出現了，&lt;br&gt;
+也搜尋得到 SSID，&lt;br&gt;
+但就是連不上。&lt;br&gt;
+卡了很久，&lt;br&gt;
+想說回來看看以前自己寫的&lt;a href="/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/"&gt;這篇文章&lt;/a&gt;會不會有什麼端倪，&lt;br&gt;
+結果就看到了&lt;br&gt;
+「記得 disable dhcpcd，錯誤訊息也看不出啥端倪，就是在這卡了很久。」&lt;br&gt;
+頓時覺得似曾相似。  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;systemctl status dhcpcd&lt;/code&gt; 是 inactive 的，&lt;br&gt;
+又想到了 &lt;code&gt;NetworkManager&lt;/code&gt; 也會影響到，&lt;br&gt;
+&lt;code&gt;systemctl status NetworkManager&lt;/code&gt; 是 running...&lt;br&gt;
+靠，怎麼又被誰打開了，&lt;br&gt;
+&lt;code&gt;systemctl stop NetworkManager&lt;/code&gt; 之後果然就正常了。&lt;br&gt;
+因為之前沒有紀錄錯誤訊息導致我這次找超久，&lt;br&gt;
+所以這次就來紀錄一下這些在 &lt;code&gt;dmesg&lt;/code&gt; 會看到的錯誤訊息吧。&lt;br&gt;
+（同樣的錯誤訊息也有新增在之前的文章了。）  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6677.574915] ERROR @wl_notify_scan_status :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6677.574919] wlp3s0 Scan_results error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6560.346608] ERROR @wl_cfg80211_scan :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6560.346611] WLC_SCAN error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6467.860408] ERROR @wl_notify_scan_status :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6467.860413] wlp3s0 Scan_results error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也因為這次的遭遇而誕生了這篇新文章，&lt;br&gt;
+畢竟網路上跟 Arch Linux 相關的資源實在有點少，&lt;br&gt;
+拿這些錯誤訊息去 Google 看到跟 Arch Linux 相關的，&lt;br&gt;
+大多是 DELL 筆電 (XPS 13, Vostro 3560) 的問題，&lt;br&gt;
+&lt;a href="https://bbs.archlinux.org/viewtopic.php?pid=1216302#p1216302"&gt;解法是要用 Fn+PrtScrn 把 Wireless 開啟&lt;/a&gt;。&lt;br&gt;
+第二多的就是跟 Ubuntu 相關的，&lt;br&gt;
+&lt;a href="https://askubuntu.com/a/60395"&gt;有篇超級詳細的回答已經紀錄在這了&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;小確幸&lt;/h2&gt;
+&lt;p&gt;不得不說一下，&lt;br&gt;
+這種幾年前自己寫的筆記，&lt;br&gt;
+救了現在的自己的感覺，&lt;br&gt;
+真的是會讓人有  &lt;/p&gt;
+&lt;p&gt;「啊，還好當初有花時間紀錄下來。」  &lt;/p&gt;
+&lt;p&gt;的那種欣慰又安全的感覺啊。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;題外話: DKMS&lt;/h2&gt;
+&lt;p&gt;也是這次查解法的過程看到&lt;a href="https://bbs.archlinux.org/viewtopic.php?pid=1370568#p1370568"&gt;這篇文章&lt;/a&gt;才知道，&lt;br&gt;
+其實 Arch Linux 現在每次 kernel upgrade 幫你做的事大致上就是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dkms remove &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;KERNEL_MODULE_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; -v &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;KERNEL_MODULE_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; -k &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;CURRENT_KERNEL_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;  
+dkms install &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;KERNEL_MODULE_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; -v &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;KERNEL_MODULE_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; -k &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;NEW_KERNEL_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;實際大概長的像這樣  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;dkms remove broadcom-wl -v 6.30.223.271-15 -k 4.13.8-1-ARCH  &lt;/span&gt;
+&lt;span class="err"&gt;dkms install broadcom-wl -v 6.30.223.271-15 -k 4.13.9-1-ARCH  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;至於 &lt;code&gt;dkms install&lt;/code&gt; == &lt;code&gt;dkms build&lt;/code&gt; + &lt;code&gt;dkms add&lt;/code&gt;&lt;br&gt;
+這個可以 &lt;code&gt;man dkms&lt;/code&gt; 就可以看到了  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;version&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
+
+    &lt;span class="n"&gt;Installs&lt;/span&gt;  &lt;span class="n"&gt;a&lt;/span&gt;  &lt;span class="n"&gt;built&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;version&lt;/span&gt; &lt;span class="n"&gt;combo&lt;/span&gt; &lt;span class="n"&gt;onto&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;was&lt;/span&gt; &lt;span class="n"&gt;built&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="k"&gt;option&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;specified&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;assumes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;currently&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;built&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dkms&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt;  &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;added&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dkms&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;add&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;In&lt;/span&gt; &lt;span class="k"&gt;both&lt;/span&gt; &lt;span class="n"&gt;cases&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="n"&gt;take&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;same&lt;/span&gt; &lt;span class="n"&gt;arguments&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;add&lt;/span&gt; &lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;pass&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dkms&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Uvh&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;  
+    &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;perform&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;autoinstall&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;mesure&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;everything&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;built&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;RPM&lt;/span&gt; &lt;span class="n"&gt;installed&lt;/span&gt; &lt;span class="n"&gt;sucess&lt;/span&gt;&lt;span class="err"&gt;‐&lt;/span&gt;  
+    &lt;span class="n"&gt;fully&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這只是個人粗淺的理解，&lt;br&gt;
+如果理解有誤的話還請不吝指教。  &lt;/p&gt;</content><category term="Arch Linux"></category><category term="Broadcom"></category><category term="Wireless"></category><category term="MacBook Air"></category></entry></feed>

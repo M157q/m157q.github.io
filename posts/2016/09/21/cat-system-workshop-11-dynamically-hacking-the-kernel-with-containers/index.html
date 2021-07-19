@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Cat System Workshop #11 Dynamically Hacking the Kernel with Containers
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/" rel="bookmark" title="Permalink to Cat System Workshop #11 Dynamically Hacking the Kernel with Containers">Cat System Workshop #11 Dynamically Hacking the Kernel with Containers</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for Cat System Workshop #11 (2016/09/20)</p>
+  </blockquote>
+  <div>
+    <h2>Info</h2>
+<ul>
+<li>活動網址：<a href="http://www.accupass.com/go/cat0920">http://www.accupass.com/go/cat0920</a>  </li>
+<li>Spaker: 高魁良  </li>
+<li>Slides:<a href="http://www.slideshare.net/QueyLiangKao/talk-160920-cat-system-workshop-66199432">Talk 160920 @ Cat System Workshop</a>  <ul>
+<li>講者在 ContainerCon Japan 2016 的投影片： <a href="http://events.linuxfoundation.org/sites/events/files/slides/talk_7.pdf">Dynamically Hacking the Kernel with Containers - ContainerCon Japan 2016 Tokyo - Quey-Liang Kao - National Tsing Hua University, Taiwan</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Note</h1>
+<ul>
+<li>稍微提到了一下 Live Kernel Patching  </li>
+<li>Kernel Detouring  <ul>
+<li>有點類似 Rootkit 的感覺  </li>
+</ul>
+</li>
+<li>Intel 也有在開發 Container，叫作 Clear Container，最近公佈了 2.0 版。  <ul>
+<li><a href="https://clearlinux.org/clear-containers">https://clearlinux.org/clear-containers</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>可以在 Linux 的機器上跑 FreeBSD 的 container，透過換掉 System call 的 table 來達成。  </li>
+<li>Specific Challengs (FreeBSD)  <ul>
+<li>Corresponding system calls  <ul>
+<li>Flag numbers are not portable  </li>
+<li>Different calling/exiting conventions  </li>
+</ul>
+</li>
+<li>Unique system calls  <ul>
+<li>Re-implementation  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>General Challenges  <ul>
+<li>Insufficient isolation  </li>
+<li>Limitation of development  <ul>
+<li>live patching should only be a temporary solution.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Other Binary Compatibility Work  <ul>
+<li>Wine  <ul>
+<li>Special loader for PEs/DLLs  </li>
+</ul>
+</li>
+<li>FreeBSD, Windows 10  <ul>
+<li>Kernel built-in compatibility layer for Linux binary.  <ul>
+<li>FreeBSD i386  </li>
+<li>Windows 10: Ubuntu on Windows 10 也是用類似的方法  </li>
+</ul>
+</li>
+<li>System call remapping/re-implementation  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>How</h2>
+<h3>Step 0: Setup</h3>
+<ul>
+<li>Environment (x86_64 maching)  <ul>
+<li>Linux 4.6.2  </li>
+<li>FreeBSD 10.2  </li>
+</ul>
+</li>
+<li>Tools  <ul>
+<li>kpatch: A tool for kernel livepatch  </li>
+<li>docker  </li>
+</ul>
+</li>
+</ul>
+<h3>Step 1: From LivePatching to Detouring</h3>
+<div class="highlight"><pre><span></span><span class="n">kernel</span><span class="o">/</span><span class="n">livepatch</span><span class="o">/</span><span class="n">core</span><span class="p">.</span><span class="k">c</span><span class="p">.</span><span class="n">orig</span><span class="p">:</span><span class="n">klp_ftrace_handler</span>  
+
+<span class="n">klp_arch_set_pc</span><span class="p">(</span><span class="n">regs</span><span class="p">,</span> <span class="p">(</span><span class="n">unsigned</span> <span class="n">long</span><span class="p">)</span><span class="n">func</span><span class="o">-&gt;</span><span class="n">new_func</span><span class="p">);</span>  
+</pre></div>
+
+
+<ul>
+<li>目前 LivePatching 最成熟的還是在 x86 的 machine 上  </li>
+</ul>
+<h4>Ftrace in LivePatching</h4>
+<p>在 kernel 的 config 中要 enable <code>ftrace</code> 和 <code>fentry</code><br>
+可以透過 ftrace 去抓到每個 function 被 call 的時間點。  </p>
+<h4>Ftrace in Detouring</h4>
+<h3>Step 2: Detour-able Entry Point</h3>
+<ul>
+<li>Assembly file is NOT detour-able  <ul>
+<li>順便一提，也不支持 in-line function  </li>
+</ul>
+</li>
+</ul>
+<h3>Step 3: Detoured Entry Point</h3>
+<ul>
+<li>maintain 一個 FreeBSD 的 system call table (不是一個 function pointer 的 table)  </li>
+<li>達到 remapping syscall 的效果  </li>
+<li>目前是用苦功寫死一個一個對應  <ul>
+<li><code>cat maps | wc -l</code> 有 149 個可以互相對應的  </li>
+<li><code>cat syscall.h | wc -l</code> 468 FreeBSD 的 syscall  </li>
+<li><code>cat unistd_64.h | wc -l</code> 332 Linux 的 syscall  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>The workflow</h2>
+<ol>
+<li>Launch a normal container  </li>
+<li>Run a init script  <ul>
+<li>which enables the specific detour modules  </li>
+</ul>
+</li>
+<li>A FreeBSD environment in the container  </li>
+<li>On exit  <ul>
+<li>disable detour modules  </li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>Demo</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Truss_(Unix)">truss (Unix) - Wikipedia, the free encyclopedia</a>  </li>
+<li>Linux 跟 FreeBSD 的 <code>execve</code> 剛好是同個號碼  </li>
+</ul>
+<hr>
+<h2>總結</h2>
+<ul>
+<li>The kernel detouring demo attempts to indicate a possible movement of the development of OS containers  <ul>
+<li>as a proof-of-concept  </li>
+<li>kpatch as a temporary solution  </li>
+</ul>
+</li>
+<li>Future direction  <ul>
+<li>Make more fun  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>一些討論</h2>
+<ul>
+<li>自己寫一個 ftrace handler 改掉 detour 的 destination 可能會是比較好的作法。  </li>
+<li>講者在日本的 ContainerCon 給 talk 的時候有人給了 <code>execution domain</code> 這個關鍵字。  <ul>
+<li>Linux 在 2015 前有個東西叫作，<a href="https://linux.die.net/man/2/personality">execution domain</a>  <ul>
+<li>BSD 的部份是沒有實作的。(no effects.)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>這邊只有針對 syscall 的 entry point 去改,沒有要 hook 到多深，也許會覺得用 ftrace 太 powerful，何不改寫 ptrace 就好。或是直接使用 user space Linux 等等。  </li>
+<li><a href="https://www.freebsd.org/doc/en_US.ISO8859-1/articles/linux-emulation/article.html">Linux® emulation in FreeBSD</a>  <blockquote>
+<p>想當初修 SA 的時候 flash player 在 FreeBSD 上編不起來好像就是用這招。  </p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2>幕後花絮</h2>
+<ul>
+<li>How to implement the <code>is_freebsd_container()</code> function?  </li>
+<li>How was the ContainerCon Japan?  <ul>
+<li>跟當地的社群互動滿有趣的  </li>
+<li>會議室比較高級、沒有 host、會幫你準備好投影機、白板。  </li>
+<li>講者：「我覺得可以考慮不要去。」 （眾：XDDDD）  <ul>
+<li>「裏面有一半以上的講者是日本人，腔調不是問題，主要是單位時間內的資訊密度，很多講者為了把發音腔調正確會講得很慢。」  <ul>
+<li>jserv: 「日本砸了很多錢在這上面，所以有一半以上的講者是日本人很正常的。」  </li>
+</ul>
+</li>
+<li>「然後很多講者的問答時間都沒有人理。」  <ul>
+<li>jserv: 「他們可能都已經在公司聽過同事講過完整的日文版了，只是來這邊聽比較沒那麼完整的英文版。」  </li>
+</ul>
+</li>
+<li>「日本人用 Twitter 用很兇，有位老老的日本人在我演講完後問了很多的問題，然後問我有沒有用 Twitter，把我加到了一個討論 Container 的 Group 裏面。我才發現他在聽我演講的時候發了很多推，然後這些推底下都有他的推友在討論，有提到 Execution domain，也有說我的某頁簡報毫無意義的評論，於是我用我沒那麼好的日文跟他們來來回回得回覆，但不知道是不是我的日文用字拿捏的不好，隔天我發現他們全都取消追蹤我而且還把我踢出那個討論 container 的 group。」  <ul>
+<li>xatier：「一定是沒跟他們喝酒的關係，日本人都是喝了酒馬上就熟了。」  </li>
+</ul>
+</li>
+<li>「有位中國人看到我投影片的第一頁，就跑過來問我說：『你清華的啊？』『嗯，但我是臺灣的清華』然後他就當著我的面拿著他的東西走出去了。」  <ul>
+<li>jserv：「你下次遇到這種就要直接跟他講英文，他跟你用中文你還是一直跟他說英文，不然像你這樣整個就弱掉了。」  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>覺得 jserv 後來跟講者講的一些東西也頗值得紀錄一下的：  <ul>
+<li>「你去了 Linux Foundation 辦的 Conference 一趟應該就知道當講者的不是超級大的公司就是超級小的公司，像你這種只有學生身份的是非常少的。」「對啊，有位和我討論的德國人也有聊到，他直接就說他覺得是主辦單位找不到足夠的講者才找我。」「也好啦，至少是一次出去看看的經驗。」  </li>
+<li>「看到滿多人說我的演講跟他們預期的有落差。」「你這次去就知道他們都是業界的工程師，你的摘要就輸人家了，人家 Twitter 是講幾萬台伺服器的佈署、Facebook 是講二十億使用者的資料分析」「對啊，我講的東西根本沒有 scale。」「他們很多人是公司出錢讓他們來的，最便宜的門票一張也要五百多鎂，你講的東西太空洞讓他們沒辦法寫報告的話，交不出報告就會被主管罵。」  </li>
+<li>「你的題目是還不錯，開始演講時的高度是在這，但你講完以後高度只有上升一點點。」「程式碼的部份放的太少算是我的失策。」「你的簡報太早做完了，你應該在聽完第一場 keynote 的時候就會知道日本這邊大概喜歡怎麼樣的簡報，你就要在這個時候開始修改你的簡報。」「哦對，日本人好像超級喜歡格言，看到有一個 keynote 講者，一開始的十張投影片全部都是格言然後搭配文青風格的照片背景，滿受大家歡迎的。」  </li>
+<li>「你這個演講就是缺乏應用的部份，因為參加的都是真的在業界的工程師，所以他們會希望看到你講的東西解決了什麼問題，如果沒有這部份的話，只會讓他們覺得『靠，又是一個窮學生來這邊講論文。』我覺得你這個可以考慮弄個 IDS，因為 syscall 都是抽換掉的，所以不用怕，甚至可以重現一堆 CVE，來分析攻擊者的行為。」「對耶，滿多人後來反應演講跟預期有落差的時候，我就有聽到我後面的人在用日語說『原來是學生而且還是做 High Performance Computing 又不是研究 Container 的，難怪』之類的。」「下次你就要問問看有沒有公司願意讓你掛名，你就可以放在投影片上，這樣就比較不會被這些業界的工程師看不起，你的英文表達能力基本上已經超過他們一半在場的日本工程師啦。」  </li>
+<li>「演講就是要安排暗樁啊，不然聽眾很容易聽到睡著的。像你的演講是第三天的上午，前面兩天就要儘量去認識人，然後跟他們稍微賣點關子，請他們來聽你的演講。」  </li>
+<li>「Linux Foundation 對於演講順序的安排是有根據的，不只是演講的內容，也會去查一下這個講者的影響力還有做了哪些事情，評價愈高的當然就是 keynote spearker。」  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Cat%20System%20Workshop%20%2311%20Dynamically%20Hacking%20the%20Kernel%20with%20Containers%0Ahttps%3A//blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/&title=Cat%20System%20Workshop%20%2311%20Dynamically%20Hacking%20the%20Kernel%20with%20Containers&summary=Note%20for%20Cat%20System%20Workshop%20%2311%20%282016/09/20%29&source=https%3A//blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Cat%20System%20Workshop%20%2311%20Dynamically%20Hacking%20the%20Kernel%20with%20Containers&amp;body=https%3A//blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/">Cat System Workshop #12: SkyPat: C++ Performance Analysis and Testing Framework</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/">SDN x Cloud Native Meetup #9</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/10/11/taipei-blockchain-meetup-20181011/">Taipei Blockchain Meetup 20181011</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/04/21/taipei-py-20160421-meetup-note/">Taipei.py 20160421 Meetup Note</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/22/facebook-developer-circle-taipei-meetup-2/">Facebook Developer Circle: Taipei - Meetup #2</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/";
+        var disqus_title = "Cat System Workshop #11 Dynamically Hacking the Kernel with Containers";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-09-21T03:50:25+08:00"><i class="fa fa-calendar"></i> Wed 21 September 2016</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/meetup/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">Meetup</a>
+  <br>
+            <a href="/tag/cat-system-workshop/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Cat System Workshop</a>
+  <br>
+            <a href="/tag/kernel/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Kernel</a>
+  <br>
+            <a href="/tag/containers/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Containers</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/19/cve-2016-2662/" title="CVE-2016-2662"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/26/y2016w38/" title="Y2016W38"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

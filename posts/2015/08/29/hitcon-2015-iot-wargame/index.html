@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  HITCON 2015 IOT Wargame
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/" rel="bookmark" title="Permalink to HITCON 2015 IOT Wargame">HITCON 2015 IOT Wargame</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Write-up about HITCON 2015 CMT IOT Wargame (Python Wargame?)</p>
+  </blockquote>
+  <div>
+    <p>今年的 HITCON 的主題是 IoT，<br>
+所以 Wargame 也配合了 IoT 的主題，<br>
+用 Arduino Nano + Raspberry Pi 出題。  </p>
+<p>Wargame 的網址是 <a href="http://iot.hitcon.org">http://iot.hitcon.org</a><br>
+<img alt="IOT Wargame" src="/files/hitcon-2015-iot-wargame/iot_wargame.png">  </p>
+<h2>Arduino Nano 部份</h2>
+<p>Arduino Nano 的題目只有三題，<br>
+(原本好像有打算出四題的感覺，但可能時間來不及的關係)<br>
+而且難度蠻簡單的，<br>
+其實蠻適合所有會眾入門，<br>
+而且每位會眾報到後都會拿到已經把題目燒進去的 Arduino Nano。<br>
+(還有附排針，但題目不會用到，原本一看到以為要現場焊接XD)<br>
+但參與度好像不高，<br>
+寫這篇文章的當下，<br>
+總計是 243 位註冊帳號，<br>
+其中 161 位至少答對一題，<br>
+三題全部都做完的有 69 位。  </p>
+<p>我自己是在第一天議程結束後的晚上才開始看題目，<br>
+然後大概花3個多小時才把三題都解出來，<br>
+(GeoHot 花了一個多小時就全解完了QQ)<br>
+以下寫一下自己的解法，<br>
+供有興趣的人參考，<br>
+有問題也歡迎回覆。  </p>
+<p>其實題目真的不難，<br>
+真的有在打 Wargame 或 CTF 的人應該覺得簡單到沒必要浪費時間寫 Write-up 吧XD<br>
+但因為身邊還是有人不會寫，<br>
+所以秉持著推廣一下 Wargame 跟 CTF 的精神寫一下這部份，<br>
+Orange 出的 RPi 題目我就解不出來了 XDrz  </p>
+<h3>1. 讓 Arduino Nano 能被你的電腦讀到</h3>
+<p>老實說這應該是最難的部份了，<br>
+因為第一次接觸 Arduino，<br>
+所以我在這上面花蠻多時間的Orz<br>
+IRC 上也很多人在詢問，<br>
+有看到有人在問 Mac, Windows<br>
+就是沒看到有人問 Linux 的，<br>
+(噢，好像有看到有人問 Ubuntu 的?有點忘記了)<br>
+因為我本身用 Arch Linux，<br>
+所以這篇文章會以 Arch Linux 為主，<br>
+(順便偷偷推廣 <a href="https://www.archlinux.org/">Arch Linux</a> XD)  </p>
+<p>Windows 的使用者可以參考會眾 toby 寫的教學<br>
+<a href="http://toby.logdown.com/posts/293552/hitcon-play-nano-on-windows">HITCON 之 Windows 也要玩 Nano « Toby 'n Hack</a>，<br>
+仍然不行的話，可以看一下官方的 <a href="https://www.arduino.cc/en/Guide/Windows">Arduino - Windows</a> 試試。  </p>
+<p>Mac 的使用者可以參考這篇 <a href="http://arduino.stackexchange.com/questions/5119/arduino-nano-no-serial-port-for-macbook-air-2013">Arduino Nano no serial port for MacBook Air 2013 - Arduino Stack Exchange</a> (但有人反應裝了還是讀不到)<br>
+仍然不行的話，也可以看一下官方的 <a href="https://www.arduino.cc/en/Guide/MacOSX">Arduino - MacOSX</a> 試試。  </p>
+<p>至於 Linux 的話，可以參考 Arduino 官方的這篇 <a href="http://playground.arduino.cc/Learning/Linux">Arduino Playground - Linux</a>。  </p>
+<p>而 Arch Linux 的話，當然就是看官方的 <a href="https://wiki.archlinux.org/index.php/Arduino">Arduino - ArchWiki</a>，從 AUR 上安裝 Arduino。  </p>
+<p>(但其實我在還沒安裝 AUR 的 Arduino 時，<br>
+就已經出現 <code>/dev/ttyUSB0</code> 了，<br>
+所以我覺得應該是有 driver 的，<br>
+但我當時還不知道怎麼改 <code>ans.py</code> 的 port，<br>
+所以還是裝了 AUR 的 arduino 套件，<br>
+直到看到 <a href="http://playground.arduino.cc/Interfacing/Python">Arduino Playground - Python</a><br>
+才發現是 <code>port</code> 的值錯了<br>
+才覺得一開始可能不用裝 <code>arduino</code> 也會動，<br>
+但也懶的移除了。<br>
+所以如果有人也有這樣的情況，然後也還沒裝 arduino 的話，<br>
+可以先試試看直接改 <code>ans.py</code> 的 port，<br>
+看能不能用，這樣就不用多裝 3xx MB 的 arduino 套件了。<br>
+至於怎麼改 port，下面會提到)  </p>
+<p>如果沒有出現 <code>/dev/ttyUSB0</code> 或是試了不成功的話，<br>
+就繼續試試  </p>
+<div class="highlight"><pre><span></span><span class="err">yaourt -S arduino  </span>
+<span class="err">sudo gpasswd -a $user uucp  </span>
+<span class="err">sudo gpasswd -a $user lock  </span>
+<span class="err">sudo gpasswd -a $user tty  </span>
+<span class="err">sudo modprobe cdc_acm  </span>
+</pre></div>
+
+
+<p>之後，登出再登入。<br>
+ArchWiki 上是說會出現 <code>/dev/ttyACMx</code> (x 為數字)<br>
+但我的是 <code>/dev/ttyUSB0</code>，一樣可以正常使用。  </p>
+<p>用 <code>screen /dev/ttyUSB0 115200</code> 確認有顯示以下內容就是有讀到了  </p>
+<div class="highlight"><pre><span></span><span class="n">HITCON</span> <span class="mi">2015</span> <span class="n">NANO</span> <span class="n">GAME</span>  
+
+<span class="n">Nano$</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">Morse</span>  
+<span class="n">Nano$</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">Maze</span>  
+<span class="n">Nano$</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">Calculator</span>  
+<span class="n">Nano$</span> <span class="n">enter</span> <span class="n">your</span> <span class="n">choice</span><span class="p">:</span>  
+</pre></div>
+
+
+<h3>2. 透過 pip 安裝 pyserial</h3>
+<p>在使用官方提供的 <code>ans.py</code> 之前，<br>
+記得先安裝必要的套件 <code>pyserial</code><br>
+使用 <code>pip install pyserial</code><br>
+安裝完後，打開 <code>ans.py</code><br>
+將第 67 行的 <code>port=3</code> 改成 <code>port='/dev/ttyUSB0'</code><br>
+(這邊的 <code>/dev/ttyUSB0</code> 視實際情況更改)<br>
+就可以開始修改 <code>ans.py</code> 進行 Python Wargame 了(?)  </p>
+<p>修改第 47 行的 choice 可以選擇要解的題目，<br>
+'0' == NANO 1<br>
+'1' == NANO 2<br>
+'2' == NANO 3  </p>
+<p>每個 *.tgz 用 <code>tar zxvf $tgz_file</code> 解開<br>
+每個裡面的 readme.txt 基本上都一樣的，不太需要看  </p>
+<p>每題拿到 key 之後，<br>
+請複製該 key，<br>
+再到 <a href="http://iot.hitcon.org">http://iot.hitcon.org</a> 登入，<br>
+然後點選對應的題目，<br>
+至右下角 <code>enter key</code> 欄位，<br>
+貼上 key，之後按 send 送出。  </p>
+<p>以下開始講解各題：  </p>
+<h3>NANO 1</h3>
+<p><a href="/files/hitcon-2015-iot-wargame/nano/nano-1.tgz">NANO 1 原始檔</a><br>
+這題會拿到一串<a href="https://zh.wikipedia.org/zh-tw/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81">摩斯密碼</a><br>
+<code>.... .. - -.-. --- -. -. .- -. --- --. .- -- . -- --- .-. ... .</code><br>
+隨便找個解摩斯密碼的網站 <a href="http://morsecode.scphillips.com/translator.html">http://morsecode.scphillips.com/translator.html</a><br>
+解碼後得到 <code>HITCONNANOGAMEMORSE</code><br>
+把 <code>game0()</code> 的 <code>answer = ''</code> 改成 <code>answer = 'HITCONNANOGAMEMORSE'</code><br>
+再執行一次 <code>ans.py</code> 便可得到 key  </p>
+<p><code>Nano$ key is 457E1A295B9D1C48</code>  </p>
+<h3>NANO 2</h3>
+<p><a href="/files/hitcon-2015-iot-wargame/nano/nano-2.tgz">NANO 2 原始檔</a><br>
+這是三題裡面最難的一題，也是三題中最少人解出來的。<br>
+這題要在九秒內走出 <code>14*14</code> 的迷宮，<br>
+從 <code>(0, 0)</code> 走到 <code>(14,14)</code><br>
+(除非你手速夠快，不然以本題的設計基本上九秒走不完)  </p>
+<div class="highlight"><pre><span></span><span class="err">&#39;O&#39; 代表人、&#39;.&#39; 代表路、&#39;+&#39; 代表牆、&#39;X&#39; 代表出口  </span>
+<span class="err">&#39;w&#39; 往上走、&#39;a&#39; 往左走、&#39;s&#39; 往下走、&#39;d&#39; 往右走  </span>
+</pre></div>
+
+
+<p>必須修改 <code>game1()</code> 裡頭的內容，<br>
+把走迷宮的演算法寫在裏面。  </p>
+<p>我用的方法其實是半自動的，在必要的時候需要手動，也不保證每次成功。<br>
+(要全自動的話可能需要用 <a href="https://en.wikipedia.org/wiki/Breadth-first_search">BFS</a>，但我太廢，覺得這樣已經能解出題目就夠了。)  </p>
+<p>程式每次會呈獻 3x3 的現在位置地圖，<br>
+因為 'O' 每次的位置不固定，<br>
+所以先找到 'O' 的現在位置後，<br>
+將其紀錄為 <code>pos_x</code> 和 <code>pos_y</code>，<br>
+方便之後判斷其上下左右是否可走。  </p>
+<p>再來因為我們要往右下方行走才能到達出口，<br>
+所以就判斷如果 'O' 的右邊(<code>lines[pos_y, pos_x+1]</code>) 是 '.'(路) 的話就往右走，<br>
+已右邊舉例的話，如果有下列情況的話，就改換下一個優先的方向檢查： (按照 右、下、左、上 的順序)  </p>
+<ul>
+<li>邊界(<code>pos_x == 2</code>)  (<code>pos_x+ 1</code> 就超出邊界了)  </li>
+<li>'O' 的右邊是 '+' (牆)  </li>
+<li>上一步是往左走(往反方向走)  <ul>
+<li>避免左右左右、上下上下這種不會前進的狀況發生  </li>
+<li>造成了另一個問題，每當走入三面都是牆的洞的時候，就會卡住。  </li>
+<li>這時就會需要手動移動  </li>
+<li>因為要得知上一步，所以我建立了 <code>steps = [None]</code> 紀錄每一步的順序  </li>
+<li>把每次的移動利用 <code>steps.append()</code> 紀錄起來  </li>
+<li>並在每次透過 <code>steps[-1]</code> 得知上一步  </li>
+</ul>
+</li>
+</ul>
+<p>依此類推，照著 <code>右、下、左、上、手動</code> 的先後順序，寫出程式碼。<br>
+開始執行後，遇到卡住的狀況就手動控制，試個幾次很快就可以走出迷宮  </p>
+<p><code>Nano$ key is 3D52CB746F9E6C83</code>  </p>
+<h3>NANO 3</h3>
+<p><a href="/files/hitcon-2015-iot-wargame/nano/nano-3.tgz">NANO 3 原始檔</a><br>
+這題是必須在一秒內回答四則運算的結果，<br>
+看一下題目，可以發現題目的字串長的像這樣<br>
+<code>Nano$ 7 * 10 - 14 + 6 - 5 - 19 = ?</code><br>
+所以可以透過 Regular Expression<br>
+<a href="https://docs.python.org/2/library/re.html">7.2. re — Regular expression operations — Python 2.7.10 documentation</a><br>
+把 <code>7 * 10 - 14 + 6 - 5 - 19</code> 取出來後<br>
+丟給 <a href="https://docs.python.org/2/library/functions.html#eval">eval()</a> 算出結果，<br>
+再把值 assign 給 answer 回答。<br>
+(<code>eval()</code> 可以把字串當作 expression 進行求值，雖然很方便，但真正在開發程式的時候最好不要亂用，尤其是不要把使用者輸入的資料丟給 <code>eval()</code>，因為你永遠不知道使用者會輸入什麼奇怪的東西)<br>
+照著這個想法修改一下 <code>game2()</code>，這題應該就解決了  </p>
+<p><code>Nano$ key is 273A9C1E2D380B48</code>  </p>
+<p>極度建議自己寫程式碼，<br>
+真的真的想不出來的話再點下面的連結吧！<br>
+不然是不會進步的。<br>
+程式碼請見：<a href="https://gist.github.com/M157q/164f9ba5bd8ae0b18afe">https://gist.github.com/M157q/164f9ba5bd8ae0b18afe</a>  </p>
+<p>然後看到 IRC 有人提到，<br>
+他把 Nano 上的 binary dump 到電腦上，<br>
+直接用 <code>strings</code> 拿到 3 個 key，<br>
+不知道怎麼做到的<br>
+查了一些關鍵字，會是<code>avr-objdump</code>嗎?  </p>
+<blockquote>
+<p>補上直接 dump 的 write-up <a href="http://kb.hitcon.org/post/128246307977/%E7%A7%92%E8%A7%A3-hitcon-nano-%E9%A1%8C">HITCON Knowledge Base — 秒解 Hitcon Nano 題</a>  </p>
+</blockquote>
+<hr>
+<h2>Raspberry Pi 部份</h2>
+<p>有分四題：R0, R1, R2, R4 的題目都不同，都是由 Orange 出題。<br>
+我只有碰 R0 跟 R1 的題目，有些想法，但都沒解出來，以下簡單紀錄。  </p>
+<h3>R0</h3>
+<p>Web 那邊會拿到一個 <a href="/files/hitcon-2015-iot-wargame/rpi/r0/forkyou">ARM64 的 binary 執行檔</a>，<br>
+之後用 <code>qemu-aarch64</code> 的環境就可以執行，<br>
+聽說還蠻簡單的，可是我還是解不出來QQ<br>
+似乎有在某處看到 <code>/bin/sh -c</code> 之類的呼叫，<br>
+應該是利用 BOF 把 EIP 指到那邊就可以拿到 shell 了?  </p>
+<blockquote>
+<p>補上 R0 write-up <a href="http://kb.hitcon.org/post/127947378507/hitcon-2015-iot-wargame-r0-%E6%8C%91%E6%88%B0%E9%A1%8C">HITCON Knowledge Base — HITCON 2015 IoT Wargame – R0 挑戰題</a>  </p>
+</blockquote>
+<h3>R1</h3>
+<p>連進去是 Discuz! X3.2<br>
+查了一下，有 remote shell execute 漏洞:<br>
+<a href="http://drops.wooyun.org/papers/4611">DiscuzX系列命令执行分析公开（三连弹） | WooYun知识库</a><br>
+照著做之後，<br>
+找不到在 <code>data/attachment</code> 底下符合權限的圖片來編輯，<br>
+(最近重灌，還沒裝 DirBuster 或是 Burp Suite，所以沒暴力掃底下有哪些東西...)<br>
+無法觸發 picwidth 的 Remote Shell Excution 漏洞，<br>
+感覺方向應該是對的吧？<br>
+這題是四題裏面沒被人解出來的。<br>
+(GeoHot 把其他三題都解掉了...)  </p>
+<hr>
+<p>這次的 Wargame 大概就是這樣吧，<br>
+果然實力還是不夠，<br>
+HST 的 Wargame 拿到 reversed.txt 裡頭一串 ...---.. 後也沒啥想法。  </p>
+<p>會把 Nano 的部份寫的這麼詳細的原因，<br>
+是因為想要推廣大家玩一下 Wargame 吧！<br>
+(覺得有趣的話就可以來打 CTF 了)<br>
+畢竟上面也講了，這次 Wargame 真的不算難，<br>
+而將近 1000 人的會眾，只有不到 300 人註冊，只有 161 人有拿到分，<br>
+這比例實在有點少。<br>
+再加上幾天前在 Facebook 上看到有人說 Nano 一片一片燒，燒到手快斷了，<br>
+覺得這麼少人玩實在有點可惜。  </p>
+<p>處理好 Arduino Nano 跟電腦連接之後，<br>
+基本上就是寫 Python Code，<br>
+所以我才戲稱是 Python Wargame，<br>
+但其實沒學過 Python 的人藉著這個機會學一下 Python 也不錯，<br>
+畢竟因為 Python 的方便性，很多 exploit 都用 Python 寫了。  </p>
+<p>總之，這篇就是一個小廢物的流水帳。<br>
+有問題歡迎留言討論，但我不一定會就是T_T。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=HITCON%202015%20IOT%20Wargame%0Ahttps%3A//blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/&title=HITCON%202015%20IOT%20Wargame&summary=Write-up%20about%20HITCON%202015%20CMT%20IOT%20Wargame%20%28Python%20Wargame%3F%29&source=https%3A//blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=HITCON%202015%20IOT%20Wargame&amp;body=https%3A//blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/">HITCON CTF 2015 Quals Write-up</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/">0CTF 2015 Note</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/11/sitcon-2015-android-repackaged-app-detection-system/">SITCON 2015 - Android Repackaged App Detection System</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/01/02/y2016w52/">Y2016W52</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/07/y2017w31/">Y2017W31</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2015/08/29/hitcon-2015-iot-wargame/";
+        var disqus_title = "HITCON 2015 IOT Wargame";
+        var disqus_url = "https://blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-08-29T21:11:33+08:00"><i class="fa fa-calendar"></i> Sat 29 August 2015</abbr></p>
+
+      <p><abbr title="2015-09-03T21:32:19+08:00"><i class="fa fa-pencil"></i>Thu 03 September 2015</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/conf/" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">conf</a>
+  <br>
+            <a href="/tag/ctf/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">ctf</a>
+  <br>
+            <a href="/tag/hitcon/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">HITCON</a>
+  <br>
+            <a href="/tag/arduino/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">arduino</a>
+  <br>
+            <a href="/tag/write-up/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">Write-up</a>
+  <br>
+            <a href="/tag/raspberry-pi/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Raspberry Pi</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2015/08/25/data-recovery-by-using-foremost/" title="Data recovery by using foremost"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/" title="Install Arch Linux on MacBook Air Mid 2013"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

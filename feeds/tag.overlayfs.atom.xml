@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - overlayFS</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.overlayfs.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-01-17T05:05:02+08:00</updated><entry><title>在 Arch Linux 上將 Docker 的 Storage Driver 從 devicemapper 改為 overlay2 以釋放硬碟空間</title><link href="https://blog.m157q.tw/posts/2018/01/16/change-docker-storage-driver-from-devicemapper-to-overlay2-to-free-your-disk-space-on-arch-linux/" rel="alternate"></link><published>2018-01-16T23:19:02+08:00</published><updated>2018-01-17T05:05:02+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-01-16:/posts/2018/01/16/change-docker-storage-driver-from-devicemapper-to-overlay2-to-free-your-disk-space-on-arch-linux/</id><summary type="html">&lt;p&gt;拋棄 &lt;code&gt;devicemapper&lt;/code&gt;，釋放你的硬碟空間。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://wiki.archlinux.org/index.php/Docker#Storage_driver"&gt;https://wiki.archlinux.org/index.php/Docker#Storage_driver&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;因為硬碟空間只剩 1.8 GB，在清硬碟空間的時候發現 &lt;code&gt;/var/lib/docker/devicemapper&lt;/code&gt; 佔了 35 GB，以前同事在 Mac 上遇過，但一直找不到啥好解法，這次自己遇到了，於是就花了點時間查了一下。  &lt;/p&gt;
+&lt;p&gt;先是用了 &lt;code&gt;docker system prune -a&lt;/code&gt; 把所有東西都清掉，結果發現 &lt;code&gt;/var/lib/docker/devicemappe&lt;/code&gt; 的大小只有減少 1 GB，但明明用 &lt;code&gt;docker info&lt;/code&gt; 檢查， Data used 就只剩 KB 而已，於是跑去找 Arch Wiki。  &lt;/p&gt;
+&lt;p&gt;得到 Storage Driver 最好不要用 &lt;code&gt;devicemapper&lt;/code&gt; 的答案，新安裝的預設應該都會是 &lt;code&gt;overlay2&lt;/code&gt; 了，發現自己的 docker 仍舊是使用 &lt;code&gt;devicemapper&lt;/code&gt;，所以乾脆動手修改一下。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;步驟&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;systemctl stop docker&lt;/code&gt; 把 dockerd 關了  &lt;/li&gt;
+&lt;li&gt;因為我已經用 &lt;code&gt;docker system prune -a&lt;/code&gt; 把東西全砍了，所以就沒備份必要，直接 &lt;code&gt;sudo rm -rf /var/lib/docker&lt;/code&gt; 了  &lt;ul&gt;
+&lt;li&gt;這個時候硬碟就多出了 35 GB 啦！  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;systemctl edit docker&lt;/code&gt; 編輯設定檔  &lt;ul&gt;
+&lt;li&gt;如果 root 使用的 editor 非平常慣用的話，可以先 &lt;code&gt;export EDITOR=vim&lt;/code&gt; 再使用 &lt;code&gt;sudo -E bash -c "systemctl edit docker"&lt;/code&gt; 來編輯  &lt;/li&gt;
+&lt;li&gt;應該會開啟 &lt;code&gt;/etc/systemd/system/docker.service.d/override.conf&lt;/code&gt; 或其暫存檔  &lt;/li&gt;
+&lt;li&gt;新增以下內容，將 Storage Driver 指定成 &lt;code&gt;overlay2&lt;/code&gt; 後存檔離開：  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Service&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dockerd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nl"&gt;fd&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;overlay2&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;systemctl start docker&lt;/code&gt; 重新開啟 dockerd  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker info | head&lt;/code&gt; 裡頭應該要有一行 "Storage Driver: overlay2" 這樣就成功了  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;補充&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/engine/userguide/storagedriver/selectadriver/"&gt;Select a storage driver | Docker Documentation&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;這篇官方文件講述有哪些 Storage Driver 可供選擇以及各 Storage Driver 支援的 File System 格式  &lt;/li&gt;
+&lt;li&gt;包含：&lt;code&gt;aufs&lt;/code&gt;, &lt;code&gt;devicemapper&lt;/code&gt;, &lt;code&gt;overlay&lt;/code&gt;, &lt;code&gt;overlay2&lt;/code&gt;, &lt;code&gt;btrfs&lt;/code&gt;, &lt;code&gt;zfs&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;我自己是沒有詳細研究所有 Storage Driver 的優劣就是  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/"&gt;Use the OverlayFS storage driver | Docker Documentation&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;這篇官方文件則講述怎麼把 Storage Driver 設定成 &lt;code&gt;overlay&lt;/code&gt; 和 &lt;code&gt;overlay2&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;建議是能用 &lt;code&gt;overlay2&lt;/code&gt; 就別用 &lt;code&gt;overlay&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;也講了 &lt;code&gt;overlay&lt;/code&gt; 和 &lt;code&gt;overlay2&lt;/code&gt; 的運作原理，還有效能和限制方面的部份  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;參考來源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Docker#Storage_driver"&gt;Docker - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/engine/userguide/storagedriver/overlayfs-driver/"&gt;Use the OverlayFS storage driver | Docker Documentation&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.docker.com/engine/userguide/storagedriver/selectadriver/"&gt;Select a storage driver | Docker Documentation&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Docker"></category><category term="devicemapper"></category><category term="overlayFS"></category><category term="Arch Linux"></category><category term="2018 iT 邦幫忙鐵人賽"></category></entry></feed>

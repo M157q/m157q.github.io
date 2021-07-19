@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  嘗試在 Python 中做到 Golang fmt 的效果
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/" rel="bookmark" title="Permalink to 嘗試在 Python 中做到 Golang fmt 的效果">嘗試在 Python 中做到 Golang fmt 的效果</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>嘗試兜出一個在撰寫 Python 程式碼的時也能像 <code>gofmt</code> 這樣方便的 code formatter。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>去年開始學 Golang，但早在這之前就已經聽過很多 Gopher 說過 <code>gofmt</code> 有多麼方便，當 Pythonista 還在靠 syntax checker 和自制力來遵守 <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> 的時候，Gopher 根本都不用管什麼 coding style，不管你是怎麼寫的，只要寫好之後用 <code>gofmt</code> 執行一下，就可以自動幫你把程式碼排版排好，還可以順便幫你檢查錯誤。  </p>
+<p>故事起源於 2016 底，和平常不是寫 Python 的朋友一起弄了一個用 Python 寫的 side project，因為朋友平常不是寫 Python 的，然後那陣子他又剛好在寫 Golang，覺得要遵守 PEP8 很麻煩，所以問我 Python 有沒有類似 <code>go fmt</code> 的工具。  </p>
+<p>當下想了一下好像還真的沒有，頂多就是像 <code>pep8</code>, <code>flake8</code>, <code>pyflakes</code> 這類的 syntax checker 而已，好像沒聽聞過什麼好用的 code formatter，也因為這樣，所以開始想辦法做到這件事。  </p>
+<p>當然真的去查了之後發現還是有的，但使用起來不盡理想。於是找了些現成的程式兜一兜，再加上 git pre-commit hook 後，最後算是勉強做到了，當下有做個凌亂的紀錄，但一直沒有整理成一篇文章，利用最近離職後比較閒的時間，把它整理紀錄一下。  </p>
+<hr>
+<h2>紀錄</h2>
+<p>當時一開始是直接找到 GitHub 上的這個 repo: <a href="https://github.com/Psycojoker/pyfmt">GitHub - Psycojoker/pyfmt: automatic code formatter for python following pep8 using baron FST, like gofmt</a>。  </p>
+<p>看起來好像不錯，但實際上使用起來有滿多問題的，而且作者又用了另外一個自己寫的 Python Full Syntax Tree library: <a href="https://github.com/PyCQA/baron">GitHub - PyCQA/baron: IDE allow you to refactor code, Baron allows you to write refactoring code.</a>，當時因為急著找現成的工具來用，所以就沒有多花時間研究。但後來才發現 PyCQA 裡頭的工具都滿不錯的: <a href="https://github.com/PyCQA">Python Code Quality Authority · GitHub</a>，基本上都是用來提升 Python 程式碼品質的工具，滿推薦寫 Python 的人看一下的。  </p>
+<hr>
+<p>之後試了幾個工具以後，最後變成 <code>autoflake</code> + <code>isort</code> + <code>autopep8</code> + git pre-commit hook 來做到這件事，老實說真的有點繁瑣，但我找不到更好的方法，如果有人知道的話還請不吝告知。  </p>
+<p>總之，接下來稍微介紹一下這幾個工具分別做了哪些事：  </p>
+<ul>
+<li><code>autoflake</code>  <ul>
+<li><a href="https://github.com/myint/autoflake">GitHub - myint/autoflake: Removes unused imports and unused variables as reported by pyflakes</a>  </li>
+<li>就如同其 GitHub 的敘述，可以把沒有用到的 <code>import</code> 和變數移除。  </li>
+</ul>
+</li>
+<li><code>isort</code>  <ul>
+<li><a href="https://github.com/timothycrosley/isort">GitHub - timothycrosley/isort: A Python utility / library to sort imports.</a>  </li>
+<li>可以針對 Python 的 imports 做符合 PEP8 的字母序排序。  </li>
+</ul>
+</li>
+<li><code>autopep8</code>  <ul>
+<li><a href="https://github.com/hhatto/autopep8">GitHub - hhatto/autopep8: A tool that automatically formats Python code to conform to the PEP 8 style guide.</a>  </li>
+<li>可以將 Python 程式碼自動以符合 PEP8 的方式排版。  </li>
+</ul>
+</li>
+<li>git pre-commit hook  <ul>
+<li><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git - Git Hooks</a>  </li>
+<li>pre-commit hook 的觸發時間是在使用者下 <code>git commit</code> 後，編寫 commit message 之前。  </li>
+<li>這裡是用來確保使用者每次 commit 的 Python 程式碼會被以上這三種程式處理過。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>後來發現 Google 也出了一個 Python formatter: <a href="https://github.com/google/yapf">GitHub - google/yapf: A formatter for Python files</a>，用了以後覺得比 <code>autopep8</code> 好用，所以就把 <code>autopep8</code> 換成 <code>yapf</code> 了：<a href="https://github.com/pellaeon/fengyuan/commit/abc9fc995a9c49fa208716954c2bc262fe6b783e">Use yapf instead of autopep8 as python code formatter. · pellaeon/fengyuan@abc9fc9 · GitHub</a>  </p>
+<hr>
+<h2>結果</h2>
+<p>最後的結果就是整合到一個 git pre-commit hook 裡頭，麻煩的是 clone 下來以後，得用這個指令初始化 git pre-commit hook：  </p>
+<div class="highlight"><pre><span></span><span class="err">ln -sf ../../pre-commit.sh .git/hooks/pre-commit  </span>
+</pre></div>
+
+
+<p>其實還是很麻煩，之後應該會再繼續尋找有沒有更方便的方法，不排除自己寫一個就是。  </p>
+<p>最後的結果就是一個 git pre-commit hook：<a href="https://github.com/pellaeon/fengyuan/blob/master/pre-commit.sh">fengyuan/pre-commit.sh at master · pellaeon/fengyuan · GitHub</a>  </p>
+<p>以下直接複製貼上原程式碼留個紀錄，以防哪天 GitHub 掛了。  </p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/sh  </span>
+<span class="c1">#  </span>
+<span class="c1"># An example hook script to verify what is about to be committed.  </span>
+<span class="c1"># Called by &quot;git commit&quot; with no arguments.  The hook should  </span>
+<span class="c1"># exit with non-zero status after issuing an appropriate message if  </span>
+<span class="c1"># it wants to stop the commit.  </span>
+<span class="c1">#  </span>
+<span class="c1"># To enable this hook, rename this file to &quot;pre-commit&quot;.  </span>
+
+<span class="k">if</span> git rev-parse --verify HEAD &gt;/dev/null <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>  
+<span class="k">then</span>  
+    <span class="nv">against</span><span class="o">=</span>HEAD  
+<span class="k">else</span>  
+    <span class="c1"># Initial commit: diff against an empty tree object  </span>
+    <span class="nv">against</span><span class="o">=</span>4b825dc642cb6eb9a060e54bf8d69288fbee4904  
+<span class="k">fi</span>  
+
+<span class="c1"># If you want to allow non-ASCII filenames set this variable to true.  </span>
+<span class="nv">allownonascii</span><span class="o">=</span><span class="k">$(</span>git config --bool hooks.allownonascii<span class="k">)</span>  
+
+<span class="c1"># Redirect output to stderr.  </span>
+<span class="nb">exec</span> <span class="m">1</span>&gt;<span class="p">&amp;</span><span class="m">2</span>  
+
+<span class="c1"># Cross platform projects tend to avoid non-ASCII filenames; prevent  </span>
+<span class="c1"># them from being added to the repository. We exploit the fact that the  </span>
+<span class="c1"># printable range starts at the space character and ends with tilde.  </span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$allownonascii</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;true&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span>  
+    <span class="c1"># Note that the use of brackets around a tr range is ok here, (it&#39;s  </span>
+    <span class="c1"># even required, for portability to Solaris 10&#39;s /usr/bin/tr), since  </span>
+    <span class="c1"># the square bracket bytes happen to fall in the designated range.  </span>
+    <span class="nb">test</span> <span class="k">$(</span>git diff --cached --name-only --diff-filter<span class="o">=</span>A -z <span class="nv">$against</span> <span class="p">|</span>  
+      <span class="nv">LC_ALL</span><span class="o">=</span>C tr -d <span class="s1">&#39;[ -~]\0&#39;</span> <span class="p">|</span> wc -c<span class="k">)</span> !<span class="o">=</span> <span class="m">0</span>  
+<span class="k">then</span>  
+    cat <span class="s">&lt;&lt;\EOF  </span>
+<span class="s">Error: Attempt to add a non-ASCII file name.  </span>
+
+<span class="s">This can cause problems if you want to work with people on other platforms.  </span>
+
+<span class="s">To be portable it is advisable to rename the file.  </span>
+
+<span class="s">If you know what you are doing you can disable this check using:  </span>
+
+<span class="s">  git config hooks.allownonascii true  </span>
+<span class="s">EOF</span>  
+    <span class="nb">exit</span> <span class="m">1</span>  
+<span class="k">fi</span>  
+
+<span class="c1"># Run syntax checker and formatter for Python files.  </span>
+<span class="nv">STAGED_PYTHON_FILES</span><span class="o">=</span><span class="k">$(</span>git diff --cached --name-only HEAD <span class="s2">&quot;*.py&quot;</span><span class="k">)</span>  
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$STAGED_PYTHON_FILES</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="o">]</span>  
+<span class="k">then</span>  
+    autoflake -i --remove-all-unused-imports --remove-unused-variables <span class="nv">$STAGED_PYTHON_FILES</span>  
+    isort -y <span class="nv">$STAGED_PYTHON_FILES</span>  
+    yapf -i <span class="nv">$STAGED_PYTHON_FILES</span>  
+    git add <span class="nv">$STAGED_PYTHON_FILES</span>  
+<span class="k">fi</span>  
+</pre></div>
+
+
+<hr>
+<h2>參考來源</h2>
+<ul>
+<li><a href="https://github.com/Psycojoker/pyfmt">GitHub - Psycojoker/pyfmt: automatic code formatter for python following pep8 using baron FST, like gofmt</a>  </li>
+<li><a href="https://github.com/PyCQA/baron">GitHub - PyCQA/baron: IDE allow you to refactor code, Baron allows you to write refactoring code.</a>  </li>
+<li><a href="https://github.com/myint/autoflake">GitHub - myint/autoflake: Removes unused imports and unused variables as reported by pyflakes</a>  </li>
+<li><a href="https://github.com/timothycrosley/isort">GitHub - timothycrosley/isort: A Python utility / library to sort imports.</a>  </li>
+<li><a href="https://github.com/hhatto/autopep8">GitHub - hhatto/autopep8: A tool that automatically formats Python code to conform to the PEP 8 style guide.</a>  </li>
+<li><a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">Git - Git Hooks</a>  </li>
+<li><a href="https://github.com/google/yapf">GitHub - google/yapf: A formatter for Python files</a>  </li>
+<li><a href="https://github.com/pellaeon/fengyuan/commit/abc9fc995a9c49fa208716954c2bc262fe6b783e">Use yapf instead of autopep8 as python code formatter. · pellaeon/fengyuan@abc9fc9 · GitHub</a>  </li>
+<li><a href="https://github.com/pellaeon/fengyuan/commit/2de3e199f2193ea25f4cd5bbb7f89673879862c6">Add git pre-commit hook for python files. · pellaeon/fengyuan@2de3e19 · GitHub</a>  </li>
+<li><a href="https://github.com/pellaeon/fengyuan/blob/master/pre-commit.sh">fengyuan/pre-commit.sh at master · pellaeon/fengyuan · GitHub</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E5%98%97%E8%A9%A6%E5%9C%A8%20Python%20%E4%B8%AD%E5%81%9A%E5%88%B0%20Golang%20fmt%20%E7%9A%84%E6%95%88%E6%9E%9C%0Ahttps%3A//blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/&title=%E5%98%97%E8%A9%A6%E5%9C%A8%20Python%20%E4%B8%AD%E5%81%9A%E5%88%B0%20Golang%20fmt%20%E7%9A%84%E6%95%88%E6%9E%9C&summary=%E5%98%97%E8%A9%A6%E5%85%9C%E5%87%BA%E4%B8%80%E5%80%8B%E5%9C%A8%E6%92%B0%E5%AF%AB%20Python%20%E7%A8%8B%E5%BC%8F%E7%A2%BC%E7%9A%84%E6%99%82%E4%B9%9F%E8%83%BD%E5%83%8F%20gofmt%20%E9%80%99%E6%A8%A3%E6%96%B9%E4%BE%BF%E7%9A%84%20code%20formatter%E3%80%82&source=https%3A//blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E5%98%97%E8%A9%A6%E5%9C%A8%20Python%20%E4%B8%AD%E5%81%9A%E5%88%B0%20Golang%20fmt%20%E7%9A%84%E6%95%88%E6%9E%9C&amp;body=https%3A//blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/05/29/y2017w21/">Y2017W21</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/">關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/28/y2017w34/">Y2017W34</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/05/y2016w48/">Y2016W48</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/04/03/y2017w13/">Y2017W13</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/01/03/try-to-do-gofmt-in-python/";
+        var disqus_title = "嘗試在 Python 中做到 Golang fmt 的效果";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-01-03T23:54:54+08:00"><i class="fa fa-calendar"></i> Wed 03 January 2018</abbr></p>
+
+      <p><abbr title="2018-01-18T03:11:54+08:00"><i class="fa fa-pencil"></i>Thu 18 January 2018</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/golang/" data-toggle="tooltip"
+      class="label label-default"
+      title="17 articles with this tag">Golang</a>
+  <br>
+            <a href="/tag/gofmt/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">gofmt</a>
+  <br>
+            <a href="/tag/formatter/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">formatter</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/02/tips-about-facebook-url/" title="Facebook 網址的一些黑魔法"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/04/solution-for-gcin-2-8-5-2-cannot-run-in-application-using-qt-after-5-9-x-on-arch-linux/" title="解決 Arch Linux 上 gcin 2.8.5-2 無法在 Qt 5.9.x 以後的應用程式中執行的問題"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Antivirus</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.antivirus.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2014-02-27T13:12:00+08:00</updated><entry><title>Antivirus software for Mac</title><link href="https://blog.m157q.tw/posts/2014/02/27/antivirus-software-for-mac/" rel="alternate"></link><published>2014-02-27T13:12:00+08:00</published><updated>2014-02-27T13:12:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-02-27:/posts/2014/02/27/antivirus-software-for-mac/</id><summary type="html">&lt;p&gt;Many people believe that Mac …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Many people believe that Mac won't get virus.&lt;br&gt;
+While the Mac users are growing more and more nowadays,&lt;br&gt;
+Crackers won't give up the chances to attack the Mac computers.&lt;br&gt;
+So, we better install a antivirus software to prevent the attack from those bad guys.  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.clamxav.com/"&gt;ClamXav&lt;/a&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ClamXav is a free virus scanner for Mac OS X. It uses the very popular ClamAV open source antivirus engine as a back end and has the ability to detect both Windows and Mac threats.  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Only scan for virus and need manually start&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.sophos.com/en-us/products/free-tools/sophos-antivirus-for-mac-home-edition.aspx"&gt;SOPHOS - Antivirus for Mac Home Editon&lt;/a&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A security suite for Mac including some features.\  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Not only scan for virus&lt;/strong&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Mac"></category><category term="Antivirus"></category></entry></feed>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - systemd</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.systemd.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T21:24:00+08:00</updated><entry><title>Disable auto suspend while the laptop lid close in Arch Linux</title><link href="https://blog.m157q.tw/posts/2013/10/15/disable-auto-suspend-while-the-laptop-lid-close-in-arch-linux/" rel="alternate"></link><published>2013-10-15T05:59:00+08:00</published><updated>2015-10-27T21:24:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-10-15:/posts/2013/10/15/disable-auto-suspend-while-the-laptop-lid-close-in-arch-linux/</id><summary type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Use editor to modify the …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Use editor to modify the configuration file of the systemd-logind&lt;br&gt;
+&lt;code&gt;# vim /etc/systemd/logind.conf&lt;/code&gt;  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Find&lt;br&gt;
+&lt;code&gt;#HandleLidSwitch=suspend&lt;/code&gt;  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Uncommnet it and then change it to&lt;br&gt;
+&lt;code&gt;HandleLidSwitch=ignore&lt;/code&gt;  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After saving the modification, we need to restart the systemd-logind&lt;br&gt;
+&lt;code&gt;# systemctl restart systemd-logind&lt;/code&gt;  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the change should be effective now.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://unix.stackexchange.com/questions/52643/how-to-disable-auto-suspend-when-i-close-laptop-lid"&gt;How to disable auto suspend when I close laptop lid?&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="Laptop"></category><category term="systemd"></category></entry></feed>

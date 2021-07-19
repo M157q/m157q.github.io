@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  視訊訊號處理與深度學習應用
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/" rel="bookmark" title="Permalink to 視訊訊號處理與深度學習應用">視訊訊號處理與深度學習應用</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>台灣資料科學愛好者年會系列活動筆記</p>
+  </blockquote>
+  <div>
+    <ul>
+<li><a href="http://dsc.kktix.cc/events/video-signal">http://dsc.kktix.cc/events/video-signal</a>  </li>
+<li><a href="http://datasci.tw/event/vision_and_learning/">http://datasci.tw/event/vision_and_learning/</a>  </li>
+<li>Slides: <a href="http://www.slideshare.net/tw_dsconf/ss-61255961">http://www.slideshare.net/tw_dsconf/ss-61255961</a>  <ul>
+<li><a href="https://drive.google.com/file/d/0B9cCeTKOkfWITllMazh2a0ctZVk/view?usp=sharing">備份</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>【判讀】電腦視覺簡介</h1>
+<h2>Real Cases in Computer Vision</h2>
+<ul>
+<li>Character Recognition (LeNet)  </li>
+<li><a href="https://www.youtube.com/watch?v=4LxlhoemR3A">Microsoft PhotoSynth</a>  </li>
+<li><a href="https://www.youtube.com/watch?v=ohmajJTcpNk">Video Reenactment</a>  </li>
+<li>Auto Driving  <ul>
+<li>Autonomous Cars - NVIDIA Drive PX2  <ul>
+<li>Object class recognition  </li>
+<li>Semantic Segmentation  <ul>
+<li>分辨出哪裡是車子可以開的地方  </li>
+</ul>
+</li>
+<li>Radar  <ul>
+<li>用雷射去掃周邊的環境，可以很快速的去辨認，但跟電腦視覺比較無關。  </li>
+</ul>
+</li>
+<li>電子後照鏡  <ul>
+<li>解決視線死角問題  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://www.youtube.com/watch?v=gUIKtqyUIo8">Grandma rides a Tesla</a>  </li>
+</ul>
+</li>
+<li>Trip Wire  </li>
+<li>Loitering  </li>
+<li>People Count  </li>
+<li>Speed Test  <ul>
+<li>不用都卜勒雷達算，直接用影像計算。  </li>
+<li>不小心歪掉就不準了，所以大家知道怎麼躲這種測速了吧 （XDD  </li>
+</ul>
+</li>
+<li>Smart Daily  <ul>
+<li>用監視器的影像辨認人臉打卡。  </li>
+</ul>
+</li>
+<li>Smart Fast Forward (Skywatch 的產品)  <ul>
+<li>用影像辨識來判斷農舍監視器畫面中哪些時間是有人的，主要是用來定期追蹤是否有記得噴灑農藥。  </li>
+</ul>
+</li>
+<li>Structure from motion  </li>
+<li>3D Reconstruction  </li>
+<li>Person tracking  </li>
+<li>Face detection  </li>
+</ul>
+<h2>Relationship to Data Science?</h2>
+<ul>
+<li>Rich info, lots of data (in terms of bits)  </li>
+<li>Unstructured, usually without much context / semantics  </li>
+<li>Difficult to process and query  </li>
+<li>We are generating them every day  <ul>
+<li>要變成人類歷史的一部份，轉化成可搜尋的話，是個問題。  </li>
+</ul>
+</li>
+</ul>
+<h2>A Brief History of Computer Vision</h2>
+<ul>
+<li>1966, Marvin Minsky  <ul>
+<li>50 年過後，我們還沒完全解決這個問題。  </li>
+</ul>
+</li>
+<li>1960's: Interpretation of Synthetic Worlds  <ul>
+<li>Larry Roberts (Father of Computer Vision)  </li>
+</ul>
+</li>
+<li>1970's: Some progress on interpreting selected images  </li>
+<li>1980's: AI Winter ... back to basics  <ul>
+<li>1984: Perceptual Organization and Visual Recognition, David Lowe  </li>
+<li>Blending  </li>
+<li>Shape from shading  <ul>
+<li>用三角函數找出反光的角度建模  </li>
+</ul>
+</li>
+<li>Edge Detection  </li>
+<li>From Science to Engineering  </li>
+</ul>
+</li>
+<li>1990's: structure, segmentation and face recognition  </li>
+<li>2000's: more object classes, computational photography, video processing  <ul>
+<li>重新對焦的照相機  </li>
+<li>Texture Sythesis  </li>
+</ul>
+</li>
+<li>2010's: Deep Learning is Back!!  <ul>
+<li>AlexNet NIPS 2012  </li>
+<li>DeepFace CVPR 2014  </li>
+<li>DeepPose CVPR 2014  </li>
+<li>Show, Attend and Tell ICML 2015  </li>
+</ul>
+</li>
+</ul>
+<h2>Basic parts of Computer Vision</h2>
+<h3>Reference Books</h3>
+<ul>
+<li>"Multiple View Geometry in Computer Vision", Richard Hartley and Andrew Zisserman  <ul>
+<li>A good book to get started on camera geometry  </li>
+<li>More math heavry but very old school  </li>
+</ul>
+</li>
+<li><a href="http://szeliski.org/Book/">"Computer Vision: Algorithms and Applications", Richard Szeliski</a>  <ul>
+<li>More balanced mix between math and application  </li>
+<li>Freely available online.  </li>
+</ul>
+</li>
+</ul>
+<h3>Image Formation and 2D Image Processing</h3>
+<ul>
+<li>Image formation  <ul>
+<li>照相原理：散射會造成無法成像，所以透過針孔（作為 barrier），使其成像。  <ul>
+<li>缺點  <ul>
+<li>光線不足，所以很暗  </li>
+<li>針孔太大的話，成像會變模糊，所以加上透鏡輔助。  <ul>
+<li>Circle of Confusion  <ul>
+<li>有散景表示你的鏡頭光圈夠大，代表你是有錢人。 XDD  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Modeling Projection  <ul>
+<li>The coordinate system  <ul>
+<li>Homogeneous Coordinations  <ul>
+<li>3D 轉 2D  </li>
+<li>4D 轉 3D  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Projection equations  </li>
+<li>Camera parameters  <ul>
+<li>外部參數(extrinsics)  </li>
+<li>內部參數(intrinsics)  </li>
+<li><a href="http://ai.stanford.edu/~saumitro/projektiv/">http://ai.stanford.edu/~saumitro/projektiv/</a> 可以透過這個網址來瞭解外部參數和內部參數實際上的影響  </li>
+</ul>
+</li>
+<li>Distortion （扭曲）  <ul>
+<li>Types  <ul>
+<li>Pin Cushion Distortion（針包）  </li>
+<li>Barrel Distortion （木桶）  </li>
+</ul>
+</li>
+<li>Camera Calibration （攝影機校正）  <ul>
+<li>使用時機：把扭曲移除、改變照片的角度、要辨認轉了角度的物件畫面 (Low Level Projection)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tilt-shift  <ul>
+<li>Digital Color Images  <ul>
+<li>Bayer Filter  <ul>
+<li>人對綠色比較敏感，對藍色比較不敏感。  </li>
+<li>彩色的照片是 3 個黑白的 RGB 疊加起來  </li>
+<li>Many early algorithms use greyscale instead of color images, Why?  <ul>
+<li>早期只有灰階照片  </li>
+<li>彩色會有偏差  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Image Filtering  <ul>
+<li>Sliding Window  </li>
+<li>Sharpening filter (Unsharp Mask)  </li>
+<li>Vertical Edge  </li>
+<li>Horizontal Edge  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Epipolar geomerty and stereo matching</h3>
+<ul>
+<li>Recovering structure from a single view  <ul>
+<li>Intrinsic ambiguity of the mapping from 3D to image (2D)  </li>
+<li>2D 是無法直接確定物體距離與深度的，必須用兩個眼睛來看，三角定位。  </li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Epipolar_geometry">Epipolar geomerty</a>  <ul>
+<li>Parallel Images Plane  </li>
+<li>Forward translation  </li>
+<li>Epipolar line  </li>
+<li><a href="https://www.youtube.com/watch?v=sKJeTaIEldM">The "Vertigo" Effect</a>  </li>
+<li>Epipolar Constraint (F)  <ul>
+<li>Estimating F  <ul>
+<li>The Eight-Point Algorithm  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Fundamental Matrix 很重要！  </li>
+<li>Rectification  <ul>
+<li>Your basic stereo algorithm  </li>
+<li>Triangulation  </li>
+</ul>
+</li>
+<li>Depth Map Results  </li>
+<li>Active stereo with structured light  <ul>
+<li>Data Acquisition  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Structure from motion and tracking</h3>
+<ul>
+<li>Finding Path Through the World's Photos  </li>
+<li>Pose Estimation  </li>
+<li>Structure from motion  <ul>
+<li>Tracking  <ul>
+<li>找特徵點去追蹤，然後解出結構。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Stitching and computational photography</h3>
+<p>如何把一堆照片合起來變成一張大照片  </p>
+<ul>
+<li>Image Mosaics  </li>
+<li>Recognizing Panormas  </li>
+<li>De-Ghosting  <ul>
+<li>Cutout-based de-ghosting  <ul>
+<li>Cutout-based compositing  </li>
+<li>Photomontage  </li>
+<li>可以把好幾張裏面有不同人閉眼的照片合成一張沒有人閉眼的照片。  </li>
+</ul>
+</li>
+<li>Poisson Image Editing  <ul>
+<li>Possion Equation: 微分、微分、再積分  </li>
+<li>照片合成特效  </li>
+<li>Seamless Poisson cloning  </li>
+<li>Face Cloning  </li>
+<li>Texture Swapping  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Interactive Mobile Panorama  </li>
+<li>High Dynamic Range Imaging (HDR)  <ul>
+<li>The real word is high dynamic range  <ul>
+<li>Typical cameras have limited dynamic range  <ul>
+<li>Solution: Merge multiple exposures  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Varying Exposure  </li>
+<li>Tone Mapping  </li>
+<li>Simple Global Operator  </li>
+</ul>
+</li>
+<li>Interactive Local Adjustment of Tonal Values  <ul>
+<li>Tonal （色調） Manipulation  </li>
+<li>Constraint Propagation  </li>
+<li>Touch-Tone: Point-and-Swipe Image Editing  </li>
+</ul>
+</li>
+</ul>
+<h3>Visual Recognition and Query</h3>
+<ul>
+<li>1989  <ul>
+<li>MNIST, Backpropagation applied to handwritten zip code recognition  </li>
+<li>Character Recognition (LeNet)  </li>
+</ul>
+</li>
+<li>1998, Neural Network-Based Face Detection  </li>
+<li>1999, SIFT (Scale Invariant Feature Transform)  <ul>
+<li>Object Recognition from Local Scale-Invariant Features, Lowe, ICCV 1999.  </li>
+<li>No more sliding windows (interest points)  </li>
+<li>Better features (use more computation)  </li>
+<li>找出來的特徵點會是一個球，而不是邊邊角角。  </li>
+<li>Better Descriptor  <ul>
+<li>Image gradients =&gt; Keypoint descriptor  </li>
+<li>Truncated normalization (globally)  </li>
+<li>高維度的球  </li>
+</ul>
+</li>
+<li>What worked  <ul>
+<li>Object instance recognition  </li>
+<li>Panaroma  </li>
+</ul>
+</li>
+<li>What failed?  <ul>
+<li>無法認東西  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2001, Rapid Object Detection using a Boosted Cascade of Simple Features, Viola and Jones  <ul>
+<li>Why did it work?  <ul>
+<li>Simple Features (Haar wavelets)  </li>
+<li>假設光線都是從上打下來，直接去認眼睛和鼻子的陰影，覺得有可能的保留，沒可能的就丟掉，所以速度很快。  </li>
+</ul>
+</li>
+<li>Why did it fail?  <ul>
+<li>側面就無法 work  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2003, Constellatioin model (redux) (related to SIFT)  <ul>
+<li>Object Class Recognition by Unsupervised Scale-Invariant Learning  </li>
+</ul>
+</li>
+<li>2005, HOG (Histograms of oriented gradients) (related to SIFT)  <ul>
+<li>Normalize locally not globally  </li>
+<li>Why worked?  <ul>
+<li>Hard negative mining  </li>
+<li>Computers are fast enought  </li>
+</ul>
+</li>
+<li>What failed?  <ul>
+<li>無法認出運動中的人，必須要站著。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2007, Pascal VOC  <ul>
+<li>The PASCAL Visual Object Classes (VOC) Challenge  </li>
+<li>只有 20 個分類  </li>
+</ul>
+</li>
+<li>2008, DPM (Deformable parts model)  <ul>
+<li>Object Detection with Discriminatively Trained Part Based Model  </li>
+<li>Star-structure  </li>
+</ul>
+</li>
+<li>2009, Caltech Pedestrian  </li>
+<li>2009, ImageNet  <ul>
+<li>ImageNet, A Large-Scale Hierarchical Image Database  </li>
+</ul>
+</li>
+<li>2010, SUN  <ul>
+<li>SUN Database: Large-scale Scene Recognition from Abbey to Zoo  </li>
+</ul>
+</li>
+<li><a href="http://mscoco.org">MS COCO</a>  <ul>
+<li>over 77,000 worker hours (8+ years)  </li>
+</ul>
+</li>
+<li>2012 DNNs  <ul>
+<li>GPUs + Data  </li>
+<li>Classification vs Deteciton  <ul>
+<li>Detection need to know the position of the target object  </li>
+</ul>
+</li>
+<li>CNN, RNN  </li>
+<li>Why it fails  <ul>
+<li>找不到位置的話就很難去判斷  </li>
+<li>Neural Networks are easily fooled  <ul>
+<li>會把看起來完全不相關的雜訊誤判成某些物件  <ul>
+<li>Neural Networks are easily fooled: High Confidence Predictions for Unrecognizable Images  </li>
+</ul>
+</li>
+<li>PANDA: Pose Aligned Networks for Deep Attribute Modeling  </li>
+<li>DeepFace: closing the gap to  human-Level performance in fac verification  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Additional Challenges  <ul>
+<li>Detecgtion in context (with common sense)  <ul>
+<li>加入一些常識的判斷，例如：人在普通情況下不可能在天上飛之類的等等  </li>
+</ul>
+</li>
+<li>Model awareness  </li>
+<li>Training time (when dataset is incrementally updated)  <ul>
+<li>每個公司都用大量的電腦去運算，不僅耗時，也蠻浪費電的。  </li>
+</ul>
+</li>
+<li>More science?  <ul>
+<li>目前比較像是大量嘗試去找出方法，不太有系統且有科學性。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>【索引】多媒體檢索</h1>
+<h2>Search By Image Examples</h2>
+<ul>
+<li>Still very much an open problem  </li>
+<li>Most commercial applications use a mixture of algorithms  <ul>
+<li>沒有一種演算法可以完全解決這個問題  </li>
+</ul>
+</li>
+<li>Google Goggles in action  <ul>
+<li>Text =&gt; OCR  </li>
+<li>Landmarks, Books, Artwork, Wine, Logos =&gt; SIFT  </li>
+<li>Contact Info  </li>
+</ul>
+</li>
+<li>TinEye  <ul>
+<li>以圖找圖  </li>
+</ul>
+</li>
+<li>Instance Recognition  </li>
+<li>Search Structure  </li>
+<li>Possible Solutions  <ul>
+<li>Find approximate words  <ul>
+<li>Approximate nearest neighbour (ANN)  </li>
+<li>維度比較高，所以速度比較慢  </li>
+</ul>
+</li>
+<li>Find lower dimensional spae to split the data  <ul>
+<li>找 2D 的的資料，雖然沒那麼準確，但速度會比較快。  </li>
+</ul>
+</li>
+<li>Scalable Recognition with a Vocabulary Tree  <ul>
+<li>先拿一張圖找 Feature  </li>
+<li>找出來後丟到高維度的空間（約兩百多維)  </li>
+<li>會有很多不同的點  </li>
+<li>用定義好的向量距離，用 <a href="https://en.wikipedia.org/wiki/K-means_clustering">K-means</a> 做分群  </li>
+<li>遞迴做下去就可以得到愈多種類的分群結果  </li>
+<li>最後再把不需要的東西去掉，得到 Vocabulary Tree  </li>
+<li>得到 Vocabulary Tree 後，把每個 Feature 丟進去，會知道在 Vocabulary Tree 的哪個節點  </li>
+<li>如果該 Feature 的結果只指向一張圖的話，就很有可能是這張圖。  </li>
+<li>但當某個節點有關的圖愈多的話，entropy 愈高，結果就愈難判斷。  </li>
+<li>這時候可以使用 <a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">tf-idf</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>【加速】圖形處理器與深度學習 (GPU and Computation)</h1>
+<h2>Parallel Processing and GPU</h2>
+<h3>Parallel Computing Goals</h3>
+<ul>
+<li>To slove your problem in less time  <ul>
+<li>平行化去處理  </li>
+</ul>
+</li>
+<li>In order to parallelize a problem  <ul>
+<li>要去看哪邊有關聯性，並確定處理這些關聯性對演算法的影響。  </li>
+</ul>
+</li>
+</ul>
+<h3>Types of Parallelism</h3>
+<ul>
+<li>Multiple Programs  <ul>
+<li>Multi-tasking  </li>
+<li>Multi-threading  </li>
+</ul>
+</li>
+<li>Single Program  <ul>
+<li>Instruction-levl parallelism  <ul>
+<li>Multiple instructions in a serial program get excuted simultaneously  </li>
+</ul>
+</li>
+<li>Data-level parallelism  <ul>
+<li><strong>S</strong>ingle <strong>I</strong>nstruction, <strong>M</strong>ultiple <strong>D</strong>ata processing model (SIMD)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Amdahl's Law  <ul>
+<li>Named after computer architect Gene Amdahl  </li>
+<li>Speedup of a parallel computer is limited by the amount of serial work  </li>
+</ul>
+</li>
+<li>Resource Management  <ul>
+<li>哲學家晚餐問題  </li>
+</ul>
+</li>
+</ul>
+<h3>GPU Applications</h3>
+<ul>
+<li>Real-time rendering. e.g. Game  </li>
+<li>Movie Effect  </li>
+</ul>
+<h3>GPUs Today</h3>
+<ul>
+<li>GPUs are becoming more programmable  </li>
+<li>GPUs now support 32/64 bit floating points numbers  </li>
+<li>GPUs have higher memory bandwidth than CPUs  </li>
+</ul>
+<h3>NVIDIA CUDA</h3>
+<ul>
+<li>Compute Unified Device Architecture  </li>
+<li>CUDA Workflow  <ul>
+<li>Get a CUDA-enabled GPU  </li>
+<li>Write C/C++ like code (*.cu)  </li>
+<li>Compile with CUDA compiler (nvcc)  <ul>
+<li>Generated PTX code ("Parallel Thread Execution")  </li>
+</ul>
+</li>
+<li>Applications auto-magically run on GPUs  <ul>
+<li>Many many parallel threads  </li>
+<li>CUDA driver translate PTX code into hardware.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CUDA Overview  </li>
+</ul>
+<blockquote>
+<p>之前學 CUDA 時收集的一份不錯的 CUDA 教學系列文：<a href="/posts/2015/08/15/nice-series-of-cuda-tutorials-on-ptt-cc/">Nice Series of CUDA Tutorials on ptt.cc</a>  </p>
+</blockquote>
+<h3>Frameworks and Libraries</h3>
+<ul>
+<li>MATLAB  </li>
+<li>BLAS Library (Basic Linear Algebra Subprograms)  <ul>
+<li>和 Fortran 同年代的產物  </li>
+<li>Processor vendors implement their BLAS library  <ul>
+<li>e.g., Intel MKL (Math Kernel Library)  </li>
+</ul>
+</li>
+<li>cuBLAS - CUDA version, very fast  </li>
+</ul>
+</li>
+<li>NVIDIA Thrust Library  <ul>
+<li>A little like C++ STL library for CUDA  </li>
+<li>Very few lines of code for vector manipulation  </li>
+<li>Fast implementation of parallel primitives  <ul>
+<li>reduce  <ul>
+<li>mapreduce  </li>
+</ul>
+</li>
+<li>scan  </li>
+<li>sort  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>NVIDIA cuDNN  <ul>
+<li>Deep Neural Network Library for CUDA  </li>
+<li>TensorFlow, Caffe, Microsoft CNTK  </li>
+<li>Deep Learning Getting Started Advises  <ul>
+<li>Borrow (steal if you must) a modern GPU  </li>
+<li>Use <a href="http://caffe.berkeleyvision.org">Caffe</a> for your deep learning projects  </li>
+<li>Browse through the Caffe Model Zoo and try out the existing (pre-trained) models (AlexNet, R-CNN and GooLeNet  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>電腦視覺之實作演示</h1>
+<ul>
+<li>
+<p>Introduct OpenCV by the official tutorials  </p>
+<ul>
+<li>Core functionality  </li>
+<li>Image processing  </li>
+<li>Demos  </li>
+</ul>
+</li>
+<li>
+<p>Python, OpenCV, Numpy  </p>
+<ul>
+<li>Canny Edge Detection  <ol>
+<li>Detect unique edges  <ul>
+<li>不管是 strong edge 或 weak edge 在經過微分後都會產生一個 peak  </li>
+</ul>
+</li>
+<li>Edge Voting (Use 2 threshold)  <ul>
+<li>Strong edge: Always accept.  </li>
+<li>Weak edge: Accept when connected.  </li>
+</ul>
+</li>
+<li>是很多後續演算法的基礎  </li>
+</ol>
+</li>
+<li>Histogram  </li>
+</ul>
+</li>
+<li>Demo  <ul>
+<li>OpenCV QR Drive  <ul>
+<li>QR code Marker Detection  <ul>
+<li>1:1:3:1:1 black-white markers at the coners  </li>
+</ul>
+</li>
+<li>How to detect 11311?  <ul>
+<li>Only need to use raster scan  </li>
+<li>Use <a href="https://en.wikipedia.org/wiki/Otsu%27s_method">Otsu algorithm</a>  <ul>
+<li>Thresholding: leave only white and black  </li>
+<li>A binarization algorithm that minimize the weighted intra-class variance algorighm for bimodal distributioin.  </li>
+</ul>
+</li>
+<li>Detect the most bright points  <ol>
+<li>Dilate  </li>
+<li>Equality check  </li>
+<li>Threshold  </li>
+</ol>
+</li>
+<li>Dilation and thresholding  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Make a little PiBorg which will chase the $1,000 NTD bill.  <ul>
+<li>The PiBorg (RPi + Motor) aka <a href="https://www.youtube.com/watch?v=s3Qdsn401H0">DoodleBorg</a>  </li>
+<li>Camshift (WACV 98)  </li>
+<li>Meanshift  </li>
+<li><a href="http://docs.opencv.org/3.1.0/db/df8/tutorial_py_meanshift.html">OpenCV: Meanshift and Camshift</a>  </li>
+<li>Camshift 比 Meanshift 多了一個 scale 的選項  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Conclusion  <ul>
+<li>Basic OpenCV functionalities  </li>
+<li>OpenCV and image processing  </li>
+<li>OpenCV and detection  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E8%A6%96%E8%A8%8A%E8%A8%8A%E8%99%9F%E8%99%95%E7%90%86%E8%88%87%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%87%89%E7%94%A8%0Ahttps%3A//blog.m157q.tw/posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/&title=%E8%A6%96%E8%A8%8A%E8%A8%8A%E8%99%9F%E8%99%95%E7%90%86%E8%88%87%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%87%89%E7%94%A8&summary=%E5%8F%B0%E7%81%A3%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E6%84%9B%E5%A5%BD%E8%80%85%E5%B9%B4%E6%9C%83%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%E7%AD%86%E8%A8%98&source=https%3A//blog.m157q.tw/posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E8%A6%96%E8%A8%8A%E8%A8%8A%E8%99%9F%E8%99%95%E7%90%86%E8%88%87%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%87%89%E7%94%A8&amp;body=https%3A//blog.m157q.tw/posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2014/07/20/coscup-2014-notes-and-thoughts/">COSCUP 2014 Notes and Thoughts</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2014/03/16/sitcon-2014-yi-nian-ban-qian-bu-hui-xie-wang-zhan-de-cai-niao-de-gu-shi/">SITCON 2014 - 一年半前不會寫網站的菜鳥的故事</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/">HITCON CTF 2015 Quals Write-up</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/">PyCon APAC 2015 Notes and Thoughts</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/12/y2017w23/">Y2017W23</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/";
+        var disqus_title = "視訊訊號處理與深度學習應用";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/04/23/video-signal-processing-and-the-application-of-deep-learning/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-04-23T09:20:46+08:00"><i class="fa fa-calendar"></i> Sat 23 April 2016</abbr></p>
+
+      <p><abbr title="2016-04-24T14:43:00+08:00"><i class="fa fa-pencil"></i>Sun 24 April 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/conf/" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">conf</a>
+  <br>
+            <a href="/tag/deep-learning/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">Deep Learning</a>
+  <br>
+            <a href="/tag/data-science/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">data science</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/04/21/taipei-py-20160421-meetup-note/" title="Taipei.py 20160421 Meetup Note"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/04/24/hacker-chips-april-note/" title="Hacker Chips April Note"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

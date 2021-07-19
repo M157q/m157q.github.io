@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  《認識虛擬化技術的第一本書》
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.reading.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Reading - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/06/23/認識虛擬化技術的第一本書/" rel="bookmark" title="Permalink to 《認識虛擬化技術的第一本書》">《認識虛擬化技術的第一本書》</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>某天下班跑去信義誠品晃晃，順手翻完的一本書。</p>
+  </blockquote>
+  <div>
+    <p><img alt="cover" src="/files/認識虛擬化技術的第一本書/cover.jpg">  </p>
+<h2>心得</h2>
+<p>因為大學的時候並沒有修過虛擬化技術相關的課程，<br>
+然後工作上又有用到，<br>
+剛好看到在書架上就拿來翻了。  </p>
+<blockquote>
+<p>沒想到也是一個多月前的事了，現在才寫這篇文章，真的是拖延症患者的日常。  </p>
+</blockquote>
+<p>這本書的封面講起來似乎很好懂，<br>
+但看完之後我覺得還是得要有資工相關領域的知識背景才比較看得懂，<br>
+非資訊相關科系的人看這本書可能還是會有點吃力。  </p>
+<p>因為是微軟的日本 Evangelist 寫的書，<br>
+所以都以 Azure 作為範例，<br>
+AWS 跟 GCP 的部份著墨不多，<br>
+但大部份是講些基本觀念，<br>
+所以即便我把跟 Azure 實作範例相關的部份都跳掉，<br>
+還是有學到一些不知道的東西，<br>
+稍微紀錄在底下，<br>
+給自己之後復習用。  </p>
+<hr>
+<h2>筆記</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Overlay_(programming)">Overlay</a>  <ul>
+<li>當主記憶體必須執行難以負荷的應用程式時，先將該應用程式分割成固定的大小，再依需求逐一載入主記憶體的功能。  </li>
+<li>在硬體還十分昂貴的年代，這是個非常重要的功能。  </li>
+<li>必須先掌握主記憶體與輔助記憶體之間的資料交換才能使用，在虛擬記憶體出現之後，這個功能就愈來愈少被使用了。  </li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Logical_partition">LPAR (Logical Partition)</a> &amp; <a href="https://en.wikipedia.org/wiki/PR/SM">PR/SM (Processor Resource/System Manager)</a>  <ul>
+<li>於 1987 年左右問世  </li>
+<li>LPAR  <ul>
+<li>在系統裡建立多個邏輯分區，讓一台電腦看起來擁有兩套系統的技術  </li>
+<li>只要有親自安裝過 Linux、FreeBSD 或是灌過雙系統的人應該都不陌生。  <blockquote>
+<p>我是看了這本書才知道可以縮寫成 LPAR ...  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>PR/SM  <ul>
+<li>能以「將 CPU 的資源劃分給主環境」的概念進行定義，是一種管理系統與資源的技術。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Hyper-V">Hyper-V</a> 的歷史  <ul>
+<li>原本是美國 Connectix 公司開發的 Macintosh 專用虛擬化軟體 <a href="https://en.wikipedia.org/wiki/Windows_Virtual_PC#Virtual_PC_by_Connectix">Virtual PC</a>，是一套為了在 Macintosh 執行 Windows 應用程式而開發的軟體，後來被 Microsoft 併購。  </li>
+<li>在 Windows 7 以前被稱之為 Windows Virtual PC  </li>
+<li>Windows 8 之後又重新以 Hyper-V 的名字出現  </li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/X86_virtualization#Intel_virtualization_.28VT-x.29">Intel VT-x</a>  <ul>
+<li>原本叫作 Vanderpool  </li>
+<li>將 Intel x86 虛擬化的功能  </li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/X86_virtualization#I.2FO_MMU_virtualization_.28AMD-Vi_and_Intel_VT-d.29">Intel VT-d</a>  <ul>
+<li>I/O MMU virtualization  </li>
+<li>An input/output memory management unit (IOMMU) allows guest virtual machines to directly use peripheral devices, such as Ethernet, accelerated graphics cards, and hard-drive controllers, through DMA and interrupt remapping. This is sometimes called PCI passthrough.  </li>
+<li>以支援 I/O 處理的虛擬化所開發的功能  </li>
+<li>使用 DMA 記憶體空間的 map/remap 功能的程式，在其他 guest OS 使用到 Hypervisor 裡正被 guest OS 使用的記憶體空間時，就會導致資料毀損。為了避免這種問題發生，guest OS 或 Hypervisor 會管理硬體的哪個位址指定了什麼內容，或是進行排他處理，但這會對效能產生極大的影響。若將這類問題直接交由硬體負責，就可以在不犧牲效能的情況下安全得使用。  </li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Second_Level_Address_Translation">SLAT</a> aka nested paging  <ul>
+<li>Second Level Address Translation  </li>
+<li>讓硬體擔起多個 guest OS 與 host OS 之間的位址處理，也就是更安全得提供高效能的虛擬化支援功能。  </li>
+<li>Intel 的 CPU 將這項功能稱為 EPT (Extended Page Table)  </li>
+<li>AMD 的 CPU 將這項功能稱為 NPT (Nested Page Table)  </li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Physical-to-Virtual">P2V</a>  <ul>
+<li>Physical to Virtual  </li>
+<li>"Involves the process of decoupling and migrating a physical server's operating system (OS), applications, and data from that physical server to a virtual-machine guest hosted on a virtualized platform."  </li>
+<li>類似用語：V2V (Virtual to Virtual), V2C (Virtual to Cloud), P2C (Physical to Cloud)  <blockquote>
+<p>Buzzwords !!!  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>書籍連結</h2>
+<ul>
+<li><a href="https://www.tenlong.com.tw/items/9863478431?item_id=1010879">天瓏網路書店 | 認識虛擬化技術的第一本書（超圖解，學習無負擔）</a>  </li>
+<li><a href="http://www.books.com.tw/products/0010704880">博客來-認識虛擬化技術的第一本書（超圖解，學習無負擔）</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E3%80%8A%E8%AA%8D%E8%AD%98%E8%99%9B%E6%93%AC%E5%8C%96%E6%8A%80%E8%A1%93%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E6%9B%B8%E3%80%8B%0Ahttps%3A//blog.m157q.tw/posts/2016/06/23/%E8%AA%8D%E8%AD%98%E8%99%9B%E6%93%AC%E5%8C%96%E6%8A%80%E8%A1%93%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E6%9B%B8/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/06/23/%E8%AA%8D%E8%AD%98%E8%99%9B%E6%93%AC%E5%8C%96%E6%8A%80%E8%A1%93%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E6%9B%B8/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/06/23/%E8%AA%8D%E8%AD%98%E8%99%9B%E6%93%AC%E5%8C%96%E6%8A%80%E8%A1%93%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E6%9B%B8/&title=%E3%80%8A%E8%AA%8D%E8%AD%98%E8%99%9B%E6%93%AC%E5%8C%96%E6%8A%80%E8%A1%93%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E6%9B%B8%E3%80%8B&summary=%E6%9F%90%E5%A4%A9%E4%B8%8B%E7%8F%AD%E8%B7%91%E5%8E%BB%E4%BF%A1%E7%BE%A9%E8%AA%A0%E5%93%81%E6%99%83%E6%99%83%EF%BC%8C%E9%A0%86%E6%89%8B%E7%BF%BB%E5%AE%8C%E7%9A%84%E4%B8%80%E6%9C%AC%E6%9B%B8%E3%80%82&source=https%3A//blog.m157q.tw/posts/2016/06/23/%E8%AA%8D%E8%AD%98%E8%99%9B%E6%93%AC%E5%8C%96%E6%8A%80%E8%A1%93%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E6%9B%B8/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E3%80%8A%E8%AA%8D%E8%AD%98%E8%99%9B%E6%93%AC%E5%8C%96%E6%8A%80%E8%A1%93%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E6%9B%B8%E3%80%8B&amp;body=https%3A//blog.m157q.tw/posts/2016/06/23/%E8%AA%8D%E8%AD%98%E8%99%9B%E6%93%AC%E5%8C%96%E6%8A%80%E8%A1%93%E7%9A%84%E7%AC%AC%E4%B8%80%E6%9C%AC%E6%9B%B8/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/06/23/認識虛擬化技術的第一本書/";
+        var disqus_title = "《認識虛擬化技術的第一本書》";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/06/23/認識虛擬化技術的第一本書/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-06-23T21:35:23+08:00"><i class="fa fa-calendar"></i> Thu 23 June 2016</abbr></p>
+
+      <p><abbr title="2016-06-26T14:55:00+08:00"><i class="fa fa-pencil"></i>Sun 26 June 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/reading/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="19 articles in this category">Reading</a>
+              </p>
+            <a href="/tag/virtualization/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">virtualization</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/" title="Cat System Workshop #7 Skymizer intelligent compiler"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/06/29/tossug-20160628/" title="TOSSUG 20160628"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.reading.atom.xml"><i class="fa fa-rss"></i> Category: Reading (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

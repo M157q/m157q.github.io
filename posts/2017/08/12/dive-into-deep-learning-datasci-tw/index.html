@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  台灣資料科學年會之系列活動：深入淺出深度學習 (Dive into Deep Learning)
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/" rel="bookmark" title="Permalink to 台灣資料科學年會之系列活動：深入淺出深度學習 (Dive into Deep Learning)">台灣資料科學年會之系列活動：深入淺出深度學習 (Dive into Deep Learning)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>《資料科學年會系列活動：深入淺出深度學習》筆記</p>
+  </blockquote>
+  <div>
+    <ul>
+<li>Links  <ul>
+<li><a href="http://foundation.datasci.tw/dive-deep-learning-170812/">http://foundation.datasci.tw/dive-deep-learning-170812/</a>  </li>
+<li><a href="https://dsc.kktix.cc/events/series-events-081213">https://dsc.kktix.cc/events/series-events-081213</a>  </li>
+</ul>
+</li>
+<li>Slides  <ul>
+<li><a href="https://drive.google.com/file/d/0B9cCeTKOkfWIVF9CeXpXaC1lUVk/view?usp=sharing">DiveDL_0326_v1.pdf</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Regression</h3>
+<ul>
+<li>適用場景  <ul>
+<li>股票預測  </li>
+<li>無人車方向調整  </li>
+<li>推薦系統  </li>
+</ul>
+</li>
+<li>步驟  <ul>
+<li>決定 Model  </li>
+<li>評估所使用的函數夠不夠好  <ul>
+<li>Loss Funciton  <ul>
+<li>output 分數低，代表 loss 少，所以比較好。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>找出表現最好的 Loss Function  <ul>
+<li>利用 Gradient Descent 來找  <ul>
+<li>縱軸為 L 的 output，橫軸為 w  </li>
+<li>L 對 w 偏微分，取得其切線斜率  </li>
+<li>切線斜率為負時，增加 w，來取得較低的 L output  </li>
+<li>切線斜率為正時，減少 w，來取得較低的 L output  </li>
+</ul>
+</li>
+<li>非 Linear 的話，會出現 Local optimal 和 Global optimal 的狀況  </li>
+</ul>
+</li>
+<li>得到 Model  </li>
+<li>Model Generalization  <ul>
+<li>嘗試不同的 Model  </li>
+<li>太過複雜的 Model 會出現 Overfitting 的狀況  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Classification</h3>
+<ul>
+<li>分類  <ul>
+<li>Binary Classification  <ul>
+<li>Yes/No  </li>
+<li>Example  <ul>
+<li>Spam Filtering  <ul>
+<li>把 email 裡面的詞都當作一個 feature，透過 trained model 來得到 Boolean 的結果。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Multi-Class Classification  <ul>
+<li>判斷是哪個種類  </li>
+<li>Example  <ul>
+<li>餵入圖片，判斷是哪種動物  </li>
+<li>判斷新聞是屬於哪一種主題  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Introduction to ML &amp; DL</h1>
+<h2>Basic Deep Learning</h2>
+<ul>
+<li>Stacked function learned by machine  </li>
+<li>Deep Learning 三步驟  <ul>
+<li>Define a set of function  </li>
+<li>Godness of function  </li>
+<li>pick the best function  </li>
+<li>(和 ML 很像）  </li>
+</ul>
+</li>
+</ul>
+<h4>Step 1: Define a set of function</h4>
+<ul>
+<li>Neural Network  <ul>
+<li>Neuron: input, weights, bias, Activation function  </li>
+<li>將多個 Neuron 組合在一起，形成 Neuron Network  </li>
+<li>愈多層的話需要調整的參數越多  </li>
+<li>不同的 Connections 可以形成不同的 Neural Network  <ul>
+<li>Fully-Connected Feedforward Network  <ul>
+<li>每一個 Neuron 都跟前一個相連，會一直把數值傳下去。  </li>
+<li>Input Layer + Hidden Layers + Output Layer  </li>
+<li>"Deep" means multiple hidden layers  <ul>
+<li>DNN 的 hidden layers 至少要大於 2  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Why Deep?  <ul>
+<li>Fat + Shallow vs Thin + Deep  <ul>
+<li>在數學上被證明是可以用一層很寬的 layer 來取代多層的 layers，但為什麼不用？  </li>
+<li>因為只用一層的話會需要使用到更多的 Neurons。（可以用類似 Logic Gates 簡化的方式來想）  </li>
+</ul>
+</li>
+<li>Examples  <ul>
+<li>AlexNet (2012): 8 layers, 16.4%  </li>
+<li>VGG (2014): 19 layers, 7.3%  </li>
+<li>GoogleNet (2014): 22 layers, 6.7%  </li>
+<li>Residual Net (2015): 152 layers, 3.57%  <ul>
+<li>人類自己把所有的 training data 看完後下去做測試，error rate 大概是 4~5%  </li>
+<li>首度超越人類  </li>
+<li>因為疊了很多層，所以可能有些資訊會在傳遞中遺失，所以使用了 Special structure，會把一些一開始就學到的很重要 information 直接保留下來，確保不會在傳遞過程中遺失。  </li>
+<li>使用 Softmax layer 來當 Output layer  <ul>
+<li>可以對 output 的數值做 normalize，直接以機率的方式呈現結果。  </li>
+</ul>
+</li>
+<li>Example  <ul>
+<li>Handwriting Digit Recognition  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Input =&gt; Neuron Network =&gt; Output  </li>
+<li>Neuron Network =&gt; A function set containing the candidates  </li>
+<li>FAQ  <ul>
+<li>要用幾層？每層要用多少 Neuron？  <ul>
+<li>試誤 + 直覺  </li>
+</ul>
+</li>
+<li>我們可以自己設計 neuron network structure 嗎？  <ul>
+<li>有很多不同的結構可以選擇  </li>
+</ul>
+</li>
+<li>有辦法讓程式自動幫我們決定要使用哪種 structure  <ul>
+<li>有，但還沒有被研究的非常透徹。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Step 2: goodness of function</h4>
+<ul>
+<li>Loss  <ul>
+<li>A good function should make the loss of all examples as small as possible.  </li>
+</ul>
+</li>
+<li>Total Loss  <ul>
+<li>As small as possible  </li>
+<li>Find a function in function set that minimizes total loss  </li>
+<li>Find the network parameter <code>θ*</code> that minimize total loss  </li>
+</ul>
+</li>
+</ul>
+<h4>Step 3: pick the best function</h4>
+<ul>
+<li>Gradient Descent  <ul>
+<li>Local minima  <ul>
+<li>Very slow at the plateau  </li>
+<li>Stuck at saddle point  </li>
+<li>Stuck at local minima  </li>
+<li>Gradient descent never guarantee global minima  <ul>
+<li>Use different &amp; random initial point to reach different minima  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Even AlphaGo using this approach  <ul>
+<li>其實 AI 並沒有那麼厲害，他們也是像探索戰爭迷霧那樣，一步一步去探索和嘗試的。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Deep Learning Toolkit</h2>
+<ul>
+<li>Backpropagation  <ul>
+<li>An efficient way to compute <code>∂L/∂w</code> in neural network  </li>
+</ul>
+</li>
+<li>Frameworks  <ul>
+<li>TensorFlow  <ul>
+<li>比較多人在用且資料比較多  </li>
+</ul>
+</li>
+<li>Torch  </li>
+<li>Pytorch  <ul>
+<li>比較多人在用且資料比較多  </li>
+</ul>
+</li>
+<li>Theano  <ul>
+<li>AlexNet 的作者  </li>
+</ul>
+</li>
+<li>Microsoft CNTK  </li>
+<li>Caffe  </li>
+<li>DSSTNE  </li>
+<li>mxnet  </li>
+<li>Chainer  </li>
+</ul>
+</li>
+<li>有 input 和 output，就可以使用這些工具幫你找尋合適的 Function Set  </li>
+</ul>
+<h4>Keras</h4>
+<ul>
+<li>TensorFlow 和 Theano 的 Wrapper  </li>
+<li>非常容易寫  </li>
+<li>雖然可以細部調整的地方沒有直接使用 TensorFlow 和 Theano 來的多，但有足夠的彈性做一些調整。  </li>
+</ul>
+<h2>Learning Recipe</h2>
+<ul>
+<li>
+<p>在 Training Data 上的表現好嗎？  </p>
+<ul>
+<li>不好  <ul>
+<li>重新 train  </li>
+<li>可能原因  <ul>
+<li>no good function exists: bad hypothesis function set =&gt; reconstruct the model architecture  </li>
+<li>cannot find a good function: local optima =&gt; change the training strategy  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>在 Testing Data 上的表現好嗎？  </p>
+<ul>
+<li>不好的話就是 Overfitting，要重新 train model  </li>
+</ul>
+</li>
+</ul>
+<h3>Overfitting</h3>
+<ul>
+<li>High variance  </li>
+<li>可能的解法  <ul>
+<li>more training samples  </li>
+<li>dropout  <ul>
+<li>每次 random 讓數個 node 不工作  </li>
+</ul>
+</li>
+<li>降維  <ul>
+<li>PCA  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Concluding Remarks</h2>
+<ul>
+<li>3 steps of Basic Machine Learning 很重要  </li>
+<li>Stacked functions  </li>
+</ul>
+<hr>
+<h1>Part II: Variants of Neural Nets</h1>
+<ul>
+<li>Convolutional Neural Network (CNN)  </li>
+<li>Recurrent Neural Network (RNN)  </li>
+</ul>
+<h2>Convolutional Neural Network (CNN)</h2>
+<ul>
+<li>在影像處理上被廣泛使用  </li>
+</ul>
+<h3>Why CNN for Image?</h3>
+<ul>
+<li>Some patterns are much smaller than the whole image.  <ul>
+<li>A neuron does not have to see the whole image to discover pattern.  </li>
+<li>Connecting to small region with less parameters.  </li>
+</ul>
+</li>
+<li>The same patterns appear in different regions.  </li>
+<li>Subsampling the pixels will not change the object.  <ul>
+<li>算是處理 image 上獨有的特性  </li>
+<li>We can subsmaple the pixel to make image smaller  <ul>
+<li>Less parameters for the network to process the image  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>The Whole CNN</h3>
+<ul>
+<li>Image =&gt; <code>{Convolution =&gt; Max Pooling}*N</code> =&gt; Flatten =&gt; Fully Connected Feedforward Network  </li>
+<li>特性  <ul>
+<li>和 Convolution 有關  <ul>
+<li>Some patterns are much smaller than the whole image.  </li>
+<li>The same patterns appear in different regions.  </li>
+</ul>
+</li>
+<li>和 Max Pooling 有關  <ul>
+<li>Subsampling the pixels will not change the object  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Image Recognition</h3>
+<ul>
+<li>Local Connectivity  <ul>
+<li>Neurons connected to a small region  </li>
+</ul>
+</li>
+<li>
+<p>Parameter Sharing  </p>
+<ul>
+<li>The same feature in different positions  <ul>
+<li>Neurons share the same weights  </li>
+</ul>
+</li>
+<li>Different features in the same position  <ul>
+<li>Neurons have different weights  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Convolutional Layers  </p>
+</li>
+<li>Hyper-parameters of CNN  <ul>
+<li>Stride  <ul>
+<li>要隔多少去算下一個 information  </li>
+<li>如果覺得這張圖上的 information 是非常鬆散的，那 stride 就可以設高一點，讓他多隔幾層再去找 pattern  </li>
+<li>如果覺得這張圖上的 information 是非常緊密的，那 stride 就只能設低一點。  </li>
+</ul>
+</li>
+<li>Padding  <ul>
+<li>讓每一層的數值不要減少的太快  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pooling Layer  <ul>
+<li>Max Pooling  <ul>
+<li>把最大的值保存下來  </li>
+<li>Image processing 比較常使用 Max Pooling  </li>
+</ul>
+</li>
+<li>Average Pooling  <ul>
+<li>把平均的數值保存下來  </li>
+</ul>
+</li>
+<li>壓縮資訊，減少下一層需要參數的量，使其更有效率。  </li>
+</ul>
+</li>
+<li>Why Deep Learing works for image recogniton?  <ul>
+<li>每個 node 會學習一些簡單的筆劃，組合起來後才會變成一個字。  </li>
+<li>愈前面的結果會愈簡單和基本，可能只是些筆劃，經過 Convolution 和 Max Pooling 後，可以用被壓縮後的較少資訊學習比較抽象的組合。  </li>
+</ul>
+</li>
+<li>Fully-Connected Layer  <ul>
+<li>Global feature extraction  </li>
+<li>Softmax Layer: Classifier  </li>
+</ul>
+</li>
+<li>What CNN Learned  <ul>
+<li>[AlexNet]  </li>
+</ul>
+</li>
+<li>DNN are easily fooled  <ul>
+<li>可以捏造一些奇怪的 input，看起來只是一些 noise，因為 DNN 會特別著重某些 pattern，所以會將這些圖誤判為目標物。  </li>
+<li>滿多資安的論文現在在探討攻擊 DNN 的手法。  </li>
+<li>Visualizing CNN  <ul>
+<li>調整 noise 的 input，使其 filter response 更接近目標物的 filter response，有點像是反過來的 training  </li>
+<li>透過 Gradient Ascent 去微調  </li>
+<li><a href="https://deepdreamgenerator.com/">https://deepdreamgenerator.com/</a>  </li>
+<li>Deep Style  <ul>
+<li>一張圖保留 Content  </li>
+<li>另一張圖保留 Style  </li>
+<li>然後去調整保留 Content 的那張圖，並使用另一張圖的 Style  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Go Playing （下圍棋）  <ul>
+<li>Conditions  <ul>
+<li>Input: 目前棋盤的狀況  </li>
+<li>Output: 下一步應該下哪裡？  </li>
+<li>19x19 vector  </li>
+<li>black = 1, white = -1, none = 0  </li>
+</ul>
+</li>
+<li>Fully-Connected Feedforward Network could be used, but why CNN?  <ul>
+<li>Some patterns are much smaller than the whole image  <ul>
+<li>棋譜會有一些固定的 pattern  </li>
+</ul>
+</li>
+<li>The same patterns appear in different regions  <ul>
+<li>同樣的 pattern 有可能出現在棋盤上不同的地方  </li>
+</ul>
+</li>
+<li>Subsampling the pixels will not change the object  <ul>
+<li>把棋譜作 subsampling 會讓整個棋譜的結果失真  </li>
+<li>因為 Subsampling 只和 Max Pooling Layer 有關，所以在 AlphaGo 的論文中有提到只有使用 Convolutional Layer，把 Max Pooling Layer 拿掉了。  </li>
+<li>如果不是很熟悉下圍棋以及 DNN 的 domain knowledge 的話，直接拿 CNN 去做是訓練不出什麼結果的，這也是為什麼 Alpha Go 會需要像黃士傑博士這樣會下圍棋又懂 Machine Learning 的人。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Recurrent Neural Network (RNN)</h2>
+<ul>
+<li>Example Application  <ul>
+<li>Slot Filling  <ul>
+<li>Solved by Feedforward Network?  <ul>
+<li>Input: a word  </li>
+<li>Output: probability distribution that the input word belonging to the slots  </li>
+<li>Problem  <ul>
+<li>Arrive Taipei on November 2nd  <ul>
+<li>Taipei 是目的地  </li>
+</ul>
+</li>
+<li>Leave Taipei on November 2nd  <ul>
+<li>Taipei 是出發地  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用 RNN 來解決  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>One-Hot Vector  <ul>
+<li>1-of-N Encoding  </li>
+<li>有 N 個詞就用 N 維的矩陣來表示，如果該字有出現的話值就是 1，其他值就會是 0。  </li>
+</ul>
+</li>
+<li>RNN  <ul>
+<li>The output of hidden layer are stored in the memory  </li>
+<li>Memory can be considered as another input  </li>
+<li>每一層都是拿現在看到的資訊和上一層的 memory 當成 input  </li>
+<li>不會因為層數比較多（語句比較長）就導致參數變多，參數的數量都是一樣的。  </li>
+<li>存在 memory 的 value 會影響最終的 prediction  </li>
+</ul>
+</li>
+<li>Deep RNN: 多層  </li>
+<li>Why use RNN in language processing?  <ul>
+<li>因為語言是有時間順序的  </li>
+<li>如果 input 是時間順序非常重要的話，就可以考慮用 RNN 來做。  </li>
+</ul>
+</li>
+<li>Bidirectional RNN  <ul>
+<li>將 input 反向來作並加入 memory  </li>
+<li>缺點是會比較費時  </li>
+</ul>
+</li>
+<li>Learning Target  <ul>
+<li>會比較複雜一些  </li>
+<li>一句話有五個詞，訓練一句話等於要拿到 5 個 targets  <ul>
+<li>因為要判斷每個詞的 label  </li>
+<li>因為彼此是有順序相依性的，所以 loss 會是每層 layer 相加  </li>
+</ul>
+</li>
+<li>Training Difficulty - Rough Error Surface  <ul>
+<li>The error surface is either very flat or very steep  <ul>
+<li>非常難學習  </li>
+<li>所以會有一些各式各樣的小技巧出現在 RNN 裏面  <ul>
+<li>Clipping  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Large <code>δL/δw</code> =&gt; Large Learning rate  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Many-to-One  <ul>
+<li>Input is a vector sequence, but output is only one vector  </li>
+</ul>
+</li>
+<li>Many-to-Many (Output is shorter)  <ul>
+<li>Both input and output are sequences, but the output is shorter  </li>
+<li>E.g. Speech Recognition  <ul>
+<li>Input: vector sequence  </li>
+<li>Output: character sequence  </li>
+<li>Connectionist Temporal Classification (CTC)  <ul>
+<li>加了一個額外的 symble <code>ϕ</code> 來代表 Null  </li>
+<li><code>好好好棒棒棒棒</code> vs <code>好ϕϕ棒ϕϕ棒</code>  <ul>
+<li>這樣就可以知道到底是一個棒還是兩個棒  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Many-to-Many (Output is no limitation)  <ul>
+<li>Both input and output are sequences with different lengths  <ul>
+<li>Sequence to sequence learning  </li>
+</ul>
+</li>
+<li>E.g. Machine Translation  <ul>
+<li>"Machine Learning" =&gt; "機器學習"  </li>
+<li>Problem: Don't know when to stop  <ul>
+<li>加上一個代表斷句或結尾的符號  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Image Caption Generation  <ul>
+<li>給一張圖，描述出圖裏面有什麼  </li>
+<li>將圖餵給 CNN 後，會產出一個代表整章圖的 vector  </li>
+<li>將 vector 餵給 RNN  </li>
+<li>Example  <ul>
+<li><a href="http://www.captionbot.ai/">http://www.captionbot.ai/</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Video Caption Generation  <ul>
+<li>每一個 Video 用 CNN  </li>
+<li>Video 裡面的每一張 Image 用 RNN  </li>
+</ul>
+</li>
+<li>Chit-Chat Bot  <ul>
+<li>拿對話中其中一方的話當 input，另一方的話當 output 去訓練。  </li>
+<li>比較常用到 <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM</a>  <ul>
+<li><a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">http://colah.github.io/posts/2015-08-Understanding-LSTMs/</a>  </li>
+</ul>
+</li>
+<li>Sci-Fi Short Film generated by AI - SUNSPRING  <ul>
+<li><a href="https://www.youtube.com/watch?v=LY7x2lhqj">https://www.youtube.com/watch?v=LY7x2lhqj</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Attention and Memory  <ul>
+<li>Question =&gt; Organize =&gt; Answer  <ul>
+<li>被稱做 Attention  </li>
+<li>只會拿有用的資訊出來回答  </li>
+</ul>
+</li>
+<li>Attention on Sensory Info  <ul>
+<li>Info from the sensors =&gt; Sensory Memory == Attention ==&gt; Working Memeory == Encode ==&gt; Long-term Memory  </li>
+<li>Logn-term Memory == Retrieval ==&gt; Working Memory  </li>
+</ul>
+</li>
+<li>Machine Translation with Attention  <ul>
+<li>Keyword: "Attentional sequence to sequence model"  </li>
+<li>先用 match 判斷跟哪一塊的相似程度最高  </li>
+<li>目前 Google Translation 就是用這個 model 實現的  </li>
+</ul>
+</li>
+<li>Speech Recognition with Attention  <ul>
+<li>比較深色的地方就是 Attention 比較高的部份  </li>
+</ul>
+</li>
+<li>Image Captioning with Attention  <ul>
+<li>從錯誤的 prediction 中去瞭解判斷錯誤的可能原因  </li>
+</ul>
+</li>
+<li>Video Captioning with Attention  </li>
+<li>Reading Comprehension  <ul>
+<li>Document =&gt; 被切分成不同的詞被當作 feature  </li>
+<li>Question == RNN ==&gt; q vector  </li>
+<li>根據 q vector 去決定哪一個句子最相關，再放入 DNN 裡頭去回答  </li>
+<li>Hopping  <ul>
+<li>Memory Network  <ul>
+<li>有可能第一次得到的結果不夠準確  </li>
+<li>用抽取出來資訊再做一次 Attention，再得到新的 information 並把它抽取出來。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>When the input is a very long sequence or an image  <ul>
+<li>Pay attention on partial of the input object each time  </li>
+</ul>
+</li>
+<li>In RNN/LSTM, larger memory implies more parameters  <ul>
+<li>Increasing memory size will not increasing parameters  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Neural Turing Machine  <ul>
+<li>an advanced RNN/LSTM  </li>
+<li>把 Long-term Memory 裡頭的資訊 retrieve 出來  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Part III: Beyond Supervised Learning &amp; Recent Trends (Unsupervised Learning)</h1>
+<h2>Introduction</h2>
+<ul>
+<li>Big data != Big annotated data  <ul>
+<li>What can we do if there is no sufficient labelled training data?  </li>
+</ul>
+</li>
+<li>Machine learning techniques include:  <ul>
+<li>Supervised learning (if we have labelled data)  </li>
+<li>Reinforcement learning (if we have an environment for reward)  </li>
+<li>Unsupervised learning (if we do not have labelled data)  </li>
+</ul>
+</li>
+</ul>
+<h3>Semi-Supervised Learning</h3>
+<ul>
+<li>應用環境  <ul>
+<li>沒有全部的 input data 都有 label 時  </li>
+</ul>
+</li>
+<li>概念  <ul>
+<li>The distribution of the unlabeled data provides some cues  </li>
+</ul>
+</li>
+</ul>
+<h3>Transfer Learning</h3>
+<ul>
+<li>應用環境  <ul>
+<li>Input data 中沒有 output 想要的 class label  </li>
+</ul>
+</li>
+<li>概念  <ul>
+<li>Using sufficient labeled data to learn a CNN  </li>
+<li>Using this CNN as feature extractor  </li>
+</ul>
+</li>
+<li>舉例  <ul>
+<li>研究生 vs 漫畫家  <ul>
+<li>研究生 == 漫畫家  </li>
+<li>指導教授 == 責任編輯  </li>
+<li>跑實驗 == 畫分鏡  </li>
+<li>投稿期刊 == 投稿 Jump  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Unsupervised Learning</h3>
+<ul>
+<li>概念  <ul>
+<li>Representation Learning: 化繁為簡  </li>
+<li>Generative Model: 無中生有  </li>
+<li>化繁為簡和無中生有的過程是相反的  <ul>
+<li>化繁為簡：拿到很多跟樹有關的圖片，簡化得出一個代表樹的 output，學習到的是這些圖片共同的特徵  </li>
+<li>無中生有：code 經過 function 之後就生成很多跟樹很像的圖片  </li>
+</ul>
+</li>
+<li>Latent Factors  <ul>
+<li>共同特徵  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>化繁為簡 Representation Learning  <ul>
+<li>Autoencoder  <ul>
+<li>希望能把比較重要的資訊壓縮到比較小的 pattern 裏面  </li>
+<li>represent the images of digits in a more compact way  </li>
+<li>Output of the hidden layer is the code  </li>
+<li>Deep autoencoder  </li>
+<li>Similar Image Retrieval  </li>
+<li>可以把 image 最重要的 feature 保留起來  </li>
+<li>For DNN Pre-Training  </li>
+</ul>
+</li>
+<li>Word Vector/Embedding  <ul>
+<li>Machine learn the meaning of words from reading a lot of documents without supervision  </li>
+<li>A word can be understood by its context  </li>
+<li>類似的句型中，同樣位置的不相同詞可能有高度相關性  </li>
+<li>Prediction-Based  <ul>
+<li>給前面的字 predict 下一個字 (Linear Model)  <ul>
+<li>前面的字當 input，後面的字當 output，一直這樣接下去。  </li>
+</ul>
+</li>
+<li>Various Architecture  <ul>
+<li>Continuous bag of word (CBOW) model  <ul>
+<li>給兩邊的字 predict 中間的字  </li>
+</ul>
+</li>
+<li>Skip-gram  <ul>
+<li>給中間的字 predict 兩邊的字  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>完全不需要 label data，程式可以自己去學習這些詞之間的關係  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>無中生有 Generative model  <ul>
+<li>概念  <ul>
+<li>想讓程式自動幫我們生不同的 training data  </li>
+<li><a href="https://blog.openai.com/generative-models/">https://blog.openai.com/generative-models/</a>  </li>
+</ul>
+</li>
+<li>PixelRNN  <ul>
+<li>To create an image, generating a pixel each time  </li>
+<li>Can be trained just with a large collection of images without any annotation  </li>
+</ul>
+</li>
+<li>Generative Adversarial Network (GAN)  <ul>
+<li>Discriminative vs Generative Models  <ul>
+<li>Discriminative  <ul>
+<li>learns a function that maps the input data (x) to some desired output class label (y)  <ul>
+<li>directly learn the conditional distribution P(y|x)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Generative  <ul>
+<li>tries to learn the joint probability of the input data and labels simultaneously, i.e. P(x,y)  <ul>
+<li>can be converted to P(y|x) for classification via Bayes rule  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>generative models have the potential to understand and explain<br>
+the underlying structure of the input data even when there are no labels  </li>
+</ul>
+</li>
+<li>跟演化的感覺有點類似  <ul>
+<li>Generator  <ul>
+<li>Hidden Layer (code) ===decode===&gt; output layer =&gt; output  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>概念  <ul>
+<li>Two competing neural networks: generator &amp; discriminator  </li>
+<li>noise ==generator==&gt; generator sample =&gt; discriminator ==yes/no==&gt; data sample  </li>
+<li>generator 生出圖片，discriminator 判斷這張產生出來的圖片是不是真的  </li>
+<li>彼此之間會互相競爭學習  </li>
+<li>Training two networks jointly =&gt; the generator knows how to adapt its parameters in order to produce output data that can fool the discriminator  </li>
+</ul>
+</li>
+<li>Examples  <ul>
+<li><a href="https://openai.com/blog/generative-models">Cifar-10</a>  </li>
+<li>Generated Bedrooms  </li>
+<li><a href="https://github.com/mattya/chainer-DCGAN">Comics Drawing</a>  </li>
+<li>Pokémon Creation  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Reinforcement Learning</h3>
+<ul>
+<li>概念  <ul>
+<li>Agent, Environment 之間彼此是可以互動的  </li>
+<li>Environment 會給 Agent 一個 Observation  </li>
+<li>Agent 會對這個 Observation 做出 Action  </li>
+<li>Environment 會根據 Action 的不同給予 Agent 不同的 Reward  </li>
+<li>根據 Reward 來學習要做或不做哪些行為  </li>
+<li>Agent learns to take actions to maximize expected reward.  </li>
+<li>困難點  <ul>
+<li>可能的 sequence 是非常龐大的  </li>
+<li>很難調整，因為只拿得到一連串的 Actions 之後的 Reward，無法確定到底是錯在哪一個 Action  </li>
+<li>Reward may be delayed  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Supervised vs Reinforcement  <ul>
+<li>Supervised  <ul>
+<li>就像在學校裏面，每一步都有老師會帶領你，告訴你每一步是對是錯  </li>
+</ul>
+</li>
+<li>Reinforcement  <ul>
+<li>做了一連串的動作以後，到一個正面或負面的回饋，不確定到底問題出錯在哪一個地方。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>範例  <ul>
+<li>走迷宮  </li>
+</ul>
+</li>
+<li>Reinforcement Learning Approach  <ul>
+<li>Policy-based RL  <ul>
+<li>Search directly for optimal policy  </li>
+</ul>
+</li>
+<li>Value-based RL  <ul>
+<li>Estimate the optimal value function  </li>
+</ul>
+</li>
+<li>Model-based RL  <ul>
+<li>Build a model of the environment  </li>
+<li>Plan (e.g. by lookahead) using model  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Deep Reinforcement Learning  <ul>
+<li>Idea: deep learning for reinforcement learning  <ul>
+<li>Use deep neural networks to represent  </li>
+<li>Optimize loss function by SGD  </li>
+</ul>
+</li>
+<li>Value Function Approximation  </li>
+<li>Q-Networks  <ul>
+<li>Q-networks represent value functions with weights  </li>
+</ul>
+</li>
+<li>Q-Learning  <ul>
+<li>Goal: estimate optimal Q-values  <ul>
+<li>Optimal Q-values obey a Bellman equation  </li>
+<li>Value iteration algorithms solve the Bellman equation  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Deep Q-Networks (DQN)  </li>
+<li>Stability Issues with Deep RL  <ul>
+<li>Naive Q-learning oscillates or diverges with neural nets  <ul>
+<li>Data is sequential  <ul>
+<li>Successive samples are correlated, non-iid (independent and<br>
+identically distributed)  </li>
+</ul>
+</li>
+<li>Policy changes rapidly with slight changes to Q-values  <ul>
+<li>Policy may oscillate  </li>
+<li>Distribution of data can swing from one extreme to another  </li>
+</ul>
+</li>
+<li>Scale of rewards and Q-values is unknown  <ul>
+<li>Naive Q-learning gradients can be unstable when backpropagated  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Stable Solutions for DQN  <ul>
+<li>DQN provides a stable solutions to deep value-based RL  <ul>
+<li>Use experience replay  <ul>
+<li>Break correlations in data, bring us back to iid setting  </li>
+<li>Learn from all past policies  </li>
+</ul>
+</li>
+<li>Freeze target Q-network  <ul>
+<li>Avoid oscillation  </li>
+<li>Break correlations between Q-network and target  </li>
+</ul>
+</li>
+<li>Clip rewards or normalize network adaptively to sensible range  <ul>
+<li>Robust gradients  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DQN in Atari  <ul>
+<li>Goal: end-to-end learning of values Q(s, a) from pixels  <ul>
+<li>Input: state is stack of raw pixels from last 4 frames  </li>
+<li>Output: Q(s, a) for all joystick/button positions a  </li>
+<li>Reward is the score change for that step  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DQN in E2E Task-Completion Bot  <ul>
+<li>Simulated User  <ul>
+<li>Generate interactions based on a predefined fake goal  </li>
+<li>Automatically learn strategy by training on the simulated data  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Model-Based Deep RL  <ul>
+<li>Goal: learn a transition model of the environment and plan based on the transition model  </li>
+<li>Model-based deep RL is challenging, and so far has failed in Atari  </li>
+<li>Model-Based Deep RL in AlphaGo  <ul>
+<li>Monte-Carlo tree search (MCTS)  <ul>
+<li>MCTS simulates future trajectories  </li>
+<li>Builds large lookahead search tree with millions of positions  </li>
+<li>State-of-the-art Go programs use MCTS  </li>
+</ul>
+</li>
+<li>Convolutional Networks  <ul>
+<li>12-layer CNN trained to predict expert moves  </li>
+<li>Raw CNN (looking at 1 position, no search at all) equals performance of MoGo with 105 position search tree  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>More Applications  <ul>
+<li>AlphaGo  </li>
+<li><a href="https://www.youtube.com/watch?v=0JL04JJjocc">Flying Helicoptor</a>  </li>
+<li><a href="https://www.youtube.com/watch?v=0xo1Ldx3L5Q">Driving</a>  </li>
+<li><a href="https://www.bloomberg.com/news/articles/2016-07-19/google-cuts-its-giant-electricity-bill-with-deepmind-powered-ai">Google Cuts Its Giant Electricity Bill With DeepMind-Powered AI</a>  </li>
+</ul>
+</li>
+<li><a href="https://universe.openai.com/">OpenAI Universe</a>  <ul>
+<li>Software platform for measuring and training an AI's general<br>
+intelligence via the <a href="https://gym.openai.com/">OpenAI gym</a> environment  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Conclusion</h1>
+<ul>
+<li>Machine Learning &amp; Deep Learning 需要  <ul>
+<li>足夠的運算資源  </li>
+<li>各種經驗及技巧  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>FAQ</h3>
+<ul>
+<li>Deep Learning 的 model 會是 non-linear 的  </li>
+<li>機器翻譯目前在台灣的狀況如何？要如何著手？  <ul>
+<li>機器翻譯的話，目前在國外算是滿成熟的，目前會使用 RNN 來做。  </li>
+<li>如果是台語的部份，目前好像比較少看到，會是個還有發展空間的方向。  </li>
+</ul>
+</li>
+<li>為什麼需要 Activation Function？他在 Deep Learning 中扮演的角色是什麼？  <ul>
+<li>處理 non-linear 的部份，如果沒有 Actication Function 的話，多層的結果用一層就可以去表示。  </li>
+</ul>
+</li>
+<li>為什麼會選擇 Sigmoid 作為 Activation Function?  <ul>
+<li>其實有很多種 Activation Function，拿 Sigmoid 來講是因為他比較簡單，把 output 壓在 -1~1 之間  </li>
+<li>另外一個比較常見的是 Relu 這個 Activation Function  <ul>
+<li>0 以下的就刪除掉  </li>
+<li>避免 information 被壓縮的太小，用來解決經過太多層之後 information 被壓得太小。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Deep Learning 的最佳化要具備哪些能力  <ul>
+<li>如果是純理論的部份會跟數學方面相關。  </li>
+<li>但如果是實務上的 task，會跟該 task 的 domain knowledge 比較相關。  </li>
+</ul>
+</li>
+<li>CNN 對於影像旋轉是否也有夠好的識別度？  <ul>
+<li>第一個作法就是把你的 training data 也旋轉過再丟進去訓練  </li>
+<li>另外一個作法是使用會考慮旋轉相關的 model 放進去 train，input data 不需要特別旋轉過  </li>
+</ul>
+</li>
+<li>學 Machine Learning 需要學習微積分、統計和線性代數嗎？  <ul>
+<li>基本的微積分概念是要的，但沒有很複雜，如果完全不會微分的話要學一下。  </li>
+<li>統計的話基本概念要有，但不會太多。<br>
+ 線性代數是最重要的，會看到很多 vector, matrix 以及 space 上的處理，有很多假設是必須要知道的。  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E5%8F%B0%E7%81%A3%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%B9%B4%E6%9C%83%E4%B9%8B%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%EF%BC%9A%E6%B7%B1%E5%85%A5%E6%B7%BA%E5%87%BA%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%20%28Dive%20into%20Deep%20Learning%29%0Ahttps%3A//blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/&title=%E5%8F%B0%E7%81%A3%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%B9%B4%E6%9C%83%E4%B9%8B%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%EF%BC%9A%E6%B7%B1%E5%85%A5%E6%B7%BA%E5%87%BA%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%20%28Dive%20into%20Deep%20Learning%29&summary=%E3%80%8A%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%B9%B4%E6%9C%83%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%EF%BC%9A%E6%B7%B1%E5%85%A5%E6%B7%BA%E5%87%BA%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E3%80%8B%E7%AD%86%E8%A8%98&source=https%3A//blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E5%8F%B0%E7%81%A3%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8%E5%B9%B4%E6%9C%83%E4%B9%8B%E7%B3%BB%E5%88%97%E6%B4%BB%E5%8B%95%EF%BC%9A%E6%B7%B1%E5%85%A5%E6%B7%BA%E5%87%BA%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%20%28Dive%20into%20Deep%20Learning%29&amp;body=https%3A//blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/">台灣資料科學年會之系列活動：手把手的深度學習實務</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/21/y2016w46/">Y2016W46</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/05/y2017w22/">Y2017W22</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/18/y2016w37/">Y2016W37</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/02/13/y2017w06/">Y2017W06</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/08/12/dive-into-deep-learning-datasci-tw/";
+        var disqus_title = "台灣資料科學年會之系列活動：深入淺出深度學習 (Dive into Deep Learning)";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/08/12/dive-into-deep-learning-datasci-tw/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-08-12T17:02:14+08:00"><i class="fa fa-calendar"></i> Sat 12 August 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/machine-learning/" data-toggle="tooltip"
+      class="label label-default"
+      title="12 articles with this tag">Machine Learning</a>
+  <br>
+            <a href="/tag/deep-learning/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">Deep Learning</a>
+  <br>
+            <a href="/tag/dnn/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">DNN</a>
+  <br>
+            <a href="/tag/cnn/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">CNN</a>
+  <br>
+            <a href="/tag/rnn/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">RNN</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/08/07/y2017w31/" title="Y2017W31"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/08/13/deep-learning-hands-on-step-by-step-datasci-tw/" title="台灣資料科學年會之系列活動：手把手的深度學習實務"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

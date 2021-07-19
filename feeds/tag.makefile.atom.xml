@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Makefile</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.makefile.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T13:41:00+08:00</updated><entry><title>Converting tabs to spaces in Vim</title><link href="https://blog.m157q.tw/posts/2014/12/09/converting-tabs-to-spaces-in-vim/" rel="alternate"></link><published>2014-12-09T07:28:00+08:00</published><updated>2015-10-28T13:41:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-12-09:/posts/2014/12/09/converting-tabs-to-spaces-in-vim/</id><summary type="html">&lt;h2&gt;Convert tabs to spaces&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;retab …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Convert tabs to spaces&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;retab&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Set the 1 tab to be expanded to 4 spaces&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;set&lt;/span&gt; &lt;span class="nb"&gt;tabstop&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt; &lt;span class="nb"&gt;shiftwidth&lt;/span&gt;&lt;span class="p"&gt;=&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt; &lt;span class="nb"&gt;expandtab&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Comments below have some useful tips for some specail cases (like Makefile)&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="Comment 1" src="/files/converting-tabs-to-spaces-in-vim/comments_1.png"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Comment 2" src="/files/converting-tabs-to-spaces-in-vim/comments_2.png"&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Comment 3" src="/files/converting-tabs-to-spaces-in-vim/comments_3.png"&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces"&gt;Converting tabs to spaces - Vim Tips Wiki&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="Vim"></category><category term="Makefile"></category></entry></feed>

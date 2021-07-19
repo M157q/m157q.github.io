@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Pass PHP Variables to JavaScript in Yii
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/" rel="bookmark" title="Permalink to Pass PHP Variables to JavaScript in Yii">Pass PHP Variables to JavaScript in Yii</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <h2>Preface</h2>
+<p>因為網站需求 想找看看有沒有可以把 PHP 中的變數傳給 …</p>
+  </blockquote>
+  <div>
+    <h2>Preface</h2>
+<p>因為網站需求 想找看看有沒有可以把 PHP 中的變數傳給 JavaScript 使用的方法  </p>
+<p>主要是因為 URL 不想像之前一樣是寫死在 JavaScript 裡面  </p>
+<p>不然之後 URL routing 又改的話 又得重新修改 實在很麻煩  </p>
+<p>想用 <code>Yii::app()-&gt;createAbsoluteUrl('');</code> 生成該頁面的網址之後  </p>
+<p>再丟給 JavaScript  </p>
+<p>這樣就不用把網址寫死在裡面  </p>
+<p>其實找了有點久 好像沒找比較好的解法  </p>
+<h2>Solution</h2>
+<p>所以最後用了 <a href="http://stackoverflow.com/questions/8912548/in-yii-pass-php-variables-to-javascript">stackoverflow 上的這篇</a> 中最底下的回覆  </p>
+<p>但裡面的寫法有一點點小錯誤  </p>
+<div class="highlight"><pre><span></span><span class="x">Yii::app()-&gt;clientScript-&gt;registerScript(&quot;myVarList&quot;,  </span>
+<span class="x">    &#39;myVarList = jQuery.parseJSON(&#39;.CJSON::encode($myVarList).&#39;);&#39;  </span>
+</pre></div>
+
+
+<p>小括號的內層必須再多一對單引號  </p>
+<p>不然 <a href="https://api.jquery.com/jQuery.parseJSON/">jQuery.parseJSON</a> 會出錯  </p>
+<p>所以最後寫的 Code 長這樣  </p>
+<div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>  
+<span class="nv">$myVar</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="nx">Yii</span><span class="o">::</span><span class="na">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">createAbsoluteUrl</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">module</span><span class="o">-&gt;</span><span class="na">id</span><span class="o">.</span><span class="s1">&#39;/default/list/json/1&#39;</span><span class="p">)];</span>  
+<span class="cp">?&gt;</span><span class="x">  </span>
+
+<span class="cp">&lt;?php</span>  
+<span class="nx">Yii</span><span class="o">::</span><span class="na">app</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">clientScript</span><span class="o">-&gt;</span><span class="na">registerScript</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;myVar = jQuery.parseJSON(&#39;&quot;</span><span class="o">.</span><span class="nx">CJSON</span><span class="o">::</span><span class="na">encode</span><span class="p">(</span><span class="nv">$myVar</span><span class="p">)</span><span class="o">.</span><span class="s2">&quot;&#39;);</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="o">&lt;&lt;&lt;</span><span class="nx">EOD</span>  
+<span class="k">function</span> <span class="nf">updateList</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>  
+<span class="p">{</span>  
+    <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#company-list&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">html</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="s1">&#39;#loading-tmpl&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">text</span><span class="p">());</span>  
+    <span class="err">$</span><span class="o">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">myVar</span><span class="o">.</span><span class="nx">url</span> <span class="o">+</span> <span class="p">(</span><span class="nx">name</span> <span class="o">!==</span> <span class="k">null</span> <span class="o">?</span> <span class="p">(</span><span class="s1">&#39;/name/&#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">)</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="k">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>  
+        <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#company-list&#39;</span><span class="p">)</span><span class="o">.</span><span class="k">empty</span><span class="p">();</span>  
+        <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#company-tmpl&#39;</span><span class="p">)</span><span class="o">.</span><span class="nx">tmpl</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="o">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="s1">&#39;#company-list&#39;</span><span class="p">);</span>  
+    <span class="p">});</span>  
+<span class="p">}</span>  
+
+<span class="o">...</span>  
+<span class="cp">?&gt;</span><span class="x">  </span>
+</pre></div>
+
+
+<p>在 JavaScript 中，可以透過 <code>myVar.url</code> 順利拿到 URL  </p>
+<h2>Appendix</h2>
+<div class="highlight"><pre><span></span><span class="x">&lt;&lt;&lt;EOD  </span>
+<span class="x">...  </span>
+<span class="x">EOD;  </span>
+</pre></div>
+
+
+<p>此種寫法在 PHP 中稱為 <code>HEREDOC</code>  </p>
+<blockquote>
+<p>A third way to delimit strings is the heredoc syntax: &lt;&lt;&lt;.<br>
+After this operator, an identifier is provided, then a newline.<br>
+The string itself follows, and then the same identifier again to close the quotation.  </p>
+</blockquote>
+<p>詳見官方說明 <a href="http://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc">PHP - HEREDOC syntax</a>  </p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="http://stackoverflow.com/questions/8912548/in-yii-pass-php-variables-to-javascript" title="In Yii, pass PHP variables to JavaScript">In Yii, pass PHP variables to JavaScript</a>  </li>
+<li><a href="https://api.jquery.com/jQuery.parseJSON/">jQuery.parseJSON</a>  </li>
+<li><a href="http://api.jquery.com/jquery.getjson/">jQuery.getJSON</a>  </li>
+<li><a href="http://www.yiiframework.com/doc/api/1.1/CClientScript#registerScript-detail">Yii - CClientScript </a>  </li>
+<li><a href="http://www.yiiframework.com/doc/api/1.1/CJSON#encode-detail">Yii - CJSON</a>  </li>
+<li><a href="http://stackoverflow.com/questions/6924193/what-is-the-use-of-eod-in-php">What is the use of &lt;&lt;&lt;EOD in PHP?</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Pass%20PHP%20Variables%20to%20JavaScript%20in%20Yii%0Ahttps%3A//blog.m157q.tw/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/&title=Pass%20PHP%20Variables%20to%20JavaScript%20in%20Yii&summary=Preface%0A%E5%9B%A0%E7%82%BA%E7%B6%B2%E7%AB%99%E9%9C%80%E6%B1%82%20%E6%83%B3%E6%89%BE%E7%9C%8B%E7%9C%8B%E6%9C%89%E6%B2%92%E6%9C%89%E5%8F%AF%E4%BB%A5%E6%8A%8A%20PHP%20%E4%B8%AD%E7%9A%84%E8%AE%8A%E6%95%B8%E5%82%B3%E7%B5%A6%20%E2%80%A6&source=https%3A//blog.m157q.tw/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Pass%20PHP%20Variables%20to%20JavaScript%20in%20Yii&amp;body=https%3A//blog.m157q.tw/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2014/02/27/laravel-4-traditional-chinese-tutorial/">Laravel 4 Traditional Chinese Tutorial</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/04/17/y2017w15/">Y2017W15</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/14/y2017w32/">Y2017W32</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/18/y2016w37/">Y2016W37</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/17/y2016w41/">Y2016W41</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2014/02/27/pass-php-variables-to-javascript-in-yii/";
+        var disqus_title = "Pass PHP Variables to JavaScript in Yii";
+        var disqus_url = "https://blog.m157q.tw/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-02-27T13:55:00+08:00"><i class="fa fa-calendar"></i> Thu 27 February 2014</abbr></p>
+
+      <p><abbr title="2015-10-27T22:40:00+08:00"><i class="fa fa-pencil"></i>Tue 27 October 2015</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/web/" data-toggle="tooltip"
+      class="label label-default"
+      title="37 articles with this tag">web</a>
+  <br>
+            <a href="/tag/javascript/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">javascript</a>
+  <br>
+            <a href="/tag/php/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">PHP</a>
+  <br>
+            <a href="/tag/yii/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Yii</a>
+  <br>
+            <a href="/tag/jquery/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">jQuery</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2014/02/27/artificial-intelligence-online-course/" title="Artificial Intelligence Online Course"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2014/02/27/change-the-default-screenshot-saving-folder-and-format-on-mac/" title="修改 Mac 的截圖儲存位置及格式"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

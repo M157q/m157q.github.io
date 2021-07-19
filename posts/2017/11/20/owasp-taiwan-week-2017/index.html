@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  OWASP Taiwan Week 2017
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/11/20/owasp-taiwan-week-2017/" rel="bookmark" title="Permalink to OWASP Taiwan Week 2017">OWASP Taiwan Week 2017</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for OWASP Taiwan Week Day 1</p>
+  </blockquote>
+  <div>
+    <ul>
+<li>event links  <ul>
+<li><a href="https://csa.kktix.cc/events/owasp2017">https://csa.kktix.cc/events/owasp2017</a>  </li>
+<li><a href="http://2017.owasp.org.tw/agenda_2.html">http://2017.owasp.org.tw/agenda_2.html</a>  </li>
+</ul>
+</li>
+<li><a href="/files/owasp-taiwan-week-2017/OWASP Top 10 2017 GM (en).pdf">OWASP 2017 Top 10 Golden Master (EN) 備份</a>  </li>
+</ul>
+<hr>
+<h2>開場</h2>
+<ul>
+<li><a href="https://www.owasp.org/index.php/Top_10_2017-Top_10">OWASP 2017 Top 10</a> 已經釋出，上一次正式發佈是 2013 年。  <ul>
+<li>2017 分別有 RC1 和 RC2，中間有些差異，大家吵了很久。XD  </li>
+<li>原來 <a href="https://github.com/OWASP/Top10">OWASP Top 10 有 GitHub Repo</a> 啊。  </li>
+<li><a href="https://github.com/OWASP/Top10/blob/master/2017/OWASP%20Top%2010%202017%20GM%20(en).pdf">OWASP Top 10 2017 Golden Master</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>OWASP 發展趨勢 - 蔡一郎</h2>
+<ul>
+<li>簡介  <ul>
+<li><a href="https://owasp.org">https://owasp.org</a>  </li>
+<li>OWASP Taiwan 創立約莫 7~8 年，但之前都是被認定為不活躍的社群。  </li>
+<li><a href="https://www.owasp.org/index.php/Category:OWASP_CTF_Project">OWASP CTF</a>  </li>
+<li><a href="https://github.com/OWASP/Top10">OWASP Top 10</a> 都有告訴你要如何檢測網站是否有該漏洞。  </li>
+<li>志工性質、無給薪，好處是志工可以優先參加活動。  </li>
+<li>Research and Development  <ul>
+<li><a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">Top 10</a>  </li>
+<li><a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">Zed Attack Proxy (ZAP)</a>  </li>
+<li><a href="https://www.owasp.org/index.php/Category:OWASP_WebGoat_Project">WebGoat</a>  </li>
+</ul>
+</li>
+<li>OWASP Taiwan Week 今年是第一次辦。  </li>
+<li>每年 7 月會有個較大型的會議。(OWASP Taiwan Day)  </li>
+</ul>
+</li>
+<li>OWASP 旗艦計劃 (OWASP Flagship Projects)  <ul>
+<li>Tools  <ul>
+<li><a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Zed Attack Proxy (ZAP)</a>  </li>
+<li><a href="https://www.owasp.org/index.php/OWASP_Web_Testing_Environment_Project">OWASP Web Testing Environment Project</a>  </li>
+<li><a href="https://www.owasp.org/index.php/OWASP_OWTF">OWASP OWTF</a>  </li>
+<li><a href="https://www.owasp.org/index.php/OWASP_Dependency_Check">OWASP Dependency Check</a>  </li>
+</ul>
+</li>
+<li>Code  <ul>
+<li><a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project">OWASP ModSecurity Core Rule Set Project</a>  </li>
+<li><a href="https://www.owasp.org/index.php/Category:OWASP_CSRFGuard_Project">OWASP CSRFGuard Project</a>  </li>
+<li><a href="https://github.com/jtmelton/appsensor">OWASP AppSensor Project Reference</a>  </li>
+</ul>
+</li>
+<li>Documentation  <ul>
+<li><a href="https://www.owasp.org/index.php/Category:OWASP_Application_Security_Verification_Standard_Project">OWASP Application Security Verification Standard Project</a>  </li>
+<li><a href="https://www.owasp.org/index.php/OWASP_SAMM_Project">OWASP Software Assurance Maturity Model (SAMM)</a>  <ul>
+<li><a href="https://github.com/OWASP/samm">https://github.com/OWASP/samm</a>  </li>
+</ul>
+</li>
+<li><a href="https://www.owasp.org/index.php/File:Owasp-appsensor-guide-v2.pdf">OWASP AppSensor Project Guide</a>  </li>
+<li><a href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project">OWASP Top 10 Project</a>  </li>
+<li><a href="https://www.owasp.org/index.php/OWASP_Testing_Guide_v4_Table_of_Contents">OWASP Testing Guide Project</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>建議先從 Flagship Projects 開始看，因為這是很多人吵架的結果。XD  </li>
+</ul>
+<hr>
+<h2>OWASP Top 10 2017 - Henry Hu</h2>
+<ul>
+<li>General introduction to OWASP Top 10  <ul>
+<li>first released in 2003  </li>
+<li>flagship project  </li>
+<li>2004, 2007, 2010, 2013, 2017  </li>
+<li>a list of the 10 most critical web application security risks  </li>
+</ul>
+</li>
+<li>2017 Timeline  <ul>
+<li>07/31: Call for Data Open  </li>
+<li>10/09: RC2  </li>
+<li>11/20: Released  </li>
+</ul>
+</li>
+<li>How is OWASP Top 10 generated?  <ul>
+<li>Data proven  </li>
+</ul>
+</li>
+<li>Web App by Language in survey  <ul>
+<li>Java: 54%  </li>
+<li>.NET: 32%  </li>
+<li>JavaScript 快速成長  </li>
+</ul>
+</li>
+<li>Vunlnerability Assessments - HAT vs TAH  <ul>
+<li>Human-Augmented Tools (HAT)  <ul>
+<li>人去調整工具之後用工具去做掃描  </li>
+<li>很多現有的工具都是 foucs 在 XSS，所以掃出來的結果以 XSS 居多。  </li>
+</ul>
+</li>
+<li>Tool-Augmented Humans (TAH)  <ul>
+<li>以人為主去使用工具來做掃描  </li>
+<li>發現的漏洞就比較多樣化。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://www.owasp.org/index.php/Top_10_2017-Release_Notes">2017 RC1 Changed</a>  <ul>
+<li>merged 2013-A4: Insecure Direct Object References and 2013-A7: Missing Function Level Access Control back into 2017-A4: Broken Access Control.  </li>
+<li>added 2017-A7: Insufficient Attack Protection  </li>
+<li>added 2017-A10: Underprotected APIs  </li>
+<li>dropped: 2013-A10: Unvalidated Redirects and Forwards  </li>
+</ul>
+</li>
+<li><a href="https://github.com/OWASP/Top10/blob/master/2017/OWASP%20Top%2010%202017%20GM%20(en).pdf">2017 Golden Master Changed</a>  <ul>
+<li>ADDED  <ul>
+<li>A4:2017-XML External Entities (XXE) is a new category primarily supported by source code analysis security testing tools (SAST: Static Application Security Testing tools) data sets.  </li>
+<li>A8:2017-Insecure Deserialization, which permits remote code execution or sensitive object manipulation on affected platforms.  <ul>
+<li>Responsible for one of the worst breaches of all time.  </li>
+</ul>
+</li>
+<li>A10:2017-Insufficient Logging and Monitoring, the lack of which can prevent or significantly delay malicious activity and breach detection, incident response, and digital forensics.  </li>
+</ul>
+</li>
+<li>MERGED  <ul>
+<li>A4-Insecure Direct Object References and A7-Missing Function Level Access Control merged into A5:2017-Broken Access Control.  </li>
+</ul>
+</li>
+<li>RETIRED  <ul>
+<li>A8-Cross-Site Request Forgery (CSRF), Frameworks commonly include CSRF defenses, with &lt; 5% of all apps, now #13.  </li>
+<li>A10-Unvalidated Redirects and Forwards, less than 1% of the data set supports this issue today, now #25.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The Significant of Top 10 2017  <ul>
+<li>Web front-end  <ul>
+<li>Single page application (SPA) wriiten in JS allows the creation of highly modular front end UI/UX  </li>
+</ul>
+</li>
+<li>Web back-end  <ul>
+<li>Microservices written in node.js is now the primary interface for legacy application through API and RESTful web services.  </li>
+</ul>
+</li>
+<li><a href="https://github.com/OWASP/Top10/blob/master/2017/en/0xa4-xxe.md">A4:2017-XML External Entities (XXE)</a> explained  <ul>
+<li>尤其微軟的 IIS server 的 XML Processor 的設定最有可能有問題  </li>
+<li><a href="https://en.wikipedia.org/wiki/Billion_laughs_attack">Billion laughs attack</a>  </li>
+</ul>
+</li>
+<li><a href="https://github.com/OWASP/Top10/blob/master/2017/en/0xa8-insecure-deserialization.md">A8:2017 Insecure Deserialization</a> explained  <ul>
+<li>這次制定的過程中其中一個吵架吵的滿兇的一個  </li>
+</ul>
+</li>
+<li><a href="https://github.com/OWASP/Top10/blob/master/2017/en/0xaa-logging-detection-response.md">A10:2017 Insufficient Logging and Monitoring</a> explained  <ul>
+<li>不是只有 web server 而已，應該要把所有的 server log 都納入管轄範圍。  </li>
+<li>大部份的 breach 被發現時潛伏期已經拉長到 200 天前的事了，目前很少人會去看到 200 天前的 log，所以這是新的需要去注意的事。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Moving on...  <ul>
+<li>除了 Top 10 以外，其實有列出總共 50 個 issues，但事實上當然有更多的安全漏洞。  </li>
+<li>請不要只看 OWASP Top 10，它不是一切，也不是聖經，在開發網站的時候還要注意更多的安全問題。  </li>
+<li>希望各位可以多多參與 OWASP 的社群，因為很缺人。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Client Side Security and Testing Tools - David Cervigni</h2>
+<ul>
+<li>JS Security, topics:  <ul>
+<li>Evolution of client technologies  </li>
+<li>Why is always more important  </li>
+<li>Why is always more difficult  </li>
+</ul>
+</li>
+<li>Client security is vast  <ul>
+<li><a href="https://www.owasp.org/index.php/Client_Side_Testing">https://www.owasp.org/index.php/Client_Side_Testing</a>  </li>
+</ul>
+</li>
+<li>XSS  <ul>
+<li>XSS is always dangerous  <ul>
+<li>consequences  <ul>
+<li>XSRF protection bypass  </li>
+<li>Cookies / session stealing  </li>
+<li>Defacement  </li>
+<li>Password / credential stealing  </li>
+<li>Enumeration  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Anti XSS approaches  <ul>
+<li>Classic  <ul>
+<li>Validation  </li>
+<li>Filtering  </li>
+<li>HTML Encoding  </li>
+<li>Encoding lib + Contextual encoding  </li>
+</ul>
+</li>
+<li>Requires  <ul>
+<li>Secure coding standards (enforced!)  </li>
+<li>Knowledge  </li>
+<li>Design (use the right libs)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Anti XSS evolution  <ul>
+<li>Contextual encoding templates  <ul>
+<li>Very strict  <ul>
+<li>Hard to encode in nested contexts. (double encoding)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mitigations  <ul>
+<li>CPC: Content Security Policy  </li>
+<li>ECMAScript security features (e.g. strict mode)  </li>
+<li>Sandboxing JS (Google CAJA, sanitizer libraries)  </li>
+<li>Anti XSS browser features WAF  </li>
+<li>Requires  <ul>
+<li>Secure Application Design  </li>
+<li>Third parties JS libraries compatibility  </li>
+<li>Legacy systems?  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Code Flow and Taint analysis  <ul>
+<li>Sources  </li>
+<li>Filters  </li>
+<li>Sinks  </li>
+<li>投影片的字有點小，可能可以直接看<a href="https://www.owasp.org/index.php/Static_Code_Analysis">這份文件</a>  </li>
+</ul>
+</li>
+<li>Tools for JS Code analysis  <ul>
+<li>SCA, static code analysis  <ul>
+<li>Heavy  </li>
+<li>Difficult  </li>
+<li>Lower accuracy (false positive)  </li>
+<li>Adaptability (false negatives... needs custom rules)  </li>
+<li>Broad language support  </li>
+</ul>
+</li>
+<li>Dynamic code analysis  <ul>
+<li>Requires instrumentation  </li>
+<li>More accurate  </li>
+<li>Fuzzing capabilities  </li>
+</ul>
+</li>
+<li>Integrated them into SDLC (systems development life cycle) and Automation (CI)  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>當萬物相遇電信網路：一探邊緣運算的資安議題與解決方案 - 王騰嶽</h2>
+<p>這個 talk 介紹挺有意思的，<br>
+講了滿多跟電信網路相關的東西，<br>
+平常真的比較少接觸到。  </p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/LPWAN">LPWAN (Low Power WAN)</a> 與其他 Wireless 技術  <ul>
+<li><a href="https://en.wikipedia.org/wiki/NarrowBand_IOT">NB-IoT</a> 是 3GPP 標準的窄帶蜂窩物聯網技術，也是 5G 時代一項重要的實體連結技術。  <ul>
+<li>NB-IoT 只是 3GPP 技術中的一環。  </li>
+<li>使用專屬的頻譜，必須要花費。但未來不會有爭奪 NB-IoT 頻譜的問題，因為可以直接使用在電信公司現有的電信網路上。  </li>
+</ul>
+</li>
+<li>LPWAN: NB-IoT, LoRa, sigfox, LTE-M, genu, eightless, waviot  <ul>
+<li>使用開放頻譜，不需要購買，所以品質也就無法保證，但價格會較便宜。  </li>
+</ul>
+</li>
+<li>Bluetooth 的限制是不夠遠。  </li>
+<li>功耗比 ZigBee 還要低，Range 比 3G/4G/5G 還要遠。  </li>
+</ul>
+</li>
+<li>NB-IoT 與電信網路架構  <ul>
+<li>UE, LTE-Uu (NB-IoT 只有在這段）, eNB, GTP-U (S1-U), S-GW, P-GW, Internet  </li>
+<li>Physical Interface (Last Mile), Backhual, EPC（核心網路）  </li>
+<li>GTP 的世界：GPRS Tunnel 包覆 IP 封包  </li>
+<li>所以使用 NB-IoT 只會在 UE （手機） 和 eNB （基地台） 這段而已  </li>
+</ul>
+</li>
+<li>Mobile Edge Computing (MEC)  <ul>
+<li>Mobile Edge  <ul>
+<li>電信行動網的邊緣（核心網路與基地台之間）  </li>
+</ul>
+</li>
+<li>IoT 為何需要搭配 MEC  <ul>
+<li>如果 device 不太需要上 Facebook / LINE / YouTube  </li>
+</ul>
+</li>
+<li>MEC Case  <ul>
+<li>車聯網  </li>
+<li>Cache  <ul>
+<li>Content cache 有困難，因為加密太多。  </li>
+<li>但 DNS 是可以做的。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IoT 與 MEC 合體之後的資安疑慮  <ul>
+<li>前情提要  <ul>
+<li>核心網路內是沒有 IPS 或 Firewall 的  </li>
+<li>客戶的手機有被攻擊過嗎？  <ul>
+<li>沒聽過  </li>
+</ul>
+</li>
+<li>我們手機客戶會攻擊人？  <ul>
+<li>那不關我的事...  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IoT 服務的資安疑慮  <ul>
+<li>如果電信商真的要提供這樣的服務的話，應該要更正視這樣的問題。  </li>
+<li>Device 於實體世界被駭，透過 MEC 作為中繼繼續傳播。  </li>
+<li>Device 運算力弱者，不太可能端點防禦，也不太可能裝防毒軟體。  </li>
+<li>在 MEC 與基地台中間安裝 Firewall 或 IPS 就收工了？  <ul>
+<li>錯，因為有 Tunnel 存在，一定得請電信公司處理。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>建立 MEC 的資安機制  <ul>
+<li>MEC 的平台要提供 IoT 服務進駐  </li>
+<li>MEC 內各個 IoT 服務（VM 型態）要隔離  </li>
+<li>MEC 可以直接進行黑名單 IP 過濾  </li>
+<li>MEC 要轉換 GTP &lt;-&gt; IP 和 GTP termination，於是 IT 產業找到了電信的突破口。  </li>
+<li>進入 IP 世界之後：NFV (Network Functions Virtualization) + SDN  <ul>
+<li>VM 監控管理平台  </li>
+<li>網路安全設備  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Security Framework in MEC Platform  <ul>
+<li>NFV Inftrastructure Security  </li>
+<li>Network Security  </li>
+<li>Application Authorization  </li>
+</ul>
+</li>
+<li>講者認為 IoT + MEC + 資安尚未解決的問題對於軟體從業人員是個在未來有許多發展空間的舞台。  </li>
+</ul>
+<hr>
+<h2>Container 與 Web 安全 - 鄭學輝</h2>
+<p>前半段有點分不清楚是在介紹 Docker 還是在講 container security...<br>
+個人感覺整個投影片比較偏向 Sales Kit...  </p>
+<ul>
+<li>新興應用安全技術  <ul>
+<li>RUNTIME  <ul>
+<li>Runtime Application Self Protection (RASP)  </li>
+</ul>
+</li>
+<li>INTERACTIVE  </li>
+<li>SOFTWARE  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Python as Hacking Tool - Galoget Latorre</h2>
+<p>原本以為是要現場教學，<br>
+但整場的狀況比較像是，<br>
+前半段推坑 Python，<br>
+後半段 Live Demo 用 Python 寫的 script 的攻擊實況，<br>
+然後提供一些工具供聽眾參考，<br>
+還是沒講要怎麼寫 XD。<br>
+（是說現場直接拿別人的真實個資來 Demo 真的沒問題嗎 www）  </p>
+<ul>
+<li>Python 簡介  </li>
+<li>基本 Google Hacking  </li>
+<li>Some tools  <ul>
+<li><a href="https://github.com/dloss/python-pentest-tools">GitHub - dloss/python-pentest-tools: Python tools for penetration testers</a>  </li>
+<li><a href="https://github.com/andresriancho/w3af">GitHub - andresriancho/w3af: w3af: web application attack and audit framework, the open source web vulnerability scanner.</a>  </li>
+<li><a href="https://github.com/chinoogawa/fbht">GitHub - chinoogawa/fbht: Facebook Hacking Tool</a>  </li>
+<li><a href="https://github.com/IFGHou/wapiti">GitHub - IFGHou/wapiti: A web-application vulnerability scanner</a>  </li>
+<li><a href="https://github.com/OWASP/QRLJacking">GitHub - OWASP/QRLJacking: QRLJacking or Quick Response Code Login Jacking is a simple-but-nasty attack vector affecting all the applications that relays on “Login with QR code” feature as a secure way to login into accounts which aims for hijacking users session by attackers.</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>web swc case study and cyber simulation - 何宜霖</h2>
+<p>（這場講的條理滿清楚的，但會場座位沒得充電，我的 Mac Book Air 2013 已經沒電了 Orz）  </p>
+<ul>
+<li>講了釣魚攻擊和水坑攻擊的發生情境  </li>
+<li>腳本駭客的常見攻擊手法  <ul>
+<li><a href="https://github.com/beefproject/beef">GitHub - beefproject/beef: The Browser Exploitation Framework Project</a>  </li>
+</ul>
+</li>
+<li>一些很基本的卻常常忽略的問題  <ul>
+<li>裝置預設密碼沒改  </li>
+<li>放在 DMZ 東西是否會被外網輕易存取  </li>
+<li>網站測試頁面和測試帳號是否有清除  <ul>
+<li>上傳檔案的測試頁面記得關掉，否則就很有可能會被人上傳後門。  </li>
+<li>網路上都有很多現成的後門可以取得了，像是 <a href="https://github.com/tennc/webshell">GitHub - tennc/webshell: This is a webshell open source project</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>物聯網裝置的資安模擬環境會是未來重要的一環  <ul>
+<li>電腦跟手機可能不是 24x7 連網，但物聯網裝置基本上都是 24x7 連網而且有的還要求網路的 latency 要很低，一被入侵很有可能成為非常大型的 Bot Net。（沒提到前陣子鬧很大的 Mira 病毒）  </li>
+</ul>
+</li>
+<li>然後講者講了一句很有趣的話  <ul>
+<li>
+<blockquote>
+<p>「社交工程一直都可以成功的原因是什麼？因為人腦的愚蠢是不能進行安全性更新的。」  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>結論</h2>
+<p>今天聽下來真的覺得滿棒的，<br>
+也對 OWASP 更加瞭解了，<br>
+一直以來都只知道 Top 10 而已，<br>
+今天才發現原來還有很多很好用的 Project 和文件，<br>
+才知道原來以前用的 DirBuster 也是 OWASP 的 project 之一。<br>
+打聽一下才發現原來今年 7 月就有個 OWASP Taiwan Day 了，<br>
+但我當時沒有見到任何宣傳消息。<br>
+現在自己的狀況真的就比較像拿資安當興趣而已，<br>
+要當飯吃的話覺得自己的技術力和學習能力都跟不上這個產業啊。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=OWASP%20Taiwan%20Week%202017%0Ahttps%3A//blog.m157q.tw/posts/2017/11/20/owasp-taiwan-week-2017/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/11/20/owasp-taiwan-week-2017/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/11/20/owasp-taiwan-week-2017/&title=OWASP%20Taiwan%20Week%202017&summary=Note%20for%20OWASP%20Taiwan%20Week%20Day%201&source=https%3A//blog.m157q.tw/posts/2017/11/20/owasp-taiwan-week-2017/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=OWASP%20Taiwan%20Week%202017&amp;body=https%3A//blog.m157q.tw/posts/2017/11/20/owasp-taiwan-week-2017/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2018/07/23/clickjacking-frame-attack-defense/">新增幾項設定來防範 Clickjacking Frame Attack</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/01/22/mc-sqlr-amplification-attack/">MC-SQLR 放大攻擊</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/19/cve-2016-2662/">CVE-2016-2662</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/07/25/y2016w29/">Y2016W29</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/07/27/y2020w30/">Y2020W30</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/11/20/owasp-taiwan-week-2017/";
+        var disqus_title = "OWASP Taiwan Week 2017";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/11/20/owasp-taiwan-week-2017/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-11-20T18:01:33+08:00"><i class="fa fa-calendar"></i> Mon 20 November 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/security/" data-toggle="tooltip"
+      class="label label-default"
+      title="52 articles with this tag">security</a>
+  <br>
+            <a href="/tag/owasp/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">owasp</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/11/17/julia-taiwan-meetup-10/" title="Julia Taiwan Meetup #10"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/11/27/youcompleteme-ycmd-server-shut-down-restart-with-ycmrestartserver/" title="The ycmd server SHUT DOWN (restart with &#39;:YcmRestartServer&#39;)"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

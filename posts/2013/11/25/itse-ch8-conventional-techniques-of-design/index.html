@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  ITSE Ch8 - Conventional Techniques of Design
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.course.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Course - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2013/11/25/itse-ch8-conventional-techniques-of-design/" rel="bookmark" title="Permalink to ITSE Ch8 - Conventional Techniques of Design">ITSE Ch8 - Conventional Techniques of Design</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <h1>NCTUCS 2013-Fall Introduction to Software …</h1>
+  </blockquote>
+  <div>
+    <h1>NCTUCS 2013-Fall Introduction to Software Engineering by Professor Feng-Jian Wang</h1>
+<h1>Ch8 - Conventional Techniques of Design</h1>
+<ul>
+<li>ORB  </li>
+<li>Microsoft COM  </li>
+<li>Sun JavaBeans  </li>
+<li>Classification  <ul>
+<li>Enumerated classification  </li>
+<li>Faceted classification  </li>
+<li>Attribute-value classification  </li>
+</ul>
+</li>
+<li>Indexing  </li>
+<li>The Reuse Environment  <ul>
+<li>A component database capable of storing software components and the classification information necessary to retrieve them.  </li>
+<li>A library management system that provides access to the database.  </li>
+<li>A software component retrieval system (e.g., an object request broker) that enables a client application to retrieve components and services from the library server.  </li>
+<li>CBSE tools that support the integration of reused components into a new design or implementation.  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>User Interface Design</h1>
+<h2>Typical Design Errors</h2>
+<ul>
+<li>lack of consistency  </li>
+<li>too much memorization  </li>
+<li>no guidance / help  </li>
+<li>no context sensitivity  </li>
+<li>poor response  </li>
+<li>Arcane/unfriendly  </li>
+</ul>
+<blockquote>
+<p>Arcane adj. 晦澀難解的  </p>
+</blockquote>
+<h2>Golden Rules</h2>
+<ul>
+<li>Place the user in control  </li>
+<li>Reduce the user’s memory load  </li>
+<li>Make the interface consistent  </li>
+</ul>
+<h2>Place the User in Control</h2>
+<ul>
+<li>not force a user into unnecessary or undesired actions  </li>
+<li>Provide flexible interaction  </li>
+<li>Allow user interaction to be interruptible and undoable. (undoable - impossible to achieve;)  </li>
+<li>Streamline interaction. ()  </li>
+<li>Allow the interaction to be customized.  </li>
+<li>Hide technical internals from the casual user.  </li>
+<li>Design for direct interaction with objects that appear on the screen.  </li>
+</ul>
+<h2>Reduce the User’s Memory Load</h2>
+<ul>
+<li>Reduce demand on short-term memory.  </li>
+<li>Establish meaningful defaults.  </li>
+<li>Define shortcuts that are intuitive.  </li>
+<li>The visual layout of the interface should be based on a real world metaphor.  </li>
+<li>Disclose information in a progressive fashion.  </li>
+</ul>
+<h2>Make the Interface Consistent</h2>
+<ul>
+<li>Allow the user to put the current task into a meaningful context.  </li>
+<li>Maintain consistency across a family of applications.  </li>
+<li>If past interactive models have created user expectations, do not make changes unless there is a compelling reason to do so.  </li>
+</ul>
+<h2>User Interface Design Models</h2>
+<ul>
+<li>User model — a profile of all <strong>end users</strong> of the system  </li>
+<li>Design model — a design realization of the user model  </li>
+<li>Mental model (system perception) — the user’s mental image of what the interface is  </li>
+<li>Implementation model — the interface <strong>“look and feel”</strong> coupled with supporting information that describe interface syntax and semantics  </li>
+</ul>
+<h2>User Interface Design Process</h2>
+<p><img alt="User Interface Design Process" src="/files/itse-ch8-conventional-techniques-of-design/user-interface-design-process.png">  </p>
+<h4>Interface Analysis</h4>
+<h4>User Analysis</h4>
+<h4>Task Analysis and Modeling</h4>
+<ul>
+<li>find some workflow tools  </li>
+</ul>
+<h4>Analysis of Display Content</h4>
+<h2>Swimlane Diagram</h2>
+<h2>Interface Design Steps</h2>
+<p>￼￼￼￼￼￼1. define interface objects and actions (operations).<br>
+2. Define events (user actions)<br>
+3. Depict each interface state<br>
+4. Indicate how the user interprets the state of the system  </p>
+<h2>Design Issues</h2>
+<ul>
+<li>Response time  </li>
+<li>Help facilities  </li>
+<li>Error handling  </li>
+<li>Menu and command labeling  </li>
+<li>Application accessibility  </li>
+<li>Internationalization  </li>
+</ul>
+<hr>
+<h1>WebApp Interface Design</h1>
+<ul>
+<li>Where am I?  <ul>
+<li>provide an indication of the WebApp that has been accessed  </li>
+<li>inform the user of her location in the content hierarchy.  </li>
+</ul>
+</li>
+<li>What can I do now?<br>
+    The interface should always help the user understand his current options  <ul>
+<li>what functions are available?  </li>
+<li>what links are live?  </li>
+<li>what content is relevant?  </li>
+</ul>
+</li>
+<li>Where have I been, where am I going?<br>
+    Theinterfacemust facilitate navigation.  <ul>
+<li>Provide a “map” (implemented in a way that is easy to understand) of where the user has been and what paths may be taken to move elsewhere within the WebApp.  </li>
+</ul>
+</li>
+</ul>
+<h2>Effective WebApp Interfaces - by Bruce Tognozzi [TOG01]</h2>
+<ul>
+<li>Effective interfaces are visually apparent and forgiving  </li>
+<li>Effective interfaces do not concern the user with the inner workings of the system.  </li>
+<li>Effective applications and services perform a maximum of work  </li>
+</ul>
+<h2>Interface Design Principles</h2>
+<ul>
+<li>Anticipation （預期;期望): A WebApp should be designed so that it anticipates the use’s next move.  </li>
+<li>Communication  </li>
+<li>Consistency  </li>
+<li>Controlled autonomy  </li>
+<li>Efficiency  </li>
+<li>Focus  </li>
+<li>Fitt’s Law  </li>
+<li>Human interface objects  </li>
+<li>Latency reduction  </li>
+<li>Learnability  </li>
+<li>Maintain work product integrity  </li>
+<li>Readability  </li>
+<li>Track state  </li>
+<li>Visible navigation  </li>
+</ul>
+<h2>Interface Design Workflow</h2>
+<ul>
+<li>Review information contained in the analysis model and refine as required.  </li>
+<li>Develop a rough sketch of the WebApp interface layout.  </li>
+<li>Map user objectives into specific interface actions.  </li>
+<li>Define a set of user tasks that are associated with each action.  </li>
+<li>Storyboard screen images for each interface action.  </li>
+<li>Refine interface layout and storyboards using input from aesthetic design.  </li>
+<li>Identify user interface objects that are required to implement the interface.  </li>
+<li>Develop a procedural representation of the user’s interaction with the interface.  </li>
+<li>Develop a behavioral representation of the interface.  </li>
+<li>Describe the interface layout for each state.  </li>
+<li>Refine and review the interface design model.  </li>
+</ul>
+<h2>Aesthetic Design</h2>
+<ul>
+<li>Don’t be afraid of white space.  </li>
+<li>Emphasize content.  </li>
+<li>Organize layout elements from top-left to bottom right.  </li>
+<li>Group navigation, content, and function geographically within the page.  </li>
+<li>Don’t extend your real estate with the scrolling bar. (?  </li>
+<li>Consider resolution and browser window size when designing layout. =&gt; Response Design  </li>
+</ul>
+<h1>Design Evaluation Cycle</h1>
+<p><img alt="design evaluation cycle" src="/files/itse-ch8-conventional-techniques-of-design/design-evaluation-cycle.png">  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=ITSE%20Ch8%20-%20Conventional%20Techniques%20of%20Design%0Ahttps%3A//blog.m157q.tw/posts/2013/11/25/itse-ch8-conventional-techniques-of-design/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2013/11/25/itse-ch8-conventional-techniques-of-design/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2013/11/25/itse-ch8-conventional-techniques-of-design/&title=ITSE%20Ch8%20-%20Conventional%20Techniques%20of%20Design&summary=NCTUCS%202013-Fall%20Introduction%20to%20Software%20%E2%80%A6&source=https%3A//blog.m157q.tw/posts/2013/11/25/itse-ch8-conventional-techniques-of-design/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=ITSE%20Ch8%20-%20Conventional%20Techniques%20of%20Design&amp;body=https%3A//blog.m157q.tw/posts/2013/11/25/itse-ch8-conventional-techniques-of-design/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/09/itse-ch2-process-models/">ITSE Ch2 - Process Models</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/31/y2016w43/">Y2016W43</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/02/13/y2017w06/">Y2017W06</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/20/itse-ch1-software-and-software-engineering/">ITSE Ch1 - Software and Software Engineering</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/10/y2016w40/">Y2016W40</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2013/11/25/itse-ch8-conventional-techniques-of-design/";
+        var disqus_title = "ITSE Ch8 - Conventional Techniques of Design";
+        var disqus_url = "https://blog.m157q.tw/posts/2013/11/25/itse-ch8-conventional-techniques-of-design/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2013-11-25T01:21:00+08:00"><i class="fa fa-calendar"></i> Mon 25 November 2013</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/course/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="37 articles in this category">Course</a>
+              </p>
+            <a href="/tag/software-engineering/" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">software engineering</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/22/itc-week9-hash/" title="ITC week9 - Hash"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/25/itse-ch11-review-techniques/" title="ITSE Ch11 - Review Techniques"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.course.atom.xml"><i class="fa fa-rss"></i> Category: Course (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

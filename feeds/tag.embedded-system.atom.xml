@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Embedded System</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.embedded-system.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2014-11-06T01:27:00+08:00</updated><entry><title>Embedded System Design</title><link href="https://blog.m157q.tw/posts/2014/11/06/embedded-system-design/" rel="alternate"></link><published>2014-11-06T01:27:00+08:00</published><updated>2014-11-06T01:27:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-11-06:/posts/2014/11/06/embedded-system-design/</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;School: NCTU  &lt;/li&gt;
+&lt;li&gt;Semester: 【103 First …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;School: NCTU  &lt;/li&gt;
+&lt;li&gt;Semester: 【103 First semester】  &lt;/li&gt;
+&lt;li&gt;Course No.: 5203  &lt;/li&gt;
+&lt;li&gt;Course Name: Embedded System Design  &lt;/li&gt;
+&lt;li&gt;Instructor: Prof. 曹孝櫟  &lt;/li&gt;
+&lt;li&gt;Equipment: Xilinx &lt;a href="http://zedboard.org/"&gt;ZedBoard&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Note: &lt;a href="https://nctu_esd_2014_fall.hackpad.com/"&gt;https://nctu_esd_2014_fall.hackpad.com/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Xilinx"></category><category term="Zedboard"></category><category term="Embedded System"></category></entry></feed>

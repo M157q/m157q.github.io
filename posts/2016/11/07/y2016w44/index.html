@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Y2016W44
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.weekly.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Weekly - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/11/07/y2016w44/" rel="bookmark" title="Permalink to Y2016W44">Y2016W44</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Collection for Y2016W44 (2016-10-31 Mon 00:00:00 +0800 ~ 2016-11-07 Mon 00:00:00 +0800)</p>
+  </blockquote>
+  <div>
+    <h3>apache</h3>
+<ul>
+<li>最近在阿里雲上架 server，要弄 https，所以查了一下很有名但我還沒用過 Let's Encrypt，但在阿里雲上要從 pip 安裝 cerbot 需要的 Python 套件的時候被擋了，所以沒有用上。  <ul>
+<li><a href="http://hallard.me/enable-ssl-for-apache-server-in-5-minutes/">Enable SSL for apache server in 5 minutes – Charles's Blog</a>  </li>
+<li><a href="https://certbot.eff.org/#osx-nginx">Certbot</a>  </li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-14-04">How To Secure Apache with Let's Encrypt on Ubuntu 14.04 | DigitalOcean</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>chrome</h3>
+<ul>
+<li><a href="https://github.com/erkserkserks/h264ify">erkserkserks/h264ify: A Chrome extension that makes YouTube stream H.264 videos instead of VP8/VP9 videos</a>  <ul>
+<li>一個可以讓 YouTube 強制改用 H.264 的 Chrome 套件，看影片的速度會比較快一些。  </li>
+</ul>
+</li>
+</ul>
+<h3>cloud, china</h3>
+<ul>
+<li>因為最近在弄客戶在中國網站的問題，所以 survey 了一些中國提供 Cloud Service 的廠商比較  <ul>
+<li><a href="https://www.zhihu.com/question/26290516">青云、UCloud、阿里云、腾讯云等分别都有哪些特点？ - 云计算 - 知乎</a>  </li>
+<li><a href="http://www.sudops.com/ucloud-experience-vs-aliyun-aws.html">对比阿里云和 AWS，亲身体验 Ucloud - 运维 · 速度 | 运维 · 速度</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>container</h3>
+<ul>
+<li><a href="http://jvns.ca/blog/2016/10/02/a-list-of-container-software/">A list of Linux container software</a>  <ul>
+<li>一篇小文章蒐集和 container 有關的軟體清單  </li>
+</ul>
+</li>
+</ul>
+<h3>django</h3>
+<ul>
+<li>最近開始用 Django 在 Apache 上架 web server，所以查了一些相關的文章  <ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-14-04">How To Serve Django Applications with uWSGI and Nginx on Ubuntu 14.04 | Dig</a>  </li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-apache-mysql-and-python-lamp-server-without-frameworks-on-ubuntu-14-04">How To Set Up an Apache, MySQL, and Python (LAMP) Server Without Frameworks</a>  </li>
+<li><a href="https://docs.djangoproject.com/en/1.10/howto/deployment/wsgi/modwsgi/">How to use Django with Apache and mod_wsgi | Django documentation | Django</a>  </li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-14-04">How To Serve Django Applications with Apache and mod_wsgi on Ubuntu 14.04 |</a>  </li>
+<li><a href="http://askubuntu.com/questions/569550/assertionerror-using-apache2-and-libapache2-mod-wsgi-py3-on-ubuntu-14-04-python">AssertionError using Apache2 and libapache2-mod-wsgi-py3 on Ubuntu 14.04 (P</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>dns</h3>
+<ul>
+<li><a href="http://xip.io/">xip.io: wildcard DNS for everyone</a>  <ul>
+<li>一個只要有 Public IP 就可使用的免費 DNS server  <ul>
+<li>例如 Public IP 是 <code>10.0.0.1</code> 的話，可以直接用 <code>10.0.0.1.xip.io</code> 當 domain name  </li>
+<li>在一些一定得使用 domain name，不能直接使用 Public IP 的場合可以派上用場  </li>
+<li>官網的說明就滿簡單易懂的了  </li>
+</ul>
+</li>
+<li><a href="https://github.com/basecamp/xip-pdns">GitHub - basecamp/xip-pdns: PowerDNS pipe backend adapter powering xip.io</a>  <ul>
+<li>看來是用 bash 寫了一個 PowerDNS 的 wrapper 的樣子  </li>
+</ul>
+</li>
+<li>原本是要拿來解決公司客戶處理中國那邊的問題需要 HTTPS 連線，但又沒有個合法備案的 Domain name 可以使用，所以想找看看有沒有免費的能用，找到了這個。  <ul>
+<li>但後來嘗試了一下發現行不通，會直接在阿里雲上被擋掉，顯示「這個域名沒有備案」之類的訊息。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>docker</h3>
+<ul>
+<li><a href="https://thehftguy.wordpress.com/2016/11/01/docker-in-production-an-history-of-failure/">Docker in Production: A History of Failure – The HFT Guy</a>  <ul>
+<li>Docker 用來快速建立測試環境非常方便，但要直接使用在 Production 的環境上卻是有非常多的細節需要注意。  </li>
+<li>這篇文章詳細紀錄了許多作者在工作上於 Production 環境使用 Docker 踩到的許多雷，我覺得挺值得參考的。  <ul>
+<li>各個版本不相容的問題  </li>
+<li>無法很簡單的把舊的 Images 清掉  <ul>
+<li>這裡指的像是用一個指令就把已經建立 X 天以上或者已經 X 天未被使用的 Images 清掉  </li>
+<li>也因為這樣，所以非常吃硬碟的空間。  </li>
+<li>比較折衷的作法就是把 <code>docker images -q -a | xargs --no-run-if-empty docker rmi</code> 寫在 crontab 讓電腦每天執行這個指令一次。  </li>
+</ul>
+</li>
+<li>缺乏 Kernel 相關支援  <ul>
+<li>Linux 3.X: storage driver 不穩定  </li>
+<li>Linux 4.X: Kernel 正式放棄支援 Docker  <ul>
+<li>AUFS 直接從 Linux 4.X 以後的版本消失了  </li>
+</ul>
+</li>
+<li>因為 AUFS 在 Linux 4.X 不會動，所以有人寫了個 OverlayFS  </li>
+</ul>
+</li>
+<li>OverlayFS 存在許多缺點  <ul>
+<li>因為是在一年內打造出來的，而要在一年內打造出一個完好的 Filesystem 基本上是一個不可能的任務，所以後來又有了 Overlay2  </li>
+</ul>
+</li>
+<li>Overlay2 只支援 Linux Kernel 4.X 以上及 Docker 1.12 以上  </li>
+<li>... （實在太多了）  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>interview</h3>
+<ul>
+<li><a href="https://www.ptt.cc/bbs/Soft_Job/M.1478010654.A.9A6.html">[心得] 歐洲 Facebook、Google、Booking 面試 - 看板 Soft_Job - 批踢踢實業坊</a>  <ul>
+<li>給出了滿多中肯的建議。  </li>
+<li>還是一貫的，每次看別人的面試經驗都覺得自己實在太廢了，不知道什麼時候才能讓自己看到別人的面試經驗以後覺得自己也還算不錯。  </li>
+</ul>
+</li>
+<li><a href="http://blog.brucefeng.info/post/some-about-interview">互联网公司校招的一些感受</a>  <ul>
+<li>作者寫出在學校徵才的時候看到的一些現象與問題  <ul>
+<li>比如說有些應徵者極度的沒自信，會讓徵才者有點尷尬，甚至覺得是不是因為應徵者本身的問題導致之前面試都碰壁，才會顯的如此沒有自信之類的。  </li>
+</ul>
+</li>
+<li>作者認為重要的 3 個部份：學習能力、溝通能力、技術基礎  </li>
+<li>最後也給出了一些建議  <ul>
+<li>放輕鬆  </li>
+<li>事先瞭解要面試的公司背景及職位背景  </li>
+<li>刷題固然重要，但有自己的思路更重要。刷完題之後應該要讓自己好好思考有沒有不同的解法之類的。  </li>
+<li>實習工作要找和以後工作相關的，否則以後找工作的時候，不相關的實習經歷基本上是沒什麼用的。  </li>
+<li>面試結果的問題問 HR，不要問面試官。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>linux</h3>
+<ul>
+<li><a href="https://szlin.me/2016/10/05/%e5%88%9d%e6%8e%a2-linux-kernel-%e4%ba%82%e6%95%b8%e7%94%a2%e7%94%9f%e5%99%a8-random-generator/">初探 Linux kernel 亂數產生器 – random generator</a>  <ul>
+<li>介紹了四種亂數產生器的 interface，覺得挺有趣的。  <ol>
+<li><code>/dev/random</code> (blocking random source) – 位於 <code>drivers/char/random.c</code>  </li>
+<li><code>/dev/urandom</code> (non-blocking random source)– 位於 <code>drivers/char/random.c</code>  </li>
+<li>system call <code>getrandom()</code> (kernel 3.17 之後開始支援) – 位於 <code>drivers/char/random.c</code>  </li>
+<li><code>/dev/hwrng</code> – 位於 <code>drivers/char/hw_random</code> 並需要硬體元件支援  </li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3>mysql</h3>
+<ul>
+<li>距離上次作 MySQL db migration 有點久了，所以有點忘記要做哪些事情，查了一下。  <ul>
+<li><a href="http://webcheatsheet.com/sql/mysql_backup_restore.php">How to Back Up and Restore a MySQL Database</a>  </li>
+<li><a href="http://dba.stackexchange.com/questions/94552/mysqldump-doesnt-restore-database-why-not">mysql - mysqldump doesn't restore database. why not? - Database Administrat</a>  </li>
+<li><a href="http://stackoverflow.com/questions/7475223/mysql-config-not-found-when-installing-mysqldb-python-interface">linux - mysql_config not found when installing mysqldb python interface - S</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>python</h3>
+<ul>
+<li><a href="http://seanlin.logdown.com/archives">Archive « Python Life</a>  <ul>
+<li>這位作者在一年前花了好多時間翻譯和寫了很多跟 Python 有關的文章，但後來就不見哩。想說 bookmark 一下文章列表。  </li>
+<li><a href="http://seanlin.logdown.com/posts/239771-use-flask-to-create-restful-api">用 Flask 打造 RESTful API « Python Life</a>  </li>
+</ul>
+</li>
+<li><a href="https://github.com/cgoldberg/xvfbwrapper">cgoldberg/xvfbwrapper: Python wrapper for running a display inside X virtual framebuffer (Xvfb)</a>  <ul>
+<li>給沒有 X window 的 Server 用的 Xvfb Python wrapper，主要是 <code>dryscrape</code> 有用到，但因為遇到些錯誤訊息，所以查了一下。  </li>
+<li>沒記錯的話是得安裝 xvfb 的  </li>
+</ul>
+</li>
+</ul>
+<h3>ubuntu</h3>
+<ul>
+<li><a href="https://askubuntu.com/questions/410045/the-package-lists-or-status-file-could-not-be-parsed-or-opened">apt - "The package lists or status file could not be parsed or opened" - As</a>  <ul>
+<li>用 Ubuntu Server 不知為啥就遇到這個問題，解法長這樣：  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">sudo mv /var/lib/dpkg/status /var/lib/dpkg/status.bad  </span>
+<span class="err">sudo cp /var/lib/dpkg/status-old /var/lib/dpkg/status  </span>
+<span class="err">sudo apt-get update  </span>
+</pre></div>
+
+
+<p>看來應該是 dpkg 的 status 紀錄的部份有點問題，<br>
+所以拿上一次成功的 status 來用。  </p>
+<h3>vim</h3>
+<ul>
+<li><a href="https://github.com/junegunn/vim-emoji">junegunn/vim-emoji: Emoji in Vim</a>  <ul>
+<li>一個可以讓你在 Vim 裏面直接使用 emoji 的 plugin  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>批踢踢</h3>
+<ul>
+<li><a href="https://www.ptt.cc/bbs/MLB/M.1478177239.A.6AF.html">[閒聊] 預言成真？！ - 看板 MLB - 批踢踢實業坊</a>  <ul>
+<li>這兩個預言小熊隊會在 2016 年拿下世界大賽冠軍實在是太猛了，尤其是第二個，實在是預言得詳細到讓人覺得是未來人。  </li>
+</ul>
+</li>
+</ul>
+<h3>news</h3>
+<ul>
+<li><a href="https://www.twreporter.org/a/opinion-who-vote-for-trump">王茜穎／為什麼這麼多小鎮鎮民支持川普？──從城鄉差距看美國大選</a>  <ul>
+<li>「這些藍色城市僅佔美國國土的3.5%，卻有近63%的人口，選出了歐巴馬。而包圍城市的廣大紅海，佔據96.5%美國面積的非都市地區，近4成的人口，傾向支持共和黨。」  </li>
+</ul>
+</li>
+</ul>
+<h3>misc</h3>
+<ul>
+<li><a href="http://www.youtube.com/watch?v=CY8LD9er7lE">國家地理頻道 洪水來臨前 BEFORE THE FLOOD - YouTube</a>  <ul>
+<li>李奧納多迪卡皮歐出錢拍的紀錄片。  </li>
+</ul>
+</li>
+<li><a href="http://www.keybr.com/">Typing speed test, advanced typing lessons, practice touch typing, typing e</a>  <ul>
+<li>一個會幫你分析打每個鍵的速度及錯誤率的打字網站。  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Y2016W44%0Ahttps%3A//blog.m157q.tw/posts/2016/11/07/y2016w44/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/11/07/y2016w44/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/11/07/y2016w44/&title=Y2016W44&summary=Collection%20for%20Y2016W44%20%282016-10-31%20Mon%2000%3A00%3A00%20%2B0800%20%7E%202016-11-07%20Mon%2000%3A00%3A00%20%2B0800%29&source=https%3A//blog.m157q.tw/posts/2016/11/07/y2016w44/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Y2016W44&amp;body=https%3A//blog.m157q.tw/posts/2016/11/07/y2016w44/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/17/y2016w41/">Y2016W41</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/31/y2016w43/">Y2016W43</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/">Y2016W49</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/14/y2016w45/">Y2016W45</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/05/y2016w48/">Y2016W48</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/11/07/y2016w44/";
+        var disqus_title = "Y2016W44";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/11/07/y2016w44/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-11-07T10:41:59+08:00"><i class="fa fa-calendar"></i> Mon 07 November 2016</abbr></p>
+
+      <p><abbr title="2016-11-26T02:30:59+08:00"><i class="fa fa-pencil"></i>Sat 26 November 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">M157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/weekly/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="105 articles in this category">Weekly</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/security/" data-toggle="tooltip"
+      class="label label-default"
+      title="52 articles with this tag">security</a>
+  <br>
+            <a href="/tag/linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="44 articles with this tag">linux</a>
+  <br>
+            <a href="/tag/cli/" data-toggle="tooltip"
+      class="label label-default"
+      title="43 articles with this tag">cli</a>
+  <br>
+            <a href="/tag/misc/" data-toggle="tooltip"
+      class="label label-default"
+      title="33 articles with this tag">misc</a>
+  <br>
+            <a href="/tag/docker/" data-toggle="tooltip"
+      class="label label-default"
+      title="16 articles with this tag">docker</a>
+  <br>
+            <a href="/tag/vim/" data-toggle="tooltip"
+      class="label label-default"
+      title="15 articles with this tag">Vim</a>
+  <br>
+            <a href="/tag/interview/" data-toggle="tooltip"
+      class="label label-default"
+      title="14 articles with this tag">Interview</a>
+  <br>
+            <a href="/tag/django/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">Django</a>
+  <br>
+            <a href="/tag/news/" data-toggle="tooltip"
+      class="label label-default"
+      title="9 articles with this tag">news</a>
+  <br>
+            <a href="/tag/mysql/" data-toggle="tooltip"
+      class="label label-default"
+      title="9 articles with this tag">MySQL</a>
+  <br>
+            <a href="/tag/pi-ti-ti/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">批踢踢</a>
+  <br>
+            <a href="/tag/ubuntu/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">ubuntu</a>
+  <br>
+            <a href="/tag/apache/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">apache</a>
+  <br>
+            <a href="/tag/bsd/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">bsd</a>
+  <br>
+            <a href="/tag/chrome/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">Chrome</a>
+  <br>
+            <a href="/tag/container/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">container</a>
+  <br>
+            <a href="/tag/bbs/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">bbs</a>
+  <br>
+            <a href="/tag/cloud/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">cloud</a>
+  <br>
+            <a href="/tag/dns/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">dns</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/10/31/y2016w43/" title="Y2016W43"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/11/14/y2016w45/" title="Y2016W45"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.weekly.atom.xml"><i class="fa fa-rss"></i> Category: Weekly (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

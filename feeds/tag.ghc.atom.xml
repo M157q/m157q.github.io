@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - GHC</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.ghc.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T13:10:00+08:00</updated><entry><title>GHC 7.8.2 造成 Arch Linux 無法升級的解法</title><link href="https://blog.m157q.tw/posts/2014/05/21/the-solution-for-system-upgrade-failure-caused-by-ghc-7-8-2/" rel="alternate"></link><published>2014-05-21T14:50:00+08:00</published><updated>2015-10-27T13:10:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-05-21:/posts/2014/05/21/the-solution-for-system-upgrade-failure-caused-by-ghc-7-8-2/</id><summary type="html">&lt;p&gt;官方公告 &lt;a href="https://www.archlinux.org/news/managing-haskell-packages-with-ghc-782/"&gt;Managing Haskell packages with …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;官方公告 &lt;a href="https://www.archlinux.org/news/managing-haskell-packages-with-ghc-782/"&gt;Managing Haskell packages with GHC 7.8.2&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;裡面寫了  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Moving every package that is not ghc or cabal-install to [community]. This will allow better support of the core common haskell libraries since I do not actually use these packages due to cabal-install.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其實我根本看不懂該怎麼做= ="&lt;br&gt;
+反正我一定不是唯一一個看不懂的(?)&lt;br&gt;
+所以就查到了這篇 &lt;a href="https://bbs.archlinux.org/viewtopic.php?pid=1412908"&gt;[SOLVED] Problems upgrading some haskell packages&lt;/a&gt;&lt;br&gt;
+遇到的情形似乎跟我一樣&lt;br&gt;
+下了 &lt;code&gt;sudo pacman -Syu&lt;/code&gt; 後噴了  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:: haskell-transformers: requires ghc=7.6.3-1  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然後  &lt;code&gt;pacman -Qs ghc&lt;/code&gt; 後也一樣已經安裝了&lt;br&gt;
+然後底下有人提供了解法  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pacman -Rcs haskell-transformers  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;把跟 &lt;code&gt;haskell-transformers&lt;/code&gt; 有關的套件都移除掉以後&lt;br&gt;
+再重新下一次 &lt;code&gt;sudo pacman -Syu&lt;/code&gt; 就可以了  &lt;/p&gt;
+&lt;p&gt;底下的回覆有人的解釋是  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;haskell-transformers was recently removed from extra.&lt;br&gt;
+It depends on a specific version of ghc.&lt;br&gt;
+There is a newer version of ghc in the repos.&lt;br&gt;
+Since haskell-transformers was removed there's no upgrade path to resolve the issue.&lt;br&gt;
+You'll have to do it manually.&lt;br&gt;
+Edit: Removed from the repos entirely.&lt;br&gt;
+Not moved from extra to community like the other haskell packages.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;恩 應該就是這樣吧  &lt;/p&gt;</content><category term="Linux"></category><category term="Haskell"></category><category term="Arch Linux"></category><category term="GHC"></category><category term="sysadmin"></category></entry></feed>

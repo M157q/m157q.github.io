@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  GCPUG.tw #28
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/" rel="bookmark" title="Permalink to GCPUG.tw #28">GCPUG.tw #28</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for GCPUG.tw #28</p>
+  </blockquote>
+  <div>
+    <ul>
+<li>Links  <ul>
+<li><a href="https://gcpugtw.kktix.cc/events/meetup201708">https://gcpugtw.kktix.cc/events/meetup201708</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Running Workloads in Kubernetes - Janet Kuo</h1>
+<p>今年 2/28 時，<a href="https://techcrunch.com/2017/02/28/amazon-aws-s3-outage-is-breaking-things-for-a-lot-of-websites-and-apps/">Amazon S3 的 outage</a> 讓很多公司的網站都掛了，<br>
+但有間叫 <a href="https://twitter.com/robertjscott/status/836743514423713793">Spire 的公司沒受到影響</a>，<br>
+原因是因為用了 Kubernetes。  </p>
+<ul>
+<li>Demo code  <ul>
+<li><a href="https://github.com/janetkuo/k8s-demos">https://github.com/janetkuo/k8s-demos</a>  </li>
+<li><a href="https://github.com/kubernetes/contrib/tree/master/micro-demos">https://github.com/kubernetes/contrib/tree/master/micro-demos</a>  </li>
+</ul>
+</li>
+<li>Architecture of Kubernetes  <ul>
+<li>Master node  <ul>
+<li>Controller  <ul>
+<li>管理 Worker nodes 上面的 Pod  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Worker node  <ul>
+<li>Running Pods  </li>
+<li>Pull image  </li>
+<li>把 Network, Volume 連接起來  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Four General Patterns  <ul>
+<li>Stateless  <ul>
+<li>Web frontends  </li>
+<li>Web servers  <ul>
+<li>NGINX  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Stateful  <ul>
+<li>Databases  <ul>
+<li>MongoDB  </li>
+</ul>
+</li>
+<li>Message queues  </li>
+</ul>
+</li>
+<li>Daemon  <ul>
+<li>Cluster storage  </li>
+<li>Logs collections  </li>
+<li>Node monitoring  </li>
+<li>example  <ul>
+<li>linkerd  </li>
+<li>fluentd  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Batch  <ul>
+<li>Emails to send  </li>
+<li>Files to zip  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Deployment (For stateless pattern)  <ul>
+<li>No persistent states  <ul>
+<li>Scale is easy  </li>
+</ul>
+</li>
+<li>Availability &gt; Consistency  <ul>
+<li>Create multiple replicas of the smae pod  </li>
+<li>Pods are disposable  </li>
+</ul>
+</li>
+<li>Rolling update  <ul>
+<li>Update at a controlled rate  </li>
+<li>Block updates on failure  </li>
+<li>History and rollback  </li>
+</ul>
+</li>
+<li>用 <code>kubectl</code> 下指令，會對 Master node 下一個 async 的指令，Master Node 再透過 controller 去控制 Worker node  </li>
+<li>Service  <ul>
+<li>去跟後面的 Pods 溝通  </li>
+<li>當有 Pod 掛掉的話，Service 的 load balancer 就不會把 request 導到壞掉的 Pod  </li>
+</ul>
+</li>
+<li>Demo code  <ul>
+<li><a href="https://github.com/janetkuo/k8s-demos/tree/master/dep">https://github.com/janetkuo/k8s-demos/tree/master/dep</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>StatefulSet (For stateful pattern, 另外一個專門針對 Stateful 使用的 controller)  <ul>
+<li>可能的使用情境  <ul>
+<li>ZooKeeper  </li>
+</ul>
+</li>
+<li>Store persistent data  <ul>
+<li>Need stable, unique and sticky identity and storage  </li>
+</ul>
+</li>
+<li>Consistency &gt; Availability  <ul>
+<li>Create similar pods, each has its own identity and storage  </li>
+<li>Pods are not disposable  </li>
+</ul>
+</li>
+<li>Deploy, scale, terminate  <ul>
+<li>In order or in parallel  </li>
+<li>可以設定依序 deploy，因為有些服務不能全部一起開，而是必須照順序開。但如果沒有這個需求的話，還是可以用 Parallel。  </li>
+<li>StatefulSet 的 Parallel Deployment 是在 k8s 1.7 加入的功能  </li>
+</ul>
+</li>
+<li>Rolling update  <ul>
+<li>StatefulSet 的 parallel rolling update 是在 k8s 1.7 加入的功能  </li>
+<li>會有 graceful 的 termination，預設的 timeout 時間是 30 秒，如果超過的話，termination 就會被取消。  </li>
+</ul>
+</li>
+<li>Demo  <ul>
+<li><a href="https://github.com/janetkuo/k8s-demos/tree/master/stateful">https://github.com/janetkuo/k8s-demos/tree/master/stateful</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DaemonSet (For Daemon Pattern)  <ul>
+<li>One Daemon per node  <ul>
+<li>Background process  </li>
+</ul>
+</li>
+<li>Daemons created and removed with nodes  </li>
+<li>Node labels  <ul>
+<li>Control which nodes daemons should run on  </li>
+<li>可以用來控制讓 daemon 只執行在特定的 node 上  </li>
+</ul>
+</li>
+<li>Rolling update  <ul>
+<li>在 k8s 1.6 新增的功能  </li>
+</ul>
+</li>
+<li>Demo  <ul>
+<li><a href="https://github.com/janetkuo/k8s-demos/tree/master/ds">https://github.com/janetkuo/k8s-demos/tree/master/ds</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Jobs (For Batch Pattern)  <ul>
+<li>Run in Parallel  <ul>
+<li>How many pods can be created and running at a time  </li>
+</ul>
+</li>
+<li>Run to Completion  <ul>
+<li>How many pods need to complete (exit successfully)  </li>
+</ul>
+</li>
+<li>Parallel processing of independent but related work items  <ul>
+<li>Emails to send or frames to render  </li>
+</ul>
+</li>
+<li>Job create 出來的 pod 是會結束的，因為事情做完了就會關掉。與前面 3 個 pattern 的 controller 建立的 Pod 不同，如果壞掉了不會幫你重開。  </li>
+<li>Demo code  <ul>
+<li><a href="https://github.com/janetkuo/k8s-demos/tree/master/jobs">https://github.com/janetkuo/k8s-demos/tree/master/jobs</a>  </li>
+<li>parallelism: 一次最多開幾個 pod  </li>
+<li>completions: 需要幾個成功的 pods 才能停止  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4 Controllers for 4 Patterns  <ul>
+<li>Deployment  <ul>
+<li>Availability  </li>
+<li>Scale &amp; recover easily  </li>
+<li>Disposable cpoies of the same pod  </li>
+</ul>
+</li>
+<li>StatefulSet  <ul>
+<li>Consistency  </li>
+<li>Unique, sticky identity and storage  </li>
+<li>Deploy, scale and terminate in order or in parallel  </li>
+</ul>
+</li>
+<li>DaemonSet  <ul>
+<li>One pod per node by default  </li>
+<li>Daemon pods added and removed with nodes  </li>
+<li>Use node labels to control  </li>
+</ul>
+</li>
+<li>Jobs  <ul>
+<li>Run multiple pods in parallel  </li>
+<li>Run pods to completion  <ul>
+<li>只有指定數量的 pods 都成功結束的話，這個 job 才算成功  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Where Do I start?  <ul>
+<li>Get a Kubernetes Cluster  <ul>
+<li>GCE  </li>
+<li>GKE  </li>
+<li><a href="https://github.com/kubernetes/minikube">minikube</a>  </li>
+<li><a href="https://github.com/kubernetes/charts">Kubernetes Charts</a>  <ul>
+<li>Curated applications for Kubernetes  </li>
+</ul>
+</li>
+<li><a href="https://github.com/kubernetes/helm">Kubernetes Helm</a>  <ul>
+<li>The Kubernetes Package Manager  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>How Do I Customize?  <ul>
+<li>Kubernetes is extensible  <ul>
+<li>You can write your own controller or use controllers wrote by other people.  </li>
+<li>Examples  <ul>
+<li><a href="https://github.com/upmc-enterprises/elasticsearch-operator">https://github.com/upmc-enterprises/elasticsearch-operator</a>  </li>
+<li><a href="https://github.com/coreos/etcd-operator">https://github.com/coreos/etcd-operator</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Kubernetes is Open  <ul>
+<li><a href="https://github.com/kubernetes/kubernetes">https://github.com/kubernetes/kubernetes</a>  </li>
+<li><a href="https://kubernetes.io">https://kubernetes.io</a>  </li>
+<li><a href="https://slack.k8s.io">https://slack.k8s.io</a>  </li>
+<li><a href="https://twitter.com/kubernetesio">https://twitter.com/kubernetesio</a>  </li>
+</ul>
+</li>
+<li>Q&amp;A  <ul>
+<li>StatefulSet 的 Storage 不會被砍掉，那 DaemonSet 可以有一樣的效果嗎？因為有時候一些 Daemon 會需要這方式。  <ul>
+<li>可以，但只能讀，不能寫，因為 DaemonSet 的設計上的關係，如果大家都可以寫的話會很亂。  </li>
+</ul>
+</li>
+<li>Rolling Update 如果希望新舊版都同時存在的話該怎麼做  <ul>
+<li>StatefulSet 可以透過 Partition 做到  </li>
+<li>Deployment 的話，可以建立一個新的和一個舊的 Deployment，再透過 Service 的 Load Balancer 去導流量。  </li>
+</ul>
+</li>
+<li>Rolling Update 如果不希望新舊版都同時存在的話該怎麼做  <ul>
+<li>StatefulSet 沒辦法做到  </li>
+<li>但 Deployment 可以把 strategy 設定成 Recreate，這樣就會先起好新的 pod，然後把舊的砍掉。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=GCPUG.tw%20%2328%0Ahttps%3A//blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/&title=GCPUG.tw%20%2328&summary=Note%20for%20GCPUG.tw%20%2328&source=https%3A//blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=GCPUG.tw%20%2328&amp;body=https%3A//blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/02/gcpug-tw-26/">GCPUG.tw #26</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/">CP100A: Google Cloud Platform Fundamentals</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/06/03/taiwan-customer-sharing-session-with-google-big-data-engineering-team/">Taiwan Customer Sharing Session - with Google Big Data Engineering team</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/">CPB200: BigQuery for Data Analysts</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/07/05/gcpug-tw-27/">GCPUG.tw #27</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/08/04/gcpug-tw-28/";
+        var disqus_title = "GCPUG.tw #28";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-08-04T21:37:05+08:00"><i class="fa fa-calendar"></i> Fri 04 August 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/google-cloud-platform/" data-toggle="tooltip"
+      class="label label-default"
+      title="7 articles with this tag">Google Cloud Platform</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/08/02/gdg-taipei-40/" title="GDG Taipei #40"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/08/07/y2017w31/" title="Y2017W31"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

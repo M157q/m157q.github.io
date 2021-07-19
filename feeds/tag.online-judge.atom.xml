@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Online Judge</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.online-judge.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2013-04-29T20:16:00+08:00</updated><entry><title>[Cpp] [Online Judge] UVa 737 Gleaming the Cubes</title><link href="https://blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/" rel="alternate"></link><published>2013-04-29T20:16:00+08:00</published><updated>2013-04-29T20:16:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-04-29:/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/</id><summary type="html">&lt;p&gt;2013/04/29 基礎程式檢定考題之一&lt;br&gt;
+(共7題 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;2013/04/29 基礎程式檢定考題之一&lt;br&gt;
+(共7題 我寫了三題 只對一題Orz 後來花時間把沒寫完的兩題寫完 這是其中一題)  &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://uva.onlinejudge.org/external/7/737.html"&gt;http://uva.onlinejudge.org/external/7/737.html&lt;/a&gt;  &lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;這題是被 Compiler 雷到... 答案算是已經寫出來了...Orz  &lt;/p&gt;
+&lt;p&gt;上機考的電腦是用 gcc 4.2.x 在本地端 compile 沒有噴 error  &lt;/p&gt;
+&lt;p&gt;考完後在自己的筆電上的 gcc 4.8.0 測試也沒噴 error  &lt;/p&gt;
+&lt;p&gt;結果上傳上去就噴 error 說找不到適合的 overloaded function 可用  &lt;/p&gt;
+&lt;p&gt;究竟程式檢定 server 用的 compiler 是哪一個啊@_@?  &lt;/p&gt;
+&lt;p&gt;但結果追根究底是因為我沒搞清楚 &lt;code&gt;abs()&lt;/code&gt; 這個 function...  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cstdlib&lt;/code&gt; 和 &lt;code&gt;cmath&lt;/code&gt; 都有 &lt;code&gt;abs()&lt;/code&gt; 這個 function  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cstdlib&lt;/code&gt; 的 &lt;code&gt;abs()&lt;/code&gt; 是給整數型態用的 &lt;code&gt;cmath&lt;/code&gt; 的 &lt;code&gt;abs()&lt;/code&gt; 是給浮點數型態用的  &lt;/p&gt;
+&lt;p&gt;而我在這裡要取的是整數型態的絕對值 所以應該要 &lt;code&gt;#include &amp;lt;cstdlib&amp;gt;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;結果我記錯 寫了 &lt;code&gt;#include &amp;lt;cmath&amp;gt;&lt;/code&gt; (然後就是悲劇Orz  &lt;/p&gt;
+&lt;p&gt;請參閱&lt;br&gt;
+&lt;a href="http://www.cplusplus.com/reference/cstdlib/abs/"&gt;http://www.cplusplus.com/reference/cstdlib/abs/&lt;/a&gt;&lt;br&gt;
+裏面有提到  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In C++, this function is also overloaded in header &lt;a href="http://www.cplusplus.com/cmath"&gt;cmath&lt;/a&gt; for floating-point types (see &lt;a href="http://www.cplusplus.com/cmath:abs"&gt;cmath abs&lt;/a&gt;),&lt;br&gt;
+in header &lt;a href="http://www.cplusplus.com/complex"&gt;complex&lt;/a&gt; for complex numbers (see &lt;a href="http://www.cplusplus.com/complex:abs"&gt;complex abs&lt;/a&gt;),&lt;br&gt;
+and in header &lt;a href="http://www.cplusplus.com/valarray"&gt;valarray&lt;/a&gt; for valarrays (see &lt;a href="http://www.cplusplus.com/valarray:abs"&gt;valarray abs&lt;/a&gt;).  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以其實很多 library 裏面都有 &lt;code&gt;abs()&lt;/code&gt; 這個 function&lt;br&gt;
+這裡就不細講了 有興趣的人請自行參閱  &lt;/p&gt;
+&lt;p&gt;而 &lt;code&gt;cmath&lt;/code&gt; 的 &lt;code&gt;abs()&lt;/code&gt; 也有提到&lt;br&gt;
+&lt;a href="http://www.cplusplus.com/reference/cmath/abs/"&gt;http://www.cplusplus.com/reference/cmath/abs/&lt;/a&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;These convenience abs overloads are exclusive of C++.&lt;br&gt;
+In C, &lt;a href="http://www.cplusplus.com/abs"&gt;abs&lt;/a&gt; is only declared in &lt;a href="http://www.cplusplus.com/cstdlib"&gt;cstdlib&lt;/a&gt; (and only operates on integral values).  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以在 C 裏面&lt;br&gt;
+只有 &lt;code&gt;&amp;lt;stdlib.h&amp;gt;&lt;/code&gt; 裏面有 &lt;code&gt;abs()&lt;/code&gt; 這個 function 而且還只能給整數型態用&lt;br&gt;
+因為沒有 function overloading&lt;br&gt;
+(看到這個就覺得我應該用 C 寫的Orz  老實說其實自己寫一個也很快Orz  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="p"&gt;{&lt;/span&gt;  
+&lt;span class="err"&gt; &lt;/span&gt; &lt;span class="err"&gt; &lt;/span&gt; &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nl"&gt;a&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這樣就行了...&lt;br&gt;
+反正後來總算是寫出來了 也找到了錯誤 應該值得高興(吧？&lt;br&gt;
+以下是我的 code  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gist.github.com/M157q/c92d437af7f7d497de67"&gt;https://gist.github.com/M157q/c92d437af7f7d497de67&lt;/a&gt;  &lt;/p&gt;</content><category term="Cpp"></category><category term="Online Judge"></category><category term="abs"></category></entry><entry><title>[Cpp] [Online Judge] UVa 10579 Fibonacci Numbers</title><link href="https://blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-10579-fibonacci-numbers/" rel="alternate"></link><published>2013-04-29T19:57:00+08:00</published><updated>2013-04-29T19:57:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-04-29:/posts/2013/04/29/cpp-online-judge-uva-10579-fibonacci-numbers/</id><summary type="html">&lt;p&gt;2013/04/29 基礎程式檢定考題之一&lt;br&gt;
+(共7題 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;2013/04/29 基礎程式檢定考題之一&lt;br&gt;
+(共7題 我寫了三題 只對一題Orz 後來花時間把沒寫完的兩題寫完 這是其中一題)  &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://uva.onlinejudge.org/external/105/10579.html"&gt;http://uva.onlinejudge.org/external/105/10579.html&lt;/a&gt;  &lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;p&gt;這題必須要用大數加法才能做出來  &lt;/p&gt;
+&lt;p&gt;題目說答案不會超過 1000 位數  &lt;/p&gt;
+&lt;p&gt;我在考試的時候還很開心的用 unsigned long long 去算答案= ="  &lt;/p&gt;
+&lt;p&gt;unsigned long long 最大值是 2^64 -1 == 1.8446744073709551615 × 10^19  &lt;/p&gt;
+&lt;p&gt;也就是只能完全計算到 18 位數和一點點 19 位數 超過以後就會 overflow...  &lt;/p&gt;
+&lt;p&gt;我還在那邊試很久= =" 想說怎麼測資都沒對 大概是上機考的時候太緊張了吧= =""  &lt;/p&gt;
+&lt;p&gt;對大數不太熟悉 剛好就用這題來練習  &lt;/p&gt;
+&lt;p&gt;Big number 就是把原本的 int 分開成 int array 去儲存  &lt;/p&gt;
+&lt;p&gt;每個 element 都代表一個位數 作法就像小學時候學的直式加法一樣  &lt;/p&gt;
+&lt;p&gt;所以可以一直加下去 只要用來儲存答案位數的 int array 給的夠大就行  &lt;/p&gt;
+&lt;p&gt;以下是我的 code  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://gist.github.com/M157q/53d3dc8586ddee57e240"&gt;https://gist.github.com/M157q/53d3dc8586ddee57e240&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;因為有點懶的打英文 所以用了中文註解...  &lt;/p&gt;</content><category term="Cpp"></category><category term="Online Judge"></category><category term="Big Number"></category></entry></feed>

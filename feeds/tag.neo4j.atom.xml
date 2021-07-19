@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Neo4j</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.neo4j.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-10-26T00:22:50+08:00</updated><entry><title>Neo4j Causal Cluster Failover</title><link href="https://blog.m157q.tw/posts/2018/06/20/neo4j-causal-cluster-failover/" rel="alternate"></link><published>2018-06-20T03:08:50+08:00</published><updated>2020-10-26T00:22:50+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-06-20:/posts/2018/06/20/neo4j-causal-cluster-failover/</id><summary type="html">&lt;p&gt;Failover for Neo4j Causal Cluster might be easier than what you think.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;Use &lt;code&gt;bolt+routing&lt;/code&gt; protocol for your neo4j client driver to connect to Neo4j causal cluster.&lt;br&gt;
+(If the Neo4j driver you are using supports Bolt Routing Protocol)  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;I've been using Neo4j about two months. I established a &lt;a href="https://neo4j.com/docs/operations-manual/current/clustering/introduction/"&gt;Neo4j causal cluster&lt;/a&gt; via &lt;a href="https://github.com/kubernetes/charts/tree/master/stable/neo4j"&gt;Helm chart of Neo4j&lt;/a&gt; and used it in production with 3 core nodes (1 Leader, 2 Followers) and 3 read replicas.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Recently, I got an error like this: &lt;code&gt;Not A Leader Error: Can't write to FOLLOWER node&lt;/code&gt;. It always occured after the leader node became follower node. That's the time I realized there might be a problem of the failover process.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Thoughts&lt;/h2&gt;
+&lt;p&gt;At first, I was trying hard to find a way to make the Kubernetes service of my Neo4j causal cluster to always redirect conneciton to leader node. Because I know that &lt;a href="https://neo4j.com/docs/operations-manual/current/clustering/setup-new-cluster/#causal-clustering-discovery"&gt;Neo4j causal cluster comes up with default service discovery mechanism&lt;/a&gt;, I was thinking maybe adding a sidecar container to watch the result of cypher shell &lt;code&gt;dbms.cluster.overview();&lt;/code&gt; and make it change the pod label for the pod, so I can add a selector into Kubernetes service to do what I want.  &lt;/p&gt;
+&lt;p&gt;After I read some posts and codes about how to write a sidecar container in a pod, I still don't know how to do. Just about the time I almost gave up, I found the salvation: &lt;a href="https://graphaware.com/neo4j/2018/01/03/casual-cluster-quickstart.html"&gt;https://graphaware.com/neo4j/2018/01/03/casual-cluster-quickstart.html&lt;/a&gt;.  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bolt+routing://&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;&lt;/code&gt; caught my eyes.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;It's really simple, but it looks like not many people who use Neo4j causal cluster know about it. I've spent so much time on finding the answer.&lt;br&gt;
+Official documentation of Neo4j also mentioned about it: &lt;a href="https://neo4j.com/docs/developer-manual/current/drivers/client-applications/#_routing_drivers_bolt_routing"&gt;https://neo4j.com/docs/developer-manual/current/drivers/client-applications/#_routing_drivers_bolt_routing&lt;/a&gt;. (I should've read official doc more carefully, so I don't have to waste so much time on the wrong path.)&lt;br&gt;
+It turns out if you're using &lt;code&gt;bolt&lt;/code&gt; protocol (&lt;code&gt;7687&lt;/code&gt; port) for your Neo4j client to connect to Neo4j cluster and the Neo4j client you're using support the &lt;a href="https://neo4j.com/docs/developer-manual/current/terminology/#term-bolt-routing-protocol"&gt;Bolt Routing Protocol&lt;/a&gt;, you can just simply change the url of Neo4j:  &lt;/p&gt;
+&lt;p&gt;from &lt;code&gt;bolt://&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;&lt;/code&gt;&lt;br&gt;
+to &lt;code&gt;bolt+routing://&amp;lt;host&amp;gt;:&amp;lt;port&amp;gt;&lt;/code&gt;&lt;br&gt;
+(The &lt;code&gt;&amp;lt;host&amp;gt;&lt;/code&gt; here for me is the Kubernetes service name of my Neo4j causal cluster)  &lt;/p&gt;
+&lt;p&gt;&lt;a href="http://py2neo.org/v4/database.html?highlight=routing#the-graph"&gt;I am using &lt;code&gt;py2neo&lt;/code&gt; as my Neo4j driver and it happens to support Bolt Routing Protocol&lt;/a&gt;. HOW LUCKY.  &lt;/p&gt;
+&lt;p&gt;That's it.  &lt;/p&gt;</content><category term="Neo4j"></category></entry></feed>

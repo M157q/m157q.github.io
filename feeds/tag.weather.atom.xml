@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Weather</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.weather.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-10-20T23:35:15+08:00</updated><entry><title>wttr.in - 一個讓你用網頁或終端機看天氣或月亮圓缺的有趣網站</title><link href="https://blog.m157q.tw/posts/2017/10/20/wttr-in/" rel="alternate"></link><published>2017-10-20T21:09:15+08:00</published><updated>2017-10-20T23:35:15+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-10-20:/posts/2017/10/20/wttr-in/</id><summary type="html">&lt;p&gt;關於 &lt;a href="http://wttr.in"&gt;wttr.in&lt;/a&gt; 的一點小介紹&lt;/p&gt;</summary><content type="html">&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;最近不知道為啥身邊一堆人在傳 &lt;a href="http://wttr.in"&gt;wttr.in&lt;/a&gt;，&lt;br&gt;
+才發現好像有很多人不知道。&lt;br&gt;
+自己是有陣子之前就開始用了，&lt;br&gt;
+當時有花一點時間亂看過&lt;a href="https://github.com/chubin/wttr.in"&gt;這個專案的程式碼&lt;/a&gt;，&lt;br&gt;
+依稀記得 wttr.in 有一些比較少人知道的小功能，&lt;br&gt;
+回朋友的某個跟 wttr.in 相關的 Facebook 動態時又去找了一下。&lt;br&gt;
+查著查著突然心血來潮，&lt;br&gt;
+乾脆寫這篇廢文筆記一下。  &lt;/p&gt;
+&lt;p&gt;反正邊緣人的週五晚上沒事做。（嗚嗚  &lt;/p&gt;
+&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl wttr.in&lt;/code&gt; &amp;amp;&amp;amp; &lt;code&gt;curl wttr.in/:help&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wttr.in"&gt;http://wttr.in&lt;/a&gt; &amp;amp;&amp;amp; &lt;a href="http://wttr.in/:help"&gt;http://wttr.in/:help&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;專案的原始碼在這：&lt;a href="https://github.com/chubin/wttr.in"&gt;https://github.com/chubin/wttr.in&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;介紹&lt;/h2&gt;
+&lt;p&gt;最簡單的用法就是 &lt;code&gt;curl wttr.in&lt;/code&gt;&lt;br&gt;
+或用網頁瀏覽器直接連到 &lt;a href="http://wttr.in"&gt;http://wttr.in&lt;/a&gt;&lt;br&gt;
+就會得到像這樣精美的 ASCII Art 天氣預報圖。  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="wttr-web" src="/files/wttr-in/wttr-web.jpg"&gt;&lt;br&gt;
+&lt;img alt="wttr-cli" src="/files/wttr-in/wttr-cli.jpg"&gt;  &lt;/p&gt;
+&lt;p&gt;但基本上要用等寬字型才會比較正確的顯示，&lt;br&gt;
+否則排版會亂掉。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;比較少人知道的功能&lt;/h2&gt;
+&lt;h3&gt;支援 UTF-8&lt;/h3&gt;
+&lt;p&gt;所以其實可以直接用中文  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;curl wttr.in/台北&lt;/code&gt; 或 &lt;a href="http://wttr.in/台北"&gt;http://wttr.in/台北&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;可以用不同的形式指定想查的城市天氣&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Supported location types:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;/paris                  # city name  &lt;/span&gt;
+&lt;span class="err"&gt;/~Eiffel+tower          # any location  &lt;/span&gt;
+&lt;span class="err"&gt;/Москва                 # Unicode name of any location in any language  &lt;/span&gt;
+&lt;span class="err"&gt;/muc                    # airport code (3 letters)  &lt;/span&gt;
+&lt;span class="err"&gt;/@stackoverflow.com     # domain name  &lt;/span&gt;
+&lt;span class="err"&gt;/94107                  # area codes  &lt;/span&gt;
+&lt;span class="err"&gt;/-78.46,106.79          # GPS coordinates&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;城市名稱（含 UTF-8，不一定要用英文）  &lt;/li&gt;
+&lt;li&gt;~地標  &lt;/li&gt;
+&lt;li&gt;機場代號  &lt;/li&gt;
+&lt;li&gt;@域名 （透過 DNS 去搜尋該域名所註冊的城市）  &lt;/li&gt;
+&lt;li&gt;IP 位址  &lt;/li&gt;
+&lt;li&gt;美國郵遞區號  &lt;/li&gt;
+&lt;li&gt;經緯度  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;支援不同語言顯示&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Localization:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl fr.wttr.in/Paris  
+$ curl wttr.in/paris?lang&lt;span class="o"&gt;=&lt;/span&gt;fr  
+$ curl -H &lt;span class="s2"&gt;&amp;quot;Accept-Language: fr&amp;quot;&lt;/span&gt; wttr.in/paris
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/blockquote&gt;
+&lt;p&gt;可以用中文顯示，&lt;br&gt;
+用法是這樣  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://zh.wttr.in/taipei"&gt;http://zh.wttr.in/taipei&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wttr.in/taipei?lang=zh"&gt;http://wttr.in/taipei?lang=zh&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl -H "Accept-Language: zh" wttr.in/taipei&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;不過這部份還在持續開發中，&lt;br&gt;
+目前是神奇的簡繁混雜的狀況。  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="wttr-cli-zh" src="/files/wttr-in/wttr-cli-zh.jpg"&gt;  &lt;/p&gt;
+&lt;p&gt;中文翻譯的 Issue &lt;a href="https://github.com/chubin/wttr.in/issues/83"&gt;在此&lt;/a&gt;&lt;br&gt;
+追了一下，&lt;br&gt;
+應該是中間的討論產生了一些誤解，&lt;br&gt;
+原本有人給簡中翻譯，&lt;br&gt;
+結果後來有人以為是繁中，&lt;br&gt;
+所以就變這樣哩，&lt;br&gt;
+是個可以發 PR 的機會。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;可以直接產生 PNG 圖片&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PNG options:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;/paris.png              # generate a PNG file  &lt;/span&gt;
+&lt;span class="err"&gt;?p                      # add frame arond the output  &lt;/span&gt;
+&lt;span class="err"&gt;?t                      # transparency 150  &lt;/span&gt;
+&lt;span class="err"&gt;transparency=...        # transparency from 0 to 255 (255 = not transparent)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="http://wttr.in/taipei.png"&gt;http://wttr.in/taipei.png&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;支援加邊框和調整透明度的參數&lt;br&gt;
+PS：圖片這邊也支援使用下面會提到的參數  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;可以接受參數&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Units:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;?m     # metric (SI) (used by default everywhere except US)  &lt;/span&gt;
+&lt;span class="err"&gt;?u     # USCS (used by default in US)  &lt;/span&gt;
+&lt;span class="err"&gt;?M     # show wind speed in m/s&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;View options:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;?0     # only current weather  &lt;/span&gt;
+&lt;span class="err"&gt;?1     # current weather + 1 day  &lt;/span&gt;
+&lt;span class="err"&gt;?2     # current weather + 2 days  &lt;/span&gt;
+&lt;span class="err"&gt;?n     # narrow version (only day and night)  &lt;/span&gt;
+&lt;span class="err"&gt;?q     # quiet version (no &amp;quot;Weather report&amp;quot; text)  &lt;/span&gt;
+&lt;span class="err"&gt;?Q     # superquiet version (no &amp;quot;Weather report&amp;quot;, no city name)  &lt;/span&gt;
+&lt;span class="err"&gt;?T     # switch terminal sequences off (no colors)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/blockquote&gt;
+&lt;p&gt;其實&lt;a href="https://github.com/chubin/wttr.in/blob/ac939032fd593b14584ce5c38a86a68026a0190a/share/help.txt"&gt;這程式有吃不少參數&lt;/a&gt;，&lt;br&gt;
+也可以用 &lt;code&gt;curl wttr.in/:help&lt;/code&gt; 直接查看。&lt;br&gt;
+傳參數給它的方法是接在問號後面，&lt;br&gt;
+像 &lt;code&gt;curl "wttr.in/taipei?0"&lt;/code&gt;&lt;br&gt;
+大家可以自己試試看，&lt;br&gt;
+這邊就不一一介紹了。  &lt;/p&gt;
+&lt;p&gt;我自己慣用的參數就以下這兩個：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;0&lt;/code&gt;: 只顯示現在天氣，不顯示未來幾天的預報  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;q&lt;/code&gt;: 讓輸出不會顯示 "Weather Report" 的字串  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;加上這兩個參數以後輸出就會變得非常簡潔乾淨，&lt;br&gt;
+很適合拿來放在 motd&lt;br&gt;
+&lt;code&gt;curl "wttr.in/taipei?0q"&lt;/code&gt;&lt;br&gt;
+&lt;img alt="wttr-cli-0q" src="/files/wttr-in/wttr-cli-0q.jpg"&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;可以接多個參數&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Options can be combined:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;/Paris?0pq  &lt;/span&gt;
+&lt;span class="err"&gt;/Paris?0pq&amp;amp;lang=fr  &lt;/span&gt;
+&lt;span class="err"&gt;/Paris_0pq.png          # in PNG the file mode are specified after _  &lt;/span&gt;
+&lt;span class="err"&gt;/Rome_0pq_lang=it.png   # long options are separated with underscore&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/blockquote&gt;
+&lt;p&gt;多個參數就直接接上去就好了，&lt;br&gt;
+&lt;code&gt;&amp;amp;&lt;/code&gt; 可加可不加，&lt;br&gt;
+除非遇到像有等號的 &lt;code&gt;lang=zh&lt;/code&gt; 才得加 &lt;code&gt;&amp;amp;&lt;/code&gt;&lt;br&gt;
+也就是說  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/taipei?0q&lt;/code&gt; 等同於 &lt;code&gt;/taipei?0&amp;amp;q&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;taipei?0&amp;amp;q&amp;amp;lang=zh&lt;/code&gt; 等同於 &lt;code&gt;/taipei?0q&amp;amp;lang=zh&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果是要 png 圖片的話要變這樣  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/taipei_0g.png&lt;/code&gt; 等同於 &lt;code&gt;/taipei_0&amp;amp;q.png&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/taipei_0&amp;amp;q&amp;amp;lang=zh.png&lt;/code&gt; 等同於 &lt;code&gt;/taipei_0q&amp;amp;lang=zh.png&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;可以包成一個簡單的 shell function&lt;/h3&gt;
+&lt;p&gt;官方有&lt;a href="https://github.com/chubin/wttr.in/blob/ac939032fd593b14584ce5c38a86a68026a0190a/share/bash-function.txt"&gt;推薦怎麼加一個簡單使用 wttr.in 的 bash function&lt;/a&gt;&lt;br&gt;
+也可以用 &lt;code&gt;curl "wttr.in/:bash.function"&lt;/code&gt; 來察看  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;wttr()  
+{  
+    # change Paris to your default location  
+    curl -H "Accept-Language: ${LANG%_*}" wttr.in/"${1:-Paris}"  
+}&lt;/code&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;很適合放在 shell 的 alias 裏面  &lt;/p&gt;
+&lt;p&gt;我自己是改成自訂性再高一點，&lt;br&gt;
+可以自己決定要帶什麼參數。  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="s s-Atom"&gt;#&lt;/span&gt; &lt;span class="nv"&gt;Weather&lt;/span&gt; &lt;span class="s s-Atom"&gt;in&lt;/span&gt; &lt;span class="s s-Atom"&gt;terminal&lt;/span&gt;  
+&lt;span class="s s-Atom"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;weather&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt;  
+&lt;span class="p"&gt;{&lt;/span&gt;  
+    &lt;span class="s s-Atom"&gt;curl&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="nv"&gt;H&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Accept-Language: ${LANG%_*}&amp;quot;&lt;/span&gt; &lt;span class="s s-Atom"&gt;wttr&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="s s-Atom"&gt;in/&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${1:-Taipei}?${2:-0q}&amp;quot;&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h3&gt;可以拿來看月亮圓缺&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Special locations:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;moon&lt;/span&gt;                   &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Moon&lt;/span&gt; &lt;span class="n"&gt;phase&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;US&lt;/span&gt; &lt;span class="n"&gt;or&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;France&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;these&lt;/span&gt; &lt;span class="n"&gt;cities&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;moon&lt;/span&gt;&lt;span class="mi"&gt;@2016&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;        &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Moon&lt;/span&gt; &lt;span class="n"&gt;phase&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;date&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;@2016&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/blockquote&gt;
+&lt;p&gt;最後這個是跟天氣比較不太相關的功能  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;curl wttr.in/moon&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;可以接受日期作為參數，&lt;br&gt;
+觀看不同時間的月相。  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;curl wttr.in/moon@2017-10-20&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;關於這功能的實作在這 &lt;a href="https://github.com/chubin/pyphoon"&gt;https://github.com/chubin/pyphoon&lt;/a&gt;，&lt;br&gt;
+是用 Python 撰寫的。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;補充&lt;/h2&gt;
+&lt;p&gt;程式的輸出其實來自另外一支用 Golang 寫的 CLI 程式，&lt;br&gt;
+&lt;a href="https://github.com/schachmat/wego"&gt;https://github.com/schachmat/wego&lt;/a&gt;&lt;br&gt;
+wttr.in 主要只是把 &lt;code&gt;wego&lt;/code&gt; 和 &lt;code&gt;pyphoon&lt;/code&gt; 的輸出以 web server 的方式呈現。  &lt;/p&gt;
+&lt;p&gt;然後它其實有點不太穩，&lt;br&gt;
+例如在寫這篇文章的時候，&lt;br&gt;
+大概寫了兩個半小時左右，&lt;br&gt;
+不知道為啥寫到最後 wttr.in 就掛了。&lt;code&gt;Q_Q&lt;/code&gt;&lt;br&gt;
+有興趣的人其實可以 fork 下來自己架（？&lt;br&gt;
+專案原始碼在這 &lt;a href="https://github.com/chubin/wttr.in"&gt;https://github.com/chubin/wttr.in&lt;/a&gt;。&lt;br&gt;
+用 Python 寫的，&lt;br&gt;
+Web server 用 Flask + gevent，&lt;br&gt;
+天氣的部份則是接 &lt;a href="https://developer.worldweatheronline.com/api/"&gt;WorldWeatherOnline API&lt;/a&gt; 來用。  &lt;/p&gt;</content><category term="CLI"></category><category term="Weather"></category></entry></feed>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - 7zip</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.7zip.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-26T14:19:00+08:00</updated><entry><title>Unzip 7zip file by p7zip on Arch Linux</title><link href="https://blog.m157q.tw/posts/2013/04/11/unzip-7zip-file-by-p7zip-on-arch-linux/" rel="alternate"></link><published>2013-04-11T18:34:00+08:00</published><updated>2015-10-26T14:19:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-04-11:/posts/2013/04/11/unzip-7zip-file-by-p7zip-on-arch-linux/</id><summary type="html">&lt;p&gt;組語作業給的 template 是用 &lt;code&gt;7zip&lt;/code&gt; 打包成副檔名為 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;組語作業給的 template 是用 &lt;code&gt;7zip&lt;/code&gt; 打包成副檔名為 &lt;code&gt;.7z&lt;/code&gt; 的檔案&lt;br&gt;
+為了寫 report 想要把 &lt;code&gt;.7z&lt;/code&gt; 的 file 解壓縮  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;因為習慣在 CLI 環境下工作&lt;br&gt;
+於是就 google 搜尋了一下有沒有相關的 command&lt;br&gt;
+然後找到了 &lt;a href="http://blog.xuite.net/michaelr/linux/17595860"&gt;Linux下解開7z丶7zip檔 @ 麥克星球 Linux Fedora 心得筆記 :: 隨意窩 Xuite日誌&lt;/a&gt;  &lt;/p&gt;
+&lt;h2&gt;Keyword: p7zip&lt;/h2&gt;
+&lt;p&gt;在 Arch Linux 下&lt;br&gt;
+&lt;code&gt;$ pacman -Ss p7zip&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;出現以下的訊息  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;extra/p7zip 9.20.1-6  &lt;/span&gt;
+&lt;span class="err"&gt;Command-line version of the 7zip compressed file archiver  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;接著就&lt;br&gt;
+&lt;code&gt;$ sudo pacman -S p7zip&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;安裝完畢之後會多一個 7z 的指令可以使用  &lt;/p&gt;
+&lt;p&gt;想看 man page 的話就&lt;br&gt;
+&lt;code&gt;$ man 7z&lt;/code&gt;&lt;br&gt;
+我是覺得沒有寫的很清楚啦  &lt;/p&gt;
+&lt;p&gt;所以我又去找了一些網站  &lt;/p&gt;
+&lt;p&gt;底下這個網站有些簡單易懂的範例&lt;br&gt;
+&lt;a href="https://www.ibm.com/developerworks/community/blogs/6e6f6d1b-95c3-46df-8a26-b7efd8ee4b57/entry/how_to_use_7zip_on_linux_command_line144?lang=en"&gt;How to use 7zip on Linux command Line (Real world open source)&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;不過還是沒找到我想要的  &lt;/p&gt;
+&lt;p&gt;如果我直接下&lt;br&gt;
+&lt;code&gt;$ 7z e xxx.7z&lt;/code&gt;&lt;br&gt;
+就會有悲劇發生  &lt;/p&gt;
+&lt;p&gt;xxx.7z 裏面的東西會全部跟我的當前資料夾所有東西混在一起!!&lt;br&gt;
+所以要怎樣才能讓 7z 在解壓縮一個檔案的時候順便新建一個資料夾把檔案都塞進去呢?&lt;br&gt;
+我 google 到了有人問了同樣的問題(果然不是只有我笨)&lt;br&gt;
+&lt;a href="http://superuser.com/questions/95902/7-zip-and-unzipping-from-command-line"&gt;7 zip - 7-Zip and unzipping from command line - Super User&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;結果原來只要&lt;br&gt;
+&lt;code&gt;$ 7z x xxx.7z&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;沒錯 只要把 e 改成 x 就好了  &lt;/p&gt;
+&lt;p&gt;後來看到其實在 man page 有寫了這些東西  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;FUNCTION LETTERS  &lt;/span&gt;
+&lt;span class="err"&gt;     a Add  &lt;/span&gt;
+&lt;span class="err"&gt;     d Delete  &lt;/span&gt;
+&lt;span class="err"&gt;     e Extract  &lt;/span&gt;
+&lt;span class="err"&gt;     l List  &lt;/span&gt;
+&lt;span class="err"&gt;     t Test  &lt;/span&gt;
+&lt;span class="err"&gt;     u Update  &lt;/span&gt;
+&lt;span class="err"&gt;     x eXtract with full paths  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;沒錯 就是最後那行! x!  &lt;/p&gt;
+&lt;p&gt;總之就是這樣 以後解壓縮 .7z 的 file 也跟 .tar .zip 那些檔案一樣&lt;br&gt;
+用 CLI 就可以解決啦  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://blog.xuite.net/michaelr/linux/17595860"&gt;Linux下解開7z丶7zip檔 @ 麥克星球 Linux Fedora 心得筆記 :: 隨意窩 Xuite日誌&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ibm.com/developerworks/community/blogs/6e6f6d1b-95c3-46df-8a26-b7efd8ee4b57/entry/how_to_use_7zip_on_linux_command_line144?lang=en"&gt;How to use 7zip on Linux command Line (Real world open source)&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://superuser.com/questions/95902/7-zip-and-unzipping-from-command-line"&gt;7 zip - 7-Zip and unzipping from command line - Super User&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="7zip"></category><category term="CLI"></category></entry></feed>

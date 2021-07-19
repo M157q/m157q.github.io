@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - gofmt</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.gofmt.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-01-18T03:11:54+08:00</updated><entry><title>嘗試在 Python 中做到 Golang fmt 的效果</title><link href="https://blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/" rel="alternate"></link><published>2018-01-03T23:54:54+08:00</published><updated>2018-01-18T03:11:54+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-01-03:/posts/2018/01/03/try-to-do-gofmt-in-python/</id><summary type="html">&lt;p&gt;嘗試兜出一個在撰寫 Python 程式碼的時也能像 &lt;code&gt;gofmt&lt;/code&gt; 這樣方便的 code formatter。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;去年開始學 Golang，但早在這之前就已經聽過很多 Gopher 說過 &lt;code&gt;gofmt&lt;/code&gt; 有多麼方便，當 Pythonista 還在靠 syntax checker 和自制力來遵守 &lt;a href="https://www.python.org/dev/peps/pep-0008/"&gt;PEP8&lt;/a&gt; 的時候，Gopher 根本都不用管什麼 coding style，不管你是怎麼寫的，只要寫好之後用 &lt;code&gt;gofmt&lt;/code&gt; 執行一下，就可以自動幫你把程式碼排版排好，還可以順便幫你檢查錯誤。  &lt;/p&gt;
+&lt;p&gt;故事起源於 2016 底，和平常不是寫 Python 的朋友一起弄了一個用 Python 寫的 side project，因為朋友平常不是寫 Python 的，然後那陣子他又剛好在寫 Golang，覺得要遵守 PEP8 很麻煩，所以問我 Python 有沒有類似 &lt;code&gt;go fmt&lt;/code&gt; 的工具。  &lt;/p&gt;
+&lt;p&gt;當下想了一下好像還真的沒有，頂多就是像 &lt;code&gt;pep8&lt;/code&gt;, &lt;code&gt;flake8&lt;/code&gt;, &lt;code&gt;pyflakes&lt;/code&gt; 這類的 syntax checker 而已，好像沒聽聞過什麼好用的 code formatter，也因為這樣，所以開始想辦法做到這件事。  &lt;/p&gt;
+&lt;p&gt;當然真的去查了之後發現還是有的，但使用起來不盡理想。於是找了些現成的程式兜一兜，再加上 git pre-commit hook 後，最後算是勉強做到了，當下有做個凌亂的紀錄，但一直沒有整理成一篇文章，利用最近離職後比較閒的時間，把它整理紀錄一下。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;紀錄&lt;/h2&gt;
+&lt;p&gt;當時一開始是直接找到 GitHub 上的這個 repo: &lt;a href="https://github.com/Psycojoker/pyfmt"&gt;GitHub - Psycojoker/pyfmt: automatic code formatter for python following pep8 using baron FST, like gofmt&lt;/a&gt;。  &lt;/p&gt;
+&lt;p&gt;看起來好像不錯，但實際上使用起來有滿多問題的，而且作者又用了另外一個自己寫的 Python Full Syntax Tree library: &lt;a href="https://github.com/PyCQA/baron"&gt;GitHub - PyCQA/baron: IDE allow you to refactor code, Baron allows you to write refactoring code.&lt;/a&gt;，當時因為急著找現成的工具來用，所以就沒有多花時間研究。但後來才發現 PyCQA 裡頭的工具都滿不錯的: &lt;a href="https://github.com/PyCQA"&gt;Python Code Quality Authority · GitHub&lt;/a&gt;，基本上都是用來提升 Python 程式碼品質的工具，滿推薦寫 Python 的人看一下的。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;之後試了幾個工具以後，最後變成 &lt;code&gt;autoflake&lt;/code&gt; + &lt;code&gt;isort&lt;/code&gt; + &lt;code&gt;autopep8&lt;/code&gt; + git pre-commit hook 來做到這件事，老實說真的有點繁瑣，但我找不到更好的方法，如果有人知道的話還請不吝告知。  &lt;/p&gt;
+&lt;p&gt;總之，接下來稍微介紹一下這幾個工具分別做了哪些事：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;autoflake&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/myint/autoflake"&gt;GitHub - myint/autoflake: Removes unused imports and unused variables as reported by pyflakes&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;就如同其 GitHub 的敘述，可以把沒有用到的 &lt;code&gt;import&lt;/code&gt; 和變數移除。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isort&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/timothycrosley/isort"&gt;GitHub - timothycrosley/isort: A Python utility / library to sort imports.&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;可以針對 Python 的 imports 做符合 PEP8 的字母序排序。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;autopep8&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhatto/autopep8"&gt;GitHub - hhatto/autopep8: A tool that automatically formats Python code to conform to the PEP 8 style guide.&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;可以將 Python 程式碼自動以符合 PEP8 的方式排版。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;git pre-commit hook  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks"&gt;Git - Git Hooks&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;pre-commit hook 的觸發時間是在使用者下 &lt;code&gt;git commit&lt;/code&gt; 後，編寫 commit message 之前。  &lt;/li&gt;
+&lt;li&gt;這裡是用來確保使用者每次 commit 的 Python 程式碼會被以上這三種程式處理過。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;後來發現 Google 也出了一個 Python formatter: &lt;a href="https://github.com/google/yapf"&gt;GitHub - google/yapf: A formatter for Python files&lt;/a&gt;，用了以後覺得比 &lt;code&gt;autopep8&lt;/code&gt; 好用，所以就把 &lt;code&gt;autopep8&lt;/code&gt; 換成 &lt;code&gt;yapf&lt;/code&gt; 了：&lt;a href="https://github.com/pellaeon/fengyuan/commit/abc9fc995a9c49fa208716954c2bc262fe6b783e"&gt;Use yapf instead of autopep8 as python code formatter. · pellaeon/fengyuan@abc9fc9 · GitHub&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;結果&lt;/h2&gt;
+&lt;p&gt;最後的結果就是整合到一個 git pre-commit hook 裡頭，麻煩的是 clone 下來以後，得用這個指令初始化 git pre-commit hook：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;ln -sf ../../pre-commit.sh .git/hooks/pre-commit  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其實還是很麻煩，之後應該會再繼續尋找有沒有更方便的方法，不排除自己寫一個就是。  &lt;/p&gt;
+&lt;p&gt;最後的結果就是一個 git pre-commit hook：&lt;a href="https://github.com/pellaeon/fengyuan/blob/master/pre-commit.sh"&gt;fengyuan/pre-commit.sh at master · pellaeon/fengyuan · GitHub&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;以下直接複製貼上原程式碼留個紀錄，以防哪天 GitHub 掛了。  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/bin/sh  &lt;/span&gt;
+&lt;span class="c1"&gt;#  &lt;/span&gt;
+&lt;span class="c1"&gt;# An example hook script to verify what is about to be committed.  &lt;/span&gt;
+&lt;span class="c1"&gt;# Called by &amp;quot;git commit&amp;quot; with no arguments.  The hook should  &lt;/span&gt;
+&lt;span class="c1"&gt;# exit with non-zero status after issuing an appropriate message if  &lt;/span&gt;
+&lt;span class="c1"&gt;# it wants to stop the commit.  &lt;/span&gt;
+&lt;span class="c1"&gt;#  &lt;/span&gt;
+&lt;span class="c1"&gt;# To enable this hook, rename this file to &amp;quot;pre-commit&amp;quot;.  &lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; git rev-parse --verify HEAD &amp;gt;/dev/null &lt;span class="m"&gt;2&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;  
+&lt;span class="k"&gt;then&lt;/span&gt;  
+    &lt;span class="nv"&gt;against&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;HEAD  
+&lt;span class="k"&gt;else&lt;/span&gt;  
+    &lt;span class="c1"&gt;# Initial commit: diff against an empty tree object  &lt;/span&gt;
+    &lt;span class="nv"&gt;against&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;4b825dc642cb6eb9a060e54bf8d69288fbee4904  
+&lt;span class="k"&gt;fi&lt;/span&gt;  
+
+&lt;span class="c1"&gt;# If you want to allow non-ASCII filenames set this variable to true.  &lt;/span&gt;
+&lt;span class="nv"&gt;allownonascii&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;git config --bool hooks.allownonascii&lt;span class="k"&gt;)&lt;/span&gt;  
+
+&lt;span class="c1"&gt;# Redirect output to stderr.  &lt;/span&gt;
+&lt;span class="nb"&gt;exec&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&amp;gt;&lt;span class="p"&gt;&amp;amp;&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;  
+
+&lt;span class="c1"&gt;# Cross platform projects tend to avoid non-ASCII filenames; prevent  &lt;/span&gt;
+&lt;span class="c1"&gt;# them from being added to the repository. We exploit the fact that the  &lt;/span&gt;
+&lt;span class="c1"&gt;# printable range starts at the space character and ends with tilde.  &lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$allownonascii&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; !&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;true&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt;  
+    &lt;span class="c1"&gt;# Note that the use of brackets around a tr range is ok here, (it&amp;#39;s  &lt;/span&gt;
+    &lt;span class="c1"&gt;# even required, for portability to Solaris 10&amp;#39;s /usr/bin/tr), since  &lt;/span&gt;
+    &lt;span class="c1"&gt;# the square bracket bytes happen to fall in the designated range.  &lt;/span&gt;
+    &lt;span class="nb"&gt;test&lt;/span&gt; &lt;span class="k"&gt;$(&lt;/span&gt;git diff --cached --name-only --diff-filter&lt;span class="o"&gt;=&lt;/span&gt;A -z &lt;span class="nv"&gt;$against&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt;  
+      &lt;span class="nv"&gt;LC_ALL&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;C tr -d &lt;span class="s1"&gt;&amp;#39;[ -~]\0&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; wc -c&lt;span class="k"&gt;)&lt;/span&gt; !&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;0&lt;/span&gt;  
+&lt;span class="k"&gt;then&lt;/span&gt;  
+    cat &lt;span class="s"&gt;&amp;lt;&amp;lt;\EOF  &lt;/span&gt;
+&lt;span class="s"&gt;Error: Attempt to add a non-ASCII file name.  &lt;/span&gt;
+
+&lt;span class="s"&gt;This can cause problems if you want to work with people on other platforms.  &lt;/span&gt;
+
+&lt;span class="s"&gt;To be portable it is advisable to rename the file.  &lt;/span&gt;
+
+&lt;span class="s"&gt;If you know what you are doing you can disable this check using:  &lt;/span&gt;
+
+&lt;span class="s"&gt;  git config hooks.allownonascii true  &lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;  
+    &lt;span class="nb"&gt;exit&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;  
+&lt;span class="k"&gt;fi&lt;/span&gt;  
+
+&lt;span class="c1"&gt;# Run syntax checker and formatter for Python files.  &lt;/span&gt;
+&lt;span class="nv"&gt;STAGED_PYTHON_FILES&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;git diff --cached --name-only HEAD &lt;span class="s2"&gt;&amp;quot;*.py&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;  
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$STAGED_PYTHON_FILES&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; !&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;  
+&lt;span class="k"&gt;then&lt;/span&gt;  
+    autoflake -i --remove-all-unused-imports --remove-unused-variables &lt;span class="nv"&gt;$STAGED_PYTHON_FILES&lt;/span&gt;  
+    isort -y &lt;span class="nv"&gt;$STAGED_PYTHON_FILES&lt;/span&gt;  
+    yapf -i &lt;span class="nv"&gt;$STAGED_PYTHON_FILES&lt;/span&gt;  
+    git add &lt;span class="nv"&gt;$STAGED_PYTHON_FILES&lt;/span&gt;  
+&lt;span class="k"&gt;fi&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;參考來源&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/Psycojoker/pyfmt"&gt;GitHub - Psycojoker/pyfmt: automatic code formatter for python following pep8 using baron FST, like gofmt&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/PyCQA/baron"&gt;GitHub - PyCQA/baron: IDE allow you to refactor code, Baron allows you to write refactoring code.&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/myint/autoflake"&gt;GitHub - myint/autoflake: Removes unused imports and unused variables as reported by pyflakes&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/timothycrosley/isort"&gt;GitHub - timothycrosley/isort: A Python utility / library to sort imports.&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hhatto/autopep8"&gt;GitHub - hhatto/autopep8: A tool that automatically formats Python code to conform to the PEP 8 style guide.&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks"&gt;Git - Git Hooks&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/yapf"&gt;GitHub - google/yapf: A formatter for Python files&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pellaeon/fengyuan/commit/abc9fc995a9c49fa208716954c2bc262fe6b783e"&gt;Use yapf instead of autopep8 as python code formatter. · pellaeon/fengyuan@abc9fc9 · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pellaeon/fengyuan/commit/2de3e199f2193ea25f4cd5bbb7f89673879862c6"&gt;Add git pre-commit hook for python files. · pellaeon/fengyuan@2de3e19 · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pellaeon/fengyuan/blob/master/pre-commit.sh"&gt;fengyuan/pre-commit.sh at master · pellaeon/fengyuan · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category><category term="formatter"></category><category term="Golang"></category><category term="gofmt"></category><category term="2018 iT 邦幫忙鐵人賽"></category></entry></feed>

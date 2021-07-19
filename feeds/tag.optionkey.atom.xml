@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - OptionKey</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.optionkey.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2014-07-09T18:46:00+08:00</updated><entry><title>Use Option Key as Meta in iTerm2 and Terminal on Mac</title><link href="https://blog.m157q.tw/posts/2014/07/09/use-option-key-as-meta-in-iterm2-and-terminal-on-mac/" rel="alternate"></link><published>2014-07-09T18:46:00+08:00</published><updated>2014-07-09T18:46:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-07-09:/posts/2014/07/09/use-option-key-as-meta-in-iterm2-and-terminal-on-mac/</id><summary type="html">&lt;p&gt;I am learning some bash …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I am learning some bash shortcut keys in emacs mode in order to become a better sysytem administrator and just found that Alt+* shortcut keys can't be used in my MacBook Air within iTerm2 and default Terminal.  &lt;/p&gt;
+&lt;p&gt;Here are solutions below.  &lt;/p&gt;
+&lt;!--more--&gt;
+
+&lt;hr&gt;
+&lt;h3&gt;iTerm2&lt;/h3&gt;
+&lt;p&gt;According to this post &lt;a href="http://stackoverflow.com/questions/18923765/bash-keyboard-shortcuts-in-iterm-like-altd-and-altf"&gt;Bash keyboard shortcuts in iTerm like Alt+d and Alt+f &lt;/a&gt;.  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Command + O&lt;/code&gt; to open the iTerm2 profiles  &lt;/li&gt;
+&lt;li&gt;Click Edit Profiles  &lt;/li&gt;
+&lt;li&gt;Choose left option key as &lt;code&gt;+Esc&lt;/code&gt; or both left and right option key on the bottom right corner  &lt;/li&gt;
+&lt;li&gt;Close the iTerm2 Profiles  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It should works.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Terminal&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;Command + ,&lt;/code&gt; to open the Settings of Terminal  &lt;/li&gt;
+&lt;li&gt;Check &lt;code&gt;Use option as meta key&lt;/code&gt; on the bottom  &lt;/li&gt;
+&lt;li&gt;Close Terminal Settings  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;It should works.  &lt;/p&gt;</content><category term="Mac"></category><category term="terminal"></category><category term="iTerm2"></category><category term="MetaKey"></category><category term="OptionKey"></category></entry></feed>

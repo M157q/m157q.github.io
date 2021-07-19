@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - NeoVim</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.neovim.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-07-23T05:02:21+08:00</updated><entry><title>Use my old vimrc for NeoVim</title><link href="https://blog.m157q.tw/posts/2018/07/23/use-my-old-vimrc-for-neovim/" rel="alternate"></link><published>2018-07-23T05:02:21+08:00</published><updated>2018-07-23T05:02:21+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-07-23:/posts/2018/07/23/use-my-old-vimrc-for-neovim/</id><summary type="html">&lt;p&gt;Just need some modifications and we are good to go for using old vimrc for NeoVim.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;Lately, I am trying to use NeoVim instead of Vim.
+Yet, I am too lazy to write a new config for NeoVim, just want to use the &lt;code&gt;vimrc&lt;/code&gt; I am using.
+I've been using Vundle as my Vim plugin manager for a long time and I want to use it as my NeoVim plugin manager as well.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Note&lt;/h2&gt;
+&lt;h4&gt;NeoVim use &lt;code&gt;~/.config/nvim/init.vim&lt;/code&gt; as user config file.&lt;/h4&gt;
+&lt;p&gt;Add soft link so we can make Vim and NeoVim share the same config file.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mkdir -p ~/.config/nvim&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ln -s ~/.vimrc ~/.config/nvim/init.vim&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Some modifications for &lt;code&gt;vimrc&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Add these lines at first of &lt;code&gt;vimrc&lt;/code&gt; for Vundle to use different dir for Vim and NeoVim.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;if has(&amp;#39;nvim&amp;#39;)&lt;/span&gt;
+&lt;span class="err"&gt;    let s:editor_root=expand(&amp;quot;~/.config/nvim&amp;quot;)&lt;/span&gt;
+&lt;span class="err"&gt;    set rtp+=~/.config/nvim/bundle/Vundle.vim&lt;/span&gt;
+&lt;span class="err"&gt;else&lt;/span&gt;
+&lt;span class="err"&gt;    let s:editor_root=expand(&amp;quot;~/.vim&amp;quot;)&lt;/span&gt;
+&lt;span class="err"&gt;    set rtp+=~/.vim/bundle/Vundle.vim&lt;/span&gt;
+&lt;span class="err"&gt;endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Add this line before &lt;code&gt;call vundle#begin()&lt;/code&gt; in &lt;code&gt;vimrc&lt;/code&gt; to make Vundle use different dir for Vim and NeoVim.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;call vundle#rc(s:editor_root . &amp;#39;/bundle&amp;#39;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That's it.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://arusahni.net/blog/2015/03/switching-to-neovim-part-1.html"&gt;Switching to NeoVim (Part 1) | AruSahni.net&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://arusahni.net/blog/2015/04/switching-to-neovim-part-2.html"&gt;Switching to NeoVim (Part 2) | AruSahni.net&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Vim"></category><category term="NeoVim"></category><category term="Vundle"></category></entry></feed>

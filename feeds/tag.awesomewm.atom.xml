@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - awesomewm</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.awesomewm.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T15:27:00+08:00</updated><entry><title>Font Config in Arch Linux</title><link href="https://blog.m157q.tw/posts/2013/02/16/font-config-in-arch-linux/" rel="alternate"></link><published>2013-02-16T12:29:00+08:00</published><updated>2015-10-28T15:27:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-02-16:/posts/2013/02/16/font-config-in-arch-linux/</id><summary type="html">&lt;p&gt;漂亮的字型對一個好的使用環境來講真的非常重要  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;中文字型我慣用 &lt;code&gt;LiHei Pro&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;英數字型我慣用 …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;漂亮的字型對一個好的使用環境來講真的非常重要  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;中文字型我慣用 &lt;code&gt;LiHei Pro&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;英數字型我慣用 &lt;code&gt;Monaco&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;這幾天剛用 awesome window manager&lt;br&gt;
+一直在想辦法讓預設的字型變好看  &lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;在 &lt;code&gt;~/.config/awesome/rc.lua&lt;/code&gt; 中，加入 &lt;code&gt;awesome.font = "LiHei Pro 12"&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;在 &lt;code&gt;~/.config/awesome/themes/default/theme.lua&lt;/code&gt; 中，加入 &lt;code&gt;theme.font = "LiHei Pro 10"&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除了這兩個之外 其他以 gtk 開啟的程式預設字型真的很醜= ="&lt;br&gt;
+找了好多篇文章 最後發現應該加上 &lt;code&gt;~/.fonts.conf&lt;/code&gt; 就行了&lt;br&gt;
+參考了以下這三篇 Archwiki 的 section 之後  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Fonts#Fallback_font_order_with_X11"&gt;Fonts - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Font_configuration/Examples"&gt;Font configuration/Examples - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Chromium#Font_Rendering"&gt;Chromium - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;我的 &lt;code&gt;~/.fonts.conf&lt;/code&gt; 目前長這樣  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;&lt;/span&gt;  
+&lt;span class="cp"&gt;&amp;lt;!DOCTYPE fontconfig SYSTEM &amp;quot;fonts.dtd&amp;quot;&amp;gt;&lt;/span&gt;  
+
+&lt;span class="nt"&gt;&amp;lt;fontconfig&amp;gt;&lt;/span&gt;  
+&lt;span class="c"&gt;&amp;lt;!-- set font --&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;alias&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;family&amp;gt;&lt;/span&gt;serif&lt;span class="nt"&gt;&amp;lt;/family&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;prefer&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;family&amp;gt;&lt;/span&gt;Monaco&lt;span class="nt"&gt;&amp;lt;/family&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;family&amp;gt;&lt;/span&gt;LiHei Pro&lt;span class="nt"&gt;&amp;lt;/family&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/prefer&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/alias&amp;gt;&lt;/span&gt;  
+
+&lt;span class="nt"&gt;&amp;lt;alias&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;family&amp;gt;&lt;/span&gt;Sans-serif&lt;span class="nt"&gt;&amp;lt;/family&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;prefer&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;family&amp;gt;&lt;/span&gt;Monaco&lt;span class="nt"&gt;&amp;lt;/family&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;family&amp;gt;&lt;/span&gt;LiHei Pro&lt;span class="nt"&gt;&amp;lt;/family&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/prefer&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/alias&amp;gt;&lt;/span&gt;  
+
+&lt;span class="nt"&gt;&amp;lt;alias&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;family&amp;gt;&lt;/span&gt;monospace&lt;span class="nt"&gt;&amp;lt;/family&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;prefer&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;family&amp;gt;&lt;/span&gt;Monaco&lt;span class="nt"&gt;&amp;lt;/family&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/prefer&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/alias&amp;gt;&lt;/span&gt;  
+
+&lt;span class="c"&gt;&amp;lt;!-- Chromium fonts rendering from archwiki-chromium --&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;match&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;autohint&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;bool&amp;gt;&lt;/span&gt;true&lt;span class="nt"&gt;&amp;lt;/bool&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hinting&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;bool&amp;gt;&lt;/span&gt;true&lt;span class="nt"&gt;&amp;lt;/bool&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hintstyle&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;const&amp;gt;&lt;/span&gt;hintslight&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/match&amp;gt;&lt;/span&gt;  
+
+&lt;span class="c"&gt;&amp;lt;!-- make the font looks perfect from  &lt;/span&gt;
+&lt;span class="c"&gt;tps://wiki.archlinux.org/index.php/Font_Configuration/fontconfig_Examples --&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;match&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font&amp;quot;&lt;/span&gt; &lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;autohint&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  &lt;span class="nt"&gt;&amp;lt;bool&amp;gt;&lt;/span&gt;true&lt;span class="nt"&gt;&amp;lt;/bool&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hinting&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;   &lt;span class="nt"&gt;&amp;lt;bool&amp;gt;&lt;/span&gt;false&lt;span class="nt"&gt;&amp;lt;/bool&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lcdfilter&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;&amp;lt;const&amp;gt;&lt;/span&gt;lcddefault&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hintstyle&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;&amp;lt;const&amp;gt;&lt;/span&gt;hintslight&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;antialias&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;&amp;lt;bool&amp;gt;&lt;/span&gt;true&lt;span class="nt"&gt;&amp;lt;/bool&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rgba&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;      &lt;span class="nt"&gt;&amp;lt;const&amp;gt;&lt;/span&gt;rgb&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/match&amp;gt;&lt;/span&gt;  
+
+&lt;span class="nt"&gt;&amp;lt;match&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;test&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pixelsize&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;qual=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;any&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;compare=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;more&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;double&amp;gt;&lt;/span&gt;15&lt;span class="nt"&gt;&amp;lt;/double&amp;gt;&amp;lt;/test&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lcdfilter&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;const&amp;gt;&lt;/span&gt;lcdlight&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hintstyle&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;const&amp;gt;&lt;/span&gt;hintnone&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/match&amp;gt;&lt;/span&gt;  
+
+&lt;span class="nt"&gt;&amp;lt;match&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;test&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;weight&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;compare=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;more&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;const&amp;gt;&lt;/span&gt;medium&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/test&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hintstyle&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;const&amp;gt;&lt;/span&gt;hintnone&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lcdfilter&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;const&amp;gt;&lt;/span&gt;lcdlight&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/match&amp;gt;&lt;/span&gt;  
+
+&lt;span class="nt"&gt;&amp;lt;match&lt;/span&gt; &lt;span class="na"&gt;target=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;test&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;slant&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;compare=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;not_eq&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;double&amp;gt;&lt;/span&gt;0&lt;span class="nt"&gt;&amp;lt;/double&amp;gt;&amp;lt;/test&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;hintstyle&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;const&amp;gt;&lt;/span&gt;hintnone&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;edit&lt;/span&gt; &lt;span class="na"&gt;mode=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;assign&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;lcdfilter&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;const&amp;gt;&lt;/span&gt;lcdlight&lt;span class="nt"&gt;&amp;lt;/const&amp;gt;&amp;lt;/edit&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/match&amp;gt;&lt;/span&gt;  
+&lt;span class="nt"&gt;&amp;lt;/fontconfig&amp;gt;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;結果這些都弄完了以後 發現有些地方還是沒改到...  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Error" src="/files/font-config-in-arch-linux/error.png"&gt;  &lt;/p&gt;
+&lt;p&gt;這我真的不知道要怎麼改了Orz  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Fonts#Fallback_font_order_with_X11"&gt;Fonts - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Font_configuration/Examples"&gt;Font configuration/Examples - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Chromium#Font_Rendering"&gt;Chromium - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="awesomewm"></category><category term="font"></category></entry></feed>

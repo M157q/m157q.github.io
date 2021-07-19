@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  AWSUGTW Meetup 10th Note
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/04/19/awsugtw-meetup-10th-note/" rel="bookmark" title="Permalink to AWSUGTW Meetup 10th Note">AWSUGTW Meetup 10th Note</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for 2016/04/19 AWSUGTW Meetup 10th</p>
+  </blockquote>
+  <div>
+    <p><a href="http://awsugtw.kktix.cc/events/10-tpe">http://awsugtw.kktix.cc/events/10-tpe</a>  </p>
+<hr>
+<h1>Best practices for AWS ECS and Serverless</h1>
+<h2>Speaker: Pahud</h2>
+<h3>AWS EC2 Container Service (ECS)</h3>
+<ul>
+<li>ECS Cluster  <ul>
+<li>ASG (Auto Scaling Group)  <ul>
+<li>on-demand  </li>
+<li>spot instance (85% off compare to on demand ASG)  </li>
+</ul>
+</li>
+<li>CloudWatch  </li>
+</ul>
+</li>
+<li>Auto Scaling Policy Design  <ul>
+<li><code>30%-60%</code>: scale out spot  </li>
+<li><code>&gt;= 60%</code>: scale out on-demand  </li>
+<li><code>below 30%</code>: scale in spot  </li>
+<li>Simple tip  <ul>
+<li>on-demand 打底，spot 伸縮。  </li>
+<li>spot fleet if you need couples of instances (for RTB)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://aws.amazon.com/sqs/">SQS (Job queue)</a>  </li>
+<li><a href="https://aws.amazon.com/elasticloadbalancing/">internal / external ELB</a>  </li>
+<li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/QuickStartEC2Instance.html">CloudWatch Logs Agent</a>  <ul>
+<li>Chat Ops  </li>
+</ul>
+</li>
+<li><a href="https://aws.amazon.com/ecr/">ECR - EC2 Container Registry</a>  </li>
+</ul>
+<h3><a href="http://www.slideshare.net/JulienSIMON5/amazon-ecs-january-2016/12">Load Balancing on Random Ports</a></h3>
+<ul>
+<li>Meteor Galaxy  <ul>
+<li>session-aware with random ports  </li>
+</ul>
+</li>
+</ul>
+<h3>Is there a way to move code in cloud native way?</h3>
+<ul>
+<li>"No server is easier to manage than no server."  </li>
+<li>Event-driven Cloud Computing  </li>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html">AWS Lambda</a>  </li>
+<li><a href="https://aws.amazon.com/api-gateway/">AWS API Gateway</a>  </li>
+<li><a href="https://aws.amazon.com/kinesis/streams/">Amazon Kinesis</a>  <ul>
+<li>persistent  </li>
+</ul>
+</li>
+<li><a href="https://aws.amazon.com/dynamodb/">DynamoDB</a>  <ul>
+<li>可以搭配 AWS Lambda 使用，幫忙 Archive  </li>
+</ul>
+</li>
+<li><a href="https://aws.amazon.com/cloudtrail/">AWS CloudTrail</a>  </li>
+<li><a href="https://aws.amazon.com/sns/">AWS SNS</a>  </li>
+</ul>
+<h3>Mobile Integration</h3>
+<p>手機安裝 SDK，可以直接使用 AWS Lambda<br>
+支援 RequestResponse(Sync), Event(Async)<br>
+可以直接丟 json payload  </p>
+<p>如果不要直接跟 AWS Lambda 互動的話<br>
+可以透過 API Gateway 使用 HTTPS RESTful API  </p>
+<p>可以使用 Service Proxy Integration<br>
+透過 IAM assume role 去達成  </p>
+<h3>API Gateway Call Flow</h3>
+<div class="highlight"><pre><span></span><span class="err">User =&gt;  </span>
+<span class="err">Internet =&gt;  </span>
+<span class="err">Amazon CloudFront (保證最佳 routing) =&gt;  </span>
+<span class="err">API Gateway =&gt; API Gateway Cache  </span>
+<span class="err">            =&gt; Amazon CloudWatch Monitoring  </span>
+<span class="err">            =&gt; Endpoints on Amazon EC2  </span>
+<span class="err">            =&gt; Any other accessible pubilc data.  </span>
+</pre></div>
+
+
+<h3>Pros and Cons</h3>
+<ul>
+<li>Pros  <ul>
+<li>cloud native with you business code in AWS Lambda  </li>
+<li>不需要維護 infra  </li>
+<li>leverage AWS PaaS infrastructure at scale  </li>
+<li>custom or federated authorization  <ul>
+<li>接到 request 後，可以先丟到某個 AWS Lambda 作 Authorization 當作 Authorization module  </li>
+<li>或是 AWS Lamdba 轉到預先寫好的或已經存在的認証系統請求 Authorization  </li>
+</ul>
+</li>
+<li>very minimal cost for small-medium teams  <ul>
+<li>AWS Lambda: 30M requests $11.53  </li>
+<li>AWS API Gateway: 1M requests $4.23  </li>
+<li><a href="http://www.slideshare.net/CaseyLee2/serverless-delivery">http://www.slideshare.net/CaseyLee2/serverless-delivery</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cons - Lambda Limit  <ul>
+<li>Lambda soft limit concurrency is 100  <ul>
+<li>調高的話必須要申請，預設是只有 100，為了防止你不小心寫錯程式導致帳單爆表 (?)  </li>
+<li>300 seconds max duration per invocation  </li>
+<li>Lambda in VPC restriction  <ul>
+<li>Private IP addresses  </li>
+<li>ENIC limit (default 20*5 == 100)  <ul>
+<li>會用掉一張虛擬網卡  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cons - API Gateway is Expensive  <ul>
+<li>500-1000 QPS per AWS Account  </li>
+<li>5M requests/month == $18.79  </li>
+<li>100 QPS == $974.07/month == 31,350 NTD  </li>
+</ul>
+</li>
+<li>Cons - Performance  <ul>
+<li>push and pull invocation model of Lambda  </li>
+<li>-&gt; delegation with higher memory  <ul>
+<li>用一個專門的 AWS Lambda，只從 stream 抓東西出來，丟給別的 AWS Lambda 做邏輯處理。  </li>
+</ul>
+</li>
+<li>No connection pooling  <ul>
+<li>Container 只有在第一次啟動的時候會 loading 最一開始初始化的部份  </li>
+<li>之後被 reuse 的時候會直接進 handler  </li>
+<li>所以不要把 conneciton 放在 code 一開始的部份，否則很可能會常常看到 conneciton 沒有正常 close，造成 TCP overhead.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cons - Development  <ul>
+<li>CloudWatch debugging is slow.  </li>
+<li>Immature CI/CD toolchains  </li>
+<li>lack of PHP, Ruby and Golang  </li>
+<li>re-deploy the whole bundle could be a pain.  <ul>
+<li>萬一 bundle 的大小超過 20~30 MB 的話有個解法  <ul>
+<li>把 bundle 丟到 S3 裡面後，寫支 AWS Lamdba 幫你把這包 bundle 丟到另外一個 AWS Lambda 做處理  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>When should I use ECS and when for Serverless?</h3>
+<ul>
+<li>When to use ECS  <ul>
+<li>Financial concern - When you have traffic more than 100+ QPS  </li>
+<li>Operation concern - Long running process or API service  </li>
+<li>Language concern - Golang, PHP, Ruby, etc.  </li>
+<li>Performance concern  </li>
+<li>Protocol concern  </li>
+</ul>
+</li>
+<li>When to use Serverless  <ul>
+<li>Small project, simple business logic  </li>
+<li>focus on the code only  </li>
+<li>no infra management  </li>
+<li>stateless  </li>
+<li>quick micro services implementation  </li>
+</ul>
+</li>
+</ul>
+<h3>Conclusions</h3>
+<ul>
+<li>儘可能把服務 container 化  </li>
+<li>Build stateless application  </li>
+<li>Immutable architecture  <ul>
+<li>every computing conponent can be replaced and scaled with no impact  </li>
+</ul>
+</li>
+<li>Focus on your business logic, instead of the infra, forget your infra  </li>
+<li>Try not use any EC2, if necessary, avoid SSH into EC2 for manual operation.  <ul>
+<li>不要想要救任何一台機器，應該要儘可能做到 stateless，只要壞掉就抽換掉。  </li>
+<li>抱著這樣的想法，比較能夠設計出夠彈性化的架構。  </li>
+</ul>
+</li>
+<li>Fully-managed and fully-automation is the way to go.  </li>
+</ul>
+<hr>
+<h1>Interview Quiz w/o Servers</h1>
+<h2>Speaker: Cliff Lu</h2>
+<h3>用 AWS 架設低成本的面試系統</h3>
+<ul>
+<li>Interview Automation  </li>
+<li><a href="http://www.bnext.com.tw/ext_rss/view/id/1099271">超過 90 秒的都要自動化！</a>  </li>
+<li>考量  <ul>
+<li>效能  </li>
+<li>管理  </li>
+<li>費用  </li>
+</ul>
+</li>
+<li>AWS API Gateway + Lambda + S3  </li>
+<li>AWS Lambda  <ul>
+<li>Serverless computing service  <ul>
+<li>Support Python, Node.js, Java  <ul>
+<li>Python 在上面沒有 share memory 可用，所以 multiprocess library 無效，得用 os.fork。  </li>
+</ul>
+</li>
+<li>Managed, AWS 負責 HA and Scalability  </li>
+</ul>
+</li>
+<li><code>/tmp</code> 有 512MB 可用  </li>
+<li>若 24/7 運行 (128MB)，費用與 t2.nano 差不多  </li>
+<li>觸發與權限設置詳見文件  </li>
+</ul>
+</li>
+<li>AWS API Gateway  <ul>
+<li>Managed HTTPS API Gateway  </li>
+<li>權限設計頗複雜，說明文件寫的蠻糟的，必須詳讀文件。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>心得</h1>
+<p>第一次參加 AWS 的聚會，也算是第一次認真接觸 AWS 啦。<br>
+畢竟之前也就只有在參加 Conf 還有一些閒聊的時候聽到些名詞。<br>
+只有懵懵懂懂的瞭解，印象最深的就是 AWS 有一堆自創的 service name，讓我不是很喜歡。<br>
+雖然公司目前都在用 GCP ，但還是會想瞭解一下 AWS 的內容。<br>
+希望之後對 GCP 和 AWS 都足夠瞭解之後，<br>
+可以有辦法自己歸納瞭解 GCP 和 AWS 之間的優缺點，<br>
+無論是在 Performance, Scalability, Pricing, Flexibility 等等。<br>
+畢竟如果要朝 Architect 走的話我想這是不可少的。<br>
+如果能力足夠的話可能還會再看看 Azure 吧。<br>
+不過目前看來應該還是會以 GCP 為主<br>
+希望之後研究夠深入的話可以有機會成為 GCP 相關 Library 的 contributor，<br>
+只是當個 User 的話實在是有點無趣。  </p>
+<p>話說 AWSUGTW 感覺蠻用心在經營的，<br>
+挑的 CLBC 夠寬敞（跟我常去 Taipei.py 用的那個 CLBC 差好多 QQ），<br>
+備有額外的茶點，而且免場地費。（真好奇錢從哪來的 XD)<br>
+還會請參加者填寫問卷收集回饋意見。<br>
+跟我最近參加過的 Taipei.py 跟 GCPUGTW 比起來算是比較會讓新加入者比較想繼續來的那種。<br>
+（而且女生好多，Taipei.py 只有一點點，GCPUGTW 完全沒有 XDDD）<br>
+不過沒啥人問問題，讓我不知道參加者到底是有沒有聽懂，<br>
+不過會後感覺蠻多人私底下去找講者討論的，應該只是不想或不敢當面問吧？<br>
+然後沒看到平常跑社群的熟面孔，<br>
+果然不同的 User Group 就是不同的生態圈啊。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=AWSUGTW%20Meetup%2010th%20Note%0Ahttps%3A//blog.m157q.tw/posts/2016/04/19/awsugtw-meetup-10th-note/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/04/19/awsugtw-meetup-10th-note/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/04/19/awsugtw-meetup-10th-note/&title=AWSUGTW%20Meetup%2010th%20Note&summary=Note%20for%202016/04/19%20AWSUGTW%20Meetup%2010th&source=https%3A//blog.m157q.tw/posts/2016/04/19/awsugtw-meetup-10th-note/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=AWSUGTW%20Meetup%2010th%20Note&amp;body=https%3A//blog.m157q.tw/posts/2016/04/19/awsugtw-meetup-10th-note/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2018/10/11/taipei-blockchain-meetup-20181011/">Taipei Blockchain Meetup 20181011</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/">SDN x Cloud Native Meetup #9</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/">Cat System Workshop #11 Dynamically Hacking the Kernel with Containers</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/04/21/taipei-py-20160421-meetup-note/">Taipei.py 20160421 Meetup Note</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/22/facebook-developer-circle-taipei-meetup-2/">Facebook Developer Circle: Taipei - Meetup #2</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/04/19/awsugtw-meetup-10th-note/";
+        var disqus_title = "AWSUGTW Meetup 10th Note";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/04/19/awsugtw-meetup-10th-note/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-04-19T19:40:08+08:00"><i class="fa fa-calendar"></i> Tue 19 April 2016</abbr></p>
+
+      <p><abbr title="2016-04-20T00:03:00+08:00"><i class="fa fa-pencil"></i>Wed 20 April 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/meetup/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">Meetup</a>
+  <br>
+            <a href="/tag/serverless/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">serverless</a>
+  <br>
+            <a href="/tag/awsugtw/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">AWSUGTW</a>
+  <br>
+            <a href="/tag/ec2/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">EC2</a>
+  <br>
+            <a href="/tag/aws/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">AWS</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/04/01/taipei-py-20160331-meetup-note/" title="Taipei.py 20160331 Meetup Note"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/04/21/taipei-py-20160421-meetup-note/" title="Taipei.py 20160421 Meetup Note"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

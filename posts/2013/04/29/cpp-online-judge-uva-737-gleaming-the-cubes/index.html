@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  [Cpp] [Online Judge] UVa 737 Gleaming the Cubes
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/" rel="bookmark" title="Permalink to [Cpp] [Online Judge] UVa 737 Gleaming the Cubes">[Cpp] [Online Judge] UVa 737 Gleaming the Cubes</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>2013/04/29 基礎程式檢定考題之一<br>
+(共7題 …</p>
+  </blockquote>
+  <div>
+    <p>2013/04/29 基礎程式檢定考題之一<br>
+(共7題 我寫了三題 只對一題Orz 後來花時間把沒寫完的兩題寫完 這是其中一題)  </p>
+<p><a href="http://uva.onlinejudge.org/external/7/737.html">http://uva.onlinejudge.org/external/7/737.html</a>  </p>
+<!--more-->
+
+<p>這題是被 Compiler 雷到... 答案算是已經寫出來了...Orz  </p>
+<p>上機考的電腦是用 gcc 4.2.x 在本地端 compile 沒有噴 error  </p>
+<p>考完後在自己的筆電上的 gcc 4.8.0 測試也沒噴 error  </p>
+<p>結果上傳上去就噴 error 說找不到適合的 overloaded function 可用  </p>
+<p>究竟程式檢定 server 用的 compiler 是哪一個啊@_@?  </p>
+<p>但結果追根究底是因為我沒搞清楚 <code>abs()</code> 這個 function...  </p>
+<p><code>cstdlib</code> 和 <code>cmath</code> 都有 <code>abs()</code> 這個 function  </p>
+<p><code>cstdlib</code> 的 <code>abs()</code> 是給整數型態用的 <code>cmath</code> 的 <code>abs()</code> 是給浮點數型態用的  </p>
+<p>而我在這裡要取的是整數型態的絕對值 所以應該要 <code>#include &lt;cstdlib&gt;</code>  </p>
+<p>結果我記錯 寫了 <code>#include &lt;cmath&gt;</code> (然後就是悲劇Orz  </p>
+<p>請參閱<br>
+<a href="http://www.cplusplus.com/reference/cstdlib/abs/">http://www.cplusplus.com/reference/cstdlib/abs/</a><br>
+裏面有提到  </p>
+<blockquote>
+<p>In C++, this function is also overloaded in header <a href="http://www.cplusplus.com/cmath">cmath</a> for floating-point types (see <a href="http://www.cplusplus.com/cmath:abs">cmath abs</a>),<br>
+in header <a href="http://www.cplusplus.com/complex">complex</a> for complex numbers (see <a href="http://www.cplusplus.com/complex:abs">complex abs</a>),<br>
+and in header <a href="http://www.cplusplus.com/valarray">valarray</a> for valarrays (see <a href="http://www.cplusplus.com/valarray:abs">valarray abs</a>).  </p>
+</blockquote>
+<p>所以其實很多 library 裏面都有 <code>abs()</code> 這個 function<br>
+這裡就不細講了 有興趣的人請自行參閱  </p>
+<p>而 <code>cmath</code> 的 <code>abs()</code> 也有提到<br>
+<a href="http://www.cplusplus.com/reference/cmath/abs/">http://www.cplusplus.com/reference/cmath/abs/</a>  </p>
+<blockquote>
+<p>These convenience abs overloads are exclusive of C++.<br>
+In C, <a href="http://www.cplusplus.com/abs">abs</a> is only declared in <a href="http://www.cplusplus.com/cstdlib">cstdlib</a> (and only operates on integral values).  </p>
+</blockquote>
+<p>所以在 C 裏面<br>
+只有 <code>&lt;stdlib.h&gt;</code> 裏面有 <code>abs()</code> 這個 function 而且還只能給整數型態用<br>
+因為沒有 function overloading<br>
+(看到這個就覺得我應該用 C 寫的Orz  老實說其實自己寫一個也很快Orz  </p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">abs</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span>  
+<span class="p">{</span>  
+<span class="err"> </span> <span class="err"> </span> <span class="k">return</span> <span class="p">((</span><span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span> <span class="o">-</span><span class="nl">a</span> <span class="p">:</span> <span class="n">a</span><span class="p">);</span>  
+<span class="p">}</span>  
+</pre></div>
+
+
+<p>這樣就行了...<br>
+反正後來總算是寫出來了 也找到了錯誤 應該值得高興(吧？<br>
+以下是我的 code  </p>
+<p><a href="https://gist.github.com/M157q/c92d437af7f7d497de67">https://gist.github.com/M157q/c92d437af7f7d497de67</a>  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%5BCpp%5D%20%5BOnline%20Judge%5D%20UVa%20737%20Gleaming%20the%20Cubes%0Ahttps%3A//blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/&title=%5BCpp%5D%20%5BOnline%20Judge%5D%20UVa%20737%20Gleaming%20the%20Cubes&summary=2013/04/29%20%E5%9F%BA%E7%A4%8E%E7%A8%8B%E5%BC%8F%E6%AA%A2%E5%AE%9A%E8%80%83%E9%A1%8C%E4%B9%8B%E4%B8%80%0A%28%E5%85%B17%E9%A1%8C%20%E2%80%A6&source=https%3A//blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%5BCpp%5D%20%5BOnline%20Judge%5D%20UVa%20737%20Gleaming%20the%20Cubes&amp;body=https%3A//blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-10579-fibonacci-numbers/">[Cpp] [Online Judge] UVa 10579 Fibonacci Numbers</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/05/30/estimate-program-execution-time-in-c/">Estimate program execution time in C</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/";
+        var disqus_title = "[Cpp] [Online Judge] UVa 737 Gleaming the Cubes";
+        var disqus_url = "https://blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-737-gleaming-the-cubes/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2013-04-29T20:16:00+08:00"><i class="fa fa-calendar"></i> Mon 29 April 2013</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/cpp/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">Cpp</a>
+  <br>
+            <a href="/tag/online-judge/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Online Judge</a>
+  <br>
+            <a href="/tag/abs/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">abs</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2013/04/29/cpp-online-judge-uva-10579-fibonacci-numbers/" title="[Cpp] [Online Judge] UVa 10579 Fibonacci Numbers"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2013/05/08/illegal-field-name-x-meta-twittercard/" title="Illegal field name &#39;X-Meta-Twitter:card&#39;"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

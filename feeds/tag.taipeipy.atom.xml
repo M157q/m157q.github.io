@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Taipei.py</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.taipeipy.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2016-06-30T19:08:44+08:00</updated><entry><title>Taipei.py 20160630</title><link href="https://blog.m157q.tw/posts/2016/06/30/taipei-py-20160630/" rel="alternate"></link><published>2016-06-30T19:08:44+08:00</published><updated>2016-06-30T19:08:44+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2016-06-30:/posts/2016/06/30/taipei-py-20160630/</id><summary type="html">&lt;p&gt;Note for Taipei.py 2016/06/30 Meetup&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.meetup.com/Taipei-py/events/230363477/"&gt;http://www.meetup.com/Taipei-py/events/230363477/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Python 中常遇到的小錯誤 - Tim&lt;/h2&gt;
+&lt;h3&gt;Space vs Tab&lt;/h3&gt;
+&lt;p&gt;若是縮排減少，會把堆疊 pop 到縮排與堆疊頂端一致。  &lt;/p&gt;
+&lt;h3&gt;Default Argument&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;song_list&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[]):&lt;/span&gt;  
+    &lt;span class="n"&gt;song_list&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a random song&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+    &lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;song_list&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+&lt;span class="n"&gt;play&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;=&amp;gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[&amp;#39;a random song&amp;#39;]  &lt;/span&gt;
+&lt;span class="err"&gt;[&amp;#39;a random song&amp;#39;, &amp;#39;a random song&amp;#39;]  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;初始化只會初始一次  &lt;/p&gt;
+&lt;h3&gt;Closure&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="k"&gt;outer&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;  
+    &lt;span class="n"&gt;outer_variable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;  
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;common&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;  
+        &lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;outer_variable&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+
+    &lt;span class="n"&gt;outer_variable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;  
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;common&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;=&amp;gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;outer&lt;/span&gt;&lt;span class="p"&gt;()()&lt;/span&gt;  
+
+&lt;span class="mi"&gt;100&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;當產生 Closure 的時候，Python 並沒有執行函數內的程式。  &lt;/li&gt;
+&lt;li&gt;裡面的變數還沒有取得 reference，Python 只是記住變數名字而已(Lexical Scope)  &lt;/li&gt;
+&lt;li&gt;被 closure 記住的變數，不會立刻被 GC。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="k"&gt;outer&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;  
+    &lt;span class="n"&gt;outer_variable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;  
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;common&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;parameter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;outer_variable&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  
+        &lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;parameter&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+
+    &lt;span class="n"&gt;outer_variable&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;  
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;common&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;=&amp;gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;outer&lt;/span&gt;&lt;span class="p"&gt;()()&lt;/span&gt;  
+
+&lt;span class="mi"&gt;10&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;改成用 &lt;code&gt;class&lt;/code&gt;, 並使用 &lt;code&gt;__call__&lt;/code&gt;。資源抓取會更清楚，而不是依賴 lexical scope。  &lt;/li&gt;
+&lt;li&gt;或是使用 &lt;code&gt;functool.partial&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Global variable&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;  
+
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;  
+    &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;  
+
+&lt;span class="n"&gt;change&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+&lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+
+&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;  
+
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;  
+    &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;  
+
+&lt;span class="n"&gt;change&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+&lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+
+&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;UnboundError&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;  
+
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;change&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;  
+    &lt;span class="k"&gt;global&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;  
+    &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;  
+
+&lt;span class="n"&gt;change&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+&lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+
+&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;del&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;SimpleType&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;simple born&amp;#39;&lt;/span&gt;)  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__del__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;simple born&amp;#39;&lt;/span&gt;)  
+
+&lt;span class="n"&gt;simple&lt;/span&gt; = &lt;span class="n"&gt;SimpleType&lt;/span&gt;()  
+&lt;span class="n"&gt;del&lt;/span&gt; &lt;span class="n"&gt;simple&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;FooType&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="n"&gt;parent&lt;/span&gt;):  
+        &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;parent&lt;/span&gt; = &lt;span class="n"&gt;parent&lt;/span&gt;  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;Foo born&amp;#39;&lt;/span&gt;)  
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__del__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;Foo died&amp;#39;&lt;/span&gt;)  
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;BarType&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="k"&gt;self&lt;/span&gt; = &lt;span class="n"&gt;FooType&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;)  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;Bar born&amp;#39;&lt;/span&gt;)  
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__del__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;Bar died&amp;#39;&lt;/span&gt;)  
+
+=&amp;gt;  
+&lt;span class="n"&gt;Foo&lt;/span&gt; &lt;span class="n"&gt;born&lt;/span&gt;  
+&lt;span class="n"&gt;Bar&lt;/span&gt; &lt;span class="n"&gt;born&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;del&lt;/code&gt; 只會讓名字從 symbol table 消失，並讓 reference count - 1  &lt;/li&gt;
+&lt;li&gt;當 reference count 為 0 的時候，才會執行 GC 的動作(&lt;code&gt;__del__&lt;/code&gt;)  &lt;/li&gt;
+&lt;li&gt;可以解決 Circular Reference 的問題  &lt;/li&gt;
+&lt;li&gt;有 circular reference 的時候 Python 不會真的執行 del  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Interface&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;abc&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ABCMeta&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;abstractmethod&lt;/span&gt;  
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Sized&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  
+    &lt;span class="vm"&gt;__metaclass__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ABCMeta&lt;/span&gt;  
+
+    &lt;span class="nd"&gt;@abstractmethod&lt;/span&gt;  
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__len__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Missing&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Sized&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  
+    &lt;span class="k"&gt;pass&lt;/span&gt;  
+
+
+&lt;span class="n"&gt;Missing&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  
+
+&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="ne"&gt;TypeError&lt;/span&gt;  
+    &lt;span class="n"&gt;Can&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t instantiate abstract class Missing with abstract methods __len__  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Struggle&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__len__&lt;/span&gt;():  
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;  
+
+&lt;span class="n"&gt;isinstance&lt;/span&gt;(&lt;span class="n"&gt;Struggle&lt;/span&gt;, &lt;span class="n"&gt;Sized&lt;/span&gt;)  
+
+=&amp;gt; &lt;span class="nb"&gt;True&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Duck Typing  &lt;/p&gt;
+&lt;h3&gt;List related&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;  
+&lt;span class="k"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;  
+    &lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;remove&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="n"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="err"&gt;跟&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt; &lt;span class="err"&gt;的&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="err"&gt;實作採用&lt;/span&gt; &lt;span class="n"&gt;linked&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="err"&gt;實作有關&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;# Python 2  &lt;/span&gt;
+&lt;span class="err"&gt;data = range(10)  &lt;/span&gt;
+&lt;span class="err"&gt;for l in data[:]:  &lt;/span&gt;
+&lt;span class="err"&gt;    data.remove(l)  &lt;/span&gt;
+&lt;span class="err"&gt;print(data)  &lt;/span&gt;
+&lt;span class="err"&gt;=&amp;gt; []  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Package&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;不要 &lt;code&gt;pip freeze &amp;gt; requirements.txt&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;會把 dependency 的 dependency 也寫進去，不知道到底真正要用的是哪些。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2 =&amp;gt; 3&lt;/h3&gt;
+&lt;h3&gt;Quality&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;flake8  &lt;ul&gt;
+&lt;li&gt;install-hook  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Inheritance&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;正確使用 &lt;code&gt;super()&lt;/code&gt; 可以避免很多問題  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Base&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;quot;init Base&amp;quot;&lt;/span&gt;)  
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Left&lt;/span&gt;(&lt;span class="n"&gt;Base&lt;/span&gt;):  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;quot;init Left&amp;quot;&lt;/span&gt;)  
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Right&lt;/span&gt;(&lt;span class="n"&gt;Base&lt;/span&gt;):  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;quot;init Right&amp;quot;&lt;/span&gt;)  
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;(&lt;span class="n"&gt;Left&lt;/span&gt;, &lt;span class="n"&gt;Right&lt;/span&gt;):  
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):  
+        &lt;span class="n"&gt;Left&lt;/span&gt;.&lt;span class="n"&gt;__init__&lt;/span&gt;()  
+        &lt;span class="n"&gt;Right&lt;/span&gt;.&lt;span class="n"&gt;__init__&lt;/span&gt;()  
+        &lt;span class="nb"&gt;print&lt;/span&gt;(&lt;span class="s"&gt;&amp;quot;init C&amp;quot;&lt;/span&gt;)  
+
+=&amp;gt;  
+&lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="n"&gt;Base&lt;/span&gt;  
+&lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="n"&gt;Left&lt;/span&gt;  
+&lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="n"&gt;Base&lt;/span&gt;  
+&lt;span class="n"&gt;init&lt;/span&gt; &lt;span class="n"&gt;Right&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;Base.__init__()&lt;/code&gt; 有副作用的話就會很恐怖&lt;br&gt;
+正確的寫法要用 &lt;code&gt;super()&lt;/code&gt;  &lt;/p&gt;
+&lt;h2&gt;Related links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html"&gt;Code Like a Pythonista: Idiomatic Python&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://hynek.me/articles/hasattr/"&gt;hasattr() – A Dangerous Misnomer · Homepage of Hynek Schlawack&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;不要用 &lt;code&gt;hasattr()&lt;/code&gt;，&lt;code&gt;getattr()&lt;/code&gt; 都會被執行，所以如果有副作用的話就會很恐怖。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Physics of IOT - David Mikolas&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.lora-alliance.org/"&gt;Lora&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/micropython/micropython"&gt;GitHub - micropython/micropython: MicroPython - a lean and efficient Python implementation for microcontrollers and constrained systems&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;pynsist&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;py2exe&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip install pynsist&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Lightning talks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;PyCon TW 2017 主席開放報名中  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category><category term="Taipei.py"></category></entry><entry><title>Taipei.py 20160421 Meetup Note</title><link href="https://blog.m157q.tw/posts/2016/04/21/taipei-py-20160421-meetup-note/" rel="alternate"></link><published>2016-04-21T19:08:26+08:00</published><updated>2016-04-22T00:15:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2016-04-21:/posts/2016/04/21/taipei-py-20160421-meetup-note/</id><summary type="html">&lt;p&gt;"Neural Art and Neural Doodle in Python" &amp;amp; "Experience from KKBOX"&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://www.meetup.com/Taipei-py/events/230083921/"&gt;http://www.meetup.com/Taipei-py/events/230083921/&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;Topic 1: Neural Art and Neural Doodle in Python&lt;br&gt;
+Topic 2: Experience from KKBOX  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;Neural Art and Neural Doodle in Python&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Slides  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/ckmarkohchang/neural-art-english-version"&gt;Neural Art&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/ckmarkohchang/neural-doodle"&gt;Neural Doodle&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/ckmarkohchang/neural-art-english-version"&gt;Neural Art&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;Neural Networks - 模擬人腦的神經元  &lt;ul&gt;
+&lt;li&gt;Sigmoid  &lt;/li&gt;
+&lt;li&gt;Rectified Linear  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Convolutional Neural Networks - 處理影像上很常用  &lt;ul&gt;
+&lt;li&gt;Convolutional Layer  &lt;/li&gt;
+&lt;li&gt;Pooling Layer - 把重要的訊息保留下來，不重要的丟掉。  &lt;ul&gt;
+&lt;li&gt;Maximum Pooling  &lt;/li&gt;
+&lt;li&gt;Average Pooling  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Architecture  &lt;ul&gt;
+&lt;li&gt;Input Layer  &lt;/li&gt;
+&lt;li&gt;Convolutional Layer  &lt;/li&gt;
+&lt;li&gt;Pooling Layer  &lt;/li&gt;
+&lt;li&gt;Convolutional Layer  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://arxiv.org/pdf/1409.1556.pdf"&gt;VGG19&lt;/a&gt; - 可以模擬人腦看東西的過程  &lt;ul&gt;
+&lt;li&gt;What is VGG19?  &lt;ul&gt;
+&lt;li&gt;VGG Net-E (19 layers)  &lt;/li&gt;
+&lt;li&gt;Pre-trained model  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;如何產生畫作  &lt;ul&gt;
+&lt;li&gt;Content Generation  &lt;ul&gt;
+&lt;li&gt;比較景物跟現在的畫布有何不同  &lt;/li&gt;
+&lt;li&gt;Backward Propagation  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Style Generation  &lt;ul&gt;
+&lt;li&gt;Style 是比較抽象的概念  &lt;/li&gt;
+&lt;li&gt;在這裡被當成是一種特徵，而且是跟位置無關的特徵。  &lt;/li&gt;
+&lt;li&gt;Style Extraction  &lt;ul&gt;
+&lt;li&gt;同一幅畫的的不同位置，轉換出來的風格會是一樣的。  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Gramian_matrix"&gt;Gram Matrix&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;把位置的訊息拿掉後，讓 Canvas （畫布）的風格愈來愈接近目標畫作  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Artwork Generation  &lt;ul&gt;
+&lt;li&gt;把景物跟風格都一起丟進 VGG19 後，再把兩個一起做最佳化。  &lt;ul&gt;
+&lt;li&gt;Layer_total == (alpha)&lt;em&gt;Layer_content + (beta)&lt;/em&gt;Layer_style  &lt;ul&gt;
+&lt;li&gt;alpha 的比重愈高，畫作愈寫實。  &lt;/li&gt;
+&lt;li&gt;beta 的比重愈高，愈接近畫作。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/ckmarkohchang/neural-doodle"&gt;Neural Doodle&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;改良 Neural Art 的缺點  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://arxiv.org/abs/1601.04589"&gt;http://arxiv.org/abs/1601.04589&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Neural Art 採用 gram-based matrix 取得風格，因為忽略位置訊息，所以所有的部份風格都是相同的。  &lt;/li&gt;
+&lt;li&gt;Neural Doodle 則採用了不會忽略位置訊息的 Patch-based Matrix，會尋找畫作中與畫布相近的部份取得該部份的風格，因此改善了 Neural Art 的缺點。  &lt;/li&gt;
+&lt;li&gt;Patch-Based Style Transfer  &lt;ul&gt;
+&lt;li&gt;透過兩向量內積除以兩向量絕對值來判斷相近的程度，然後自動去尋找最相近的 patch，得到 Most simillar patch  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sematic Style Transfer  &lt;ul&gt;
+&lt;li&gt;可以為每個部份加上標籤  &lt;/li&gt;
+&lt;li&gt;可以比 Patch-based 產生更精準的畫作  &lt;/li&gt;
+&lt;li&gt;可以用小畫家上色，也可以使用 Pixel Labeling  &lt;/li&gt;
+&lt;li&gt;Canvas 不經過 VGG19 而是透過 Average Pooling 再把 Canvas 和 Style 相加  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Image Analogy  &lt;ul&gt;
+&lt;li&gt;直接用畫作產生 Semantic Map，然後再修改該 Sematic Map，再使用修改過後的 Semantic Map 生成新的畫作。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;Experience from KKBOX&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;PyKKBOX  &lt;ul&gt;
+&lt;li&gt;2011 initiate, private repo.  &lt;/li&gt;
+&lt;li&gt;iOS team  &lt;/li&gt;
+&lt;li&gt;KKBOX 一起聽  &lt;ul&gt;
+&lt;li&gt;Challenges  &lt;ul&gt;
+&lt;li&gt;iOS (client) co-works with Windows (broadcaster) only.  &lt;/li&gt;
+&lt;li&gt;In 3 months, the API's verion changed 5 times.  &lt;/li&gt;
+&lt;li&gt;There is even no broadcasters to listen to.  &lt;/li&gt;
+&lt;li&gt;In academia, we may call this "ill-posed (optimization) problem".  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;A bot for poc  &lt;ul&gt;
+&lt;li&gt;主管要求在沒有 broadcaster 的情況下 demo iOS client 的功能，只好用 Python 接 API 快速刻一個偽 broadcaster 出來。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;因為 iOS team 的不熟 Python，不打算教 venv 那類的東西，所以只用到 built-in modules 跟 PyObject，code 直接 clone 下來就能跑了，完全不用 third-party packages。  &lt;/li&gt;
+&lt;li&gt;用 Python 可以快速的建出 PoC，協助開發。  &lt;/li&gt;
+&lt;li&gt;2013 就停止開發了。停止原因是沒有進一步的計劃和需求，而且畢竟是個 iOS team。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/imsardine/pyuia"&gt;PyUIA&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;Started in 2013.  &lt;/li&gt;
+&lt;li&gt;Testing for Playlist Auto-Sync  &lt;/li&gt;
+&lt;li&gt;想做到讓 unittestings 可以儘量不需要額外寫程式碼，讓不會寫程式的 QA 可以用特定格式的 natural language 就可以新增測試。  &lt;ul&gt;
+&lt;li&gt;（我記得 robotframework 好像也可以辦到這件事？）  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Video Encoding System  &lt;ul&gt;
+&lt;li&gt;Challenges  &lt;ul&gt;
+&lt;li&gt;Given a thousands of videos  &lt;/li&gt;
+&lt;li&gt;Given ~150 videos per day  &lt;/li&gt;
+&lt;li&gt;Given a scalable number of encoders on EC2 instances  &lt;/li&gt;
+&lt;li&gt;Assuming the workflow for each video can be different  &lt;ul&gt;
+&lt;li&gt;根據每個客戶有不同的限制和需求  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;How to make a robust system to handle this challenge in consideration of  &lt;ul&gt;
+&lt;li&gt;Just 1.5 developer(s)  &lt;/li&gt;
+&lt;li&gt;everything can be broken  &lt;/li&gt;
+&lt;li&gt;computing resource is expensive (AWS)  &lt;/li&gt;
+&lt;li&gt;AWS is weak  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;用 tcl 寫 Job Script，使用 Producter-Consumer model  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/KKBOX/mass"&gt;Mass&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;最大的挑戰是一天要轉三千部影片  &lt;ul&gt;
+&lt;li&gt;最後成功了，但一天內用 AWS 燒掉了十幾萬還是幾十萬台幣，忘了。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;RDC Toolbox  &lt;/li&gt;
+&lt;li&gt;Python 是個方便且讓人寫起來感到快樂的語言，歡迎大家一起開心地寫 Python。  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category><category term="Taipei.py"></category><category term="Neural Network"></category><category term="KKBOX"></category><category term="Meetup"></category></entry><entry><title>Taipei.py 20160331 Meetup Note</title><link href="https://blog.m157q.tw/posts/2016/04/01/taipei-py-20160331-meetup-note/" rel="alternate"></link><published>2016-04-01T09:54:54+08:00</published><updated>2016-04-01T09:54:54+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2016-04-01:/posts/2016/04/01/taipei-py-20160331-meetup-note/</id><summary type="html">&lt;p&gt;"Skyfield" &amp;amp; "Uncomplicated Concurrency in Python"&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.meetup.com/Taipei-py/events/229246749"&gt;https://www.meetup.com/Taipei-py/events/229246749&lt;/a&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Topic 1: Skyfield  &lt;/li&gt;
+&lt;li&gt;Topic 2: Uncomplicated Concurrency in Python  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;Tutorial about skyfield&lt;/h1&gt;
+&lt;h2&gt;David Mikolas (david.mikolas@gmail.com)&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://tw.pycon.org/2015apac/en/program/72"&gt;https://tw.pycon.org/2015apac/en/program/72&lt;/a&gt;&lt;br&gt;
+&lt;a href="http://davidmikolas.blogspot.tw/"&gt;http://davidmikolas.blogspot.tw/&lt;/a&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;astropy - clothes  &lt;/li&gt;
+&lt;li&gt;AstroPython  &lt;/li&gt;
+&lt;li&gt;AstroBetter  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.blender.org/"&gt;Blender&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.youtube.com/watch?v=vW93wkDqz54"&gt;https://www.youtube.com/watch?v=vW93wkDqz54&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Alfonsine_tables"&gt;Alfonsine tables&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Ephemeris"&gt;星歷表&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://ssd.jpl.nasa.gov/?ephemerides"&gt;http://ssd.jpl.nasa.gov/?ephemerides&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Julian_day"&gt;Julian Date&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;Uncomplicated Concurrency in Python&lt;/h1&gt;
+&lt;h2&gt;Mosky Liu&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It will introduce how to implement the CSP (Communicating Sequential Processes) in Python with common libraries.  &lt;/p&gt;
+&lt;p&gt;CSP（communicating sequential processes）是一個著名的並行系統（concurrent systems）數學理論 [1]，並獲得 Go lang 採用作為其並行設計的基礎 [2]。其優點是相較於傳統的多執行緒設計來說較為簡單 [3]，依此理論可以設計出更好維護的並行程式。  &lt;/p&gt;
+&lt;p&gt;雖然 Python 並沒有特別將 CSP 設計成語言的一部份，但我們仍可以利用常見函數庫內的工具實現 CSP，寫出更好維護的並行程式。講者將介紹各種利用 Python 常見函數庫，包含 event-driven、multithreading、multiprocessing 層級，實現 CSP 的方法。  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ctrl-C =&amp;gt; SIGINT&lt;br&gt;
+Ctrl-C in Python =&amp;gt; KeyboardInterrupt  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Channel-based Multithreading  &lt;/li&gt;
+&lt;li&gt;With the channel  &lt;ul&gt;
+&lt;li&gt;Channel 讓 Multi-Threading in Python 變得比較好寫  &lt;ul&gt;
+&lt;li&gt;讓程式裏面只會有 Queue, 不需要費心去處理 join, lock 的問題，只要小心一下 Ctrl-C  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Producer-Consumer Pattern  &lt;/li&gt;
+&lt;li&gt;SOA (Service-oriented Architecture)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CSP actually is  &lt;ul&gt;
+&lt;li&gt;a formal language  &lt;ul&gt;
+&lt;li&gt;describing patterns of interaction in concurrent systems  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;mathematical theories  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Process_calculus"&gt;process calculi&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;Lightning Talk&lt;/h1&gt;
+&lt;h2&gt;Vectorizing String Operation&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://www.pha8.com/demo.html"&gt;http://www.pha8.com/demo.html&lt;/a&gt;  &lt;/p&gt;</content><category term="Python"></category><category term="Taipei.py"></category><category term="skyfield"></category><category term="astronomy"></category><category term="concurrency"></category><category term="Meetup"></category></entry></feed>

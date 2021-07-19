@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - crawler</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.crawler.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2021-06-07T11:43:24+08:00</updated><entry><title>Y2021W22</title><link href="https://blog.m157q.tw/posts/2021/06/07/y2021w22/" rel="alternate"></link><published>2021-06-07T11:43:24+08:00</published><updated>2021-06-07T11:43:24+08:00</updated><author><name>M157q</name></author><id>tag:blog.m157q.tw,2021-06-07:/posts/2021/06/07/y2021w22/</id><summary type="html">&lt;p&gt;Collections of Y2021W22 (2021-05-31 Mon 00:00:00+0800 ~ 2021-06-07 Mon 00:00:00+0800)&lt;/p&gt;</summary><content type="html">&lt;h2&gt;crawler&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.v123582.tw/2021/06/05/%E8%AE%93-Python-%E7%88%AC%E8%9F%B2%E4%B9%9F%E8%83%BD%E8%AE%80%E5%BE%97%E6%87%82%E3%80%8C%E6%BB%91%E5%8B%95%E9%A9%97%E8%AD%89%E7%A2%BC%E3%80%8D/?fbclid=IwAR0VcoG_v3lJd8KkH_Ay7MpHvbgk0CWYc_JADCtDIrimpPuPsH7T4TPoYBk"&gt;讓 Python 爬蟲也能讀得懂「滑動驗證碼」 | 資料科學家的工作日常&lt;/a&gt;&lt;br&gt;
+這篇好酷&lt;br&gt;
+以後寫爬蟲不怕遇到滑動驗證了&lt;br&gt;
+是說今天才知道CAPTCHA 的全名是&lt;br&gt;
+Completely&lt;br&gt;
+Automated&lt;br&gt;
+Public&lt;br&gt;
+Turing test to tell Computers and Humans&lt;br&gt;
+Apart&lt;br&gt;
+自動判別電腦與人類的公開圖靈測試  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;kubernetes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://dev.to/loft/11-of-the-best-open-source-kubernetes-tools-2021-edition-4joo"&gt;11 of the Best Open-Source Kubernetes Tools - 2021 Edition - DEV Community&lt;/a&gt;&lt;br&gt;
+這篇不錯&lt;br&gt;
+minikube, Helm, K3s, Loft, Skaffold, Podman, Tilt, DevSpace, Lens 和一些 VSCode 上的 plugins  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;</content><category term="crawler"></category><category term="kubernetes"></category></entry></feed>

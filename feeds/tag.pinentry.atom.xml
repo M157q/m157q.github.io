@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - pinentry</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.pinentry.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-01-20T13:21:09+08:00</updated><entry><title>讓 gpg-agent 在 git commit gpg-sign 時使用 pinentry-curses</title><link href="https://blog.m157q.tw/posts/2017/01/20/make-gpg-agent-use-pinentry-curses-while-git-commit-gpg-sign/" rel="alternate"></link><published>2017-01-20T13:21:09+08:00</published><updated>2017-01-20T13:21:09+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-01-20:/posts/2017/01/20/make-gpg-agent-use-pinentry-curses-while-git-commit-gpg-sign/</id><summary type="html">&lt;p&gt;最近用 Arch Linux 升上 4.8.13 後，X window 跑一跑會突然 crash，重開之後會抓不到 X window 的 output 變數，導致平常 git commit 在 gpg-sign 時，gpg-agent 預設使用的 pinentry-gtk2 會開不起來，讓 git commit 無法順利使用 gpg-sign，所以找一個不用開 gtk 視窗起來的方法。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;git 使用 gpg sign 預設的 gpg-agent 會是 pinentry-gtk2&lt;br&gt;
+最近把 Arch Linux 筆電升上 Linux 4.8.13 後&lt;br&gt;
+X server 好像有 Buffer Overflow 還是 Garbage collection 沒做好的問題&lt;br&gt;
+跑一陣子就會跳掉&lt;br&gt;
+重新 &lt;code&gt;startx&lt;/code&gt; 還是可以動&lt;br&gt;
+但會抓不到 x window 的 output 變數&lt;br&gt;
+導致 git commit 在作 gpg sign 時&lt;br&gt;
+叫不出 &lt;code&gt;pinentry-gtk2&lt;/code&gt; 所以無法輸入 passpharse&lt;br&gt;
+直接噴  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;gpg&lt;/span&gt; &lt;span class="n"&gt;failed&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;sign&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;  
+&lt;span class="n"&gt;fatal&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;failed&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;write&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="n"&gt;object&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;所以就想說找找看有沒有可以在 terminal 裏面就解決&lt;br&gt;
+不用開 gtk 的方法&lt;br&gt;
+嗯 果然是有的  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;解法&lt;/h2&gt;
+&lt;h3&gt;設定檔&lt;/h3&gt;
+&lt;p&gt;在 &lt;code&gt;~/.gnupg/gpg-agent.conf&lt;/code&gt;&lt;br&gt;
+（沒有這個 conf 的話就建一個，記得要 chmod 一下）  &lt;/p&gt;
+&lt;p&gt;加入一行&lt;br&gt;
+&lt;code&gt;pinentry-program /usr/bin/pinentry-curses&lt;/code&gt;&lt;br&gt;
+（記得確認 &lt;code&gt;pinentry-curses&lt;/code&gt; 已經安裝且路徑正確，否則請安裝並自行修改到正確路徑）  &lt;/p&gt;
+&lt;h3&gt;重新載入&lt;/h3&gt;
+&lt;p&gt;之後讓 gpg-agent 重新載入，使用新的 pinentry-program&lt;br&gt;
+&lt;code&gt;gpg-connect-agent reloadagent /bye&lt;/code&gt;  &lt;/p&gt;
+&lt;h3&gt;設定變數&lt;/h3&gt;
+&lt;p&gt;然後因為 &lt;code&gt;pinentry-curses&lt;/code&gt; 會需要用到 &lt;code&gt;$GPG_TTY&lt;/code&gt; 這個變數&lt;br&gt;
+所以請在自己使用的 .shellrc 裡頭加入  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;# Set GPG_TTY for pinentry-curses  &lt;/span&gt;
+&lt;span class="err"&gt;export GPG_TTY=$(tty)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;打完收工&lt;/h3&gt;
+&lt;p&gt;沒意外的話這樣就行了&lt;br&gt;
+在原本的 shell 重新 source 一次修改好的 rc 檔&lt;br&gt;
+或是直接開啟一個新的 shell&lt;br&gt;
+確認有 &lt;code&gt;GPG_TTY&lt;/code&gt; 這個參數&lt;br&gt;
+之後用 git commit 在做 gpg sign 的時候&lt;br&gt;
+就可以直接在 terminal 裏面打 passphrase 了&lt;br&gt;
+不需要用到 GTK 和 X window 啦  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/GnuPG#Configuration_2"&gt;GnuPG - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="cli"></category><category term="gpg"></category><category term="pinentry"></category><category term="git"></category></entry></feed>

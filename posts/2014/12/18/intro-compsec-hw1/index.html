@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Intro CompSec Hw1
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.course.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Course - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2014/12/18/intro-compsec-hw1/" rel="bookmark" title="Permalink to Intro CompSec Hw1">Intro CompSec Hw1</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <h3>Introduction to Computer Security HW1 …</h3>
+  </blockquote>
+  <div>
+    <h3>Introduction to Computer Security HW1</h3>
+<ol>
+<li>Select a web site.  <ul>
+<li>Use “Wget” or “Teleport Pro” to mirror the site. Look for comments within comment tags. Give screen dumps and explain what you found.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li>I've found some hidden targets that not be shown on the home page of <a href="http://www.nctu.edu.tw">http://www.nctu.edu.tw</a>. These website probably still working but out of date or have already be deprecated that nobody maintain the website and may have some flaws. Below is the lists.  </li>
+<li><a href="http://140.113.71.51">http://140.113.71.51</a>  <ul>
+<li><img alt="Screenshot 1" src="/files/intro-compsec-hw1/screenshot1.png">  </li>
+</ul>
+</li>
+<li><a href="http://president.nctu.edu.tw">http://president.nctu.edu.tw</a>  <ul>
+<li><img alt="Screenshot 2" src="/files/intro-compsec-hw1/screenshot2.png">  </li>
+</ul>
+</li>
+<li><a href="http://www.pac.nctu.edu.tw">http://www.pac.nctu.edu.tw</a>  <ul>
+<li><img alt="Screenshot 3" src="/files/intro-compsec-hw1/screenshot3.png">  </li>
+</ul>
+</li>
+<li><a href="http://www.pac.nctu.edu.tw">http://www.pac.nctu.edu.tw</a>  <ul>
+<li><img alt="Screenshot 4" src="/files/intro-compsec-hw1/screenshot4.png">  </li>
+</ul>
+</li>
+<li><a href="http://www.ccs.nctu.edu.tw">http://www.ccs.nctu.edu.tw</a>  <ul>
+<li><img alt="Screenshot 5" src="/files/intro-compsec-hw1/screenshot5.png">  </li>
+</ul>
+</li>
+<li><a href="http://www.itt.nctu.edu.tw">http://www.itt.nctu.edu.tw</a>  <ul>
+<li><img alt="Screenshot 6" src="/files/intro-compsec-hw1/screenshot6.png">  </li>
+</ul>
+</li>
+<li><a href="http://www.ga.nctu.edu.tw">http://www.ga.nctu.edu.tw</a>  <ul>
+<li><img alt="Screenshot 7" src="/files/intro-compsec-hw1/screenshot7.png">  </li>
+</ul>
+</li>
+<li><a href="http://campus.creativity.edu.tw">http://campus.creativity.edu.tw</a>  <ul>
+<li><img alt="Screenshot 8" src="/files/intro-compsec-hw1/screenshot8.png">  </li>
+</ul>
+</li>
+<li><a href="http://apc.iim.nctu.edu.tw">http://apc.iim.nctu.edu.tw</a>  <ul>
+<li><img alt="Screenshot 9" src="/files/intro-compsec-hw1/screenshot9.png">  </li>
+</ul>
+</li>
+<li><a href="http://saofficion.adm.nctu.edu.tw">http://saofficion.adm.nctu.edu.tw</a>  <ul>
+<li><img alt="Screenshot 10" src="/files/intro-compsec-hw1/screenshot10.png">  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Use “DirBuster” with a proxy feature through “privoxy” to enumerate hidden files and directories. Screen dump and explain the hidden files and directories you found.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li><img alt="Screenshot 11" src="/files/intro-compsec-hw1/screenshot11.png">  </li>
+<li><img alt="Screenshot 12" src="/files/intro-compsec-hw1/screenshot12.png">  <ul>
+<li>Maybe there some something useful in these index.php files.  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Lookup “How I met your girlfriend” in the BlackHat 2010 demo to explain, in 0.5 page, how this was done.  <ul>
+<li>Explanations  <blockquote>
+<p>The speaker first study on the session mechanism of the Facebook.<br>
+He reduced the complexity of breaking session steps by steps.<br>
+The Entropy had be redurced from the initial 160 bits to only 20 bits!! He kept tracing the source code and hacking it.<br>
+Then, he used a techical skill called "NAT pinning" to confuse the router at protocol level.<br>
+After that, he also used the IRC bot, Geoloction via XSS and HTML5 anti-WAF XSS.<br>
+Combined all these skills and analysized based on those results.<br>
+Finally, he used the triangle localization to find someone's girlfriend in reality.  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>Select a person. Use on-line sites for phone book, social network, information, job, photo management, business directory, jigsaw.com, etc. to summarize, with screen dumps and explanations, what information you can get. If your target is not in US nor native English speaker, you might need to use on-line sites different from the textbook.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li>Name: Johnny Depp (John Christopher Depp II)  </li>
+<li>wikipedia: <a href="http://en.wikipedia.org/wiki/Johnny_Depp">http://en.wikipedia.org/wiki/Johnny_Depp</a>  </li>
+<li><a href="http://www.peoplesearch.com">http://www.peoplesearch.com</a>  <ul>
+<li><img alt="Screenshot 13" src="/files/intro-compsec-hw1/screenshot13.png">  </li>
+<li>view more need to pay some money  </li>
+</ul>
+</li>
+<li><a href="https://www.facebook.com/JohnnyDepOfficial">https://www.facebook.com/JohnnyDepOfficial</a>  <ul>
+<li><img alt="Screenshot 14" src="/files/intro-compsec-hw1/screenshot14.png">  </li>
+</ul>
+</li>
+<li><a href="http://www.reunion.com/johnnydepp/">http://www.reunion.com/johnnydepp/</a>  <ul>
+<li><img alt="Screenshot 15" src="/files/intro-compsec-hw1/screenshot15.png">  </li>
+</ul>
+</li>
+<li><a href="http://www.mylife.com/mick563">http://www.mylife.com/mick563</a>  <ul>
+<li><img alt="Screenshot 16" src="/files/intro-compsec-hw1/screenshot16.png">  </li>
+</ul>
+</li>
+<li><a href="https://twitter.com/J0HNNYDepp">https://twitter.com/J0HNNYDepp</a>  <ul>
+<li><img alt="Screenshot 17" src="/files/intro-compsec-hw1/screenshot17.png">  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Google “XYZ resume firewall” and “XYZ resume intrusion detection” where “XYZ” is the name of your target company.  Screen dump “useful” results and explain what you got.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li><img alt="Screenshot 18" src="/files/intro-compsec-hw1/screenshot18.png">  </li>
+<li><img alt="Screenshot 19" src="/files/intro-compsec-hw1/screenshot19.png">  <ul>
+<li>A company called "Systems Technology International" is looking for who will use Linux iptables firewall.  </li>
+</ul>
+</li>
+<li><img alt="Screenshot 20" src="/files/intro-compsec-hw1/screenshot20.png">  <ul>
+<li>A company called "ICF International" is looking for who have experience with using Snort IDS.  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Lookup Archive.org and Google cached results, and select a target web site. Compare the differences between an archived and cached copy with its current on-line web site. Give screen dump and explain the differences.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li>Archive.org  <ul>
+<li><img alt="Screenshot 21" src="/files/intro-compsec-hw1/screenshot21.png">  </li>
+<li>2014/02/09  </li>
+</ul>
+</li>
+<li>Google cached  <ul>
+<li><img alt="Screenshot 22" src="/files/intro-compsec-hw1/screenshot22.png">  </li>
+<li>2014/04/07 01:16:27 GMT  </li>
+</ul>
+</li>
+<li>current  <ul>
+<li><img alt="Screenshot 23" src="/files/intro-compsec-hw1/screenshot23.png">  </li>
+<li>2014/04/07 09:00:03 GMT  </li>
+</ul>
+</li>
+<li>Archive.org have older information. Google cached seems no different from the current website because the cached information just few hours ago.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Find Google Hacking Database at hackersforcharity.org/ghdb/. Summarize what it has and select 3 strings to search. Screen dump and explain what you got.  <ul>
+<li>What GHDB has  <ul>
+<li>it store the google search sentences which can be used to search some specific websites vulnerabilities. There are many entries and each entry have many google search sentences for searching vulnerabilities. The information on the GHDB maybe too old. The newest record is almost eight years ago (2006), though it seems still working...  </li>
+</ul>
+</li>
+<li>Screen Dumps &amp; Explanation  <ul>
+<li>Juicy information of the websites built by AppServ  <ul>
+<li><img alt="Screenshot 24" src="/files/intro-compsec-hw1/screenshot24.png">  </li>
+<li><img alt="Screenshot 25" src="/files/intro-compsec-hw1/screenshot25.png">  </li>
+</ul>
+</li>
+<li>.xls files within user id and password  <ul>
+<li><img alt="Screenshot 26" src="/files/intro-compsec-hw1/screenshot26.png">  </li>
+<li><img alt="Screenshot 27" src="/files/intro-compsec-hw1/screenshot27.png">  </li>
+</ul>
+</li>
+<li>backup directories of the server  <ul>
+<li><img alt="Screenshot 28" src="/files/intro-compsec-hw1/screenshot28.png">  </li>
+<li><img alt="Screenshot 29" src="/files/intro-compsec-hw1/screenshot29.png">  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Select a web site. Start from whois.iana.org to find its registry, registrar, and registrant. Also select an IP address. Start from arin.net to find who owns the IP address. Show your screen dump and explain.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li>whois.iana.org - www.nctu.edu.tw  <ul>
+<li><img alt="Screenshot 30" src="/files/intro-compsec-hw1/screenshot30.png">  </li>
+<li><img alt="Screenshot 31" src="/files/intro-compsec-hw1/screenshot31.png">  </li>
+<li>Registry: Taiwan Network Information Center (TWNIC)  </li>
+<li>Registrar: rs.twnic.net.tw  </li>
+<li>Registrant: Vice CEO  </li>
+</ul>
+</li>
+<li>arin.net - 8.8.8.8  <ul>
+<li><img alt="Screenshot 32" src="/files/intro-compsec-hw1/screenshot32.png">  </li>
+<li>8.8.8.8 is Google DNS Server  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Select a domain name. Use nslookup to dump its DNS records. Show your screen dump and explain.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li><img alt="Screenshot 33" src="/files/intro-compsec-hw1/screenshot33.png">  </li>
+<li>The <a href="http://www.nctu.edu.tw">http://www.nctu.edu.tw</a> has three IP for load balancing.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Select a domain name. Use traceroute or similar tools to find the access path to that domain. Show your screen dump and explain.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li><img alt="Screenshot 34" src="/files/intro-compsec-hw1/screenshot34.png">  </li>
+<li>The destination server seems close the ICMP, so traceroute didn't get the 5th hop ICMP "time exceeded" signal.  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Follow the case study right before chapter 1. Select one target and run through all tools (Tor, Vidalia, Privoxy, tor-resolve, proxychains, Nmap, socat, nc). Screen dump the process and explain what you got in your screen.  <ul>
+<li>Screen Dumps &amp; Explanations  <ul>
+<li>turn on vidalia  <ul>
+<li><img alt="Screenshot 35" src="/files/intro-compsec-hw1/screenshot35.png">  </li>
+</ul>
+</li>
+<li>using tor  <ul>
+<li><img alt="Screenshot 36" src="/files/intro-compsec-hw1/screenshot36.png">  </li>
+</ul>
+</li>
+<li>finding target  <ul>
+<li><img alt="Screenshot 37" src="/files/intro-compsec-hw1/screenshot37.png">  </li>
+</ul>
+</li>
+<li>found target  <ul>
+<li><img alt="Screenshot 38" src="/files/intro-compsec-hw1/screenshot38.png">  </li>
+</ul>
+</li>
+<li>used tor-resolve to get target ip  <ul>
+<li><img alt="Screenshot 39" src="/files/intro-compsec-hw1/screenshot39.png">  </li>
+</ul>
+</li>
+<li>using proxychains and nmap  <ul>
+<li><img alt="Screenshot 40" src="/files/intro-compsec-hw1/screenshot40.png">  </li>
+<li><img alt="Screenshot 41" src="/files/intro-compsec-hw1/screenshot41.png">  </li>
+</ul>
+</li>
+<li>using socat  <ul>
+<li><img alt="Screenshot 42" src="/files/intro-compsec-hw1/screenshot42.png">  </li>
+</ul>
+</li>
+<li>get target informations  <ul>
+<li><img alt="Screenshot 43" src="/files/intro-compsec-hw1/screenshot43.png">  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Intro%20CompSec%20Hw1%0Ahttps%3A//blog.m157q.tw/posts/2014/12/18/intro-compsec-hw1/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2014/12/18/intro-compsec-hw1/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2014/12/18/intro-compsec-hw1/&title=Intro%20CompSec%20Hw1&summary=Introduction%20to%20Computer%20Security%20HW1%20%E2%80%A6&source=https%3A//blog.m157q.tw/posts/2014/12/18/intro-compsec-hw1/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Intro%20CompSec%20Hw1&amp;body=https%3A//blog.m157q.tw/posts/2014/12/18/intro-compsec-hw1/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2015/01/22/mc-sqlr-amplification-attack/">MC-SQLR 放大攻擊</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/19/cve-2016-2662/">CVE-2016-2662</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/07/25/y2016w29/">Y2016W29</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/07/27/y2020w30/">Y2020W30</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/09/14/y2020w37/">Y2020W37</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2014/12/18/intro-compsec-hw1/";
+        var disqus_title = "Intro CompSec Hw1";
+        var disqus_url = "https://blog.m157q.tw/posts/2014/12/18/intro-compsec-hw1/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2014-12-18T16:51:00+08:00"><i class="fa fa-calendar"></i> Thu 18 December 2014</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/course/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="37 articles in this category">Course</a>
+              </p>
+            <a href="/tag/security/" data-toggle="tooltip"
+      class="label label-default"
+      title="52 articles with this tag">security</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2014/12/09/converting-tabs-to-spaces-in-vim/" title="Converting tabs to spaces in Vim"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/01/14/find-malicious-website-via-google-safe-browsing-diagnostic-api/" title="Find Malicious Website via Google Safe Browsing Diagnostic API"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.course.atom.xml"><i class="fa fa-rss"></i> Category: Course (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

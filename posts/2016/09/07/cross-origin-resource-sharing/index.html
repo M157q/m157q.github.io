@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  紀錄一下和 CORS (Cross-Origin Resource Sharing) 有關的問題
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/09/07/cross-origin-resource-sharing/" rel="bookmark" title="Permalink to 紀錄一下和 CORS (Cross-Origin Resource Sharing) 有關的問題">紀錄一下和 CORS (Cross-Origin Resource Sharing) 有關的問題</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>前陣子在弄公司系統新架構的 CDN 部份時遇到和 Cross-Origin HTTP Request 有關的問題，紀錄一下。</p>
+  </blockquote>
+  <div>
+    <h2>Situation</h2>
+<p>錯誤訊息長的像下面這樣  </p>
+<div class="highlight"><pre><span></span><span class="err">Font from origin &#39;http://cdn.xxx.xxx&#39;  </span>
+<span class="err">has been blocked from loading by Cross-Origin Resource Sharing policy:  </span>
+<span class="err">No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource.  </span>
+<span class="err">Origin &#39;http://ooo.xxx.xxx&#39; is therefore not allowed access.  </span>
+</pre></div>
+
+
+<p>這是以前沒遇過的問題，<br>
+所以尋找了一下答案，<br>
+紀錄起來，<br>
+給自己備忘。  </p>
+<hr>
+<h2>What is CORS?</h2>
+<h3>CORS is the abbreviation of "Cross-Origin Resource Sharing".</h3>
+<h4>1. <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Access-Control-Allow-Origin">HTTP access control (CORS) - HTTP | MDN</a></h4>
+<ol>
+<li>
+<blockquote>
+<p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts. For example, XMLHttpRequest follows the same-origin policy. So, a web application using XMLHttpRequest could only make HTTP requests to its own domain. To improve web applications, developers asked browser vendors to allow XMLHttpRequest to make cross-domain requests.  </p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>The W3C Web Applications Working Group recommends the new Cross-Origin Resource Sharing (CORS) mechanism. CORS gives web servers cross-domain access controls, which enable secure cross-domain data transfers. Modern browsers use CORS in an API container - such as XMLHttpRequest - to mitigate risks of cross-origin HTTP requests.  </p>
+</blockquote>
+</li>
+</ol>
+<p>簡單來說就是 XMLHttpRequest 因為安全性的考量只允許相同域名的請求，<br>
+如果要請求跨域名的物件的話，<br>
+就必須請目標域名的管理者把自己加到該目標域名網站的 <code>Access-Control-Allow-Origin</code> 的 HTTP Header 中，<br>
+而 CORS 就是為了解決這件事而出現。  </p>
+<h4>2. <a href="https://cloud.google.com/storage/docs/cross-origin#client_side_support">Cross-Origin Resource Sharing (CORS) | Cloud Storage | Google Cloud Platform</a></h4>
+<ol>
+<li>
+<blockquote>
+<p>The same-origin policy is a security policy enforced on client-side web apps (e.g., web browsers) to prevent interactions between resources from different origins. While useful for preventing malicious behavior, this security measure also prevents useful and legitimate interactions between known origins. For example, a script on a page hosted from Google App Engine at example.appspot.com might want to use static resources stored in a Cloud Storage bucket at example.storage.googleapis.com. However, because these are two different origins from the perspective of the browser, the browser won't allow a script from example.appspot.com to fetch resources from example.storage.googleapis.com using XMLHttpRequest because the resource being fetched is from a different origin.  </p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>The Cross Origin Resource Sharing (CORS) spec was developed by the World Wide Web Consortium (W3C) to get around this limitation.  </p>
+</blockquote>
+</li>
+</ol>
+<p>大意其實跟上面那段差不多。  </p>
+<h4>3. <a href="https://www.w3.org/TR/cors/">Cross-Origin Resource Sharing</a></h4>
+<ol>
+<li>
+<blockquote>
+<p>This document defines a mechanism to enable client-side cross-origin requests. Specifications that enable an API to make cross-origin requests to resources can use the algorithms defined by this specification. If such an API is used on http://example.org resources, a resource on http://hello-world.example can opt in using the mechanism described by this specification (e.g., specifying Access-Control-Allow-Origin: http://example.org as response header), which would allow that resource to be fetched cross-origin from http://example.org.  </p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>5.1 Access-Control-Allow-Origin Response Header<br>
+The Access-Control-Allow-Origin header indicates whether a resource can be shared based by returning the value of the Origin request header, "*", or "null" in the response. ABNF:<br>
+<code>Access-Control-Allow-Origin = "Access-Control-Allow-Origin" ":" origin-list-or-null | "\*"</code><br>
+Note: In practice the origin-list-or-null production is more constrained. Rather than allowing a space-separated list of origins, it is either a single origin or the string "null".  </p>
+</blockquote>
+</li>
+</ol>
+<p>所以直接從文件看來，<br>
+W3C 當初設計上其實是允許多個 domain 的，<br>
+只要以空白分隔就行。<br>
+但 Note 的部份就提到了一個重點，<br>
+實作上通常只允許單一 domain 或是 <code>"*"</code> 而已，<br>
+不允許用空白分隔多個 domain 形成的 origin-list，<br>
+這個原因我也不懂，<br>
+但造成我不小的問題就是。  </p>
+<hr>
+<h2>Solution of Google App Engine for CORS</h2>
+<h3><a href="https://cloud.google.com/appengine/docs/python/config/appref">app.yaml Reference | App Engine standard environment for Python | Google Cloud Platform</a></h3>
+<blockquote>
+<p>CORS Support  </p>
+<p>One important use of this feature is to support cross-origin resource sharing (CORS), such as accessing files hosted by another App Engine app.  </p>
+<p>For example, you could have a game app mygame.appspot.com that accesses assets hosted by myassets.appspot.com. However, if mygame attempts to make a JavaScript XMLHttpRequest to myassets, it will not succeed unless the handler for myassets returns an Access-Control-Allow-Origin: response header containing the value http://mygame.appspot.com.  </p>
+<p>Here is how you would make your static file handler return that required response header value:  </p>
+<p><code>handlers:  
+- url: /images  
+  static_dir: static/images  
+  http_headers:  
+    Access-Control-Allow-Origin: http://mygame.appspot.com</code><br>
+Note: if you wanted to allow everyone to access your assets, you could use the wildcard '*', instead of http://mygame.appspot.com.  </p>
+</blockquote>
+<p>這邊並沒有提到能不能使用空白分隔的 origin-list，<br>
+但我記得我試過，<br>
+結果是不行的，<br>
+所以後來我採用下面的解法，<br>
+仍然是只能設定成 <code>"*"</code>  </p>
+<p>在 <code>app.yaml</code> 中，<br>
+針對 static files 的 handler 加上 <code>http_headers</code>，<br>
+並在其中加入 <code>Access-Control-Allow-Origin: "*"</code>，<br>
+讓所有其他 domain 的 script 都可以 request 這些 static files (assets)。  </p>
+<p>改完之後的 <code>app.yaml</code> 其中部份會長得像是這樣：  </p>
+<div class="highlight"><pre><span></span> <span class="p p-Indicator">-</span> <span class="nt">url</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/(.*)$</span>  
+   <span class="nt">static_files</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">static/\1</span>  
+   <span class="nt">upload</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">static/.*$</span>  
+   <span class="nt">http_headers</span><span class="p">:</span>  
+      <span class="nt">Access-Control-Allow-Origin</span><span class="p">:</span> <span class="s">&quot;*&quot;</span>  
+</pre></div>
+
+
+<hr>
+<h2>Questions</h2>
+<p>顯然把 allow domain 設定成 <code>"*"</code> 允許所有其他 domain 不是件好事，<br>
+理想上當然是只允許 subdomain 就好，<br>
+但我在找尋相關解法的時候沒有找到這樣的用法。<br>
+看到的解答都是 <code>Access-Control-Allow-Origin</code> 只能允許使用一個寫死的 domain 或是 <code>"*"</code>。  </p>
+<p>Apache 和 Nginx 都可以針對這個部份做設定，<br>
+例如這兩篇都有提到作法：  </p>
+<ul>
+<li><a href="http://rustyrazorblade.com/2013/10/cors-with-wildcard-subdomains-using-nginx/">CORS with Wildcard Subdomains Using Nginx — Rustyrazorblade</a>  </li>
+<li><a href="http://blog.blakesimpson.co.uk/read/64-apache-configure-cors-headers-for-whitelist-domains">Apache Configure CORS Headers for Whitelist Domains</a>  </li>
+</ul>
+<p>似乎是回一個寫死 domain 的 <code>Access-Control-Allow-Origin</code> 的 HTTP Header，<br>
+但是可以在設定檔裏面做設定，<br>
+如果 request 是來自允許的 domain 的話，<br>
+就把 <code>Access-Control-Allow-Origin</code> 的值設定成該 domain，<br>
+如果不在白名單裡面的話當然就擋掉。  </p>
+<p>Google App Engine 這邊也只能幫忙加上 header，<br>
+如果 Google App Engine 的使用者想針對這部份做進一步的設定的話，<br>
+我目前的想法是只能用 Flexiable Environment，<br>
+前面架個 Apache 或 Nginx 來解掉這問題，<br>
+但我還沒試過就是，<br>
+因為後來又有其他事情得做，<br>
+所以這個 CDN 就暫時開發到這邊而已。  </p>
+<hr>
+<h2>Postscript</h2>
+<p>弄這個 CDN 大約是6月底的事，<br>
+所以算來也差不多兩個月了，<br>
+直到最近又遇到了一次 CORS 的問題。  </p>
+<p>主要是公司有些功能想要實作，<br>
+會需要在客戶的網站上呼叫我們自家公司的 API，<br>
+同事嘗試了以後就遇到 CORS 的問題然後跑來問我。<br>
+因為 API 也是跑在 Google App Engine，<br>
+所以我第一時間就想到在該 API 的 url handler 加上 http_headers。<br>
+但加上去以後用 <code>appcfg.py</code> 要 deploy 的時候遇到了下面這個錯誤，  </p>
+<div class="highlight"><pre><span></span><span class="err">appcfg.py: error: Error parsing ./app.yaml: Unexpected attribute &quot;http_headers&quot; for mapping type script.  </span>
+<span class="err">  in &quot;./app.yaml&quot;, line 70, column 1.  </span>
+</pre></div>
+
+
+<p>看來 Google App Engine 不允許對非 static files 的 handler 加上 HTTP Headers，<br>
+於是只好另尋出路。  </p>
+<p>想了一下，<br>
+依稀記得之前在處理這個問題的時候好像有看到 JSONP 可以跳過一些跨域名請求的限制，<br>
+於是找到了這篇 <a href="https://stackoverflow.com/questions/28359730/google-place-api-no-access-control-allow-origin-header-is-present-on-the-req">javascript - Google Place API - No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access - Stack Overflow</a><br>
+底下有一個回應給出了解答，<br>
+可以透過 jQuery 的 <code>$.ajax()</code> 跳過 CORS 的限制，<br>
+直接拿到 Cross-Domain 的 JSON API 的結果。  </p>
+<p>作法如下：  </p>
+<div class="highlight"><pre><span></span><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>  
+    <span class="nx">url</span><span class="o">:</span> <span class="nx">$url_of_api</span><span class="p">,</span>  
+    <span class="nx">type</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>  
+    <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;jsonp&#39;</span><span class="p">,</span>  
+    <span class="nx">cache</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>  
+    <span class="nx">success</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span>  
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>  
+    <span class="p">}</span>  
+<span class="p">});</span>  
+</pre></div>
+
+
+<p>其中把 <code>$url_of_api</code> 換成會回傳 JSON 結果的 Cross-Domain API 的網址就行了，<br>
+我把這個事件叫作「JSONP 拯救 Cross-Domain JSON API Request」。(啥  </p>
+<hr>
+<h2>Related Links</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Access-Control-Allow-Origin">HTTP access control (CORS) - HTTP | MDN</a>  </li>
+<li><a href="https://cloud.google.com/storage/docs/cross-origin#client_side_support">Cross-Origin Resource Sharing (CORS) | Cloud Storage | Google Cloud Platform</a>  </li>
+<li><a href="https://stackoverflow.com/questions/17555269/access-control-allow-origin-header-on-google-app-engine">python - Access-Control-Allow-Origin header on Google App Engine - Stack Overflow</a>  </li>
+<li><a href="https://www.w3.org/TR/cors/">Cross-Origin Resource Sharing</a>  </li>
+<li><a href="http://rustyrazorblade.com/2013/10/cors-with-wildcard-subdomains-using-nginx/">CORS with Wildcard Subdomains Using Nginx — Rustyrazorblade</a>  </li>
+<li><a href="http://blog.blakesimpson.co.uk/read/64-apache-configure-cors-headers-for-whitelist-domains">Apache Configure CORS Headers for Whitelist Domains</a>  </li>
+<li><a href="https://cloud.google.com/appengine/docs/python/config/appref">app.yaml Reference | App Engine standard environment for Python | Google Cloud Platform</a>  </li>
+<li><a href="https://stackoverflow.com/questions/28359730/google-place-api-no-access-control-allow-origin-header-is-present-on-the-req">javascript - Google Place API - No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'null' is therefore not allowed access - Stack Overflow</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%E5%92%8C%20CORS%20%28Cross-Origin%20Resource%20Sharing%29%20%E6%9C%89%E9%97%9C%E7%9A%84%E5%95%8F%E9%A1%8C%0Ahttps%3A//blog.m157q.tw/posts/2016/09/07/cross-origin-resource-sharing/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/09/07/cross-origin-resource-sharing/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/09/07/cross-origin-resource-sharing/&title=%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%E5%92%8C%20CORS%20%28Cross-Origin%20Resource%20Sharing%29%20%E6%9C%89%E9%97%9C%E7%9A%84%E5%95%8F%E9%A1%8C&summary=%E5%89%8D%E9%99%A3%E5%AD%90%E5%9C%A8%E5%BC%84%E5%85%AC%E5%8F%B8%E7%B3%BB%E7%B5%B1%E6%96%B0%E6%9E%B6%E6%A7%8B%E7%9A%84%20CDN%20%E9%83%A8%E4%BB%BD%E6%99%82%E9%81%87%E5%88%B0%E5%92%8C%20Cross-Origin%20HTTP%20Request%20%E6%9C%89%E9%97%9C%E7%9A%84%E5%95%8F%E9%A1%8C%EF%BC%8C%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%E3%80%82&source=https%3A//blog.m157q.tw/posts/2016/09/07/cross-origin-resource-sharing/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%E5%92%8C%20CORS%20%28Cross-Origin%20Resource%20Sharing%29%20%E6%9C%89%E9%97%9C%E7%9A%84%E5%95%8F%E9%A1%8C&amp;body=https%3A//blog.m157q.tw/posts/2016/09/07/cross-origin-resource-sharing/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/09/07/cross-origin-resource-sharing/";
+        var disqus_title = "紀錄一下和 CORS (Cross-Origin Resource Sharing) 有關的問題";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/09/07/cross-origin-resource-sharing/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-09-07T23:22:28+08:00"><i class="fa fa-calendar"></i> Wed 07 September 2016</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/google-app-engine/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Google App Engine</a>
+  <br>
+            <a href="/tag/cross-origin-http-request/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Cross-Origin HTTP Request</a>
+  <br>
+            <a href="/tag/http/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">HTTP</a>
+  <br>
+            <a href="/tag/cors/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">CORS</a>
+  <br>
+            <a href="/tag/w3c/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">W3C</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/06/i-bought-my-first-domain-name/" title="買了一個叫作 m157q.tw 的域名"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/09/programming-interviews-exposed-third-edition/" title="《程序員面試攻略》第三版（簡中）"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

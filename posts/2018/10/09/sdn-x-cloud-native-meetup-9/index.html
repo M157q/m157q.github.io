@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  SDN x Cloud Native Meetup #9
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/" rel="bookmark" title="Permalink to SDN x Cloud Native Meetup #9">SDN x Cloud Native Meetup #9</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for SDN x Cloud Native Meetup #9</p>
+  </blockquote>
+  <div>
+    <p>link: <a href="https://cntug.kktix.cc/events/sdn-cntug-9">https://cntug.kktix.cc/events/sdn-cntug-9</a></p>
+<hr>
+<h1>Kubernetes Container Runtime Interface</h1>
+<p>Speaker: <a href="https://github.com/chechiachang">https://github.com/chechiachang</a></p>
+<p>CRI, OCI, CRI-O</p>
+<h2>Trend Kubernetes</h2>
+<ul>
+<li>1.3: rktnetes</li>
+<li>1.5: CRI</li>
+<li>1.7 removed pre-CRI Docker/rkt integration</li>
+<li>Currently works Kubelet to use CRI</li>
+<li>CRI-O: released 1.0.x to match Kubernetes 1.7</li>
+</ul>
+<h2>Nomination</h2>
+<ul>
+<li>CRI-O<ul>
+<li>OCI-based implementation of Kubernetes Container Runtime Interface</li>
+<li>
+<blockquote>
+<p>可以用它來跑 Container</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>CRI<ul>
+<li>Kubernetes Container Runtime Interface</li>
+</ul>
+</li>
+<li>OCI<ul>
+<li>Open Container Intiative</li>
+<li>
+<blockquote>
+<p>開源容器促進協議</p>
+</blockquote>
+</li>
+<li>Container 的工業化標準</li>
+</ul>
+</li>
+</ul>
+<h2>Projects with Container Runtime</h2>
+<p>docker, rkt, LXC/LXD, runC, containerd, OpenVZ, ssytemd-nspawn, machinectl, ...</p>
+<h2>Container Runtime Interface (CRI)</h2>
+<ul>
+<li>Enable Kubernetes to support more runtimes</li>
+<li>Free kubernetes to focus on orchestration from runtime integration</li>
+<li>Consists<ul>
+<li>a protocol buffers and gRPC API</li>
+<li>libraries, additional specifications and tools</li>
+</ul>
+</li>
+<li>Architect<ul>
+<li>dockershim</li>
+<li>cri-containerd</li>
+</ul>
+</li>
+</ul>
+<h2>Protobuf</h2>
+<ul>
+<li><a href="https://github.com/protocolbuffers/protobuf">https://github.com/protocolbuffers/protobuf</a></li>
+</ul>
+<h2>CRI runtimes</h2>
+<ul>
+<li>Docker CRI shim (cri-containerd)</li>
+<li>CoreOS rktlet</li>
+<li>fraktal</li>
+<li>Intel Clear Containers</li>
+</ul>
+<h2>Open Container Initiative (OCI)</h2>
+<ul>
+<li>open governmance strucgture</li>
+<li>container industry standards</li>
+<li>runtime spec<ul>
+<li><a href="https://github.com/opencontainers/runtime-spec">https://github.com/opencontainers/runtime-spec</a></li>
+<li>defines configuration, execution environment, and lifecycle of a container
+_ image spec</li>
+<li><a href="https://github.com/opencontainers/image-spec">https://github.com/opencontainers/image-spec</a></li>
+<li>spec on architecture and OS, filesystem layers and configuration</li>
+</ul>
+</li>
+</ul>
+<h2>OCI from aspect of user</h2>
+<ul>
+<li>Use all OCI-conplimant container runtime</li>
+<li>Use all OCI-complimant images registries</li>
+<li>Similar UX</li>
+<li><a href="https://www.opencontainers.org/blog/2018/06/20/cri-o-how-standards-power-a-container-runtime">https://www.opencontainers.org/blog/2018/06/20/cri-o-how-standards-power-a-container-runtime</a></li>
+</ul>
+<h2>CRI-O</h2>
+<ul>
+<li><a href="https://cri-o.io">https://cri-o.io</a></li>
+<li>OCI-based implementation of Kubernetes Container Runtime Interface</li>
+<li>Kubernetes incubator projet also part of the CNCF</li>
+<li>Dedicated for Kuberntes</li>
+<li>Enable CRI-O plugin to other runtimes</li>
+<li>Available on RHEL, Fedora, Centos, Ubuntu, ...</li>
+<li>用途<ul>
+<li>可以讓其他 runtime 以 plugin 的方式被使用</li>
+</ul>
+</li>
+<li><img alt="cri-o architecutre" src="/files/sdn-x-cloud-native-meetup-9/cri-o.png"></li>
+</ul>
+<h2>CRI-O vs Docker (containerd)</h2>
+<p>Docker: kubelet -&gt; cri-containerd (shim) -&gt; containerd -&gt; runC -&gt; container
+CRI-O: kubelet -&gt; cri-o -&gt; runC -&gt; container</p>
+<ul>
+<li>Lightweight</li>
+<li>Stability<ul>
+<li>built for Kubernetes</li>
+<li>No cli, image utilities, ...</li>
+<li>No swarm, mesosphere integration, ...</li>
+</ul>
+</li>
+</ul>
+<h2>Let's use CRI-O</h2>
+<ul>
+<li><a href="https://github.com/kubernetes-sigs/cri-o">https://github.com/kubernetes-sigs/cri-o</a></li>
+<li><a href="https://github.com/kubernetes-sigs/cri-o/blob/master/tutorial.md">https://github.com/kubernetes-sigs/cri-o/blob/master/tutorial.md</a></li>
+<li>Install CRI-O</li>
+<li>Install Podman<ul>
+<li>Podman to cri-o as Docker-cli to Docker daemon</li>
+<li><code>sudo podman run --name my-golang golang:alpine bash</code></li>
+<li>
+<blockquote>
+<p>Docker 使用者無痛轉移</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2>References</h2>
+<ul>
+<li><a href="https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes/">https://kubernetes.io/blog/2016/12/container-runtime-interface-cri-in-kubernetes/</a></li>
+</ul>
+<hr>
+<h1>Automatically Renew Your Certificate In Kubernetes</h1>
+<p>Speaker: <a href="https://github.com/hwchiu">https://github.com/hwchiu</a></p>
+<p><a href="https://www.hwchiu.com/cert-manager.html">https://www.hwchiu.com/cert-manager.html</a>
+<a href="https://github.com/jetstack/cert-manager">https://github.com/jetstack/cert-manager</a>
+<a href="https://cert-manager.readthedocs.io/en/latest/">https://cert-manager.readthedocs.io/en/latest/</a></p>
+<h2>Why we need cert-manager</h2>
+<ul>
+<li>簡化申請 Let's Encrypt 的步驟</li>
+<li>憑證到期自動 renew</li>
+</ul>
+<h2>What is cert-manager</h2>
+<ul>
+<li>A Native Kubernetes certificate management controller.</li>
+<li>It can help with issuing certificates from a variety of sources, such as Let's Encrypt, HashiCorp Vault.</li>
+<li>It will ensure certificates are valid and up to date, and attempt to renew certificates.</li>
+</ul>
+<h3>Components of cert-manager</h3>
+<ul>
+<li>Issuers</li>
+<li>cert-manager</li>
+<li>Certificates</li>
+<li>Kuberntes Secrets</li>
+</ul>
+<p>cert-manager 透過 <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions">Kubernetes 的 CustomResourceDefinitions</a> 新增了 <code>clusterissuers</code>, <code>issuers</code>, <code>certificate</code></p>
+<h4>Issuers</h4>
+<p><a href="http://docs.cert-manager.io/en/latest/reference/issuers.html">http://docs.cert-manager.io/en/latest/reference/issuers.html</a></p>
+<ul>
+<li>ACME<ul>
+<li><a href="http://docs.cert-manager.io/en/latest/reference/issuers/acme/http01.html">HTTP01</a></li>
+<li><a href="http://docs.cert-manager.io/en/latest/reference/issuers/acme/dns01.html">DNS01</a><ul>
+<li>Provision a TXT resource record containing a designated vaule for a specific validation domain name.</li>
+<li>Requirement an approach to control the DNS provider</li>
+<li>For example: If I want to verify <code>test.hwchiu.com</code><ul>
+<li>I need to create a TXT record in <code>test.hwchiu.com</code> with specific content.</li>
+<li>Let's Encrypt will query the TXT record of <code>test.hwchiu.com</code> to check it's content.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CA</li>
+<li>Vault</li>
+<li>Self-signed</li>
+</ul>
+<h2>How to use cert-manager</h2>
+<ul>
+<li>Install the cert-manager<ul>
+<li>Deployment</li>
+<li>Service Account</li>
+<li>RBAC (if you enable it in your cluster)</li>
+</ul>
+</li>
+<li>Create a Issuer/ClusterIssuer</li>
+</ul>
+<h3>Install</h3>
+<ul>
+<li>Use <code>helm</code> to install cert-manager</li>
+</ul>
+<h3>ClusterIssuers</h3>
+<ul>
+<li>In order to simpilify the configuration.</li>
+<li>Support<ul>
+<li>Google Cloud DNS</li>
+<li>Amazon Route53</li>
+<li>Cloudflare</li>
+<li>Akamai FastDNS</li>
+<li>RFC2136</li>
+<li>ACME-DNS</li>
+</ul>
+</li>
+<li>For the Cloudflare<ul>
+<li>you can get your API key from the control panel</li>
+<li>We need to create a kubernetes secret resource with that API key.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Lightning Talk</h1>
+<h2>Container Platform Information</h2>
+<p>Speaker: <a href="https://github.com/pichuang">https://github.com/pichuang</a></p>
+<ul>
+<li>Podman<ul>
+<li><a href="https://www.projectatomic.io/blog/2018/02/reintroduction-podman/">https://www.projectatomic.io/blog/2018/02/reintroduction-podman/</a></li>
+<li><a href="https://github.com/containers/libpod">https://github.com/containers/libpod</a></li>
+</ul>
+</li>
+<li>cri-o<ul>
+<li><a href="https://cri-o">https://cri-o</a></li>
+</ul>
+</li>
+<li>buildah<ul>
+<li><a href="https://github.com/containers/buildah">https://github.com/containers/buildah</a></li>
+</ul>
+</li>
+<li>Skopeo<ul>
+<li><a href="https://github.com/containers/skopeo">https://github.com/containers/skopeo</a></li>
+</ul>
+</li>
+<li>Istio<ul>
+<li><a href="https://istio.io/">https://istio.io/</a></li>
+<li><a href="https://github.com/istio/istio">https://github.com/istio/istio</a></li>
+</ul>
+</li>
+<li>CoreOS (Acquired by Red Hat)<ul>
+<li>Container OS<ul>
+<li>CoreOS</li>
+</ul>
+</li>
+<li>Container Platform<ul>
+<li>OpenShift</li>
+<li><a href="https://www.okd.io/">https://www.okd.io/</a></li>
+<li>OpenShift is Kubernetes for the enterprise</li>
+</ul>
+</li>
+<li>Operation &amp; Management<ul>
+<li>TECTONIC</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=SDN%20x%20Cloud%20Native%20Meetup%20%239%0Ahttps%3A//blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/&title=SDN%20x%20Cloud%20Native%20Meetup%20%239&summary=Note%20for%20SDN%20x%20Cloud%20Native%20Meetup%20%239&source=https%3A//blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=SDN%20x%20Cloud%20Native%20Meetup%20%239&amp;body=https%3A//blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2018/10/11/taipei-blockchain-meetup-20181011/">Taipei Blockchain Meetup 20181011</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/04/24/hacker-chips-april-note/">Hacker Chips April Note</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/">Cat System Workshop #11 Dynamically Hacking the Kernel with Containers</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/04/21/taipei-py-20160421-meetup-note/">Taipei.py 20160421 Meetup Note</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/">Cat System Workshop #12: SkyPat: C++ Performance Analysis and Testing Framework</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/10/09/sdn-x-cloud-native-meetup-9/";
+        var disqus_title = "SDN x Cloud Native Meetup #9";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-10-09T21:43:14+08:00"><i class="fa fa-calendar"></i> Tue 09 October 2018</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/meetup/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">Meetup</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/07/24/upgrade-mongodb-from-3-2-to-3-4-on-debian-9/" title="Upgrade MongoDB from 3.2 to 3.4 on Debian 9"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/10/11/taipei-blockchain-meetup-20181011/" title="Taipei Blockchain Meetup 20181011"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

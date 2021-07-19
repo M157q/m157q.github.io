@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - 無蝦米</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.wu-xia-mi.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2016-10-30T02:05:40+08:00</updated><entry><title>Y2016W34</title><link href="https://blog.m157q.tw/posts/2016/08/29/y2016w34/" rel="alternate"></link><published>2016-08-29T12:19:40+08:00</published><updated>2016-10-30T02:05:40+08:00</updated><author><name>M157q</name></author><id>tag:blog.m157q.tw,2016-08-29:/posts/2016/08/29/y2016w34/</id><summary type="html">&lt;p&gt;Collection for Y2016W34 (2016-08-22 ~ 2016-08-29)&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Coscup&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/vh21/linux-kernel-tracing"&gt;Linux kernel tracing&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;COSCUP 2016 的演講之一，覺得這個投影片挺簡潔又有重點。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Rust&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://servo.org/"&gt;Servo, the parallel browser engine&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;看到程式路跑裏面 Rust 的專案。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Web&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://mp.weixin.qq.com/s?__biz=MzAwMDU1MTE1OQ==&amp;amp;mid=2653547697&amp;amp;idx=1&amp;amp;sn=acc748b7fcf0058b58e244970e51eabc&amp;amp;scene=0&amp;amp;from=groupmessage&amp;amp;isappinstalled=0#wechat_redirect"&gt;如何實現 1080P 延遲低於 500ms 的實時超清直播傳輸技術&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;這個分享挺棒的，對於技術細節的描述非常詳細，期許自己以後紀錄問題的解決過程和方法也要像這樣子。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;Taiwan&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/gossiping/M.1472073912.A.306.html"&gt;Re: [問卦] 有沒有分不清民間信仰跟佛道教的八卦? - 看板 Gossiping - 批踢踢實業坊&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;又是個看八卦版長知識的一篇文章，講了很多我完全不知道的台灣民間信仰的由來。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;無蝦米&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/Liu/M.1471684938.A.01B.html"&gt;[打屁] 分享自己寫的嘸蝦米 vim plugin - 看板 Liu - 批踢踢實業坊&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;pi 真的很愛 vim plugin，什麼時候要成為 vim plugin 大師？ XD  &lt;/li&gt;
+&lt;li&gt;想想自己學了一下無蝦米就沒用了，但真的是個很棒的輸入法。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Web"></category><category term="Rust"></category><category term="Html"></category><category term="無蝦米"></category><category term="Wikipedia"></category><category term="Coscup"></category><category term="Taiwan"></category></entry></feed>

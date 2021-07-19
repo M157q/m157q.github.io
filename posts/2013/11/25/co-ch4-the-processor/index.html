@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  CO Ch4 - The Processor
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.course.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Course - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2013/11/25/co-ch4-the-processor/" rel="bookmark" title="Permalink to CO Ch4 - The Processor">CO Ch4 - The Processor</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <h1>NCTUCS 2013-Fall Computer Organizaion by …</h1>
+  </blockquote>
+  <div>
+    <h1>NCTUCS 2013-Fall Computer Organizaion by Professor Kai-Chiang Wu</h1>
+<h1>Ch4 - The Processor</h1>
+<h2>Introduction</h2>
+<ul>
+<li>CPU performance factor  <ul>
+<li>Instrction count: Determined by ISA and compiler  </li>
+<li>CPI and Cycle Time: Determined by CPU hardware  </li>
+</ul>
+</li>
+<li>Two MIPS example  </li>
+<li>Simple subset, shows most aspects  <ul>
+<li>Memory reference: lw, sw  </li>
+<li>Arithmetic/logical: add, sub, and, or, slt  </li>
+<li>Control transfer: beq, j  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Instruction Execution</h1>
+<ul>
+<li>PC, instruction memory, fetch instruction  </li>
+<li>Register numbers, register file, read registers  </li>
+<li>Depending on instruction class  </li>
+</ul>
+<h1>CPU Overview</h1>
+<p><img alt="CPU Overview" src="/files/co-ch4-the-processor/cpu_overview.png">  </p>
+<h1>Mutiplexers</h1>
+<p>You should use MUX to join wires together.  </p>
+<h1>Control</h1>
+<p>RegWrite, RegRead, MUX, MemRead, MemWrite, Zero, ALU operation, Branch  </p>
+<h1>Logic Design Basic</h1>
+<ul>
+<li>Information encoded in binary  <ul>
+<li>Low voltage = 0, High voltage = 1  </li>
+<li>One wire per bit  </li>
+<li>Multi-bit data encoded on multi-wire buses  </li>
+</ul>
+</li>
+<li>Combinational element  <ul>
+<li>Operate on data  </li>
+<li>Output is a function of input  </li>
+</ul>
+</li>
+<li>State (sequential) elements  <ul>
+<li>Store information  </li>
+</ul>
+</li>
+</ul>
+<h1>Combinational Elements</h1>
+<p>AND gate, Adder, MUX, ALU  </p>
+<h1>Sequential Elements</h1>
+<ul>
+<li>Register: stores data in circuit  <ul>
+<li>Uses a clock signal to determine when to update the stored value  </li>
+<li><strong>Edge-triggered</strong>: update when Clk changes from 0 to 1  </li>
+</ul>
+</li>
+</ul>
+<h1>Performance Issues of Single Cycle Design</h1>
+<ul>
+<li>Longest delay determines clock period  <ul>
+<li>critical path: <strong>load instruction</strong>  </li>
+</ul>
+</li>
+</ul>
+<h1>Clocking Methodology</h1>
+<ul>
+<li>Combinational logic transforms data during clock cycles  <ul>
+<li>Between clock edges  </li>
+<li>Input from state elements, output to state element  </li>
+<li>Longest delay determines clock period  <ul>
+<li><img alt="clock period" src="/files/co-ch4-the-processor/clock_period.png">  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1>Building a Datapath</h1>
+<p><strong>Datapath</strong>: Elements that process data and addresses in the CPU. ex: Reg, ALU, MUX, Mem  </p>
+<h1>Instruction Fetch</h1>
+<p><img alt="Instruction Fetch" src="/files/co-ch4-the-processor/instruction_fetch.png">  </p>
+<h1>R-Format Instructions</h1>
+<ul>
+<li>Read two register operands  </li>
+<li>Perform arithmetic/logical operation  </li>
+<li>Write register result  </li>
+</ul>
+<h1>Load/Store Instructions</h1>
+<ul>
+<li>Load: Read memory and update register  </li>
+<li>Store: Write register value to memory  </li>
+<li>Read register operands  </li>
+<li>Calculate address using <strong>16-bit</strong> offset  <ul>
+<li>Use ALU, but <strong>sign-extend</strong> offset  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Hazards</h1>
+<p>Situations that prevent starting the next instruction in the next cycle  </p>
+<h2>Structure Hazards</h2>
+<ul>
+<li>Conflict for use of a resource  </li>
+<li>In MIPS pipeline with a single memory  <ul>
+<li>Load/store requires data access  </li>
+<li>Instruction fetch would have to stall for that cycle  <ul>
+<li>Would cause a pipeline “bubble”  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pipelined datapaths require separate instruction/data memories or separate instruction/data caches  </li>
+</ul>
+<h2>Data Hazards</h2>
+<p>An instruction depends on completion of data access by a previous instruction  </p>
+<ul>
+<li>
+<p>Forwarding (aka Bypassing)  </p>
+<ul>
+<li>Use result when it is computed  </li>
+<li>Don’t wait for it to be stored in a register  </li>
+<li>Requires extra connections in the datapath  </li>
+</ul>
+</li>
+<li>
+<p>Load-Use Data Hazard  </p>
+<ul>
+<li>Can’t always avoid stalls by forwarding  <ul>
+<li>If value not computed when needed  </li>
+<li>Can’t forward backward in time!  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Code Scheduling to Avoid Stalls  </p>
+<ul>
+<li>Reorder code to avoid use of load result in the next instruction  </li>
+</ul>
+</li>
+</ul>
+<h2>Control Hazards</h2>
+<ul>
+<li>Branch determines flow of control  <ul>
+<li>Fetching next instruction depends on branch outcome  </li>
+<li>Pipeline can’t always fetch correct instruction  </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>In MIPS pipeline<br>
+Need to compare registers and compute target early in the pipeline<br>
+Add hardware to do it in ID stage  </p>
+</blockquote>
+<ul>
+<li>Stall on Branch  <ul>
+<li>Wait until branch outcome determined before fetching next instruction  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Branch Prediction</h1>
+<hr>
+<h1>Pipeline Summary</h1>
+<ul>
+<li>
+<p>Pipelining improves performance by increasing instruction throughput  </p>
+<ul>
+<li>Executes multiple instructions in parallel  </li>
+<li>Each instruction has the same latency  </li>
+</ul>
+</li>
+<li>
+<p>Subject to hazards  </p>
+<ul>
+<li>Structure  </li>
+<li>Data  </li>
+<li>Control  </li>
+</ul>
+</li>
+<li>
+<p>Instruction set design affects complexity of pipeline implementation<br>
+￼￼  </p>
+</li>
+</ul>
+<hr>
+<h1>MIPS Pipelined Datapath</h1>
+<p>From left to right:  </p>
+<ol>
+<li>IF: Instruction fetch  </li>
+<li>ID: Instruction decode / register file read  </li>
+<li>EX: Execute / address calculation  </li>
+<li>MEM: Memory Access  </li>
+<li>WB: Write Back  </li>
+</ol>
+<blockquote>
+<p>left to right flow leads to hazards  </p>
+</blockquote>
+<h1>Pipeline Registers</h1>
+<p><img alt="Pipeline Registers" src="/files/co-ch4-the-processor/pipeline_registers.png">  </p>
+<ul>
+<li>Need registers between stages to hold information produced in previous cycle.  </li>
+<li>IF and ID are in different instruction cycle, so we need registers.  </li>
+<li>If some results in this stage won't be used in the next stages, we don't need store those results in the pipeline registers.  </li>
+</ul>
+<h1>Pipeline Operation</h1>
+<p>Cycle-by-cycle flow of instructions through the pipelined datapath  </p>
+<ul>
+<li>
+<p><strong>“Single-clock-cycle”</strong> pipeline diagram  </p>
+<ul>
+<li>Shows pipeline usage in a single cycle  </li>
+<li>Highlight resources used  </li>
+</ul>
+</li>
+<li>
+<p><strong>“multi-clock-cycle”</strong> pipeline diagram  </p>
+<ul>
+<li>Graph of operation over time  </li>
+</ul>
+</li>
+</ul>
+<h1>Corrected Datapath for Load</h1>
+<p>write address should be stored in the pipeline registers.<br>
+<img alt="Corrected Datapath for Load" src="/files/co-ch4-the-processor/corrected_datapath_for_load.png">  </p>
+<h1>Forwarding Paths</h1>
+<ul>
+<li>Forwarding Unit  </li>
+<li>Control Unit  </li>
+</ul>
+<h1>Forwarding Conditions</h1>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">EX</span> <span class="n">hazard</span>  
+<span class="k">if</span> <span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegWrite</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span>  
+<span class="err">{</span>  
+    <span class="k">if</span> <span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">=</span> <span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="n">RegisterRs</span><span class="p">)</span> <span class="n">ForwardA</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  
+    <span class="k">if</span> <span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">=</span> <span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="n">RegisterRt</span><span class="p">)</span> <span class="n">ForwardB</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>  
+<span class="err">}</span>  
+
+<span class="o">//</span> <span class="n">MEM</span> <span class="n">hazard</span>  
+<span class="k">if</span> <span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="n">RegWrite</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span>  
+<span class="err">{</span>  
+    <span class="k">if</span> <span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">=</span> <span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="n">RegisterRs</span><span class="p">)</span> <span class="n">ForwardA</span> <span class="o">=</span> <span class="mi">01</span><span class="p">;</span>  
+    <span class="k">if</span> <span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">=</span> <span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="n">RegisterRt</span><span class="p">)</span> <span class="n">ForwardB</span> <span class="o">=</span> <span class="mi">01</span><span class="p">;</span>  
+<span class="err">}</span>  
+</pre></div>
+
+
+<h1>Double Data Hazard</h1>
+<div class="highlight"><pre><span></span><span class="nf">add</span> <span class="no">$1</span><span class="p">,</span><span class="no">$1</span><span class="p">,</span><span class="no">$2</span>  
+<span class="no">add</span> <span class="no">$1</span><span class="p">,</span><span class="no">$1</span><span class="p">,</span><span class="no">$3</span>  
+<span class="no">add</span> <span class="no">$1</span><span class="p">,</span><span class="no">$1</span><span class="p">,</span><span class="no">$4</span>  
+</pre></div>
+
+
+<ul>
+<li>Both hazards occur -&gt; Want to use the most recent  </li>
+<li>Revise MEM hazard condition -&gt; Only fwd if EX hazard condition isn’t true  </li>
+</ul>
+<h1>Revised Forwarding Condition</h1>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">MEM</span> <span class="n">hazard</span>  
+<span class="k">if</span> <span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="n">RegWrite</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">))</span>  
+<span class="err">{</span>  
+    <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegWrite</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>  
+    <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">=</span> <span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="n">RegisterRs</span><span class="p">))</span> <span class="p">)</span>  
+    <span class="err">{</span>  
+        <span class="k">if</span> <span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">=</span> <span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="n">RegisterRs</span><span class="p">)</span> <span class="n">ForwardA</span> <span class="o">=</span> <span class="mi">01</span><span class="p">;</span>  
+    <span class="err">}</span>  
+
+    <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegWrite</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>  
+    <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">EX</span><span class="o">/</span><span class="n">MEM</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">=</span> <span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="n">RegisterRt</span><span class="p">))</span> <span class="p">)</span>  
+    <span class="err">{</span>  
+        <span class="k">if</span> <span class="p">(</span><span class="n">MEM</span><span class="o">/</span><span class="n">WB</span><span class="p">.</span><span class="n">RegisterRd</span> <span class="o">=</span> <span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="p">.</span><span class="n">RegisterRt</span><span class="p">)</span> <span class="n">ForwardB</span> <span class="o">=</span> <span class="mi">01</span><span class="p">;</span>  
+    <span class="err">}</span>  
+<span class="err">}</span>  
+</pre></div>
+
+
+<h1>Load-Use Hazard Detection</h1>
+<div class="highlight"><pre><span></span><span class="c1"># Load-use hazard happens when  </span>
+<span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="o">.</span><span class="n">MemRead</span> <span class="ow">and</span>  
+<span class="p">((</span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="o">.</span><span class="n">RegisterRt</span> <span class="o">=</span> <span class="n">IF</span><span class="o">/</span><span class="n">ID</span><span class="o">.</span><span class="n">RegisterRs</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">ID</span><span class="o">/</span><span class="n">EX</span><span class="o">.</span><span class="n">RegisterRt</span> <span class="o">=</span> <span class="n">IF</span><span class="o">/</span><span class="n">ID</span><span class="o">.</span><span class="n">RegisterRt</span><span class="p">))</span>  
+</pre></div>
+
+
+<ul>
+<li>Check when using instruction is decoded in ID stage  </li>
+<li>If detected, stall and insert bubble  </li>
+<li>對一個 load word 的指令來說，我們要看的是他的 Rt  </li>
+</ul>
+<h1>How to Stall the Pipeline</h1>
+<ul>
+<li>Force control values in ID/EX register to 0  <ul>
+<li>EX, MEM and WB do nop (no-operation)  </li>
+</ul>
+</li>
+<li>Prevent update of PC and IF/ID register  <ul>
+<li>Using instruction is decoded again  </li>
+<li>Following instruction is fetched again  </li>
+<li>1-cycle stall allows MEM to read data for lw  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Stalls and Performance</h1>
+<ul>
+<li>Stalls reduce performance  <ul>
+<li>But are required to get correct results  </li>
+</ul>
+</li>
+<li>Compiler can arrange code to avoid hazards and stalls  <ul>
+<li>Requires knowledge of the pipeline structure  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Reducing Branch Delay</h1>
+<ul>
+<li>Move hardware to determine outcome to ID stage  <ul>
+<li>Target address adder  </li>
+<li>Register comparator  </li>
+</ul>
+</li>
+<li>Example: Branch taken  </li>
+</ul>
+<blockquote>
+<p>把 branch 決定的時間從 stage4 提早到 stage2,<br>
+在 stage2 才會知道這個 branch 是否會被 taken<br>
+決定的時間越早越好, 最早就是在 stage2 決定  </p>
+</blockquote>
+<hr>
+<h1>Data Hazards For Branches</h1>
+<p>If a comparison register is a destination of<br>
++ 2nd or 3rd preceding ALU instruction<br>
+    + Can resolve using forwarding<br>
++ preceding ALU instruction or 2nd preceding load instruction<br>
+    + Need 1 stall cycle<br>
++ immediately preceding load instruction<br>
+    + Need 2 stall cycles  </p>
+<hr>
+<h1>Dynamic Branch Prediction</h1>
+<hr>
+<h2>NOTE</h2>
+<ul>
+<li>Intel Sandy Bridge 的 pipeline 約有 17 個 stage  </li>
+<li>Intel Sandy Bridge 和 Ivy Bridge 是以色列的研發團隊研發的  </li>
+<li>Haswell 是美國團隊研發的  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=CO%20Ch4%20-%20The%20Processor%0Ahttps%3A//blog.m157q.tw/posts/2013/11/25/co-ch4-the-processor/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2013/11/25/co-ch4-the-processor/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2013/11/25/co-ch4-the-processor/&title=CO%20Ch4%20-%20The%20Processor&summary=NCTUCS%202013-Fall%20Computer%20Organizaion%20by%20%E2%80%A6&source=https%3A//blog.m157q.tw/posts/2013/11/25/co-ch4-the-processor/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=CO%20Ch4%20-%20The%20Processor&amp;body=https%3A//blog.m157q.tw/posts/2013/11/25/co-ch4-the-processor/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/25/co-ch5-large-and-fast-exploiting-memory-hierarchy/">CO Ch5 - Large and Fast Exploiting Memory Hierarchy</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2013/11/25/co-ch4-the-processor/";
+        var disqus_title = "CO Ch4 - The Processor";
+        var disqus_url = "https://blog.m157q.tw/posts/2013/11/25/co-ch4-the-processor/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2013-11-25T08:22:00+08:00"><i class="fa fa-calendar"></i> Mon 25 November 2013</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/course/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="37 articles in this category">Course</a>
+              </p>
+            <a href="/tag/computer-organization/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Computer Organization</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/25/co-ch5-large-and-fast-exploiting-memory-hierarchy/" title="CO Ch5 - Large and Fast Exploiting Memory Hierarchy"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2013/11/26/os-ch8-memory-management/" title="OS Ch8 - Memory Management"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.course.atom.xml"><i class="fa fa-rss"></i> Category: Course (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - percol</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.percol.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T13:48:00+08:00</updated><entry><title>percol - interactive pipe in shell</title><link href="https://blog.m157q.tw/posts/2014/12/04/percol-interactive-pipe-in-shell/" rel="alternate"></link><published>2014-12-04T15:31:00+08:00</published><updated>2015-10-28T13:48:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-12-04:/posts/2014/12/04/percol-interactive-pipe-in-shell/</id><summary type="html">&lt;h2&gt;&lt;a href="https://github.com/mooz/percol"&gt;mooz/percol · GitHub&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Just like …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;&lt;a href="https://github.com/mooz/percol"&gt;mooz/percol · GitHub&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Just like &lt;code&gt;less&lt;/code&gt; + &lt;code&gt;grep&lt;/code&gt; (in time) + &lt;code&gt;echo&lt;/code&gt; (the result) to me.&lt;br&gt;
+But the instant query filter maybe useful in some cases.  &lt;/p&gt;
+&lt;h3&gt;Installation&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip2 install percol  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Examples&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ percol $file&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ ps aux | percol&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ git checkout $(git branch | percol)&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="percol"></category><category term="Python"></category><category term="pip"></category></entry></feed>

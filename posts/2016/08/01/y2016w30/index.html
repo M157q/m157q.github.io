@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Y2016W30
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.weekly.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Weekly - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/08/01/y2016w30/" rel="bookmark" title="Permalink to Y2016W30">Y2016W30</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Collection for Y2016W30 (2016-07-25 ~ 2016-08-01)</p>
+  </blockquote>
+  <div>
+    <h3>Gae</h3>
+<ul>
+<li><a href="http://stackoverflow.com/questions/14458470/google-app-engines-ndb-get-an-entitys-id">google app engine's ndb: get an entity's id - Stack Overflow</a>  <ul>
+<li>GAE 的 ndb 其實就是 Datastore 的 client。  </li>
+<li>因為最近在公司開發跟 GAE 有關的程式碼，想要從 Datastore 拿到資料的 ID，發現不知道怎麼拿，所以查了一下。  </li>
+</ul>
+</li>
+</ul>
+<p>複製貼上備忘一下  </p>
+<p>You can get the id with several ways provided you have the key.<br>
+Example with fetch or get:  </p>
+<p><code>message = Message.query(Message.name==someName).fetch(1)[0]</code><br>
+<code>message_id = message.key.id()</code>  </p>
+<p><code>message = Message.query(Message.name==someName).get()</code><br>
+<code>message_id = message.key.id()</code>  </p>
+<p>If you don't need the entity but only the id then you can save resources by getting only the key.  </p>
+<p><code>message_key = Message.query(Message.name==someName).fetch(1, keys_only=True)[0]</code><br>
+<code>message_id = message_key.id()</code>  </p>
+<p><code>message_key = Message.query(Message.name==someName).get(keys_only=True)</code><br>
+<code>message_id = message_key.id()</code>  </p>
+<p>Keep in mind that you can get the key after a put as well:  </p>
+<p><code>message_key = message.put()</code><br>
+<code>message_id = message_key.id()</code>  </p>
+<h3>Gcp</h3>
+<ul>
+<li><a href="https://cloud.google.com/datastore/docs/apis/gql/gql_reference?hl=en_GB&amp;_ga=1.75913941.1514764281.1456334755">GQL Reference|Cloud Datastore|Google Cloud Platform</a>  <ul>
+<li>最近要從 Datastore 裡頭拿資料出來，所以學了一下 GQL 的語法。  </li>
+<li>基本上跟 SQL 差不多。  </li>
+<li>但 Datastore 要注意的是，因為其本身是 NoSQL 的結構，所以要做 query 的話，其對應的 condition 必須要有 composite index 才行，所以要更改 <code>index.yaml</code>，並且要 <code>update</code>。一般來說使用官方提供的 GAE SDK 的 <code>dev_appserver.py</code> 這個指令在 local 跑起測試的 GAE server 時，就會順便幫忙檢查，如果有用到新的 index 的話就會自動改寫 index.yaml 了，還算方便。  </li>
+<li>但要建 composite index 的話，跟該 composite index 相關的所有 columns 都要有 index，否則就無法成功建立，所以建議不要沒事把 datastore 對每個 column 預設開啟的 index 關掉，除非真的確定不會用到 query，否則哪天要加 composite index 的話會很麻煩。  </li>
+</ul>
+</li>
+</ul>
+<h3>Paper</h3>
+<ul>
+<li><a href="https://dl.acm.org/citation.cfm?id=584494">General approaches for implementing seamless handover</a>  <ul>
+<li>最近公司在做架構上的 migration，一直試圖想做到 zero downtime，有人就丟了這個名詞出來，查了一下，查到這篇論文。  </li>
+<li>原來就叫 "Seamless handover" 呀  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Joke</h3>
+<ul>
+<li><a href="http://imgur.com/KGrV41o">Harry speaks python - Imgur</a>  <ul>
+<li>寫 Python 的天天都在說爬說語。  </li>
+<li>然後爬說語的英文是 Parseltongue，爬說嘴的英文則是 Parselmouth。(<a href="http://www.crown.com.tw/harrypotter/english/P.htm">source</a>)  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Y2016W30%0Ahttps%3A//blog.m157q.tw/posts/2016/08/01/y2016w30/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/08/01/y2016w30/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/08/01/y2016w30/&title=Y2016W30&summary=Collection%20for%20Y2016W30%20%282016-07-25%20%7E%202016-08-01%29&source=https%3A//blog.m157q.tw/posts/2016/08/01/y2016w30/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Y2016W30&amp;body=https%3A//blog.m157q.tw/posts/2016/08/01/y2016w30/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/03/y2016w39/">Y2016W39</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/01/16/y2017w02/">Y2017W02</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/05/y2016w35/">Y2016W35</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/07/03/y2016w26/">Y2016W26</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/04/10/y2017w14/">Y2017W14</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/08/01/y2016w30/";
+        var disqus_title = "Y2016W30";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/08/01/y2016w30/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-08-01T12:21:52+08:00"><i class="fa fa-calendar"></i> Mon 01 August 2016</abbr></p>
+
+      <p><abbr title="2016-10-14T13:36:52+08:00"><i class="fa fa-pencil"></i>Fri 14 October 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">M157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/weekly/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="105 articles in this category">Weekly</a>
+              </p>
+            <a href="/tag/gcp/" data-toggle="tooltip"
+      class="label label-default"
+      title="23 articles with this tag">GCP</a>
+  <br>
+            <a href="/tag/job/" data-toggle="tooltip"
+      class="label label-default"
+      title="12 articles with this tag">Job</a>
+  <br>
+            <a href="/tag/joke/" data-toggle="tooltip"
+      class="label label-default"
+      title="9 articles with this tag">joke</a>
+  <br>
+            <a href="/tag/gae/" data-toggle="tooltip"
+      class="label label-default"
+      title="9 articles with this tag">gae</a>
+  <br>
+            <a href="/tag/paper/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Paper</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/07/25/y2016w29/" title="Y2016W29"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/08/02/蟬堡-全世界我們最可憐/" title="《蟬堡：全世界我們最可憐》"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.weekly.atom.xml"><i class="fa fa-rss"></i> Category: Weekly (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

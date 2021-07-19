@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - rp-pppoe</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.rp-pppoe.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T22:03:00+08:00</updated><entry><title>Setup PPPoE Wired Network in Arch Linux</title><link href="https://blog.m157q.tw/posts/2013/02/20/setup-pppoe-wired-network-in-arch-linux/" rel="alternate"></link><published>2013-02-20T00:28:00+08:00</published><updated>2015-10-27T22:03:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-02-20:/posts/2013/02/20/setup-pppoe-wired-network-in-arch-linux/</id><summary type="html">&lt;p&gt;照著 &lt;a href="https://wiki.archlinux.org/index.php/Direct_modem_connection"&gt;Direct modem connection - ArchWiki …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;照著 &lt;a href="https://wiki.archlinux.org/index.php/Direct_modem_connection"&gt;Direct modem connection - ArchWiki&lt;/a&gt; 這部份設定  &lt;/p&gt;
+&lt;p&gt;下 &lt;code&gt;# pppoe-setup&lt;/code&gt; 的時候 跟我說 &lt;code&gt;command not found&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;查了一下才知道要先裝上 &lt;code&gt;rp-pppoe&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;所以要設定之前記得先下  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ sudo pacman -S rp-pppoe&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;安裝完後再照著上面 ArchWiki 的步驟設定應該就行了  &lt;/p&gt;
+&lt;p&gt;之前不知道要安裝 &lt;code&gt;rp-pppoe&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;結果跑去 ArchWiki 搜尋 &lt;code&gt;pppoe&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;跑出 &lt;a href="https://wiki.archlinux.org/index.php/pppd"&gt;pppd - ArchWiki&lt;/a&gt; 給我  &lt;/p&gt;
+&lt;p&gt;照著做還是弄不起來 後來才知道要安裝 &lt;code&gt;rp-pppoe&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;所以就是先 &lt;code&gt;$ sudo pacman -S rp-pppoe&lt;/code&gt; 後  &lt;/p&gt;
+&lt;p&gt;再 &lt;code&gt;$ sudo pppoe-setup&lt;/code&gt; 就行了  &lt;/p&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="Network"></category><category term="rp-pppoe"></category><category term="PPPoE"></category></entry></feed>

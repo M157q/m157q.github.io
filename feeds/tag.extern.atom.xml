@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - extern</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.extern.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-26T14:16:00+08:00</updated><entry><title>static/extern/inline function/variable in C</title><link href="https://blog.m157q.tw/posts/2015/06/02/static-extern-inline-function-variable-in-c/" rel="alternate"></link><published>2015-06-02T03:30:34+08:00</published><updated>2015-10-26T14:16:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-06-02:/posts/2015/06/02/static-extern-inline-function-variable-in-c/</id><summary type="html">&lt;p&gt;&lt;a href="http://sitcon.kktix.cc/events/sitcon-ccca-meetup-12"&gt;SITCON x CCCA 新竹定期聚 #12 - extern/static/inline function/variable in C by susu&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://sitcon.kktix.cc/events/sitcon-ccca-meetup-12"&gt;SITCON x CCCA 新竹定期聚 #12 - extern/static/inline function/variable in C by susu&lt;/a&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;教材：&lt;a href="https://github.com/u1240976/mess_note/blob/master/talk/internal_and_external_linkage_in_C.rst"&gt;mess_note/internal_and_external_linkage_in_C.rst at master · u1240976/mess_note · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;錄影：&lt;a href="https://www.youtube.com/watch?v=wBXAzhO2HaA"&gt;https://www.youtube.com/watch?v=wBXAzhO2HaA&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;錄音：&lt;a href="https://plus.google.com/events/cb13m4vrrf9tjckgkic599pditc"&gt;https://plus.google.com/events/cb13m4vrrf9tjckgkic599pditc&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;感謝 &lt;a href="https://github.com/u1240976"&gt;susu&lt;/a&gt; 的介紹，&lt;br&gt;
+覺得 github 上那個 note 整理的很棒，&lt;br&gt;
+之前一直不太懂這部分，&lt;br&gt;
+現在總算比較清楚了，&lt;br&gt;
+之後有時間應該來好好再確認自己真的弄懂了。  &lt;/p&gt;</content><category term="C"></category><category term="static"></category><category term="extern"></category><category term="inline"></category><category term="SITCON"></category><category term="Meetup"></category></entry></feed>

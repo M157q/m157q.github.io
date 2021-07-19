@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Cat System Workshop #12: SkyPat: C++ Performance Analysis and Testing Framework
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/" rel="bookmark" title="Permalink to Cat System Workshop #12: SkyPat: C++ Performance Analysis and Testing Framework">Cat System Workshop #12: SkyPat: C++ Performance Analysis and Testing Framework</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for Cat System Workshop #11 (2016/10/11)</p>
+  </blockquote>
+  <div>
+    <h2>Info</h2>
+<ul>
+<li>Speaker: Peter Chang  </li>
+<li>Event Link: <a href="http://www.accupass.com/go/cat1011">http://www.accupass.com/go/cat1011</a>  </li>
+<li>GitHub Repo: <a href="https://github.com/skymizer/SkyPat">https://github.com/skymizer/SkyPat</a>  </li>
+</ul>
+<hr>
+<h2>Note</h2>
+<ul>
+<li>Regions of code  </li>
+<li>SkyPat  <ul>
+<li>Define unittest, checking both correctness and performance for you.  </li>
+<li><code>#include &lt;pat/pat.h&gt;</code>  </li>
+<li>A glace at SkyPat  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;pat/pat.h&gt;  </span><span class="cp"></span>
+
+<span class="c1">// In MathCase, fibonacci_test  </span>
+<span class="n">PAT_F</span><span class="p">(</span><span class="n">MathCase</span><span class="p">,</span> <span class="n">fibonacci_test</span><span class="p">)</span>  
+<span class="p">{</span>  
+    <span class="n">ASSERT_TRUE</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">);</span>  
+    <span class="n">EXPECT_EQ</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">3</span><span class="p">);</span>  
+    <span class="n">PERFORM</span> <span class="p">{</span>  
+        <span class="n">fibonacci</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>  
+    <span class="p">}</span>  
+<span class="p">}</span>  
+
+<span class="c1">// 一個 case 裏面有很多個 tests  </span>
+</pre></div>
+
+
+<ul>
+<li>Loop-Intensive  <ul>
+<li>Benefic Compiler Optimization  </li>
+<li>比較容易展開  </li>
+<li>測試效能也比較沒那麼困難，主要就看這段 code 要被執行幾次。  </li>
+<li>Example:  <ul>
+<li>GIMP  </li>
+<li>Skymizer  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Call Intensive  <ul>
+<li>Damage Compilter Optimization  </li>
+<li>Difficult to Evaluate  </li>
+<li>比較難處理  </li>
+<li>如果產生得出夠完整的 call graph，可能可以做些優化  </li>
+<li>Loop 展開不太有效果  </li>
+<li>只能試試看能不能減少呼叫  </li>
+<li>有很多不知道的小瓶頸  </li>
+<li>Example:  <ul>
+<li>Browsers (Chrome, Firefox)  </li>
+<li>Editors (Evernote, ...)  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>SkyPat 就是專門用來處理 Call Intensive 這種惱人的效能分析的  </li>
+<li><code>perf</code> cannot evaluate regions of code.  </li>
+<li>SkyPat integrates <code>perf_event</code> to evaluate regions of code.  </li>
+<li>"Software Task Clock" is still not cycle-accurate  </li>
+<li>Only cycle-accurate timer w/o OS interference.  </li>
+<li>Can evaluate call-intensive program  </li>
+</ul>
+<hr>
+<ul>
+<li>Install:  <ul>
+<li><code>$ git clone https://github.com/skymizer/SkyPat.git</code>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>Usage  </p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;pat/pat.h&gt;  </span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>  
+    <span class="n">pat</span><span class="o">::</span><span class="n">Test</span><span class="o">::</span><span class="n">Initialize</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>  
+    <span class="n">pat</span><span class="o">::</span><span class="n">Test</span><span class="o">::</span><span class="n">RunAll</span><span class="p">();</span>  
+<span class="p">}</span>  
+</pre></div>
+
+
+<hr>
+<ul>
+<li>SkyPat v3.0 will be released at Oct 30th.  </li>
+<li>Add more Perf events  </li>
+<li>Welcome feedbac and patches  </li>
+</ul>
+<hr>
+<p>其他的 tool 只能測量 function level，<br>
+但 SkyPat 可以測量 block level。  </p>
+<hr>
+<h2>Conclusion</h2>
+<p>目前還是非常初步的產品，<br>
+也歡迎使用者、貢獻者開 Issues 跟 Pull Request，<br>
+一起討論也很歡迎。  </p>
+<hr>
+<h2>Related links</h2>
+<ul>
+<li><a href="https://github.com/google/googletest">GitHub - google/googletest: Google Test</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Cat%20System%20Workshop%20%2312%3A%20SkyPat%3A%20C%2B%2B%20Performance%20Analysis%20and%20Testing%20Framework%0Ahttps%3A//blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/&title=Cat%20System%20Workshop%20%2312%3A%20SkyPat%3A%20C%2B%2B%20Performance%20Analysis%20and%20Testing%20Framework&summary=Note%20for%20Cat%20System%20Workshop%20%2311%20%282016/10/11%29&source=https%3A//blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Cat%20System%20Workshop%20%2312%3A%20SkyPat%3A%20C%2B%2B%20Performance%20Analysis%20and%20Testing%20Framework&amp;body=https%3A//blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/">Cat System Workshop #11 Dynamically Hacking the Kernel with Containers</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/06/02/static-extern-inline-function-variable-in-c/">static/extern/inline function/variable in C</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/10/09/sdn-x-cloud-native-meetup-9/">SDN x Cloud Native Meetup #9</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/03/27/y2017w12/">Y2017W12</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/10/11/taipei-blockchain-meetup-20181011/">Taipei Blockchain Meetup 20181011</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/";
+        var disqus_title = "Cat System Workshop #12: SkyPat: C++ Performance Analysis and Testing Framework";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-10-11T19:46:58+08:00"><i class="fa fa-calendar"></i> Tue 11 October 2016</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/meetup/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">Meetup</a>
+  <br>
+            <a href="/tag/c/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">c</a>
+  <br>
+            <a href="/tag/framework/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">framework</a>
+  <br>
+            <a href="/tag/cat-system-workshop/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Cat System Workshop</a>
+  <br>
+            <a href="/tag/performance/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Performance</a>
+  <br>
+            <a href="/tag/skymizer/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Skymizer</a>
+  <br>
+            <a href="/tag/unit-test/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Unit-test</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/10/10/y2016w40/" title="Y2016W40"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/10/17/y2016w41/" title="Y2016W41"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

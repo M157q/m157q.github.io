@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - YouCompleteMe</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.youcompleteme.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-11-27T12:47:33+08:00</updated><entry><title>The ycmd server SHUT DOWN (restart with ':YcmRestartServer')</title><link href="https://blog.m157q.tw/posts/2017/11/27/youcompleteme-ycmd-server-shut-down-restart-with-ycmrestartserver/" rel="alternate"></link><published>2017-11-27T12:47:33+08:00</published><updated>2017-11-27T12:47:33+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-11-27:/posts/2017/11/27/youcompleteme-ycmd-server-shut-down-restart-with-ycmrestartserver/</id><summary type="html">&lt;p&gt;Noticed YouCompleteMe not working in my Vim and got this message everytime in status bar when Vim starts, so noted the solution.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/Valloric/YouCompleteMe/issues/1707#issuecomment-222056711"&gt;https://github.com/Valloric/YouCompleteMe/issues/1707#issuecomment-222056711&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/.vim/bundle/YouCompleteMe  
+./install.py --clang-completer  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;YouCompleteMe doesn't work anymore in my Vim.  &lt;/li&gt;
+&lt;li&gt;Got &lt;code&gt;The ycmd server SHUT DOWN (restart with ':YcmRestartServer')&lt;/code&gt; in status bar everytime Vim starts.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:YcmRestartServer&lt;/code&gt; always failed.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:YcmDebugInfo&lt;/code&gt; shows the system path of YouCompleteMe stderr log.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ less /tmp/ycmd_52159_stderr_m7n92px1.log&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;It shows &lt;code&gt;ModuleNotFoundError: No module named 'ycm_core'&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/.vim/bundle/YouCompleteMe  
+./install.py --clang-completer  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Reinstall YouCompleteMe with Clang completer works.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/Valloric/YouCompleteMe/issues/914"&gt;https://github.com/Valloric/YouCompleteMe/issues/914&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Valloric/YouCompleteMe/issues/1707#issuecomment-222056711"&gt;https://github.com/Valloric/YouCompleteMe/issues/1707#issuecomment-222056711&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Vim"></category><category term="YouCompleteMe"></category></entry></feed>

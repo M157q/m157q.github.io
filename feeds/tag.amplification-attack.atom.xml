@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Amplification Attack</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.amplification-attack.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T11:44:00+08:00</updated><entry><title>MC-SQLR 放大攻擊</title><link href="https://blog.m157q.tw/posts/2015/01/22/mc-sqlr-amplification-attack/" rel="alternate"></link><published>2015-01-22T15:20:00+08:00</published><updated>2015-10-27T11:44:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-01-22:/posts/2015/01/22/mc-sqlr-amplification-attack/</id><summary type="html">&lt;p&gt;在 Twitter 上看到  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://twitter.com/hdmoore/status/558041881138192386"&gt;HD Moore …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;在 Twitter 上看到  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://twitter.com/hdmoore/status/558041881138192386"&gt;HD Moore on Twitter: "MS SQL Server Resolution Service enables reflected DDoS with 440x amplification http://t.co/wAy3szhseR &amp;lt; Still 200k+ vulnerable IPs on IPv4"&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;原文連結&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://kurtaubuchon.blogspot.tw/2015/01/mc-sqlr-amplification-ms-sql-server.html"&gt;Default Deny: MC-SQLR Amplification: MS SQL Server Resolution Service enables reflected DDoS with 440x amplification&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;大致上是說在 2014 聖誕夜&lt;br&gt;
+有個據信由 Bitcoin Baron 發起的&lt;br&gt;
+針對 the City of Columbia, Missouri 的網站&lt;br&gt;
+進行的 DDoS 攻擊中&lt;br&gt;
+發現大量的 &lt;code&gt;1434/UDP&lt;/code&gt; 封包&lt;br&gt;
+此類封包的平均大小大約為 441 bytes (含 header)&lt;br&gt;
+封包內容長得像這樣  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;ServerName;WIN3H1QPRPTOAS;InstanceName;MSSQLSERVER;  &lt;/span&gt;
+&lt;span class="err"&gt;IsClustered;No;Version;9.00.5000.00;tcp;1433;np;  &lt;/span&gt;
+&lt;span class="err"&gt;\\WIN3H1QPRPTOAS\pipe\sql\query;;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;經由作者追查後發現&lt;br&gt;
+是 MS SQL Server Resolution Service 所使用的&lt;br&gt;
+稱為 MC-SQLR 的 Protocol&lt;br&gt;
+存在於 MS SQL Server 2000 及其以後的版本中&lt;br&gt;
+client 只要送 1 bytes 的 data 就會讓 Server 回傳此封包&lt;br&gt;
+範例的 python3 sciprt 蠻簡單的  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;socket&lt;/span&gt;  
+
+&lt;span class="n"&gt;HOST_IP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;192.168.1.1&amp;quot;&lt;/span&gt;  
+&lt;span class="n"&gt;sock&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;AF_INET&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;socket&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SOCK_DGRAM&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;HOST_IP&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1434&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;  
+&lt;span class="n"&gt;qry&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;bytes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromhex&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;02&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qry&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="n"&gt;ans&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sock&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;recv&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;5120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ans&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;將封包扣除 header 的大小後&lt;br&gt;
+大約是 220 bytes 左右&lt;br&gt;
+所以放大了 220 倍左右&lt;br&gt;
+(此為作者後來修正，原先沒扣掉封包 Header 的平均大小約為 440 bytes)&lt;br&gt;
+攻擊者透過 botnet 並將 source ip 偽造成 victim ip&lt;br&gt;
+向網路上運行此服務的 Public MS SQL Server 發送此種封包&lt;br&gt;
+導致這些 Server 成為 Amplifier&lt;br&gt;
+間接對 victim 造成 DDoS 攻擊  &lt;/p&gt;
+&lt;p&gt;而將此 Resolution Service 關閉會影響一些正常的服務&lt;br&gt;
+所以作者建議不要將有運行此 Service 的 MS SQL Server&lt;br&gt;
+放在 Public Network  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The behavior exploited in this reflection attack is a key component of the functioning of MS SQL Server 2000 and later.&lt;br&gt;
+Disabling this service is likely not to be an option.&lt;br&gt;
+It may be possible to limit the address space to which a server will respond to CLNT_BCAST_EX messages.&lt;br&gt;
+Most of all, though, owners of SQL Servers should question whether their servers should really be exposed to the internet in the first place.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;有趣的是&lt;br&gt;
+作者提到在 MC-SQLR protocol documentation 中&lt;br&gt;
+有個關於安全的段落 &lt;a href="https://msdn.microsoft.com/en-us/library/cc219741.aspx"&gt;5.1 Security Considerations for Implementers&lt;/a&gt;&lt;br&gt;
+ 寫著  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;"No security considerations are associated with the SQL Server Resolution Protocol"  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;他建議 M$ 該修改這部分了XD  &lt;/p&gt;</content><category term="DDoS"></category><category term="MC-SQLR"></category><category term="Amplification Attack"></category><category term="Security"></category></entry></feed>

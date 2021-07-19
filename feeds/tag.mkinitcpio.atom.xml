@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - mkinitcpio</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.mkinitcpio.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T22:14:00+08:00</updated><entry><title>Arch Linux - USB鍵盤和USB滑鼠插上去卻無法使用的解法</title><link href="https://blog.m157q.tw/posts/2013/02/17/solution-for-usb-keyboard-and-mouse-not-working-in-arch-linux/" rel="alternate"></link><published>2013-02-17T01:19:00+08:00</published><updated>2015-10-27T22:14:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2013-02-17:/posts/2013/02/17/solution-for-usb-keyboard-and-mouse-not-working-in-arch-linux/</id><summary type="html">&lt;p&gt;前幾天剛灌好 &lt;code&gt;Arch Linux x86_64&lt;/code&gt;&lt;br&gt;
+接上 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;前幾天剛灌好 &lt;code&gt;Arch Linux x86_64&lt;/code&gt;&lt;br&gt;
+接上 USB外接滑鼠和鍵盤 竟然沒辦法使用 (我想用我的青軸鍵盤啊Q_Q)&lt;br&gt;
+光學滑鼠的紅色燈有亮 但不能動 鍵盤也沒反應&lt;br&gt;
+查了論壇上幾篇文章 有和我狀況類似的 可是照著弄還是不會動&lt;br&gt;
+大概都是問說有沒有在 &lt;code&gt;/etc/mkinitcpio.conf&lt;/code&gt; 裏面的 HOOKS 加入 usbinput  &lt;/p&gt;
+&lt;p&gt;但參考了 &lt;a href="https://wiki.archlinux.org/index.php/Mkinitcpio#HOOKS"&gt;mkinitcpio - ArchWiki&lt;/a&gt; 後  &lt;/p&gt;
+&lt;p&gt;裏面有著這行敘述  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="mkinitcpio" src="/files/solution-for-usb-keyboard-and-mouse-not-working-in-arch-linux/mkinitcpio.png"&gt;  &lt;/p&gt;
+&lt;p&gt;意思是 &lt;code&gt;usbinput&lt;/code&gt; 在 &lt;code&gt;mkinitcpio 0.13.0&lt;/code&gt; 已經被合併到 keyboard 裏面了&lt;br&gt;
+所以只要在 &lt;code&gt;/etc/mkinitcpio.conf&lt;/code&gt; 裏面的 &lt;code&gt;HOOKS&lt;/code&gt; 加入 &lt;code&gt;keyboard&lt;/code&gt;&lt;br&gt;
+(HOOKS裏面應該已經有其他東西了)&lt;br&gt;
+加入後，以我的 &lt;code&gt;mkinitcpio.conf&lt;/code&gt; 為例，會長的像這樣  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;HOOKS="base udev autodetect modconf block filesystems keyboard fsck keymap"&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;修改完後 一定要記得下  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo mkinitcpio -p linux  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(我就是忘記下這行指令才卡很久都沒外接滑鼠和鍵盤可以用=  =")  &lt;/p&gt;
+&lt;p&gt;等他跑完 再把USB滑鼠和USB鍵盤插上去試試  &lt;/p&gt;</content><category term="Linux"></category><category term="Arch Linux"></category><category term="USB"></category><category term="mkinitcpio"></category></entry></feed>

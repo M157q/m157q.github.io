@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Network Administration Hw1: Setup DHCP, NAT, Firewall
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/" rel="bookmark" title="Permalink to Network Administration Hw1: Setup DHCP, NAT, Firewall">Network Administration Hw1: Setup DHCP, NAT, Firewall</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>NCTUCS 2013 Spring Network Administration Homework1</p>
+  </blockquote>
+  <div>
+    <h2>Setup DHCP, NAT, Firewall</h2>
+<blockquote>
+<p>I done this homework in Arch Linux  </p>
+</blockquote>
+<hr>
+<h2>SPEC</h2>
+<div class="highlight"><pre><span></span><span class="err">Server - dhcp server, NAT, Firewall, ftp-proxy, transparent http proxy (TP)  </span>
+<span class="err">(home-q) dhcp server =&gt; dhcpd;  </span>
+<span class="err">         NAT, Firewall, ftp-proxy =&gt; iptables;  </span>
+<span class="err">         transparent http proxy =&gt; squid;  </span>
+<span class="err">         外網網卡 enp0s18 140.113.27.37  </span>
+<span class="err">         內網網卡 enp0s19 172.16.1.254  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">HostA -  dhcp client with private ip (172.16.1.101~172.16.1.200)  </span>
+<span class="err">(www-q)  http client browse through Server&#39;s TP  </span>
+<span class="err">         dhcp client =&gt; dhcpcd;  </span>
+<span class="err">         內網網卡 enp0s18  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">HostB -  dhcp client with static private ip (172.16.1.30)  </span>
+<span class="err">(mail-q) provide ssh service (bind on Server&#39;s 222 port)  </span>
+<span class="err">         provide ftp service (bind on Server&#39;s 21 port)  </span>
+<span class="err">         ftp service =&gt; vsftpd;  </span>
+<span class="err">         內網網卡 enp0s18; MAC 5a:49:97:32:c3:13 (拿來給 dhcpd 發 static private ip)  </span>
+</pre></div>
+
+
+<hr>
+<h2>DHCP server (on home-q)</h2>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Dhcpd">https://wiki.archlinux.org/index.php/Dhcpd</a>  </li>
+<li><a href="http://linux.vbird.org/linux_server/0340dhcp.php">http://linux.vbird.org/linux_server/0340dhcp.php</a>  </li>
+</ul>
+<p>基本上就照著 Arch wiki 作<br>
+<code># ip addr add 172.16.1.254/24 dev enp0s19</code><br>
+然後在 <code>/etc/dhcpd.conf</code> 中寫下規則  </p>
+<div class="highlight"><pre><span></span><span class="err">option domain-name &quot;nctucs.net&quot;;                                                  </span>
+<span class="err">option domain-name-servers 8.8.8.8, 140.113.1.1;                                  </span>
+<span class="err">option subnet-mask 255.255.255.0;                                                  </span>
+<span class="err">option routers 172.16.1.254;                                                      </span>
+<span class="err">option broadcast-address 172.16.1.255;                                            </span>
+<span class="err">                                                                                   </span>
+<span class="err">default-lease-time 3600;                                                          </span>
+<span class="err">max-lease-time 7200;                                                              </span>
+<span class="err">ddns-update-style none;                                                            </span>
+<span class="err">log-facility local7;                                                              </span>
+<span class="err">                                                                                   </span>
+<span class="err">#pool                                                                              </span>
+<span class="err">subnet 172.16.1.0 netmask 255.255.255.0 {                                          </span>
+<span class="err">    range 172.16.1.101 172.16.1.200;                                              </span>
+<span class="err">}                                                                                  </span>
+<span class="err">                                                                                   </span>
+<span class="err">#static private ip                                                                </span>
+<span class="err">host mail-q {                                                                      </span>
+<span class="err">    hardware ethernet 5a:49:97:32:c3:13;                                          </span>
+<span class="err">    fixed-address 172.16.1.30;                                                    </span>
+<span class="err">}  </span>
+</pre></div>
+
+
+<p>為了讓 dhcpd 只 listen 特定的 interface<br>
+在 <code>/etc/conf.d/dhcp</code> 中 把 <code>DHCP4_ARGS="-q"</code> 改成 <code>DHCP4_ARGS="-q enp0s19"</code><br>
+然後 <code># systemctl start dhcpd4</code> 應該就能成功當起 dhcp server 了  </p>
+<hr>
+<h2>DHCP client (on www-q and mail-q)</h2>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Network_Configuration#Dynamic_IP_address">https://wiki.archlinux.org/index.php/Network_Configuration#Dynamic_IP_address</a>  </li>
+</ul>
+<p>一樣照著 arch wiki 作 預設應該就有裝 dhcpcd 了<br>
+<code># dhcpcd enp0s18</code><br>
+這裡的 enp0s18 是內網網卡<br>
+然後 <code># systemctl start dhcpcd@enp0s18</code><br>
+用 <code>$ lspci -k</code> 察看跟網卡相關的 modules<br>
+結果如下  </p>
+<div class="highlight"><pre><span></span><span class="mi">00</span><span class="o">:</span><span class="mf">13.0</span> <span class="n">Ethernet</span> <span class="n">controller</span><span class="o">:</span> <span class="n">Realtek</span> <span class="n">Semiconductor</span> <span class="n">Co</span><span class="o">.,</span> <span class="n">Ltd</span><span class="o">.</span> <span class="n">RTL</span><span class="o">-</span><span class="mi">8139</span><span class="sr">/8139C/</span><span class="mi">8139</span><span class="n">C</span><span class="o">+</span> <span class="o">(</span><span class="n">rev</span> <span class="mi">20</span><span class="o">)</span>  
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">Subsystem</span><span class="o">:</span> <span class="n">Red</span> <span class="n">Hat</span><span class="o">,</span> <span class="n">Inc</span> <span class="n">Device</span> <span class="mi">1100</span>  
+<span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="err"> </span> <span class="n">Kernel</span> <span class="n">driver</span> <span class="k">in</span> <span class="n">use</span><span class="o">:</span> <span class="mi">8139</span><span class="n">cp</span>  
+</pre></div>
+
+
+<p>所以可以知道在 <code>/etc/modules-load/realtek.conf</code>  </p>
+<h3>Note</h3>
+<p>這邊卡關了一下是因為 dv 也在 140.113.27 網段底下架了一台 dhcp Server<br>
+結果我的 client 一直拿到他的 server 發出來的 ip 而不是我自己架的<br>
+看了鳥哥的網頁<br>
+<a href="http://linux.vbird.org/linux_server/0340dhcp.php#client_linux">http://linux.vbird.org/linux_server/0340dhcp.php#client_linux</a><br>
+裏面有提到在 client 端上的 /var/lib/dhclient/ 裏面有跟租約相關的檔案<br>
+可以用 vim 開啟直接改寫<br>
+<code>option dhcp-server-identifier 172.16.1.254</code> 指定 dhcp Server<br>
+可是在 archlinux 底下無法直接這樣改寫，用vim開起來會是亂碼<br>
+後來是在 client 端的 <code>/etc/dhcpcd.conf</code> 中加上 <code>static routers=172.16.1.254</code> 解決  </p>
+<hr>
+<h2>NAT &amp; Firewall</h2>
+<blockquote>
+<p>In Linux we use iptables, while in FreeBSD we use PF  </p>
+</blockquote>
+<ul>
+<li><a href="http://linux.vbird.org/linux_server/0250simple_firewall.php">http://linux.vbird.org/linux_server/0250simple_firewall.php</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Internet_Share">https://wiki.archlinux.org/index.php/Internet_Share</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Simple_Stateful_Firewall">https://wiki.archlinux.org/index.php/Simple_Stateful_Firewall</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Iptables">https://wiki.archlinux.org/index.php/Iptables</a>  </li>
+<li><a href="https://wiki.archlinux.org/index.php/Router">https://wiki.archlinux.org/index.php/Router</a>  </li>
+<li><a href="http://www.revsys.com/writings/quicktips/nat.html">http://www.revsys.com/writings/quicktips/nat.html</a><br>
+<br>
+參考了以上的連結之後，目前 iptables 的設定如下  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err"># Generated by iptables-save v1.4.18 on Tue Apr  9 04:40:40 2013                </span>
+<span class="err">*mangle                                                                        </span>
+<span class="err">:PREROUTING ACCEPT [369:34165]                                                  </span>
+<span class="err">:INPUT ACCEPT [278:20862]                                                      </span>
+<span class="err">:FORWARD ACCEPT [91:13303]                                                      </span>
+<span class="err">:OUTPUT ACCEPT [153:20248]                                                      </span>
+<span class="err">:POSTROUTING ACCEPT [244:33551]                                                </span>
+<span class="err">COMMIT                                                                          </span>
+<span class="err"># Completed on Tue Apr  9 04:40:40 2013                                        </span>
+<span class="err"># Generated by iptables-save v1.4.18 on Tue Apr  9 04:40:40 2013                </span>
+<span class="err">*filter                                                                        </span>
+<span class="err">:INPUT ACCEPT [3:418]                                                          </span>
+<span class="err">:FORWARD ACCEPT [91:13303]                                                      </span>
+<span class="err">:OUTPUT ACCEPT [153:20248]                                                      </span>
+<span class="err">:BADHOST - [0:0]                                                                </span>
+<span class="err">-A INPUT -j BADHOST                                                            </span>
+<span class="err">-A BADHOST -s 140.113.101.10 -j DROP                                            </span>
+<span class="err">-A INPUT -i enp0s18 -p icmp -m icmp --icmp-type 8 -j DROP                      </span>
+<span class="err">-A INPUT -m state --state INVALID -j DROP                                      </span>
+<span class="err">-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT                        </span>
+<span class="err">-A INPUT -i lo -j ACCEPT                                                        </span>
+<span class="err">-A INPUT -i enp0s18 -s 140.113.230.88 -j ACCEPT                                </span>
+<span class="err">-A FORWARD -m state --state INVALID -j DROP                                    </span>
+<span class="err">-A FORWARD -s 140.113.17.0/24 -d 172.16.1.30 -p tcp --dport 21 -j REJECT --reject-with tcp-reset  </span>
+<span class="err">-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT  </span>
+<span class="err">-A FORWARD -s 140.113.230.88 -d 172.16.1.30 -p tcp --dport 21:22 -j ACCEPT      </span>
+<span class="err">-A FORWARD -s 140.113.27.47 -d 172.16.1.30 -p tcp --dport 22 -j ACCEPT        </span>
+<span class="err">-A FORWARD -s 140.113.235.0/24 -d 172.16.1.30 -p tcp --dport 21 -j ACCEPT      </span>
+<span class="err">-A FORWARD -s 140.113.17.0/24 -d 172.16.1.30 -p tcp --dport 22 -j ACCEPT        </span>
+<span class="err">-A FORWARD -d 172.16.1.30 -p tcp --dport 21 -j DROP                            </span>
+<span class="err">-A FORWARD -d 172.16.1.30 -p tcp --dport 22 -j DROP                            </span>
+<span class="err">COMMIT                                                                          </span>
+<span class="err"># Completed on Tue Apr  9 04:40:40 2013                                        </span>
+<span class="err"># Generated by iptables-save v1.4.18 on Tue Apr  9 04:40:40 2013                </span>
+<span class="err">*nat                                                                            </span>
+<span class="err">:PREROUTING ACCEPT [2:426]                                                      </span>
+<span class="err">:INPUT ACCEPT [1:354]                                                          </span>
+<span class="err">:OUTPUT ACCEPT [0:0]                                                            </span>
+<span class="err">:POSTROUTING ACCEPT [1:60]                                                      </span>
+<span class="err">-A PREROUTING -i enp0s18 -p tcp --dport 21 -j DNAT --to-destination 172.16.1.30:21  </span>
+<span class="err">-A PREROUTING -i enp0s18 -p tcp --dport 222 -j DNAT --to-destination 172.16.1.30:22  </span>
+<span class="err">-A PREROUTING -s 172.16.1.0/24 -i enp0s19 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3128  </span>
+<span class="err">-A POSTROUTING -s 172.16.1.0/24 -o enp0s18 -j MASQUERADE                        </span>
+<span class="err">COMMIT                                                                          </span>
+<span class="err"># Completed on Tue Apr  9 04:40:40 2013  </span>
+</pre></div>
+
+
+<blockquote>
+<p>140.113.230.88 是寢室的 ip<br>
+140.113.27.47 是社窩無網的ip<br>
+為了方便操作用  </p>
+</blockquote>
+<hr>
+<h2>Proxy</h2>
+<h3>ftp-proxy</h3>
+<p>好像在 iptables 就設定完了 根本不用像 FreeBSD 還要用 ftp-proxy<br>
+猜測是因為 <code>-A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT</code> 的緣故  </p>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Squid">https://wiki.archlinux.org/index.php/Squid</a>  </li>
+<li><a href="http://linux.vbird.org/linux_server/0420squid.php">http://linux.vbird.org/linux_server/0420squid.php</a>  </li>
+</ul>
+<h3>transparent http proxy</h3>
+<p>在 <code>/etc/squid/squid.conf</code> 中 <code>http_port</code> 後面加上 <code>intercept</code>  </p>
+<p><code>http_port 3128 intercept</code>  </p>
+<blockquote>
+<p>鳥哥裏面是寫 <code>http_port 3128 transparent</code><br>
+在 <a href="http://www.squid-cache.org/Doc/config/http_port/">http://www.squid-cache.org/Doc/config/http_port/</a> 有寫到在 3.1 的版本以後<br>
+intercept - Rename of old 'transparent' option to indicate proper functionality.  </p>
+</blockquote>
+<p>把 <code>cache_dir ufs /var/cache/squid 256 16 256</code> 的註解取消<br>
+再加上 <code>cache_mem 8 MB</code> (預設是 8 MB 可以自己改)  </p>
+<p><code># squid -z</code> (在 <code>/var/cache/squid/</code> 建立資料夾)<br>
+<code># squid -k check</code> (檢查 <code>/etc/squid/squid.conf</code> 有沒有問題)<br>
+<code># systemctl start squid</code>  </p>
+<p>之後在 iptables 的 nat table 中加上新的 rule,<br>
+把內網往外傳的 http request 轉到 squid 上<br>
+<code>-A PREROUTING -i enp0s19 -s 172.16.1.0/24 -p tcp --dport 80 -j REDIRECT --to-ports 3128</code><br>
+然後 reload iptables  </p>
+<hr>
+<h2>vsftpd</h2>
+<p>遇到兩個錯誤  </p>
+<ol>
+<li><code>500 OOPS: priv_sock_get_cmd</code>  <ul>
+<li>解決方法  <ul>
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=147074">https://bbs.archlinux.org/viewtopic.php?id=147074</a>  </li>
+<li>在 <code>/etc/vsftpd.conf</code> 加上 <code>seccomp_sandbox=0</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>500 OOPS: vsftpd: refusing to run with writable root inside chroot()</code>  <ul>
+<li>解決方法  <ul>
+<li><a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?post_id=236642">http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?post_id=236642</a>  </li>
+<li><code>chmod a-w $dir</code>  </li>
+<li>該 root dir 不可有寫入的權限  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>感想</h2>
+<p>用 Arch Linux 蠻方便的<br>
+基本上就照著鳥哥和 Arch Wiki 的教學邊做邊學應該就差不多了<br>
+不過跟上課教的好像差蠻多的XD<br>
+教的是 FreeBSD, PF<br>
+結果我用 Linux, iptables<br>
+這樣期中考真的沒問題嗎w?  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Network%20Administration%20Hw1%3A%20Setup%20DHCP%2C%20NAT%2C%20Firewall%0Ahttps%3A//blog.m157q.tw/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/&title=Network%20Administration%20Hw1%3A%20Setup%20DHCP%2C%20NAT%2C%20Firewall&summary=NCTUCS%202013%20Spring%20Network%20Administration%20Homework1&source=https%3A//blog.m157q.tw/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Network%20Administration%20Hw1%3A%20Setup%20DHCP%2C%20NAT%2C%20Firewall&amp;body=https%3A//blog.m157q.tw/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2014/02/21/vsftpd-virtual-user-broken-after-upgrade-pam-from-1-1-8-2-to-1-1-8-3-in-arch-linux/">vsftpd virtual user broken after upgrade pam from 1.1.8-2 to 1.1.8-3 in Arch Linux</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/02/25/setup-static-ip-wired-network-in-arch-linux/">Setup Static Ip Wired Network in Arch Linux</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2014/05/21/the-solution-for-system-upgrade-failure-caused-by-ghc-7-8-2/">GHC 7.8.2 造成 Arch Linux 無法升級的解法</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/10/15/disable-auto-suspend-while-the-laptop-lid-close-in-arch-linux/">Disable auto suspend while the laptop lid close in Arch Linux</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2014/10/29/pacman-mirrorlist-taiwan-vs-taiwan-province-of-china/">pacman mirrorlist - Taiwan vs. Taiwan (Province of China)</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/";
+        var disqus_title = "Network Administration Hw1: Setup DHCP, NAT, Firewall";
+        var disqus_url = "https://blog.m157q.tw/posts/2013/04/09/network-administration-hw1-setup-dhcp-nat-firewall/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2013-04-09T15:29:00+08:00"><i class="fa fa-calendar"></i> Tue 09 April 2013</abbr></p>
+
+      <p><abbr title="2015-10-27T21:31:00+08:00"><i class="fa fa-pencil"></i>Tue 27 October 2015</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="44 articles with this tag">linux</a>
+  <br>
+            <a href="/tag/arch-linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="18 articles with this tag">Arch Linux</a>
+  <br>
+            <a href="/tag/sysadmin/" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">sysadmin</a>
+  <br>
+            <a href="/tag/iptables/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">iptables</a>
+  <br>
+            <a href="/tag/dhcp/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">DHCP</a>
+  <br>
+            <a href="/tag/firewall/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Firewall</a>
+  <br>
+            <a href="/tag/nat/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">NAT</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2013/02/25/setup-static-ip-wired-network-in-arch-linux/" title="Setup Static Ip Wired Network in Arch Linux"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2013/04/09/tutorial-for-open-source-dynamic-typing-language-python/" title="開放源碼的動態程式設計語言體驗營 - Python"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

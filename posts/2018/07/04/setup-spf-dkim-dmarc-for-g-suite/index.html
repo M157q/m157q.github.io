@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  為 G Suite 新增 SPF, DKIM 和 DMARC 設定以避免有心人士的釣魚攻擊
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/" rel="bookmark" title="Permalink to 為 G Suite 新增 SPF, DKIM 和 DMARC 設定以避免有心人士的釣魚攻擊">為 G Suite 新增 SPF, DKIM 和 DMARC 設定以避免有心人士的釣魚攻擊</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>公司最近收到了漏洞回報，結果是因為 DNS 沒有設定 SPF record，導致有心人士可以偽裝成客服的電子郵件信箱寄信給任何人。</p>
+  </blockquote>
+  <div>
+    <h2>TL;DR 懶人包</h2>
+<p>如果你正在使用 Google 的 G Suite 而且有在使用其 Gmail 功能的話，<br>
+請記得花點時間設定 Gmail 的 SPF, DKIM 和 DMARC，<br>
+以防止有心人士偽裝成你的公司寄電子郵件給別人。  </p>
+<p>直接按照 G suite 的官方教學一步步進行設定就行了，<br>
+以下直接附上連結：  </p>
+<ul>
+<li><a href="https://support.google.com/a/answer/33786?hl=zh-Hant">使用 SPF 對寄件者授權 - G Suite 管理員說明</a>  </li>
+<li><a href="https://support.google.com/a/answer/174126?hl=zh-Hant">產生網域金鑰 - G Suite 管理員說明</a>  </li>
+<li><a href="https://support.google.com/a/answer/2466580?hl=zh-Hant">關於 DMARC - G Suite 管理員說明</a>  </li>
+</ul>
+<p>設定好之後可以使用 Google 的網站來檢測：<br>
+<a href="https://toolbox.googleapps.com/apps/checkmx/">Check MX: Check MX and SPF Records.</a><br>
+或者這個網站也可以<br>
+<a href="https://www.kitterman.com/spf/validate.html">SPF Query Tool</a><br>
+但我比較推薦前者就是。  </p>
+<hr>
+<h2>前言</h2>
+<p>最近公司的 contact 電子郵件帳號收到了漏洞回報，<br>
+告知 SPF record 沒設定好，<br>
+任何人都可以假冒公司的電子郵件地址寄信給別人進行釣魚攻擊。  </p>
+<p>和同事都以為都用了 G suite 了，<br>
+Google 應該會幫你自動設定好這些東西，<br>
+但其實沒有。  </p>
+<p>應該是因為是在 DNS 進行設定，<br>
+而 G suite 其實沒包含 DNS，<br>
+也沒權限動你的 DNS。  </p>
+<p>所以真的要記得設定啊。  </p>
+<hr>
+<h2>紀錄</h2>
+<h3>SPF</h3>
+<p>設定了一下 SPF，其實不花多少時間，也不需要 G suite 管理員權限的帳號。<br>
+只要有可以改 DNS 的帳號即可，就加上一行 TXT record:  </p>
+<div class="highlight"><pre><span></span><span class="c">host: @  </span>
+<span class="c">value: v=spf1 include:_spf.google.com ~all  </span>
+<span class="c">ttl: 3600  </span>
+</pre></div>
+
+
+<p>DigitalOcean 也有一篇關於 SPF 的文章：<a href="https://www.digitalocean.com/community/tutorials/how-to-use-an-spf-record-to-prevent-spoofing-improve-e-mail-reliability">How To use an SPF Record to Prevent Spoofing &amp; Improve E-mail Reliability | DigitalOcean</a><br>
+說明了 SPF (Sender Policy Framework) 的作用、語法和設定方式。<br>
+簡單來說就是讓人家知道收到你的網域的電子郵件時，<br>
+只有其 IP 來自於 SPF 中有寫到的 IP 才是認可的來源這樣。<br>
+其他都會被認定為 Spoofing。  </p>
+<p>CloudFlare 也有一篇教學教你怎麼設定 SPF：<a href="https://support.cloudflare.com/hc/en-us/articles/200168626-How-do-I-add-a-SPF-record-">How do I add a SPF record? – Cloudflare Support</a><br>
+其實就是一筆特殊格式的 DNS TXT 紀錄。  </p>
+<p>想詳細知道 SPF 語法的人可以參考這個網站：<a href="http://www.openspf.org/SPF_Record_Syntax">SPF: SPF Record Syntax</a>  </p>
+<p>可以使用 <code>dig</code> 指令來查詢是否設定好了：  </p>
+<div class="highlight"><pre><span></span>dig TXT <span class="o">[</span>domain<span class="o">]</span>  
+</pre></div>
+
+
+<p>如果有出現 <code>v=spf1</code> 的 TXT 紀錄就是設定好了。  </p>
+<h3>DKIM</h3>
+<p>DKIM 則是用來簽署由此網域發出去的電子郵件，<br>
+設定步驟直接參考 G suite 官方教學：<a href="https://support.google.com/a/answer/174126?hl=zh-Hant">產生網域金鑰 - G Suite 管理員說明</a><br>
+這個部份要在 G suite 管理介面做些設定，<br>
+所以會需要有 G suite 管理員權限的帳號。  </p>
+<p>要先在 G suite 產生 DKIM 的金鑰後，<br>
+再把 DKIM 的公鑰設定在 DNS 的 TXT 紀錄中，<br>
+完成後即可開啟驗證，<br>
+供人日後做驗證使用。  </p>
+<p>DNS TXT record 會長得像這樣：  </p>
+<div class="highlight"><pre><span></span><span class="n">host</span><span class="o">:</span> <span class="n">google</span><span class="o">.</span><span class="na">_domainkey</span>  
+<span class="n">value</span><span class="o">:</span> <span class="n">v</span><span class="o">=</span><span class="n">DKIM1</span><span class="o">;</span> <span class="n">k</span><span class="o">=</span><span class="n">rsa</span><span class="o">;</span> <span class="n">p</span><span class="o">=&lt;</span><span class="n">encoded</span> <span class="kd">public</span> <span class="n">key</span><span class="o">&gt;</span>  
+</pre></div>
+
+
+<p>CloudFlare 也有篇文章教你怎麼設定 DKIM:<a href="https://support.cloudflare.com/hc/en-us/articles/200168696-How-do-I-add-DKIM-records-">How do I add DKIM records? – Cloudflare Support</a>  </p>
+<p>可以使用 <code>dig</code> 指令來查詢是否設定好了：  </p>
+<div class="highlight"><pre><span></span>dig TXT google._domainkey.<span class="o">[</span>domain<span class="o">]</span>  
+</pre></div>
+
+
+<h3>DMARC</h3>
+<p>需先設定好 SPF 和 DKIM，DMARC 才有用。<br>
+簡單來說就是讓網域擁有者可以決定該如何處理從自己的網域寄出但未經驗證的郵件，<br>
+可以設定三種動作：不採取動作、隔離、拒絕，<br>
+並可設定要檢查的比例，預設是 100% 都要檢查。<br>
+然後可以設定要把這些未經過驗證的信件寄信到管理員的電子郵件，<br>
+讓網域管理員瞭解自己的網域有多少未經驗證的電子郵件發出。  </p>
+<p>關於 DMARC 的介紹和格式可以參考以下網站：  </p>
+<ul>
+<li><a href="https://support.google.com/a/answer/2466580?hl=zh-Hant">關於 DMARC - G Suite 管理員說明</a>  </li>
+<li><a href="https://dmarc.org/overview/">Overview – dmarc.org</a>  </li>
+<li><a href="https://dmarc.org//draft-dmarc-base-00-01.html#iana_dmarc_tags">DMARC.org: Domain-based Message Authentication, Reporting and Conformance (DMARC)</a>  </li>
+</ul>
+<p>設定的步驟一樣按照 G suite 的官方教學即可：<br>
+<a href="https://support.google.com/a/answer/2466563?hl=zh-Hant">新增 DMARC 記錄 - G Suite 管理員說明</a>  </p>
+<p>設定好的話大概會長這樣：  </p>
+<div class="highlight"><pre><span></span><span class="k">host</span><span class="err">:</span><span class="w"> </span><span class="n">_dmarc</span><span class="p">.</span><span class="o">[</span><span class="n">domain</span><span class="o">]</span><span class="w">  </span>
+<span class="k">value</span><span class="err">:</span><span class="w"> </span><span class="n">v</span><span class="o">=</span><span class="n">DMARC1</span><span class="p">;</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="n">reject</span><span class="p">;</span><span class="w"> </span><span class="n">rua</span><span class="o">=</span><span class="nl">mailto</span><span class="p">:</span><span class="k">admin</span><span class="err">@</span><span class="o">[</span><span class="n">domain</span><span class="o">]</span><span class="w">  </span>
+</pre></div>
+
+
+<p><code>p</code> 可以是 <code>none</code>, <code>quarantine</code>, <code>reject</code><br>
+<code>none</code> 是不採取任何動作，仍會進到收件人的信箱。<br>
+<code>quarantine</code> 是隔離，未經驗證的信件會被標為垃圾信，仍會進到收件人的信箱。<br>
+<code>reject</code> 是拒絕，會直接擋掉，不會進到收件人的信箱。  </p>
+<p>如果要設定檢查的比例的話，<br>
+可以再加上 <code>pct</code> 這個參數，<br>
+<code>pct=5</code> 代表只檢查 5%，<br>
+不做設定的話，<br>
+預設是 <code>pct=100</code>。  </p>
+<p>可以使用 <code>dig</code> 指令來查詢是否設定好了：  </p>
+<div class="highlight"><pre><span></span>dig TXT _dmarc.<span class="o">[</span>domain<span class="o">]</span>  
+</pre></div>
+
+
+<hr>
+<h2>後記</h2>
+<p>突然想起遙遠的 Network Administration 課程好像有講過這件事，<br>
+不過那時的作業是教你怎麼寄信到人家的 Gmail 信箱裏面啊，<br>
+有講這幾個 protocol 可以用來防禦，<br>
+但真的是到今天才想起來啊。  </p>
+<p>不過印象中當時只有聽過 SPF 和 DKIM，<br>
+DMARC 應該是後來才出現的。  </p>
+<p>總之是又學了一課啊。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E7%82%BA%20G%20Suite%20%E6%96%B0%E5%A2%9E%20SPF%2C%20DKIM%20%E5%92%8C%20DMARC%20%E8%A8%AD%E5%AE%9A%E4%BB%A5%E9%81%BF%E5%85%8D%E6%9C%89%E5%BF%83%E4%BA%BA%E5%A3%AB%E7%9A%84%E9%87%A3%E9%AD%9A%E6%94%BB%E6%93%8A%0Ahttps%3A//blog.m157q.tw/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/&title=%E7%82%BA%20G%20Suite%20%E6%96%B0%E5%A2%9E%20SPF%2C%20DKIM%20%E5%92%8C%20DMARC%20%E8%A8%AD%E5%AE%9A%E4%BB%A5%E9%81%BF%E5%85%8D%E6%9C%89%E5%BF%83%E4%BA%BA%E5%A3%AB%E7%9A%84%E9%87%A3%E9%AD%9A%E6%94%BB%E6%93%8A&summary=%E5%85%AC%E5%8F%B8%E6%9C%80%E8%BF%91%E6%94%B6%E5%88%B0%E4%BA%86%E6%BC%8F%E6%B4%9E%E5%9B%9E%E5%A0%B1%EF%BC%8C%E7%B5%90%E6%9E%9C%E6%98%AF%E5%9B%A0%E7%82%BA%20DNS%20%E6%B2%92%E6%9C%89%E8%A8%AD%E5%AE%9A%20SPF%20record%EF%BC%8C%E5%B0%8E%E8%87%B4%E6%9C%89%E5%BF%83%E4%BA%BA%E5%A3%AB%E5%8F%AF%E4%BB%A5%E5%81%BD%E8%A3%9D%E6%88%90%E5%AE%A2%E6%9C%8D%E7%9A%84%E9%9B%BB%E5%AD%90%E9%83%B5%E4%BB%B6%E4%BF%A1%E7%AE%B1%E5%AF%84%E4%BF%A1%E7%B5%A6%E4%BB%BB%E4%BD%95%E4%BA%BA%E3%80%82&source=https%3A//blog.m157q.tw/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E7%82%BA%20G%20Suite%20%E6%96%B0%E5%A2%9E%20SPF%2C%20DKIM%20%E5%92%8C%20DMARC%20%E8%A8%AD%E5%AE%9A%E4%BB%A5%E9%81%BF%E5%85%8D%E6%9C%89%E5%BF%83%E4%BA%BA%E5%A3%AB%E7%9A%84%E9%87%A3%E9%AD%9A%E6%94%BB%E6%93%8A&amp;body=https%3A//blog.m157q.tw/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/05/22/y2017w20/">Y2017W20</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/03/20/y2017w11/">Y2017W11</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/17/y2016w41/">Y2016W41</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/01/22/mc-sqlr-amplification-attack/">MC-SQLR 放大攻擊</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/07/25/y2016w29/">Y2016W29</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/";
+        var disqus_title = "為 G Suite 新增 SPF, DKIM 和 DMARC 設定以避免有心人士的釣魚攻擊";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/07/04/setup-spf-dkim-dmarc-for-g-suite/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-07-04T02:09:19+08:00"><i class="fa fa-calendar"></i> Wed 04 July 2018</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/security/" data-toggle="tooltip"
+      class="label label-default"
+      title="52 articles with this tag">security</a>
+  <br>
+            <a href="/tag/google/" data-toggle="tooltip"
+      class="label label-default"
+      title="9 articles with this tag">google</a>
+  <br>
+            <a href="/tag/spf/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">SPF</a>
+  <br>
+            <a href="/tag/mail/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Mail</a>
+  <br>
+            <a href="/tag/dmarc/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">DMARC</a>
+  <br>
+            <a href="/tag/dkim/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">DKIM</a>
+  <br>
+            <a href="/tag/g-suite/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">G suite</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/06/24/embed-srt-subtitle-into-mkv-with-ffmpeg/" title="Embed .srt subtitle into .mkv with ffmpeg"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/07/23/use-my-old-vimrc-for-neovim/" title="Use my old vimrc for NeoVim"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

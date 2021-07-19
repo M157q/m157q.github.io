@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  0CTF 2015 Note
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.contest.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Contest - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/" rel="bookmark" title="Permalink to 0CTF 2015 Note">0CTF 2015 Note</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>A note for 0CTF 2015</p>
+  </blockquote>
+  <div>
+    <h1>web / mislead</h1>
+<p>Padding Oralcle Attack in Cookie  </p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Padding_oracle_attack">https://en.wikipedia.org/wiki/Padding_oracle_attack</a>  </li>
+<li><a href="https://github.com/mwielgoszewski/python-paddingoracle">https://github.com/mwielgoszewski/python-paddingoracle</a>  </li>
+</ul>
+<h1>web / golden mac 1</h1>
+<p>Download .DS_Store file from http://202.112.26.102/g0ldenM4c/.DS_Store.<br>
+It tells the flag is in http://202.112.26.102/g0ldenM4c/u_can_not_guess_this_haha.<br>
+Then, upload a .docx files which contains XXE to read the flag.  </p>
+<div class="highlight"><pre><span></span><span class="c">php://filter/convert.base64-encode/resource=u_can_not_guess_this_haha.php  </span>
+</pre></div>
+
+
+<ul>
+<li><a href="https://www.owasp.org/index.php/XML_External_Entity_%28XXE%29_Processing">https://www.owasp.org/index.php/XML_External_Entity_%28XXE%29_Processing</a>  </li>
+<li><a href="http://resources.infosecinstitute.com/xxe-attacks/">http://resources.infosecinstitute.com/xxe-attacks/</a>  </li>
+</ul>
+<h1>web /forward</h1>
+<p>forward the MySQL connection to your MySQL Server and look at the network traffic.<br>
+u will see the flag leaked.  </p>
+<div class="highlight"><pre><span></span><span class="err">mysql_native_password  </span>
+<span class="err">forward  </span>
+<span class="err">SELECT flag FROM forward.flag  </span>
+<span class="err">def.forward.flag.flag.flag.flag....  </span>
+<span class="err">0ctf{w3ll_d0ne_guY}  </span>
+</pre></div>
+
+
+<hr>
+<h1>crypto / GREBeginner</h1>
+<ul>
+<li><a href="https://gist.github.com/5lipper/d6363e436f08f12f0bbb">https://gist.github.com/5lipper/d6363e436f08f12f0bbb</a>  <ul>
+<li><a href="/files/0ctf-2015-note/GREBeginner.cpp">GREBeginner</a>  </li>
+</ul>
+</li>
+</ul>
+<h1>crypto / RSA Quine</h1>
+<ul>
+<li><a href="https://gist.github.com/mheistermann/0dee124d7eed2ec26fcd">https://gist.github.com/mheistermann/0dee124d7eed2ec26fcd</a>  </li>
+</ul>
+<hr>
+<h1>mobile / dataraidar</h1>
+<ul>
+<li><a href="http://www.forensicswiki.org/wiki/How_To_Decrypt_Android_Full_Disk_Encryption">http://www.forensicswiki.org/wiki/How_To_Decrypt_Android_Full_Disk_Encryption</a>  </li>
+<li><a href="http://blog.scrt.ch/2015/03/27/insomnihack-finals-insomnidroid-level-1-writeup/">http://blog.scrt.ch/2015/03/27/insomnihack-finals-insomnidroid-level-1-writeup/</a>  </li>
+</ul>
+<h1>mobile / simpleapk</h1>
+<ul>
+<li><a href="http://androidcracking.blogspot.tw/2010/12/getting-apk-signature-outside-of.html">http://androidcracking.blogspot.tw/2010/12/getting-apk-signature-outside-of.html</a>  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="mi">08</span><span class="o">:</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="n">KT_SaH</span><span class="o">&gt;</span> <span class="n">wytshadow</span><span class="o">:</span> <span class="n">simpleapk</span><span class="o">:</span> <span class="n">reversed</span> <span class="n">the</span> <span class="n">lib</span> <span class="n">and</span> <span class="n">saw</span> <span class="n">some</span> <span class="n">xoring</span><span class="o">,</span> <span class="n">so</span> <span class="n">I</span> <span class="n">xored</span> <span class="n">the</span> <span class="n">flag</span><span class="o">.</span><span class="na">txt</span> <span class="o">=&gt;</span> <span class="n">win</span>  
+<span class="mi">08</span><span class="o">:</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="n">riatre</span><span class="o">&gt;</span> <span class="n">wytshadow</span><span class="o">:</span> <span class="n">simpleapk</span><span class="o">:</span> <span class="n">reverse</span> <span class="n">the</span> <span class="n">elf</span>  
+<span class="mi">08</span><span class="o">:</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="n">niklasb</span><span class="o">&gt;</span> <span class="n">yeah</span> <span class="n">and</span> <span class="n">maybe</span> <span class="n">realize</span> <span class="n">that</span> <span class="n">they</span> <span class="n">used</span> <span class="n">adi</span>  
+<span class="mi">08</span><span class="o">:</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="n">niklasb</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">adbi</span>  
+<span class="mi">08</span><span class="o">:</span><span class="mi">40</span> <span class="o">&lt;</span> <span class="n">Zzzzzzzzzz</span><span class="o">&gt;</span> <span class="n">wytshadow</span><span class="o">:</span> <span class="n">simpleapk</span><span class="o">:</span> <span class="n">inject</span> <span class="n">logger</span> <span class="k">in</span> <span class="n">smali</span><span class="o">,</span> <span class="n">recompile</span><span class="o">,</span> <span class="n">dump</span> <span class="n">variable</span> <span class="k">with</span> <span class="n">flag</span> <span class="o">;]</span>  
+<span class="mi">08</span><span class="o">:</span><span class="mi">44</span> <span class="o">&lt;</span> <span class="n">niklasb</span><span class="o">&gt;</span> <span class="n">the</span> <span class="n">XOR</span> <span class="n">key</span> <span class="n">had</span> <span class="mi">0</span> <span class="n">bytes</span> <span class="n">at</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">5</span> <span class="n">and</span> <span class="n">the</span> <span class="n">last</span> <span class="n">position</span>  
+<span class="mi">08</span><span class="o">:</span><span class="mi">45</span> <span class="o">&lt;</span> <span class="n">KT_SaH</span><span class="o">&gt;</span> <span class="mi">0</span><span class="n">ctf</span><span class="o">{</span><span class="n">Too_Simple_Sometimes_Naive</span><span class="o">!!!}</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="n">ctf</span><span class="o">{</span><span class="n">It</span><span class="err">&#39;</span><span class="n">s_More_Than_Meets_The_Eye</span><span class="o">!}</span>  
+</pre></div>
+
+
+<h1>mobile / VEZEL</h1>
+<div class="highlight"><pre><span></span><span class="mi">08</span><span class="o">:</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="n">niklasb</span><span class="o">&gt;</span> <span class="n">wytshadow</span><span class="o">:</span> <span class="n">tl</span><span class="o">;</span><span class="n">dr</span> <span class="k">for</span> <span class="n">vezel</span> <span class="n">you</span> <span class="n">could</span> <span class="n">just</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">values</span> <span class="n">from</span> <span class="n">another</span> <span class="n">app</span>  
+<span class="mi">08</span><span class="o">:</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="n">KT_SaH</span><span class="o">&gt;</span> <span class="n">vezel</span><span class="o">:</span> <span class="n">IDA</span> <span class="o">+</span> <span class="n">adb</span> <span class="o">+</span> <span class="n">print</span> <span class="n">flag</span> <span class="n">value</span> <span class="o">:</span><span class="n">D</span>  
+<span class="mi">08</span><span class="o">:</span><span class="mi">39</span> <span class="o">&lt;</span> <span class="n">KT_SaH</span><span class="o">&gt;</span> <span class="o">+</span> <span class="n">bluestacks</span>  
+</pre></div>
+
+
+<hr>
+<h1>Pwn Challenges</h1>
+<ul>
+<li><a href="https://rzhou.org/~ricky/0ctf2015/">https://rzhou.org/~ricky/0ctf2015/</a>  <ul>
+<li><a href="/files/0ctf-2015-note/0ops_app.py">0ops App</a>  </li>
+<li><a href="/files/0ctf-2015-note/flaggenerator.py">Flag Generator</a>  </li>
+<li><a href="/files/0ctf-2015-note/freenote.py">freenote</a>  </li>
+<li><a href="/files/0ctf-2015-note/login.py">login</a>  </li>
+</ul>
+</li>
+<li><a href="https://gist.github.com/seanwupi/49c7d68ee13f29ddb435">https://gist.github.com/seanwupi/49c7d68ee13f29ddb435</a>  <ul>
+<li><a href="https://gist.github.com/seanwupi/37ffc34032c0ada9a9d8">flagen</a>  </li>
+<li><a href="https://gist.github.com/seanwupi/929df6655f2acdbab3ff">freenode</a>  </li>
+<li><a href="https://gist.github.com/seanwupi/e4b1f039e9f949a7b972">login</a>  </li>
+<li><a href="https://gist.github.com/seanwupi/713023672c42aa62ca9e">0opsapp</a>  </li>
+<li><a href="https://gist.github.com/seanwupi/286c823afe64617c652d">vbs</a>  </li>
+</ul>
+</li>
+<li>VBS  <ul>
+<li><a href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6332">CVE-2014-6332</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Misc</h1>
+<ul>
+<li>LFI - Local File Inclusion  <ul>
+<li><a href="https://en.wikipedia.org/wiki/File_inclusion_vulnerability">https://en.wikipedia.org/wiki/File_inclusion_vulnerability</a>  </li>
+<li><a href="https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion">https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion</a>  </li>
+<li><a href="http://hakipedia.com/index.php/Local_File_Inclusion">http://hakipedia.com/index.php/Local_File_Inclusion</a>  </li>
+</ul>
+</li>
+<li>SSRF - Server Side Request Forgery  <ul>
+<li><a href="https://www.acunetix.com/blog/articles/server-side-request-forgery-vulnerability/">https://www.acunetix.com/blog/articles/server-side-request-forgery-vulnerability/</a>  </li>
+<li><a href="http://www.slideshare.net/d0znpp/ssrf-attacks-and-sockets-smorgasbord-of-vulnerabilities">http://www.slideshare.net/d0znpp/ssrf-attacks-and-sockets-smorgasbord-of-vulnerabilities</a>  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=0CTF%202015%20Note%0Ahttps%3A//blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/&title=0CTF%202015%20Note&summary=A%20note%20for%200CTF%202015&source=https%3A//blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=0CTF%202015%20Note&amp;body=https%3A//blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/">HITCON 2015 IOT Wargame</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/">HITCON CTF 2015 Quals Write-up</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/01/21/dhc-rest-http-api-client/">DHC - REST/HTTP API Client</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/07/y2017w31/">Y2017W31</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2015/03/30/0ctf-2015-note/";
+        var disqus_title = "0CTF 2015 Note";
+        var disqus_url = "https://blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-03-30T18:15:23+08:00"><i class="fa fa-calendar"></i> Mon 30 March 2015</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/contest/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="3 articles in this category">Contest</a>
+              </p>
+            <a href="/tag/ctf/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">ctf</a>
+  <br>
+            <a href="/tag/write-up/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">Write-up</a>
+  <br>
+            <a href="/tag/0ctf/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">0CTF</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2015/03/24/compiler-design-week-5/" title="Compiler Design Week 5"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/04/07/compiler-design-week-7/" title="Compiler Design Week 7"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.contest.atom.xml"><i class="fa fa-rss"></i> Category: Contest (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

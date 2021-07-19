@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - virtualenv</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.virtualenv.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-01-16T22:29:41+08:00</updated><entry><title>Fix virtualenv after an upgrade of Python</title><link href="https://blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/" rel="alternate"></link><published>2015-10-07T15:39:41+08:00</published><updated>2017-01-16T22:29:41+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-10-07:/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/</id><summary type="html">&lt;p&gt;Always forget how to do it after upgrading Python, so just write it down.&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Manual&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/.virtualenvs  
+$ find &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;envname&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/ -type l -delete  
+$ virtualenv &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;envname&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Script for one virtualenv&lt;/h2&gt;
+&lt;p&gt;Here's a tiny script from &lt;a href="https://gist.github.com/tevino/1a557a0c200d61d4e4fb"&gt;Fix python virtualenv after python update · GitHub&lt;/a&gt; for doing this.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fix_virtualenv.sh  
+---  
+&lt;span class="c1"&gt;#!/usr/bin/env bash  &lt;/span&gt;
+&lt;span class="nv"&gt;ENV_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dirname &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dirname &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;which pip&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  
+&lt;span class="nv"&gt;SYSTEM_VIRTUALENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;which -a virtualenv&lt;span class="p"&gt;|&lt;/span&gt;tail -1&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  
+
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Ensure the root of current virtualenv:&amp;quot;&lt;/span&gt;  
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;    &lt;/span&gt;&lt;span class="nv"&gt;$ENV_PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  
+&lt;span class="nb"&gt;read&lt;/span&gt; -p &lt;span class="s2"&gt;&amp;quot;‼️  Say no if you are not sure (y/N) &amp;quot;&lt;/span&gt; -n &lt;span class="m"&gt;1&lt;/span&gt; -r  
+&lt;span class="nb"&gt;echo&lt;/span&gt;  
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$REPLY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;~ ^&lt;span class="o"&gt;[&lt;/span&gt;Yy&lt;span class="o"&gt;]&lt;/span&gt;$ &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;  
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;♻️  Removing old symbolic links......&amp;quot;&lt;/span&gt;  
+    find &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ENV_PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -type l -delete -print  
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;💫  Creating new symbolic links......&amp;quot;&lt;/span&gt;  
+    &lt;span class="nv"&gt;$SYSTEM_VIRTUALENV&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ENV_PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;🎉  Done!&amp;quot;&lt;/span&gt;  
+&lt;span class="k"&gt;fi&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Steps&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;source&lt;/span&gt; ~/.virtualenvs/&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;envname&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/bin/activate.sh  
+$ chmod u+x ./fix_virtualenv.sh  
+$ ./fix_virtualenv.sh  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Script for all virtualenvs under &lt;code&gt;~/.virtualenvs&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Based on the above script which for only one virtualenv,&lt;br&gt;
+I modified it to &lt;a href="https://gist.github.com/M157q/e1bf93a4a8170fabac24db9aee686caf"&gt;a slighty powerful script&lt;/a&gt; to fix all virtualenvs (include reinstall all modules in a virtualenv).  &lt;/p&gt;
+&lt;h3&gt;One liner (Network needed)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sh &amp;lt;(curl -sL https://gist.githubusercontent.com/M157q/e1bf93a4a8170fabac24db9aee686caf/raw)&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wget&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sh &amp;lt;(wget -qO- https://gist.githubusercontent.com/M157q/e1bf93a4a8170fabac24db9aee686caf/raw)&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Plaintext&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;fix_virtualenvs.sh  
+---  
+&lt;span class="c1"&gt;#!/usr/bin/env bash  &lt;/span&gt;
+
+&lt;span class="nv"&gt;VIRTUALENVS_ROOT_DIR&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/.virtualenvs&amp;quot;&lt;/span&gt;  
+&lt;span class="nv"&gt;ACTIVE_SH_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/bin/activate&amp;quot;&lt;/span&gt;  
+
+&lt;span class="k"&gt;for&lt;/span&gt; dir in &lt;span class="sb"&gt;`&lt;/span&gt;find &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;VIRTUALENVS_ROOT_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; -type d -maxdepth &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;  
+&lt;span class="k"&gt;do&lt;/span&gt;  
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;VIRTUALENVS_ROOT_DIR&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;  
+        &lt;span class="k"&gt;continue&lt;/span&gt;  
+    &lt;span class="k"&gt;fi&lt;/span&gt;  
+
+    &lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;dir&lt;/span&gt;&lt;span class="si"&gt;}${&lt;/span&gt;&lt;span class="nv"&gt;ACTIVE_SH_PATH&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;  
+
+    &lt;span class="nv"&gt;ENV_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dirname &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;dirname &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;which pip&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  
+    &lt;span class="nv"&gt;SYSTEM_VIRTUALENV&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;which -a virtualenv&lt;span class="p"&gt;|&lt;/span&gt;tail -1&lt;span class="k"&gt;)&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  
+
+    &lt;span class="nb"&gt;echo&lt;/span&gt;  
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Ensure the root of current virtualenv:&amp;quot;&lt;/span&gt;  
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;    &lt;/span&gt;&lt;span class="nv"&gt;$ENV_PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;  
+    &lt;span class="nb"&gt;read&lt;/span&gt; -p &lt;span class="s2"&gt;&amp;quot;Say no if you are not sure (y/N) &amp;quot;&lt;/span&gt; -n &lt;span class="m"&gt;1&lt;/span&gt; -r  
+    &lt;span class="nb"&gt;echo&lt;/span&gt;  
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$REPLY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;~ ^&lt;span class="o"&gt;[&lt;/span&gt;Yy&lt;span class="o"&gt;]&lt;/span&gt;$ &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;  
+
+        &lt;span class="nb"&gt;read&lt;/span&gt; -p &lt;span class="s2"&gt;&amp;quot;Reinstall all packages of this virtualenv after upgraded? (y/N) &amp;quot;&lt;/span&gt; -n &lt;span class="m"&gt;1&lt;/span&gt; -r  
+
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$REPLY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;~ &lt;span class="s2"&gt;&amp;quot;^[Yy]&lt;/span&gt;$&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;  
+            &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Dump pip freeze for current virtualenv into requirements.temp&amp;quot;&lt;/span&gt;  
+            pip freeze &amp;gt; requirements.temp  
+        &lt;span class="k"&gt;fi&lt;/span&gt;  
+
+        &lt;span class="nv"&gt;VIRTUALENV_PYTHON_VERSION&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="sb"&gt;`&lt;/span&gt;python --version&lt;span class="sb"&gt;`&lt;/span&gt;  
+        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Removing old symbolic links......&amp;quot;&lt;/span&gt;  
+        find &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ENV_PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -type l -delete -print  
+
+        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Creating new symbolic links......&amp;quot;&lt;/span&gt;  
+        &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;VIRTUALENV_PYTHON_VERSION&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;  
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$VIRTUALENV_PYTHON_VERSION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;~ &lt;span class="s2"&gt;&amp;quot;Python 2&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;  
+            &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Use Python 2 environment for this virtualenv&amp;quot;&lt;/span&gt;  
+            &lt;span class="nv"&gt;$SYSTEM_VIRTUALENV&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ENV_PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; --python&lt;span class="o"&gt;=&lt;/span&gt;python2  
+        &lt;span class="k"&gt;elif&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$VIRTUALENV_PYTHON_VERSION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;~ &lt;span class="s2"&gt;&amp;quot;Python 3&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;  
+            &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Use Python 3 environment for this virtualenv&amp;quot;&lt;/span&gt;  
+            &lt;span class="nv"&gt;$SYSTEM_VIRTUALENV&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$ENV_PATH&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; --python&lt;span class="o"&gt;=&lt;/span&gt;python3  
+        &lt;span class="k"&gt;else&lt;/span&gt;  
+            &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Unknown Python version of this virtualenv&amp;quot;&lt;/span&gt;  
+        &lt;span class="k"&gt;fi&lt;/span&gt;  
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$REPLY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;~ &lt;span class="s2"&gt;&amp;quot;^[Yy]&lt;/span&gt;$&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt;  
+            &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Reinstall modules from previous dumped pip freeze result.&amp;quot;&lt;/span&gt;  
+            pip install -r requirements.temp  
+
+            &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Remove requirements.temp&amp;quot;&lt;/span&gt;  
+            rm requirements.temp  
+        &lt;span class="k"&gt;fi&lt;/span&gt;  
+    &lt;span class="k"&gt;fi&lt;/span&gt;  
+
+    deactivate  
+&lt;span class="k"&gt;done&lt;/span&gt;  
+
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Done!&amp;quot;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://wirtel.be/posts/en/2014/07/29/fix_virtualenv_python_brew/"&gt;Stéphane Wirtel - Read-Eval-Print Loop&lt;/a&gt; (Dead link)  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/tevino/1a557a0c200d61d4e4fb"&gt;Fix python virtualenv after python update · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category><category term="virtualenv"></category></entry></feed>

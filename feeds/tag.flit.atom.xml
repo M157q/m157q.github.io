@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Flit</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.flit.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-07-11T15:54:19+08:00</updated><entry><title>No more requirements-test.txt for Flit or Poetry while using Tox running tests</title><link href="https://blog.m157q.tw/posts/2020/07/11/no-more-requirements-test-txt-for-flit-or-poetry-while-using-tox-running-tests/" rel="alternate"></link><published>2020-07-11T15:54:19+08:00</published><updated>2020-07-11T15:54:19+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2020-07-11:/posts/2020/07/11/no-more-requirements-test-txt-for-flit-or-poetry-while-using-tox-running-tests/</id><summary type="html">&lt;p&gt;最近開始用 &lt;code&gt;pyproject.toml&lt;/code&gt; 取代 &lt;code&gt;setup.py&lt;/code&gt;, &lt;code&gt;requirements.txt&lt;/code&gt;, ...，紀錄一下遇到的問題。&lt;/p&gt;</summary><content type="html">&lt;h1&gt;前言&lt;/h1&gt;
+&lt;p&gt;目前使用 &lt;code&gt;poetry&lt;/code&gt; 和 &lt;code&gt;flit&lt;/code&gt; 這兩套工具，皆可以讀取 &lt;code&gt;pyproject.toml&lt;/code&gt;。&lt;br&gt;
+但 &lt;code&gt;flit&lt;/code&gt; 的開發較早，功能也比較陽春一些，如果是剛轉換的話，推薦直接使用 &lt;code&gt;poetry&lt;/code&gt;。&lt;br&gt;
+兩者最大的差別主要在於 &lt;code&gt;poetry&lt;/code&gt; 有 lock dependencies 的機制，但 &lt;code&gt;flit&lt;/code&gt; 沒有。&lt;/p&gt;
+&lt;p&gt;兩者都可以捨棄 requirements.txt files，與 tox 結合進行測試。&lt;/p&gt;
+&lt;p&gt;而 &lt;code&gt;tox.ini&lt;/code&gt; 現在也可以寫在 &lt;code&gt;pyproject.toml&lt;/code&gt; 裡頭了，請參考：&lt;a href="https://tox.readthedocs.io/en/latest/example/basic.html#pyproject-toml-tox-legacy-ini"&gt;Basic usage — tox 3.16.2.dev1 documentation&lt;/a&gt;，所以以下的 &lt;code&gt;tox&lt;/code&gt; 相關設定都是以這種方式寫在 &lt;code&gt;pyproject.toml&lt;/code&gt; 裡頭。&lt;/p&gt;
+&lt;h1&gt;Poetry 解法&lt;/h1&gt;
+&lt;h2&gt;Poetry 官方解法&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://python-poetry.org/docs/faq/#is-tox-supported"&gt;FAQ | Documentation | Poetry - Python dependency management and packaging made easy.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[tox]&lt;/span&gt;
+&lt;span class="na"&gt;isolated_build&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
+&lt;span class="na"&gt;envlist&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;py27, py36&lt;/span&gt;
+
+&lt;span class="k"&gt;[testenv]&lt;/span&gt;
+&lt;span class="na"&gt;whitelist_externals&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;poetry&lt;/span&gt;
+&lt;span class="na"&gt;commands&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&lt;/span&gt;
+&lt;span class="s"&gt;    poetry install -v&lt;/span&gt;
+&lt;span class="s"&gt;    poetry run pytest tests/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;將 &lt;code&gt;tox.ini&lt;/code&gt; 照著上面的方式修改即可。&lt;br&gt;
+可以看到重點是在 &lt;code&gt;whitelist_externals = poetry&lt;/code&gt; 這行。&lt;br&gt;
+會讓 tox 建立的獨立 virtualenv 可以使用外部的指令。&lt;br&gt;
+所以內部的獨立 virtualenv 便有了 &lt;code&gt;poetry&lt;/code&gt; 可以用了。（當然前提是外部環境有裝 &lt;code&gt;poetry&lt;/code&gt;）  &lt;/p&gt;
+&lt;p&gt;因為 &lt;code&gt;poetry install&lt;/code&gt; 預設會自行偵測現在使用的 virtualenv，所以會正確將套件安裝到每個由 tox 建立出來的獨立 virtualenv 中。（&lt;code&gt;-v&lt;/code&gt; 則是詳細顯示出安裝了哪些東西，方便確認是否真的有安裝需要的套件。）&lt;/p&gt;
+&lt;p&gt;最後就能直接用 &lt;code&gt;poetry run&lt;/code&gt; 來跑測試了。&lt;/p&gt;
+&lt;h2&gt;Poetry 另類解法&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;先註明：還是比較推薦上述的官方方法，這個另類解法只是提供另外一種紀錄方式，下面會提到其缺點。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Poetry 有個 &lt;code&gt;export&lt;/code&gt; 指令，可以將 lock file 轉為其他格式，目前僅支援 &lt;code&gt;requirements.txt&lt;/code&gt; 的格式：&lt;a href="https://python-poetry.org/docs/cli/#export"&gt;Commands | Documentation | Poetry - Python dependency management and packaging made easy.&lt;/a&gt;&lt;br&gt;
+這個方法的邏輯很簡單。以前的 &lt;code&gt;requirements-test.txt&lt;/code&gt; 是直接存在 repo 裡頭，但現在把它刪除掉，改成每次都透過 &lt;code&gt;poetry export --dev -f requirements.txt &amp;gt; requirements-test.txt&lt;/code&gt; 產生 &lt;code&gt;requirements-test.txt&lt;/code&gt;。 完全不用修改 &lt;code&gt;tox&lt;/code&gt; 相關的設定，用完後再將 &lt;code&gt;requirements-test.txt&lt;/code&gt; 刪除即可。&lt;br&gt;
+但這個方法有個缺點，可能會安裝過多東西。因為 &lt;code&gt;poetry export&lt;/code&gt; 的 &lt;code&gt;--dev&lt;/code&gt; 是將開發相關的套件相依全部納入，並沒有生成只和測試相關套件的 &lt;code&gt;requirements-test.txt&lt;/code&gt;&lt;/p&gt;
+&lt;h1&gt;Flit 解法&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;這個其實才是我這次想解決的問題，因為某個 side project 在我一開始知道 &lt;code&gt;pyproject.toml&lt;/code&gt; 後，而 &lt;code&gt;poetry&lt;/code&gt; 還沒出來之前，就採用了 &lt;code&gt;flit&lt;/code&gt; 進行套件管理。但 flit 的官方網站又沒有提到遇到跟 tox 的整合該如何處理，所以我參考了 &lt;code&gt;poetry&lt;/code&gt; 的解法。但因為 &lt;code&gt;flit&lt;/code&gt; 和 &lt;code&gt;poetry&lt;/code&gt; 的運作機制不太一樣，所以需要做些調整，紀錄在下面。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;參考 Poetry 官方解法，在 &lt;code&gt;tox.ini&lt;/code&gt; 裡頭使用 &lt;code&gt;whitelist_externals&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;但 &lt;code&gt;flit install&lt;/code&gt; 不會自動偵測目前所使用的 virtualenv，所以安裝的時候預設會裝在 &lt;code&gt;flit&lt;/code&gt; 自帶的 lib 底下，必須安裝在 &lt;code&gt;tox&lt;/code&gt; 使用的 virtualenv python lib 底下才有用。&lt;/li&gt;
+&lt;li&gt;還好 &lt;code&gt;flit install&lt;/code&gt; 有 &lt;code&gt;--python&lt;/code&gt; 這個選項，只要把 &lt;code&gt;tox&lt;/code&gt; 使用的 virtualenv python 路徑給他就行了&lt;/li&gt;
+&lt;li&gt;然後發現 tox.ini 有內建變數 &lt;code&gt;{envpython}&lt;/code&gt; 可以直接拿到 virtualenv python path，就解決了。&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://tox.readthedocs.io/en/latest/config.html#substitutions-for-virtualenv-related-sections"&gt;tox configuration specification — tox 3.16.2.dev1 documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下是在 &lt;code&gt;pyproject.toml&lt;/code&gt; 裡頭修改後的結果：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Tox&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tool.tox&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="n"&gt;legacy_tox_ini&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ss"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="ss"&gt;[tox]&lt;/span&gt;
+&lt;span class="ss"&gt;isolated_build = True&lt;/span&gt;
+&lt;span class="ss"&gt;skipsdist = true&lt;/span&gt;
+&lt;span class="ss"&gt;envlist = py34,py35,py36,py37,py38&lt;/span&gt;
+
+&lt;span class="ss"&gt;[testenv]&lt;/span&gt;
+&lt;span class="ss"&gt;whitelist_externals = flit&lt;/span&gt;
+&lt;span class="ss"&gt;commands =&lt;/span&gt;
+&lt;span class="ss"&gt;    flit install --extras test --python {envpython}&lt;/span&gt;
+&lt;span class="ss"&gt;    pytest -vv --flake8 --cov hor2vec/ --cov-report html --cov-report term --junitxml=test-reports/junit.xml --flake8&lt;/span&gt;
+&lt;span class="ss"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;修改前後的對比&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Run tox with flit" src="/files/no-more-requirements-test-txt-for-flit-or-poetry-while-using-tox-running-tests/run-tox-with-flit.jpg"&gt;&lt;/p&gt;</content><category term="Python"></category><category term="Poetry"></category><category term="Flit"></category><category term="Tox"></category><category term="setuptools"></category></entry></feed>

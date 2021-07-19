@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Debian 9</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.debian-9.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-07-24T21:59:32+08:00</updated><entry><title>Upgrade MongoDB from 3.2 to 3.4 on Debian 9</title><link href="https://blog.m157q.tw/posts/2018/07/24/upgrade-mongodb-from-3-2-to-3-4-on-debian-9/" rel="alternate"></link><published>2018-07-24T21:59:32+08:00</published><updated>2018-07-24T21:59:32+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-07-24:/posts/2018/07/24/upgrade-mongodb-from-3-2-to-3-4-on-debian-9/</id><summary type="html">&lt;p&gt;How to install (from MongoDB 3.2 upgrade to) MongoDB 3.4 on Debian Strech (Debian 9)&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get remove mongodb  
+
+sudo apt-get autoremove  
+
+sudo apt-get autoclean  
+
+sudo tee -a /etc/apt/sources.list.d/mongodb-org-3.4.list &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF  &lt;/span&gt;
+&lt;span class="s"&gt;deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main  &lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;  
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 0C49F3730359A14518585931BC711F9BA15703C6  
+
+sudo apt-get update  
+
+sudo apt-get --assume-yes install mongodb-org&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.4.16  
+
+sudo systemctl start mongod  
+
+sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; mongod  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;Official MongoDB package for Debian Stretch (Debian 9) only update to 3.2.&lt;br&gt;
+Community MongoDB package for Debian Stretch (Debian 9) already update to 3.6.&lt;br&gt;
+And we cannot just upgrade MongoDB from 3.2 to 3.6. (Will encounter error)&lt;br&gt;
+So, that's why I wrote this note.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Must stop &lt;code&gt;mongodb&lt;/code&gt; (MongoDB 3.2 still use &lt;code&gt;mongodb&lt;/code&gt; not &lt;code&gt;mongod&lt;/code&gt;)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl stop mongodb  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Must remove current old mongodb package and related tools  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get remove mongodb  
+sudo apt-get autoremove  
+sudo apt-get autoclean  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you don't do the steps above, you will encounter error while installing MongoDB 3.4.&lt;br&gt;
+Some dependencies may conflict.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add MongoDB 3.4 package source for &lt;code&gt;apt-get&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo tee -a /etc/apt/sources.list.d/mongodb-org-3.4.list &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF  &lt;/span&gt;
+&lt;span class="s"&gt;deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main  &lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Add public key for MongoDB 3.4 package source  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 0C49F3730359A14518585931BC711F9BA15703C6  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Update to newest package index  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Install MongoDB 3.4.16 (You can change to any 3.4.x)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get --assume-yes install mongodb-org&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.4.16  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, your MongoDB 3.4 should be running well.&lt;br&gt;
+If it doesn't, you should use the steps below.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl start mongod  
+sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; mongod  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Last but not lease&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Global config file changed from &lt;code&gt;/etc/mongodb.conf&lt;/code&gt; to &lt;code&gt;/etc/mongod.conf&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;If you want to enable backwards-incompatible features in MongoDB 3.4.  &lt;ul&gt;
+&lt;li&gt;Execute this command in MongoDB shell: &lt;code&gt;db.adminCommand( { setFeatureCompatibilityVersion: "3.4" } )&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.pritunl.com/docs/repository"&gt;Repository&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.mongodb.com/manual/release-notes/3.4-upgrade-standalone/"&gt;Upgrade a Standalone to 3.4 — MongoDB Manual&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="MongoDB"></category><category term="Debian"></category><category term="Debian 9"></category></entry></feed>

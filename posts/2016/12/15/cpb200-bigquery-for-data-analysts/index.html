@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  CPB200: BigQuery for Data Analysts
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/" rel="bookmark" title="Permalink to CPB200: BigQuery for Data Analysts">CPB200: BigQuery for Data Analysts</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p><a href="http://gcp.kktix.cc/events/05409197">CPB200</a> 筆記</p>
+  </blockquote>
+  <div>
+    <h1>課程資訊</h1>
+<ul>
+<li><a href="http://myclass.gcptrain.org/">http://myclass.gcptrain.org/</a>  <ul>
+<li>azkyY21yCg==  </li>
+<li><a href="https://sites.google.com/a/google.com/cloud-platform-training/cloud-platform-training/cpb200-bigquery-for-data-analysts">https://sites.google.com/a/google.com/cloud-platform-training/cloud-platform-training/cpb200-bigquery-for-data-analysts</a>  </li>
+<li><a href="/files/cpb200-bigquery-for-data-analysts/CPB200.zip">slides</a>  </li>
+</ul>
+</li>
+<li>Google 系列課程  <ul>
+<li>CP100: 介紹性質，廣而淺，新手課程。  </li>
+<li>CP200: 開始針對單一技術做比較深的介紹。  </li>
+<li>CP300: 五個全天的課程，上完之後一個月內通過線上考試可以拿到 CP300 證照。  </li>
+<li><a href="https://developers.google.com/experts/">GDE: Cloud Developer Expert</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Day 1: 2016/12/15</h1>
+<hr>
+<h1>Course Introduction</h1>
+<hr>
+<h1>Module 1: Introducing BigQuery</h1>
+<ul>
+<li>SMACK  <ul>
+<li>Spark  </li>
+<li>Mesos  </li>
+<li>Akka  </li>
+<li>Cassandra  </li>
+<li>Kafka  </li>
+</ul>
+</li>
+</ul>
+<h2>Big Data Current State</h2>
+<ul>
+<li>Real-Time Streaming Data  </li>
+<li>Web analysis data  </li>
+<li>IoT sensor data  </li>
+<li>Fraud detection  </li>
+<li>一台 8-core, 32GB RAM 的 server 在普通情況下，大概撐不到 1000 個 concurrent connection  </li>
+</ul>
+<h2>On Premises Versus Cloud</h2>
+<p>Premises =&gt; Warehouse  </p>
+<p>公司有機房的聽眾：「申請一台機器最快要一個禮拜才能用，一台機器要撐 3~5 年。」  </p>
+<h2>Google's History of Innovation in Big Data</h2>
+<ul>
+<li>Google Big Data Stack 1.0  <ul>
+<li>2002: GFS  </li>
+<li>2004: MapReduce  </li>
+<li>2005: Bigtable  </li>
+</ul>
+</li>
+<li>Google Big Data Stack 2.0  <ul>
+<li>2006: Dremel  <ul>
+<li>Apache Drill  </li>
+<li>Query Engine  </li>
+</ul>
+</li>
+<li>2010: Colossus  </li>
+<li>2011: Megastore  </li>
+<li>2012: Millwheel  <ul>
+<li>處理 Streaming 的資料  </li>
+<li>和 Apache Beam 有關  </li>
+<li>Google Cloud Dataflow is based on Millwheel  </li>
+<li>Dataflow 會幫你預測資料大小，然後去做調整。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>What is BigQuery</h2>
+<ul>
+<li>Fully-managed, analytics data warehouse.  <ul>
+<li>Near real-time interactive analysis  <ul>
+<li>batch / streaming  </li>
+</ul>
+</li>
+<li>NoOps - No administration for performance and scale  <ul>
+<li>但 OPs 還是得注意每天和每個月的 BigQuery 用量  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Reliable  </li>
+<li>Economical  </li>
+<li>Secure  <ul>
+<li>可以透過 ACL 分享 dataset  </li>
+<li>Data is encrypted in transport and at rest  </li>
+</ul>
+</li>
+<li>Auditable  <ul>
+<li>Immutable logs  <ul>
+<li>除非是共用帳號，不然都找得到誰做了什麼事。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Scalable  <ul>
+<li>Virtually unlimited data storeage and processing power.  </li>
+</ul>
+</li>
+<li>Flexible  <ul>
+<li>Streaming ingestion: 100K rows/sec per table for real-time data  </li>
+<li>Data mashup: JOIN across diverse datasets/projects  </li>
+</ul>
+</li>
+<li>Easy to use  <ul>
+<li>Requires no indexes, keys, or partitions  </li>
+<li>Familiar SQL interface and intuitive UI  </li>
+<li>Nested and repeated field support for schema flexibility  </li>
+</ul>
+</li>
+</ul>
+<h2>BigQuery Is Not</h2>
+<ul>
+<li>Transactional RDBMS  <ul>
+<li>BigQuery is not an OLTP system  </li>
+<li>BigQuery 不像 RDBMS 要做正規化，反而是要做反正規化，讓資料愈扁平愈好  </li>
+<li>RDBMS 要求 query 要在數毫秒，但 BigQuery 的 query  </li>
+</ul>
+</li>
+<li>Operational Data Store  <ul>
+<li>BigQuery is not geared towards capturing live data and applying updates/deletes as they happen in the system of record  </li>
+</ul>
+</li>
+<li>On-premises solution or appliance  <ul>
+<li>BigQuery is a self-contained, cloud-based solution  </li>
+</ul>
+</li>
+</ul>
+<h2>Comparisons</h2>
+<ul>
+<li>OLTP (Online Transaciton Processing)  </li>
+<li>OLAP (Online Analytical Processing)  <ul>
+<li>Similar in use cases they support  </li>
+<li>BigQuery allows querying via SQL  </li>
+</ul>
+</li>
+<li>MapReduce  <ul>
+<li>Fundamentally a batch oriented technology  </li>
+<li>Higher latency than BigQuery  </li>
+</ul>
+</li>
+<li>NoSQL  <ul>
+<li>Less scalable than BigQuery  </li>
+<li>Awkward or impossible to query - No query language  </li>
+</ul>
+</li>
+</ul>
+<h2>BigQuery Use Cases</h2>
+<ul>
+<li>Games and social media analytics  </li>
+<li>Advertising campaign optimization  </li>
+<li>Sensor data analysis  </li>
+<li>POS-Retail Analytics  </li>
+<li>Web logs, machine logs, infrastructure monitoring  <ul>
+<li>Google 利用 Machine Learning 分析 Machine logs 來去針對 server 做最佳的管理  </li>
+</ul>
+</li>
+<li><a href="https://cloud.google.com/solutions/mobile/mobile-gaming-analysis-telemetry">Mobile Gaming Analytics</a>  </li>
+<li><a href="https://cloud.google.com/customers/zulily/">Zulily  |  Google Cloud Platform</a>  </li>
+</ul>
+<h2>Lab 1</h2>
+<p><a href="https://codelabs.developers.google.com/codelabs/cpb200-free-trial/#0">Sign Up for the Free Trial and Create a Project</a>  </p>
+<hr>
+<h1>Module 2: BigQuery Functional Overview</h1>
+<h2>BigQuery Project Structure</h2>
+<ul>
+<li>Project  <ul>
+<li>Top-level structure  </li>
+<li>Contains users, APIs authentications, billing, data, access control lists (control access to datasets and jobs)  </li>
+</ul>
+</li>
+<li>Dataset  <ul>
+<li>Named parent of 1 or more tables  </li>
+<li>一堆 Table 的集合  </li>
+<li>Support Partition Tables  </li>
+<li>如果資料存入以後沒有異動，3個月以後，費用會減半。  </li>
+</ul>
+</li>
+<li>Table  <ul>
+<li>Columnar structure that stores data  </li>
+</ul>
+</li>
+<li>Job  <ul>
+<li>Controls potentially long-running actions  </li>
+</ul>
+</li>
+</ul>
+<h3>Projects</h3>
+<ul>
+<li>可以決定要把哪些 Table 分享給哪些人  </li>
+<li>已經做完的 Job 不用 Clean 掉，因為沒有說執行過多少 Job 就不能執行  </li>
+</ul>
+<h3>Datasets</h3>
+<ul>
+<li>Reader  </li>
+<li>Editor  </li>
+<li>Owner  <ul>
+<li>可以分享  </li>
+</ul>
+</li>
+</ul>
+<h3>Tables</h3>
+<ul>
+<li>Collection of columns, rows  </li>
+<li>Have a schema  </li>
+<li>Views are supported  </li>
+<li>Can be external (federated)  <ul>
+<li>Google Cloud Storage, Google Drive  </li>
+<li>可以從外部載入資料，例如只想存在自己的 Cloud Storage 的資料  </li>
+</ul>
+</li>
+</ul>
+<h3>Jobs</h3>
+<ul>
+<li>每一次執行 query 都會產生一個 Job  </li>
+<li>Job 是 by user 紀錄的  </li>
+<li>以前不能 update, 現在可以 update 了  <ul>
+<li>可以直接使用 Job ID 來 update insert 的內容  </li>
+</ul>
+</li>
+</ul>
+<h2>BigQuery Storage</h2>
+<ul>
+<li>Traditional RDBMS Storage  <ul>
+<li>Row based  </li>
+<li>Record-oriented storage  </li>
+<li>透過 index 和正規化讓資料查詢可以更快速  </li>
+</ul>
+</li>
+<li>BigQuery Storage  <ul>
+<li>Column based  </li>
+<li>Columnar storage  </li>
+</ul>
+</li>
+</ul>
+<h3>BigQuery Managed Storage</h3>
+<ul>
+<li>BigQuery data is stored on persistent disks in distributed storage  </li>
+<li>No indexes, keys, or partitions are required  </li>
+<li>Scales to dozens of petabytes  </li>
+</ul>
+<h3>Storage Engine 2006-2015: ColumnIO</h3>
+<p>Date =&gt; Decompress -&gt; Filter (MapReduce) =&gt; Emit  </p>
+<h3>Storage Engine 2016-Now: Capacitor</h3>
+<p>Data =&gt; Emit =&gt; Dictionary =&gt; Filter =&gt; Lookup  </p>
+<p>ref: <a href="https://cloud.google.com/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format">https://cloud.google.com/blog/big-data/2016/04/inside-capacitor-bigquerys-next-generation-columnar-storage-format</a>  </p>
+<h2>BigQuery Processing</h2>
+<ul>
+<li>Borg - Cluster management system  </li>
+<li>Dremel query engine  </li>
+</ul>
+<h3>Query Processing 2006-2015</h3>
+<p>Mixer 0 &lt;= Mixer 1 &lt;= Leaf &lt;= Juniper (Network) =&gt; Distributed Storage (Colossus)  </p>
+<h3>Query Processing 2015-Present</h3>
+<p>Master &lt;= Shard &lt;= Shard &lt;= Shard &lt;= Juniper (Network) =&gt; Distributed Storage (Colossus)  </p>
+<h2>BigQuery Web User Interface</h2>
+<ul>
+<li>要不要用 Cache  </li>
+<li>要不要用 Legacy SQL  </li>
+<li>查詢前記得按一下右邊的 Validator，檢查語法順便看一下總共會 Query 多少資料，以免費用爆表。  </li>
+</ul>
+<h2>BigQuery CLI</h2>
+<ul>
+<li>可以從 Cloud Shell 或 Cloud SDK 使用 bq  <ul>
+<li><code>bq help</code>  </li>
+<li><code>bq ls</code>  </li>
+<li><code>bq mk</code>  </li>
+<li><code>bq load</code>  </li>
+</ul>
+</li>
+</ul>
+<h2>Lab 2</h2>
+<p><a href="https://codelabs.developers.google.com/codelabs/cpb200-bigquery-interfaces/#0">BigQuery Interfaces</a>  </p>
+<hr>
+<h1>Module 3: BigQuery Fundamentals</h1>
+<h2>BigQuery Schemas</h2>
+<ul>
+<li>Consist of 1 or more fields (flat or nested)  </li>
+<li>Define the field name, data type, and mode of columns in the table  </li>
+<li>Fields are strongly typed (explicitly defined)  </li>
+<li>Modes indicate whether field data is REQUIRED, NULLABLE or REPEATED  <ul>
+<li>REQUIRED fields must contain non-null data  </li>
+<li>NULLABLE fields allow null values  </li>
+<li>REPEATED fields contain an array of values  </li>
+</ul>
+</li>
+</ul>
+<h3>Schema Specification</h3>
+<ul>
+<li>Specify schema on command line or in JSON file  </li>
+<li>Schema file must contain single array object with entries that provide these properties:  <ul>
+<li>"name": Name of the column  </li>
+<li>"type": Type of data  </li>
+<li>"mode" (optional): REQUIRED, NULLABLE or REPEATED  </li>
+</ul>
+</li>
+<li>Example JSON schema:  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">[  </span>
+<span class="err">    {&quot;name&quot;: &quot;name&quot;, &quot;type&quot;: &quot;string&quot;, &quot;mode&quot;: &quot;required&quot;},  </span>
+<span class="err">    {&quot;name&quot;: &quot;gender&quot;, &quot;type&quot;: &quot;string&quot;, &quot;mode&quot;: &quot;nullable&quot;},  </span>
+<span class="err">    {&quot;name&quot;: &quot;count&quot;, &quot;type&quot;: &quot;integer&quot;, &quot;mode&quot;: &quot;required&quot;}  </span>
+<span class="err">]  </span>
+</pre></div>
+
+
+<h2>Denormalized Data in BigQuery</h2>
+<ul>
+<li>BigQuery uses a denormalized or "flat" schema  <ul>
+<li>Flatten normalized tables for super-fast querying  </li>
+<li>No performance penalty for sparse columns or duplicate data  </li>
+<li>Pre-join datasets into homogeneous tables  </li>
+<li>Trade JOINS for column scans  <ul>
+<li>Storage is more performant and cheaper than compute resources  </li>
+</ul>
+</li>
+<li>Use nested repeated schema (using JSON or AVRO format) to simulate normalization benefits and limit duplication of data  <ul>
+<li>Without nesting, aggregation or JOINs are required  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Denormalization Example</h3>
+<ul>
+<li>A normalized one-to-many relationship between people and cities_lived is denormalized (“flattened”) into 1 table  <ul>
+<li>A person may have one to many rows in the table  </li>
+<li>Name, age, and gender may be duplicated  </li>
+</ul>
+</li>
+<li>Using nested repeated schema avoids duplication of data  </li>
+<li>Still allows for a flattened table, which retains high performance  </li>
+</ul>
+<h2>BigQuery Jobs</h2>
+<ul>
+<li>BigQuery defines and executes jobs for:  <ul>
+<li>Query execution  </li>
+<li>Loading, copying, and exporting data  </li>
+</ul>
+</li>
+<li>Jobs are atomic  </li>
+<li>Multiple jobs can run concurrently  </li>
+<li>Completed jobs are listed in the jobs collection  </li>
+<li>Jobs have 4 components:  <ul>
+<li>Reference – Job ID  </li>
+<li>Configuration – Job task  </li>
+<li>Status – Job state  </li>
+<li>Statistics – Job statistics  </li>
+</ul>
+</li>
+<li>Job History 是 by user 的  <ul>
+<li>要看到整個 project 的 BigQuery Job History 的話，要到 Cloud Logging 那邊選擇 BigQuery 查看  </li>
+</ul>
+</li>
+</ul>
+<h2>Destination Tables and Caching</h2>
+<ul>
+<li>Query results are stored in a destination table  </li>
+<li>Table is temporary or user-defined  </li>
+<li>Temporary tables are:  <ul>
+<li>Defined by the service  </li>
+<li>Used as query cache – You are not billed for storage  </li>
+</ul>
+</li>
+<li>User-defined tables:  <ul>
+<li>Remain persistent  </li>
+<li>Are billed at normal storage rates  </li>
+<li>Target location can be any accessible project/dataset  </li>
+</ul>
+</li>
+</ul>
+<h3>Query Caching</h3>
+<ul>
+<li>Query results are cached to improve performance  <ul>
+<li>Subject to same quota policies as non-cached queries  </li>
+<li>Cache results have a size limit of 128 MB compressed  </li>
+</ul>
+</li>
+<li>No charge for queries that use cached results  </li>
+<li>Results are cached for approximately 24 hours  <ul>
+<li>Lifetime extended when a query returns a cached result  </li>
+</ul>
+</li>
+<li>Cache can be turned off  </li>
+</ul>
+<p>在 Web UI 要怎麼知道是 Cached Query? =&gt; 仔細看算 query 時間結果後面的小括號，會標示 cached。  </p>
+<h4>Caveats</h4>
+<ul>
+<li>Query caching only works for predictable queries  <ul>
+<li>When result set is identical to previous run(s) of a query  </li>
+</ul>
+</li>
+<li>Cache is per-user  <ul>
+<li>Not shareable across users  </li>
+</ul>
+</li>
+<li>Cache is invalidated if:  <ul>
+<li>Data in underlying table(s) changes  </li>
+<li>Query uses dynamic functions, such as <code>CURRENT_TIMESTAMP()</code> or <code>NOW()</code>  </li>
+</ul>
+</li>
+</ul>
+<h2>Lab 3</h2>
+<p><a href="https://codelabs.developers.google.com/codelabs/cpb200-bigquery-components/#0">BigQuery Components and Jobs</a>  </p>
+<hr>
+<h1>Module 4: Ingesting, Transforming and Storing Data</h1>
+<h2>Ingesting Data</h2>
+<ul>
+<li>Load data into BigQuery using CLI, web UI, or API  </li>
+<li>Load data directly into BigQuery storage using streaming insert or a load job  </li>
+<li>Load jobs support:  <ul>
+<li>Google Cloud Storage  <ul>
+<li>Standard, Durable Reduced Availability, or Nearline (reduced performance)  </li>
+</ul>
+</li>
+<li>Google Drive (JSON, CSV, AVRO, Sheets (first tab only))  </li>
+<li>CSV, JSON, <a href="https://avro.apache.org/docs/current/">AVRO</a> file uploads (slower)  </li>
+</ul>
+</li>
+<li>Can also use partner-provided tools/services  </li>
+<li>Load jobs support four data sources:  <ul>
+<li>Objects in Google Cloud Storage  </li>
+<li>Data sent with the job or streaming insert  </li>
+<li>A Google Cloud Datastore backup  </li>
+<li>Data in Google Drive  </li>
+</ul>
+</li>
+<li>Data can be:  <ul>
+<li>Loaded into a new table  </li>
+<li>Appended to a table  </li>
+<li>Used to overwrite a table  </li>
+</ul>
+</li>
+<li>BigQuery can ingest both compressed (GZIP) and uncompressed files  <ul>
+<li>Highly parallel load operations allow uncompressed files to load significantly faster than compressed files  </li>
+<li>Uncompressed files are larger  <ul>
+<li>Possible bandwidth limitations  </li>
+<li>More costly to store  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Weigh compression options based on use case  </li>
+<li>File size limits  <ul>
+<li>CSV  <ul>
+<li>Compressed: 4GB  </li>
+<li>Uncompressed  <ul>
+<li>With newlines: 4GB  </li>
+<li>Without newlines: 5TB  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>JSON (newline delimited)  <ul>
+<li>Compressed: 4 GB  </li>
+<li>Uncompressed: 5 TB  </li>
+</ul>
+</li>
+<li>AVRO  <ul>
+<li>Compressed: Compressed files not supported; compressed data blocks are.  </li>
+<li>Uncompressed: 5 TB (2 MB for the file header)  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Datastore == BigTable + <a href="http://research.google.com/pubs/pub36971.html">MegaStore</a>  </p>
+</blockquote>
+<h2>Appending and Reloading Data</h2>
+<ul>
+<li>Use CLI or API to append data to an existing table  </li>
+<li>BigQuery does support deletes now (If unchecked the "use Legacy SQL")  </li>
+</ul>
+<h2>Lab 4.1</h2>
+<p><a href="https://codelabs.developers.google.com/codelabs/cpb200-loading-data/#0">Loading Data into BigQuery and Using Federated Queries</a>  </p>
+<h2>Processing/Transforming Data</h2>
+<h3>Schema Design Considerations</h3>
+<ul>
+<li>Denormalized versus relational  <ul>
+<li>Denormalized yields better performance with some duplication  </li>
+<li>JOINS on relational data are performant but can be slower than queries on denormalized data  </li>
+</ul>
+</li>
+<li>Flat versus nested and repeated  </li>
+<li>Table partitioning  <ul>
+<li>Single table for all data  </li>
+<li>Partition data by some range of values (date) - covered later  </li>
+<li>Table decorators (partition, snapshot) - covered later  <ul>
+<li><code>@</code>  </li>
+<li><a href="https://cloud.google.com/bigquery/table-decorators">https://cloud.google.com/bigquery/table-decorators</a>  </li>
+<li><a href="http://blog.gdeltproject.org/using-bigquery-table-decorators-to-lower-query-cost/">http://blog.gdeltproject.org/using-bigquery-table-decorators-to-lower-query-cost/</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Data Format Considerations</h3>
+<ul>
+<li>BigQuery supports three data formats: AVRO, JSON, CSV  </li>
+<li>AVRO:  <ul>
+<li>Open source format that bundles serialized data and schema in same file  </li>
+<li>Supports flat data and nested/repeated fields  <ul>
+<li>Nested/repeated data useful for expressing hierarchical data, reduces duplication when denormalizing data  </li>
+</ul>
+</li>
+<li>Loads faster in BigQuery if data contains embedded newlines  </li>
+<li>Limited to 16 MB block size  </li>
+</ul>
+</li>
+<li>JSON (newline-delimited):  <ul>
+<li>Supports flat data and nested/repeated fields  <ul>
+<li>Nested/repeated data useful for expressing hierarchical data, reduces duplication when denormalizing data  </li>
+</ul>
+</li>
+<li>Loads faster in BigQuery if data contains embedded newlines  </li>
+<li>One JSON object, including any nested/repeated fields, must appear on each line  </li>
+<li>Supports UTF-8 encoding  </li>
+<li>Limited to 2 MB row size  </li>
+<li>Example  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">{&quot;name&quot;: &quot;abc&quot;, &quot;gender&quot;: &quot;M&quot;, &quot;age&quot;: 38}  </span>
+<span class="err">{&quot;name&quot;: &quot;abc&quot;, &quot;gender&quot;: &quot;M&quot;, &quot;age&quot;: 48}  </span>
+</pre></div>
+
+
+<ul>
+<li>CSV:  <ul>
+<li>Supports flat data only  <ul>
+<li>No nested/repeated data  </li>
+</ul>
+</li>
+<li>Supports UTF-8 encoding and ISO-8859-1 encoding  <ul>
+<li>If loading ISO-8859-1 encoded data, specify configuration.load.encoding property when creating load job  </li>
+</ul>
+</li>
+<li>Limited to 2 MB row and cell size  </li>
+</ul>
+</li>
+</ul>
+<h2>Storing Data</h2>
+<h3>Long-Term Storage in BigQuery</h3>
+<ul>
+<li>Automatic discount for data stored longer than 90 days  <ul>
+<li>If table data modified, 90-day counter resets  </li>
+</ul>
+</li>
+<li>No need to delete or archive old data  <ul>
+<li>Equivalent to cost of Cloud Storage Nearline  </li>
+<li>量大的時候似乎還是會比較貴，所以還是有人選擇 archive 到 GCS  </li>
+</ul>
+</li>
+<li>If preferred, store data in Cloud Storage and load into BigQuery when needed  <ul>
+<li>No charge for loading/exporting data  </li>
+<li>Loading from Cloud Storage Nearline reduces performance  </li>
+<li>Data in Cloud Storage available to other services  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Module 5: Pricing and Quotas</h1>
+<p>要自己把費用算的很精確太難了，<br>
+Google Cloud Platform 有各種不同的計費方式，<br>
+這邊的重點當然還是放在怎麼省錢，<br>
+順便瞭解一下計費方式。  </p>
+<hr>
+<h1>Module 6: Clauses and Functions</h1>
+<h2>UDF Constraints</h2>
+<ul>
+<li>Max output data size: 5 MB per input row  </li>
+<li>Max number of UDFs that can run concurrently per user = 3  </li>
+<li><em>Native code JavaScript functions are not supported</em>  </li>
+<li>The DOM objects Window, Document and Node, and functions that require them, are unsupported  </li>
+<li>Bitwise operations in JavaScript handle only the most significant 32 bits  </li>
+</ul>
+<h2>UDF Best Practices</h2>
+<ul>
+<li>Use UDF test tool to debug to avoid incurring BigQuery charges  </li>
+<li>Avoid persistent mutable state  <ul>
+<li>Do not store or access mutable state in UDF calls  </li>
+<li>Each BQ node has local javascript processing environment that may produce local values  </li>
+</ul>
+</li>
+<li>Use memory efficiently to avoid memory exhaustion on local JavaScript environments  </li>
+<li>Explicitly list SELECT columns instead of SELECT * (not supported)  </li>
+<li>Pre-filter input to limit the size of data on which UDF will run  </li>
+</ul>
+<h2>BigQuery Recipes</h2>
+<p>投影片裡的範例不知道是不是故意排版的很醜讓人看不懂...<br>
+其實只要照下面把 Query statement 排版一下<br>
+再從最裡面的 Query 看到最外面就滿好懂了<br>
+只是像一些 BigQuery 特有的 function: <code>EVERY()</code>, <code>SOME()</code>, <code>LAG()</code> 之類的<br>
+只好到 <a href="https://cloud.google.com/bigquery/docs/reference/legacy-sql">https://cloud.google.com/bigquery/docs/reference/legacy-sql</a> 察看文件了  </p>
+<h3>Pivot</h3>
+<p>Find 100 largest words in Shakespeare’s works and display the number of occurrences of those words in four of Shakespears more popular works.  </p>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w">  </span>
+<span class="w">    </span><span class="n">word</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="nf">SUM</span><span class="p">(</span><span class="k">IF</span><span class="p">(</span><span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;kinglear&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">corpus_total</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">kinglear</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="nf">SUM</span><span class="p">(</span><span class="k">IF</span><span class="p">(</span><span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;tempest&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">corpus_total</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">tempest</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="nf">SUM</span><span class="p">(</span><span class="k">IF</span><span class="p">(</span><span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;macbeth&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">corpus_total</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">macbeth</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="nf">SUM</span><span class="p">(</span><span class="k">IF</span><span class="p">(</span><span class="n">corpus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hamlet&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">corpus_total</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">hamlet</span><span class="p">,</span><span class="w">  </span>
+<span class="w">    </span><span class="nf">SUM</span><span class="p">(</span><span class="n">corpus_total</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="o">[</span><span class="n">total</span><span class="o">]</span><span class="w">  </span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span><span class="w">  </span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w">  </span>
+<span class="w">        </span><span class="n">word</span><span class="p">,</span><span class="w">  </span>
+<span class="w">        </span><span class="n">LENGTH</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">word_len</span><span class="p">,</span><span class="w">  </span>
+<span class="w">        </span><span class="n">corpus</span><span class="p">,</span><span class="w">  </span>
+<span class="w">        </span><span class="nf">SUM</span><span class="p">(</span><span class="n">word_count</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">corpus_total</span><span class="w">  </span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="o">[</span><span class="n">publicdata:samples.shakespeare</span><span class="o">]</span><span class="w">  </span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">LENGTH</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w">  </span>
+<span class="w">    </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">word_len</span><span class="p">,</span><span class="w"> </span><span class="n">corpus</span><span class="w">  </span>
+<span class="p">)</span><span class="w">  </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">word</span><span class="p">,</span><span class="w"> </span><span class="n">word_len</span><span class="w">  </span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">word_len</span><span class="w"> </span><span class="k">DESC</span><span class="w">  </span>
+<span class="k">LIMIT</span><span class="w"> </span><span class="mi">100</span><span class="w">  </span>
+</pre></div>
+
+
+<h3>Cohort Analysis</h3>
+<p>Counts of Wikipedia contributors who contribute only to pages on Manning brothers vs those who contributed to Manning brothers pages and other pages. Query highlights EVERY and SOME functions.  </p>
+<div class="highlight"><pre><span></span><span class="err">SELECT  </span>
+<span class="err">    peyton_all,  </span>
+<span class="err">    peyton_some,  </span>
+<span class="err">    eli_all,  </span>
+<span class="err">    eli_some,  </span>
+<span class="err">    COUNT(1) AS NUM,  </span>
+<span class="err">    AVG(edits) AS avg_edits  </span>
+<span class="err">FROM (  </span>
+<span class="err">    SELECT  </span>
+<span class="err">        contributor_id,  </span>
+<span class="err">        EVERY(peyton_edit) AS peyton_all,  </span>
+<span class="err">        SOME(peyton_edit) AS peyton_some,  </span>
+<span class="err">        EVERY(eli_edit) AS eli_all,  </span>
+<span class="err">        SOME(eli_edit) AS eli_some,  </span>
+<span class="err">        COUNT(1) AS edits  </span>
+<span class="err">    FROM (  </span>
+<span class="err">        SELECT  </span>
+<span class="err">            contributor_id,  </span>
+<span class="err">            (LOWER(title) CONTAINS &#39;peyton manning&#39;) AS peyton_edit,  </span>
+<span class="err">            (LOWER(title) CONTAINS &#39;eli manning&#39;) AS eli_edit  </span>
+<span class="err">        FROM [publicdata:samples.wikipedia]  </span>
+<span class="err">    )  </span>
+<span class="err">    GROUP BY contributor_id  </span>
+<span class="err">    HAVING peyton_all OR peyton_some OR eli_all OR eli_some  </span>
+<span class="err">)  </span>
+<span class="err">GROUP BY peyton_all, peyton_some, eli_all,eli_some  </span>
+<span class="err">ORDER BY peyton_all, peyton_some, eli_all,eli_some  </span>
+</pre></div>
+
+
+<h3>Trailing Averages</h3>
+<p>Demonstrates windowing functions to calculate moving average on number Trailing avg of user activities in github.<br>
+Outermost query combines trailing values into a weighted average paying attention to missing values.  </p>
+<div class="highlight"><pre><span></span><span class="err">SELECT  </span>
+<span class="err">    start_date,  </span>
+<span class="err">    ((num_0 + if(num_1 &gt; -1, num_1, num_0) * 0.5 + if(num_2 &gt; -1, num_2, num_0) * 0.25) / 1.75) AS smooth_num  </span>
+<span class="err">FROM (  </span>
+<span class="err">    SELECT  </span>
+<span class="err">        start_date, num_0,  </span>
+<span class="err">        LAG(num_0, 1, integer(-1)) OVER (ORDER BY start_date) AS num_1,  </span>
+<span class="err">        LAG(num_0, 2, INTEGER(-1)) OVER (ORDER BY start_date) AS num_2  </span>
+<span class="err">    FROM (  </span>
+<span class="err">        SELECT  </span>
+<span class="err">            DATE(created_at) as start_date,  </span>
+<span class="err">            INTEGER(COUNT(1)) num_0  </span>
+<span class="err">        FROM [publicdata:samples.github_timeline]  </span>
+<span class="err">        GROUP BY start_date  </span>
+<span class="err">    )  </span>
+<span class="err">)  </span>
+<span class="err">ORDER BY smooth_num DESC  </span>
+</pre></div>
+
+
+<hr>
+<h1>Day 2: 2016/12/16</h1>
+<hr>
+<h1>Module 7: Nested, Repeated, and Nested Repeated Fields</h1>
+<h2>Nested Field</h2>
+<p>"type": "RECORD"  </p>
+<ul>
+<li>BigQuery supports importing and exporting nested fields in JSON and AVRO files  </li>
+<li>A nested record field adds a named substructure to a row of data  </li>
+<li>Useful as a mechanism to organize related information  </li>
+</ul>
+<h3>Example: JSON Nested Schema and Data</h3>
+<p>Schema  </p>
+<div class="highlight"><pre><span></span><span class="err">[{&quot;name&quot;: &quot;name&quot;, &quot;type&quot;: &quot;string&quot;, &quot;mode&quot;: &quot;REQUIRED&quot;},  </span>
+<span class="err">{&quot;name&quot;: &quot;book&quot;, &quot;type&quot;: &quot;RECORD&quot;, &quot;fields&quot;:  </span>
+<span class="err">    [  </span>
+<span class="err">    {&quot;name&quot;: &quot;title&quot;, &quot;type&quot;: &quot;string&quot;},  </span>
+<span class="err">    {&quot;name&quot;: &quot;ISBN&quot;, &quot;type&quot;: &quot;string&quot;}  </span>
+<span class="err">    ]  </span>
+<span class="err">}]  </span>
+</pre></div>
+
+
+<p>Data (Newline-delimited JSON)  </p>
+<div class="highlight"><pre><span></span><span class="err">{&quot;name&quot;: &quot;randolph&quot;, &quot;book&quot;: {&quot;title&quot;: &quot;The Beginning&quot;, &quot;ISBN&quot;: &quot;213423422&quot; } }  </span>
+<span class="err">{&quot;name&quot;: &quot;charles&quot;, &quot;book&quot;: {&quot;title&quot;: &quot;Fortunate Few&quot;, &quot;ISBN&quot;: &quot;993032933&quot; } }  </span>
+<span class="err">{&quot;name&quot;: &quot;james&quot;, &quot;book&quot;: {&quot;title&quot;: &quot;Homeward Bound&quot;, &quot;ISBN&quot;: &quot;884920039&quot; } }  </span>
+</pre></div>
+
+
+<h3>Querying Nested Fields</h3>
+<ul>
+<li>BigQuery automatically flattens nested fields when querying  <ul>
+<li><code>SELECT * ... results in columns &lt;record_name&gt;_&lt;nested_field_name&gt;</code>  </li>
+</ul>
+</li>
+<li>To query a specific nested field:  <ul>
+<li><code>SELECT name, book.title FROM [dataset.table]</code>  </li>
+</ul>
+</li>
+</ul>
+<h2>Lab 7.1</h2>
+<p>CSV 無法表示 nest 結構，所以要上傳有 nested fields 的 data 的話，只能用 JSON 或 AVRO  </p>
+<h2>Repeated Fields</h2>
+<p>"mode": "REPEATED"  </p>
+<ul>
+<li>BigQuery supports importing and exporting repeated fields in JSON and AVRO files  </li>
+<li>A repeated field adds an <em>array</em> of data inside a single field or record  </li>
+<li>Useful as a mechanism to denormalize a foreign table  </li>
+</ul>
+<h3>Example: JSON Repeated Schema and Data</h3>
+<p>Schema  </p>
+<div class="highlight"><pre><span></span><span class="err">[  </span>
+<span class="err">{&quot;name&quot;: &quot;name&quot;, &quot;type&quot;: &quot;string&quot;, &quot;mode&quot;: &quot;REQUIRED&quot; },  </span>
+<span class="err">{&quot;name&quot;: &quot;city&quot;, &quot;type&quot;: &quot;string&quot;, &quot;mode&quot;: &quot;REPEATED&quot; },  </span>
+<span class="err">{&quot;name&quot;: &quot;book&quot;, &quot;type&quot;: &quot;string&quot;, &quot;mode&quot;: &quot;REPEATED&quot; }  </span>
+<span class="err">]  </span>
+</pre></div>
+
+
+<p>Data  </p>
+<div class="highlight"><pre><span></span><span class="err">{&quot;name&quot;: &quot;randy&quot;, &quot;city&quot;: [&quot;Tucson&quot;, &quot;Houston&quot;, &quot;Seattle&quot;], &quot;book&quot;: [&quot;The Fudge&quot;]}  </span>
+<span class="err">{&quot;name&quot;: &quot;charlie&quot;, &quot;city&quot;: [&quot;Tucson&quot;, &quot;Seattle&quot;, &quot;Redmond&quot;], &quot;book&quot;: []}  </span>
+<span class="err">{&quot;name&quot;: &quot;cynthia&quot;, &quot;city&quot;: [&quot;Houston&quot;, &quot;Austin&quot;], &quot;book&quot;: [&quot;The Fudge&quot;, &quot;Outlaws&quot;]}  </span>
+</pre></div>
+
+
+<h3>Querying Repeated Fields</h3>
+<ul>
+<li>A query such as <code>SELECT * ...</code> produces an error:  <ul>
+<li>Cannot output multiple independently repeated fields at the same time  </li>
+<li>一定只能 flatten 其中一個 repeated field (下面 Querying Multiple Repeated Fields 的作法）  </li>
+</ul>
+</li>
+<li>Querying one repeated field, yields automatically flattened result  <ul>
+<li>Example: <code>SELECT name, book FROM [dataset.table]</code>  </li>
+</ul>
+</li>
+</ul>
+<h3>Querying Multiple Repeated Fields</h3>
+<ul>
+<li>FLATTEN operator unrolls multiple repeated fields  <ul>
+<li>One record for each of the values  </li>
+</ul>
+</li>
+<li>Example: <code>SELECT * FROM (FLATTEN ([dataset.table], city))</code>  </li>
+</ul>
+<h3>Lab 7.2</h3>
+<p>BigQuery will automatically flatten a single repeated field (in this case, "city").<br>
+Additional (independent) repeated fields in a query each require the use of the FLATTEN statement.<br>
+A query on 5 independently repeating fields will require 4 FLATTEN statements.  </p>
+<h2>Nested Repeated Fields</h2>
+<p>"type": "RECORD"<br>
+"mode": "REPEATED"  </p>
+<ul>
+<li>BigQuery supports importing and exporting nested repeated fields in JSON and AVRO files  </li>
+<li>Combine nested and repeated fields to denormalize a <em>one-to-many</em> relationship  </li>
+<li>Useful as a mechanism to organize related information  </li>
+</ul>
+<h3>Example: JSON Nested Repeated Schema</h3>
+<div class="highlight"><pre><span></span><span class="err">{&quot;name&quot;: &quot;author&quot;, &quot;type&quot;: &quot;string&quot;, &quot;mode&quot;: &quot;REQUIRED&quot;},  </span>
+<span class="err">{&quot;name&quot;: &quot;book&quot;, &quot;type&quot;: &quot;RECORD&quot;, &quot;mode&quot;: &quot;REPEATED&quot;, &quot;fields&quot;:  </span>
+<span class="err">    [  </span>
+<span class="err">        {&quot;name&quot;: &quot;title&quot;, &quot;type&quot;: &quot;string&quot;, &quot;mode&quot;: &quot;REQUIRED&quot;},  </span>
+<span class="err">        {&quot;name&quot;: &quot;checked_out&quot;, &quot;type&quot;: &quot;timestamp&quot;, &quot;mode&quot;: &quot;REPEATED&quot;}  </span>
+<span class="err">    ]  </span>
+<span class="err">},  </span>
+<span class="err">{&quot;name&quot;: &quot;citiesLived&quot;, &quot;type&quot;: &quot;RECORD&quot;, &quot;mode&quot;: &quot;REPEATED&quot;, &quot;fields&quot;:  </span>
+<span class="err">    [  </span>
+<span class="err">        {&quot;name&quot;: &quot;place&quot;, &quot;type&quot;: &quot;string&quot;},  </span>
+<span class="err">        {&quot;name&quot;: &quot;yearsLived&quot;, &quot;type&quot;: &quot;integer&quot;, &quot;mode&quot;: &quot;REPEATED&quot;}  </span>
+<span class="err">    ]  </span>
+<span class="err">}  </span>
+</pre></div>
+
+
+<h3>Example: JSON Nested Repeated Data</h3>
+<div class="highlight"><pre><span></span><span class="err">{&quot;author&quot;: &quot;melville&quot;, &quot;book&quot;: [{&quot;title&quot;: &quot;Moby Dick&quot;, &quot;checked_out&quot;: [&quot;2014-12-12 14:23&quot;, &quot;2013-04-03 12:13&quot;]}], &quot;citiesLived&quot;: [{&quot;place&quot;: &quot;Denver, CO&quot;, &quot;yearsLived&quot; :[&quot;1986&quot;, &quot;1987&quot;]}]}  </span>
+<span class="err">{&quot;author&quot;: &quot;hardy&quot;, &quot;book&quot;: [ {&quot;title&quot;: &quot;Return of the Native&quot;, &quot;checked_out&quot;: [&quot;1984-05-30 12:12&quot;, &quot;1986-03-12 00:00&quot;, &quot;1992-05-03 04:32&quot;] }, {&quot;title&quot;: &quot;The Mayor of Casterbridge&quot;, &quot;checked_out&quot;: [&quot;1983-06-23 12:12&quot;, &quot;1986-03-12 00:00&quot;, &quot;1992-05-03 04:32&quot;] } ], &quot;citiesLived&quot;: [ {&quot;place&quot;: &quot;Austin, TX&quot;, &quot;yearsLived&quot; : [&quot;1982&quot;, &quot;1983&quot;, &quot;1984&quot;] }, {&quot;place&quot;: &quot;Dublin, CA&quot;, &quot;yearsLived&quot; : [&quot;1992&quot;, &quot;1999&quot;, &quot;2000&quot;]}]}  </span>
+<span class="err">{&quot;author&quot;: &quot;koontz&quot;, &quot;book&quot;: [ {&quot;title&quot;: &quot;Velocity&quot;, &quot;checked_out&quot;: [&quot;1990-06-10 12:10&quot;, &quot;2000-03-11 10:00&quot;, &quot;1992-05-03 04:32&quot;] }, {&quot;title&quot;: &quot;Intensity&quot;, &quot;checked_out&quot;: [&quot;2003-06-23 02:12&quot;, &quot;2004-03-12 20:00&quot;, &quot;1992-05-03 04:32&quot;]}]}  </span>
+</pre></div>
+
+
+<h3>Querying Nested Repeated Fields</h3>
+<ul>
+<li>A query such as <code>SELECT * ...</code> produces an error:  <ul>
+<li>Cannot output multiple independently repeated fields at the same time  </li>
+</ul>
+</li>
+<li>Example: <code>SELECT author, book.title, book.checked_out FROM [dataset.table]</code>  </li>
+</ul>
+<h3>Using the WITHIN Keyword</h3>
+<ul>
+<li>WITHIN keyword works with aggregate functions  </li>
+<li>Example:  <ul>
+<li><code>SELECT fullName, COUNT(children.name) WITHIN RECORD FROM [dataset.tableId]</code>  </li>
+</ul>
+</li>
+<li><code>WITHIN RECORD</code>  <ul>
+<li>Aggregates data in the repeated values within the record  </li>
+</ul>
+</li>
+<li><code>WITHIN &lt;node&gt;</code>  <ul>
+<li>Aggregates data in the repeated values within a node  </li>
+</ul>
+</li>
+<li>Example:  <ul>
+<li><code>SELECT fullName, count(citiesLived.place) WITHIN RECORD, citiesLived.place, count(citiesLived.yearsLived) WITHIN citiesLived FROM [dataset.tableId]</code>  </li>
+</ul>
+</li>
+</ul>
+<p>要瞭解 Record 的結構層級，才能比較有效的使用 Within。  </p>
+<h3>Lab 7.3</h3>
+<p>使用 <code>REAPETED</code> and <code>NETSTED</code> Record 的時候，<br>
+仍然要注意只能同時有一個 REAPETED field，<br>
+否則就得使用 <code>FLATTEN</code>  </p>
+<hr>
+<h1>Module 8: Query Performance</h1>
+<h2>JOIN and GROUP BY – How They Affect Performance</h2>
+<h3>JOIN</h3>
+<ul>
+<li>When possible, avoid CROSS JOIN  </li>
+<li>Each row from first table is joined to every row in second table returning large amounts of data  </li>
+<li>May result in “resources exceeded” errors  </li>
+<li>Window functions often more efficient  <ul>
+<li>例如：一個小時做一個 window  </li>
+</ul>
+</li>
+<li>The 8MB right-side table join limit no longer applies.  </li>
+</ul>
+<h3>GROUP BY</h3>
+<ul>
+<li>Use <code>GROUP BY</code> when the number of distinct groups is small (low cardinality)  <ul>
+<li>Aggregation of data performed in shards  </li>
+<li>Low cardinality means shards do not shuffle data  </li>
+<li>High performance  </li>
+</ul>
+</li>
+<li>Large <code>GROUP BY</code> is less optimal  <ul>
+<li>建議不要做，但如果不得已的話還是可以做啦。  </li>
+<li>High cardinality requires aggregation performed by multiple shards  </li>
+<li>Shards produce hash key for each value and shuffle data  </li>
+</ul>
+</li>
+</ul>
+<h3>ROLLUP - Legacy SQL</h3>
+<ul>
+<li>Use <code>ROLLUP</code> function in legacy SQL for large GROUP BY  </li>
+<li>Adds extra rows to result that represent partial aggregations  </li>
+<li>The fields in the GROUP BY must be in the SELECT (declares which columns to process).  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">SELECT  </span>
+<span class="err">    year,  </span>
+<span class="err">    is_male,  </span>
+<span class="err">    COUNT(1) AS COUNT  </span>
+<span class="err">FROM  </span>
+<span class="err">    publicdata:samples.natality  </span>
+<span class="err">WHERE  </span>
+<span class="err">    year &gt;= 2000 AND year &lt;=2002  </span>
+<span class="err">GROUP BY  </span>
+<span class="err">    ROLLUP(year, is_male)  </span>
+<span class="err">ORDER BY  </span>
+<span class="err">    year, is_male  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">+------+---------+----------+  </span>
+<span class="err">| year | is_male | count    |  </span>
+<span class="err">+------+---------+----------+  </span>
+<span class="err">| NULL | NULL    | 12122730 |  </span>
+<span class="err">| 2000 | NULL    | 4063823  |  </span>
+<span class="err">| 2000 | false   | 1984255  |  </span>
+<span class="err">| 2000 | true    | 2079568  |  </span>
+<span class="err">| 2001 | NULL    | 4031531  |  </span>
+<span class="err">| 2001 | false   | 1970770  |  </span>
+<span class="err">| ...                       |  </span>
+<span class="err">| 2002 | true    | 2060857  |  </span>
+<span class="err">+------+---------+----------+  </span>
+</pre></div>
+
+
+<h3>Example: Large GROUP BY</h3>
+<div class="highlight"><pre><span></span><span class="err">SELECT  </span>
+<span class="err">    LogEdits,  </span>
+<span class="err">    COUNT(contributor_id) Contributors  </span>
+<span class="err">FROM (  </span>
+<span class="err">    SELECT  </span>
+<span class="err">        contributor_id,  </span>
+<span class="err">        INTEGER(LOG10(COUNT(*))) LogEdits  </span>
+<span class="err">    FROM  </span>
+<span class="err">        [publicdata:samples.wikipedia]  </span>
+<span class="err">    GROUP BY contributor_id  </span>
+<span class="err">)  </span>
+<span class="err">GROUP BY LogEdits  </span>
+<span class="err">ORDER BY LogEdits DESC  </span>
+</pre></div>
+
+
+<h2>Table Decorators</h2>
+<h3>BigQuery Table Decorators</h3>
+<p>只有要查有異動的資料的話，使用 Decorators 就好，可以節省資料量。<br>
+不過 7 天之內要做，因為只會保留 7 天。  </p>
+<ul>
+<li>Use to perform the most cost-effective query of a subset of your data  </li>
+<li>Table decorators can be used whenever a table is read  </li>
+<li>Copying a table, exporting a table, or listing data  </li>
+<li>Can also be used to undelete a table within 2 days on a best-effort basis  </li>
+<li>Currently supported in legacy SQL only  </li>
+</ul>
+<h3>Table Decorator Types</h3>
+<ul>
+<li>Snapshot decorators  <ul>
+<li><code>@&lt;time&gt;</code>  </li>
+<li>Time must be within last 7 days  </li>
+<li><code>@0</code> references oldest snapshot  </li>
+<li>Relative time is negative  </li>
+<li>Absolute time is positive  </li>
+</ul>
+</li>
+<li>Range decorators  <ul>
+<li><code>@&lt;time 1&gt;-&lt;time 2&gt;</code>  </li>
+<li>Time must be within last 7 days  </li>
+<li>References data between <code>&lt;time 1&gt;</code> and <code>&lt;time 2&gt;</code>  </li>
+<li>Time 2 is optional and defaults to ‘now’  </li>
+</ul>
+</li>
+</ul>
+<h3>Example: Snapshot Table Decorator</h3>
+<ul>
+<li><a href="http://blog.gdeltproject.org/using-bigquery-table-decorators-to-lower-query-cost/">http://blog.gdeltproject.org/using-bigquery-table-decorators-to-lower-query-cost/</a>  </li>
+<li><code>@-14400000</code> - is a reference to a snapshot of the table at -14400000 milliseconds since the current time  <ul>
+<li>14400000 milliseconds == 14400 seconds == 4 hours  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">SELECT count(*)  </span>
+<span class="err">FROM [publicdata:samples.shakespe are@-14400000]  </span>
+</pre></div>
+
+
+<h2>Wildcards</h2>
+<h3>Wildcard Functions - Legacy SQL</h3>
+<ul>
+<li>Cost-effective way to query data from a set of “sharded” tables  <ul>
+<li>Only the tables that match the wildcard are accessed  </li>
+<li>Limits BigQuery data charges  </li>
+</ul>
+</li>
+<li>Equivalent to UNION of tables matched by wildcard  </li>
+<li>Limits:  <ul>
+<li><em>No query can reference more than 1,000 tables (even via views)</em>  </li>
+<li>The query planner collects table metadata which can have a performance impact for a large number of shards  </li>
+</ul>
+</li>
+</ul>
+<h4><code>TABLE_DATE_RANGE(prefix, timestamp1, timestamp2)</code></h4>
+<p>Queries daily tables that overlap with the time range between <code>&lt;timestamp1&gt;</code> and <code>&lt;timestamp2&gt;</code>.<br>
+Table names must have the following format: <code>&lt;prefix&gt;&lt;day&gt;</code>, where <code>&lt;day&gt;</code> is in the format YYYYMMDD.<br>
+You can use date and time functions to generate the timestamp parameters.<br>
+For example:<br>
++ <code>TIMESTAMP('2012-10-01 02:03:04')</code><br>
++ <code>DATE_ADD(CURRENT_TIMESTAMP(), -7, 'DAY')</code>  </p>
+<h4><code>TABLE_DATE_RANGE_STRICT(prefix, timestamp1, timestamp2)</code></h4>
+<p>This function is equivalent to <code>TABLE_DATE_RANGE</code>.<br>
+The only difference is that if any daily table is missing in the sequence,<br>
+<code>TABLE_DATE_RANGE_STRICT</code> fails and returns a <code>Not Found: Table &lt;table_name&gt; error</code>.  </p>
+<h4><code>TABLE_QUERY(dataset, expr)</code></h4>
+<p>Queries tables whose names match the supplied expr.<br>
+The expr parameter must be represented as a string and must contain an expression to evaluate.<br>
+For example, <code>'length(table_id) &lt; 3'</code>.  </p>
+<h4>Wildcard Function Examples</h4>
+<div class="highlight"><pre><span></span><span class="err">SELECT ...  </span>
+<span class="err">FROM  </span>
+<span class="err">    TABLE_DATE_RANGE(  </span>
+<span class="err">        dataset.log,  </span>
+<span class="err">        TIMESTAMP(&#39;2015-01-01&#39;),  </span>
+<span class="err">        TIMESTAMP(&#39;2015-01-03&#39;)  </span>
+<span class="err">     )  </span>
+</pre></div>
+
+
+<h3>Wildcard Tables - Standard SQL</h3>
+<ul>
+<li>Query multiple tables using concise SQL statements  </li>
+<li>Wildcard table represents union of all tables that match the wildcard expression (like wildcard functions)  </li>
+<li>Useful when dataset contains multiple, similarly named tables with compatible schemas  </li>
+<li>Each row in wildcard table contains special column containing value matched by wildcard character  </li>
+<li>Example:  <ul>
+<li><code>FROM bigquery-public-data.noaa_gsod.gsod*</code>  <ul>
+<li>Matches all tables in noaa_gsod that begin with string 'gsod'  </li>
+<li>character is required (single, double quotes are invalid)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Longer prefixes generally perform better than shorter prefixes  <ul>
+<li>For example: <code>.gsod200*</code> versus <code>.*</code>  </li>
+</ul>
+</li>
+</ul>
+<h2>Partitions</h2>
+<h3>Table Partitioning - Current Approach</h3>
+<ul>
+<li>Time-partitioned tables are cost-effective way to manage data, write queries spanning multiple days, months, years  </li>
+<li>Create tables with time-based partitions and BigQuery automatically loads data in correct partition  <ul>
+<li>Declare the table as partitioned at creation time using <code>--time_partitioning_type</code> flag  </li>
+<li>To create partitioned table with expiration time for data, use <code>time_partitioning_expiration</code> flag  </li>
+</ul>
+</li>
+<li>To query partitioned table, provide date or range of dates and query processes data for interval specified  </li>
+<li>Only data scanned is in partitions specified by interval  </li>
+<li>Queries are more performant, cheaper  </li>
+<li>Currently only supported by legacy SQL  </li>
+</ul>
+<h4>Example - Table Partitioning</h4>
+<div class="highlight"><pre><span></span><span class="err">SELECT  </span>
+<span class="err">    ...  </span>
+<span class="err">FROM  </span>
+<span class="err">    sales  </span>
+<span class="err">WHERE  </span>
+<span class="err">    _PARTITIONTIME BETWEEN TIMESTAMP(&quot;20160101&quot;) AND TIMESTAMP(&quot;20160131&quot;)  </span>
+</pre></div>
+
+
+<h2>Query Performance Tips</h2>
+<ul>
+<li>Denormalize tables for performance  </li>
+<li>Select only needed columns - <code>Do not use Select *</code>  </li>
+<li>Schedule batch queries at off-peak hours using jobs  </li>
+<li>Use caching when possible  <ul>
+<li>Caching is best effort  </li>
+<li>If table data changes, cache is invalidated  </li>
+<li>Use jobs.getQueryResults to page through cached query results in a temporary table (no charge)  </li>
+</ul>
+</li>
+<li>Try to use ORDER BY and LIMIT in outermost queries  <ul>
+<li><code>LIMIT</code> is applied to results by Master  </li>
+</ul>
+</li>
+<li>Build queries from the inside out by using subqueries  <ul>
+<li>Filter data in subqueries  </li>
+<li>Perform arithmetic, ordering, case logic in outer query  </li>
+</ul>
+</li>
+<li>Use queries to create materialized intermediate tables  <ul>
+<li>Create subset of complex data in destination table  </li>
+<li>Partially aggregate data in destination table  </li>
+</ul>
+</li>
+<li>Move heavyweight filters, such as regexp, to the end  </li>
+<li>Avoid grouping on unbounded possible values  <ul>
+<li>Example: Web logs with arbitrary GET parameters in the suffix  </li>
+</ul>
+</li>
+<li>Consider using IF/CASE instead of self-joins because IF/CASE has lower processing overhead  <ul>
+<li>Self-joins require multiple disk reads  </li>
+</ul>
+</li>
+<li>Apply WHERE filters prior to JOINs  <ul>
+<li>Predicate pushdown  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Module 9: Troubleshooting Errors</h1>
+<h2>Error Categories</h2>
+<ul>
+<li>Request encoding errors  <ul>
+<li>Associated with the query request – Invalid query syntax, and so on  </li>
+<li>Request Body 有錯誤，通常是由 Google 的 API 處理  </li>
+</ul>
+</li>
+<li>Application errors  <ul>
+<li>Errors associated in processing the request  </li>
+</ul>
+</li>
+<li>HTTP transport layer errors  <ul>
+<li>Programmatic communication errors using API  </li>
+</ul>
+</li>
+</ul>
+<h2>Request Encoding Errors</h2>
+<p>在 Query History 裡頭，<br>
+點開有錯誤的 Query 可以看到 Error code，<br>
+可以點選超連結去察看該 Error 詳細的錯誤原因。  </p>
+<ul>
+<li>Incomplete syntax  </li>
+<li>Missing or invalid objects  </li>
+<li>Missing columns in GROUP BY (for aggregations)  </li>
+<li>Incorrect or missing punctuation  </li>
+<li>Misspellings  </li>
+<li>Ambiguous field references  </li>
+</ul>
+<h2>Resource Errors</h2>
+<ul>
+<li>Intended limitations exist in the query execution engine to protect resources  <ul>
+<li>Can cause well-formed queries to fail  </li>
+</ul>
+</li>
+<li>Two classes of resource errors  <ul>
+<li>Result too large  </li>
+<li>Resources exceeded  </li>
+</ul>
+</li>
+</ul>
+<h3>Result Too Large</h3>
+<ul>
+<li>BigQuery limits result sets to approximately 128MB compressed  <ul>
+<li>Queries returning larger results cannot fit into response  </li>
+</ul>
+</li>
+<li>Result too large:  <ul>
+<li>Commonly thrown on queries that use an ORDER BY with large cardinality  </li>
+<li>Can happen in multiple stages of the serving tree  </li>
+</ul>
+</li>
+</ul>
+<h4>Handling Result Too Large Errors</h4>
+<ul>
+<li>Use filters to limit the result set  </li>
+<li>Use LIMIT clause  </li>
+<li>Remove ORDER BY for large datasets (order by without limit is meaningless)  </li>
+<li>Specify destination table and use <code>allowLargeResults</code> flag  <ul>
+<li>Impacts query performance  </li>
+<li>可以保證資料都出得來，但效能會有影響，因為有些前置動作會比較不一樣，可以視需求決定要不要用這個 flag  </li>
+</ul>
+</li>
+<li>Limitations of <code>allowLargeResults</code> flag  <ul>
+<li>Cannot specify top-level ORDER BY, TOP or LIMIT clause  <ul>
+<li>Negates benefit of allowLargeResults because query output is no longer computed in parallel  </li>
+</ul>
+</li>
+<li>Using allowLargeResults flag with ORDER BY can cause resources exceeded errors  <ul>
+<li>Master applies final sorting  </li>
+</ul>
+</li>
+<li>Using allowLargeResults with window functions requires PARTITION BY clause  </li>
+</ul>
+</li>
+</ul>
+<h3>Resources Exceeded</h3>
+<ul>
+<li>Resources exceeded error issued if a query exceeds the memory limit on a single shard  <ul>
+<li>Once data is read from disk, processing is done in memory  </li>
+</ul>
+</li>
+<li>Most common on:  <ul>
+<li>ORDER BY queries with large numbers of distinct values  </li>
+<li>JOINs with more outputs than inputs  </li>
+<li>Aggregations that require memory proportional to the number of input values  </li>
+<li>Queries where data is heavily skewed toward one key value  </li>
+</ul>
+</li>
+</ul>
+<h4>Handling Resources Exceeded Errors</h4>
+<ul>
+<li>If possible, limit use of <code>ORDER BY</code>  </li>
+<li>Use aggregation functions that generate fewer output results than input rows  </li>
+<li>Avoid JOINs that generate more outputs than inputs  </li>
+<li>Avoid queries that create data skew  </li>
+<li>Queries on "guest" IDs or null values  </li>
+<li>No rule that works for every case  </li>
+<li>或者先用一個 Query 把結果存成比較小的 Table (Destination Table)，再拿這個 Table 來 Query  </li>
+</ul>
+<h2>HTTP Errors and Responses</h2>
+<ul>
+<li>All BigQuery API calls are HTTP requests  </li>
+<li>All HTTP requests return status codes  </li>
+<li>Codes between 200 and 299 are success codes  </li>
+<li>HTTP error codes are between 400 and 599  </li>
+<li>BigQuery returns a standard JSON response on error  </li>
+<li>可以參考這個網頁：<a href="https://cloud.google.com/bigquery/troubleshooting-errors">https://cloud.google.com/bigquery/troubleshooting-errors</a>  </li>
+</ul>
+<hr>
+<h1>Module 10: Access Control</h1>
+<h2>Access Control Lists</h2>
+<p>從 Dataset 這個層面去做設定  </p>
+<ul>
+<li>ACLs define permissions given to a role (or grantee) for a target (project/dataset)  </li>
+<li>ACLs consist of one or more entries that grant permission to a role (or grantee)  </li>
+<li>Permissions define the actions that can be performed against a project or dataset  <ul>
+<li>Scope defines to whom the permission applies  </li>
+<li>參考 <a href="https://developers.google.com/apis-explorer/#p/bigquery/v2/">https://developers.google.com/apis-explorer/#p/bigquery/v2/</a>  </li>
+</ul>
+</li>
+<li>Roles:  <ul>
+<li>Project roles – Users can run jobs or manage the project  </li>
+<li>Dataset roles – Define user access to datasets in a project  </li>
+</ul>
+</li>
+</ul>
+<h2>Project Roles</h2>
+<ul>
+<li>Granted/revoked using Cloud Platform Console  </li>
+<li>Roles are assigned by email address for:  <ul>
+<li>Individual users  </li>
+<li>Groups  </li>
+<li>Service accounts  </li>
+</ul>
+</li>
+<li>Project owners can modify project roles  <ul>
+<li>Automatically granted to project creator  </li>
+</ul>
+</li>
+<li>要授權給一群 Google User 的話，可以考慮用 Google Groups 來做這件事，只要授權給一整個 Group 就行了，不用一個一個加。  </li>
+</ul>
+<h3>Permissions for Project Roles</h3>
+<ul>
+<li>Viewer  <ul>
+<li>Can start a job - Dataset roles also required depending on job type  </li>
+<li>List and get all jobs they started  </li>
+<li>Granted READER dataset role by default for new datasets in project  </li>
+</ul>
+</li>
+<li>Editor  <ul>
+<li>Same as Viewer, plus:  <ul>
+<li>Can create new dataset in project  </li>
+<li>Is granted WRITER role by default for new datasets in project  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Owner  <ul>
+<li>Same as Editor, plus:  <ul>
+<li>Can list all datasets in the project  </li>
+<li>Can delete any dataset in the project  </li>
+<li>Can list and get all jobs run  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Dataset Roles</h2>
+<ul>
+<li>The project ACL becomes default ACL for datasets in the project  <ul>
+<li>Default access can be overridden on a per-dataset basis  </li>
+<li>Tables inherit ACLs from dataset  <ul>
+<li>ACLs cannot be configured on tables  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Dataset ACLs allow resource separation  <ul>
+<li>No need for additional clusters and data duplication  </li>
+<li>Saves money, simplifies operations  </li>
+</ul>
+</li>
+<li>Dataset roles are granted or revoked using:  <ul>
+<li>The BigQuery web UI  </li>
+<li>Using the 'Share dataset' option  </li>
+<li>The BigQuery API  </li>
+<li>Using Datasets:<code>update</code>  </li>
+</ul>
+</li>
+<li>Roles are assigned by email address to:  <ul>
+<li>Single user  </li>
+<li>Google Groups  </li>
+<li>Predefined group of users, such as all users, or a group of users with same project role  </li>
+</ul>
+</li>
+</ul>
+<h3>Permissions for Dataset Roles</h3>
+<ul>
+<li>Reader  <ul>
+<li>Can read, query, copy or export tables in the dataset  <ul>
+<li>Can call get on the dataset and tables in dataset  </li>
+<li>Can call list on table data for tables in the dataset  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Writer  <ul>
+<li>Same as READER, plus:  <ul>
+<li>Can edit or append data in the dataset  <ul>
+<li>Can call insert, insertAll, update or delete  </li>
+<li>Can use tables in the dataset as destinations for load, copy or query jobs  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Owner  <ul>
+<li>Same as WRITER, plus:  <ul>
+<li>Can call update on the dataset  </li>
+<li>Can call delete on the dataset  </li>
+</ul>
+</li>
+<li>Note: A dataset must have at least one entity with the OWNER role.  </li>
+</ul>
+</li>
+</ul>
+<h2>Applying Views for Row-Level Security</h2>
+<h3>Row-Level Security</h3>
+<ul>
+<li>Not natively supported  <ul>
+<li>Define a view to give access to a specific view of the data  </li>
+</ul>
+</li>
+<li>View – a BigQuery SQL query that limits the rows and columns (a virtual table) that a user can see  </li>
+<li>BigQuery views are re-executed every time the view is queried  </li>
+<li>Create view in dataset separate from underlying table’s dataset and assign ACLs to both datasets  </li>
+<li>Row-Leve Security Scenario  <ul>
+<li>可以透過 View 來 select 只想被 share 出去的欄位，不需要開放整個 table 的權限。  </li>
+<li>從一個使用者 A 沒有權限的 dataset 把一個 View 存到使用者 A 有權限的 dataset，使用者 A 仍然無法使用該 View 得到他沒有權限的 dataset 的資料。  </li>
+</ul>
+</li>
+</ul>
+<h2>Identity and Access Management</h2>
+<h3>Benefits of IAM for BigQuery</h3>
+<ul>
+<li>Admins can isolate permissions to BigQuery  <ul>
+<li>For example, BigQuery roles have no authority to manage Compute Engine virtual machines  </li>
+</ul>
+</li>
+<li>Consistent IAM controls across all GCP products  </li>
+<li>Narrow permissions allow more fine-grained control  </li>
+<li>Backwards compatible  <ul>
+<li>Legacy project permissions are preserved, and the familiar UI, API, and CLI will continue to work as before with minimal changes  </li>
+</ul>
+</li>
+</ul>
+<h3>Organization Node (Beta)</h3>
+<ul>
+<li>Organization node is root node for Google Cloud resources  </li>
+<li>2 organization roles:  <ul>
+<li>Organization Admin - Control over all cloud resources  </li>
+<li>Project Creator - Controls project creation  </li>
+</ul>
+</li>
+</ul>
+<h3>IAM Resource Hierarchy</h3>
+<ul>
+<li>A policy is set on a resource  <ul>
+<li>Each policy contains: Set of roles, role members  </li>
+</ul>
+</li>
+<li>Resources inherit policies from parent  <ul>
+<li>Resource policies are a union of parent and resource  </li>
+</ul>
+</li>
+<li>If parent policy less restrictive, overrides more restrictive resource policy  </li>
+</ul>
+<h3>IAM Roles - Curated Roles</h3>
+<p>The “can do what” part is defined by an IAM role.<br>
+An IAM role is a collection of permissions.<br>
+Most of the time to do any meaningful operations you need more than 1 permission.<br>
+For example to manage instances in a project, you need to create, delete, start, stop and change an instance.<br>
+So the permissions are grouped together into a role to make it easier to manage.  </p>
+<h3>BigQuery IAM Roles</h3>
+<ul>
+<li>User  <ul>
+<li>Runs jobs such as queries  </li>
+<li>Can browse the project to see what data is available, but does not have access to it by default  </li>
+<li>Can be assigned at project level or higher  </li>
+</ul>
+</li>
+<li>Admin  <ul>
+<li>All BigQuery related permissions - Access to read, write, delete all data, view jobs and/or cancel them  </li>
+<li>Can be assigned at project level or higher  </li>
+</ul>
+</li>
+<li>Data viewer  <ul>
+<li>Can view all datasets and all data within those datasets within the scope of the role  </li>
+<li>Can be assigned at dataset level or higher  </li>
+</ul>
+</li>
+<li>Data editor  <ul>
+<li>Can edit all datasets and all data within those datasets within the scope of the role  </li>
+<li>Can be assigned at dataset level or higher  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Module 11: Exporting Data</h1>
+<h2>Exporting Data</h2>
+<ul>
+<li>Why export data?  <ul>
+<li>Using data with third-party tools  </li>
+<li>Snapshots  </li>
+<li>Backups  </li>
+</ul>
+</li>
+<li>Export using:  <ul>
+<li>Web UI  </li>
+<li>CLI  </li>
+<li>REST API  </li>
+</ul>
+</li>
+<li>Limitations  <ul>
+<li>Export up to 1 GB of data per file (multiple file export supported)  </li>
+<li>Daily limit: 1,000 exports per day, up to 10 TB  </li>
+</ul>
+</li>
+<li>ACL requirements for exporting data:  <ul>
+<li>BigQuery: Dataset-level READER access  </li>
+<li>Google Cloud Storage: WRITE access to Google Cloud Storage bucket(s)  </li>
+</ul>
+</li>
+</ul>
+<h3>Export Configuration Options</h3>
+<ul>
+<li>Two aspects: Format and compression  <ul>
+<li>destinationFormat  <ul>
+<li>CSV  </li>
+<li>JSON  </li>
+<li>Avro  </li>
+</ul>
+</li>
+<li>compression  <ul>
+<li>GZIP  </li>
+<li>NONE  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Notes:  <ul>
+<li>AVRO cannot be used with GZIP compression  </li>
+<li>Nested and repeated data cannot be exported in CSV format  </li>
+<li>Defaults: CSV with no compression  </li>
+</ul>
+</li>
+</ul>
+<h3>AVRO Export Format</h3>
+<ul>
+<li>Exported files are Avro container files  </li>
+<li>Each row is represented as an Avro record  <ul>
+<li>Nested data is represented by nested record objects  </li>
+</ul>
+</li>
+<li><em>REQUIRED</em> fields represented as corresponding Avro types  <ul>
+<li>For example: An INTEGER type maps to an Avro LONG type  </li>
+</ul>
+</li>
+<li><em>NULLABLE</em> fields represented as Avro Union of corresponding type and "null"  </li>
+<li><em>REPEATED</em> fields are represented as Avro arrays  </li>
+<li><em>TIMESTAMP</em> data types represented as Avro LONG types  </li>
+</ul>
+<h2>Running Export Jobs</h2>
+<h3>CLI</h3>
+<ul>
+<li><code>bq extract</code> - Perform an extract operation against <code>source_table</code> into <code>destination_uris</code>  <ul>
+<li><code>bq extract &lt;source_table&gt; &lt;destination_uris&gt;</code>  </li>
+</ul>
+</li>
+</ul>
+<h3>Web UI</h3>
+<ul>
+<li>操作很簡單  </li>
+<li>有很大的檔案的話，儘量不要用 WebUI export，因為有可能中間被中斷就得重下載。請丟到 GCS 再去 download 下來  </li>
+</ul>
+<h3>Configuration Example</h3>
+<div class="highlight"><pre><span></span><span class="err">jobData</span> <span class="err">=</span> <span class="p">{</span>  
+    <span class="err">&#39;projectId&#39;:</span> <span class="err">projectId,</span>  
+    <span class="err">&#39;configuration&#39;:</span> <span class="err">{</span>  
+        <span class="err">&#39;extract&#39;:</span> <span class="err">{</span>  
+            <span class="err">&#39;sourceTable&#39;:</span> <span class="err">{</span>  
+                <span class="err">&#39;projectId&#39;:</span> <span class="err">projectId,</span>  
+                <span class="err">&#39;datasetId&#39;:</span> <span class="err">datasetId,</span>  
+                <span class="err">&#39;tableId&#39;:</span> <span class="err">tableId</span>  
+            <span class="p">}</span><span class="err">,</span>  
+            <span class="err">&#39;destinationUris&#39;:</span> <span class="p">[</span><span class="err">&#39;gs://&lt;bucket&gt;/&lt;file&gt;&#39;</span><span class="p">]</span><span class="err">,</span>  
+            <span class="err">&#39;destinationFormat&#39;:</span> <span class="err">&#39;NEWLINE_DELIMITED_JSON&#39;</span>  
+        <span class="err">}</span> <span class="err">...</span>  
+</pre></div>
+
+
+<h2>Wildcard Exports</h2>
+<ul>
+<li>If export is larger than 1GB, use a wildcard to partition the output into multiple files  </li>
+<li>Include a glob character (<code>*</code>) in export file name  <ul>
+<li>Glob is replaced by shard value of 12 digits  </li>
+<li>Starts with 000000000000 and increments by 1 for each file  </li>
+</ul>
+</li>
+<li>Wildcard exports are written in parallel  <ul>
+<li>Target files are smaller and parallel writers work on separate patterns immediately  </li>
+</ul>
+</li>
+<li>Wildcard exports are subject to quota limitations  </li>
+</ul>
+<h3>Single &amp; Multiple Wildcard URI</h3>
+<ul>
+<li>Single Wildcard URI  <ul>
+<li><code>'destinationUris': ['gs://my-bucket/file-name-*.json']</code>  </li>
+</ul>
+</li>
+<li>Multiple Wildcard URI  <ul>
+<li><code>'destinationUris': ['gs://my-bucket/file-name-1-*.json', 'gs://my-bucket/file-name-2-*.json']</code>  </li>
+</ul>
+</li>
+<li><code>destinationUris</code> property indicates export location(s) and file name(s)  </li>
+<li>Data sharded into multiple files based on the pattern  </li>
+</ul>
+<hr>
+<h1>Module 12: Interfacing with External Tools</h1>
+<h2>Interfacing with Spreadsheets</h2>
+<h3>BigQuery Connector for Microsoft Excel</h3>
+<ul>
+<li>Supports Excel 2007 and up  </li>
+<li>Supports Windows and Mac  </li>
+<li>Access through authorization key  <ul>
+<li>Time sensitive  </li>
+<li>Min 1 hour – Max 30 days  </li>
+<li>Key can be revoked  </li>
+</ul>
+</li>
+<li>Go to https://bigquery-connector.appspot.com  </li>
+<li>Select Google account to use  </li>
+<li>Record unique key and download IQY file  </li>
+<li>Follow site instructions to execute query from Excel  </li>
+<li><a href="https://cloud.google.com/bigquery/docs/bigquery-connector-for-excel">https://cloud.google.com/bigquery/docs/bigquery-connector-for-excel</a>  <ul>
+<li><a href="https://bigquery-connector.appspot.com">https://bigquery-connector.appspot.com</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>Using Google Sheets with BigQuery</h3>
+<p>Although spreadsheet are not designed to handle big data, many business run on them and use them daily.<br>
+Spreadsheets are understandable by both technical and non-technical staff.<br>
+Spreadsheets allow for use of simple charts and graphs to be easily built.<br>
+You could also connect to BigQuery from Excel via an ODBC connector.  </p>
+<ul>
+<li>Extend Google Sheets using App Script  </li>
+<li>Rich interface  </li>
+<li>JavaScript-based language  <ul>
+<li>Create buttons, pulldowns, and so on  </li>
+<li>Create dynamic query parameters  </li>
+<li>Create visualizations  </li>
+</ul>
+</li>
+<li>OWOX BigQuery Reports Add-On  <ul>
+<li>Save queries with preset variables  </li>
+<li>Create visualizations  </li>
+<li>Share results  </li>
+</ul>
+</li>
+<li>Alternative to writing scripts  </li>
+<li>Free version available  </li>
+</ul>
+<h2>ODBC &amp; JDBC Drivers</h2>
+<h3>Simba ODBC/JDBC Drivers (Beta)</h3>
+<ul>
+<li>Simba ODBC/JDBC Drivers 32-bit and 64-bit Available for Mac, Linux, Windows  </li>
+<li>Supports ANSI SQL-92: SELECT, JOIN, WHERE, HAVING, GROUP  </li>
+<li>BY, ORDER BY, TOP and most SQL-92 scalar and aggregate functions  </li>
+<li>Supports BigQuery’s SQL subset: SELECT, HAVING, WHERE, GROUP BY, ORDER BY, LIMIT, CASE and all functions  </li>
+<li>Supports all BigQuery data types (STRING, INTEGER, FLOAT, BOOLEAN, TIMESTAMP)  </li>
+</ul>
+<p>Google has partnered with Simba Technologies to provide updated ODBC and JDBC drivers that leverage the power of BigQuery's Standard SQL (support is also provided for legacy SQL).<br>
+For more information on the Simba ODBC/JDBC drivers for BigQuery, see: <a href="https://cloud.google.com/bigquery/partners/simba-beta-drivers">https://cloud.google.com/bigquery/partners/simba-beta-drivers</a>.  </p>
+<h3>Other JDBC Drivers</h3>
+<p>還不 support insert 和 delete  </p>
+<ul>
+<li>Starschema JDBC driver for BigQuery  <ul>
+<li>Supports server and OAuth2 authentication  </li>
+<li>Supports handling metadata  </li>
+<li>Query transformation capabilities  </li>
+<li>Released to open source - No longer under active development  </li>
+</ul>
+</li>
+<li>CData JDBC driver for BigQuery  <ul>
+<li><a href="http://www.cdata.com/drivers/bigquery/">http://www.cdata.com/drivers/bigquery/</a>  </li>
+<li>Abstracts BigQuery data source into tables, views, stored procedures use to access data  </li>
+<li>要用的時候要跟 Google 拿金鑰放在 JDBS 的 Driver 裏面  </li>
+</ul>
+</li>
+</ul>
+<p>Although the Starschema driver is available, no active work has been done since June 2013.<br>
+This means that any enhancements to BigQuery may not be reflected in the driver.  </p>
+<h2>Encrypted BigQuery Client</h2>
+<h3>Encrypted Client</h3>
+<p><code>ebq</code> commnad<br>
+<a href="https://github.com/google/encrypted-bigquery-client">https://github.com/google/encrypted-bigquery-client</a><br>
+<a href="https://github.com/google/encrypted-bigquery-client/blob/master/tutorial.md">https://github.com/google/encrypted-bigquery-client/blob/master/tutorial.md</a>  </p>
+<ul>
+<li>An experimental extension to the BigQuery client  </li>
+<li>Offers client-side encryption for a subset of query types  </li>
+<li>Implemented in Python  </li>
+<li>Encrypts data before loading and transforms query to work on top of encrypted data  </li>
+<li>Only available as a replacement for bq CLI  </li>
+<li>Supports multiple encryption modes  <ul>
+<li><code>Pseudonym</code>  <ul>
+<li>encrypts the data the same way, given a particular key  </li>
+</ul>
+</li>
+<li><code>Probabilistic</code>  <ul>
+<li>encrypts the same text differently every time  </li>
+</ul>
+</li>
+<li><code>Homomorphic</code>  <ul>
+<li>Encrypts numeric fields with special mathematical properties allowing mathematical operations on encrypted data to yield encrypted results  </li>
+</ul>
+</li>
+<li><code>Searchwords</code>  <ul>
+<li>Encrypts data so you can find a particular word within a longer string  </li>
+<li>same word is encrypted the same way every time  </li>
+</ul>
+</li>
+<li><code>Probabilistic_searchwords</code>  <ul>
+<li>combines the two types of encryption so that a word in encrypted a different way every time  </li>
+</ul>
+</li>
+<li><code>None</code>  <ul>
+<li>No encryption  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Client Interaction</h3>
+<ul>
+<li>Normal client interaction  <ul>
+<li>Data on client in normal (unencrypted) state  </li>
+<li>Data moves between client and BigQuery over SSH  </li>
+<li>Data is encrypted in flight and at rest once in BigQuery  </li>
+</ul>
+</li>
+<li>Encrypted client interaction  <ul>
+<li>Interface encrypts input data on client  </li>
+<li>Encrypted data moves between client and BigQuery over SSH  </li>
+<li>Data encrypted in flight and at rest once in BigQuery  </li>
+<li>Query results to client are encrypted  </li>
+<li>Client interface decrypts the results  </li>
+</ul>
+</li>
+</ul>
+<h2>BigQuery and R</h2>
+<ul>
+<li>Environment for statistical computing  </li>
+<li>Contains large, integrated collection of data analysis tools  </li>
+<li>Graphical facilities  </li>
+<li>Simple and effective programming language  </li>
+<li>BigQuery added as extension package  </li>
+<li>BigQuery allows R to process very large datasets  </li>
+<li>Hundreds of modeling packages available  </li>
+<li>R provides very sophisticated analysis  </li>
+<li>Easy setup and use  </li>
+</ul>
+<hr>
+<h1>Module 13: Working with Google Analytics Premium Data</h1>
+<hr>
+<h1>Module 14: Data Visualization</h1>
+<ul>
+<li><a href="https://www.google.com/analytics/data-studio/">https://www.google.com/analytics/data-studio/</a>  </li>
+</ul>
+<h2>Third-party tools</h2>
+<ul>
+<li>BigQuery integrates with several open-source/commercial tools  <ul>
+<li>Tableau, Qlik, iCharts  </li>
+<li>See <a href="https://cloud.google.com/bigquery/third-party-tools">third-party tools and services</a>  </li>
+</ul>
+</li>
+<li>All tools provide report, dashboard creation capability  </li>
+<li>Vendor offerings may be cloud-based, client-based, both  </li>
+<li>Each tool may have a different underlying proprietary technology  </li>
+</ul>
+<h2>Spreadsheet Visualization</h2>
+<ul>
+<li>Cost-effective option  </li>
+<li>Limited in business intelligence functionality  </li>
+<li>Visualization capabilities may not be as robust as a business intelligence tool  <ul>
+<li>May require additional scripting  </li>
+<li>搭配 Google App Script 使用  </li>
+</ul>
+</li>
+<li>Use third-party application or ODBC driver  <ul>
+<li>BigQuery Connector for Microsoft Excel  </li>
+<li>Simba ODBC Driver  </li>
+</ul>
+</li>
+</ul>
+<h2>Datalab</h2>
+<ul>
+<li><a href="https://cloud.google.com/datalab/docs/quickstarts/">https://cloud.google.com/datalab/docs/quickstarts/</a>  </li>
+</ul>
+<h3>Use Datalab on Google Cloud Shell</h3>
+<p>好像只要直接在 Cloud Shell 用<a href="https://cloud.google.com/datalab/docs/quickstarts/quickstart-local">在 local 用 docker 執行 datalab 的方法</a>就行了<br>
+<code>docker run -it -p "127.0.0.1:8081:8080" -v "${HOME}:/content" -e "PROJECT_ID=${PROJECT_ID}" gcr.io/cloud-datalab/datalab:local</code>  </p>
+<p>不需要用到 <a href="https://cloud.google.com/datalab/docs/quickstarts/quickstart-gcp">https://cloud.google.com/datalab/docs/quickstarts/quickstart-gcp</a><br>
+<code>docker run -it -p "127.0.0.1:8081:8080" -v "${HOME}:/content" -e "GATEWAY_VM=project-id/zone/instance-name" gcr.io/cloud-datalab/datalab:local</code><br>
+因為用這個方法似乎還得額外開一台 VM。  </p>
+<p>在 Cloud Shell 輸入<br>
+<code>docker run -it -p "127.0.0.1:8081:8080" -v "${HOME}:/content" -e "PROJECT_ID=${DEVSHELL_PROJECT_ID}" gcr.io/cloud-datalab/datalab:local</code><br>
+(好像有些 Cloud Shell 不知道為何會沒有 <code>$DEVSHELL_PROJECT_ID</code>，沒有的話就手動輸入吧)<br>
+好了之後再點選左上角第一個 Web preview，選擇 Change port 8081，應該就會開啟一個連到剛剛建立的 datalab 的分頁了  </p>
+<hr>
+<h1>BigQuery Public datasets</h1>
+<ul>
+<li><a href="http://www.gdeltproject.org/data.html#googlebigquery">http://www.gdeltproject.org/data.html#googlebigquery</a>  <ul>
+<li><a href="http://nyctaximap.appspot.com/">http://nyctaximap.appspot.com/</a>  </li>
+</ul>
+</li>
+<li><a href="https://www.reddit.com/r/bigquery/">https://www.reddit.com/r/bigquery/</a>  </li>
+<li><a href="https://cloud.google.com/bigquery/public-data/">https://cloud.google.com/bigquery/public-data/</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=CPB200%3A%20BigQuery%20for%20Data%20Analysts%0Ahttps%3A//blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/&title=CPB200%3A%20BigQuery%20for%20Data%20Analysts&summary=CPB200%20%E7%AD%86%E8%A8%98&source=https%3A//blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=CPB200%3A%20BigQuery%20for%20Data%20Analysts&amp;body=https%3A//blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/02/gcpug-tw-26/">GCPUG.tw #26</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/">CP100A: Google Cloud Platform Fundamentals</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/">GCPUG.tw #28</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/06/03/taiwan-customer-sharing-session-with-google-big-data-engineering-team/">Taiwan Customer Sharing Session - with Google Big Data Engineering team</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/07/05/gcpug-tw-27/">GCPUG.tw #27</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/12/15/cpb200-bigquery-for-data-analysts/";
+        var disqus_title = "CPB200: BigQuery for Data Analysts";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-12-15T09:45:43+08:00"><i class="fa fa-calendar"></i> Thu 15 December 2016</abbr></p>
+
+      <p><abbr title="2016-12-16T17:07:43+08:00"><i class="fa fa-pencil"></i>Fri 16 December 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/google-cloud-platform/" data-toggle="tooltip"
+      class="label label-default"
+      title="7 articles with this tag">Google Cloud Platform</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/" title="Y2016W49"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/12/19/y2016w50/" title="Y2016W50"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

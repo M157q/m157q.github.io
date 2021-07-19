@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - podman</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.podman.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-06-09T19:57:31+08:00</updated><entry><title>Podman Error: setup user: cannot set uid to unmapped user in user namespace</title><link href="https://blog.m157q.tw/posts/2020/02/07/podman-error-setup-user-cannot-set-uid-to-unmapped-user-in-user-namespace/" rel="alternate"></link><published>2020-02-07T20:14:31+08:00</published><updated>2020-06-09T19:57:31+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2020-02-07:/posts/2020/02/07/podman-error-setup-user-cannot-set-uid-to-unmapped-user-in-user-namespace/</id><summary type="html">&lt;p&gt;Started to use Podman recently. Got stucked on the non-root user environment for hours. Write down some notices here.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Error Messages&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;setup user: cannot set uid to unmapped user in user namespace&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;starting container process caused "setup user: invalid argument": oci runtime error&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;TL;DR&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Generate and modify &lt;code&gt;/etc/subuid&lt;/code&gt; and &lt;code&gt;/etc/subgid&lt;/code&gt; files first.  &lt;ul&gt;
+&lt;li&gt;Can use &lt;code&gt;sudo usermod --add-subuids 100000-165536 --add-subgids 100000-165536 ${YOUR_USERNAME}&lt;/code&gt; to modify these two files.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;podman system migrate&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;THIS IS VERY IMPORTANT!&lt;/strong&gt;  &lt;/li&gt;
+&lt;li&gt;Lots of resources didn't tell you that you should execute this command after modifying &lt;code&gt;/etc/subuid&lt;/code&gt; and &lt;code&gt;/etc/subgid&lt;/code&gt; to make it works for Podman. (Or maybe the problem is I should read the tutorial for Podman first. Anyway.)  &lt;/li&gt;
+&lt;li&gt;If you have built the images before executing &lt;code&gt;podman system migarte&lt;/code&gt;, you should re-build those images again without using image cache. Or, you can just use &lt;code&gt;podman rmi&lt;/code&gt; to delete those images and re-build them.  &lt;ul&gt;
+&lt;li&gt;Including the base image like Ubuntu, Debian, Arch Linux which you pulled from somewhere. Yes, you should delete it and re-build. Otherwise, you will still get the error.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;podman unshare cat /proc/self/uid_map&lt;/code&gt; to check if it works.  &lt;ul&gt;
+&lt;li&gt;Should be like this:&lt;br&gt;
+&lt;code&gt;$ podman unshare cat /proc/self/uid_map  
+         0       1000          1  
+         1     100000      65536&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;podman build&lt;/code&gt; with existing Dockerfile  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1&gt;Meaning in &lt;code&gt;/etc/subuid&lt;/code&gt; and &lt;code&gt;/etc/subgid&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;Take &lt;code&gt;/etc/subuid&lt;/code&gt; as example:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;100000&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;65536&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;user&lt;/code&gt; is the username of the system user. Can be &lt;code&gt;uid&lt;/code&gt; as well.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;100000&lt;/code&gt; is the system UID for the container UID to start with.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;65536&lt;/code&gt; is the number of UIDs allowed to be mapped.  &lt;/li&gt;
+&lt;li&gt;Which means UID &lt;code&gt;100000~165535&lt;/code&gt; on system are allowed for mapping to system user &lt;code&gt;user&lt;/code&gt; while running container as this system user.  &lt;/li&gt;
+&lt;li&gt;UID 0 in the container will be UID 100000 on the system. UID 1 in the container will be UID 100001 on the system etc.  &lt;/li&gt;
+&lt;li&gt;Which related to the command &lt;code&gt;podman unshare cat /proc/self/uid_map&lt;/code&gt; mentioned above.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Change the UID above to GID for &lt;code&gt;/etc/subgid&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.redhat.com/sysadmin/rootless-podman-makes-sense"&gt;Running rootless Podman as a non-root user | Enable Sysadmin&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://fedoramagazine.org/running-containers-with-podman/"&gt;Running Linux containers as a non-root with Podman - Fedora Magazine&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://opensource.com/article/19/2/how-does-rootless-podman-work"&gt;How does rootless Podman work? | Opensource.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://unix.stackexchange.com/questions/397092/what-do-the-contents-of-etc-subuid-mean-in-the-context-of-docker"&gt;What do the contents of /etc/subuid mean in the context of docker - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="podman"></category><category term="docker"></category></entry></feed>

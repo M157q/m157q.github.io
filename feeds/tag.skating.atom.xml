@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - skating</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.skating.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2016-11-26T09:38:32+08:00</updated><entry><title>Y2016W45</title><link href="https://blog.m157q.tw/posts/2016/11/14/y2016w45/" rel="alternate"></link><published>2016-11-14T18:03:32+08:00</published><updated>2016-11-26T09:38:32+08:00</updated><author><name>M157q</name></author><id>tag:blog.m157q.tw,2016-11-14:/posts/2016/11/14/y2016w45/</id><summary type="html">&lt;p&gt;Collection for Y2016W45 (2016-11-07 Mon 00:00:00 +0800 ~ 2016-11-14 Mon 00:00:00 +0800)&lt;/p&gt;</summary><content type="html">&lt;h3&gt;interview&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/Soft_Job/M.1478073114.A.177.html"&gt;[心得]研替(QNAP/群暉/HTC/Garmin/宇匯/appier) - 看板 Soft_Job - 批踢踢實業坊&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;啊 每次看別人的面試心得都覺得自己好廢啊 QQ  &lt;/li&gt;
+&lt;li&gt;然後 Appier 真的找了好多厲害的人進去呀  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;javascript&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://blog.wu-boy.com/2016/10/replcae-npm-with-yarn-package-management/"&gt;用 Yarn 取代 Npm 管理 JavaScript 套件版本&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;安裝速度真的比 npm 快好多啊  &lt;/li&gt;
+&lt;li&gt;實際試用的效果的確如此，而且可以直接無痛從 &lt;code&gt;npm&lt;/code&gt; 改換 &lt;code&gt;yarn&lt;/code&gt;，一樣是使用 &lt;code&gt;package.json&lt;/code&gt;，覺得不錯。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;math&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://speakerdeck.com/ccckmit/yong-shi-fen-zhong-kuai-su-zhang-wo-shu-xue-de-zheng-ti-jie-gou"&gt;用十分鐘快速掌握《數學的整體結構》 // Speaker Deck&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;這個十分鐘系列也很棒啊，雖然我還是因為對數學的掌握度不夠高，所以無法完全看懂，該多讀點書了。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;opensource&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://breezymove.blogspot.com/2016/10/blog-post.html"&gt;邁向永續的臺灣桌面應用自由軟體在地發展&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;開源軟體的中文化逐漸式微 QQ  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;programmer&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://vinta.ws/code/where-to-find-great-content-to-read.html"&gt;你都去哪裡看技術文章？ | I failed the Turing Test&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;雖然已經是一年前的文章了，但還是很值得參考，尤其是對於 Python, Web-backend developer 來說。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;programming&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://verraes.net/2013/10/pre-merge-code-reviews/"&gt;Pre-merge Code Reviews&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;三年前的文章，但還是很值得閱讀。  &lt;/li&gt;
+&lt;li&gt;主要在講述作者自己平常在團隊開發時，把某個 branch merge 到 master branch 之前的 code review 遵循的一些規則。  &lt;/li&gt;
+&lt;li&gt;篇幅不長，條列式列出重點及其原因。  &lt;/li&gt;
+&lt;li&gt;節錄一下最重要的規則部份：  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Never Push to Master  &lt;ul&gt;
+&lt;li&gt;Always push to a separate branch per logical unit (story, feature, bug, optimisation, refactor, improvement). Branches are easy to make and easy to merge when you use git (and you apply some of tips further down in this post).  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Never Merge Your Own Branch  &lt;ul&gt;
+&lt;li&gt;This helps to ensures that code is in fact reviewed. If you are caught merging into master, you will order pizza for the whole team.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Review Work in Progress First  &lt;ul&gt;
+&lt;li&gt;When you are finished with a task, you notify the other team members that your work is ready for final review. Then you review existing branches. Before picking up a new task, you look at all open pull requests (including unfinished ones) and review the changes since the last time you checked.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Merge responsibly  &lt;ul&gt;
+&lt;li&gt;Merging a pull request is the responsibility of the whole team. A pull request can not be merged when someone in the team does not understand the code or the reasoning, or does not agree with the solution.&lt;br&gt;
+(Note that these rules are starting points. Figure out what works in your team, adapt continuously.)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;python&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://eli.thegreenplace.net/2012/01/24/distributed-computing-in-python-with-multiprocessing/"&gt;Distributed computing in Python with multiprocessing - Eli Bendersky's webs&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;有個在史丹佛唸天文物理的高中同學問了這方面的問題，因為涉獵不多，所以就查了一下資料。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.longwin.com.tw/2016/10/httpstat-log-dns-lookup-to-download-time-2016/"&gt;httpstat 分析 從 DNS查詢 到 下載完成 各個階段的處理時間&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;好像不錯用  &lt;/li&gt;
+&lt;li&gt;裝來用以後真的還不錯耶，結果顯示是這樣的：  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ httpstat blog.m157q.tw/get  
+Connected to &lt;span class="m"&gt;104&lt;/span&gt;.18.38.201:80 from &lt;span class="m"&gt;192&lt;/span&gt;.168.43.139:44650  
+
+HTTP/1.1 &lt;span class="m"&gt;301&lt;/span&gt; Moved Permanently  
+Date: Sat, &lt;span class="m"&gt;26&lt;/span&gt; Nov &lt;span class="m"&gt;2016&lt;/span&gt; &lt;span class="m"&gt;01&lt;/span&gt;:01:00 GMT  
+Transfer-Encoding: chunked  
+Connection: keep-alive  
+Set-Cookie: &lt;span class="nv"&gt;__cfduid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;d090501284dc193137b69492e0e58d8801480122059&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;expires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Sun, &lt;span class="m"&gt;26&lt;/span&gt;-Nov-17 &lt;span class="m"&gt;01&lt;/span&gt;:00:59 GMT&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nv"&gt;domain&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;.m157q.tw&lt;span class="p"&gt;;&lt;/span&gt; HttpOnly  
+Location: https://blog.m157q.tw/get  
+Server: cloudflare-nginx  
+CF-RAY: 3079681ae007538a-LAX  
+
+Body stored in: /tmp/tmpn6p4a94e  
+
+  DNS Lookup   TCP Connection   Server Processing   Content Transfer  
+&lt;span class="o"&gt;[&lt;/span&gt;    253ms   &lt;span class="p"&gt;|&lt;/span&gt;      365ms     &lt;span class="p"&gt;|&lt;/span&gt;       324ms       &lt;span class="p"&gt;|&lt;/span&gt;        0ms       &lt;span class="o"&gt;]&lt;/span&gt;  
+             &lt;span class="p"&gt;|&lt;/span&gt;                &lt;span class="p"&gt;|&lt;/span&gt;                   &lt;span class="p"&gt;|&lt;/span&gt;                  &lt;span class="p"&gt;|&lt;/span&gt;  
+    namelookup:253ms          &lt;span class="p"&gt;|&lt;/span&gt;                   &lt;span class="p"&gt;|&lt;/span&gt;                  &lt;span class="p"&gt;|&lt;/span&gt;  
+                        connect:618ms             &lt;span class="p"&gt;|&lt;/span&gt;                  &lt;span class="p"&gt;|&lt;/span&gt;  
+                                      starttransfer:942ms            &lt;span class="p"&gt;|&lt;/span&gt;  
+                                                                 total:942ms  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://flake8.pycqa.org/en/latest/release-notes/3.0.0.html"&gt;3.0.0 – 2016-07-25 — flake8 3.1.0.dev0 documentation&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;flake8 3.0.0 開始不再完全支援 Python 2.6, 3.2, 3.3  &lt;/li&gt;
+&lt;li&gt;會遇到這個主要是送 &lt;a href="https://github.com/jmcarp/robobrowser/pull/56"&gt;robobrowser 的 PR&lt;/a&gt; 的時候遇到 CI testing failed 才去查的。  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gitlab.com/pycqa/flake8/issues/187"&gt;flake8 fails to work as it used to be on python 2.6.9 (#187) ‧ Issues ‧ PyC&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;django&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/11754877/troubleshooting-related-field-has-invalid-lookup-icontains"&gt;exception - Troubleshooting "Related Field has invalid lookup: icontains" - Stack Overflow&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;寫 Django 時遇到的問題，要在 Django 的 &lt;code&gt;admin.ModelAdmin&lt;/code&gt; 使用 foreign key field 時，必須使用兩個 underscore。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sshwsfc/xadmin"&gt;GitHub - sshwsfc/xadmin: Drop-in replacement of Django admin comes with lots of goodies, fully extensible with plugin support, pretty UI based on Twitter Bootstrap.&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;就一個幫你把 Django Admin 整合 Twitter Bootstrap 的 framework  &lt;/li&gt;
+&lt;li&gt;公司的專案有用到，紀錄一下。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;security&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.exploit-db.com/exploits/40680/"&gt;PCMan FTP Server 2.0.7 - 'UMASK' Command Buffer Overflow&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;原來 PCMan 連 FTP server 都有寫...  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;vim&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://joe-dev.blogspot.tw/2016/11/vim.html"&gt;閒聊：使用 Vim 編輯器的第五年&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;想想自己從高一第一次用 Vim 到現在，好像也過了 8 年了...  &lt;/li&gt;
+&lt;li&gt;但其實一直沒有什麼時間去刻意提升自己使用 Vim 的效率，也沒寫過 Vim Plugin  &lt;/li&gt;
+&lt;li&gt;從一開始抄 xatier 跟凍仁翔的 vimrc 來用  &lt;/li&gt;
+&lt;li&gt;到大一下開始用 Vundle 裝了些 plugin 來用  &lt;/li&gt;
+&lt;li&gt;到大學畢業後又重新整理一次自己真正需要用到的 Vim plugin 和一併整理 vimrc  &lt;/li&gt;
+&lt;li&gt;很多更快捷的按法其實我都沒有真的拿來用  &lt;/li&gt;
+&lt;li&gt;也許哪天會突然想卯起來研究一下吧  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;taiwan&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.google.com/maps/d/u/0/viewer?mid=11yl4gOQPCqLQGVoHlwjy6zcOK70&amp;amp;ll=23.497499078229865%2C120.74966884140622&amp;amp;z=9"&gt;台灣文化資產失火、破壞列表&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;古跡自燃定律實證紀錄。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://mhperng.blogspot.com/2016/10/4.html"&gt;「願景會社」（4）：白色力量的集結、獨立與傳承&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;嗯，有些沒想過的觀點，值得用不同的角度來思考一下。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;skating&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://blog.xuite.net/kk915021/twblog/88227780-%E8%AA%8D%E8%AD%98%E5%9F%B9%E6%9E%97~~~"&gt;認識培林~~~ @ Cycling Life :: 隨意窩 Xuite日誌&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;今年的生日禮物是買個新台幣一千塊有找的交通板來玩玩，所以查了一些跟滑板相關的資料。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;news&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.twreporter.org/a/opinion-south-koreans-urge-president-to-resign"&gt;楊虔豪／見證首爾街頭的百萬大軍　南韓倒朴的關鍵時刻&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;這真的可以直接下台了吧 感覺只會愈來愈難看而已 (?)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.twreporter.org/a/opinion-who-vote-for-trump"&gt;王茜穎／為什麼這麼多小鎮鎮民支持川普？──從城鄉差距看美國大選&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;美國的兩極化真的是挺嚴重的啊  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;joke&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://clickme.net/37163"&gt;【專區】搞笑達人ARuFa文章總整理，讓你笑到腹筋狂抽筋！ | 點我一下 分享無價&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;ARuFa 的無厘頭總是能讓人歡笑  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;misc&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.thenewslens.com/article/53004"&gt;台灣九成無法進食的病患會被放上鼻胃管，歐美卻大多拒絕，為什麼？ - The News Lens 關鍵評論網&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;醫師寫的文章，最後一段關於鼻胃管的迷思值得看一下。  &lt;/li&gt;
+&lt;li&gt;覺得滿重要的，所以引述一下：  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;迷思一、一定是因為營養不好，沒有體力，病才不會好！  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;這是非常常見的觀念，然而，對於末期病人而言，他們體力的衰弱往往都來自於本身的疾病逐漸惡化，如癌症、糖尿病、腎衰竭等等。再多的營養進去，其實身體也無法吸收。甚至反而太多營養和水分會造成身體多餘的負擔，產生全身水腫、腹水等等，使得病患更不舒服。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;迷思二、沒有放鼻胃管，病人會因為沒有進食提早走掉  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;國外的研究已經有證實，有沒有放置鼻胃管和生命的長短其實沒有必然的關係，反而我們應該更注重的是病人自己的選擇和生活的品質。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;迷思三、鼻胃管是除了經口進食以外最好的營養給予方式  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;還有另一種更不會讓病患感到不舒服的方式：胃造口，也是在胃部置放一條管子直接灌食，這個方式不僅會比較舒適，同時在照顧上也比較方便，但是因為一般民眾仍覺得這樣的方法比較具侵入性，所以通常抱持著排斥的態度。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;其實，鼻胃管是一個很棒的發明，讓暫時無法由口進食的病人（如外科病人）能夠短暫地借助管子持續得到營養。畢竟，由腸胃道吸收營養，依然是比較優先的選擇。只是很多時候，它可能被濫用了。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;</content><category term="django"></category><category term="interview"></category><category term="javascript"></category><category term="joke"></category><category term="math"></category><category term="misc"></category><category term="news"></category><category term="opensource"></category><category term="programmer"></category><category term="programming"></category><category term="python"></category><category term="security"></category><category term="skating"></category><category term="taiwan"></category><category term="vim"></category></entry></feed>

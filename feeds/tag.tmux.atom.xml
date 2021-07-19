@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - tmux</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.tmux.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2016-09-12T00:24:00+08:00</updated><entry><title>Save Content of tmux/screen Scrollback Into A File</title><link href="https://blog.m157q.tw/posts/2015/07/27/save-content-of-tmux-or-screen-scrollback-into-a-file/" rel="alternate"></link><published>2015-07-27T01:03:26+08:00</published><updated>2016-09-12T00:24:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-07-27:/posts/2015/07/27/save-content-of-tmux-or-screen-scrollback-into-a-file/</id><summary type="html">&lt;p&gt;Steps to save content of tmux/screen scrollback into a file.&lt;/p&gt;</summary><content type="html">&lt;p&gt;因為某些原因，&lt;br&gt;
+想要把 tmux copy mode 裡面的內容 dump 出來。&lt;br&gt;
+但因為之前沒試過，不知道該如何做，所以去查了一下，&lt;br&gt;
+以下整理簡單步驟：  &lt;/p&gt;
+&lt;h2&gt;tmux&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;將指定的行數 (&lt;code&gt;$linenum&lt;/code&gt;) 存到 buffer 中，進入 copy mode 後，即可在右上角看到行數。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:capture-pane -S -$linenum  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;將剛剛存到 buffer 中的內容，儲存到指定的檔案路徑 (&lt;code&gt;$filepath&lt;/code&gt;)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:save-buffer $filepath  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;刪除 buffer 中的內容 (optional)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:delete-buffer  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$filepath&lt;/code&gt; 檔案中應該就是 dump 出來的內容  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;screen&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;screen&lt;/code&gt; 的話，目前看到的相似用法是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:hardcopy -h $filepath  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但這個用法只能儲存全部的內容，無法選擇行數。  &lt;/p&gt;
+&lt;p&gt;然後我在 screen 版本 4.04.00 (GNU) 19-Jun-16 使用時，&lt;br&gt;
+如果內容裏面有中文的話，&lt;br&gt;
+dump 出來以後中文會變成亂碼。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://unix.stackexchange.com/questions/26548/write-all-tmux-scrollback-to-a-file"&gt;Write all tmux scrollback to a file - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/4807474/copying-gnu-screen-scrollback-buffer-to-file-extended-hardcopy"&gt;Copying GNU screen scrollback buffer to file (extended hardcopy)? - Stack Overflow&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="tmux"></category><category term="screen"></category></entry><entry><title>Protocol version mismatch error in tmux</title><link href="https://blog.m157q.tw/posts/2014/02/27/protocol-version-mismatch-error-in-tmux/" rel="alternate"></link><published>2014-02-27T16:01:00+08:00</published><updated>2015-10-26T13:28:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-02-27:/posts/2014/02/27/protocol-version-mismatch-error-in-tmux/</id><summary type="html">&lt;p&gt;今天打 &lt;code&gt;$ tmux attach&lt;/code&gt; 之後  &lt;/p&gt;
+&lt;p&gt;竟然噴了錯誤訊息 …&lt;/p&gt;</summary><content type="html">&lt;p&gt;今天打 &lt;code&gt;$ tmux attach&lt;/code&gt; 之後  &lt;/p&gt;
+&lt;p&gt;竟然噴了錯誤訊息 &lt;code&gt;protocol version mismatch (client 8, server 7)&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;以前完全沒看過  &lt;/p&gt;
+&lt;p&gt;只好丟去 Google  &lt;/p&gt;
+&lt;p&gt;第一個解法是 &lt;strong&gt;強行 attach tmux&lt;/strong&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pgrep tmux  
+$ /proc/&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;tmuxpid&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;/exe attach  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但執行後發現會噴 Permission Denied. 失敗  &lt;/p&gt;
+&lt;p&gt;第二個解法是 &lt;strong&gt;把 tmux 砍掉重開&lt;/strong&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pgrep tmux  
+$ &lt;span class="nb"&gt;kill&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;tmuxpid&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然後重開 tmux 就行了  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;References&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://bugs.launchpad.net/byobu/+bug/1174724"&gt;protocol version mismatch (client 7, server 6)&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://plus.google.com/110139418387705691470/posts/BebrBSXMkBp"&gt;https://plus.google.com/110139418387705691470/posts/BebrBSXMkBp&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.longwin.com.tw/2013/11/tmux-protocol-version-mismatch-fix-2013/"&gt;Tmux 出現 protocol version mismatch 解法&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="tmux"></category></entry></feed>

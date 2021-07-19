@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  PyCon APAC 2015 Notes and Thoughts
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/" rel="bookmark" title="Permalink to PyCon APAC 2015 Notes and Thoughts">PyCon APAC 2015 Notes and Thoughts</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Some thoughts &amp; notes for PyCon APAC 2015</p>
+  </blockquote>
+  <div>
+    <p>這次是第二次參加 PyCon，<br>
+與其像去年當個沒做事的 Web 組冗員，<br>
+還是乖乖當個會眾就好，<br>
+但還是有義務幫忙一些簡單的小事啦。  </p>
+<p>相較於上次參加，<br>
+這一年中也對 Python 更加瞭解了一些，<br>
+但仍然有很多地方不足，<br>
+但至少今年的議程中，<br>
+能夠聽懂的議程比較多了。  </p>
+<p>今年的議程中，<br>
+感覺偏硬的講題變多了，<br>
+似乎是件好事，<br>
+不然很多人提到 Python 都覺得只有 Django, Flask, Bottle, Tornado, ... 之類的 Web 應用<br>
+或是 Numpy, Scipy 之類的科學運算。<br>
+其實 Security 的部分也越來越常看見 exploit 是用 Python 寫的，<br>
+只是可能比較難在 PyCon 出現吧，<br>
+應該都出現在 HITCON。<br>
+但今年的講題真的是比去年還富有多樣性就是。  </p>
+<p>而今年印象最深刻的議程是 Scott Tsai 講 GDB 掛 Python hook 做 Debug 那場，<br>
+講者的英文在我耳裡聽起來跟 native speaker 一樣， 非常流利。<br>
+現場直接 Live Demo 也非常嫻熟，真的很厲害。  </p>
+<p>除了議程之外，最讓我印象深刻的絕對是第二天晚上的夜市。  </p>
+<p>晚餐的自助吧菜色非常多，可以吃得很飽。<br>
+再加上很棒的管樂隊演奏（宇宙戰艦大和號、龍貓、...），<br>
+還有其他的音樂表演，然後各個攤位自己舉辦的各種活動。  </p>
+<p>因為一開始就被拉去 Code Fight 的攤位，<br>
+然後跟 dv 被抓去當第一題的白老鼠，還被拍了照，<br>
+然後就一直待在那邊玩，所以印象最深的也只有 Code Fight。<br>
+結果我跟 dv 很糗的第一題都沒在時間內解出來，還在那邊耗很久的時間，<br>
+用別人的電腦真的很不習慣啊！<br>
+好吧，其實只是太廢的藉口，回去得多練練功。<br>
+但這活動真的很有趣，一堆工程師宅宅在現場解題目，玩得不亦樂乎，希望明年還會有。  </p>
+<p><img alt="code fight" src="/files/pycon-apac-2015-notes-and-thoughts/code-fight.jpg"><br>
+source: <a href="https://www.facebook.com/photo.php?fbid=10206661768324121&amp;set=a.1209323314476.2032355.1270526425&amp;type=1">https://www.facebook.com/photo.php?fbid=10206661768324121&amp;set=a.1209323314476.2032355.1270526425&amp;type=1</a>  </p>
+<p>附上 Code Fight 的 GitHub Repo (有興趣的人可以去貢獻題目XD)  </p>
+<p><a href="https://github.com/ccwang002/pyapac_code_fighter">ccwang002/pyapac_code_fighter · GitHub</a>  </p>
+<hr>
+<p>Badge System &amp; Bingo 令我印象深刻的程度僅次於 Night Party。  </p>
+<p>由於今年的 Badge 是 RFID card，<br>
+在各個廠商攤位以及會議室的門口都有 RPi 做好的 RFID Reader，<br>
+會眾到贊助廠商的攤位可以 Check-in，<br>
+一方面是讓廠商得到你的 email，之後可以寄送一些廣告或者是徵才訊息給你，<br>
+另一方面是官方做了一個<a href="http://www.codeme.cc/pycon/badges/?kktix=2015">Badge System</a>，<br>
+每個廠商的攤位 Check-in 都會有成就可以解鎖，<br>
+而每場議程也都可以 Check-in，<br>
+然後根據解鎖的成就數量，會影響到最後一天 Bingo 活動起始的格子數。  </p>
+<p>因為我解鎖了不少成就，<br>
+所以在最後一天的 Bingo 活動中幸運的得到了 PyCarm 一年份的序號，<br>
+雖然平常還是都在用 Vim 就是。  </p>
+<p><img alt="pycharm" src="/files/pycon-apac-2015-notes-and-thoughts/pycharm.jpg">  </p>
+<blockquote>
+<p>順帶一提，PyCharm 攤位送的贈品是溜溜球，讓人有種回味童年的感覺  </p>
+</blockquote>
+<hr>
+<p>PyCon 真的每年都有不一樣的東西，<br>
+除了上面提到的 Night Party 跟 Bingo 以外，<br>
+其實會場的佈置也很棒，<br>
+現場有一個超級長的橫向時間軸海報，<br>
+上面記錄了跟 Python 相關的許多重大事件，<br>
+然後附上便利貼和筆，讓會眾可以在海報上面留言，<br>
+我只有拍下 PyCon 2015 的部分。  </p>
+<p><img alt="poster" src="/files/pycon-apac-2015-notes-and-thoughts/poster.jpg">  </p>
+<p>然後還有今年的穿梭時空的飛車的看板，<br>
+可以給人拍照用XD  </p>
+<p><img alt="signboard" src="/files/pycon-apac-2015-notes-and-thoughts/signboard.jpg">  </p>
+<p>還有餐點也真的很棒  </p>
+<p><img alt="meal" src="/files/pycon-apac-2015-notes-and-thoughts/meal.jpg">  </p>
+<p>因為工作人員幾乎都是上班族，<br>
+所以都是用下班或是假日的時間義務幫忙，<br>
+真的很感謝他們辛苦的籌備！  </p>
+<p>喔 對了 因為今年 irc channel 真的是有夠冷清<br>
+所以官方開了個 gitter 代替 irc 的聊天功能<br>
+想看聊天記錄的人可以去看看<br>
+<a href="https://gitter.im/pycontw/pyconapac2015">https://gitter.im/pycontw/pyconapac2015</a>  </p>
+<p>心得就是上面的部分啦<br>
+以下是三天議程中我自己紀錄的筆記，附上 Hackpad 共筆連結：  </p>
+<hr>
+<ul>
+<li>Date: 2015/06/05 - 2015/06/07<br>
+<a href="https://hackpad.com/Slides-of-PyCon-APAC-2015-xyLGxKpDgwP">Slides of PyCon APAC 2015 - hackpad.com</a>  </li>
+</ul>
+<hr>
+<h3>Day 1 - 2015/06/05 - Fri</h3>
+<p><a href="https://hackpad.com/PyCon-APAC-2015-Day-1-June-5-Tt8wwkILDX0">PyCon APAC 2015 - Day 1 (June 5) - hackpad.com</a>  </p>
+<hr>
+<h4>Ecosystem Threats to Python - Van Lindberg</h4>
+<p>Python is 25 years old.  </p>
+<ul>
+<li>The Python Ecosystem  <ul>
+<li>2014 - Ranking of the programing language, took from stackoverflow, github  </li>
+</ul>
+</li>
+<li>Perl vs Python - from 2004 - 2013  <ul>
+<li>Perl down, Python up.  </li>
+</ul>
+</li>
+<li>The transistion from Python2 to Python3  </li>
+<li>Threats  <ul>
+<li>Java  </li>
+<li>nodejs  </li>
+<li>go  </li>
+</ul>
+</li>
+<li>I cannot interoperate  <ul>
+<li>I see dead code.  </li>
+<li>Fortran, C, Cpp  </li>
+</ul>
+</li>
+<li>Why Django sucks in DjangoCon  </li>
+<li>Let's talk about Java, Why Java?  <ul>
+<li>The corporate machine  </li>
+<li>The JVM  </li>
+<li>The Apache Software Foundation  </li>
+<li>Android  </li>
+<li>Big Data  </li>
+<li>..., Acceptable hackerness  </li>
+</ul>
+</li>
+<li>Why Javasciprt?  <ul>
+<li>Ubiquity  </li>
+<li>Gmail  </li>
+<li>Chrome and Virtual Machine race  <ul>
+<li>V8  </li>
+</ul>
+</li>
+<li>Javascript, the Good Parts  </li>
+<li>Evented / Async from the ground up  </li>
+<li>JSON  </li>
+<li>..., Acceptable hackerness  </li>
+</ul>
+</li>
+<li>Go  <ul>
+<li>static binary  </li>
+<li>bottom up for multi-core use  </li>
+</ul>
+</li>
+<li>Why Go?  <ul>
+<li>Rob Pike and Google  </li>
+<li>Pragmatic, small, "fits your brain"  </li>
+<li>Channels and Goroutines  <ul>
+<li>centrate all CPUs  </li>
+<li>right now in Python we don't have this feature.  <ul>
+<li>Pypy  </li>
+<li>libsvm  </li>
+</ul>
+</li>
+<li>Performance  <ul>
+<li>Python was created for simple using, but go focus on multi-core and performance  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>High level datatypes  </li>
+<li>gofmt  <ul>
+<li><a href="https://golang.org/cmd/gofmt/">https://golang.org/cmd/gofmt/</a>  </li>
+</ul>
+</li>
+<li>go run  </li>
+<li>Deployment  </li>
+<li>Speed  </li>
+</ul>
+</li>
+<li>Python  <ul>
+<li>Let's talk about what we are doing wrong  </li>
+<li>Multi-core, package managemnet  </li>
+</ul>
+</li>
+<li>Why Python?  <ul>
+<li>Broad Ecosystem  <ul>
+<li>ruby - bind with rails  </li>
+<li>go - small group of UNIX servers  </li>
+<li>python - it's hard to say where python it is, it's everywhere.  <ul>
+<li>Every Movie, single media stream today, used Python.  </li>
+<li>Huge strike in the scientific computing  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pragmatic, "fits your brain"  </li>
+<li>Teaching language  </li>
+<li>The PyPy R&amp;D division  </li>
+<li>Python 3  </li>
+</ul>
+</li>
+<li>Python is not just a language, Python is the Python Community.  </li>
+</ul>
+<hr>
+<h4>When programming functionally in Python - Apua Juan</h4>
+<ul>
+<li>Theory in Functional Programming  <ul>
+<li><a href="https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf">Why Functional Programming Matters</a>  </li>
+</ul>
+</li>
+<li>Generator Failure?  <ul>
+<li>Range object vs Generator  </li>
+<li>這兩個是不一樣的東西，generator 就是跑過就沒了  </li>
+</ul>
+</li>
+<li>Coroutine  <ul>
+<li>Example in Python Official Document  </li>
+</ul>
+</li>
+<li>List comprehension from Haskell  <ul>
+<li>lambda function  </li>
+</ul>
+</li>
+<li>Python doesn't provide...  <ul>
+<li>Algebraic Data Type? Recursive Data Type? Parametric or generic  <ul>
+<li>Class 無助於產生 ADT  </li>
+<li>meta-class 可以，但不完全，還是得定義給了什麼 Class  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pattern Matching  <ul>
+<li>_, a = abc(*data)  </li>
+<li>這方面的支援不夠好  </li>
+</ul>
+</li>
+<li>Type Class  <ul>
+<li>Type Class is NOT "Class"  </li>
+<li>Another form of data abstraction  </li>
+<li>More abstract than ADT  </li>
+<li>It is the abc (Abstract Base Class) in Python  <ul>
+<li>Django 大量的使用了 abc  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Monad  <ul>
+<li>keyword "Maybe" in Haskell  </li>
+<li>Container, Function for Container  </li>
+<li>Monadic  <ul>
+<li>開了個檔案，但是使用 read mode, 並對該 fd 做寫入, 不應該改動  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Type System  <ul>
+<li>Python use Duck Typing, so we basically don't use specific type.  </li>
+<li>Annotation for type checking in the future Python  </li>
+</ul>
+</li>
+<li>Generic Function  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fcn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="o">...</span>  
+<span class="o">---</span>  
+<span class="k">def</span> <span class="nf">fcn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="o">...</span>  
+</pre></div>
+
+
+<ul>
+<li>Python lacks somthing in Functional Programming  <ul>
+<li>imperative vs declarative  </li>
+<li>interpreted vs compiled  </li>
+<li>dynamic typed vs static typed  </li>
+<li>Python 基本上偏左邊  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>Python Debugger Uncovered - Dmitry Trofimov</h4>
+<ul>
+<li>about this talk  <ul>
+<li>how to trace Python programs  </li>
+<li>show implementation of a Python Debugger  </li>
+<li>lots of code  </li>
+<li>PyDev  </li>
+</ul>
+</li>
+<li>Python debuggers  <ul>
+<li>Implemented in Python  <ul>
+<li>pdb, PyCharm, Pydev  </li>
+<li>platform independent: CPython, Jython, PyPy, IronPython  </li>
+<li>Can be broken by user code (can be prevented by tricky fixes)  </li>
+</ul>
+</li>
+<li>Implemented in C  <ul>
+<li>winpdb, Wing, gdb(with Python mappings)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tracing Python code with Python  <ul>
+<li>sys.settrace(tracefunc)  <ul>
+<li>call, line, reutrn, c_call, c_return, c_exception  </li>
+</ul>
+</li>
+<li>Simple Trace Function  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tracefunc</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>  
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> on #</span><span class="si">%d</span><span class="s2"> % (event, frame.f_lineno))  </span>
+    <span class="k">return</span> <span class="n">tracefunc</span>  
+
+<span class="kn">import</span> <span class="nn">sys</span>  
+
+<span class="n">sys</span><span class="o">.</span><span class="n">settrace</span><span class="p">(</span><span class="n">tracefunc</span><span class="p">)</span>  
+</pre></div>
+
+
+<ul>
+<li>Let's make simple Python debugger  <ul>
+<li>Console Debugger  </li>
+<li>Visual Debugger  </li>
+</ul>
+</li>
+<li>Protocol  <ul>
+<li>every message is a line  </li>
+</ul>
+</li>
+<li>Command Types  <ul>
+<li>Set Breakpoint  </li>
+<li>Resume  </li>
+<li>Get Threads  </li>
+<li>Get Frame  </li>
+<li>Evaluate Expression  </li>
+</ul>
+</li>
+<li>IDE  <ul>
+<li>Creates server socket  </li>
+<li>Launches a script being debugged with a command  </li>
+</ul>
+</li>
+<li>Debugger Main Code  </li>
+<li>Demo  </li>
+<li>Important Features  <ul>
+<li>Conditional Breakpoints  </li>
+<li>Exception Breakpoint  </li>
+<li>Step Over / Step Into / Run to Line  </li>
+<li>PYthon 2.4 to Python 3.4  </li>
+</ul>
+</li>
+<li><a href="https://wiki.python.org/moin/PythonDebuggers">https://wiki.python.org/moin/PythonDebuggers</a>  </li>
+</ul>
+<hr>
+<h4>Programmatic Debugging with GDB and Python - Scott Tsai</h4>
+<ul>
+<li>debug C / C++ code with Python  </li>
+<li>GDB  <ul>
+<li>set a Conditional Breakpoint  </li>
+<li>set a Breakpoint that only triggers for a specific thread  </li>
+<li>Debug multiple process  </li>
+</ul>
+</li>
+<li>Getting a Python Prompt in GDB  </li>
+</ul>
+<div class="highlight"><pre><span></span>$ gdb  
+<span class="o">(</span>gdb<span class="o">)</span> python-interactive  
+</pre></div>
+
+
+<ul>
+<li>GDB Embedding IPython  </li>
+</ul>
+<p>(In some .py file)  </p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">IPython</span>  
+<span class="n">IPython</span><span class="o">.</span><span class="n">embed_kernel</span><span class="p">()</span>  
+</pre></div>
+
+
+<p>(In some shell)  </p>
+<div class="highlight"><pre><span></span>$ gdb -x gdb-ipython.py  
+$ ipython3 console kernel-xxx.json  
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>$ gdb -q /bin/true  
+<span class="o">(</span>gdb<span class="o">)</span> start  
+<span class="o">(</span>gdb<span class="o">)</span> python-interactive  
+</pre></div>
+
+
+<ul>
+<li>How Source Level Debugging works?  <ul>
+<li><code>gcc -g</code>  </li>
+<li><code>eu-strip -f xxx.debug xxx</code>  <ul>
+<li>eu-strip - split debug info  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Do my binaries have debug info?  <ul>
+<li>Look for the .debug_info section  </li>
+<li>.gnu_debuglink  </li>
+</ul>
+</li>
+<li>DWARF ELF Sections  <ul>
+<li>.debug_abbrev  </li>
+<li>.debug_info  </li>
+<li>pyelftools  <ul>
+<li><code>pip install pyelftools</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Linux Distros Provide Debug Info  <ul>
+<li>(Fedora, Red Hat)  <ul>
+<li><code>debug-info install $PACKGENAME</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CPython and Numpy has debug info, butt libz.so and other externel libraries don't.  </li>
+<li>Debug multiprocess with gdb  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="err">set detach-on-fork off  </span>
+<span class="err">set traget-async on  </span>
+<span class="err">set pagination off  </span>
+<span class="err">add-inferior  </span>
+<span class="err">...  </span>
+</pre></div>
+
+
+<ul>
+<li>Debug Optimized Code  <ul>
+<li>use gdb to alter the control flow  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>The Future of GUI Programming with Python - Tzu-ping Chung</h4>
+<ul>
+<li>Tkinter  <ul>
+<li>Python's de-facto standard GUI  </li>
+<li>Native nowhere  <ul>
+<li>Themed Tk  </li>
+</ul>
+</li>
+<li>Binding to Tcl/Tk  </li>
+<li>Lean, but may be lacking  </li>
+</ul>
+</li>
+<li>Platform-specific  <ul>
+<li>PyObjC on OS X (Cocoa)  </li>
+<li>WIn32API on Windows  </li>
+<li>PyGObject on Gnome (GTK+)  </li>
+<li>Native UI/UX  </li>
+<li>Needs to deploy C Binding  </li>
+<li>Very weird API  </li>
+</ul>
+</li>
+<li>Binding  </li>
+<li>Let's Build Everything  <ul>
+<li>Kivy and Pyglet  </li>
+<li>Cross-platform application code  </li>
+<li>Nice Pythonic API  </li>
+<li>Needs to deploy C binding  </li>
+<li>Not Native (and they don't care)  </li>
+</ul>
+</li>
+<li>Licensing  <ul>
+<li>GPL and LGPL  </li>
+<li>Source distribution  </li>
+<li>Static linking  </li>
+</ul>
+</li>
+<li>What I want  <ul>
+<li>Native UI and UX  </li>
+<li>Portability  </li>
+<li>Ease to Deploy  </li>
+<li>Pythonic API  </li>
+</ul>
+</li>
+<li>The Solution (IMO)  <ul>
+<li>Dynamic binding to native GUI  </li>
+<li>CPython compatibility  </li>
+<li>No non-Python dependencies  </li>
+<li>Wrapper on top  </li>
+</ul>
+</li>
+<li>The Binding  <ul>
+<li>Foreign function interface (FFI)  </li>
+<li>libffi  </li>
+<li>ctypes  </li>
+<li>CFFI, anyone?  </li>
+<li>related links  <ul>
+<li><a href="https://cffi.readthedocs.org/en/latest/">https://cffi.readthedocs.org/en/latest/</a>  </li>
+<li><a href="https://docs.python.org/2/library/ctypes.html">https://docs.python.org/2/library/ctypes.html</a>  </li>
+<li><a href="http://eli.thegreenplace.net/2013/03/09/python-ffi-with-ctypes-and-cffi">http://eli.thegreenplace.net/2013/03/09/python-ffi-with-ctypes-and-cffi</a>  </li>
+<li><a href="http://en.wikipedia.org/wiki/Foreign_function_interface">http://en.wikipedia.org/wiki/Foreign_function_interface</a>  </li>
+<li><a href="https://sourceware.org/libffi/">https://sourceware.org/libffi/</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Model  <ul>
+<li>Ideal: Python API wrapper &lt;=&gt; Binding (in Python) &lt;=&gt; Native API  </li>
+<li>Windows: Python API Wrapper &lt;=&gt; ctypes &lt;=&gt; Native API  </li>
+<li>Ubuntu: Python API Wrapper &lt;=&gt; ctypes &lt;=&gt; Native API  </li>
+<li>OS X: Python API Wrapper &lt;=&gt; { ctypes / ctypes + wrapper &lt;=&gt; objectvie-c API}&lt;=&gt; C API (e.g. CoreFoundation)  </li>
+</ul>
+</li>
+<li><a href="https://github.com/pybee/toga">toga</a>  <ul>
+<li><a href="http://pybee.org/toga/">http://pybee.org/toga/</a>  </li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>$ pip install toga-demo  
+$ toga-demo  
+</pre></div>
+
+
+<ul>
+<li>Difficulties  <ul>
+<li>API Design  </li>
+<li>Platform  </li>
+</ul>
+</li>
+<li>Mobile Problem  <ul>
+<li>Python  </li>
+<li>Different Paradigms  </li>
+<li>"The Store"  </li>
+<li>Android, iOS, Windows Phone  </li>
+<li><a href="http://lwn.net/Articles/640625">http://lwn.net/Articles/640625</a>  </li>
+</ul>
+</li>
+<li>Mobile Support  <ul>
+<li>C API Availability  </li>
+</ul>
+</li>
+<li>Activity Stack / Fragment  </li>
+</ul>
+<hr>
+<h4>RPyScan</h4>
+<p>用 Raspberry Pi + Python 自幹 3D 人體掃描機，因為買現成的太貴了。  </p>
+<hr>
+<h4>MMO Server Design with Twisted.py - Dan Maas</h4>
+<p>// 這外國講者的中文講的真的蠻標準的  </p>
+<ul>
+<li>SPINPUNCH  </li>
+<li>THUNDER RUN  </li>
+<li>Topics  <ul>
+<li>System Architecture  </li>
+<li>How to write asynchronous HTTP server with Twisted  </li>
+<li>How to profile Asynchronous Server  </li>
+</ul>
+</li>
+<li>Game = Engine + Game Data + Art  <ul>
+<li>Engine: Server, Client, Analytics  </li>
+<li>Game Data: Units, buildings, items  </li>
+<li>Art: Images, Sounds  </li>
+</ul>
+</li>
+<li>Engine  <ul>
+<li>Client / Server "web app"  </li>
+<li>Server: Python  </li>
+<li>Client: JavaScript / HTML5 Canvas  </li>
+</ul>
+</li>
+<li>Won't be mention today  <ul>
+<li>Analytics system (SQL, map/reduce)  </li>
+<li>Gamedata build pipeline  </li>
+<li>Art build pipeline  </li>
+</ul>
+</li>
+<li>Server  <ul>
+<li>Client sends requests (by HTTP) to run gmae actions  <ul>
+<li>"Upgrade this building"  </li>
+<li>"Produce this unit"  </li>
+<li>"Buy this thing in the Store"  </li>
+</ul>
+</li>
+<li>Check requirements, if OK, then mutate player state, send reply  </li>
+</ul>
+</li>
+<li>Server Design Requirements  <ul>
+<li>High Scale  <ul>
+<li>20,000+ daily players  </li>
+<li>2,000+ concurrent players  </li>
+</ul>
+</li>
+<li>Low latency  <ul>
+<li>cannot greater than 1xx ms  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Server Implementation  <ul>
+<li>Python  </li>
+<li>Twisted Asynchronous HTTP server  </li>
+<li>Cluster of processes (on Amazon EC2)  </li>
+<li>Support ~ 100 online players per CPU  <ul>
+<li>Scaling by adding cores  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>What is Twisted?  <ul>
+<li>Network library  </li>
+<li>Asynchronous event loop, like NGINX  </li>
+<li>Supports many internet protocols  <ul>
+<li>HTTP  </li>
+<li>SSH  </li>
+<li>FTP  </li>
+<li>SMTP  </li>
+</ul>
+</li>
+<li>Consistent Python API, not every easy but really consistent  </li>
+<li>Easy to extend with custom classes  </li>
+</ul>
+</li>
+<li>Asynchronous server  </li>
+<li>use both synchronous and asynchronous code  <ul>
+<li>not every computation are suitable with asynchronous  </li>
+<li>synchronous code is easier to write  </li>
+<li>synchronous (99%)  <ul>
+<li>fast: 1 - 100 ms  <ul>
+<li>attack  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>asynchronous (1%)  <ul>
+<li>slow: 100ms - 10 seconds  <ul>
+<li>Reading/writing Amazon S3 on login/logout  </li>
+<li>Quering Facebook API  </li>
+<li>Top scores database query  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Write an asynchronous http server by using Twisted  <ul>
+<li>reactor  </li>
+<li>twisted.web.NOT_DONE_YET  </li>
+<li>request.write("Hello")  </li>
+<li>request.finish()  </li>
+</ul>
+</li>
+<li>How to connect "before" and "after"  </li>
+<li>inlineCallbacks (decorator) in Twisted  </li>
+<li>Collect data on each request  <ul>
+<li>Average latency (performance hotspot)  </li>
+</ul>
+</li>
+<li>Watch total "unhalted" time  <ul>
+<li>What % of the time the CPU is waiting for the next request?  </li>
+<li>50% = danger  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Day 2- 2015/06/06 - Sat</h3>
+<p><a href="https://hackpad.com/PyCon-APAC-2015-Day-2-June-6-gLUoM6krKOq">PyCon APAC 2015 - Day 2 (June 6) - hackpad.com</a>  </p>
+<hr>
+<h4>GIL - Tzung-Bi Shih</h4>
+<p><a href="https://github.com/penvirus/gil1">https://github.com/penvirus/gil1</a>  </p>
+<ul>
+<li>Introduction  <ul>
+<li>Global Interpreter Lock  <ul>
+<li>Giant Lock  </li>
+</ul>
+</li>
+<li>GIL in CPython protects  <ul>
+<li>Interpreter state, thread state, ...  </li>
+<li>reference count  </li>
+<li>"a Guarantee"  </li>
+</ul>
+</li>
+<li>Other implementations  <ul>
+<li>fine-grained Lock  <ul>
+<li>把 lock 切小  </li>
+</ul>
+</li>
+<li>lock-free  <ul>
+<li>不需要 Lock - 兩種  <ul>
+<li>algorithm  </li>
+<li>底層操作達到 atomic  </li>
+</ul>
+</li>
+<li>把 lock offload 到下一層  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>GIL 好做  </li>
+</ul>
+</li>
+<li>GIL over multi-processor  <ul>
+<li>Want to produce efficient program.  </li>
+</ul>
+</li>
+<li>GIL 該不該存在，需不需要拿掉?  <ul>
+<li>問題  <ul>
+<li>有太多 legacy 的東西要處理  </li>
+<li>「男子漢的約定不能改變！」  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Brainless Solution for multi-process  </p>
+<ul>
+<li>Embarrassingly parallel  <ul>
+<li>no dependency between those parallel tasks  </li>
+</ul>
+</li>
+<li>IPC-required parallel tasks  <ul>
+<li>share states with other peers  </li>
+<li>the most costly overhead of the GIL battle  </li>
+</ul>
+</li>
+<li>Example  <ul>
+<li>multiprocessing  <ul>
+<li>process pool  </li>
+<li>nondeterministic  <ul>
+<li>the same input, different output.  </li>
+</ul>
+</li>
+<li>further observations  <ul>
+<li>workers are forked when initializing the pool, they share the same memory copy  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>pp (parallel python) remote node  <ul>
+<li><code>ppserver.py -v 1 -p 10000 &amp;</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Release the GIL  </p>
+<ul>
+<li>Examples  <ul>
+<li>ctypes  <ul>
+<li>thread for GIL battle  </li>
+</ul>
+</li>
+<li>Python / C extension  <ul>
+<li>linking to the busy.so extension  </li>
+<li>When it comes to C thread vs Python thread battle, C thread always win.  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cooperative Multitasking  <ul>
+<li>Only applicable to IO-bound tasks  </li>
+<li>Single process, single Threads  <ul>
+<li>no other thread, no GIL battle  </li>
+</ul>
+</li>
+<li>Executing the code when exactly needed  </li>
+<li>Examples:  <ul>
+<li>generator (太 geek，容易寫錯)  </li>
+<li>pyev (recommended)  <ul>
+<li>link to libe  </li>
+<li>實際上會使用 io watcher  </li>
+<li>further observations  <ul>
+<li>不用任何 symbol 去接、重複使用同一個 symbol 都會造成 segmentation fault  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>gevent (recommended)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Interpreter as an Instance (rough idea)  <ul>
+<li>C program, singel process, multi-thread  <ul>
+<li>still can share states with relatively low penalty  </li>
+</ul>
+</li>
+<li>Allocate memory space for interpreter context  <ul>
+<li>that is, accept an address to put instance context in Py_Initialize()  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Conclusion  <ul>
+<li>How to live along with GIL well?  <ul>
+<li>Multi-process  </li>
+<li>Release the GIL  </li>
+<li>Cooperative Multitasking  <ul>
+<li>for IO-bound solution  </li>
+</ul>
+</li>
+<li>Perhaps, Interpreter as an Instance  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>Python &amp; LLVM - 李楓</h4>
+<ul>
+<li>llvmpy  <ul>
+<li>urls  <ul>
+<li><a href="http://www.llvmpy.org">http://www.llvmpy.org</a>  </li>
+<li><a href="https://github.com/llvmpy/llvmpy">https://github.com/llvmpy/llvmpy</a>  </li>
+</ul>
+</li>
+<li>llvm.core  </li>
+<li>Pros  <ul>
+<li>Support Python 3.x  </li>
+</ul>
+</li>
+<li>Cons  <ul>
+<li>only support to LLVM 3.3  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>llvmlite  <ul>
+<li>urls  <ul>
+<li><a href="https://github.com/numba/llvmlite">https://github.com/numba/llvmlite</a>  </li>
+<li><a href="http://llvmlite.pydata.org/">http://llvmlite.pydata.org/</a>  </li>
+</ul>
+</li>
+<li>A lightweight LLVM python Binding for writing JIT compilers  </li>
+<li>架構比 llvmpy 簡潔  </li>
+</ul>
+</li>
+<li>HPC  <ul>
+<li>Heterogeneous Parallel Computing  </li>
+<li>High Performance Computing  </li>
+</ul>
+</li>
+<li>Anaconda  <ul>
+<li><a href="http://continuum.io/downloads">http://continuum.io/downloads</a>  </li>
+<li><a href="https://store.continuum.io/cshop/anaconda/">https://store.continuum.io/cshop/anaconda/</a>  </li>
+<li>Black Scholes example  </li>
+</ul>
+</li>
+<li>Debugging  <ul>
+<li><a href="http://lldb.llvm.org">LLDB</a>  <ul>
+<li>Debuger for LLVM  </li>
+<li><a href="http://lldb.llvm.org/build.html">http://lldb.llvm.org/build.html</a>  <ul>
+<li>使用 CMake + Ninja  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/upbit/lldb-capstone-arm">LLDB-Capstone</a>  <ul>
+<li>LLVM's Machine Code (MC) layer  </li>
+<li>Python Binding  <ul>
+<li>support Python 2 &amp; 3  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/wisk/medusa">Medusa</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>Python 讓你的眼睛看得見 - Yu-Chi Lin</h4>
+<ul>
+<li>McGurk 效應  <ul>
+<li><a href="http://zh.wikipedia.org/wiki/錯聽">錯聽 - 维基百科，自由的百科全书</a>  </li>
+</ul>
+</li>
+<li>資料從哪來  <ul>
+<li>英文語料庫：AVleter, CUAVE, OuluVS, IBMSR, IBMIH  </li>
+<li>中文語料庫：找不到，所以資料庫自己建  </li>
+</ul>
+</li>
+<li>自己建資料庫  <ul>
+<li>透過安排好的語料，隨機讓受試者唸出，並錄影錄音。  </li>
+</ul>
+</li>
+<li>OpenCV  </li>
+<li>研究架構  <ul>
+<li>臉部偵測 =&gt; 嘴巴偵測 =&gt; 相鄰 frame 的變化量計算，切出音節  </li>
+<li>聲音訊號分析 =&gt; 以波形能量切音節  </li>
+<li>結合以上兩個，以聲音為主，影像為輔，切出正確音節  </li>
+</ul>
+</li>
+<li>偵測  <ul>
+<li><a href="http://alereimondo.no-ip.org/OpenCV/34">Haar feature</a>, Adaboost  </li>
+<li>The haar cascade for mouth  </li>
+</ul>
+</li>
+<li>如果你要訓練一個自己的分類器?  <ul>
+<li><a href="http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html">train your own opencv haar classifier</a>  </li>
+<li><a href="https://github.com/mrnugget/opencv-haar-classifier-training">https://github.com/mrnugget/opencv-haar-classifier-training</a>  </li>
+</ul>
+</li>
+<li>怎麼判斷電腦切音節切得好不好？=&gt; 還是得靠人力來判斷  <ul>
+<li>聲音切音節 + 人力切音節 =&gt; 得到最接近正確音節的位置  </li>
+<li>其他切音節的方法  <ul>
+<li>以嘴巴開合的面積大小來計算  <ul>
+<li>以顏色判別嘴唇或皮膚，以此計算開合大小  </li>
+<li>HSV colorspace  </li>
+<li>框出嘴唇的外輪廓，計算面積大小  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>OpenCV in Machine Learning  <ul>
+<li>scikit-learn  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>以雲端語音合成技術為基礎的音文同步有聲書之建立系統 - Chao-Ka Chang</h4>
+<ul>
+<li>google TTS  </li>
+<li>Python MTK  </li>
+</ul>
+<h4>龜作圖</h4>
+<ul>
+<li><a href="https://docs.python.org/3.5/library/turtle.html">https://docs.python.org/3.5/library/turtle.html</a>  </li>
+<li><a href="http://en.wikipedia.org/wiki/Turtle_graphics">http://en.wikipedia.org/wiki/Turtle_graphics</a>  </li>
+</ul>
+<hr>
+<h4>LT</h4>
+<ul>
+<li>網頁爬蟲  <ul>
+<li>urllib2  </li>
+<li>pycurl  </li>
+<li>selenium  </li>
+<li>virtkey, pytesser  </li>
+<li>use thread  </li>
+<li>被 ban  <ul>
+<li>睡覺皇帝大, sleep  </li>
+<li>proxy  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Day3 - 2015/06/07 - Sun</h3>
+<p><a href="https://hackpad.com/PyCon-APAC-2015-Day-3-June-7-KkH9iGy5gFb">PyCon APAC 2015 - Day 3 (June 7) - hackpad.com</a>  </p>
+<hr>
+<h4>- Andy Terrel</h4>
+<ul>
+<li>The Fundamental Physics  <ul>
+<li>Moving / Copying data is more expensive than computation  </li>
+</ul>
+</li>
+<li>Business Data Processing  </li>
+<li>Scientific Data Processing  </li>
+<li>"Data Has Mass"  </li>
+<li><a href="http://datagravity.org/2012/06/26/a-formula-for-data-gravity/">Data Gravity</a>  </li>
+<li>Memory Matters  <ul>
+<li>1980s  </li>
+<li>90s - 00s  <ul>
+<li>L1, L2  </li>
+</ul>
+</li>
+<li>2010s  <ul>
+<li>L3  </li>
+<li>SSD  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Speed Matters  </li>
+<li>"Data Scientist" Dilemma  <ul>
+<li>Massive data to deal with (must bring code to data)  </li>
+<li>Cacophony of tools, data-bases, and products to integrate  </li>
+<li>Modern hardware tempts to be used but mostly idel (GPUs, data0center clusters)  </li>
+<li>Huge  </li>
+</ul>
+</li>
+<li>Why Python --- Spectrum  <ul>
+<li>Occasional  <ul>
+<li>Cut and Paste  </li>
+</ul>
+</li>
+<li>Scientist Developer  <ul>
+<li>Extend frameworks  </li>
+</ul>
+</li>
+<li>Developer  <ul>
+<li>Create frameworks  </li>
+</ul>
+</li>
+<li>Unique aspect of Python  </li>
+</ul>
+</li>
+<li>Architecting for Data  <ul>
+<li>Data exploration as the central task.  </li>
+<li>Data visualization as a first-  </li>
+</ul>
+</li>
+<li>Building Exploratory Data Platforms  <ul>
+<li>Environments  <ul>
+<li>Wakari  </li>
+<li>Anaconda  </li>
+</ul>
+</li>
+<li>Analytics  <ul>
+<li>Blaze  </li>
+<li>Numba  </li>
+</ul>
+</li>
+<li>Visualization  <ul>
+<li>Bokeh  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Our Position  <ul>
+<li>No one-size-fits-all pint-and-click application is enough to solve business problems.  </li>
+<li>A language-based platform is needed. ...  </li>
+</ul>
+</li>
+<li>Data Science Discovery Process  <ul>
+<li>Data Acquistition - Blaze  </li>
+<li>Data Preparation - Anaconda server  </li>
+<li>Data Analysis - IPython Notebook  </li>
+<li>Data Interpretation - Bokeh  </li>
+</ul>
+</li>
+<li>Important Pieces of the Platform  <ul>
+<li>Anaconda - easy to install, plus lots of libraries  </li>
+</ul>
+</li>
+<li>Building a better PyData Ecosystem  </li>
+<li>Open SOurce Technology  <ul>
+<li>Blaze  <ul>
+<li>Array URLs and compute servers for breaking down data-silos.  </li>
+</ul>
+</li>
+<li>Bokeh  <ul>
+<li>Interactive Visualization in the Browser for Python (and other languages) of large data.  </li>
+</ul>
+</li>
+<li>Numba  <ul>
+<li>Optimizaing Compiler for subset of Python which allows multi-core, multi-process and basic CPU support  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Data Pain  <ul>
+<li>Dealing with data applications has numerous pain points  </li>
+<li>Hundreds of data formats  </li>
+<li>Basic programs expect all data to fit in memory  </li>
+<li>Data analysis pipelines constantly changin from one form to another  </li>
+<li>...  </li>
+<li>...  </li>
+</ul>
+</li>
+<li>Blaze  <ul>
+<li>NEED, TOOL, CAPABILITY  </li>
+<li>Compisition  <ul>
+<li>Distributed Systems  <ul>
+<li>spark  </li>
+</ul>
+</li>
+<li>Scientific Computing  <ul>
+<li>HDFS  </li>
+<li>bcolz  </li>
+</ul>
+</li>
+<li>BI - DB  <ul>
+<li>mongo  </li>
+</ul>
+</li>
+<li>DM/Stats/ML  </li>
+</ul>
+</li>
+<li>Abstract experssions, Data Storage, Computational Backend  </li>
+<li>Architecture  <ul>
+<li>Flexible  </li>
+<li>Use compilation of deferred expressions to optimize data interactions  </li>
+</ul>
+</li>
+<li>Dask  <ul>
+<li><a href="http://dask.pydata.org">http://dask.pydata.org</a>  </li>
+<li>DAG - TASKS  <ul>
+<li>Collections, Task Graph, Schedulers  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ODO  <ul>
+<li>Shapeshifting for your data  <ul>
+<li><code>odo(source, target)</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Numba  <ul>
+<li>JIT, Dynamic compiler for Python  </li>
+<li>Optimize data-parallel computations at call time, to take advantage of local hardware configuration  </li>
+<li>Compatible with C, C++, Fortran  </li>
+<li>C++, C, Fortran, Python =&gt; LLVM IR =&gt; x86, ARM, PTX  </li>
+</ul>
+</li>
+<li>Data Visualization  <ul>
+<li><a href="http://bokeh.pydata.org/en/latest/">Bokeh</a>  <ul>
+<li><a href="https://github.com/bokeh/bokeh">https://github.com/bokeh/bokeh</a>  </li>
+<li>Interactive  </li>
+<li>Novel graphics  </li>
+<li>Streaming, dynamic, large data  </li>
+<li>For the browser, with or without a server  </li>
+<li>Matplotlib compatibility  </li>
+<li>No need to write Jade  </li>
+<li>No JavaScript  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4>Machine learning in Finance using Python - Eric Tham</h4>
+<p><a href="http://www.slideshare.net/erictham/machine-learning-in-finance-using-python">http://www.slideshare.net/erictham/machine-learning-in-finance-using-python</a>  </p>
+<ul>
+<li>Introduction  <ul>
+<li>Pattern recognition, algorithm, data, prediction  </li>
+</ul>
+</li>
+<li>What is machine Learning  </li>
+<li>Machine in Finance  <ul>
+<li>Sentiment Analysis (Behavoiural finance)  </li>
+<li>Credit analytics  </li>
+<li>Financial forecasting  <ul>
+<li>Technical transformation on Data  </li>
+<li></li>
+</ul>
+</li>
+<li>Portfolio allocation  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=PyCon%20APAC%202015%20Notes%20and%20Thoughts%0Ahttps%3A//blog.m157q.tw/posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/&title=PyCon%20APAC%202015%20Notes%20and%20Thoughts&summary=Some%20thoughts%20%26%20notes%20for%20PyCon%20APAC%202015&source=https%3A//blog.m157q.tw/posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=PyCon%20APAC%202015%20Notes%20and%20Thoughts&amp;body=https%3A//blog.m157q.tw/posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/06/03/pycon-tw-2016/">PyCon TW 2016</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/11/sitcon-2015-android-repackaged-app-detection-system/">SITCON 2015 - Android Repackaged App Detection System</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/08/29/hitcon-2015-iot-wargame/">HITCON 2015 IOT Wargame</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/01/09/y2017w01/">Y2017W01</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/01/02/y2016w52/">Y2016W52</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/";
+        var disqus_title = "PyCon APAC 2015 Notes and Thoughts";
+        var disqus_url = "https://blog.m157q.tw/posts/2015/07/26/pycon-apac-2015-notes-and-thoughts/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-07-26T15:25:54+08:00"><i class="fa fa-calendar"></i> Sun 26 July 2015</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/conf/" data-toggle="tooltip"
+      class="label label-default"
+      title="10 articles with this tag">conf</a>
+  <br>
+            <a href="/tag/thought/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">Thought</a>
+  <br>
+            <a href="/tag/pycon/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">PyCon</a>
+  <br>
+            <a href="/tag/pyconapac/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">PyConAPAC</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2015/07/25/vocabulary-of-fifty-shades-of-grey/" title="Vocabulary of Fifty Shades of Grey"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/07/27/save-content-of-tmux-or-screen-scrollback-into-a-file/" title="Save Content of tmux/screen Scrollback Into A File"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

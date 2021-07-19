@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - non-blocking</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.non-blocking.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-03-30T11:07:48+08:00</updated><entry><title>Travis CI stdout write error and resource temporarily unavailable workaround</title><link href="https://blog.m157q.tw/posts/2018/03/30/travis-ci-stdout-write-error-and-resource-temporarily-unavailable-workaround/" rel="alternate"></link><published>2018-03-30T10:59:48+08:00</published><updated>2018-03-30T11:07:48+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-03-30:/posts/2018/03/30/travis-ci-stdout-write-error-and-resource-temporarily-unavailable-workaround/</id><summary type="html">&lt;p&gt;A workaround for Travis CI stdout "write error" or "Resource temporarily unavailable"&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python2 -c &lt;span class="s1"&gt;&amp;#39;import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&amp;amp;~os.O_NONBLOCK);&amp;#39;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add the line above at &lt;code&gt;before_install&lt;/code&gt; section of your &lt;code&gt;.travis.yml&lt;/code&gt; file.&lt;br&gt;
+Specifically, add this line before the line in your &lt;code&gt;.travis.yml&lt;/code&gt; which causes the error.  &lt;/p&gt;
+&lt;p&gt;This problem won't happen in debug build.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;One of my Travis CI build got &lt;code&gt;tar: write error&lt;/code&gt; while installing the gcloud SDK.&lt;br&gt;
+I was trying to find the reason in debug build, but got nothing.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reason&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;EAGAIN&lt;/code&gt; (errno 11) in Linux while dealing with non-blocking operations.  &lt;/p&gt;
+&lt;p&gt;Lots of CLI tools expect &lt;code&gt;stdout&lt;/code&gt; is in blocking mode,&lt;br&gt;
+but it looks like Travis CI set &lt;code&gt;stdout&lt;/code&gt; to non-blocking mode in default.&lt;br&gt;
+These CLI tools (tar, make, ...) didn't handle &lt;code&gt;EAGAIN&lt;/code&gt; error well. (Should retry when got this error)  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Add the line below before the line in your &lt;code&gt;.travis.yml&lt;/code&gt; which causes error.&lt;br&gt;
+You can also add it at &lt;code&gt;before_install&lt;/code&gt; section of your &lt;code&gt;.travis.yml&lt;/code&gt;.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python2 -c &lt;span class="s1"&gt;&amp;#39;import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&amp;amp;~os.O_NONBLOCK);&amp;#39;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;For Python 3.5+:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python3 -c &lt;span class="s1"&gt;&amp;#39;import os,sys; os.set_blocking(sys.stdout.fileno(), True)&amp;#39;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will turn off the non-blocking mode for stdout.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/travis-ci/travis-ci/issues/4704#issuecomment-348435959"&gt;Large writes to stdout sometimes fail with "Resource temporarily unavailable". · Issue #4704 · travis-ci/travis-ci · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.cnblogs.com/pigerhan/archive/2013/02/27/2935403.html"&gt;Linux中的EAGAIN含义 - 桂皮猪 - 博客园&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://blog.csdn.net/tianmohust/article/details/8691644"&gt;linux非阻塞的socket EAGAIN的错误处理 - CSDN博客&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Travis CI"></category><category term="non-blocking"></category></entry></feed>

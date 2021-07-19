@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - gcc</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.gcc.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-07-24T22:04:32+08:00</updated><entry><title>pacman -Rdd gcc-multilib gcc-libs-multilib</title><link href="https://blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/" rel="alternate"></link><published>2017-09-17T17:50:32+08:00</published><updated>2018-07-24T22:04:32+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-09-17:/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/</id><summary type="html">&lt;p&gt;A solution to save your ass if you broke pacman after force removed &lt;code&gt;gcc-multilib&lt;/code&gt; and &lt;code&gt;gcc-libs-multilib&lt;/code&gt; on your Arch Linux&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Preface&lt;/h3&gt;
+&lt;p&gt;If you've installed &lt;code&gt;gcc-libs-multilib&lt;/code&gt; and &lt;code&gt;gcc-multilib&lt;/code&gt; in your Arch Linux,&lt;br&gt;
+you might cannot &lt;code&gt;$ sudo pacman -Syu&lt;/code&gt; because sometimes they will conflict with &lt;code&gt;gcc-libs&lt;/code&gt; and &lt;code&gt;gcc&lt;/code&gt; in &lt;code&gt;[core]&lt;/code&gt; repository.  &lt;/p&gt;
+&lt;p&gt;You have two choices:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Don't install &lt;code&gt;gcc&lt;/code&gt; and &lt;code&gt;gcc-libs&lt;/code&gt; to avoid the conflict, and wait until &lt;code&gt;gcc-multilib&lt;/code&gt; and &lt;code&gt;gcc-libs-multilib&lt;/code&gt; have new version.  &lt;ul&gt;
+&lt;li&gt;Remove them from the list of packaged to install of this packages upgrade.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Force remove &lt;code&gt;gcc-multilib&lt;/code&gt; and &lt;code&gt;gcc-libs-multilib&lt;/code&gt; with &lt;code&gt;$ sudo pacman -Rdd gcc-multilib gcc-libs-multilib&lt;/code&gt;.  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If you do the latter, and break your &lt;code&gt;pacman&lt;/code&gt;, then this blog post may be your salvation.&lt;br&gt;
+I just encountered this situation and that's why I wrote down this blog post.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Error Message&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;pacman: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ldd &lt;span class="k"&gt;$(&lt;/span&gt;which pacman&lt;span class="k"&gt;)&lt;/span&gt;  
+
+...  
+
+libstdc++.so.6 &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; not found  
+libgcc_s.so.1 &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; not found  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;These two share objects are gone which make &lt;code&gt;pacman&lt;/code&gt; broken.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;p&gt;Copy &lt;code&gt;libstdc++.so.6&lt;/code&gt; and &lt;code&gt;libgcc_s.so.1&lt;/code&gt; from other Arch Linux computer with same architecture.  &lt;/p&gt;
+&lt;p&gt;If you have nothing to copy from, I've backed up these two shared objects with x86_64  architecutre below.  &lt;/p&gt;
+&lt;p&gt;(If somehow you cannot download these two files or these doesn't work for you,&lt;br&gt;
+you can try the following link in the reference part.&lt;br&gt;
+Someone also backed up these two files and uploaded them in the reply of the forum thread.)  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download these 2 share objects:  &lt;ul&gt;
+&lt;li&gt;&lt;a href="/files/pacman-rdd-gcc-multilib-gcc-libs-multilib/libstdc++.so.6"&gt;libstdc++.so.6&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;sha256sum: 30c1b6ae5936f5f4afdba39f44465efc84422e957db13580e1891f081b615d0e  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="/files/pacman-rdd-gcc-multilib-gcc-libs-multilib/libgcc_s.so.1"&gt;libgcc_s.so.1&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;sha256sum: 95298eef28aca7cef5b28d8388ef0ea3721add9e7c19df74054d7b1c41bcca2e  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo mv libstdc++.so.6 libgcc_s.so.1 /usr/lib&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ sudo pacman -S --force gcc gcc-libs&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;Make sure you use &lt;code&gt;--force&lt;/code&gt; option, or pacman will complain about these two files are conflict.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h3&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/archlinux/comments/6e2no7/pacman_error_libstdcso6/"&gt;pacman error: libstdc++.so.6 : archlinux&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Arch Linux"></category><category term="pacman"></category><category term="gcc"></category><category term="gcc-libs"></category></entry></feed>

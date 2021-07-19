@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  iThome #Chatbot Day
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/04/27/ithome-chatbot-day/" rel="bookmark" title="Permalink to iThome #Chatbot Day">iThome #Chatbot Day</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for iThome #Chatbot Day</p>
+  </blockquote>
+  <div>
+    <ul>
+<li>Event url: <a href="http://chatbot.ithome.com.tw/">http://chatbot.ithome.com.tw/</a>  </li>
+<li>Collaborative note: <a href="https://hackpad.com/20170427-CHATBOT-DAY-NOTE-zblg5e45w3g">https://hackpad.com/20170427-CHATBOT-DAY-NOTE-zblg5e45w3g</a>  </li>
+</ul>
+<hr>
+<h2>突破 Facebook Messenger Platform API 限制</h2>
+<ul>
+<li>Speaker: Howard Chang  <ul>
+<li>Her/Him 開發者  </li>
+</ul>
+</li>
+</ul>
+<h4>Facebook Messenger Platform API 在 Her/Him 上的應用實例</h4>
+<ul>
+<li>Webview  <ul>
+<li>讓 Messenger 的 UI 可以比較多樣與客製化  </li>
+<li>Facebook Login Webhook  </li>
+<li>讓使用者自己填寫資料  </li>
+</ul>
+</li>
+<li>Template  <ul>
+<li>Generic Template  <ul>
+<li>給使用者一些預設的聊天話題選項  </li>
+</ul>
+</li>
+<li>Button Template  <ul>
+<li>玩猜拳  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>特殊的 Emoji 會觸發特效  <ul>
+<li>目前已知：愛心、氣球、雪花  </li>
+</ul>
+</li>
+<li>取得使用者的 FB ID 後，轉換成 Profile URL  <ul>
+<li>正常來說應該做不到這件事  </li>
+</ul>
+</li>
+</ul>
+<h4>Messenger Platform 的限制</h4>
+<ul>
+<li>24 小時內回覆的時間限制  <ul>
+<li>超過 24 小時，只能再多發送一則訊息  </li>
+<li>有時候使用者一忙，可能超過 24 小時才回覆對方的訊息，如果不能突破這個限制，就無法讓使用者在超過 24 小時的回覆傳送到對方那邊  </li>
+</ul>
+</li>
+<li>無法取得使用者的 FB permanent ID  <ul>
+<li>不能取得的話，雙方就無法交換 Facebook 的網址  </li>
+</ul>
+</li>
+<li>無法傳送貼圖  <ul>
+<li>透過 Messenger Platform 傳送的貼圖會變成靜態的圖片  </li>
+</ul>
+</li>
+<li>使用者刪除對話後，就無法傳送任何訊息給他。  </li>
+</ul>
+<h4>如何突破限制</h4>
+<ul>
+<li>取得 Facebook permanent ID 的方法  <ul>
+<li><a href="https://github.com/Schmavery/facebook-chat-api">Schmavery/facebook-chat-api</a>  <ul>
+<li>npm module  </li>
+<li>透過模擬 Facebook 網頁運作，直接存取 private API  </li>
+<li>可以突破限制，在任何時間傳送任何訊息給任何人  </li>
+</ul>
+</li>
+<li>可以拿到使用者的 Facebook permanent ID  </li>
+</ul>
+</li>
+<li>突破 24 小時內回覆的限制與使用者刪除訊息後仍然可以傳送訊息  <ul>
+<li>用 facebook-chat-api 傳送訊息給使用者  </li>
+</ul>
+</li>
+<li>如何傳送貼圖  <ul>
+<li>用 facebook-chat-api 傳送 <code>sticker_id</code> 給使用者  </li>
+</ul>
+</li>
+</ul>
+<p>今天覺得收穫最多的一場 talk，<br>
+主要是因為最近公司專案的關係都在寫 Facebook Messenger Bot，<br>
+然後這些的確都是在開發上會遇到的棘手問題。  </p>
+<hr>
+<h2>Chatbot 智能溝通策略流程規劃與實作</h2>
+<ul>
+<li>AI  <ul>
+<li>luis.ai, IBM Waston 支援繁體中文  </li>
+<li>
+<blockquote>
+<p>據說 api.ai 也有支援繁體中文了，只是效果沒有那麼好。  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>e-Commerce chatbot  <ul>
+<li>手法  <ul>
+<li>Push notification  <ul>
+<li>傳送貼圖、優惠活動、限時特價  </li>
+<li>太常傳送且沒有打到使用者的點的話就很容易被封鎖  </li>
+</ul>
+</li>
+<li>產品使用後詢問、問卷回饋  </li>
+<li>使用者習性  <ul>
+<li>預測使用者下次什麼時候會再購買一樣的日常用品  </li>
+</ul>
+</li>
+<li>生日好禮  </li>
+</ul>
+</li>
+<li>使用者流程  <ul>
+<li>推薦商品、搜尋商品、熱門商品  </li>
+<li>查無商品、可能推薦商品  </li>
+<li>建議其他關鍵字  </li>
+<li>近期熱門活動、建議行動  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>用 Golang 打造 DevOps Bot</h2>
+<ul>
+<li>Speaker: appleboy  </li>
+<li>
+<p>Projects  </p>
+<ul>
+<li><code>drone-line</code>  <ul>
+<li><a href="https://github.com/appleboy/drone-line">https://github.com/appleboy/drone-line</a>  </li>
+</ul>
+</li>
+<li><code>drone-facebook</code>  <ul>
+<li><a href="https://github.com/appleboy/drone-facebook">https://github.com/appleboy/drone-facebook</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>CI/CD  </p>
+<ul>
+<li>Gitlab  </li>
+<li>Jenkins  </li>
+<li>Drone  </li>
+</ul>
+</li>
+<li>支援 CLI Flag 參數  <ul>
+<li>內建支援 CLI Flag  <ul>
+<li>import "flag"  </li>
+</ul>
+</li>
+<li>缺點  <ul>
+<li>不支援系統環境變數  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>支援 API Webhook  </li>
+<li>支援 HTTPS for WebHook Tunnel  <ul>
+<li>ngrok  </li>
+<li>localtunnel  </li>
+</ul>
+</li>
+<li>支援自動更新 HTTPS 憑證  <ul>
+<li>Trafik  <ul>
+<li>Golang  </li>
+<li>支援自動更新憑證  </li>
+</ul>
+</li>
+<li>CADDY  <ul>
+<li>Golang  </li>
+<li>原生支援 HTTPS  </li>
+<li>自動更新 Let's Encrypt 憑證  </li>
+<li>會幫你自動把 HTTP protocol 轉到 HTTPS  </li>
+</ul>
+</li>
+<li>用一行 Golang 支援 HTTPS  <ul>
+<li><code>http.Serve(autocert.NewListener("ecample.com", handler))</code>  <ul>
+<li><a href="https://bit.ly/one-line-autotls">https://bit.ly/one-line-autotls</a>  </li>
+<li>自動幫你跟 Let's Encrypt 要憑證  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>支援監控 Webhook 的功能  <ul>
+<li>監控服務健康狀態  <ul>
+<li>Memory usage, CPU usage  </li>
+</ul>
+</li>
+<li>自訂監控數據，分析使用者訊息  </li>
+<li>統計報表  <ul>
+<li>prometheus 資料格式  <ul>
+<li><a href="https://prometheus.io">https://prometheus.io</a>  </li>
+</ul>
+</li>
+<li>Grafana  <ul>
+<li><a href="https://grafana.com">https://grafana.com</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>支援多種訊息格式  </li>
+<li>支援用 CLI 發送訊息  </li>
+<li>Golang 跨平台  <ul>
+<li>Simple Go Cross Compilation  <ul>
+<li><code>gox</code>  </li>
+<li><a href="https://github.com/mitchellh/gox">https://github.com/mitchellh/gox</a>  </li>
+<li>Windows 的支援沒問題  </li>
+<li>可以加上 flag 指定特定檔案只在某些 plafform 才 build  </li>
+</ul>
+</li>
+<li>Support ARM Platform  </li>
+</ul>
+</li>
+<li>支援透過 Docker 發送訊息  <ul>
+<li>需支援系統環境變數  <ul>
+<li><a href="https://github.com/urfave/cli">https://github.com/urfave/cli</a>  <ul>
+<li>lightweight  </li>
+</ul>
+</li>
+<li><a href="https://github.com/spf13/cobra">https://github.com/spf13/cobra</a>  </li>
+</ul>
+</li>
+<li>自己的 Bug 自己解  <ul>
+<li>只發送給原 Commit 作者，避免團隊成員收到太多無用的信件。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>支援 Concurrent  <ul>
+<li><code>go f("goroutine")</code>  </li>
+</ul>
+</li>
+<li>用 App 控制家電  <ul>
+<li>Gorush - A push notification server written in golang  <ul>
+<li><a href="https://github.com/appleboy/gorush">https://github.com/appleboy/gorush</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>最後講講為什麼使用 Golang  <ul>
+<li>出身名門：Google  </li>
+<li>學習曲線：類似 C 語言  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>透過 Golang 無痛建置機器學習聊天機器人</h2>
+<ul>
+<li>projects  <ul>
+<li><a href="https://github.com/kkdai/PetNeedMe">PetNeedMe</a>  </li>
+<li>Baby talk bot  <ul>
+<li>LUIS.ai  </li>
+<li><a href="https://github.com/kkdai/luis">LUIS golang package</a>  <ul>
+<li>沒有 LUIS.ai 沒有 golang SDK 所以自己寫  </li>
+<li>目前還在開發中  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ASKME animal  <ul>
+<li>TensorFlow  </li>
+<li>透過 TensorFlow 告訴你圖片中的動物名稱是什麼  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>透過這個 Template 可以在三分鐘內就在 Heroku 上架好一個 Line Bot  <ul>
+<li><a href="https://github.com/kkdai/LineBotTemplate">https://github.com/kkdai/LineBotTemplate</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>孫子廣播電台：用 Linkit 7688 一鍵播放社交平台貼文</h2>
+<p><a href="https://github.com/aaaddress1/grandsonRadio">https://github.com/aaaddress1/grandsonRadio</a>  </p>
+<p>為了不會用智慧型手機卻又想關心自己的奶奶而做的小專案  </p>
+<ul>
+<li>Linkit 7688 + Python (gTTS) + 麵包板 + 一些電子元件 + 喇叭  <ul>
+<li>大概新台幣一千元內有找  </li>
+</ul>
+</li>
+<li>建立 Facebook Application  </li>
+<li>透過 Graph API 拿到貼文資訊：內容、發文時間、...等等  <ul>
+<li>透過 Facebook 除錯工具來延長 otke  </li>
+</ul>
+</li>
+</ul>
+<p>雖然這好像比較算是 IoT 應用而不是 Chatbot，<br>
+不過真的挺有趣的，<br>
+尤其是最近 <a href="https://github.com/pndurette/gTTS">gTTS (Google Text-to-Speech)</a> 因為狂新聞還有一堆實況主的 donate 音效很紅。（雖然我個人其實不太喜歡一直聽到 Google 小姐的聲音就是）<br>
+透過判別中英文來切開斷句，<br>
+因為 gTTS 產生的 mp3 每次只能限定某種語言。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=iThome%20%23Chatbot%20Day%0Ahttps%3A//blog.m157q.tw/posts/2017/04/27/ithome-chatbot-day/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/04/27/ithome-chatbot-day/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/04/27/ithome-chatbot-day/&title=iThome%20%23Chatbot%20Day&summary=Note%20for%20iThome%20%23Chatbot%20Day&source=https%3A//blog.m157q.tw/posts/2017/04/27/ithome-chatbot-day/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=iThome%20%23Chatbot%20Day&amp;body=https%3A//blog.m157q.tw/posts/2017/04/27/ithome-chatbot-day/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/">利用 ngrok 直接在本機開發 chatbot</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/04/27/ithome-chatbot-day/";
+        var disqus_title = "iThome #Chatbot Day";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/04/27/ithome-chatbot-day/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-04-27T21:06:00+08:00"><i class="fa fa-calendar"></i> Thu 27 April 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/chatbot/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">chatbot</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/04/24/y2017w16/" title="Y2017W16"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/05/01/y2017w17/" title="Y2017W17"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

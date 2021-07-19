@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Debian</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.debian.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2018-07-24T21:59:32+08:00</updated><entry><title>Upgrade MongoDB from 3.2 to 3.4 on Debian 9</title><link href="https://blog.m157q.tw/posts/2018/07/24/upgrade-mongodb-from-3-2-to-3-4-on-debian-9/" rel="alternate"></link><published>2018-07-24T21:59:32+08:00</published><updated>2018-07-24T21:59:32+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2018-07-24:/posts/2018/07/24/upgrade-mongodb-from-3-2-to-3-4-on-debian-9/</id><summary type="html">&lt;p&gt;How to install (from MongoDB 3.2 upgrade to) MongoDB 3.4 on Debian Strech (Debian 9)&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get remove mongodb  
+
+sudo apt-get autoremove  
+
+sudo apt-get autoclean  
+
+sudo tee -a /etc/apt/sources.list.d/mongodb-org-3.4.list &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF  &lt;/span&gt;
+&lt;span class="s"&gt;deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main  &lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;  
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 0C49F3730359A14518585931BC711F9BA15703C6  
+
+sudo apt-get update  
+
+sudo apt-get --assume-yes install mongodb-org&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.4.16  
+
+sudo systemctl start mongod  
+
+sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; mongod  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;Official MongoDB package for Debian Stretch (Debian 9) only update to 3.2.&lt;br&gt;
+Community MongoDB package for Debian Stretch (Debian 9) already update to 3.6.&lt;br&gt;
+And we cannot just upgrade MongoDB from 3.2 to 3.6. (Will encounter error)&lt;br&gt;
+So, that's why I wrote this note.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Must stop &lt;code&gt;mongodb&lt;/code&gt; (MongoDB 3.2 still use &lt;code&gt;mongodb&lt;/code&gt; not &lt;code&gt;mongod&lt;/code&gt;)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl stop mongodb  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Must remove current old mongodb package and related tools  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get remove mongodb  
+sudo apt-get autoremove  
+sudo apt-get autoclean  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you don't do the steps above, you will encounter error while installing MongoDB 3.4.&lt;br&gt;
+Some dependencies may conflict.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add MongoDB 3.4 package source for &lt;code&gt;apt-get&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo tee -a /etc/apt/sources.list.d/mongodb-org-3.4.list &lt;span class="s"&gt;&amp;lt;&amp;lt; EOF  &lt;/span&gt;
+&lt;span class="s"&gt;deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.4 main  &lt;/span&gt;
+&lt;span class="s"&gt;EOF&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Add public key for MongoDB 3.4 package source  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 0C49F3730359A14518585931BC711F9BA15703C6  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Update to newest package index  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get update  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Install MongoDB 3.4.16 (You can change to any 3.4.x)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get --assume-yes install mongodb-org&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.4.16  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, your MongoDB 3.4 should be running well.&lt;br&gt;
+If it doesn't, you should use the steps below.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl start mongod  
+sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; mongod  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Last but not lease&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Global config file changed from &lt;code&gt;/etc/mongodb.conf&lt;/code&gt; to &lt;code&gt;/etc/mongod.conf&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;If you want to enable backwards-incompatible features in MongoDB 3.4.  &lt;ul&gt;
+&lt;li&gt;Execute this command in MongoDB shell: &lt;code&gt;db.adminCommand( { setFeatureCompatibilityVersion: "3.4" } )&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://docs.pritunl.com/docs/repository"&gt;Repository&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.mongodb.com/manual/release-notes/3.4-upgrade-standalone/"&gt;Upgrade a Standalone to 3.4 — MongoDB Manual&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="MongoDB"></category><category term="Debian"></category><category term="Debian 9"></category></entry><entry><title>TOSSUG 20160628</title><link href="https://blog.m157q.tw/posts/2016/06/29/tossug-20160628/" rel="alternate"></link><published>2016-06-29T01:23:54+08:00</published><updated>2016-06-29T01:23:54+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2016-06-29:/posts/2016/06/29/tossug-20160628/</id><summary type="html">&lt;p&gt;Just a note for 2016/06/28 Taipei Open Source Software User Group.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;如何打包一個 .deb&lt;/h1&gt;
+&lt;h2&gt;Debian Package&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ar - 壓縮  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Ar_(Unix)"&gt;ar (Unix) - Wikipedia, the free encyclopedia&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Debian binary package / Debian source package  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Build tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;fakeroot, debian/rules, binary  &lt;/li&gt;
+&lt;li&gt;dpkg-buildpackage  &lt;/li&gt;
+&lt;li&gt;debuild / pbuild  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://lintian.debian.org/"&gt;Lintian&lt;/a&gt; check  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;chroot  &lt;/li&gt;
+&lt;li&gt;pbuilder / sbuild  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://ubuntuforums.org/showthread.php?t=910717"&gt;http://ubuntuforums.org/showthread.php?t=910717&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.debian.org/HowToPackageForDebian"&gt;https://wiki.debian.org/HowToPackageForDebian&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://unix.stackexchange.com/questions/30303/how-to-create-a-deb-file-manually"&gt;https://unix.stackexchange.com/questions/30303/how-to-create-a-deb-file-manually&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/zzz00072/debian-39338832"&gt;淺談Debian套件打包&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://wiki.ubuntu-tw.org/index.php?title=DebPackaging"&gt;DebPackaging - Ubuntu 正體中文 Wiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.ubuntu-tw.org/modules/newbb/viewtopic.php?viewmode=flat&amp;amp;order=DESC&amp;amp;type=&amp;amp;topic_id=97286&amp;amp;forum=14"&gt;[影片教學][TOSSUG] Debian 套件打包工作坊 [論壇 - Ubuntu 文件資源] | Ubuntu 正體中文站&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wen00072.github.io/blog/2014/06/12/package-debian-packages-set-after-list-of-debian-packages/"&gt;[Debian套件打包] 設定好debian目錄後的打包 - My code works, I don’t know why.&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://szlin.wordpress.com/2016/06/11/debian-%E5%A5%97%E4%BB%B6%E6%89%93%E5%8C%85%E6%95%99%E5%AD%B8%E6%8C%87%E5%8D%97-%E7%B9%81%E9%AB%94%E4%B8%AD%E6%96%87%E7%BF%BB%E8%AD%AF/"&gt;Debian 套件打包教學指南 – 繁體中文翻譯 – SZ Lin  &amp;amp; Embedded Linux&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/szlin/debian-62284588"&gt;Debian 套件打包教學指南 - 繁體中文翻譯&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="TOSSUG"></category><category term="Debian"></category></entry></feed>

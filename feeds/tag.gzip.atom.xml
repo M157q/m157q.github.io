@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - gzip</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.gzip.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-07-11T20:22:05+08:00</updated><entry><title>Make Google Cloud CDN serve gzip compressed content for Nginx server</title><link href="https://blog.m157q.tw/posts/2020/07/11/make-google-cloud-cdn-serve-gzip-compressed-content-for-nginx-server/" rel="alternate"></link><published>2020-07-11T20:22:05+08:00</published><updated>2020-07-11T20:22:05+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2020-07-11:/posts/2020/07/11/make-google-cloud-cdn-serve-gzip-compressed-content-for-nginx-server/</id><summary type="html">&lt;p&gt;How to make Google Cloud CDN serve gzip compressed content.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Preface&lt;/h1&gt;
+&lt;p&gt;Google Cloud CDN is not like Cloudflare, which can make you serve gzip compressed content on the proxy servers with just one click.&lt;/p&gt;
+&lt;h1&gt;TL;DR&lt;/h1&gt;
+&lt;p&gt;Add these two lines below into &lt;code&gt;/etc/nginx/default.conf&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;gzip_proxied     any;&lt;/span&gt;
+&lt;span class="err"&gt;gzip_vary        on;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;And restart the Nginx server.&lt;/p&gt;
+&lt;h1&gt;Explanation&lt;/h1&gt;
+&lt;p&gt;According to &lt;a href="https://cloud.google.com/cdn/docs/troubleshooting-steps"&gt;Google Cloud CDN troubleshooting&lt;/a&gt;:  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The first line enables compression even for requests forwarded by a proxy like HTTP(S) load balancing.&lt;/p&gt;
+&lt;p&gt;The second line adds a &lt;code&gt;Vary: Accept-Encoding&lt;/code&gt; header to responses. &lt;code&gt;Vary: Accept-Encoding&lt;/code&gt; notifies caching proxies such as Cloud CDN that they should maintain separate cache entries for compressed and non-compressed variants of compressible resources.&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="GCP"></category><category term="Google Cloud Platform"></category><category term="CDN"></category><category term="gzip"></category><category term="Nginx"></category></entry></feed>

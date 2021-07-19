@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - tcpdump</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.tcpdump.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2019-08-14T19:46:00+08:00</updated><entry><title>Print pcap file in friendly format</title><link href="https://blog.m157q.tw/posts/2014/11/06/print-pcap-file-in-friendly-format/" rel="alternate"></link><published>2014-11-06T01:16:00+08:00</published><updated>2019-08-14T19:46:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-11-06:/posts/2014/11/06/print-pcap-file-in-friendly-format/</id><summary type="html">&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://www.wireshark.org/"&gt;Wireshark&lt;/a&gt; (GUI)  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.tcpdump.org/"&gt;tcpdump&lt;/a&gt; (CLI …&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://www.wireshark.org/"&gt;Wireshark&lt;/a&gt; (GUI)  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.tcpdump.org/"&gt;tcpdump&lt;/a&gt; (CLI)  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ tcpdump -qns 0 -X -r ${pcap_file}&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ tcpdump -qns 0 -A -r ${pcap_file}&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://tcpick.sourceforge.net/"&gt;tcpick&lt;/a&gt; (CLI)  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ tcpick -C -yP -r ${pcap_file}&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://tcpxtract.sourceforge.net/"&gt;tcpxtract&lt;/a&gt; (CLI)  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ tcpxtract -f ${pcap_file} -o {output_path}&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Addtional Resource&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.comparitech.com/net-admin/tcpdump-cheat-sheet/"&gt;tcpdump Cheat Sheet - Comparitech&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://serverfault.com/questions/38626/how-can-i-read-pcap-files-in-a-friendly-format"&gt;serverfault - How can I read pcap files in a friendly format?&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://sickbits.net/other/pcapworksheet.txt"&gt;Hack3rcon^3: A PCAP Workshop&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="WireShark"></category><category term="pcap"></category><category term="tcpdump"></category><category term="tcpick"></category><category term="tcpxtract"></category></entry></feed>

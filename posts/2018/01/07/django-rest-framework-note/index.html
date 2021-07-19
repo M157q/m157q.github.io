@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  關於 Django REST framework 的一些筆記
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/" rel="bookmark" title="Permalink to 關於 Django REST framework 的一些筆記">關於 Django REST framework 的一些筆記</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>一年多前接觸 Django REST framework 時做的一些紀錄，整理一下，其中包含了 Django REST framework Docs (DRF Docs) 的部份。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>2016 年 9 月的時候被老闆告知公司報名了交通大學的梅竹黑客松，要我回母校當評審，然後在一個月內生出一個 API 且附帶文件的網站給參賽者使用。  </p>
+<p>當時公司並沒有這些資料的 API，只有資料而已，所以等於是從零開始設計，想說藉由這次機會，除了提供給參賽者 API 以外，未來也可以提供給公司自己使用。  </p>
+<p>在這之前就有聽過 <a href="https://github.com/encode/django-rest-framework">Django REST frmaework</a>，也看過滿多人用的，查了一下發現也有 <a href="https://github.com/manosim/django-rest-framework-docs">DRF Docs (django-rest-framework-docs)</a> 這個 plugin 可以用來生出 API 的文件，看了一下範例感覺還不錯，於是就放棄用 Flask 自己刻，直接採用 Django + Django REST framework + DRF Docs + Google Cloud SDK + Google App Engine Flexible Environment，建立一個可以從 BigQuery dataset 撈資料出來且帶有文件說明的 API。  </p>
+<p>以下會就當時使用 Django REST framework 和 DRF Docs 遇到的問題做些紀錄，當時為了馬上解決一些問題，也 fork 了 DRF Docs 的 repo 來改。  </p>
+<hr>
+<h2>Django REST framework</h2>
+<p><strong>以下為了撰寫方便，直接把 Django REST framework 簡稱為　DRF。</strong>  </p>
+<p>整個 DRF 我覺得設計得滿完整，甚至也有 plugin 的生態系，如果找不到合適的，也可以自己撰寫 DRF 的 plugin。剛開始上手的話有份官方的 Tutorial 可看：<a href="http://www.django-rest-framework.org/tutorial/quickstart/">Quickstart - Django REST framework</a>，建議把整份 tutorial 都唸完會比較瞭解整個 framework 元件之間的關係，畢竟篇幅也不多，加上 Quickstart 也就 8 個頁面而已。剩下的等實際撰寫程式碼時遇到不太懂的時候，再去查詢官網上詳細一點的文件就行了，有時候真的文件說的不夠清楚的話可能還是得去看一下程式碼。  </p>
+<hr>
+<p>這邊紀錄一下幾個我自己在閱讀文件的時候花比較多時間理解的部份：  </p>
+<ul>
+<li><a href="http://www.django-rest-framework.org/tutorial/1-serialization/">1 - Serialization - Django REST framework</a>  <ul>
+<li>基本上就是在 Django 的 Model 上再多做一層包裝，可以對 API 做一些客製化設定，比如要顯示哪些欄位、限定哪些權限...等等。  </li>
+</ul>
+</li>
+<li><a href="http://www.django-rest-framework.org/api-guide/filtering/">Filtering - Django REST framework</a>  <ul>
+<li>如果要針對不同的使用者得到不同的結果的話，就會需要用到 filtering 的部份。  </li>
+<li>可以針對使用者、網址、可使用參數做限制。  </li>
+<li>有多種不同的 filter 可以用，搜尋、排序、權限，也可以自己繼承下來撰寫客製化的 filter。  </li>
+</ul>
+</li>
+<li><a href="http://www.django-rest-framework.org/api-guide/routers/">Routers - Django REST framework</a>  <ul>
+<li>基本上跟 Django 的 dispatcher 寫法差不多，但多了一些可以針對 HTTP method 的設定ˇ等等。  </li>
+</ul>
+</li>
+<li><a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/viewsets.py">django-rest-framework/viewsets.py at master · encode/django-rest-framework · GitHub</a>  <ul>
+<li>當時是因為對 <code>ViewSet</code> 可以使用的參數不太清楚，看文件又看不出個所以然，所以就跑去看程式碼了。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>花了一點時間熟悉之後，我在後續使用上遇到最大的問題是在效能，因為我要去查詢的資料總量滿大的，所以查詢常常都會等很久。還有 DRF 預設的 pagination 部份也沒有處理得很好，查了一下發現也有很多人遇到，所以有滿多文章在講這件事的，這裡列出我自己覺得比較有用的：  </p>
+<ul>
+<li><a href="https://engineering.betterworks.com/2015/09/04/ditching-django-rest-framework-serializers-for-serpy/">Ditching Django REST Framework Serializers for Serpy · BetterWorks Engineering Blog</a>  <ul>
+<li>這篇是作者因為 DRF 的 Serializer 實在是太慢，所以自己寫了另外一個作 serialization 的 library: <a href="https://github.com/clarkduvall/serpy">serpy</a>  </li>
+</ul>
+</li>
+<li><a href="http://ses4j.github.io/2015/11/23/optimizing-slow-django-rest-framework-performance/">Optimizing slow Django REST Framework performance</a>  <ul>
+<li>這篇是在講怎麼透過調整 DRF 的 Serializer 來處理 query 時過慢的問題。  </li>
+<li>要用上 <code>queryset.prefech_realted</code> 等等。  </li>
+</ul>
+</li>
+<li><a href="https://www.dabapps.com/blog/api-performance-profiling-django-rest-framework/">Web API performance: profiling Django REST framework</a>  <ul>
+<li>這篇是作者使用了 DRF 並測試其效能以後自己歸納出的一些結論，基本上是推薦使用 DRF，算是我看過最完整對 DRF 做效能測試的文章了。  </li>
+<li>一些迷思：  <ul>
+<li>自己寫個框架：即便只有用到 DRF 的 <code>APIView</code> 其他都沒用到，還是推薦使用 DRF，比起你自己用 Django 撰寫的 API 還是好上許多。  </li>
+<li>想用輕量化的框架：DRF 雖然包含了很多功能，但核心的 view 部份是很簡單的。  </li>
+<li>DRF 會被 Django 的 model 綁住：view 和 serializer 都是可選的，沒有強制綁定。  </li>
+<li>Django/Python/DRF 太慢：這篇文章會大量討論效能的部份，基本上都可以透過適當的資料庫查詢結果暫存、設計良好的 HTTP 暫存以及 shared server-side cache 來解決。  </li>
+</ul>
+</li>
+<li>接下來就是非常詳細的 profiling 步驟與紀錄  </li>
+<li>結論  <ul>
+<li>
+<blockquote>
+<p>Get your ORM lookups right.  </p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>Your database lookups will be the bottleneck.  </p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>Work on performance improvements selectively.  </p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>You don't always need to use serializers.  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>但這幾篇文章其實都有點舊了，大部份都是 2015 年的，所以可能不一定符合現在的狀況，不確定 DRF 在效能方面改進了多少就是。  </p>
+<hr>
+<p>另外，DRF 也有設計一些可以拿來做測試的函式，列在官方的這篇文章裡頭：<a href="http://www.django-rest-framework.org/api-guide/testing/">Testing - Django REST framework</a>  </p>
+<hr>
+<h2>DRF Docs</h2>
+<p>DRF Docs 主要功能就是可以根據你在 Django REST framework 所使用的 View function 直接生出 API 文件，有要額外補充的也可以寫在 View function 的 docstring 裡頭，DRF Docs 會幫你呈現出來，這樣就不需要為了 API 額外撰寫文件，只要 docstring 寫得夠清楚就行，可以節省開發上的時間，也可以讓程式碼更容易被理解。  </p>
+<p>當時會 fork <a href="https://github.com/manosim/django-rest-framework-docs">GitHub - manosim/django-rest-framework-docs: Document Web APIs made with Django Rest Framework</a> 出來改的主要原因是要改首頁的標題。  </p>
+<p>但實際使用過發現有個需求，就是我想在 docstring 直接寫 markdown，覺得應該也有人有這樣的需求，所以找了一下。發現有個 PR 就是在做這件事，不過還沒被 merge：<a href="https://github.com/manosim/django-rest-framework-docs/pull/117">Added markdown support for endpoint docstrings by mikeengland · Pull Request #117 · manosim/django-rest-framework-docs · GitHub</a>，於是就把這個 PR merge 進來使用，基本上沒啥太大的問題。  </p>
+<p>撰寫這篇文章的時候去追了一下進度，發現已經有另外一個支援 markdown 的 PR 被 merge 了：<a href="https://github.com/manosim/django-rest-framework-docs/pull/127">Add optional markdown for docstrings by rainyday · Pull Request #127 · manosim/django-rest-framework-docs · GitHub</a>，所以現在的 DRF Docs 應該是有正式支援在 docstring 可以寫 markdown 這件事，但這個部份我自己沒使用過就是。  </p>
+<hr>
+<h2>結論</h2>
+<p>如果熟 Django 的人真的可以很快用 DRF + DRF Docs 弄出一個可以做帳號權限管理的 REST API 網站，而且因為用上了 DRF Docs，所以不會出現程式碼和文件不一致的狀況。當時撰寫完整個網站我也不過花了 <code>53 commits  1,806 ++  761 --</code>，為期大概一個月，學到了沒碰過的新東西，成功嘗試了 Google App Engine Flexible Environment，期間當然也有做其他事。  </p>
+<p>但如果不考慮快速完成而是考慮效能的話，我大概就不太推薦 DRF，雖然不確定目前效能改善到什麼地步，如果還是要使用的話可能就要在 Database 或架構方面多下點功夫。  </p>
+<p>因為開發完這網站之後我就沒再碰 DRF 了，所以這篇文章可能會顯得有點過時些，但可以當個參考，畢竟這篇主要目的是紀錄給我自己知道到底我把時間花在哪裡了。  </p>
+<p>技術文這種東西真的不太能囤積在草稿啊，能發就要趕快發，不然真的很容易過時。如果是一些跟人比較有關係的文章則大概很難過時，看看技術的長青書基本上都是在講人的態度或是做事的方法與原則。其實也在思考以後寫的一些技術文能否能朝這個方向去多紀錄一些。  </p>
+<hr>
+<h2>參考來源</h2>
+<ul>
+<li><a href="https://github.com/encode/django-rest-framework">GitHub - encode/django-rest-framework: Web APIs for Django.</a>  </li>
+<li><a href="https://github.com/manosim/django-rest-framework-docs">GitHub - manosim/django-rest-framework-docs: Document Web APIs made with Django Rest Framework</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E9%97%9C%E6%96%BC%20Django%20REST%20framework%20%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%86%E8%A8%98%0Ahttps%3A//blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/&title=%E9%97%9C%E6%96%BC%20Django%20REST%20framework%20%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%86%E8%A8%98&summary=%E4%B8%80%E5%B9%B4%E5%A4%9A%E5%89%8D%E6%8E%A5%E8%A7%B8%20Django%20REST%20framework%20%E6%99%82%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E7%B4%80%E9%8C%84%EF%BC%8C%E6%95%B4%E7%90%86%E4%B8%80%E4%B8%8B%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%8C%85%E5%90%AB%E4%BA%86%20Django%20REST%20framework%20Docs%20%28DRF%20Docs%29%20%E7%9A%84%E9%83%A8%E4%BB%BD%E3%80%82&source=https%3A//blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E9%97%9C%E6%96%BC%20Django%20REST%20framework%20%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%86%E8%A8%98&amp;body=https%3A//blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/">關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/12/y2017w23/">Y2017W23</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/">Y2016W49</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/14/y2016w45/">Y2016W45</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/">嘗試在 Python 中做到 Golang fmt 的效果</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/01/07/django-rest-framework-note/";
+        var disqus_title = "關於 Django REST framework 的一些筆記";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-01-07T23:59:00+08:00"><i class="fa fa-calendar"></i> Sun 07 January 2018</abbr></p>
+
+      <p><abbr title="2018-01-16T15:04:00+08:00"><i class="fa fa-pencil"></i>Tue 16 January 2018</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/django/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">Django</a>
+  <br>
+            <a href="/tag/restful-api/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">RESTful API</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/06/use-cookie-with-urllib-in-python/" title="Python 中讓 urllib 使用 cookie 的方法"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/08/types-of-referral/" title="Referral 的種類"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - lxml</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.lxml.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-02-11T04:25:05+08:00</updated><entry><title>pip install lxml fail in Mac</title><link href="https://blog.m157q.tw/posts/2015/02/04/pip-install-lxml-fail-in-mac/" rel="alternate"></link><published>2015-02-04T15:39:08+08:00</published><updated>2015-02-11T04:25:05+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-02-04:/posts/2015/02/04/pip-install-lxml-fail-in-mac/</id><summary type="html">&lt;p&gt;A brief solution to solve this problem&lt;/p&gt;</summary><content type="html">&lt;p&gt;While I built up the develope environment for &lt;code&gt;Pelican&lt;/code&gt; on my Mac OSX 10.9,&lt;br&gt;
+I encounterd this problem below:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;included&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;239&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;  
+
+    &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;private&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;folders&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;v2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;td9_yf3x7lv6myk_9cy1_h640000gn&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;T&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;UkRKm0&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;src&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;includes&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt;  
+&lt;span class="n"&gt;tree_defs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nl"&gt;h&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;14&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fatal&lt;/span&gt; &lt;span class="nl"&gt;error&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;libxml&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;xmlversion&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;found&lt;/span&gt;  
+
+    &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;include&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;libxml/xmlversion.h&amp;quot;&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Solution&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ brew install libxml2  
+$ brew link libxml2 --force  
+$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;C_INCLUDE_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/local/Cellar/libxml2/2.9.2/include/libxml2:&lt;span class="nv"&gt;$C_INCLUDE_PATH&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Reference&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/17857858/fail-to-install-lxml-in-macos-10-8-4"&gt;python - Fail to install lxml in MacOS 10.8.4 - Stack Overflow&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category><category term="pip"></category><category term="lxml"></category><category term="Mac"></category><category term="Pelican"></category></entry></feed>

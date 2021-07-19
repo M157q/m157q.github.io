@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Safe Browsing</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.safe-browsing.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T12:00:00+08:00</updated><entry><title>Find Malicious Website via Google Safe Browsing Diagnostic API</title><link href="https://blog.m157q.tw/posts/2015/01/14/find-malicious-website-via-google-safe-browsing-diagnostic-api/" rel="alternate"></link><published>2015-01-14T14:23:00+08:00</published><updated>2015-10-27T12:00:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-01-14:/posts/2015/01/14/find-malicious-website-via-google-safe-browsing-diagnostic-api/</id><summary type="html">&lt;p&gt;One of my friends need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;One of my friends need to analyze the websites which are sentenced to be malicious website by the Google (Chrome safe browsing) for one of his security related course homeworks.&lt;br&gt;
+He told me that it's very hard to find such links, so I found this kind of solution for him.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="The site ahead contains malware" src="/files/find-malicious-website-via-google-safe-browsing-diagnostic-api/the_site_ahead_contains_malware.png"&gt;  &lt;/p&gt;
+&lt;h3&gt;Use the Google Safe Browsing Diagnostic API&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://www.google.com/safebrowsing/diagnostic?site=Google.com"&gt;https://www.google.com/safebrowsing/diagnostic?site=Google.com&lt;/a&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Change the value of the &lt;code&gt;site&lt;/code&gt; to some portal site such as Google, Yahoo, ...  &lt;/li&gt;
+&lt;li&gt;Check the result if it has &lt;code&gt;Malicious software is hosted on 276 domain(s), including ...&lt;/code&gt; like the following pic  &lt;/li&gt;
+&lt;li&gt;Try those urls to see if Google Safe Browsing diagnose it as malicious urls  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="Safe Browsing" src="/files/find-malicious-website-via-google-safe-browsing-diagnostic-api/safe_browsing.png"&gt;  &lt;/p&gt;
+&lt;h3&gt;The result of &lt;a href="http://24corp-shop.com/"&gt;http://24corp-shop.com/&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="24corp shop" src="/files/find-malicious-website-via-google-safe-browsing-diagnostic-api/24corp_shop.png"&gt;  &lt;/p&gt;
+&lt;h3&gt;NOTICE&lt;/h3&gt;
+&lt;p&gt;Sometimes you won't see the "Security Error" message because the result shows the record in last 90 days.&lt;br&gt;
+When you access the website, the malicious software maybe already be removed from that site.  &lt;/p&gt;</content><category term="Malicious Website"></category><category term="Safe Browsing"></category><category term="Security"></category></entry></feed>

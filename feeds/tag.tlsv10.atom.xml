@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - TLSv1.0</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.tlsv10.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2020-07-11T16:51:46+08:00</updated><entry><title>CircleCI Python docker image cannot connet to website uses TLSv1.0</title><link href="https://blog.m157q.tw/posts/2020/07/11/circleci-python-docker-image-cannot-connet-to-website-uses-tlsv1-0/" rel="alternate"></link><published>2020-07-11T16:51:46+08:00</published><updated>2020-07-11T16:51:46+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2020-07-11:/posts/2020/07/11/circleci-python-docker-image-cannot-connet-to-website-uses-tlsv1-0/</id><summary type="html">&lt;p&gt;While writing the test for my side project, I encountered a problem which didn't happen while using Travis CI but CircleCI.&lt;/p&gt;</summary><content type="html">&lt;h1&gt;TL;DR&lt;/h1&gt;
+&lt;p&gt;Add&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo sed -i -E 's/MinProtocol[=\ ]+.*/MinProtocol = TLSv1.0/g' /etc/ssl/openssl.cnf&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;in &lt;code&gt;.circleci/config.yml&lt;/code&gt; before running the test which will connect to the website uses TLSv1.0.&lt;/p&gt;
+&lt;h1&gt;Exception&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;Traceback (most recent call last):&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/home/circleci/repo/venv/lib/python3.5/site-packages/urllib3/connectionpool.py&amp;quot;, line 677, in urlopen&lt;/span&gt;
+&lt;span class="err"&gt;    chunked=chunked,&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/home/circleci/repo/venv/lib/python3.5/site-packages/urllib3/connectionpool.py&amp;quot;, line 381, in _make_request&lt;/span&gt;
+&lt;span class="err"&gt;    self._validate_conn(conn)&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/home/circleci/repo/venv/lib/python3.5/site-packages/urllib3/connectionpool.py&amp;quot;, line 976, in _validate_conn&lt;/span&gt;
+&lt;span class="err"&gt;    conn.connect()&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/home/circleci/repo/venv/lib/python3.5/site-packages/urllib3/connection.py&amp;quot;, line 370, in connect&lt;/span&gt;
+&lt;span class="err"&gt;    ssl_context=context,&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/home/circleci/repo/venv/lib/python3.5/site-packages/urllib3/util/ssl_.py&amp;quot;, line 377, in ssl_wrap_socket&lt;/span&gt;
+&lt;span class="err"&gt;    return context.wrap_socket(sock, server_hostname=server_hostname)&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/usr/local/lib/python3.5/ssl.py&amp;quot;, line 385, in wrap_socket&lt;/span&gt;
+&lt;span class="err"&gt;    _context=self)&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/usr/local/lib/python3.5/ssl.py&amp;quot;, line 760, in __init__&lt;/span&gt;
+&lt;span class="err"&gt;    self.do_handshake()&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/usr/local/lib/python3.5/ssl.py&amp;quot;, line 996, in do_handshake&lt;/span&gt;
+&lt;span class="err"&gt;    self._sslobj.do_handshake()&lt;/span&gt;
+&lt;span class="err"&gt;  File &amp;quot;/usr/local/lib/python3.5/ssl.py&amp;quot;, line 641, in do_handshake&lt;/span&gt;
+&lt;span class="err"&gt;    self._sslobj.do_handshake()&lt;/span&gt;
+&lt;span class="err"&gt;ssl.SSLError: [SSL: UNSUPPORTED_PROTOCOL] unsupported protocol (_ssl.c:728)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Another solution which DIDN'T work for me&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;ssl&lt;/span&gt;
+
+&lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;verify&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ssl&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CERT_NONE&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://pywbem.readthedocs.io/en/latest/appendix.html#connectionerror-raised-with-ssl-unsupported-protocol"&gt;12. Appendix — pywbem 1.0.0b3.dev1 documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/59408646/ssl-sslerror-ssl-unsupported-protocol-unsupported-protocol-ssl-c852-in-d"&gt;ssl.SSLError: [SSL: UNSUPPORTED_PROTOCOL] unsupported protocol (_ssl.c:852) in Docker Python:3.6-slim - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://stackoverflow.com/questions/54829759/in-python3-6-5-requests-getting-ssl-certificate-error"&gt;web scraping - In Python3.6.5 Requests getting SSL Certificate Error - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Python"></category><category term="CircleCI"></category><category term="Docker"></category><category term="SSL"></category><category term="TLSv1.0"></category></entry></feed>

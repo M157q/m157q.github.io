@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  CP100A: Google Cloud Platform Fundamentals
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/" rel="bookmark" title="Permalink to CP100A: Google Cloud Platform Fundamentals">CP100A: Google Cloud Platform Fundamentals</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p><a href="https://events.withgoogle.com/cp100a-420770/">CP100A</a> 筆記</p>
+  </blockquote>
+  <div>
+    <h1>課程資訊</h1>
+<ul>
+<li><a href="http://myclass.gcptrain.org/">http://myclass.gcptrain.org/</a>  <ul>
+<li>OXZnOGVkCg==  </li>
+<li><a href="https://sites.google.com/a/google.com/cloud-platform-training/cloud-platform-training/">https://sites.google.com/a/google.com/cloud-platform-training/cloud-platform-training/</a>  </li>
+<li><a href="https://sites.google.com/a/google.com/cloud-platform-training/cloud-platform-training/cp100-v2">https://sites.google.com/a/google.com/cloud-platform-training/cloud-platform-training/cp100-v2</a>  </li>
+<li><a href="https://drive.google.com/file/d/0B9cCeTKOkfWIaXNqWnNDT0VmaG8/view?usp=sharing">slides.tar.gz</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Course Overview</h1>
+<p><img alt="CP100 V2: Google Cloud Platform Fundamentals" src="/files/cp100a-google-cloud-platform-fundamentals/course-overview.png">  </p>
+<hr>
+<h1>Module 1: Introducing Google Cloud Platform</h1>
+<h2>Why Choose Google Cloud Platform?</h2>
+<ul>
+<li>你可以在 GCP 看到所有不同 Region 的機器，不用像 AWS 一樣必須切換 Region  </li>
+<li>可以直接享用 Google 遍布全球的網路設施  </li>
+</ul>
+<h2>Google's Infrastructure</h2>
+<ul>
+<li><a href="https://cloudplatformonline.com/next2016-schedule.html">GCP Next</a>  <ul>
+<li>GCP 的年度會議  <blockquote>
+<p>目前似乎辦了兩屆。<br>
+2015 年第一屆辦在日本東京<br>
+2016 年第二屆辦在荷蘭阿姆斯特丹。  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>最近在日本新增了 Data Center  </li>
+<li>Google 的高速 Backbone Network  </li>
+<li>Points of Presence  <ul>
+<li>幾乎全球都有節點  </li>
+</ul>
+</li>
+<li>Edge Caching  </li>
+</ul>
+<h2>Cloud Regions and Zones</h2>
+<ul>
+<li>Central US  </li>
+<li>Eastern US  </li>
+<li>East Asia  <ul>
+<li>Data Center 在彰化  </li>
+<li>和 CloudFlare 有合作，最近 CloudFlare 和中華電信合作，在台北有機房。  </li>
+<li>所以在臺灣的 latency 蠻低的  </li>
+</ul>
+</li>
+<li>Western Europe  </li>
+<li><a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones">https://cloud.google.com/compute/docs/regions-zones/regions-zones</a>  </li>
+</ul>
+<h2>Innovative, Customer-Friendly Pricing</h2>
+<ul>
+<li>Sub-hour billing  <ul>
+<li>以分計費  </li>
+<li>不像 AWS 以小時計費，不滿一小時仍然以一小時計費  </li>
+</ul>
+</li>
+<li>Sustained-use discounts  <ul>
+<li>機器開超過一定的時間就會有折扣，採累進的折扣。  </li>
+</ul>
+</li>
+<li>Compute Engine custom machine types  </li>
+<li>價錢比較便宜，但有夠難算 XDDD  </li>
+</ul>
+<h2>Commitment to Open APIs and Open Source</h2>
+<ul>
+<li>TensorFlow  </li>
+<li>Android  </li>
+<li>Go  </li>
+<li><a href="http://kubernetes.io/">Kubernetes</a> (k8s)  </li>
+</ul>
+<h2>The Future of Cloud Computing</h2>
+<ul>
+<li>1st wave: Colocation  </li>
+<li>2nd wave: Virtualized Data Centers  </li>
+<li>3rd wave: A global, elastic cloud  </li>
+</ul>
+<h2>IaaS and PaaS</h2>
+<ul>
+<li>IaaS: Compute Engine  <ul>
+<li>Towards managed infrastructure (DevOps)  </li>
+</ul>
+</li>
+<li>PaaS: App Engine  <ul>
+<li>Towards managed services (NoOps)  </li>
+</ul>
+</li>
+</ul>
+<h2>Google Cloud Platform</h2>
+<p><img alt="Google Cloud Platform" src="/files/cp100a-google-cloud-platform-fundamentals/gcp.png">  </p>
+<ul>
+<li>Storage  <ul>
+<li>BigTable  <ul>
+<li>Fully Compatible with HBase  </li>
+<li>Google 版本的 HBase  </li>
+</ul>
+</li>
+<li>Cloud SQL  <ul>
+<li>最近出了 2.0 (2nd Generation)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Big Data  <ul>
+<li>Pub/Sub  <ul>
+<li>Distributed Message Queue like Kafka  </li>
+</ul>
+</li>
+<li><a href="https://cloud.google.com/dataflow/">Dataflow</a>  <ul>
+<li>a unified programming model and a managed service for developing and executing a wide range of data processing patterns including ETL, batch computation, and continuous computation.  </li>
+</ul>
+</li>
+<li><a href="https://cloud.google.com/dataproc/">Dataproc</a>  <ul>
+<li>Spark Cluster  </li>
+<li>an Apache Hadoop, Apache Spark, Apache Pig, and Apache Hive service, to easily process big datasets at low cost.  </li>
+</ul>
+</li>
+<li>Datalab  <ul>
+<li>基本上就是 Google Cloud 版本的 Jupyter Notebook (IPython Notebook)  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud Launcher</h3>
+<ul>
+<li>和 Bitnami 合作提供的服務  </li>
+<li>可以直接在上面直接 Create 設定好的 GCE instance  </li>
+</ul>
+<h2>Lab 1</h2>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/cp100-free-trial/#0">Sign Up for the Free Trial and Create a Project</a>  <ul>
+<li><a href="https://cloud.google.com/stackdriver/">Stackdriver</a>  <ul>
+<li>monitoring, logging, &amp; diagnostics  </li>
+<li>可以整合 GCP 和 AWS  </li>
+</ul>
+</li>
+<li><a href="https://console.cloud.google.com/launcher">Cloud Launcher</a>  <ul>
+<li><a href="https://cloud.google.com/launcher/docs/#deploying_a_software_package">https://cloud.google.com/launcher/docs/#deploying_a_software_package</a>  </li>
+<li>點下去可以直接幫你 create 安裝好該服務的 GCE instance，簡單來說就是已經預先做好 Image 然後直接幫你塞進去。  <ul>
+<li>我原本以為是可以複選，然後一次幫你安裝剛剛選的那些服務到一台 GCE instance 上，但看來是比較提倡分散式就是了，當然這樣在 Production 上會比較好，不然一台 instance 炸了就所有服務都炸了 XD  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>補充</h2>
+<ul>
+<li>Project 的管理  <ul>
+<li>Members 的 account 可以採用 gmail.com, apps for work 的 account, Google Groups 的 account, service account  </li>
+<li>一個帳號可以管理多個 project  </li>
+<li>管錢的和管 Project 的帳號可以分開設定  </li>
+<li>可以考慮多開不同的 Project，一來是 Quota 的限制比較不會那麼吃緊，二來是 Permission 的設定可以比較不需要那麼費心，如果全部的 Team 都擠在同個 Project 的話，Permission 的設定可能得多費心調整。  </li>
+</ul>
+</li>
+<li>Billing  <ul>
+<li>Sustain Pricing 在遇到 billing account change 的時候會重算，所以  </li>
+<li>可以設定 budget，超過的時候會通知，每個服務也都可以設限。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Module 2: Getting Started with Google Cloud Platform</h1>
+<h2>Cloud Computing</h2>
+<div class="highlight"><pre><span></span><span class="err">Compute Engine --- Container Engine --- App Engine --- Cloud Endpoints  </span>
+<span class="err">IaaS ------------- Clusters -------- Managed VMs (beta) -------- PaaS  </span>
+<span class="err">Configurability DevOps &lt;-----------------------------&gt; Agility NoOps  </span>
+</pre></div>
+
+
+<ul>
+<li>IaaS  <ul>
+<li>Compute Engine == AWS EC2 == Virtual Machine  <ul>
+<li>Raw compute granular control  </li>
+<li>可以使用預先提供好的 Image，也可以自己建好 Image 再上傳來用  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>PaaS  <ul>
+<li>App Engine  <ul>
+<li>最早出來的時候是只有 Python  </li>
+<li>有漲價過，當時一堆人離開  </li>
+<li>後來又有一些人回來用，支援 Java, Go, PHP, Python  </li>
+<li>最近 Beta 開始支援 Ruby  </li>
+</ul>
+</li>
+<li>Cloud Endpoints  <ul>
+<li>Preset run-times  </li>
+<li>Focus app logic  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SaaS  </li>
+<li><a href="https://developers.google.com/apis-explorer/#p/">Google APIs Explorer</a>  <ul>
+<li>只要是 Google 的服務基本上都會有 API  </li>
+</ul>
+</li>
+</ul>
+<h2>Lab 2</h2>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/cp100-cloud-launcher/#0">Getting Started with Google Cloud Platform</a>  </li>
+</ul>
+<hr>
+<h1>Module 3: Google App Engine and Google Cloud Datastore</h1>
+<h2>Google App Engine</h2>
+<h3>What is Google App Engine</h3>
+<ul>
+<li>Managed runtimes for specific versions of Java, Python, PHP and Go. (Standard Runtime)  </li>
+<li>Autoscale workloads to meet demand  <ul>
+<li>可以透過 app.yaml 去做 autoscale 的設定  </li>
+<li>也可以透過 app.yaml 對 instance class 做設定，預設是用最低階的 F1，可以參考 <a href="https://cloud.google.com/appengine/docs/python/config/appref#scaling_elements">app.yaml Reference|Python|Google Cloud Platform</a>  </li>
+</ul>
+</li>
+<li>Free daily quota, usage based pricing  </li>
+<li>Local SDK for development, testing and deployment  </li>
+<li>Need to conform to sandbox constraints  <ul>
+<li>No writing to the local filesystem  </li>
+<li>Request timeouts at 60 seconds  </li>
+</ul>
+</li>
+<li>補充  <ul>
+<li>可以透過 version 來控管每個 service (原本叫 module，最近改叫 service 了）  </li>
+<li>可以透過 split traffic 做 A/B testing  </li>
+<li>有類似 rolling update 的機制  <ul>
+<li>Deploy 新的 version 後，GAE 會自動幫你把舊版本的 instance 關掉，然後開新的版本的 instance  </li>
+</ul>
+</li>
+<li>可以讓開發者專注在發開程式，不用費心在建置環境的部份  </li>
+<li>實例：  <ul>
+<li>Snapchat  <ul>
+<li>用 App Engine  </li>
+<li>只花流量的費用，不存圖片，超省成本。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>App Engine Standard Environment</h3>
+<ul>
+<li>Managed runtimes for specific versions of Java, Python, PHP, Go.  <ul>
+<li>目前只支援 Python 2  </li>
+</ul>
+</li>
+<li>Autoscale  </li>
+<li>Free daily quota, usage based pricing.  </li>
+<li>原本 support 一天發 2000 封 email，但現在收回來了，現在要在 GCP 上寄信的話，統一都要使用 <a href="https://sendgrid.com/">SendGrid</a>，會有比較嚴格的審核，避免大量的垃圾信件。  <ul>
+<li>AWS 也採用 SendGrid，蠻多 Cloud Platform 都把寄信的部份交給它。  </li>
+</ul>
+</li>
+<li>跟 Google 的很多服務都有滿完整的整合。  </li>
+<li>GAE 的設計理念是服務要愈 light weight 愈好  </li>
+<li>GAE 的內建服務  <ul>
+<li>Memcache  <ul>
+<li>免費的會有 crash 的風險，不會幫你把 data 復原。  </li>
+<li>付費的會在 crash 的時候幫你把 data 復原。  </li>
+</ul>
+</li>
+<li>Taskqueues  <ul>
+<li>用來設計保證該 task 一定會被完成的架構  </li>
+</ul>
+</li>
+<li>Scheduled tasks  <ul>
+<li>cron.yaml  </li>
+</ul>
+</li>
+<li>Blobstore  </li>
+<li>Search  </li>
+<li>Logging  </li>
+</ul>
+</li>
+</ul>
+<h3>App Engine Flexible Environment (GAE Managed VM)</h3>
+<ul>
+<li>用 container 來處理  </li>
+<li>沒有 sandbox 的限制  </li>
+<li>可以做到支援 Python 3  </li>
+<li>During beta pricing based on GCE  </li>
+<li>Local Development relies on Docker  </li>
+</ul>
+<h3>GAE Standard vs Flexible Environment 比較表</h3>
+<p><img alt="GAE Environments" src="/files/cp100a-google-cloud-platform-fundamentals/gae-environments.png">  </p>
+<h1>Google Cloud Endpoints</h1>
+<ul>
+<li>Build your own API running on App Engine Standard  </li>
+<li>Expose your API using a RESTful interface  </li>
+<li>Includes support for OAuth 2.0 authorization  </li>
+<li>Generate client libraries  </li>
+<li>Supports Java and Python server-side code  </li>
+<li>Includes App Engine features  <ul>
+<li>Scaling  </li>
+<li>Denial of service protection  </li>
+<li>High availability  </li>
+</ul>
+</li>
+<li>Supports iOS, Android, and JavaScript  </li>
+<li>補充  <ul>
+<li>可以自動 generate client library  </li>
+<li>目前 support Java 跟 Python  </li>
+<li>直接 apply GAE 的一些 feature  </li>
+<li>HA  </li>
+<li>Support iOS, Android and JavaScript clients  </li>
+<li>但因為是在 GAE 上在堆疊一層，所以當量很大的時候，效能可能要注意一下  </li>
+</ul>
+</li>
+</ul>
+<h2>Google Cloud Datastore</h2>
+<ul>
+<li>Daily free quota  </li>
+<li>Database designed for application backends  </li>
+<li>NoSQL store for billions of rows  </li>
+<li>Schemaless access, no need to think about underlying data structure  </li>
+<li>Local development tools  </li>
+<li>Automatic scaling and fully managed  </li>
+<li>Built-in redundancy  </li>
+<li>Supports ACID transactions  </li>
+<li>RESTful API  </li>
+<li>Includes a free daily quota  </li>
+<li>Access from anywhere through a RESTful interface  </li>
+<li>補充  <ul>
+<li>有 autoscale 的能力，會對應 GAE 的數量來去調整  </li>
+</ul>
+</li>
+</ul>
+<h2>Lab 3</h2>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/cp100-app-engine/">Deploying Applications Using App Engine and Cloud Datastore</a>  <ul>
+<li><a href="https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf">https://github.com/GoogleCloudPlatformTraining/cp100-bookshelf</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1>Module 4: Google Cloud Platform Storage Options</h1>
+<h2>Google Cloud Storage</h2>
+<ul>
+<li>Not a file system (but can be accessed as one via 3rd party tools such as GCS Fuse)  <ul>
+<li><a href="https://github.com/GoogleCloudPlatform/gcsfuse">https://github.com/GoogleCloudPlatform/gcsfuse</a>  </li>
+<li>IO 不快  </li>
+</ul>
+</li>
+<li>Simple administration and does not require capacity management  </li>
+<li>All storage options accessed through the same APIs and include client libraries  <ul>
+<li>JSON API  </li>
+<li>XML API  <ul>
+<li>可能是因為 AWS S3 是用 XML API，所以也要跟著提供一下。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>補充  <ul>
+<li>硬碟上的資料是有做 encryption 的  </li>
+<li>容器是以 bucket 為單位  </li>
+</ul>
+</li>
+</ul>
+<h3>Cloud Storage Classes</h3>
+<p><img alt="Cloud Storage Classes" src="/files/cp100a-google-cloud-platform-fundamentals/cloud-storage-classes.png">  </p>
+<ul>
+<li>Standard  </li>
+<li>DRA  <ul>
+<li>可以限制資料的區域  </li>
+</ul>
+</li>
+<li>Nearline  <ul>
+<li>經常變動的資料不適合存在這裡，cost 會增加。  </li>
+<li>比較適合拿來做 backup, archive, 長久性不太會變動的資料。  </li>
+</ul>
+</li>
+<li>這 3 個 classes 存取的 API 是相同的  </li>
+</ul>
+<h3>Cloud Storage Features</h3>
+<p><img alt="Cloud Storage Features" src="/files/cp100a-google-cloud-platform-fundamentals/cloud-storage-features.png">  </p>
+<h3>Cloud Storage Integration</h3>
+<ul>
+<li>BigQuery  <ul>
+<li>Import and export tables  </li>
+</ul>
+</li>
+<li>Compute Engine  <ul>
+<li>Startup scripts, images and general object storage  </li>
+</ul>
+</li>
+<li>App Engine  <ul>
+<li>Object storage, logs, Datastore backup  </li>
+<li>App Engine 本身不能存資料，但可以存在 Cloud Storage 和 Datastore  </li>
+</ul>
+</li>
+<li>Cloud SQL  <ul>
+<li>Import and export tables  </li>
+</ul>
+</li>
+<li>可以拿來直接 serve static websites.  </li>
+</ul>
+<h2>Google Cloud Bigtable</h2>
+<ul>
+<li>NoSQL database service for large-workload applications (Terabytes to Petabytes)  <ul>
+<li>不便宜  <ul>
+<li>貴在 Node 執行時間的收費，目前是 $1.95 USD/hour per node  </li>
+<li>最少必須開 3 個 node  </li>
+</ul>
+</li>
+<li>是儲存在 SSD 上  <ul>
+<li>最近開始可以選擇儲存在普通硬碟上了，Storage 的費用會降低大概十倍。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Protected  <ul>
+<li>Replicated storage  </li>
+<li>Data encryption in-flight and at rest  </li>
+<li>Role-based ACLs  </li>
+</ul>
+</li>
+<li>Proven  <ul>
+<li>Gmail and Google Analytics  </li>
+</ul>
+</li>
+<li>補充  <ul>
+<li>高 IO, 可在最短的時間內查到最多的資料  </li>
+<li>Gmail 和 Google Analytics 的背後也是用 Bigtable  </li>
+<li>很多做股票交易的也是用 Bigtable  </li>
+<li>很貴但反應快  </li>
+<li>主要是為了取代 HBase  </li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud SQL</h3>
+<ul>
+<li>Google-managed MySQL  </li>
+<li>Pay-per-use model  </li>
+<li>REST API for management  </li>
+<li>Affordability and performance  <ul>
+<li>有 class 可以選擇，視需求可以調整  </li>
+</ul>
+</li>
+<li>Google security  </li>
+<li>Vertical scaling (read and write)  </li>
+<li>Horizontal scaling (read)  </li>
+<li>Seamless integratin with GAE and GCE  </li>
+<li>補充  <ul>
+<li>第一代的 performance 不是那麼好  </li>
+<li>第二代則是選擇 run 在 container 上  </li>
+<li>所有要連線來的 IP 都需要經過 white list  <ul>
+<li>有個例外是 App Engine，可以直接連線，不會被白名單限制。  </li>
+<li>可以設定讓 Cloud SQL 綁定 GAE，讓它開在跟 GAE 同個 region，用來降低 Latency  </li>
+</ul>
+</li>
+<li>七天一個 cycle 的 backup  </li>
+</ul>
+</li>
+</ul>
+<h3>Cloud SQL Features</h3>
+<ul>
+<li>Familiar with MySQL  </li>
+<li>Flexible pricing  </li>
+<li>Google Security  <ul>
+<li><a href="https://cloud.google.com/sql/faq#encryption_manage">AES-128 encryption</a>  </li>
+</ul>
+</li>
+<li>Managed backups  </li>
+<li>Automatic replication  <ul>
+<li>master-slave  </li>
+<li>自動化 replication  </li>
+<li>一個 instance 掛掉的話，會有 downtime 但會再開另外一個 instance 去接替，有基本的 HA 功能。  </li>
+</ul>
+</li>
+<li>支援 SSL 的 connection  </li>
+</ul>
+<h3>Cloud SQL Second Generation</h3>
+<ul>
+<li>Same features as first generation with higher performance, storage capacity at lower cost.  <ul>
+<li>Up to 7X throughput and 20X sotrage capacity of first generation instances  </li>
+<li>Less expensive than first generation for most use cases.  </li>
+</ul>
+</li>
+<li>補充  <ul>
+<li>如果想要開比較小的 DB 的話可以考慮用 2nd generation，性價比會比較高。  </li>
+<li>如果是要用很大的 DB 的話，建議用 1st generation 讓 Google 幫忙管理會比較好。  </li>
+</ul>
+</li>
+</ul>
+<h3>Comparing Storage Options</h3>
+<p><img alt="Comparing Storage Options" src="/files/cp100a-google-cloud-platform-fundamentals/comparing-storage-options.png">  </p>
+<h2>Lab 4</h2>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/cp100-cloud-storage/">Integrating Applications with Google Cloud Storage</a>  </li>
+</ul>
+<hr>
+<h1>Module 5: Google Container Engine (GKE)</h1>
+<h2>What is a Container</h2>
+<ul>
+<li>Virtualization at the operating system layer  </li>
+<li>Separates operating system from application code and dependencies  </li>
+<li>Isolates individual processes  </li>
+<li>Popular implementations include Docker and <a href="https://coreos.com/rkt/docs/latest/">rkt</a>  <ul>
+<li>k8s 目前支援這兩種格式的 Container  </li>
+</ul>
+</li>
+<li>OS =&gt; Shared Libraries =&gt; Contianer  <ul>
+<li>安全性問題  <ul>
+<li>會不會影響到別的 Container  </li>
+<li>把 kernel 弄爛了的話，別的 Container 也會一起爛掉。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Why Use Container?</h2>
+<ul>
+<li>Support consistency across development, testing, and production environments  </li>
+<li>Loose coupling between application and operating system layers  </li>
+<li>Much simpler to migrate workloads between on premises and cloud environments  </li>
+<li>Support agile development and operations  </li>
+</ul>
+<h2><a href="http://kubernetes.io/">Kubernetes (k8s)</a></h2>
+<ul>
+<li>Open Source  <ul>
+<li><a href="https://github.com/kubernetes/kubernetes">https://github.com/kubernetes/kubernetes</a>  </li>
+</ul>
+</li>
+<li>Google 的服務是跑在 <a href="http://blog.kubernetes.io/2015/04/borg-predecessor-to-kubernetes.html">Borg</a> 上面，Borg 是 k8s 的前身。  </li>
+<li>另外一個 Container 是 <a href="https://dcos.io/">dcos</a>  <ul>
+<li><a href="https://github.com/dcos/dcos">https://github.com/dcos/dcos</a>  </li>
+</ul>
+</li>
+</ul>
+<h3>Features of k8s</h3>
+<ul>
+<li>Workload portability  <ul>
+<li>Run in many environments, across cloud providers  </li>
+<li>Implementation is open and modular  </li>
+</ul>
+</li>
+<li>Rolling updates  <ul>
+<li>Upgrade application with zero downtime  </li>
+</ul>
+</li>
+<li>Autoscaling  <ul>
+<li>Automatically adapt to changes in workload  </li>
+</ul>
+</li>
+<li>Persistent storage  <ul>
+<li>Abstracts details of how storage is provided from how it is consumed  </li>
+<li>有支援 MySQL Cluster  </li>
+</ul>
+</li>
+<li>Multi-zone clusters  <ul>
+<li>Run a single cluster in multiple zones  </li>
+<li>Alpha on Google Cloud Platform  </li>
+</ul>
+</li>
+<li>Load balancing  <ul>
+<li>External IP address routes traffic to correct port  </li>
+<li>Google 會幫你偵測機器的狀態，在機器死掉的時候幫你做 Migration  </li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud Container Engine (GKE)</h3>
+<ul>
+<li>Based on open source Kubernetes(k8s) orchestration system  </li>
+<li>Orchestrate and schedule Docker containers  </li>
+<li>Consumes Compute Engine instances and resources  </li>
+<li>Uses a declarative syntax to manage applications  <ul>
+<li>JSON, YAML  </li>
+</ul>
+</li>
+<li>Decouple operational and development concerns  </li>
+<li>Manages and maintains  <ul>
+<li>Logging  </li>
+<li>Health management  </li>
+<li>Monitoring  </li>
+<li>Scaling  </li>
+</ul>
+</li>
+<li>補充  <ul>
+<li>不只在 GCP 可以用，AWS 或是自己架都可以，因為是 Based on Open Source 的 k8s  </li>
+<li>可以執行很多 Container，彼此可以透過 k8s 達到 HA  </li>
+<li>目前的費用是算在 Compute Engine 上，因為實際還是開 GCE 然後在上面 run containers  </li>
+<li>目前以 GCE 的收費方式計價  </li>
+<li>Google Cloud Container Builder  <ul>
+<li>Create Docker container images from app code in Google Cloud Storage  </li>
+</ul>
+</li>
+<li>Google Container Registry  <ul>
+<li>Secure, private Docker image storage  <blockquote>
+<p>沒記錯的話 images 是存在 Cloud Storage 上  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><a href="https://cloud.docker.com/">https://cloud.docker.com/</a>  </li>
+</ul>
+</li>
+</ul>
+<h2>Lab 5</h2>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/cp100-container-engine/#0">Deploying Applications Using Google Container Engine</a>  </li>
+</ul>
+<hr>
+<h1>Module 6: Google Compute Engine and Networking</h1>
+<h2>Google Compute Engine</h2>
+<ul>
+<li>Run large-csale workloads on virtual machines hosted on Google's infrastructure  </li>
+<li>Robust networking features  <ul>
+<li>可以拿來做 MySQL cluster load balancer  </li>
+</ul>
+</li>
+<li>Instance metadata and startup scripts  <ul>
+<li>每個 instance 會有 global 的 metadata 和各自的 metadata  </li>
+<li>startup script 也是放在 metadata 去做描述  </li>
+</ul>
+</li>
+<li>Persistent disk snapshots  </li>
+<li>High CPU, high memory, standard and shared-core machine types  </li>
+<li>HTTP and network load balancing  <ul>
+<li>可以針對 Load Balancer 做個別的設定，會比 AWS 簡單。  </li>
+</ul>
+</li>
+<li>Advanced APIs for auto-scaling and group management  </li>
+<li>Innovative pricing  <ul>
+<li>per <em>minute</em> billing, sustained use discounts  </li>
+<li>Preemptible instances  </li>
+<li>High throughput to storage at no extra cost  </li>
+<li>Custom machine types - Only pay for the hardware you need  </li>
+</ul>
+</li>
+<li>補充  <ul>
+<li>Google 用 KVM 來實作這部份  </li>
+<li>可以在兩分多鐘內就開啟 1000 台機器  <ul>
+<li>壓力測試跑了大概一個多小時，最後收到帳單大概是 500 美金左右。  </li>
+</ul>
+</li>
+<li>硬碟必須至少要 200 GB 才會有一般的 performance, &lt; 200 GB 的話會比較慢。  </li>
+<li>目前看到比較多的是拿來當 Load Balancer  </li>
+<li>目前 Load Balancer 使用 BSD 是會有問題的，因為缺少某些 Linux 才有的 Libraries。  </li>
+</ul>
+</li>
+</ul>
+<h2>Google Cloud Networking</h2>
+<h3>Google Cloud Interconnect</h3>
+<ul>
+<li>Carrier Interconnect  </li>
+<li>Direct Peering  <ul>
+<li>需要有第 2 類電信執照才能申請  </li>
+<li>Connect your business directly to Google  </li>
+<li>所有流量的費用打對折，速度會更快，適合擁有 Data Center 的公司申請。  </li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud VPN</h3>
+<ul>
+<li>Secure connection over the Internet  </li>
+<li>Securely connect your network to Google Cloud Platform using IPsec VPN connection  </li>
+<li>Encrypts traffic over the Internet  </li>
+<li>Google Cloud Router supports dynamic routing between Google Cloud Platform and your network  </li>
+</ul>
+<h3>Google Cloud DNS</h3>
+<ul>
+<li>Highly available and scalable DNS  </li>
+<li>Translates domain names into IP addresses  </li>
+<li>Create managed zones, then add, edit, delete DNS records  </li>
+<li>Programmatically manage zones and records using RESTful API or command- line interface  </li>
+</ul>
+<h3>Google Cloud Load Balancing</h3>
+<ul>
+<li>HTTP(s) load balancing  </li>
+<li>Balance HTTP-based traffic across multiple Compute Engine regions  </li>
+<li>Global, external IP address routes traffic  </li>
+<li>Scalable, requires no pre-warming and provides resilience, fault tolerance  </li>
+<li>TCP/SSL and UDP (network) load balancing  <ul>
+<li>Spread TCP/SSL and UDP traffic over pool of instances within a Compute Engine region  </li>
+<li>Ensures only healthy instances handle traffic  </li>
+<li>Scalable, requires no pre-warming  </li>
+</ul>
+</li>
+<li>補充  <ul>
+<li>Global  <ul>
+<li>可以在不同的 region 建 load balancer  </li>
+</ul>
+</li>
+<li>HTTP(S) load balancing  </li>
+<li>Network load balancing  <ul>
+<li>支援 Auto scaling  </li>
+<li>可以設定 protocol 跟 port  </li>
+</ul>
+</li>
+<li>可以選擇 client IP + Protocol 的規則，看要導到哪台 Load Balancer  </li>
+<li>有隱藏 CDN 的功能，可以把 CDN 的功能打開。  </li>
+</ul>
+</li>
+</ul>
+<h2>Operations and Tools</h2>
+<h3>Google Stackdriver</h3>
+<ul>
+<li>Integrated monitoring, logging, diagnostics  </li>
+<li>Works across Google Cloud Platform, Amazon Web Services  </li>
+<li>Open source agents, integration  </li>
+<li>Powerful data, analytics tools  </li>
+<li>Collaborations with PagerDuty, BMC, Splunk, others  </li>
+<li>補充  <ul>
+<li>可以針對條件去設定 alert  </li>
+</ul>
+</li>
+</ul>
+<h4>Cloud Monitoring</h4>
+<ul>
+<li>可以監控各種項目  </li>
+<li>可以自訂要監控哪些部份  </li>
+<li>可以和第三方應用程式銜接  </li>
+</ul>
+<h4>Cloud Logging</h4>
+<ul>
+<li>可以幫你很輕鬆的檢視不同機器的 log  </li>
+<li>Log 線上保留三十天  </li>
+<li>支援 Export，讓你可以自己處理 Log  </li>
+</ul>
+<h3>Google Cloud Deployment Manager</h3>
+<ul>
+<li>Infrastructure management service  </li>
+<li>Create a .yaml template describing your environment and use Deployment Manager to create resources  </li>
+<li>Provides repeatable deployments  </li>
+<li>補充  <ul>
+<li>有點類似 Ansible 和 Chef  </li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud Source Repositories</h3>
+<ul>
+<li>Fully-featured Git repositories hosted on Google Cloud Platform  </li>
+<li>Supports collaborative development of cloud apps  </li>
+<li>Includes:  <ul>
+<li>Source code editor  </li>
+<li>Integration with Stackdriver debugger  </li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud Functions</h3>
+<ul>
+<li>Create single-purpose functions that respond to events without a server or runtime  <ul>
+<li>Event examples: New instance created, file added to Cloud Storage  </li>
+</ul>
+</li>
+<li>Written in Javascript, execute in managed Node.js environment on Google Cloud Platform  </li>
+</ul>
+<h2>Lab 6</h2>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/cp100-compute-engine/#0">Deploying Applications Using Google Compute Engine</a>  </li>
+</ul>
+<hr>
+<h1>Module 7: Big Data and Machine Learning</h1>
+<p><img alt="Big Data Services" src="/files/cp100a-google-cloud-platform-fundamentals/big-data-services.png">  </p>
+<ul>
+<li>Fully managed, No-Ops Services  </li>
+<li>BigQuery  <ul>
+<li>一個 column 就儲存一個 object，不是存 row。(column based)  <ul>
+<li>不要下 <code>select *</code>，會很慢，而且很貴，因為會對 process 的資料量收費。  </li>
+</ul>
+</li>
+<li>每次 query 就透過 mapreduce 去做 macthing  </li>
+<li>可以透過 SQL-like 的語法(GQL)去查詢 big data  </li>
+<li><a href="https://drill.apache.org/">Apache drill</a>  </li>
+</ul>
+</li>
+<li>Pub/Sub  <ul>
+<li>建立一個 big data 用的 queue  </li>
+<li>比較常用的案例是 IoT  </li>
+<li>可搭配 dataflow 作 big data 的運算  </li>
+</ul>
+</li>
+<li>Dataflow  <ul>
+<li>幫你整理資料  </li>
+</ul>
+</li>
+<li>Dataproc  </li>
+</ul>
+<h2>Big Data</h2>
+<h3>Google BigQuery</h3>
+<ul>
+<li>Fully-managed analytics data warehouse  <ul>
+<li>provides a service for near real-time interactive analysis of massive datasets (hundreds of TBs)  </li>
+</ul>
+</li>
+<li>Query using a SQL-like syntax (GQL)  </li>
+<li>Only pay for storage, processing used  </li>
+<li>Zero administration for performance and scale  </li>
+<li>Supports open standads  </li>
+<li>補充  <ul>
+<li>當作 storage 和 analyze 的工具  </li>
+<li>類似 <a href="https://cassandra.apache.org/">Cassandra</a>  </li>
+<li>Column-based  </li>
+<li>1 TB 的資料大概花 6 秒就可以 scan 完  </li>
+<li>一次會幫你開很多機器去做運算，最後吐回一個結果給你  </li>
+<li>切忌用 <code>select *</code>  </li>
+<li>有 dry run 可以先告訴你這個 Query 下下去會花多少錢  </li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud Pub/Sub</h3>
+<ul>
+<li>Scalable and reliable messaging for Google Cloud Platform and beyond  </li>
+<li>Supports many-to-many asynchronous messaging  </li>
+<li>Includes support for offline consumers  </li>
+<li>Based on proven Google technologies  </li>
+<li>Integrates with Cloud Dataflow for data processing pipelines  </li>
+<li>Uses push/pull subscriptions to topics  </li>
+<li>Use cases:  <ul>
+<li>Building block for data ingestion in Dataflow, Internet of Things (IoT), Marketing Analytics  </li>
+<li>Foundation for Dataflow streaming  </li>
+<li>Push notifications for cloud-based applications  </li>
+<li>Connect applications across Google Cloud Platform (push/pull between Compute Engine and App Engine)  </li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud Dataflow</h3>
+<ul>
+<li>Managed service for executing scalable and reliable data pipelines  </li>
+<li>Write code once and get batch and streaming  <ul>
+<li>Transform-based programming model  </li>
+</ul>
+</li>
+<li>Clusters are sized for you  </li>
+<li>Processes data using Compute Engine instances  </li>
+<li>Integrates with GCP services like Cloud  Storage, Cloud Pub/Sub, BigQuery, Bigtable  </li>
+<li>Open source Java and Python SDKs  </li>
+<li>Use cases:  <ul>
+<li>ETL (extract/transform/load) pipelines to move, filter, enrich, shape data  </li>
+<li>Data analysis - batch computation or continuous computation using streaming  </li>
+<li>Orchestration - create pipelines that coordinate services, including external services  <ul>
+<li>可以很容易的和其他服務整合  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Google Cloud Dataproc</h3>
+<ul>
+<li>Fast, easy, managed way to run Hadoop and Spark/Hive/Pig on Google Cloud Platform  </li>
+<li>Benefit from cloud integration  <ul>
+<li>Cloud Storage  </li>
+<li>Stackdriver  </li>
+</ul>
+</li>
+<li>Customize and configure clusters using initialization actions  </li>
+<li>Create clusters in 90 sec or less  </li>
+<li>Dataproc clusters billed minute-by-minute  <ul>
+<li>Save money using preemptible instances for batch processing  </li>
+</ul>
+</li>
+<li>Scale clusters up and down even when jobs are running  </li>
+<li>Developer tools  <ul>
+<li>RESTful API  </li>
+<li>Integration with Google Cloud SDK  </li>
+</ul>
+</li>
+<li>Use cases:  <ul>
+<li>Easily migrate on-premises Hadoop jobs to the cloud  </li>
+<li>Quickly analyze data (like log data) stored in Cloud Storage - create a cluster in less than 2 minutes then delete it immediately  </li>
+<li>Use Spark/Spark SQL to quickly to perform data mining and analysis  <ul>
+<li>Spark SQL 可以讓你比較好操控資料  </li>
+</ul>
+</li>
+<li>Use Spark Machine Learning Libraries (MLlib) to run classification algorithms  <ul>
+<li>Spark 最強的部份就是 MLlib，但之後可能會被 Google 推出的 TensorFlow API 取代掉也不一定  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>補充  <ul>
+<li>Cluster  </li>
+<li>HDFS work node  </li>
+<li>完整的 Hadoop 類型服務  </li>
+<li>可以在 WebUI 上面選擇 node 數目  </li>
+<li>要自己寫 mapreduce  </li>
+<li>支援直接撈 Cloud Storage 的資料，甚至可以把資料送到 BigQuery  </li>
+<li>create cluster 後要 submit job，只要寫好 mapreduce 和 jar 檔，就可以直接幫你處理資料  </li>
+</ul>
+</li>
+</ul>
+<h3><a href="https://datalab.cloud.google.com/">Google Cloud Datalab</a></h3>
+<ul>
+<li>Interactive tool for large-scale data exploration, transformation, analysis, visualization  </li>
+<li>Analyze data in BigQuery, Compute Engine, and Cloud Storage using Python, SQL, and JavaScript  </li>
+<li>Easily deploy transformation, analysis models to BigQuery  </li>
+<li>Integrated, open source  <ul>
+<li>Runs on Google App Engine  </li>
+<li>Built on Jupyter (formerly IPython)  </li>
+<li>Use Google Charts or matplotlib for easy visualizations  </li>
+</ul>
+</li>
+<li>Code, documentation, results, visualizations in intuitive notebook format  </li>
+<li>補充  <ul>
+<li>可以透過 Google 去銜接很多 Datasource，可以做整合，例如匯出報表。  </li>
+<li>有支援 BigQuery, Cloud Dataflow，可以利用他們去做分析  </li>
+<li>用法跟 Jupyter Notebook 差不多  </li>
+<li>是使用 Managed VM 來用 Datalab，該 VM 會裝一些套件，然後透過 GAE 去操作。  <ul>
+<li>安裝好後會變成 GAE 裡頭的其中一個 service  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Machine Learning (Google Cloud ML)</h2>
+<ul>
+<li><a href="https://cloud.google.com/vision/">Vision API</a>  </li>
+<li><a href="https://cloud.google.com/speech/">Speech API</a>  </li>
+<li><a href="https://cloud.google.com/translate/docs/">Translate API</a>  </li>
+<li><a href="https://cloud.google.com/prediction/">Prediction API</a>  </li>
+<li>Google Cloud Machine Learning Use Cases  <ul>
+<li>Structured Data  <ul>
+<li>Classification / Regression  <ul>
+<li>Customer churn analysis  </li>
+<li>Product diagnostics  </li>
+<li>Forecasting  </li>
+</ul>
+</li>
+<li>Recommendation  <ul>
+<li>Content personalization  </li>
+<li>Product X-sells/up-sells  </li>
+</ul>
+</li>
+<li>Anomaly Detection  <ul>
+<li>Fraud detection  </li>
+<li>Asset sensor diagnostics  </li>
+<li>Log metric anomalies  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Unstructured Data  <ul>
+<li>Image Analytics  <ul>
+<li>Identify damaged shipments  </li>
+<li>Explicit content classification  </li>
+<li>Identify “styles” in images  </li>
+</ul>
+</li>
+<li>Text Analytics  <ul>
+<li>Call center log analysis  </li>
+<li>Language identification  </li>
+<li>Topic classification  </li>
+</ul>
+</li>
+<li>Sentiment analysis  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Lab 7</h2>
+<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/cp100-big-query/#0">Getting Started with BigQuery</a>  </li>
+</ul>
+<hr>
+<h1>Questions</h1>
+<ul>
+<li>一個帳號可以管理的 Project 上限是多少？  </li>
+<li>GAE serving static 不用開 instance?  </li>
+<li>Project migration 的建議  </li>
+<li>Bigtable 和 BigQuery 的主要差異  </li>
+<li>GKE 的 MySQL cluster  </li>
+<li>GAE 的 Front-end instances 跟 Back-end instances 的差別  </li>
+</ul>
+<blockquote>
+<p>其實還有很多問題啦，只是沒有太多時間可以問，<br>
+而且要在網路上發問又必須描述的很詳細，<br>
+然後 Facebook 又是個黑洞，很難找之前的發文內容，<br>
+實在不太喜歡拿 Facebook 來問問題。<br>
+所以可能就自己 Google 、親自實驗或之後有機會再在 GCPUG.tw 當面問吧  </p>
+</blockquote>
+<hr>
+<h1>相關連結</h1>
+<ul>
+<li><a href="https://www.facebook.com/groups/GCPUG.TW/">https://www.facebook.com/groups/GCPUG.TW/</a>  <ul>
+<li>臺灣的 Google Cloud Platform User Group，有問題歡迎在上面發問討論。  </li>
+</ul>
+</li>
+<li><a href="https://cloud.google.com/products/calculator/">Google Cloud Platform Pricing Calculator | Google Cloud Platform</a>  <ul>
+<li>GCP Pricing 試算  </li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleCloudPlatformTraining">https://github.com/GoogleCloudPlatformTraining</a>  <ul>
+<li>GCP 教材的 Lab code  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p>有種吃了 GCP 大還丹的感覺，需要時間消化。<br>
+能夠在上班時間來 Google Taipei 上課實在太棒了！<br>
+謝謝同事 Finley 一直被我煩被我問問題 XD<br>
+感謝老闆 Teddy，也感謝辛苦的講師 Simon。  </p>
+</blockquote>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=CP100A%3A%20Google%20Cloud%20Platform%20Fundamentals%0Ahttps%3A//blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/&title=CP100A%3A%20Google%20Cloud%20Platform%20Fundamentals&summary=CP100A%20%E7%AD%86%E8%A8%98&source=https%3A//blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=CP100A%3A%20Google%20Cloud%20Platform%20Fundamentals&amp;body=https%3A//blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/02/gcpug-tw-26/">GCPUG.tw #26</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/08/04/gcpug-tw-28/">GCPUG.tw #28</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/06/03/taiwan-customer-sharing-session-with-google-big-data-engineering-team/">Taiwan Customer Sharing Session - with Google Big Data Engineering team</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/15/cpb200-bigquery-for-data-analysts/">CPB200: BigQuery for Data Analysts</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/07/05/gcpug-tw-27/">GCPUG.tw #27</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/";
+        var disqus_title = "CP100A: Google Cloud Platform Fundamentals";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/05/25/cp100a-google-cloud-platform-fundamentals/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-05-25T20:50:47+08:00"><i class="fa fa-calendar"></i> Wed 25 May 2016</abbr></p>
+
+      <p><abbr title="2016-05-25T22:47:00+08:00"><i class="fa fa-pencil"></i>Wed 25 May 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/google-cloud-platform/" data-toggle="tooltip"
+      class="label label-default"
+      title="7 articles with this tag">Google Cloud Platform</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/05/15/imprisoned-taiwan/" title="《被囚禁的台灣》"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/06/03/taiwan-customer-sharing-session-with-google-big-data-engineering-team/" title="Taiwan Customer Sharing Session - with Google Big Data Engineering team"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

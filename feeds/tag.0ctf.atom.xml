@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - 0CTF</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.0ctf.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-03-30T18:15:23+08:00</updated><entry><title>0CTF 2015 Note</title><link href="https://blog.m157q.tw/posts/2015/03/30/0ctf-2015-note/" rel="alternate"></link><published>2015-03-30T18:15:23+08:00</published><updated>2015-03-30T18:15:23+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-03-30:/posts/2015/03/30/0ctf-2015-note/</id><summary type="html">&lt;p&gt;A note for 0CTF 2015&lt;/p&gt;</summary><content type="html">&lt;h1&gt;web / mislead&lt;/h1&gt;
+&lt;p&gt;Padding Oralcle Attack in Cookie  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Padding_oracle_attack"&gt;https://en.wikipedia.org/wiki/Padding_oracle_attack&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/mwielgoszewski/python-paddingoracle"&gt;https://github.com/mwielgoszewski/python-paddingoracle&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;web / golden mac 1&lt;/h1&gt;
+&lt;p&gt;Download .DS_Store file from http://202.112.26.102/g0ldenM4c/.DS_Store.&lt;br&gt;
+It tells the flag is in http://202.112.26.102/g0ldenM4c/u_can_not_guess_this_haha.&lt;br&gt;
+Then, upload a .docx files which contains XXE to read the flag.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;php://filter/convert.base64-encode/resource=u_can_not_guess_this_haha.php  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.owasp.org/index.php/XML_External_Entity_%28XXE%29_Processing"&gt;https://www.owasp.org/index.php/XML_External_Entity_%28XXE%29_Processing&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://resources.infosecinstitute.com/xxe-attacks/"&gt;http://resources.infosecinstitute.com/xxe-attacks/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;web /forward&lt;/h1&gt;
+&lt;p&gt;forward the MySQL connection to your MySQL Server and look at the network traffic.&lt;br&gt;
+u will see the flag leaked.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;mysql_native_password  &lt;/span&gt;
+&lt;span class="err"&gt;forward  &lt;/span&gt;
+&lt;span class="err"&gt;SELECT flag FROM forward.flag  &lt;/span&gt;
+&lt;span class="err"&gt;def.forward.flag.flag.flag.flag....  &lt;/span&gt;
+&lt;span class="err"&gt;0ctf{w3ll_d0ne_guY}  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;crypto / GREBeginner&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/5lipper/d6363e436f08f12f0bbb"&gt;https://gist.github.com/5lipper/d6363e436f08f12f0bbb&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/GREBeginner.cpp"&gt;GREBeginner&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;crypto / RSA Quine&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/mheistermann/0dee124d7eed2ec26fcd"&gt;https://gist.github.com/mheistermann/0dee124d7eed2ec26fcd&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;mobile / dataraidar&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.forensicswiki.org/wiki/How_To_Decrypt_Android_Full_Disk_Encryption"&gt;http://www.forensicswiki.org/wiki/How_To_Decrypt_Android_Full_Disk_Encryption&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.scrt.ch/2015/03/27/insomnihack-finals-insomnidroid-level-1-writeup/"&gt;http://blog.scrt.ch/2015/03/27/insomnihack-finals-insomnidroid-level-1-writeup/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;mobile / simpleapk&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://androidcracking.blogspot.tw/2010/12/getting-apk-signature-outside-of.html"&gt;http://androidcracking.blogspot.tw/2010/12/getting-apk-signature-outside-of.html&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KT_SaH&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;wytshadow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;simpleapk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;reversed&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;lib&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;saw&lt;/span&gt; &lt;span class="n"&gt;some&lt;/span&gt; &lt;span class="n"&gt;xoring&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;so&lt;/span&gt; &lt;span class="n"&gt;I&lt;/span&gt; &lt;span class="n"&gt;xored&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;txt&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;win&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;riatre&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;wytshadow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;simpleapk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;reverse&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;elf&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;niklasb&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;yeah&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;maybe&lt;/span&gt; &lt;span class="n"&gt;realize&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;they&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="n"&gt;adi&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;niklasb&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;adbi&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;Zzzzzzzzzz&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;wytshadow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;simpleapk&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;inject&lt;/span&gt; &lt;span class="n"&gt;logger&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;smali&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;recompile&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dump&lt;/span&gt; &lt;span class="n"&gt;variable&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt; &lt;span class="o"&gt;;]&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;44&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;niklasb&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;XOR&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="n"&gt;had&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="n"&gt;bytes&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;first&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;45&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KT_SaH&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;ctf&lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="n"&gt;Too_Simple_Sometimes_Naive&lt;/span&gt;&lt;span class="o"&gt;!!!}&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="n"&gt;ctf&lt;/span&gt;&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="n"&gt;It&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;s_More_Than_Meets_The_Eye&lt;/span&gt;&lt;span class="o"&gt;!}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;mobile / VEZEL&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;niklasb&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;wytshadow&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;tl&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;&lt;span class="n"&gt;dr&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;vezel&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;could&lt;/span&gt; &lt;span class="n"&gt;just&lt;/span&gt; &lt;span class="n"&gt;compute&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;values&lt;/span&gt; &lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;another&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KT_SaH&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;vezel&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;IDA&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;adb&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="n"&gt;flag&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;D&lt;/span&gt;  
+&lt;span class="mi"&gt;08&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;39&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;KT_SaH&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;bluestacks&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h1&gt;Pwn Challenges&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://rzhou.org/~ricky/0ctf2015/"&gt;https://rzhou.org/~ricky/0ctf2015/&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/0ops_app.py"&gt;0ops App&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/flaggenerator.py"&gt;Flag Generator&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/freenote.py"&gt;freenote&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="/files/0ctf-2015-note/login.py"&gt;login&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/49c7d68ee13f29ddb435"&gt;https://gist.github.com/seanwupi/49c7d68ee13f29ddb435&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/37ffc34032c0ada9a9d8"&gt;flagen&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/929df6655f2acdbab3ff"&gt;freenode&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/e4b1f039e9f949a7b972"&gt;login&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/713023672c42aa62ca9e"&gt;0opsapp&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://gist.github.com/seanwupi/286c823afe64617c652d"&gt;vbs&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;VBS  &lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6332"&gt;CVE-2014-6332&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;Misc&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;LFI - Local File Inclusion  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/File_inclusion_vulnerability"&gt;https://en.wikipedia.org/wiki/File_inclusion_vulnerability&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion"&gt;https://www.owasp.org/index.php/Testing_for_Local_File_Inclusion&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://hakipedia.com/index.php/Local_File_Inclusion"&gt;http://hakipedia.com/index.php/Local_File_Inclusion&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SSRF - Server Side Request Forgery  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.acunetix.com/blog/articles/server-side-request-forgery-vulnerability/"&gt;https://www.acunetix.com/blog/articles/server-side-request-forgery-vulnerability/&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.slideshare.net/d0znpp/ssrf-attacks-and-sockets-smorgasbord-of-vulnerabilities"&gt;http://www.slideshare.net/d0znpp/ssrf-attacks-and-sockets-smorgasbord-of-vulnerabilities&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="CTF"></category><category term="Write-up"></category><category term="0CTF"></category></entry></feed>

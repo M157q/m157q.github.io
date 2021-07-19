@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  加密和雜湊有什麼不一樣？
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/12/25/differences-between-encryption-and-hashing/" rel="bookmark" title="Permalink to 加密和雜湊有什麼不一樣？">加密和雜湊有什麼不一樣？</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>很多人很容易把加密和雜湊搞混，利用這篇文章說明一下兩者的區別。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>其實雜湊 (Hash) 的部份，本來是打算放在 <a href="/posts/2017/12/23/differences-between-encryption-compression-and-encoding/">如何區分加密、壓縮、編碼</a> 這篇一起講。但在撰寫的過程中發覺雜湊跟其他三者相比起來的差異性較大，一起講其實蠻突兀的，不太好比較。而且我自己目前看到的狀況是，雜湊比較容易跟加密搞混，所以才獨立出這篇來講一下雜湊與加密的關係。  </p>
+<p>你可能或多或少都有看過或聽過「MD5 加密」、「MD5 解密」、「SHA-1 加密」、「SHA-1 解密」、「雜湊加密演算法」。但 MD5 和 SHA-1 實際上並不是加密演算法，而是雜湊演算法。究竟加密跟雜湊到底有什麼不一樣，又該如何區分，這篇會簡單講解一下。  </p>
+<p>因為加密的部份已經在 <a href="/posts/2017/12/23/differences-between-encryption-compression-and-encoding/">如何區分加密、壓縮、編碼</a> 這篇提過了，所以就不重述，還不清楚的人歡迎點擊上述文章連結前去察看。以下會先講雜湊的特性，再講雜湊跟加密的區別。  </p>
+<hr>
+<h3>雜湊 (Hash)</h3>
+<p>其實雜湊在一些壓縮演算法或者排序演算法也都有用到，<br>
+但這邊只就資訊安全相關的部份進行討論。  </p>
+<ul>
+<li>特性  <ul>
+<li>無論原文的內容長短，透過雜湊演算法運算完的輸出都會是固定的長度，即輸出的長度不受原文長度影響。  </li>
+<li>雜湊演算法的輸出又被稱做「雜湊值」(Hash Value)。  </li>
+<li>不同雜湊演算法輸出的雜湊值長度可能相同。  <ul>
+<li>無法用雜湊值長度來完全斷定使用哪種雜湊演算法。</li>
+<li>MD2, MD4, MD5 輸出長度皆為 128 bits，通常用 32 個十六進位數表示。</li>
+<li>SHA-0, SHA-1 輸出長度為 160 bits，通常用 40 個十六進位數表示。</li>
+</ul>
+</li>
+<li>兩個輸入的內容即便只差一個字，雜湊演算法產生的兩個輸出內容卻會差非常多，可以明顯區別。  </li>
+<li>相同的內容作為相同雜湊演算法的輸入，得到的輸出必定一樣。  </li>
+<li>不同的內容作為相同雜湊演算法的輸入，得到相同輸出的機率極低。  <ul>
+<li>注意，是極低，不是不可能。</li>
+<li>雜湊碰撞 (Hash Collision) 的資安攻擊手法跟這個有關。  </li>
+</ul>
+</li>
+<li>無法將雜湊演算法的輸出解回原本的輸入，雜湊是單向的。  <ul>
+<li>但因為相同輸入會得到相同輸出，所以最常見的破解方法就是透過 brute-force 的方式，用程式把各種可能的輸入都餵給雜湊演算法，得到輸出後，把輸入跟輸出以及所使用的雜湊演算法記起來，成為一張對應表（被稱做 rainbow table，彩虹表）。  </li>
+<li>然後拿雜湊值去其使用之雜湊演算法的 rainbow table 找尋輸入值，因為 rainbow table 是可以一直累積的，所以理論上來說，只要 rainbow table 夠大的話，就能夠找到原始的輸入值。  </li>
+<li>所以資安實務上會再為原始資料加入 salt 之後，才會丟給雜湊演算法運算，獲得加了 salt 以後的雜湊值。  <ul>
+<li>salt 基本上就是額外加入的字串，可以用固定的規則改變原本的輸入值。  </li>
+<li>這樣的好處是，就算被破解了，破解的人拿到的字串仍然不會是密碼，拿去登入是不會成功的。  </li>
+<li>但在比對使用者輸入的密碼時，一樣可以加了 salt 之後再進行雜湊去比對，仍然可以驗證密碼是否正確，而安全性會增加。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>用途  <ul>
+<li>檔案校驗碼（Checksum）  <ul>
+<li>用來快速判斷檔案是否和原本相同。  </li>
+<li>有在論壇下載過檔案的人應該都很常見到一長串 MD5 或 SHA-1 驗證碼，就是用來讓你快速檢查你下載的檔案裡頭的內容，是不是跟上傳者上傳的檔案一樣。  </li>
+<li>不一樣的話可能就是你載錯檔案、檔案有毀損或檔案被人加料了。  </li>
+</ul>
+</li>
+<li>不需要被還原的資料  <ul>
+<li>例如：避免明文儲存使用者密碼  <ul>
+<li>避免直接儲存使用者的明文密碼，除了避免資料庫外洩時，攻擊者無需進一步運算就可以直接得到明文密碼外，一方面也是尊重使用者，因為正常情況下只有使用者知道自己的密碼。  </li>
+<li>要簡單判斷網站有沒有明文儲存你的密碼最簡單的兩個方法：  <ul>
+<li>寄信給你的時候有沒有直接把密碼寫在內文。  </li>
+<li>忘記密碼的時候不是要求你或幫你重新設定密碼，而是直接告訴你你的密碼。  </li>
+</ul>
+</li>
+<li>但因為相同原文透過相同的雜湊演算法會得到相同的輸出，所以可以在不明文儲存使用者密碼的情況下，確認使用者輸入的密碼是否正確。  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>雜湊碰撞 (Hash Collision)  <ul>
+<li>上面有提到「不同內容作為同一個雜湊演算法的輸入值，可能得到相同輸出的雜湊值，只是機率極低。」雜湊碰撞就是此狀況的應用。  </li>
+<li>這在實例上大概是什麼狀況？  <ul>
+<li>帳號密碼<ul>
+<li>還記得剛剛說到我們用來檢驗使用者密碼是否輸入正確，是透過比對雜湊值是否相同來作為依據嗎？  </li>
+<li>透過雜湊碰撞，攻擊者可以不必知道你的密碼，只要找到某一個輸入，透過同一個雜湊演算法會得到相同的輸出雜湊值，便可讓程式認為攻擊者輸入了正確的密碼。  </li>
+</ul>
+</li>
+<li>下載檔案<ul>
+<li>透過雜湊碰撞，攻擊者可能可以提供一個和你想下載的檔案完全不同且惡意的檔案，因為算出來的雜湊值相同，讓你放心地開啟後進而遭受攻擊。</li>
+</ul>
+</li>
+<li>網站的加密憑證（TLS/SSL）<ul>
+<li>許多網站的加密憑證簽署過程都有涉及雜湊，所以一旦可以進行碰撞，攻擊者就有機會偽造加密憑證。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>現今說的某個雜湊演算法已經不夠安全，基本上指的是：「透過某些方法：可能是發現了雜湊演算法設計上的缺陷、硬體進步導致運算速度變快，使攻擊者在可以接受的時間內，即可找到雜湊碰撞。」</li>
+<li>理論上來說，所有雜湊演算法都是可以進行雜湊碰撞的，所以安不安全是在於運算雜湊碰撞所需的時間成本問題。</li>
+<li>關於雜湊碰撞的成本，可以參考這篇 2017 年 Google 正式破解 SHA-1 的報導： <a href="https://www.inside.com.tw/article/8614-google-just-had-first-sha-1-collision">九百萬兆次演算實現碰撞！Google 攻破了最重要的加密技術 - INSIDE</a></li>
+<li>等到運算能力超強的量子電腦普及之後，又將會迎來一場不同的局面，到時勢必又有許多資安相關的演算法會被淘汰。當然也會有新的演算法被發明出來，已經有許多資安專家在針對量子電腦領域設計其專用的資安相關演算法了，這裡就不詳述了，怕這篇文章太過發散。</li>
+<li>小提醒：「雜湊碰撞」跟中國資安用語的「撞庫」不同。  <ul>
+<li>所謂的「撞庫」，是指當某個服務的使用者密碼外洩，攻擊者拿這個服務外洩的帳號密碼去嘗試登入其他服務。（因為很多人都會在不同服務使用相同的帳號密碼。）  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常見演算法  <ul>
+<li>SHA 系列  <ul>
+<li>SHA-0  <ul>
+<li>不安全。</li>
+</ul>
+</li>
+<li>SHA-1  <ul>
+<li>不安全。</li>
+</ul>
+</li>
+<li>SHA-2  <ul>
+<li>根據輸出長度不同，可分為 SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256</li>
+</ul>
+</li>
+<li>SHA-3  <ul>
+<li>根據輸出長度不同，可分為 SHA3-224, SHA3-256, SHA3-384, SHA3-512, SHAKE128, SHAKE256 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MD 系列  <ul>
+<li>MD2<ul>
+<li>不安全。</li>
+</ul>
+</li>
+<li>MD4<ul>
+<li>不安全。</li>
+</ul>
+</li>
+<li>MD5<ul>
+<li>不安全。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BLAKE 系列<ul>
+<li>此系列算是近幾年才設計出來的，號稱加密速度比 SHA 系列和 MD 系列都快且安全。</li>
+<li>BLAKE  <ul>
+<li>2008 年提出</li>
+</ul>
+</li>
+<li>BLAKE2  <ul>
+<li>2012 年提出</li>
+</ul>
+</li>
+<li>BLAKE3  <ul>
+<li>2020 年提出</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>結論  <ul>
+<li>就是一串拿來做檢查的字串，但根據使用需求可以有不同的用途。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>所以，為什麼雜湊不是加密？</h2>
+<p>我個人認為雜湊和加密很容易被人搞混的原因，主要是因為雜湊和加密通常是一起使用的，常常被拿在一起講，加上得到的輸出都是一串無意義的字串，所以久而久之就搞混了。  </p>
+<p>但其實可以透過以下幾點來區分：  </p>
+<ul>
+<li>加密需要密鑰，且可以透過解密得到原文。（加密可逆）  </li>
+<li>雜湊不需密鑰，無法逆向解出原始輸入。（雜湊不可逆）  <ul>
+<li>雖然可以透過額外儲存的 rainbow table 來找尋原始輸入，但彩虹表是預先計算並儲存下來的，而不是雜湊演算法本身的設計。  </li>
+</ul>
+</li>
+<li>舉例  <ul>
+<li>今天如果我拿到一串密文，我是有辦法透過解密，得到原始的明文的，而且如果使用非對稱式加密的話，我甚至還可以驗證傳送方是不是本人（是否有被進行中間人攻擊）。  <ul>
+<li>雜湊演算法在這裡也會被使用，通常會被拿來檢驗傳送的訊息是否有被更改過。  </li>
+<li>傳送方附上原始訊息經過某個雜湊演算法得出的雜湊值，接收方在解開這個訊息之後，會透過相同的雜湊演算法來驗證。  </li>
+</ul>
+</li>
+<li>但如果是拿到一串雜湊值的話，理論上是無法逆向得到原始的明文的，根本無法拿來做資料的傳遞。  </li>
+</ul>
+</li>
+</ul>
+<p>所以別再說出「MD5 加密」、「MD5 解密」、「SHA-1 加密」、「SHA-1 解密」之類的話啦！</p>
+<hr>
+<h2>小測驗</h2>
+<p>如果這兩篇有看懂的話，應該就可以理解<a href="https://mobile.twitter.com/orsonwang/status/944400953591021568">這個 tweet</a> 在講什麼：  </p>
+<blockquote>
+<p>pkcs7 簽章使用 RSA 加密演算法對資料的 SHA256 雜湊值簽章，台灣的金融機構習慣對這簽章做 base64 編碼來避免古早用 Cobol 的系統以 ASCII 字碼接收而產生所有資料第 8 bit 都是 0 而引起的驗證錯誤。  </p>
+</blockquote>
+<hr>
+<h2>參考資料</h2>
+<ul>
+<li><a href="https://dotblogs.com.tw/regionbbs/2017/09/21/hashing_is_not_encryption">[Security] 雜湊不是加密，雜湊不是加密，雜湊不是加密。 | 小朱® 的技術隨手寫 - 點部落</a>  </li>
+<li><a href="https://www.securityinnovationeurope.com/blog/page/whats-the-difference-between-hashing-and-encrypting">What is The Difference Between Hashing and Encrypting</a>  </li>
+<li><a href="https://zh.wikipedia.org/zh-tw/%E7%9B%90_(%E5%AF%86%E7%A0%81%E5%AD%A6)">鹽 (密碼學) - 維基百科，自由的百科全書</a>  </li>
+<li><a href="https://en.wikipedia.org/wiki/BLAKE_(hash_function)">BLAKE (hash function) - Wikipedia</a></li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E5%8A%A0%E5%AF%86%E5%92%8C%E9%9B%9C%E6%B9%8A%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E4%B8%80%E6%A8%A3%EF%BC%9F%0Ahttps%3A//blog.m157q.tw/posts/2017/12/25/differences-between-encryption-and-hashing/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/12/25/differences-between-encryption-and-hashing/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/12/25/differences-between-encryption-and-hashing/&title=%E5%8A%A0%E5%AF%86%E5%92%8C%E9%9B%9C%E6%B9%8A%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E4%B8%80%E6%A8%A3%EF%BC%9F&summary=%E5%BE%88%E5%A4%9A%E4%BA%BA%E5%BE%88%E5%AE%B9%E6%98%93%E6%8A%8A%E5%8A%A0%E5%AF%86%E5%92%8C%E9%9B%9C%E6%B9%8A%E6%90%9E%E6%B7%B7%EF%BC%8C%E5%88%A9%E7%94%A8%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%AA%AA%E6%98%8E%E4%B8%80%E4%B8%8B%E5%85%A9%E8%80%85%E7%9A%84%E5%8D%80%E5%88%A5%E3%80%82&source=https%3A//blog.m157q.tw/posts/2017/12/25/differences-between-encryption-and-hashing/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E5%8A%A0%E5%AF%86%E5%92%8C%E9%9B%9C%E6%B9%8A%E6%9C%89%E4%BB%80%E9%BA%BC%E4%B8%8D%E4%B8%80%E6%A8%A3%EF%BC%9F&amp;body=https%3A//blog.m157q.tw/posts/2017/12/25/differences-between-encryption-and-hashing/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/">如何區分加密、壓縮、編碼</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/02/tips-about-facebook-url/">Facebook 網址的一些黑魔法</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/">利用 ngrok 直接在本機開發 chatbot</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/27/fetch-my-github-commits-in-one-organization-with-python-script/">用 Python 抓出我在前公司貢獻了多少 GitHub commits</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/24/i-love-open-source-because-someone-will-write-testings-for-me/">我愛開源，因為會遇到路人幫我寫測試。</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/12/25/differences-between-encryption-and-hashing/";
+        var disqus_title = "加密和雜湊有什麼不一樣？";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/12/25/differences-between-encryption-and-hashing/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-12-25T23:57:23+08:00"><i class="fa fa-calendar"></i> Mon 25 December 2017</abbr></p>
+
+      <p><abbr title="2020-10-13T15:24:40+08:00"><i class="fa fa-pencil"></i>Tue 13 October 2020</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/encryption/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">Encryption</a>
+  <br>
+            <a href="/tag/hashing/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Hashing</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/24/i-love-open-source-because-someone-will-write-testings-for-me/" title="我愛開源，因為會遇到路人幫我寫測試。"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/26/i-left-my-first-full-time-job/" title="我的新鮮人離職紀錄"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

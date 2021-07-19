@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  中國網路相關筆記
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2018/01/11/dealing-with-china-network/" rel="bookmark" title="Permalink to 中國網路相關筆記">中國網路相關筆記</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>紀錄一下 2016 年 10 月左右處理跟中國網路相關問題時的一些筆記。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>2016 年 8 月緊急接到要支援客戶在中國的服務，但我們現有的 infrastructure 都是在台灣，又不可能在短時間內全部搬到中國的雲服務商那，所以就用上了各種 workaround，最後算是得到了一個還可以接受的結果，雖然不盡理想就是。  </p>
+<p>當時實在是忙到沒啥時間紀錄，最近比較有空了，用這篇文章留個紀錄一下。  </p>
+<hr>
+<h2>一些可以用來輔助的網站</h2>
+<ul>
+<li><a href="https://en.greatfire.org/analyzer">https://en.greatfire.org/analyzer</a>  <ul>
+<li>TEST URL 可以讓你檢查某個網址在中國是不是被禁止的  </li>
+</ul>
+</li>
+<li><a href="https://www.17ce.com/">https://www.17ce.com/</a>  <ul>
+<li>可以用來檢查中國大部份地區以及少數國外地區連到某個網站的狀況  </li>
+<li>我後來有寫個爬蟲專門爬這網站的結果，每個小時去檢查連到某個網址的狀況。  </li>
+</ul>
+</li>
+<li><a href="http://ping.chinaz.com/">http://ping.chinaz.com/</a>  <ul>
+<li>可以用來檢查中國大部份地區以及少數國外地區連到某個網站的狀況  </li>
+<li>我後來有寫個爬蟲專門爬這網站的結果，每個小時去檢查連到某個網址的狀況。  </li>
+</ul>
+</li>
+<li><a href="http://www.speedtest.cn/">http://www.speedtest.cn/</a>  <ul>
+<li>中國的 SpeedTest  </li>
+</ul>
+</li>
+<li><a href="http://www.webkaka.com/">http://www.webkaka.com/</a>  <ul>
+<li>一樣是中國大部份地區連到某個網址的狀況，但伺服器的站點數量沒有很多，有些省分沒有。  </li>
+</ul>
+</li>
+<li><a href="http://tools.cloudxns.net/">http://tools.cloudxns.net/</a>  <ul>
+<li>有一系列的工具可以使用，主要都是跟 DNS 比較相關。  </li>
+<li>當時是用來查合作伙伴的伺服器到底有沒有指到中國內的伺服器用的。  </li>
+</ul>
+</li>
+<li><a href="https://www.hidemyass.com/proxy">https://www.hidemyass.com/proxy</a>  <ul>
+<li>免費的 web proxy，當時用來檢測中國國內某個地方是否可以成功存取我們的資源。  </li>
+</ul>
+</li>
+<li><a href="https://chrome.google.com/webstore/detail/proxy-switchysharp/dpplabbmogkhghncfbfdeeokoefdjegm">https://chrome.google.com/webstore/detail/proxy-switchysharp/dpplabbmogkhghncfbfdeeokoefdjegm</a>  <ul>
+<li>免費的 chrome plugin，當時用來檢測中國國內某個地方是否可以成功存取我們的資源。  </li>
+</ul>
+</li>
+<li><a href="https://www.gdaily.org/8170/free-proxy-google-china-japan-usa">https://www.gdaily.org/8170/free-proxy-google-china-japan-usa</a>  <ul>
+<li>整理了一些免費的 proxy 資源，主要是 proxy 到牆內用。  </li>
+</ul>
+</li>
+<li><a href="http://proxy.moo.jp/zh/?c=CN&amp;pt=&amp;pr=&amp;a%5B%5D=0&amp;a%5B%5D=1&amp;a%5B%5D=2&amp;u=0">http://proxy.moo.jp/zh/?c=CN&amp;pt=&amp;pr=&amp;a%5B%5D=0&amp;a%5B%5D=1&amp;a%5B%5D=2&amp;u=0</a>  <ul>
+<li>列出了有哪些免費的 proxy 位址可供使用。  </li>
+<li>但很常變動，常常要換就是。  </li>
+</ul>
+</li>
+<li><a href="http://ipcn.chacuo.net/">http://ipcn.chacuo.net/</a>  <ul>
+<li>列出中國 IP 對應到哪個電信商及省分的列表  </li>
+</ul>
+</li>
+</ul>
+<p>當然使用免費的 proxy 就要記得不要在網站上輸入啥私密資料了，畢竟很有可能會被錄封包。  </p>
+<hr>
+<h2>狀況</h2>
+<p>因為現有的服務使用 Google Cloud Platform，伺服器在美國，客戶在中國的網站直接嵌入我們原本提供的 JavaScript 會被中國的防火長城擋掉，導致客戶的網站上看到錯誤，或是要等很久才能載入，等於現有的服務無法提供使用。除了短時間內無法搬到中國的雲服務商上面以外，老闆也不太希望這麼做，一方面是時間上的壓力，一方面是費用的問題，所以還是希望能夠儘量用現有的服務，如果不能全部搬過去也沒差，只要有辦法得到的一個能接受的結果就好。  </p>
+<hr>
+<h2>歷程</h2>
+<ul>
+<li>因為連不到放在美國伺服器上的 JavaScript，所以得把目前在用的 JavaScript 放一份到中國雲服務商上，最好還要有 CDN。  <ul>
+<li>原本有想說要比較中國各服務商例如：青雲、阿里雲、騰訊雲等等，哪些比較好用。但後來因為公司以前有陣子有用阿里雲的服務，所以有帳號，加上時間很趕，所以就直接使用阿里雲了。  </li>
+<li>把公司自己的 JavaScript 複製到阿里雲上之後，可以成功連到了。  </li>
+</ul>
+</li>
+<li>但使用的 Google Tag Manager 要載入的 gtm.js 在有些狀況仍然連不到，但有時候卻連得到。  <ul>
+<li>這部份除非不用 Google Tag Manager，不然基本上沒有什麼太好的解法。  </li>
+<li>遇到的時候有去找中國有沒有類似 Google Tag Manager 的服務，但找不太到。  </li>
+<li>加上公司使用 Google Tag Manager 有弄出自己的一套架構，所以要搬也沒那麼好搬。  </li>
+</ul>
+</li>
+<li>就想說能不能幫 gtm.js 弄個 proxy。  <ul>
+<li>有找到這個：<a href="http://www.ajax-cross-origin.com/">Ajax Cross Origin - jQuery plugin</a>，實際也有架起來。  </li>
+<li>但後來才想到這樣根本行不通，因為 gtm.js 會紀錄使用者的行為，架了一個 proxy 的話就會被擋住。  </li>
+</ul>
+</li>
+</ul>
+<p>到此已經放棄讓所有使用者都載入 gtm.js 了，轉而變成「讓可以載入的使用者載入，無法載入的就不要載入，而且不能顯示有錯誤。」因為客戶要求不能在連到他們的網站時在瀏覽器的 console 中看到任何錯誤。  </p>
+<ul>
+<li>於是轉而想說能不能做到「如果嘗試載入 JavaScript 一段時間後不成功的話就停止載入。」  <ul>
+<li>有找到 StackOverflow 上的這篇： <a href="https://stackoverflow.com/questions/5642270/load-a-javascript-file-but-cancel-if-it-takes-too-long">browser - Load a Javascript file, but cancel if it takes too long? - Stack Overflow</a>  </li>
+<li>試了一下發現無法成功。  </li>
+</ul>
+</li>
+<li>最後自己想出了一個折衷的辦法，但非常的土炮。  <ul>
+<li>我在阿里雲上開了台虛擬機，用 Django 架了個伺服器。  </li>
+<li>寫了個 crawler 每小時固定去爬上面提到的 <a href="https://www.17ce.com/">https://www.17ce.com/</a> 和 <a href="http://ping.chinaz.com/">http://ping.chinaz.com/</a> ，把他們有沒有辦法載入 gtm.js 的結果紀錄起來。  <ul>
+<li>其結果會包含省分、電信商及其能不能載入。  </li>
+</ul>
+</li>
+<li>另外一個 crawler 則是去爬 <a href="http://ipcn.chacuo.net/">http://ipcn.chacuo.net/</a>，把所有 IP 對應到的省分和電信商紀錄下來，每天會更新一次。  </li>
+<li>最後在使用者瀏覽客戶的網站要嘗試載入 gtm.js 之前，會先去問我用 Django 架起來的伺服器，會把使用者的 IP 當參數送過來。  </li>
+<li>伺服器收到使用者的 IP 後，先去拿到其所屬的省分和電信商，再去檢查最近一個小時的結果是否能夠載入，如果可以載入的話，API 就會回傳 true 回去，不行的話就回傳 false，當然都是包成 JSON 回傳回去。  </li>
+<li>伺服器同時也會把來詢問的結果紀錄到資料庫裡頭，以供日後查詢統計用。最後發現平均能夠載入載入的比例大概是四成左右而已，雖然少的可憐，但至少是可以接受的結果。  </li>
+<li>是說這個 Django 專案也算是我第一個完全自己獨力完成的，也學到了不少東西。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>結論</h2>
+<p>最後整件事情弄完的結論就是：如果原本沒有做中國的服務然後哪天要做中國的服務的話，絕對不要堅持用現有的服務來用，除非確定完全可以動。不然就會出現各種奇怪的狀況，需要各種不同的 workaround 來解，真的會很累。  </p>
+<hr>
+<h2>參考來源</h2>
+<ul>
+<li><a href="http://www.ajax-cross-origin.com/install.html">Ajax Cross Origin - jQuery plugin</a>  </li>
+<li><a href="https://webmasters.stackexchange.com/questions/81878/google-tag-manager-blocked-in-china">Google Tag Manager blocked in China..? - Webmasters Stack Exchange</a>  </li>
+<li><a href="https://stackoverflow.com/questions/5642270/load-a-javascript-file-but-cancel-if-it-takes-too-long">browser - Load a Javascript file, but cancel if it takes too long? - Stack Overflow</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E4%B8%AD%E5%9C%8B%E7%B6%B2%E8%B7%AF%E7%9B%B8%E9%97%9C%E7%AD%86%E8%A8%98%0Ahttps%3A//blog.m157q.tw/posts/2018/01/11/dealing-with-china-network/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2018/01/11/dealing-with-china-network/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2018/01/11/dealing-with-china-network/&title=%E4%B8%AD%E5%9C%8B%E7%B6%B2%E8%B7%AF%E7%9B%B8%E9%97%9C%E7%AD%86%E8%A8%98&summary=%E7%B4%80%E9%8C%84%E4%B8%80%E4%B8%8B%202016%20%E5%B9%B4%2010%20%E6%9C%88%E5%B7%A6%E5%8F%B3%E8%99%95%E7%90%86%E8%B7%9F%E4%B8%AD%E5%9C%8B%E7%B6%B2%E8%B7%AF%E7%9B%B8%E9%97%9C%E5%95%8F%E9%A1%8C%E6%99%82%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%86%E8%A8%98%E3%80%82&source=https%3A//blog.m157q.tw/posts/2018/01/11/dealing-with-china-network/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E4%B8%AD%E5%9C%8B%E7%B6%B2%E8%B7%AF%E7%9B%B8%E9%97%9C%E7%AD%86%E8%A8%98&amp;body=https%3A//blog.m157q.tw/posts/2018/01/11/dealing-with-china-network/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/02/tips-about-facebook-url/">Facebook 網址的一些黑魔法</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/">利用 ngrok 直接在本機開發 chatbot</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/">嘗試在 Python 中做到 Golang fmt 的效果</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2013/11/12/computer-science-seminars-theoretical-foundation-behind-strong-growth-of-smartphones/">資訊工程研討 - Theoretical Foundation Behind Strong Growth of Smartphones</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/24/i-love-open-source-because-someone-will-write-testings-for-me/">我愛開源，因為會遇到路人幫我寫測試。</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2018/01/11/dealing-with-china-network/";
+        var disqus_title = "中國網路相關筆記";
+        var disqus_url = "https://blog.m157q.tw/posts/2018/01/11/dealing-with-china-network/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2018-01-11T16:00:26+08:00"><i class="fa fa-calendar"></i> Thu 11 January 2018</abbr></p>
+
+      <p><abbr title="2018-02-01T00:22:26+08:00"><i class="fa fa-pencil"></i>Thu 01 February 2018</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/network/" data-toggle="tooltip"
+      class="label label-default"
+      title="5 articles with this tag">Network</a>
+  <br>
+            <a href="/tag/china/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">china</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/10/docker-travis-ci-kubernetes-gke/" title="Docker + Travis CI + Kubernetes + GKE"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2018/01/12/articles-related-to-interview/" title="整理一些跟面試相關的文章"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

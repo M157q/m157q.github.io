@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Taipei.py 20160630
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/06/30/taipei-py-20160630/" rel="bookmark" title="Permalink to Taipei.py 20160630">Taipei.py 20160630</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for Taipei.py 2016/06/30 Meetup</p>
+  </blockquote>
+  <div>
+    <ul>
+<li><a href="http://www.meetup.com/Taipei-py/events/230363477/">http://www.meetup.com/Taipei-py/events/230363477/</a>  </li>
+</ul>
+<hr>
+<h2>Python 中常遇到的小錯誤 - Tim</h2>
+<h3>Space vs Tab</h3>
+<p>若是縮排減少，會把堆疊 pop 到縮排與堆疊頂端一致。  </p>
+<h3>Default Argument</h3>
+<div class="highlight"><pre><span></span><span class="n">def</span> <span class="n">play</span><span class="p">(</span><span class="n">song_list</span><span class="o">=</span><span class="p">[]):</span>  
+    <span class="n">song_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;a random song&#39;</span><span class="p">)</span>  
+    <span class="n">print</span><span class="p">(</span><span class="n">song_list</span><span class="p">)</span>  
+
+<span class="n">play</span><span class="p">()</span>  
+<span class="n">play</span><span class="p">()</span>  
+</pre></div>
+
+
+<p>=&gt;  </p>
+<div class="highlight"><pre><span></span><span class="err">[&#39;a random song&#39;]  </span>
+<span class="err">[&#39;a random song&#39;, &#39;a random song&#39;]  </span>
+</pre></div>
+
+
+<p>初始化只會初始一次  </p>
+<h3>Closure</h3>
+<div class="highlight"><pre><span></span><span class="n">def</span> <span class="k">outer</span><span class="p">():</span>  
+    <span class="n">outer_variable</span> <span class="o">=</span> <span class="mi">10</span>  
+
+    <span class="n">def</span> <span class="n">common</span><span class="p">():</span>  
+        <span class="n">print</span><span class="p">(</span><span class="n">outer_variable</span><span class="p">)</span>  
+
+    <span class="n">outer_variable</span> <span class="o">=</span> <span class="mi">100</span>  
+
+    <span class="k">return</span> <span class="n">common</span>  
+</pre></div>
+
+
+<p>=&gt;  </p>
+<div class="highlight"><pre><span></span><span class="k">outer</span><span class="p">()()</span>  
+
+<span class="mi">100</span>  
+</pre></div>
+
+
+<ul>
+<li>當產生 Closure 的時候，Python 並沒有執行函數內的程式。  </li>
+<li>裡面的變數還沒有取得 reference，Python 只是記住變數名字而已(Lexical Scope)  </li>
+<li>被 closure 記住的變數，不會立刻被 GC。  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">def</span> <span class="k">outer</span><span class="p">():</span>  
+    <span class="n">outer_variable</span> <span class="o">=</span> <span class="mi">10</span>  
+
+    <span class="n">def</span> <span class="n">common</span><span class="p">(</span><span class="k">parameter</span><span class="o">=</span><span class="n">outer_variable</span><span class="p">):</span>  
+        <span class="n">print</span><span class="p">(</span><span class="k">parameter</span><span class="p">)</span>  
+
+    <span class="n">outer_variable</span> <span class="o">=</span> <span class="mi">100</span>  
+
+    <span class="k">return</span> <span class="n">common</span>  
+</pre></div>
+
+
+<p>=&gt;  </p>
+<div class="highlight"><pre><span></span><span class="k">outer</span><span class="p">()()</span>  
+
+<span class="mi">10</span>  
+</pre></div>
+
+
+<ul>
+<li>改成用 <code>class</code>, 並使用 <code>__call__</code>。資源抓取會更清楚，而不是依賴 lexical scope。  </li>
+<li>或是使用 <code>functool.partial</code>  </li>
+</ul>
+<h3>Global variable</h3>
+<div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="mi">10</span>  
+
+<span class="n">def</span> <span class="n">change</span><span class="p">():</span>  
+    <span class="n">value</span> <span class="o">=</span> <span class="mi">20</span>  
+
+<span class="n">change</span><span class="p">()</span>  
+<span class="n">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  
+
+<span class="o">=&gt;</span> <span class="mi">10</span>  
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="mi">10</span>  
+
+<span class="n">def</span> <span class="n">change</span><span class="p">():</span>  
+    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="mi">20</span>  
+
+<span class="n">change</span><span class="p">()</span>  
+<span class="n">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  
+
+<span class="o">=&gt;</span> <span class="n">UnboundError</span>  
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="mi">10</span>  
+
+<span class="n">def</span> <span class="n">change</span><span class="p">():</span>  
+    <span class="k">global</span> <span class="n">value</span>  
+    <span class="n">value</span> <span class="o">+=</span> <span class="mi">10</span>  
+
+<span class="n">change</span><span class="p">()</span>  
+<span class="n">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  
+
+<span class="o">=&gt;</span> <span class="mi">20</span>  
+</pre></div>
+
+
+<h3>del</h3>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">SimpleType</span>(<span class="n">object</span>):  
+    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>):  
+        <span class="nb">print</span>(<span class="s">&#39;simple born&#39;</span>)  
+    <span class="n">def</span> <span class="n">__del__</span>(<span class="k">self</span>):  
+        <span class="nb">print</span>(<span class="s">&#39;simple born&#39;</span>)  
+
+<span class="n">simple</span> = <span class="n">SimpleType</span>()  
+<span class="n">del</span> <span class="n">simple</span>  
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">FooType</span>(<span class="n">object</span>):  
+    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>, <span class="n">parent</span>):  
+        <span class="k">self</span>.<span class="n">parent</span> = <span class="n">parent</span>  
+        <span class="nb">print</span>(<span class="s">&#39;Foo born&#39;</span>)  
+
+    <span class="n">def</span> <span class="n">__del__</span>(<span class="k">self</span>):  
+        <span class="nb">print</span>(<span class="s">&#39;Foo died&#39;</span>)  
+
+<span class="k">class</span> <span class="n">BarType</span>(<span class="n">object</span>):  
+    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>):  
+        <span class="k">self</span> = <span class="n">FooType</span>(<span class="k">self</span>)  
+        <span class="nb">print</span>(<span class="s">&#39;Bar born&#39;</span>)  
+
+    <span class="n">def</span> <span class="n">__del__</span>(<span class="k">self</span>):  
+        <span class="nb">print</span>(<span class="s">&#39;Bar died&#39;</span>)  
+
+=&gt;  
+<span class="n">Foo</span> <span class="n">born</span>  
+<span class="n">Bar</span> <span class="n">born</span>  
+</pre></div>
+
+
+<ul>
+<li><code>del</code> 只會讓名字從 symbol table 消失，並讓 reference count - 1  </li>
+<li>當 reference count 為 0 的時候，才會執行 GC 的動作(<code>__del__</code>)  </li>
+<li>可以解決 Circular Reference 的問題  </li>
+<li>有 circular reference 的時候 Python 不會真的執行 del  </li>
+</ul>
+<h3>Interface</h3>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>  
+
+<span class="k">class</span> <span class="nc">Sized</span><span class="p">:</span>  
+    <span class="vm">__metaclass__</span> <span class="o">=</span> <span class="n">ABCMeta</span>  
+
+    <span class="nd">@abstractmethod</span>  
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  
+        <span class="k">return</span> <span class="mi">0</span>  
+
+<span class="k">class</span> <span class="nc">Missing</span><span class="p">(</span><span class="n">Sized</span><span class="p">):</span>  
+    <span class="k">pass</span>  
+
+
+<span class="n">Missing</span><span class="p">()</span>  
+
+<span class="o">=&gt;</span> <span class="ne">TypeError</span>  
+    <span class="n">Can</span><span class="s1">&#39;t instantiate abstract class Missing with abstract methods __len__  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Struggle</span>(<span class="n">object</span>):  
+    <span class="n">def</span> <span class="n">__len__</span>():  
+        <span class="k">return</span> <span class="mi">23</span>  
+
+<span class="n">isinstance</span>(<span class="n">Struggle</span>, <span class="n">Sized</span>)  
+
+=&gt; <span class="nb">True</span>  
+</pre></div>
+
+
+<p>Duck Typing  </p>
+<h3>List related</h3>
+<div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">Python</span> <span class="mi">2</span>  
+<span class="k">data</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  
+<span class="k">for</span> <span class="n">l</span> <span class="k">in</span> <span class="k">data</span><span class="p">:</span>  
+    <span class="k">data</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>  
+<span class="n">print</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>  
+<span class="o">=&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>  
+
+<span class="o">#</span> <span class="err">跟</span> <span class="n">Python</span> <span class="err">的</span> <span class="n">list</span> <span class="err">實作採用</span> <span class="n">linked</span> <span class="n">list</span> <span class="err">實作有關</span>  
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err"># Python 2  </span>
+<span class="err">data = range(10)  </span>
+<span class="err">for l in data[:]:  </span>
+<span class="err">    data.remove(l)  </span>
+<span class="err">print(data)  </span>
+<span class="err">=&gt; []  </span>
+</pre></div>
+
+
+<h2>Package</h2>
+<ul>
+<li>不要 <code>pip freeze &gt; requirements.txt</code>  <ul>
+<li>會把 dependency 的 dependency 也寫進去，不知道到底真正要用的是哪些。  </li>
+</ul>
+</li>
+</ul>
+<h3>2 =&gt; 3</h3>
+<h3>Quality</h3>
+<ul>
+<li>flake8  <ul>
+<li>install-hook  </li>
+</ul>
+</li>
+</ul>
+<h3>Inheritance</h3>
+<ul>
+<li>正確使用 <code>super()</code> 可以避免很多問題  </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Base</span>(<span class="n">object</span>):  
+    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>):  
+        <span class="nb">print</span>(<span class="s">&quot;init Base&quot;</span>)  
+
+<span class="k">class</span> <span class="n">Left</span>(<span class="n">Base</span>):  
+    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>):  
+        <span class="nb">print</span>(<span class="s">&quot;init Left&quot;</span>)  
+
+<span class="k">class</span> <span class="n">Right</span>(<span class="n">Base</span>):  
+    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>):  
+        <span class="nb">print</span>(<span class="s">&quot;init Right&quot;</span>)  
+
+<span class="k">class</span> <span class="n">C</span>(<span class="n">Left</span>, <span class="n">Right</span>):  
+    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>):  
+        <span class="n">Left</span>.<span class="n">__init__</span>()  
+        <span class="n">Right</span>.<span class="n">__init__</span>()  
+        <span class="nb">print</span>(<span class="s">&quot;init C&quot;</span>)  
+
+=&gt;  
+<span class="n">init</span> <span class="n">Base</span>  
+<span class="n">init</span> <span class="n">Left</span>  
+<span class="n">init</span> <span class="n">Base</span>  
+<span class="n">init</span> <span class="n">Right</span>  
+</pre></div>
+
+
+<p><code>Base.__init__()</code> 有副作用的話就會很恐怖<br>
+正確的寫法要用 <code>super()</code>  </p>
+<h2>Related links</h2>
+<ul>
+<li><a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html">Code Like a Pythonista: Idiomatic Python</a>  </li>
+<li><a href="https://hynek.me/articles/hasattr/">hasattr() – A Dangerous Misnomer · Homepage of Hynek Schlawack</a>  <ul>
+<li>不要用 <code>hasattr()</code>，<code>getattr()</code> 都會被執行，所以如果有副作用的話就會很恐怖。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Physics of IOT - David Mikolas</h2>
+<ul>
+<li><a href="https://www.lora-alliance.org/">Lora</a>  </li>
+<li><a href="https://github.com/micropython/micropython">GitHub - micropython/micropython: MicroPython - a lean and efficient Python implementation for microcontrollers and constrained systems</a>  </li>
+</ul>
+<hr>
+<h2>pynsist</h2>
+<ul>
+<li><code>py2exe</code>  </li>
+<li><code>pip install pynsist</code>  </li>
+</ul>
+<hr>
+<h2>Lightning talks</h2>
+<ul>
+<li>PyCon TW 2017 主席開放報名中  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Taipei.py%2020160630%0Ahttps%3A//blog.m157q.tw/posts/2016/06/30/taipei-py-20160630/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/06/30/taipei-py-20160630/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/06/30/taipei-py-20160630/&title=Taipei.py%2020160630&summary=Note%20for%20Taipei.py%202016/06/30%20Meetup&source=https%3A//blog.m157q.tw/posts/2016/06/30/taipei-py-20160630/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Taipei.py%2020160630&amp;body=https%3A//blog.m157q.tw/posts/2016/06/30/taipei-py-20160630/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/04/21/taipei-py-20160421-meetup-note/">Taipei.py 20160421 Meetup Note</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/04/01/taipei-py-20160331-meetup-note/">Taipei.py 20160331 Meetup Note</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/">Y2016W49</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/21/y2016w46/">Y2016W46</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/03/y2016w39/">Y2016W39</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/06/30/taipei-py-20160630/";
+        var disqus_title = "Taipei.py 20160630";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/06/30/taipei-py-20160630/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-06-30T19:08:44+08:00"><i class="fa fa-calendar"></i> Thu 30 June 2016</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/taipeipy/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">Taipei.py</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/06/29/tossug-20160628/" title="TOSSUG 20160628"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/07/03/y2016w26/" title="Y2016W26"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

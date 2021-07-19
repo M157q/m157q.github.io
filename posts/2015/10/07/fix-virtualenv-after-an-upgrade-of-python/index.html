@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Fix virtualenv after an upgrade of Python
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/" rel="bookmark" title="Permalink to Fix virtualenv after an upgrade of Python">Fix virtualenv after an upgrade of Python</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Always forget how to do it after upgrading Python, so just write it down.</p>
+  </blockquote>
+  <div>
+    <h2>Manual</h2>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/.virtualenvs  
+$ find <span class="si">${</span><span class="nv">envname</span><span class="si">}</span>/ -type l -delete  
+$ virtualenv <span class="si">${</span><span class="nv">envname</span><span class="si">}</span>  
+</pre></div>
+
+
+<hr>
+<h2>Script for one virtualenv</h2>
+<p>Here's a tiny script from <a href="https://gist.github.com/tevino/1a557a0c200d61d4e4fb">Fix python virtualenv after python update · GitHub</a> for doing this.  </p>
+<div class="highlight"><pre><span></span>fix_virtualenv.sh  
+---  
+<span class="c1">#!/usr/bin/env bash  </span>
+<span class="nv">ENV_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="k">$(</span>which pip<span class="k">)</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>  
+<span class="nv">SYSTEM_VIRTUALENV</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>which -a virtualenv<span class="p">|</span>tail -1<span class="k">)</span><span class="s2">&quot;</span>  
+
+<span class="nb">echo</span> <span class="s2">&quot;Ensure the root of current virtualenv:&quot;</span>  
+<span class="nb">echo</span> <span class="s2">&quot;    </span><span class="nv">$ENV_PATH</span><span class="s2">&quot;</span>  
+<span class="nb">read</span> -p <span class="s2">&quot;‼️  Say no if you are not sure (y/N) &quot;</span> -n <span class="m">1</span> -r  
+<span class="nb">echo</span>  
+<span class="k">if</span> <span class="o">[[</span> <span class="nv">$REPLY</span> <span class="o">=</span>~ ^<span class="o">[</span>Yy<span class="o">]</span>$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>  
+    <span class="nb">echo</span> <span class="s2">&quot;♻️  Removing old symbolic links......&quot;</span>  
+    find <span class="s2">&quot;</span><span class="nv">$ENV_PATH</span><span class="s2">&quot;</span> -type l -delete -print  
+    <span class="nb">echo</span> <span class="s2">&quot;💫  Creating new symbolic links......&quot;</span>  
+    <span class="nv">$SYSTEM_VIRTUALENV</span> <span class="s2">&quot;</span><span class="nv">$ENV_PATH</span><span class="s2">&quot;</span>  
+    <span class="nb">echo</span> <span class="s2">&quot;🎉  Done!&quot;</span>  
+<span class="k">fi</span>  
+</pre></div>
+
+
+<h3>Steps</h3>
+<div class="highlight"><pre><span></span>$ <span class="nb">source</span> ~/.virtualenvs/<span class="si">${</span><span class="nv">envname</span><span class="si">}</span>/bin/activate.sh  
+$ chmod u+x ./fix_virtualenv.sh  
+$ ./fix_virtualenv.sh  
+</pre></div>
+
+
+<hr>
+<h2>Script for all virtualenvs under <code>~/.virtualenvs</code></h2>
+<p>Based on the above script which for only one virtualenv,<br>
+I modified it to <a href="https://gist.github.com/M157q/e1bf93a4a8170fabac24db9aee686caf">a slighty powerful script</a> to fix all virtualenvs (include reinstall all modules in a virtualenv).  </p>
+<h3>One liner (Network needed)</h3>
+<ul>
+<li><code>curl</code>  <ul>
+<li><code>sh &lt;(curl -sL https://gist.githubusercontent.com/M157q/e1bf93a4a8170fabac24db9aee686caf/raw)</code>  </li>
+</ul>
+</li>
+<li><code>wget</code>  <ul>
+<li><code>sh &lt;(wget -qO- https://gist.githubusercontent.com/M157q/e1bf93a4a8170fabac24db9aee686caf/raw)</code>  </li>
+</ul>
+</li>
+</ul>
+<h3>Plaintext</h3>
+<div class="highlight"><pre><span></span>fix_virtualenvs.sh  
+---  
+<span class="c1">#!/usr/bin/env bash  </span>
+
+<span class="nv">VIRTUALENVS_ROOT_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span><span class="s2">/.virtualenvs&quot;</span>  
+<span class="nv">ACTIVE_SH_PATH</span><span class="o">=</span><span class="s2">&quot;/bin/activate&quot;</span>  
+
+<span class="k">for</span> dir in <span class="sb">`</span>find <span class="si">${</span><span class="nv">VIRTUALENVS_ROOT_DIR</span><span class="si">}</span> -type d -maxdepth <span class="m">1</span><span class="sb">`</span>  
+<span class="k">do</span>  
+    <span class="k">if</span> <span class="o">[[</span> <span class="si">${</span><span class="nv">dir</span><span class="si">}</span> <span class="o">==</span> <span class="si">${</span><span class="nv">VIRTUALENVS_ROOT_DIR</span><span class="si">}</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>  
+        <span class="k">continue</span>  
+    <span class="k">fi</span>  
+
+    <span class="nb">source</span> <span class="si">${</span><span class="nv">dir</span><span class="si">}${</span><span class="nv">ACTIVE_SH_PATH</span><span class="si">}</span>  
+
+    <span class="nv">ENV_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="k">$(</span>dirname <span class="s2">&quot;</span><span class="k">$(</span>which pip<span class="k">)</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot;</span>  
+    <span class="nv">SYSTEM_VIRTUALENV</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>which -a virtualenv<span class="p">|</span>tail -1<span class="k">)</span><span class="s2">&quot;</span>  
+
+    <span class="nb">echo</span>  
+    <span class="nb">echo</span> <span class="s2">&quot;Ensure the root of current virtualenv:&quot;</span>  
+    <span class="nb">echo</span> <span class="s2">&quot;    </span><span class="nv">$ENV_PATH</span><span class="s2">&quot;</span>  
+    <span class="nb">read</span> -p <span class="s2">&quot;Say no if you are not sure (y/N) &quot;</span> -n <span class="m">1</span> -r  
+    <span class="nb">echo</span>  
+    <span class="k">if</span> <span class="o">[[</span> <span class="nv">$REPLY</span> <span class="o">=</span>~ ^<span class="o">[</span>Yy<span class="o">]</span>$ <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>  
+
+        <span class="nb">read</span> -p <span class="s2">&quot;Reinstall all packages of this virtualenv after upgraded? (y/N) &quot;</span> -n <span class="m">1</span> -r  
+
+
+        <span class="k">if</span> <span class="o">[[</span> <span class="nv">$REPLY</span> <span class="o">=</span>~ <span class="s2">&quot;^[Yy]</span>$<span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>  
+            <span class="nb">echo</span> <span class="s2">&quot;Dump pip freeze for current virtualenv into requirements.temp&quot;</span>  
+            pip freeze &gt; requirements.temp  
+        <span class="k">fi</span>  
+
+        <span class="nv">VIRTUALENV_PYTHON_VERSION</span><span class="o">=</span><span class="sb">`</span>python --version<span class="sb">`</span>  
+        <span class="nb">echo</span> <span class="s2">&quot;Removing old symbolic links......&quot;</span>  
+        find <span class="s2">&quot;</span><span class="nv">$ENV_PATH</span><span class="s2">&quot;</span> -type l -delete -print  
+
+        <span class="nb">echo</span> <span class="s2">&quot;Creating new symbolic links......&quot;</span>  
+        <span class="nb">echo</span> <span class="si">${</span><span class="nv">VIRTUALENV_PYTHON_VERSION</span><span class="si">}</span>  
+        <span class="k">if</span> <span class="o">[[</span> <span class="nv">$VIRTUALENV_PYTHON_VERSION</span> <span class="o">=</span>~ <span class="s2">&quot;Python 2&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>  
+            <span class="nb">echo</span> <span class="s2">&quot;Use Python 2 environment for this virtualenv&quot;</span>  
+            <span class="nv">$SYSTEM_VIRTUALENV</span> <span class="s2">&quot;</span><span class="nv">$ENV_PATH</span><span class="s2">&quot;</span> --python<span class="o">=</span>python2  
+        <span class="k">elif</span> <span class="o">[[</span> <span class="nv">$VIRTUALENV_PYTHON_VERSION</span> <span class="o">=</span>~ <span class="s2">&quot;Python 3&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>  
+            <span class="nb">echo</span> <span class="s2">&quot;Use Python 3 environment for this virtualenv&quot;</span>  
+            <span class="nv">$SYSTEM_VIRTUALENV</span> <span class="s2">&quot;</span><span class="nv">$ENV_PATH</span><span class="s2">&quot;</span> --python<span class="o">=</span>python3  
+        <span class="k">else</span>  
+            <span class="nb">echo</span> <span class="s2">&quot;Unknown Python version of this virtualenv&quot;</span>  
+        <span class="k">fi</span>  
+
+        <span class="k">if</span> <span class="o">[[</span> <span class="nv">$REPLY</span> <span class="o">=</span>~ <span class="s2">&quot;^[Yy]</span>$<span class="s2">&quot;</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span>  
+            <span class="nb">echo</span> <span class="s2">&quot;Reinstall modules from previous dumped pip freeze result.&quot;</span>  
+            pip install -r requirements.temp  
+
+            <span class="nb">echo</span> <span class="s2">&quot;Remove requirements.temp&quot;</span>  
+            rm requirements.temp  
+        <span class="k">fi</span>  
+    <span class="k">fi</span>  
+
+    deactivate  
+<span class="k">done</span>  
+
+<span class="nb">echo</span> <span class="s2">&quot;Done!&quot;</span>  
+</pre></div>
+
+
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="http://wirtel.be/posts/en/2014/07/29/fix_virtualenv_python_brew/">Stéphane Wirtel - Read-Eval-Print Loop</a> (Dead link)  </li>
+<li><a href="https://gist.github.com/tevino/1a557a0c200d61d4e4fb">Fix python virtualenv after python update · GitHub</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Fix%20virtualenv%20after%20an%20upgrade%20of%20Python%0Ahttps%3A//blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/&title=Fix%20virtualenv%20after%20an%20upgrade%20of%20Python&summary=Always%20forget%20how%20to%20do%20it%20after%20upgrading%20Python%2C%20so%20just%20write%20it%20down.&source=https%3A//blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Fix%20virtualenv%20after%20an%20upgrade%20of%20Python&amp;body=https%3A//blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/">Y2016W49</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/21/y2016w46/">Y2016W46</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/03/y2016w39/">Y2016W39</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/05/08/use-travis-ci-to-publish-pelican-blog-on-github-pages-automatically/">用 Travis CI 自動化發佈 Pelican blog 到 GitHub Pages 上</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/07/y2016w44/">Y2016W44</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/";
+        var disqus_title = "Fix virtualenv after an upgrade of Python";
+        var disqus_url = "https://blog.m157q.tw/posts/2015/10/07/fix-virtualenv-after-an-upgrade-of-python/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2015-10-07T15:39:41+08:00"><i class="fa fa-calendar"></i> Wed 07 October 2015</abbr></p>
+
+      <p><abbr title="2017-01-16T22:29:41+08:00"><i class="fa fa-pencil"></i>Mon 16 January 2017</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/virtualenv/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">virtualenv</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2015/09/15/tscc-2015-notes-and-thoughts/" title="TSCC 2015 Notes and Thoughts"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2015/10/19/hitcon-ctf-2015-quals-write-up/" title="HITCON CTF 2015 Quals Write-up"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - rename</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.rename.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T13:51:00+08:00</updated><entry><title>Use find, grep, xargs to Rename Multiple Files</title><link href="https://blog.m157q.tw/posts/2014/11/10/use-find-grep-xargs-to-rename-multiple-files/" rel="alternate"></link><published>2014-11-10T13:44:00+08:00</published><updated>2015-10-28T13:51:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-11-10:/posts/2014/11/10/use-find-grep-xargs-to-rename-multiple-files/</id><summary type="html">&lt;p&gt;Recursively find filenames ends up …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recursively find filenames ends up with &lt;code&gt;.vh&lt;/code&gt; from pwd directory and change their names from &lt;code&gt;*.vh&lt;/code&gt; to &lt;code&gt;*.vhd&lt;/code&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find &lt;span class="p"&gt;|&lt;/span&gt; grep .vh$ &lt;span class="p"&gt;|&lt;/span&gt; xargs -I &lt;span class="o"&gt;{}&lt;/span&gt;.vh mv &lt;span class="o"&gt;{}&lt;/span&gt;.vh &lt;span class="o"&gt;{}&lt;/span&gt;.vhd  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;This Only works with BSD &lt;code&gt;xargs&lt;/code&gt; !!  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/10212192/how-to-grep-for-a-filename-instead-of-the-contents-of-a-file"&gt;http://stackoverflow.com/questions/10212192/how-to-grep-for-a-filename-instead-of-the-contents-of-a-file&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://viewsby.wordpress.com/2012/12/04/find-mvrename-with-xargs-example/"&gt;http://viewsby.wordpress.com/2012/12/04/find-mvrename-with-xargs-example/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="find"></category><category term="grep"></category><category term="xargs"></category><category term="mv"></category><category term="rename"></category></entry></feed>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - screen</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.screen.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2016-09-12T00:24:00+08:00</updated><entry><title>Save Content of tmux/screen Scrollback Into A File</title><link href="https://blog.m157q.tw/posts/2015/07/27/save-content-of-tmux-or-screen-scrollback-into-a-file/" rel="alternate"></link><published>2015-07-27T01:03:26+08:00</published><updated>2016-09-12T00:24:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-07-27:/posts/2015/07/27/save-content-of-tmux-or-screen-scrollback-into-a-file/</id><summary type="html">&lt;p&gt;Steps to save content of tmux/screen scrollback into a file.&lt;/p&gt;</summary><content type="html">&lt;p&gt;因為某些原因，&lt;br&gt;
+想要把 tmux copy mode 裡面的內容 dump 出來。&lt;br&gt;
+但因為之前沒試過，不知道該如何做，所以去查了一下，&lt;br&gt;
+以下整理簡單步驟：  &lt;/p&gt;
+&lt;h2&gt;tmux&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;將指定的行數 (&lt;code&gt;$linenum&lt;/code&gt;) 存到 buffer 中，進入 copy mode 後，即可在右上角看到行數。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:capture-pane -S -$linenum  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;將剛剛存到 buffer 中的內容，儲存到指定的檔案路徑 (&lt;code&gt;$filepath&lt;/code&gt;)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:save-buffer $filepath  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;刪除 buffer 中的內容 (optional)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:delete-buffer  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$filepath&lt;/code&gt; 檔案中應該就是 dump 出來的內容  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;screen&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;screen&lt;/code&gt; 的話，目前看到的相似用法是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:hardcopy -h $filepath  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但這個用法只能儲存全部的內容，無法選擇行數。  &lt;/p&gt;
+&lt;p&gt;然後我在 screen 版本 4.04.00 (GNU) 19-Jun-16 使用時，&lt;br&gt;
+如果內容裏面有中文的話，&lt;br&gt;
+dump 出來以後中文會變成亂碼。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://unix.stackexchange.com/questions/26548/write-all-tmux-scrollback-to-a-file"&gt;Write all tmux scrollback to a file - Unix &amp;amp; Linux Stack Exchange&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/4807474/copying-gnu-screen-scrollback-buffer-to-file-extended-hardcopy"&gt;Copying GNU screen scrollback buffer to file (extended hardcopy)? - Stack Overflow&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="tmux"></category><category term="screen"></category></entry><entry><title>Use screen Command to Access Serial Port</title><link href="https://blog.m157q.tw/posts/2014/10/16/use-screen-command-to-access-serial-port/" rel="alternate"></link><published>2014-10-16T08:12:00+08:00</published><updated>2014-10-16T08:12:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-10-16:/posts/2014/10/16/use-screen-command-to-access-serial-port/</id><summary type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen /dev/ttyS0 &lt;span class="m"&gt;19200&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;This …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ screen /dev/ttyS0 &lt;span class="m"&gt;19200&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;This command simply opens up a connection to serial port 0 (ttyS0) with a baud speed/rate of 19200  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://apple.stackexchange.com/questions/32834/is-there-an-os-x-terminal-program-that-can-access-serial-ports"&gt;Is there an OS X terminal program that can access serial ports?&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://serverfault.com/questions/81544/hidden-features-of-screen/81548"&gt;Hidden Features of &lt;code&gt;screen&lt;/code&gt;&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="screen"></category><category term="serial port"></category></entry><entry><title>Screen copy mode scrollback 行數不夠</title><link href="https://blog.m157q.tw/posts/2014/05/27/not-enough-lines-for-scrollback-in-screen-copy-mode/" rel="alternate"></link><published>2014-05-27T15:57:00+08:00</published><updated>2015-10-28T14:21:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-05-27:/posts/2014/05/27/not-enough-lines-for-scrollback-in-screen-copy-mode/</id><summary type="html">&lt;p&gt;今天剛好有兩個人都問了這個問題  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;「screen 可以回捲的行數不夠怎麼辦?」  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以就寫下來記錄一下&lt;br&gt;
+--其實是直接複製貼上-- …&lt;/p&gt;</summary><content type="html">&lt;p&gt;今天剛好有兩個人都問了這個問題  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;「screen 可以回捲的行數不夠怎麼辦?」  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;所以就寫下來記錄一下&lt;br&gt;
+--其實是直接複製貼上--  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;第一種解法：跟 screen 無關&lt;/h2&gt;
+&lt;p&gt;關於您的問題應該是不用升級版本就可以解決的&lt;br&gt;
+只要將您的指令 pipe 給 less  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="o"&gt;(&lt;/span&gt;Your &lt;span class="nb"&gt;command&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; less  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或是使用 &lt;code&gt;&amp;gt;&lt;/code&gt; 將程式的輸出結果導到某個檔案中  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="o"&gt;(&lt;/span&gt;Your &lt;span class="nb"&gt;command&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &amp;gt; &lt;span class="nv"&gt;$file&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;再使用 &lt;code&gt;less&lt;/code&gt; 或是您慣用的編輯器開啟  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;less $file&lt;/code&gt;, &lt;code&gt;vim $file&lt;/code&gt;, &lt;code&gt;emacs $file&lt;/code&gt;, ...  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;第二種解法：從 screen 的設定下手&lt;/h2&gt;
+&lt;p&gt;如果您想要從 screen 的方面下手的話&lt;br&gt;
+可以參考 &lt;a href="http://www.gnu.org/software/screen/manual/screen.html"&gt;http://www.gnu.org/software/screen/manual/screen.html&lt;/a&gt;  &lt;/p&gt;
+&lt;h3&gt;情況一：仍未開啟 screen&lt;/h3&gt;
+&lt;p&gt;在開啟 &lt;code&gt;screen&lt;/code&gt; 的時候 加上 &lt;code&gt;-h $num&lt;/code&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;$num&lt;/code&gt; 代表可以往上捲幾行  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;screen&lt;/code&gt; 預設為 100  &lt;/p&gt;
+&lt;h3&gt;情況二：已經開啟 screen&lt;/h3&gt;
+&lt;p&gt;如果已經開啟 &lt;code&gt;screen&lt;/code&gt; 的話&lt;br&gt;
+可以在 &lt;code&gt;screen&lt;/code&gt; 的 cli 環境中輸入  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;:defscrollback $num  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;$num&lt;/code&gt; 一樣代表可以往上捲幾行  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;則新開啟的 &lt;code&gt;screen&lt;/code&gt; 分頁會套用此設定  &lt;/p&gt;</content><category term="CLI"></category><category term="screen"></category><category term="copy mode"></category><category term="history buffer"></category></entry></feed>

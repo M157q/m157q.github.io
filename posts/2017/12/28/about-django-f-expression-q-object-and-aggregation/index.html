@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/" rel="bookmark" title="Permalink to 關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記">關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>以前維護離職同事留下來的程式碼時做的一些筆記，當時沒有發文，時隔一年才整理成這篇文章。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>這篇算是在清草稿，約莫一年前紀錄在自己使用的 Trello board 的其中一張 card 裏面。  </p>
+<p>當時接手維護已離職的前同事的專案，是當時將員工內部使用的後台前後分離出來的網頁後端伺服器。他透過使用 Django 的 F() expressions, Q object, Aggregation 創造了一個 base view class（命名為 <code>ModelView</code>），讓所有繼承這個 base class 的 view 都可以有類似 GraphQL 的效果，可以接收帶有符合 Django Query 參數的 json request 後，直接透過 model 去拿資料，再把資料包成 json response 吐回去。  </p>
+<p>這讓新增新的 API 變得很簡單，只要以下幾個步驟：  </p>
+<ul>
+<li>定義好新的 model  </li>
+<li>寫一個新的 View 繼承自 <code>ModelView</code>  <ul>
+<li>第一行宣告繼承，第二行寫說對應到哪個 model 就行了  </li>
+<li>只要兩行，所有的 CRUD 以及 response 都會自動處理好  </li>
+</ul>
+</li>
+<li>在 <code>urls.py</code> 裡頭新增對應到該 View 的網址  </li>
+</ul>
+<p>真的是用了滿多黑魔法的，我們在開發的時候都開玩笑得說：「這算是『魔改 Django』了吧？」但因為程式碼是放在 private repo，所以以下就只紀錄當時我去 trace source code 時紀錄的一些筆記。  </p>
+<p>最讓我覺得厲害的地方是，前同事 Jay 寫出這個東西之前根本沒碰過 Django，雖然其中也有問我一些問題，但他大概只花 3 個月就寫出這東西，後來我去看他寫的程式碼發現許多地方我看不懂，讓我挺佩服的。有點可惜這裡不能拿程式碼來一一講解就是。  </p>
+<hr>
+<h2><a href="https://docs.djangoproject.com/en/1.10/ref/models/expressions/#f-expressions"><code>F()</code> expressions</a></h2>
+<ul>
+<li>
+<blockquote>
+<p>An <code>F()</code> object represents the value of a model field or annotated column. It makes it possible to refer to model field values and perform database operations using them without actually having to pull them out of the database into Python memory.  </p>
+</blockquote>
+</li>
+<li>不會真的從 db 拿出值，可以減少 db query，讓效能好一點。  </li>
+<li>使用 <code>F()</code> 以後，要真的更新值的話，必須要使用 <code>refresh_from_db()</code>，<code>save()</code> 只會先紀錄而已，並不會真的寫入。  </li>
+<li>可以避免 race condition 的問題，因為每個人不用拿到現在的值以後才去做更改，只要每個動作都有 <code>save()</code> 的話，最後再一次 <code>refresh_from_db()</code> 就好。  </li>
+<li>
+<blockquote>
+<p><code>F()</code> assignments persist after <code>Model.save()</code>  </p>
+</blockquote>
+<ul>
+<li>如果 <code>save()</code> 兩次的話，就會作用兩次。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2><a href="https://docs.djangoproject.com/en/1.10/topics/db/queries/#complex-lookups-with-q">Q object</a></h2>
+<ul>
+<li>Django <code>QuerySet</code> 的 <code>filter()</code> 基本上只能處理 AND 的 Query，如果想要使用 OR 或者更複雜一點的 Query 的話，就必須要使用 <code>Q()</code>。  </li>
+</ul>
+<hr>
+<h2><a href="https://docs.djangoproject.com/en/1.10/topics/db/aggregation/">Aggregation</a></h2>
+<ul>
+<li><code>QuerySet.annotate()</code>  <ul>
+<li>回傳一個 <code>QuerySet</code>，可以給 <code>admin.ModelAdmin</code> 使用。  </li>
+<li>基本上等同於 SQL 語句的 <code>AS</code>。  </li>
+<li>可搭配 <code>values()</code>, <code>order_by()</code> 做到 SQL 語句的 <code>GROUP BY</code>。  </li>
+<li><code>values()</code> 和 <code>annotate()</code> 的前後順序生出來的 Query 語句是有差別的。  </li>
+</ul>
+</li>
+<li><code>QuerySet.aggregate()</code>  <ul>
+<li>回傳一個 dictionary，基本上就是拿來統計數字用而已。  </li>
+</ul>
+</li>
+<li>使用 <code>print(QuerySet.query)</code> 來察看 QuerySet 生成的 SQL query statement.  </li>
+</ul>
+<hr>
+<h2>後記</h2>
+<p>讓我有點不勝唏噓的是，筆記內容的連結依然是 Django 1.10，一年半前是最新的版本，但現在點進去已經顯示 <strong>"This document is for an insecure version of Django that is no longer supported. Please upgrade to a newer release!"</strong> 了。  </p>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E9%97%9C%E6%96%BC%20Django%20%E7%9A%84%20F%28%29%20expressions%2C%20Q%20object%2C%20Aggregation%20%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%86%E8%A8%98%0Ahttps%3A//blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/&title=%E9%97%9C%E6%96%BC%20Django%20%E7%9A%84%20F%28%29%20expressions%2C%20Q%20object%2C%20Aggregation%20%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%86%E8%A8%98&summary=%E4%BB%A5%E5%89%8D%E7%B6%AD%E8%AD%B7%E9%9B%A2%E8%81%B7%E5%90%8C%E4%BA%8B%E7%95%99%E4%B8%8B%E4%BE%86%E7%9A%84%E7%A8%8B%E5%BC%8F%E7%A2%BC%E6%99%82%E5%81%9A%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%86%E8%A8%98%EF%BC%8C%E7%95%B6%E6%99%82%E6%B2%92%E6%9C%89%E7%99%BC%E6%96%87%EF%BC%8C%E6%99%82%E9%9A%94%E4%B8%80%E5%B9%B4%E6%89%8D%E6%95%B4%E7%90%86%E6%88%90%E9%80%99%E7%AF%87%E6%96%87%E7%AB%A0%E3%80%82&source=https%3A//blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E9%97%9C%E6%96%BC%20Django%20%E7%9A%84%20F%28%29%20expressions%2C%20Q%20object%2C%20Aggregation%20%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%86%E8%A8%98&amp;body=https%3A//blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/07/django-rest-framework-note/">關於 Django REST framework 的一些筆記</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/12/y2017w23/">Y2017W23</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/">Y2016W49</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/14/y2016w45/">Y2016W45</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/03/try-to-do-gofmt-in-python/">嘗試在 Python 中做到 Golang fmt 的效果</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/";
+        var disqus_title = "關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-12-28T23:15:00+08:00"><i class="fa fa-calendar"></i> Thu 28 December 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/django/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">Django</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/27/fetch-my-github-commits-in-one-organization-with-python-script/" title="用 Python 抓出我在前公司貢獻了多少 GitHub commits"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/" title="利用 ngrok 直接在本機開發 chatbot"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

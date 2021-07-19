@@ -1,0 +1,1069 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - MacBook Air</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.macbook-air.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-12-08T12:47:00+08:00</updated><entry><title>用 broadcom-wl-dkms 讓 BCM4360 [14e4:43a0] (rev 03) 能順利在 Arch Linux 中使用</title><link href="https://blog.m157q.tw/posts/2017/10/31/make-bcm4360-14e4-43a0-rev-03-work-on-arch-linux-with-broadcom-wl-dkms/" rel="alternate"></link><published>2017-10-31T17:10:43+08:00</published><updated>2017-10-31T17:10:43+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-10-31:/posts/2017/10/31/make-bcm4360-14e4-43a0-rev-03-work-on-arch-linux-with-broadcom-wl-dkms/</id><summary type="html">&lt;p&gt;紀錄一下在使用 BCM4360 14e4:43a0 (rev 03) 的 MacBook Air 2013 上裝 Arch Linux，用 wicd 使用無線網路會遇到問題的解法。&lt;/p&gt;</summary><content type="html">&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;sudo pacman -S broadcom-wl-dkms&lt;/code&gt; should be good.  &lt;/p&gt;
+&lt;p&gt;If you are using &lt;code&gt;wicd&lt;/code&gt; like me,&lt;br&gt;
+remember to &lt;a href="https://wiki.archlinux.org/index.php/wicd#Initial_setup"&gt;close other network management daemon&lt;/a&gt; like:  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;systemctl stop dhcpcd&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;systemctl disable dhcpcd&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;systemctl stop NetworkManager&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;systemctl disable NetworkManager&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;正文&lt;/h2&gt;
+&lt;p&gt;之前好一陣子都是一直用 &lt;code&gt;broadcom-wl-dkms-248-6.30.223.248-1-x86_64&lt;/code&gt; 撐著，&lt;br&gt;
+簡單來說就是之前從 AUR 上 download 這版的 &lt;code&gt;broadcom-wl-dkms&lt;/code&gt; 下來後，&lt;br&gt;
+之後每次更新用新版的都有問題，&lt;br&gt;
+就得一直 down grade 下來&lt;br&gt;
+所以我就一直留著舊版的以備不時之需，&lt;br&gt;
+救了我好幾次。  &lt;/p&gt;
+&lt;p&gt;而且因為 dkms 每次在 kernel upgrade 之後，&lt;br&gt;
+都會幫你重新 build 一次，&lt;br&gt;
+基本上不用理他，&lt;br&gt;
+所以我後來也把原本有從 AUR 上裝的 &lt;code&gt;broadcom-wl-dkms&lt;/code&gt; 刪掉了，&lt;br&gt;
+之後自動更新就不會需要一直 down grade。  &lt;/p&gt;
+&lt;p&gt;直到昨天升上 &lt;code&gt;Linux 4.13.9-1-ARCH&lt;/code&gt;，&lt;br&gt;
+dkms 無法成功 build &lt;code&gt;broadcom-wl-dkms-248-6.30.223.248-1-x86_64&lt;/code&gt;，&lt;br&gt;
+我在升級 kernel 的時候又沒去注意 kernel upgrade 的訊息，&lt;br&gt;
+於是我的無線網卡在重開機之後就消失在 &lt;code&gt;ip&lt;/code&gt;, &lt;code&gt;iwconfig&lt;/code&gt; 的 output 了。  &lt;/p&gt;
+&lt;p&gt;以前就遇過好幾次這狀況了，&lt;br&gt;
+所以並沒有特別的驚慌。&lt;br&gt;
+想說來試裝看看新版的 &lt;code&gt;broadcom-wl-dkms&lt;/code&gt;，&lt;br&gt;
+才發現&lt;a href="https://www.archlinux.org/packages/community/x86_64/broadcom-wl-dkms/"&gt;已經從 AUR 被移到 community repository 了&lt;/a&gt;，&lt;br&gt;
+用 &lt;code&gt;sudo pacman -S broadcom-wl-dkms&lt;/code&gt; 安裝後，&lt;br&gt;
+看了一下訊息，&lt;br&gt;
+看起來有成功 build 並安裝。  &lt;/p&gt;
+&lt;p&gt;重開機之後，&lt;br&gt;
+無線網卡出現了，&lt;br&gt;
+也搜尋得到 SSID，&lt;br&gt;
+但就是連不上。&lt;br&gt;
+卡了很久，&lt;br&gt;
+想說回來看看以前自己寫的&lt;a href="/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/"&gt;這篇文章&lt;/a&gt;會不會有什麼端倪，&lt;br&gt;
+結果就看到了&lt;br&gt;
+「記得 disable dhcpcd，錯誤訊息也看不出啥端倪，就是在這卡了很久。」&lt;br&gt;
+頓時覺得似曾相似。  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;systemctl status dhcpcd&lt;/code&gt; 是 inactive 的，&lt;br&gt;
+又想到了 &lt;code&gt;NetworkManager&lt;/code&gt; 也會影響到，&lt;br&gt;
+&lt;code&gt;systemctl status NetworkManager&lt;/code&gt; 是 running...&lt;br&gt;
+靠，怎麼又被誰打開了，&lt;br&gt;
+&lt;code&gt;systemctl stop NetworkManager&lt;/code&gt; 之後果然就正常了。&lt;br&gt;
+因為之前沒有紀錄錯誤訊息導致我這次找超久，&lt;br&gt;
+所以這次就來紀錄一下這些在 &lt;code&gt;dmesg&lt;/code&gt; 會看到的錯誤訊息吧。&lt;br&gt;
+（同樣的錯誤訊息也有新增在之前的文章了。）  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6677.574915] ERROR @wl_notify_scan_status :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6677.574919] wlp3s0 Scan_results error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6560.346608] ERROR @wl_cfg80211_scan :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6560.346611] WLC_SCAN error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6467.860408] ERROR @wl_notify_scan_status :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6467.860413] wlp3s0 Scan_results error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;也因為這次的遭遇而誕生了這篇新文章，&lt;br&gt;
+畢竟網路上跟 Arch Linux 相關的資源實在有點少，&lt;br&gt;
+拿這些錯誤訊息去 Google 看到跟 Arch Linux 相關的，&lt;br&gt;
+大多是 DELL 筆電 (XPS 13, Vostro 3560) 的問題，&lt;br&gt;
+&lt;a href="https://bbs.archlinux.org/viewtopic.php?pid=1216302#p1216302"&gt;解法是要用 Fn+PrtScrn 把 Wireless 開啟&lt;/a&gt;。&lt;br&gt;
+第二多的就是跟 Ubuntu 相關的，&lt;br&gt;
+&lt;a href="https://askubuntu.com/a/60395"&gt;有篇超級詳細的回答已經紀錄在這了&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;小確幸&lt;/h2&gt;
+&lt;p&gt;不得不說一下，&lt;br&gt;
+這種幾年前自己寫的筆記，&lt;br&gt;
+救了現在的自己的感覺，&lt;br&gt;
+真的是會讓人有  &lt;/p&gt;
+&lt;p&gt;「啊，還好當初有花時間紀錄下來。」  &lt;/p&gt;
+&lt;p&gt;的那種欣慰又安全的感覺啊。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;題外話: DKMS&lt;/h2&gt;
+&lt;p&gt;也是這次查解法的過程看到&lt;a href="https://bbs.archlinux.org/viewtopic.php?pid=1370568#p1370568"&gt;這篇文章&lt;/a&gt;才知道，&lt;br&gt;
+其實 Arch Linux 現在每次 kernel upgrade 幫你做的事大致上就是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;dkms remove &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;KERNEL_MODULE_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; -v &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;KERNEL_MODULE_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; -k &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;CURRENT_KERNEL_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;  
+dkms install &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;KERNEL_MODULE_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; -v &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;KERNEL_MODULE_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; -k &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;NEW_KERNEL_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;實際大概長的像這樣  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;dkms remove broadcom-wl -v 6.30.223.271-15 -k 4.13.8-1-ARCH  &lt;/span&gt;
+&lt;span class="err"&gt;dkms install broadcom-wl -v 6.30.223.271-15 -k 4.13.9-1-ARCH  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;至於 &lt;code&gt;dkms install&lt;/code&gt; == &lt;code&gt;dkms build&lt;/code&gt; + &lt;code&gt;dkms add&lt;/code&gt;&lt;br&gt;
+這個可以 &lt;code&gt;man dkms&lt;/code&gt; 就可以看到了  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;version&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;arch&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  
+
+    &lt;span class="n"&gt;Installs&lt;/span&gt;  &lt;span class="n"&gt;a&lt;/span&gt;  &lt;span class="n"&gt;built&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;version&lt;/span&gt; &lt;span class="n"&gt;combo&lt;/span&gt; &lt;span class="n"&gt;onto&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;was&lt;/span&gt; &lt;span class="n"&gt;built&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="k"&gt;option&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;specified&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;assumes&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;currently&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;built&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dkms&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt;  &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="n"&gt;been&lt;/span&gt; &lt;span class="n"&gt;added&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dkms&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="k"&gt;add&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;In&lt;/span&gt; &lt;span class="k"&gt;both&lt;/span&gt; &lt;span class="n"&gt;cases&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="n"&gt;take&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;same&lt;/span&gt; &lt;span class="n"&gt;arguments&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;build&lt;/span&gt; &lt;span class="k"&gt;or&lt;/span&gt; &lt;span class="k"&gt;add&lt;/span&gt; &lt;span class="n"&gt;commands&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+    &lt;span class="k"&gt;If&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;pass&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dkms&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;try&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;rpm&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Uvh&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;  
+    &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;perform&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;autoinstall&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;mesure&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;everything&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;built&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;RPM&lt;/span&gt; &lt;span class="n"&gt;installed&lt;/span&gt; &lt;span class="n"&gt;sucess&lt;/span&gt;&lt;span class="err"&gt;‐&lt;/span&gt;  
+    &lt;span class="n"&gt;fully&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這只是個人粗淺的理解，&lt;br&gt;
+如果理解有誤的話還請不吝指教。  &lt;/p&gt;</content><category term="Arch Linux"></category><category term="Broadcom"></category><category term="Wireless"></category><category term="MacBook Air"></category></entry><entry><title>Install Arch Linux on MacBook Air Mid 2013</title><link href="https://blog.m157q.tw/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/" rel="alternate"></link><published>2015-09-10T05:21:04+08:00</published><updated>2017-12-08T12:47:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-09-10:/posts/2015/09/10/install-arch-linux-on-macbook-air-mid-2013/</id><summary type="html">&lt;p&gt;參加完 COSCUP 2015，聽完 jserv 的封麥演說以及一句「Linux 使用者有錢以後就會投入 Mac 的懷抱」覺得自己深深中槍，備感慚愧。於是決定來做一件很久以前其實就想做的事：跟 Linus Torvalds 一樣，把 MacBook Air 上的 OS X 砍了，直接灌 Linux 來用。當然，Arch Linux 是首選。以下紀錄一下過程，給有需要的人參考。&lt;/p&gt;</summary><content type="html">&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用上遇到問題，才有動力去解決、改善、貢獻並回饋程式碼到上游。  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;警告: 把 OS X 砍掉的話，之後要更新 firmware 必須使用有安裝 OS X 的外接硬碟上開機才能更新。&lt;/code&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下這段是一堆廢話，講了我為什麼決定要把 OS X 砍了然後灌 Linux 在 MacBook Air 上&lt;br&gt;
+不想看的可以直接跳過  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;改用 OS X 的這兩年，&lt;br&gt;
+也不是說就完全沒用 Linux 了，&lt;br&gt;
+舊的筆電退役成 Server 架在宿舍裡，&lt;br&gt;
+一個不用桌面環境的 Linux ，&lt;br&gt;
+使用起來基本上是不會遇到太多問題的。&lt;br&gt;
+而 OS X 的確遇到使用上的問題減少了。&lt;br&gt;
+用起來的確跟當初想的一樣，&lt;br&gt;
+是個問題比較沒那麼多的 UNIX-like System&lt;br&gt;
+但同時也在不知不覺中漸漸喪失了解決問題的能力，&lt;br&gt;
+就好像一把兩年前就不再磨的刀劍，愈發鈍鏽。&lt;br&gt;
+當初會買 MacBook Air 而不選擇 UltraBook 的原因&lt;br&gt;
+主要是因為價錢、續航力、重量都是 MacBook Air 勝出，&lt;br&gt;
+當然之後在使用上，我也對重量和續航力很滿意，&lt;br&gt;
+但其實在使用 OS X 上也遇過許多無法接受的問題，有些妥協了，有些沒有&lt;br&gt;
+例如：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原生的工具都非常老舊，舊版本代表著很多問題，無論是資安或是有無新功能。這對於一個從使用 Rolling Release 的 Arch Linux user 來說真的很不習慣。  &lt;ul&gt;
+&lt;li&gt;骨灰級的 Bash 真的令我印象深刻，如果沒有 Homebrew 的話，我肯定無法用這麼久，感謝 &lt;code&gt;mxcl&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;接網路線跟螢幕線得額外花錢買轉接頭  &lt;ul&gt;
+&lt;li&gt;兩個加起來新台幣 1,600 左右。恩，我跟很多人一樣都買了。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X 10.9 以前的視窗放大真的很雞肋和令人哭笑不得，放大後不會佔滿整個桌面，有時候甚至比按完放大前更小。  &lt;ul&gt;
+&lt;li&gt;在 OS X 10.10 後，放大功能直接改成全螢幕了。恩，不意外，我在 10.9 以前早就都用全螢幕了。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;雙螢幕在 OS X 10.10 仍然有一個我常常踩到的詭異Bug，如果有程式被丟到外接螢幕那邊，在不拔掉螢幕線的情況下，把螢幕闔上進入休眠，接著把螢幕線拔掉，然後喚醒 Mac，這時候就會發現被丟到外接螢幕的應用程式仍然被認為是在外接螢幕的範圍。但因為早就沒有外接螢幕了，所以即便程式仍然在執行，使用者也根本看不到畫面，重點是重新執行該程式也無法解決這問題，只能登出、重開機或是重新接上外接螢幕在電腦喚醒的情況下拔掉螢幕線，或是把該程式拉回原生螢幕，才有辦法解決。  &lt;ul&gt;
+&lt;li&gt;我不確定 Reproduce 的機率是不是 100%，但就是偶爾會遇到，而寫這篇文章的時候已經把我手邊唯一的 OS X 砍了，所以也無從驗證。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;系統介面內建中文字型不好看，要改也很難改。  &lt;ul&gt;
+&lt;li&gt;還好 OS X 10.9 以前有 TCFail 能用，到了 OS X 10.10 只能去改系統檔案設定，而換成了我想用的字型以後，內建的中文輸入法就會掛掉，只好又改回原本的字型。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;輸入法也是個問題  &lt;ul&gt;
+&lt;li&gt;剛用 OS X 10.8 的時候就聽很多人說內建的中文輸入法不是很好用，所以很多人都裝開源的香草或是小麥注音，我本身也是注音輸入法的使用者，但我用了以後還是不太習慣(恩，當時明明用不習慣，卻沒有跳下去幫忙貢獻)。後來找到另一款開源的中州韻輸入法(RIME)，是對岸的中國人&lt;a href="https://github.com/lotem"&gt;佛振&lt;/a&gt;開發的，在 Windows, Linux, Mac 上都能使用。裝來用以後發現還不錯用，自訂性蠻強大的，由於在用 gcin 時，我習慣把選字鍵從常人慣用的 1234567890 改成 asdfghjkl; 以減少手指移動的距離，這款輸入法也能做到，於是就用了。(至於後來關於 dvorak 跟拼音輸入法又是另一個故事了)  &lt;/li&gt;
+&lt;li&gt;到了 OS X 10.10 之後，不知怎的，非官方的中文輸入法都變得超級慢，慢到無法接受，於是又換回不是很好用的官方中文輸入法。(恩，又是一個妥協，沒去追根究底找出為什麼變得這麼慢的原因)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一不小心好像離題寫了太多關於 OS X 的部份。&lt;br&gt;
+Anyway, 因為種種問題加上這次 COSCUP 的助力，&lt;br&gt;
+還是想回歸到 Linux Desktop Environment 的懷抱，&lt;br&gt;
+促使我把 Arch Linux 灌在我的 MacBook Air 2013 13' 上，&lt;br&gt;
+以下是紀錄。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;以下流程皆在 &lt;code&gt;MacBookAir6,2 (Macbook Air mid 2013)&lt;/code&gt; 上進行&lt;br&gt;
+不同 model 的 MacBook 會有不同的問題&lt;br&gt;
+詳見 &lt;a href="https://wiki.archlinux.org/index.php/MacBook#Model-specific_information"&gt;https://wiki.archlinux.org/index.php/MacBook#Model-specific_information&lt;/a&gt;&lt;br&gt;
+由於我是採用把 OS X 洗掉直接裝 Arch Linux 的方式，並不是雙系統&lt;br&gt;
+所以安裝方式與一般的 Arch Linux 安裝並無太大不同，&lt;br&gt;
+故本篇文章會著重在裝好之後的一些調整  &lt;/p&gt;
+&lt;p&gt;如果有人想灌成 Ubuntu 的話，可以參考 &lt;a href="https://help.ubuntu.com/community/MacBookAir"&gt;https://help.ubuntu.com/community/MacBookAir&lt;/a&gt;&lt;br&gt;
+(但上面最新的資料似乎只有到 2013 年的機種就是，當然也歡迎勇者測試之後貢獻)  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;警告：MacbookAir6,2 的網卡在 Linux 上"有可能"不被支援(需視網卡型號)，  
+所以可能得另購 USB 無線網卡才有無線網路  
+詳情請見底下關於 Wi-Fi 的部份&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;If you want to mute the MacBook firmware boot sound,  
+be sure you mute the volume of the MacBook before you eliminating OS X.&lt;/code&gt;  &lt;/p&gt;
+&lt;h1&gt;Install Arch Linux Only (No OS X Dual Boot) on MacBook Air&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;WARNING: After erasing OS X,  
+We can only update the MacBook Air firmware via the external drive which has already installed OS X.&lt;/code&gt;  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make Arch Linux bootable Live USB  &lt;ul&gt;
+&lt;li&gt;Go to &lt;a href="https://www.archlinux.org/download/"&gt;https://www.archlinux.org/download/&lt;/a&gt; and download the newest Arch Linux iso.  &lt;/li&gt;
+&lt;li&gt;Plug in a USB drive  &lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;diskutil list&lt;/code&gt; to find the USB dirve &lt;code&gt;/dev/sdX&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dd if=$(path to arch linux iso) of=/dev/rsdX bs=1m&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;use raw disk (/dev/rsdX) make this quicker.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Go to AppStore for updating OS X to the newest version  &lt;ul&gt;
+&lt;li&gt;After the first update, reboot, and check for newest update again  &lt;/li&gt;
+&lt;li&gt;Make sure it's newest update, espcially the firmware udpate  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Erase OS X  &lt;ul&gt;
+&lt;li&gt;Reboot MacBook Air  &lt;/li&gt;
+&lt;li&gt;Press Command + R to enter the Reinstall mode  &lt;/li&gt;
+&lt;li&gt;Choose DiskUtility and Erase the entire disk  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Entering Arch Linux Live USB installation  &lt;ul&gt;
+&lt;li&gt;Reboot MacBook Air  &lt;/li&gt;
+&lt;li&gt;Press alt/option key for entering EFI bootloader  &lt;/li&gt;
+&lt;li&gt;Choose EFI USB  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Install Arch Linux (Just like the normal installation with a little different)  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Beginners'_guide"&gt;Beginners' guide - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Important =&amp;gt; &lt;a href="https://wiki.archlinux.org/index.php/MacBook#Arch_Only_Installation"&gt;MacBook - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Need to be aware about the EFI related options  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;底下其實有些調整不是那麼必要&lt;br&gt;
+可能直接 &lt;code&gt;sudo pacman -S gnome-control-center&lt;/code&gt; 就可以解掉許多問題&lt;br&gt;
+只是個人覺得 gnome 太肥，想要用些 light weight 的 packages&lt;br&gt;
+覺得麻煩的人可以直接裝個 gnome-control-center ，然後再視情況安裝需要的東西&lt;br&gt;
+應該可以節省一些時間  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Post-Install&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBook#Post-installation"&gt;https://wiki.archlinux.org/index.php/MacBook#Post-installation&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/General_recommendations"&gt;https://wiki.archlinux.org/index.php/General_recommendations&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Install &lt;a href="https://aur.archlinux.org/packages/yaourt/"&gt;yaourt&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo mkdir /var/cache/yaourt&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;save tarball to &lt;code&gt;/var/cache/yaourt&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;/etc/yaourtrc  &lt;/span&gt;
+&lt;span class="err"&gt;---  &lt;/span&gt;
+&lt;span class="err"&gt;EXPORT=1  &lt;/span&gt;
+&lt;span class="err"&gt;EXPORTDIR=&amp;quot;/var/cache/yaourt&amp;quot;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Configs&lt;/h2&gt;
+&lt;h3&gt;dotfiles&lt;/h3&gt;
+&lt;p&gt;Download my dotfiles on &lt;a href="https://github.com/M157q/dotfiles"&gt;https://github.com/M157q/dotfiles&lt;/a&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/M157q/dotfiles  
+&lt;span class="nb"&gt;cd&lt;/span&gt; dotfiles  
+make install  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Xorg&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S xcompmgr xorg-xrdb&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Xcompmgr"&gt;xcommpgr&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;for simple effect, like transparency in &lt;code&gt;guake&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/X_resources"&gt;xorg-xrdb&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;for &lt;code&gt;.Xresources&lt;/code&gt;, some config related to X Window  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Wi-Fi&lt;/h3&gt;
+&lt;p&gt;不同型號的網卡會有不同的問題，這部份也需要多加注意。&lt;br&gt;
+光是參考 &lt;a href="https://wiki.archlinux.org/index.php/MacBook#Wi-Fi"&gt;https://wiki.archlinux.org/index.php/MacBook#Wi-Fi&lt;/a&gt; 可能不夠&lt;br&gt;
+必須再自行找些相關資料，我在這部份卡了一陣子。  &lt;/p&gt;
+&lt;p&gt;先確認是哪張網卡&lt;br&gt;
+&lt;code&gt;MacBookAir6,2&lt;/code&gt; 沒意外的話應該都是 &lt;code&gt;BCM4360&lt;/code&gt; 這張&lt;br&gt;
+但還是有細節得注意  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lspci -vnn &lt;span class="p"&gt;|&lt;/span&gt;grep &lt;span class="m"&gt;0280&lt;/span&gt;  
+&lt;span class="m"&gt;03&lt;/span&gt;:00.0 Network controller &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="m"&gt;0280&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: Broadcom Corporation BCM4360 &lt;span class="m"&gt;802&lt;/span&gt;.11ac Wireless Network Adapter &lt;span class="o"&gt;[&lt;/span&gt;14e4:43a0&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;rev &lt;span class="m"&gt;03&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;code&gt;Broadcom BCM4360&lt;/code&gt; 這張網卡有兩種&lt;br&gt;
+一種是 &lt;code&gt;14e4:43a0&lt;/code&gt;, 另外一種是 &lt;code&gt;14e4:4360&lt;/code&gt;&lt;br&gt;
+根據 &lt;a href="https://wireless.wiki.kernel.org/en/users/Drivers/b43?highlight=%28b43%29#Supported_devices"&gt;https://wireless.wiki.kernel.org/en/users/Drivers/b43?highlight=%28b43%29#Supported_devices&lt;/a&gt;&lt;br&gt;
+&lt;code&gt;43a0&lt;/code&gt; 這張是被 wl 驅動程式支援的，所以如果是這張的話可以用無線網路&lt;br&gt;
+&lt;code&gt;4360&lt;/code&gt; 這張則是不被支援的，所以可能需要另外購買無線網卡&lt;br&gt;
+(我沒有親自測試過，如果有勇者或是有經驗的人歡迎回覆告知)  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;43a0&lt;/code&gt; 的話照著底下的指令做應該就可以使用無線網路連網了 (kernel 為 Linux 4.1.5-1)  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S broadcom-wl-dkms&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;after installation, follow the postinstall instructions.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S iw&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S wicd-gtk&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;==&amp;gt; You need to restart the dbus service after  &lt;/span&gt;
+&lt;span class="err"&gt;==&amp;gt; upgrading wicd.  &lt;/span&gt;
+&lt;span class="err"&gt;==&amp;gt; Disable networkmanager, dhcpcd or other networking  &lt;/span&gt;
+&lt;span class="err"&gt;==&amp;gt; utility and add &amp;#39;wicd&amp;#39; to your systemd configuration.  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;記得 &lt;code&gt;systemctl stop dhcpcd&lt;/code&gt;, &lt;code&gt;sytemctl disable dhcpcd&lt;/code&gt;,&lt;br&gt;
+&lt;code&gt;systemcl stop NetworkManager&lt;/code&gt;, &lt;code&gt;systemctl disable NetworkManager&lt;/code&gt;，&lt;br&gt;
+然後 &lt;code&gt;systemctl enable wicd&lt;/code&gt;，&lt;br&gt;
+&lt;code&gt;dhcpcd&lt;/code&gt; 或 &lt;code&gt;NetworkManager&lt;/code&gt; 都會跟 &lt;code&gt;wicd&lt;/code&gt; 衝突，&lt;br&gt;
+開著 &lt;code&gt;dhcpcd&lt;/code&gt; 或 &lt;code&gt;NetworkManager&lt;/code&gt; 的時候使用 &lt;code&gt;wicd&lt;/code&gt; 的話，&lt;br&gt;
+會無法使用無線網路連線，&lt;br&gt;
+錯誤訊息也看不出啥端倪，&lt;br&gt;
+我就是卡在這很久 Orz  &lt;/p&gt;
+&lt;h4&gt;2017.10.31 更新&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Warning&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Running&lt;/span&gt; &lt;span class="n"&gt;multiple&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;managers&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;cause&lt;/span&gt; &lt;span class="n"&gt;problems&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;so&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;important&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;disable&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;other&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;management&lt;/span&gt; &lt;span class="n"&gt;daemons&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;  
+
+&lt;span class="n"&gt;First&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="n"&gt;all&lt;/span&gt; &lt;span class="n"&gt;previously&lt;/span&gt; &lt;span class="n"&gt;running&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;daemons&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;like&lt;/span&gt; &lt;span class="n"&gt;netctl&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;netcfg&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dhcpcd&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;NetworkManager&lt;/span&gt;&lt;span class="o"&gt;).&lt;/span&gt;  
+
+&lt;span class="n"&gt;Disable&lt;/span&gt; &lt;span class="n"&gt;any&lt;/span&gt; &lt;span class="n"&gt;existing&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;management&lt;/span&gt; &lt;span class="n"&gt;services&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;including&lt;/span&gt; &lt;span class="n"&gt;netctl&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;netcfg&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dhcpcd&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;networkmanager&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Refer&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;Systemd&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Using&lt;/span&gt; &lt;span class="n"&gt;units&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;  
+&lt;span class="n"&gt;Note&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;You&lt;/span&gt; &lt;span class="n"&gt;might&lt;/span&gt; &lt;span class="n"&gt;need&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;stop&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;disable&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;daemon&lt;/span&gt; &lt;span class="n"&gt;instead&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;netctl&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;current&lt;/span&gt; &lt;span class="n"&gt;replacement&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;network&lt;/span&gt; &lt;span class="n"&gt;service&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;If&lt;/span&gt; &lt;span class="n"&gt;unsure&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="k"&gt;try&lt;/span&gt; &lt;span class="n"&gt;disabling&lt;/span&gt; &lt;span class="n"&gt;both&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;quote from &lt;a href="https://wiki.archlinux.org/index.php/wicd#Initial_setup"&gt;Wicd - ArchWiki&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;我猜不只 &lt;code&gt;wicd&lt;/code&gt;，&lt;br&gt;
+其他的 Network Daemon 應該也是同理，&lt;br&gt;
+不要讓他們彼此起衝突。  &lt;/p&gt;
+&lt;p&gt;主要是因為我在這裡是使用 &lt;code&gt;wicd&lt;/code&gt;&lt;br&gt;
+所以如果沒有把 &lt;code&gt;dhcpcd&lt;/code&gt; 或 &lt;code&gt;NetworkManager&lt;/code&gt; 都關掉的話，&lt;br&gt;
+在 &lt;code&gt;dmesg&lt;/code&gt; 會看到以下相關的錯誤訊息：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6677.574915] ERROR @wl_notify_scan_status :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6677.574919] wlp3s0 Scan_results error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6560.346608] ERROR @wl_cfg80211_scan :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6560.346611] WLC_SCAN error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;[ 6467.860408] ERROR @wl_notify_scan_status :  &lt;/span&gt;
+&lt;span class="err"&gt;[ 6467.860413] wlp3s0 Scan_results error (-22)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;詳細請參考為這個問題而寫的新文章&lt;br&gt;
+&lt;a href="/posts/2017/10/31/make-bcm4360-14e4-43a0-rev-03-work-on-arch-linux-with-broadcom-wl-dkms/"&gt;用 broadcom-wl-dkms 讓 BCM4360 [14e4:43a0] (rev 03) 能順利在 Arch Linux 中使用&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h4&gt;Improve DHCP connect init speed&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Add below into &lt;code&gt;/etc/dhcpcd.conf&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;# Disable IP ARP checking  &lt;/span&gt;
+&lt;span class="err"&gt;noarp  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Network Proxy Settings&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Proxy_settings"&gt;https://wiki.archlinux.org/index.php/Proxy_settings&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wicd&lt;/code&gt; has no proxy setting function, I can only set proxy configuration in &lt;code&gt;Firefox&lt;/code&gt;.(This only works for web browsing)  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;networkmanager&lt;/code&gt; can have proxy settings via install plugin &lt;code&gt;proxydriver&lt;/code&gt;, check &lt;a href="https://wiki.archlinux.org/index.php/NetworkManager"&gt;NetworkManager - ArchWiki&lt;/a&gt; for how to setup.  &lt;/li&gt;
+&lt;li&gt;I am kinda &lt;code&gt;wicd&lt;/code&gt; lover and don't use proxy really often, so I think I'm just ok with it currently.  &lt;/li&gt;
+&lt;li&gt;(Considering write the proxy setting functionality for &lt;code&gt;wicd&lt;/code&gt;...)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;File Manager&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S pcmanfm&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Keyboard&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S xorg-xmodmap&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;for changing keymap like swap Ctrl and Caps Lock  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Check /etc/mkinitcpio.conf if &lt;code&gt;HOOKS&lt;/code&gt; have &lt;code&gt;keyboard&lt;/code&gt;, if not, add it then &lt;code&gt;sudo mkinitcpio -p linux&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;fix &lt;code&gt;~&lt;/code&gt; problem  &lt;ul&gt;
+&lt;li&gt;if you press &lt;code&gt;~&lt;/code&gt; on the keyboard, it will not print out &lt;code&gt;~&lt;/code&gt; correctly.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;/etc/modprobe.d/hid_apple.conf  &lt;/span&gt;
+&lt;span class="err"&gt;---  &lt;/span&gt;
+&lt;span class="err"&gt;options hid_apple iso_layout=0  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Backlight&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBook#Keyboard_Backlight"&gt;https://wiki.archlinux.org/index.php/MacBook#Keyboard_Backlight&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S kbdlight&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S xorg-xev&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;For chekcing the key value of keyboard  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Synaptic (Touchpad)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S xf86-input-synaptics&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;only basic functions&lt;br&gt;
+or  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S xf86-input-mtrack-git&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/BlueDragonX/xf86-input-mtrack"&gt;https://github.com/BlueDragonX/xf86-input-mtrack&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;for OS X like touchpad and flexible configuration  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;X11&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;xorg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;mtrack&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;  
+&lt;span class="c1"&gt;---  &lt;/span&gt;
+&lt;span class="n"&gt;Section&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;InputClass&amp;quot;&lt;/span&gt;  
+    &lt;span class="n"&gt;MatchIsTouchpad&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;on&amp;quot;&lt;/span&gt;  
+    &lt;span class="n"&gt;Identifier&lt;/span&gt;      &lt;span class="ss"&gt;&amp;quot;Touchpads&amp;quot;&lt;/span&gt;  
+    &lt;span class="n"&gt;Driver&lt;/span&gt;          &lt;span class="ss"&gt;&amp;quot;mtrack&amp;quot;&lt;/span&gt;  
+
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;Thumbsize&amp;quot;&lt;/span&gt;      &lt;span class="ss"&gt;&amp;quot;50&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;ScrollDistance&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;150&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;Sensitivity&amp;quot;&lt;/span&gt;    &lt;span class="ss"&gt;&amp;quot;0.9&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;MaxTapTime&amp;quot;&lt;/span&gt;     &lt;span class="ss"&gt;&amp;quot;120&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;IgnoreThumb&amp;quot;&lt;/span&gt;    &lt;span class="ss"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;IgnorePalm&amp;quot;&lt;/span&gt;     &lt;span class="ss"&gt;&amp;quot;true&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;TapDragEnable&amp;quot;&lt;/span&gt;  &lt;span class="ss"&gt;&amp;quot;false&amp;quot;&lt;/span&gt;  
+
+    &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Natural&lt;/span&gt; &lt;span class="n"&gt;Scrolling&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;ScrollUpButton&amp;quot;&lt;/span&gt;     &lt;span class="ss"&gt;&amp;quot;5&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;ScrollDownButton&amp;quot;&lt;/span&gt;   &lt;span class="ss"&gt;&amp;quot;4&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;ScrollLeftButton&amp;quot;&lt;/span&gt;   &lt;span class="ss"&gt;&amp;quot;7&amp;quot;&lt;/span&gt;  
+    &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;ScrollRightButton&amp;quot;&lt;/span&gt;  &lt;span class="ss"&gt;&amp;quot;6&amp;quot;&lt;/span&gt;  
+
+    &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Disable&lt;/span&gt; &lt;span class="n"&gt;tap&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;to&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;click&lt;/span&gt;  
+    &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;TapButton1&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;  
+    &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;TapButton2&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;  
+    &lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Option&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;TapButton3&amp;quot;&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;  
+&lt;span class="n"&gt;EndSection&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Bluetooth (Headset)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;links  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Bluetooth"&gt;https://wiki.archlinux.org/index.php/Bluetooth&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Blueman"&gt;https://wiki.archlinux.org/index.php/Blueman&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Bluetooth_headset"&gt;https://wiki.archlinux.org/index.php/Bluetooth_headset&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S bluez bluez-utils bluez-libs bluez-firmware blueman pulseaudio-bluetooth pulseaudio-alsa pavucontrol&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo modprobe btusb&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo systemctl enable bluetooth&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo systemctl start bluetooth&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;blueman-manager&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;scan, pair, connect  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pavucontrol&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;Change sound channel to bluetooth headset  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Sometimes the bluetooth device may be blocked  &lt;ul&gt;
+&lt;li&gt;use &lt;code&gt;rfkill list&lt;/code&gt; to check if it is blocked.  &lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;sudo rfkill unblock bluetooth&lt;/code&gt; to unblock.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Sound&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S xf86-video-intel alsa-utils&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;alsa-utils include alsamixer, amixer  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Add the content below to &lt;code&gt;/etc/asound.conf&lt;/code&gt; //Important  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/etc/asound.conf&lt;/code&gt; should be created after installed &lt;code&gt;pulseaudio-alsa&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;/etc/asound.conf  &lt;/span&gt;
+&lt;span class="err"&gt;---  &lt;/span&gt;
+&lt;span class="err"&gt;defaults.pcm.card 1  &lt;/span&gt;
+&lt;span class="err"&gt;defaults.pcm.device 0  &lt;/span&gt;
+&lt;span class="err"&gt;defaults.ctl.card 1  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;awesomewm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S awesome vicious&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cp -r /usr/share/awesome/themes ~/.config/awesome/&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Power Management&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Power_management"&gt;https://wiki.archlinux.org/index.php/Power_management&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBookPro11,x#Powersave"&gt;https://wiki.archlinux.org/index.php/MacBookPro11,x#Powersave&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;ACPI&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S acpi&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Powertop&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S powertop&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Create &lt;code&gt;/etc/systemd/system/powertop.service&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Unit&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Powertop&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Service&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Service&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;oneshot&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;powertop&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;--auto-tune  &lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;multi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo systemctl enable powertop.service&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo systemctl start powertop.service&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;cpupower&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/torvalds/linux/tree/master/tools/power/cpupower"&gt;https://github.com/torvalds/linux/tree/master/tools/power/cpupower&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;sudo pacman -S cpupower  &lt;/span&gt;
+&lt;span class="err"&gt;sudo systemctl enable cpupower  &lt;/span&gt;
+&lt;span class="err"&gt;sudo systemctl start cpupower  &lt;/span&gt;
+&lt;span class="err"&gt;sudo cpupower frequency-set -g powersave  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;thermald&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/01org/thermal_daemon"&gt;01org/thermal_daemon · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Thermal daemon for Intel Architecture  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;yaourt -S thermald  &lt;/span&gt;
+&lt;span class="err"&gt;sudo systemctl enable thermald  &lt;/span&gt;
+&lt;span class="err"&gt;sudo systemctl start thermald  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Fix the kworker CPU hug&lt;/h4&gt;
+&lt;p&gt;"kworker" triggers some ACPI interrupts.&lt;br&gt;
+You can use &lt;code&gt;grep . -r /sys/firmware/acpi/interrupts/&lt;/code&gt; to check.&lt;br&gt;
+For me, &lt;code&gt;gpe4E&lt;/code&gt; triggered lots of ACPI interruptions.&lt;br&gt;
+So disable it via systemd.  &lt;/p&gt;
+&lt;p&gt;Create &lt;code&gt;/etc/systemd/system/suppress-gpe4E.service&lt;/code&gt;&lt;br&gt;
+and add the following lines.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Unit&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Disables&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;GPE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="n"&gt;E&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;an&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;interrupt&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;that&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;going&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;crazy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;Macs&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Service&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bash&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;echo &amp;quot;disable&amp;quot; &amp;gt; /sys/firmware/acpi/interrupts/gpe4E&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Install&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="n"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;multi&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;user&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;then enable and start it:&lt;br&gt;
+&lt;code&gt;sudo systemctl enable suppress-gpe4E.service&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;sudo systemctl start suppress-gpe4E.service&lt;/code&gt;  &lt;/p&gt;
+&lt;h4&gt;Enable power save mode on Intel Audio card&lt;/h4&gt;
+&lt;p&gt;Create new hook:&lt;br&gt;
+&lt;code&gt;sudoedit /etc/modprobe.d/60-snd-hda-intel.conf&lt;/code&gt;&lt;br&gt;
+and add:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;# Enable Power Saving on Intel HDA Audio  &lt;/span&gt;
+&lt;span class="err"&gt;options snd_hda_intel power_save=1  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Enable powersaving options for Intel Processor&lt;/h4&gt;
+&lt;p&gt;Create new hook:&lt;br&gt;
+&lt;code&gt;sudoedit /etc/modprobe.d/60-i915.conf&lt;/code&gt;&lt;br&gt;
+and add:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;# Experimental options to improve power saving on Intel Graphics  &lt;/span&gt;
+&lt;span class="err"&gt;options i915 enable_rc6=1 enable_fbc=1 lvds_downclock=1  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Suspend problem&lt;/h3&gt;
+&lt;h4&gt;Prevent shutdown directly when power button is pressed&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBookPro11,x#Repurpose_the_power_key"&gt;https://wiki.archlinux.org/index.php/MacBookPro11,x#Repurpose_the_power_key&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/etc/systemd/logind.conf&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;HandlePowerKey=suspend&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Disable &lt;a href="https://en.wikipedia.org/wiki/Swappiness"&gt;Swappiness&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;To save SSD and avoid kswapd using lots of CPU resource on finding available swap when there's no more virtual memory can be used.  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/igorpecovnik/lib/issues/219"&gt;kswapd 100% CPU-usage · Issue #219 · igorpecovnik/lib · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/sysctl/vm.txt"&gt;https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/Documentation/sysctl/vm.txt&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo sysctl vm.swappiness=0&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;The kernel will swap only to avoid an out of memory condition, when free memory will be below vm.min_free_kbytes limit. See the "VM Sysctl documentation"&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo sysctl vm.min_free_kbytes=0&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudoedit /etc/sysctl.d/99-sysctl.conf&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;Add &lt;code&gt;vm.swappiness=0&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Add &lt;code&gt;vm.min_free_kbytes=0&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Fixing suspend mode&lt;/h4&gt;
+&lt;p&gt;Use &lt;code&gt;cat /proc/acpi/wakeup&lt;/code&gt;.&lt;br&gt;
+There's a line saying &lt;code&gt;XHC1  S3  *enabled  pci:0000:00:14.0&lt;/code&gt;.&lt;br&gt;
+We only want the &lt;code&gt;LID0  S4  *enabled   platform:PNP0C0D:00&lt;/code&gt; to be enbaled.&lt;br&gt;
+So &lt;code&gt;sudoedit /etc/udev/rules.d/90-xhc_sleep.rules&lt;/code&gt; and add the follwing lines.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;# Disable wake from S3 on XHC1  &lt;/span&gt;
+&lt;span class="err"&gt;SUBSYSTEM==&amp;quot;pci&amp;quot;, KERNEL==&amp;quot;0000:00:14.0&amp;quot;, ATTR{device}==&amp;quot;0x9c31&amp;quot; RUN+=&amp;quot;/bin/sh -c &amp;#39;/bin/echo disabled &amp;gt; /sys$env{DEVPATH}/power/wakeup&amp;#39;&amp;quot;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Powersave&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/Unia/powersave"&gt;GitHub - Unia/powersave: Linux power save settings, compatible with systemd&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sysctl&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;99&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;powersave&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;  
+&lt;span class="c1"&gt;---  &lt;/span&gt;
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;Disable&lt;/span&gt; &lt;span class="n"&gt;NMI&lt;/span&gt; &lt;span class="n"&gt;watchdog&lt;/span&gt;  
+&lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;nmi_watchdog&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;  
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;laptop_mode&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;knob&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;controls&lt;/span&gt; &lt;span class="ss"&gt;&amp;quot;laptop mode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="k"&gt;All&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;things&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="k"&gt;are&lt;/span&gt; &lt;span class="n"&gt;controlled&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;knob&lt;/span&gt; &lt;span class="k"&gt;are&lt;/span&gt; &lt;span class="n"&gt;discussed&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;kernel&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Documentation&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;laptops&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;laptop&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;Default&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;  
+&lt;span class="n"&gt;vm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;laptop_mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;  
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Contains&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;percentage&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="n"&gt;available&lt;/span&gt; &lt;span class="n"&gt;memory&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="k"&gt;contains&lt;/span&gt; &lt;span class="k"&gt;free&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;reclaimable&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="nb"&gt;number&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt; &lt;span class="k"&gt;at&lt;/span&gt; &lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;generating&lt;/span&gt; &lt;span class="n"&gt;disk&lt;/span&gt; &lt;span class="n"&gt;writes&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;itself&lt;/span&gt; &lt;span class="k"&gt;start&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="n"&gt;dirty&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;Default&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;vm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirty_ratio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;20&lt;/span&gt;  
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="k"&gt;Contains&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;percentage&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;total&lt;/span&gt; &lt;span class="n"&gt;available&lt;/span&gt; &lt;span class="n"&gt;memory&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="k"&gt;contains&lt;/span&gt; &lt;span class="k"&gt;free&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;reclaimable&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="nb"&gt;number&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;pages&lt;/span&gt; &lt;span class="k"&gt;at&lt;/span&gt; &lt;span class="n"&gt;which&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;background&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="n"&gt;flusher&lt;/span&gt; &lt;span class="n"&gt;threads&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="k"&gt;start&lt;/span&gt; &lt;span class="n"&gt;writing&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;dirty&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;Default&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt;&lt;span class="n"&gt;vm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirty_background_ratio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;  
+
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;tunable&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;define&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;dirty&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;old&lt;/span&gt; &lt;span class="n"&gt;enough&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;eligible&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;writeout&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;kernel&lt;/span&gt; &lt;span class="n"&gt;flusher&lt;/span&gt; &lt;span class="n"&gt;threads&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  &lt;span class="n"&gt;It&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;expressed&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;ths of a second.  Data which has been dirty  &lt;/span&gt;
+&lt;span class="s1"&gt;# in-memory for longer than this interval will be written out next time a flusher thread wakes up  &lt;/span&gt;
+&lt;span class="s1"&gt;# (Default is 3000).  &lt;/span&gt;
+&lt;span class="s1"&gt;#vm.dirty_expire_centisecs = 3000  &lt;/span&gt;
+
+&lt;span class="s1"&gt;# The kernel flusher threads will periodically wake up and write `old&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;data&lt;/span&gt; &lt;span class="k"&gt;out&lt;/span&gt; &lt;span class="k"&gt;to&lt;/span&gt; &lt;span class="n"&gt;disk&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;  &lt;span class="n"&gt;This&lt;/span&gt;  
+&lt;span class="o"&gt;#&lt;/span&gt; &lt;span class="n"&gt;tunable&lt;/span&gt; &lt;span class="n"&gt;expresses&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="nb"&gt;interval&lt;/span&gt; &lt;span class="k"&gt;between&lt;/span&gt; &lt;span class="n"&gt;those&lt;/span&gt; &lt;span class="n"&gt;wakeups&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ths&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="k"&gt;second&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;Default&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;  
+&lt;span class="n"&gt;vm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirty_writeback_centisecs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1500&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;/etc/udev/rules.d/50-powersave-brightness.rules  &lt;/span&gt;
+&lt;span class="err"&gt;---  &lt;/span&gt;
+&lt;span class="err"&gt;# Display Power Management Signaling  &lt;/span&gt;
+&lt;span class="err"&gt;SUBSYSTEM==&amp;quot;power_supply&amp;quot;, ENV{POWER_SUPPLY_ONLINE}==&amp;quot;0&amp;quot;, ENV{DISPLAY}=&amp;quot;DPY&amp;quot;, ENV{XAUTHORITY}=&amp;quot;/home/USER/.Xauthority&amp;quot;, RUN+=&amp;quot;/usr/bin/xset dpms 120 240 360&amp;quot;  &lt;/span&gt;
+&lt;span class="err"&gt;SUBSYSTEM==&amp;quot;power_supply&amp;quot;, ENV{POWER_SUPPLY_ONLINE}==&amp;quot;1&amp;quot;, ENV{DISPLAY}=&amp;quot;DPY&amp;quot;, ENV{XAUTHORITY}=&amp;quot;/home/USER/.Xauthority&amp;quot;, RUN+=&amp;quot;/usr/bin/xset dpms 300 450 600&amp;quot;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;/etc/udev/rules.d/50-powersave-suspend.rules  &lt;/span&gt;
+&lt;span class="err"&gt;---  &lt;/span&gt;
+&lt;span class="err"&gt;# Suspend when battery is at 2%  &lt;/span&gt;
+&lt;span class="err"&gt;SUBSYSTEM==&amp;quot;power_supply&amp;quot;, ATTR{status}==&amp;quot;Discharging&amp;quot;, ATTR{capacity}==&amp;quot;2&amp;quot;, RUN+=&amp;quot;/usr/bin/systemctl suspend&amp;quot;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Monitor&lt;/h3&gt;
+&lt;h4&gt;Dual Display&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Multihead"&gt;https://wiki.archlinux.org/index.php/Multihead&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S xorg-xrandr&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Xrandr"&gt;https://wiki.archlinux.org/index.php/Xrandr&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;xrandr should work.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;For more friendly GUI setting, &lt;code&gt;sudo pacman -S lxrandr&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;But my 1920x1080 external display only get 1024x768 support&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Xrandr#Adding_undetected_resolutions"&gt;https://wiki.archlinux.org/index.php/Xrandr#Adding_undetected_resolutions&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cvt &lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;1080&lt;/span&gt;  
+&lt;span class="c1"&gt;# 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz  &lt;/span&gt;
+Modeline &lt;span class="s2"&gt;&amp;quot;1920x1080_60.00&amp;quot;&lt;/span&gt;  &lt;span class="m"&gt;173&lt;/span&gt;.00  &lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;2048&lt;/span&gt; &lt;span class="m"&gt;2248&lt;/span&gt; &lt;span class="m"&gt;2576&lt;/span&gt;  &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;1083&lt;/span&gt; &lt;span class="m"&gt;1088&lt;/span&gt; &lt;span class="m"&gt;1120&lt;/span&gt; -hsync +vsync  
+
+$ xrandr --newmode &lt;span class="s2"&gt;&amp;quot;1920x1080_60.00&amp;quot;&lt;/span&gt;  &lt;span class="m"&gt;173&lt;/span&gt;.00  &lt;span class="m"&gt;1920&lt;/span&gt; &lt;span class="m"&gt;2048&lt;/span&gt; &lt;span class="m"&gt;2248&lt;/span&gt; &lt;span class="m"&gt;2576&lt;/span&gt;  &lt;span class="m"&gt;1080&lt;/span&gt; &lt;span class="m"&gt;1083&lt;/span&gt; &lt;span class="m"&gt;1088&lt;/span&gt; &lt;span class="m"&gt;1120&lt;/span&gt; -hsync +vsync  
+
+$ xrandr --addmode DP1 1920x1080_60.00  
+
+$ xrandr --output eDP1 --auto --output DP1 --mode 1920x1080_60.00 --left-of eDP1  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;Hotplug problem - xrandr won't detect hotplug mini-display port to VGA adapter&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;I'm pretty sure that &lt;code&gt;udev&lt;/code&gt; indeed detect the hotplug event, but &lt;code&gt;xrandr&lt;/code&gt; always shows that &lt;code&gt;DP1&lt;/code&gt;(external VGA monitor) is disconnected.  &lt;/li&gt;
+&lt;li&gt;This can be solved by adding mode for &lt;code&gt;DP1&lt;/code&gt; (check commands above).  &lt;/li&gt;
+&lt;li&gt;After adding modes, just type &lt;code&gt;xrandr --output eDP1 --auto --output DP1 --mode ${mode_name} --left-of eDP1&lt;/code&gt; again, even if &lt;code&gt;xrandr&lt;/code&gt; still shows that &lt;code&gt;DP1&lt;/code&gt; is disconnected, it works.  &lt;/li&gt;
+&lt;li&gt;So, add all modes we need (1920x1080, 1280x720, 1024x768, ...) can be a workaroud for this problem.  &lt;/li&gt;
+&lt;li&gt;I think the problem is on &lt;code&gt;xrandr&lt;/code&gt; cannot recongnize whether thunderbolt to VGA adapter is connected or not when hotplug.  &lt;/li&gt;
+&lt;li&gt;Add below to &lt;code&gt;.xinitrc&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;xrandr&lt;/span&gt; &lt;span class="c1"&gt;--newmode &amp;quot;1920x1080_60.00&amp;quot;  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync  &lt;/span&gt;
+&lt;span class="n"&gt;xrandr&lt;/span&gt; &lt;span class="c1"&gt;--addmode DP1 1920x1080_60.00  &lt;/span&gt;
+
+&lt;span class="n"&gt;xrandr&lt;/span&gt; &lt;span class="c1"&gt;--newmode &amp;quot;1280x720_60.00&amp;quot;   74.50  1280 1344 1472 1664  720 723 728 748 -hsync +vsync  &lt;/span&gt;
+&lt;span class="n"&gt;xrandr&lt;/span&gt; &lt;span class="c1"&gt;--addmode DP1 1280x720_60.00  &lt;/span&gt;
+
+&lt;span class="n"&gt;xrandr&lt;/span&gt; &lt;span class="c1"&gt;--newmode &amp;quot;1024x768_60.00&amp;quot;   63.50  1024 1072 1176 1328  768 771 775 798 -hsync +vsync  &lt;/span&gt;
+&lt;span class="n"&gt;xrandr&lt;/span&gt; &lt;span class="c1"&gt;--addmode DP1 1024x768_60.00  &lt;/span&gt;
+
+&lt;span class="n"&gt;xrandr&lt;/span&gt; &lt;span class="c1"&gt;--output eDP1 --auto --output DP1 --mode 1920x1080_60.00 --left-of eDP1  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;Birghtness&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S xorg-xbacklight&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S mba6x_bl-dkms&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;(2016/12/02 update)  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mba6x_bl-dkms&lt;/code&gt; now depends on &lt;code&gt;mba6x_bl_dkms-git&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mba6x_bl-dkms-git-48.055d50d-1&lt;/code&gt; doesn't work with &lt;code&gt;linux-4.8.11-1&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Need to use &lt;code&gt;sudo rmmod mba6x_bl&lt;/code&gt; to make &lt;code&gt;xbacklight&lt;/code&gt; work.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;(optional) &lt;code&gt;yaourt -S lightum-git&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;For auto adjust keyboard and monitor birghtness by light sensor  &lt;/li&gt;
+&lt;li&gt;The AUR version has bug, use this fork version &lt;a href="https://github.com/esoleyman/lightum"&gt;https://github.com/esoleyman/lightum&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;USB&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S pmount&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Fan&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/MikaelStrom/macfanctld"&gt;https://github.com/MikaelStrom/macfanctld&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ yaourt -S macfanctld  
+$ sudo systemctl &lt;span class="nb"&gt;enable&lt;/span&gt; macfanctld  
+$ sudo systemctl start macfanctld  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;IME&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S gcin&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S libchewing&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;for chewing input method  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S anthy&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;for Japanese input method  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo gtk-query-immodules-2.0 --update-cache&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Browser&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S firefox firefox-i18n-zh-tw&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Flash  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S flashplugin&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://addons.mozilla.org/en-US/firefox/addon/flashblock/"&gt;https://addons.mozilla.org/en-US/firefox/addon/flashblock/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Fonts&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S wqy-zenhei adobe-source-han-sans-tw-fonts&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Mobile&lt;/h3&gt;
+&lt;h4&gt;USB-Tethering (Works out of box)&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Android_tethering#USB_tethering"&gt;https://wiki.archlinux.org/index.php/Android_tethering#USB_tethering&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;Disconnect from other networks  &lt;/li&gt;
+&lt;li&gt;Connect phone to computer via USB cable  &lt;/li&gt;
+&lt;li&gt;Enable the tethering option from the phone  &lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;ip link&lt;/code&gt; and search &lt;code&gt;usb?&lt;/code&gt; or &lt;code&gt;enp?s??u?&lt;/code&gt; interface  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo dhcpcd ${interface}&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;ip link&lt;/code&gt; again to check if already got an ip on that interface  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Mount Android phone&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MTP"&gt;https://wiki.archlinux.org/index.php/MTP&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;install &lt;code&gt;libmtp&lt;/code&gt;, &lt;code&gt;android-file-transfer&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pacman -S libmtp  
+$ yaourt -S android-file-transfer  
+
+&lt;span class="o"&gt;(&lt;/span&gt;connect Android phone to Arch Linux via USB&lt;span class="o"&gt;)&lt;/span&gt;  
+
+$ aft-mtp-mount ~/mnt   // mount android to ~/mnt  
+$ fusermount -u ~/mnt   // unmount  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Webcam&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[UPDATED] see the info below  &lt;/p&gt;
+&lt;p&gt;The Facetime HD webcam (included on 2013 MBAs onwards) is no longer UVC device, and therefore, does not work out of the box.&lt;br&gt;
+It is actually a PCIE device.&lt;br&gt;
+While &lt;a href="https://github.com/patjak/bcwc_pcie"&gt;a bcwc_pcie driver is being developed&lt;/a&gt;, it will probably take some time before it is ready.&lt;br&gt;
+See also &lt;a href="https://bugzilla.kernel.org/show_bug.cgi?id=71131"&gt;Linux bug #71131&lt;/a&gt; and &lt;a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1276811"&gt;Ubuntu bug #1276711&lt;/a&gt;.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBook#Webcam"&gt;https://wiki.archlinux.org/index.php/MacBook#Webcam&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;(2017/12/08 update)  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://aur.archlinux.org/packages/bcwc-pcie-git/"&gt;bcwc-pcie-git&lt;/a&gt; on AUR works.  &lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;yaourt -S bcwc-pcie-git&lt;/code&gt; or download the tarball and use &lt;code&gt;makepkg -s&lt;/code&gt; to install it.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Disable MacBook Firmware Boot Sound&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBook#Arch_Linux_only"&gt;https://wiki.archlinux.org/index.php/MacBook#Arch_Linux_only&lt;/a&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The only special consideration is the MacBook firmware boot sound.&lt;br&gt;
+To ensure that this sound is off: mute the volume in OS X before continuing further.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I forgot to mute the volume before deleting the OS X.&lt;br&gt;
+So, I have to get an OS X installed on USB drive.&lt;br&gt;
+In order to mute the firmware boot sound and for the firmware updating in the furture.  &lt;/p&gt;
+&lt;h3&gt;Hotkey Settings&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;use &lt;code&gt;xev&lt;/code&gt; to check the keymap  &lt;/li&gt;
+&lt;li&gt;modify &lt;code&gt;rc.lua&lt;/code&gt; instead using &lt;code&gt;sxhkd&lt;/code&gt; if you are using awesomewm.  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control"&gt;https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Add below to the globalkeys in &lt;code&gt;rc.lua&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;-- MacBook Air function keys  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86MonBrightnessDown&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;xbacklight -dec 10&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;),  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86MonBrightnessUp&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;xbacklight -inc 10&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;),  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86LaunchA&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;xrandr --output eDP1 --auto --output DP1 --mode 1920x1080_60.00 --left-of eDP1&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;),  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86LaunchB&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;xrandr --output eDP1 --auto --output DP1 --mode 1920x1080_60.00 --same-as eDP1&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;),  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86KbdBrightnessDown&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;kbdlight down 10&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;),  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86KbdBrightnessUp&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;kbdlight up 10&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;),  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86AudioMute&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;pactl set-sink-mute 0 toggle&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;),  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86AudioLowerVolume&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;pactl set-sink-mute 0 false&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;pactl set-sink-volume 0 -5%&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;),  &lt;/span&gt;
+&lt;span class="err"&gt;awful.key({ }, &amp;quot;XF86AudioRaiseVolume&amp;quot;,  &lt;/span&gt;
+&lt;span class="err"&gt;    function ()  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;pactl set-sink-mute 0 false&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;        awful.util.spawn(&amp;quot;pactl set-sink-volume 0 +5%&amp;quot;)  &lt;/span&gt;
+&lt;span class="err"&gt;    end  &lt;/span&gt;
+&lt;span class="err"&gt;)  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Kernel Upgrade&lt;/h3&gt;
+&lt;p&gt;After the kernel upgrade,&lt;br&gt;
+there are no &lt;code&gt;wl&lt;/code&gt; and &lt;code&gt;mba6x_bl&lt;/code&gt; modules for the new kernel,&lt;br&gt;
+(Becasue these two modules are in AUR and not supported by the Official.)&lt;br&gt;
+so, we need to rebuild &lt;code&gt;broadcom-wl-dkms&lt;/code&gt; and &lt;code&gt;mba6x_bl-dkms&lt;/code&gt; again.&lt;br&gt;
+Otherwise, the wireless interface won't be detected and backlight cannot be tuned while using the new kernel.&lt;br&gt;
+Be sure to download the lastest version of these two packages before reboot to the new kernel.&lt;br&gt;
+Follow the instructions below should work.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pacman -S linux-headers linux  
+
+&lt;span class="o"&gt;(&lt;/span&gt;after kernel upgarde, download lastest version of these two packages&lt;span class="o"&gt;)&lt;/span&gt;  
+$ yaourt -S broadcom-wl-dkms mba6x_bl-dkms  
+$ reboot  
+
+&lt;span class="o"&gt;(&lt;/span&gt;after reboot, rebuild these two kernel modules &lt;span class="k"&gt;for&lt;/span&gt; the new kernel and load them&lt;span class="o"&gt;)&lt;/span&gt;  
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; /var/cache/yaourt  
+$ sudo pacman -U &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;broadcom&lt;/span&gt;&lt;span class="p"&gt;-wl-dkms_package&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;mba6x_bl&lt;/span&gt;&lt;span class="p"&gt;-dkms_package&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;  
+$ sudo modprobe wl mba6x_bl  
+
+$ reboot  //optional  
+&lt;span class="o"&gt;(&lt;/span&gt;reboot again, and make sure that everything goes right.&lt;span class="o"&gt;)&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Upgrade all packages  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yaourt -Syua&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Upgrade all packages (with refetching and recompling all git packages  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yaourt -Syua --devel&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Misc&lt;/h2&gt;
+&lt;p&gt;Below are my personal needed. It's optional.&lt;br&gt;
+&lt;a href="https://wiki.archlinux.org/index.php/List_of_applications"&gt;https://wiki.archlinux.org/index.php/List_of_applications&lt;/a&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S virtualbox virtualbox-host-modules&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S unrar&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Network&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S mosh mtr wget nmap&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S dns-tools&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;for &lt;code&gt;dig&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Google Drive&lt;/h3&gt;
+&lt;p&gt;There are lots of 3rd party GNU/Linux clients for Google Drive:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/skicka"&gt;https://github.com/google/skicka&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/odeke-em/drive"&gt;https://github.com/odeke-em/drive&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/vitalif/grive2"&gt;https://github.com/vitalif/grive2&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/astrada/google-drive-ocamlfuse"&gt;https://github.com/astrada/google-drive-ocamlfuse&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;a href="https://github.com/google/skicka"&gt;skicka&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Here, I chose &lt;code&gt;skicka&lt;/code&gt; because some of my friends had already tried it&lt;br&gt;
+and they felt good about it, espcially for the &lt;code&gt;encrypt&lt;/code&gt; funciton.  &lt;/p&gt;
+&lt;p&gt;To install &lt;code&gt;skicka&lt;/code&gt; you need to install &lt;code&gt;go&lt;/code&gt; and &lt;code&gt;mercurial&lt;/code&gt; first.&lt;br&gt;
+Then, install &lt;code&gt;skicka&lt;/code&gt;, follow instructions below should work.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pacman -S go mercurial  
+$ mkdir ~/go  
+$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;GOPATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;~/go  
+$ &lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$PATH&lt;/span&gt;:~/go/bin  
+$ go get github.com/google/skicka  
+$ skicka init  
+$ skicka -no-browser-auth ls    // &lt;span class="nb"&gt;set&lt;/span&gt; authentication &lt;span class="k"&gt;for&lt;/span&gt; skicka  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can check out &lt;a href="https://github.com/google/skicka/blob/master/README.md"&gt;https://github.com/google/skicka/blob/master/README.md&lt;/a&gt; for further info.  &lt;/p&gt;
+&lt;p&gt;But, after I installed &lt;code&gt;skicka&lt;/code&gt;, it didn't find all my directories on Google Drive.&lt;br&gt;
+So, I just changed to &lt;code&gt;drive&lt;/code&gt;  &lt;/p&gt;
+&lt;h4&gt;&lt;a href="https://github.com/odeke-em/drive"&gt;drive&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;use &lt;code&gt;yaourt -S drive&lt;/code&gt; to install it.&lt;br&gt;
+then &lt;code&gt;drive init ${dir_for_google_drive}&lt;/code&gt;&lt;br&gt;
+copy and paste the token, then it should work.&lt;br&gt;
+Check &lt;a href="https://github.com/odeke-em/drive/blob/master/README.md"&gt;https://github.com/odeke-em/drive/blob/master/README.md&lt;/a&gt; for more info.&lt;br&gt;
+(This command usage is a bit like &lt;code&gt;git&lt;/code&gt;)  &lt;/p&gt;
+&lt;h3&gt;Python&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S python2 python-pip&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pip install virtualenvwrapper&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Pelican&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip2 install pelican markdown ghp-import&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;GitHub&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Add SSH Key  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://help.github.com/articles/generating-ssh-keys/#platform-linux"&gt;https://help.github.com/articles/generating-ssh-keys/#platform-linux&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Screenshot&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S shutter&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Terminal&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S rxvt-unicode guake&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Monitoring&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S htop glances lm_sensors&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo sensors-detect&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Multi-Media&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S eog&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S vlc&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S wine-git&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;need to uncomment &lt;code&gt;multilib&lt;/code&gt; in &lt;code&gt;/etc/pacman.conf&lt;/code&gt; first  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S playonlinux&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Office&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S evince&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;for .pdf files  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo pacman -S libreoffice&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;App&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;TweetDeck  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S nwjs-bin&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/passcod/twd"&gt;https://github.com/passcod/twd&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git clone https://github.com/passcod/twd.git&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd twd&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nw .&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;Still buggy and need package on AUR  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Slack  &lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/raelgc/scudcloud"&gt;https://github.com/raelgc/scudcloud&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S scudcloud&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Gitter  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S gitter&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Facebook Messenger  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S messengerfordesktop&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Popcorn-Time  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;yaourt -S popcorntime&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBook"&gt;MacBook - ArchWiki&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;Arch Linux Only, Dual Boot, Arch Linux + OS X + Windows  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pandeiro/arch-on-air"&gt;pandeiro/arch-on-air · GitHub&lt;/a&gt;  &lt;ul&gt;
+&lt;li&gt;Dual Boot  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://mandriva-usher.blogspot.tw/2014/02/gcin-firefox-stardic.html"&gt;Mandriva: gcin 無法使用於 firefox, stardic&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/General_recommendations"&gt;General recommendations - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Beginners'_guide"&gt;Beginners' guide - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/BlueDragonX/xf86-input-mtrack/blob/master/README.md"&gt;xf86-input-mtrack/README.md at master · BlueDragonX/xf86-input-mtrack · GitHub&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBook#Mid_2013_13.22_-_Version_6.2C2"&gt;MacBook - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/List_of_applications"&gt;List of applications - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://help.ubuntu.com/community/MacBookAir6-2/Trusty"&gt;MacBookAir6-2/Trusty - Community Help Wiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Apple_Keyboard"&gt;Apple Keyboard - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Sxhkd"&gt;Sxhkd - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Bluetooth"&gt;Bluetooth - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Bluetooth_headset"&gt;Bluetooth headset - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://xatierlike.blogspot.tw/2015/05/skicka-google-drive-command-line-tool.html"&gt;(=..=)/: skicka: Google drive command line tool&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MTP"&gt;MTP - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/PulseAudio#Keyboard_volume_control"&gt;PulseAudio - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://medium.com/@PhilPlckthun/arch-linux-running-on-my-macbook-2ea525ebefe3"&gt;Arch Linux running on my MacBook — Medium&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/Power_management"&gt;Power management - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.archlinux.org/index.php/MacBookPro11,x#Powersave"&gt;MacBookPro11,x - ArchWiki&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Unia/powersave"&gt;GitHub - Unia/powersave: Linux power save settings, compatible with systemd&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Arch Linux"></category><category term="MacBook Air"></category><category term="Linux"></category><category term="COSCUP"></category></entry></feed>

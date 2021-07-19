@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Screenshot</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.screenshot.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2014-02-27T14:08:00+08:00</updated><entry><title>修改 Mac 的截圖儲存位置及格式</title><link href="https://blog.m157q.tw/posts/2014/02/27/change-the-default-screenshot-saving-folder-and-format-on-mac/" rel="alternate"></link><published>2014-02-27T14:08:00+08:00</published><updated>2014-02-27T14:08:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-02-27:/posts/2014/02/27/change-the-default-screenshot-saving-folder-and-format-on-mac/</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;修改內建截圖的儲存位置  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;$ defaults write com.apple …&lt;/code&gt;&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;修改內建截圖的儲存位置  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;$ defaults write com.apple.screencapture location ${directory}&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ killall SystemUIServer&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;修改內建截圖的儲存格式  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;$ defaults write com.apple.screencapture type $type&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;type 有 4 種可選:  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;png  &lt;/li&gt;
+&lt;li&gt;jpg  &lt;/li&gt;
+&lt;li&gt;gif  &lt;/li&gt;
+&lt;li&gt;pdf  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h4&gt;Reference&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://my.eoe.cn/sisuer/archive/4711.html"&gt;【Mac技巧】修改Mac系统电脑快捷键截图默认保存路径及修改图片类型&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Mac"></category><category term="Screenshot"></category></entry></feed>

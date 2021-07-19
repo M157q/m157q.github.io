@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  利用 ngrok 直接在本機開發 chatbot
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/" rel="bookmark" title="Permalink to 利用 ngrok 直接在本機開發 chatbot">利用 ngrok 直接在本機開發 chatbot</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>利用 ngrok 拿到一個免費的 https proxy，將這個網址綁到 chatbot 的 webhook 網址，便可以很輕鬆得在本機開發 chatbot。</p>
+  </blockquote>
+  <div>
+    <h2>前言</h2>
+<p>去年第 4 季部份時間，加上今年上半年大部份時間，幾乎都在做 chatbot 相關的開發。剛開始的時候真的是感到相關開發的工具是很不齊全（當然經過了一年多的發展，現在有更多更方便開發 chatbot 的工具了。），尤其是臺灣最多人用的 Facebook 和 Line 真的是對開發者挺不友善的。主要都是 API 的限制比較多，但 Line 至少還有個官方的 SDK，Facebook Messenger Bot 則連個官方的 SDK 都沒有，基本上都是第三方的，絕大多數都是開發者自己包的。  </p>
+<p>好像有點離題了，總之，一開始開發 Facebook Messenger Bot 的時候，都是在 Webhook 網址填入 Google App Engine service 給的預設網址，每次有改動就要 deploy 上去 GAE，等新版本的 service 正常運作之後，還要再等 Facebook 一段時間才會真的切換到新版本，時間不太一定。一開始還可以接受，但後來就覺得這樣實在是太麻煩了，所以就開始尋找有沒有比較方便的解法。  </p>
+<p>一開始是往「有沒有辦法在本機架一個模擬 Messenger Bot 介面的網頁前端出來」去找，還真的有人寫：<a href="https://github.com/spchuang/fb-local-chat-bot">https://github.com/spchuang/fb-local-chat-bot</a>，但因為是獨立開發，而且 Messenger Bot 的介面或 API 其實很常改動，所以我後來沒有採用這個方法。  </p>
+<p>後來詢問了一些人後，才往 web proxy 的方向找，有人推薦我使用免費的 <a href="https://ngrok.com/">ngrok</a>：可以拿到一個支援 https 的 web proxy，在 Facebook Messenger Bot 使用的 Webhook 網址填入 ngrok 的 https 網址，之後 Facebook 送到該網址的 request 都會由 ngrok 轉送到本機的某一個 port 上，只要你有在 localhost 把 Messenger Bot 的 Webhook server 執行起來的話，就可以很方便得用自己的手機開啟 chatbot 來邊操作邊即時修改程式碼。  </p>
+<p>作法其實滿簡單的，用了以後開發速度真的加快不少，也可以很即時跟跟 PM 那邊去做確認，確認沒問題了以後再 deploy。而且無論任何語言寫的 chatbot 都可以使用這方法，以下做個介紹。  </p>
+<hr>
+<h2>介紹</h2>
+<p>官方網站：<a href="https://ngrok.com/">https://ngrok.com/</a> 有安裝方式，安裝好後也只要一行指令就可以使用了，我自己是這樣用：  </p>
+<p><code>ngrok http 8080</code>  </p>
+<p>這樣就會拿到一個接到 local host 8080 port 的 HTTP/HTTPS proxy，至於要用哪個 port 可以自己選擇，不一定要用 8080。  </p>
+<p>執行後，Termianl 就會拿到像下面這樣的畫面：  </p>
+<p><img alt="ngrok cli" src="/files/ngrok-https-proxy-to-write-chatbot-in-localhost/ngrok-cli.jpg">  </p>
+<p>也會在 local 開一個 web interface，連入以後的畫面像是這樣：  </p>
+<p><img alt="ngrok web admin 1" src="/files/ngrok-https-proxy-to-write-chatbot-in-localhost/ngrok-web-admin-1.jpg"><br>
+<img alt="ngrok web admin 2" src="/files/ngrok-https-proxy-to-write-chatbot-in-localhost/ngrok-web-admin-2.jpg">  </p>
+<p>接下來只要把拿到的 https proxy 的 url 填入 chatbot 的 webhook url，然後在 local 把自己開發的 chatbot webhook server 開在接入的 port 就行了。  </p>
+<p>如果是 Google App Engine 的 dev_appserver.py 的話，預設就會開在 8080 port。  </p>
+<hr>
+<h2>參考來源</h2>
+<ul>
+<li><a href="https://ngrok.com/">ngrok - secure introspectable tunnels to localhost</a>  </li>
+<li><a href="https://github.com/inconshreveable/ngrok">GitHub - inconshreveable/ngrok: Introspected tunnels to localhost</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E5%88%A9%E7%94%A8%20ngrok%20%E7%9B%B4%E6%8E%A5%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%96%8B%E7%99%BC%20chatbot%0Ahttps%3A//blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/&title=%E5%88%A9%E7%94%A8%20ngrok%20%E7%9B%B4%E6%8E%A5%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%96%8B%E7%99%BC%20chatbot&summary=%E5%88%A9%E7%94%A8%20ngrok%20%E6%8B%BF%E5%88%B0%E4%B8%80%E5%80%8B%E5%85%8D%E8%B2%BB%E7%9A%84%20https%20proxy%EF%BC%8C%E5%B0%87%E9%80%99%E5%80%8B%E7%B6%B2%E5%9D%80%E7%B6%81%E5%88%B0%20chatbot%20%E7%9A%84%20webhook%20%E7%B6%B2%E5%9D%80%EF%BC%8C%E4%BE%BF%E5%8F%AF%E4%BB%A5%E5%BE%88%E8%BC%95%E9%AC%86%E5%BE%97%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%96%8B%E7%99%BC%20chatbot%E3%80%82&source=https%3A//blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E5%88%A9%E7%94%A8%20ngrok%20%E7%9B%B4%E6%8E%A5%E5%9C%A8%E6%9C%AC%E6%A9%9F%E9%96%8B%E7%99%BC%20chatbot&amp;body=https%3A//blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/02/tips-about-facebook-url/">Facebook 網址的一些黑魔法</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/27/fetch-my-github-commits-in-one-organization-with-python-script/">用 Python 抓出我在前公司貢獻了多少 GitHub commits</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/24/i-love-open-source-because-someone-will-write-testings-for-me/">我愛開源，因為會遇到路人幫我寫測試。</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/12/23/differences-between-encryption-compression-and-encoding/">如何區分加密、壓縮、編碼</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/01/change-keymap-on-linux/">Linux 上如何透過指令更改鍵盤鍵位</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/";
+        var disqus_title = "利用 ngrok 直接在本機開發 chatbot";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/12/29/ngrok-https-proxy-to-write-chatbot-in-localhost/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-12-29T23:58:20+08:00"><i class="fa fa-calendar"></i> Fri 29 December 2017</abbr></p>
+
+      <p><abbr title="2017-12-31T15:54:20+08:00"><i class="fa fa-pencil"></i>Sun 31 December 2017</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/2018-it-bang-bang-mang-tie-ren-sai/" data-toggle="tooltip"
+      class="label label-default"
+      title="31 articles with this tag">2018 iT 邦幫忙鐵人賽</a>
+  <br>
+            <a href="/tag/chatbot/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">chatbot</a>
+  <br>
+            <a href="/tag/ngrok/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">ngrok</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/28/about-django-f-expression-q-object-and-aggregation/" title="關於 Django 的 F() expressions, Q object, Aggregation 的一些筆記"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/12/30/git-cross-repo-cherry-pick/" title="使用 Git 時如何做出跨 repo 的 cherry-pick"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

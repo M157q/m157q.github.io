@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Be careful when using grep on CircleCI
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.note.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Note - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2021/06/09/be-careful-when-using-grep-on-circleci/" rel="bookmark" title="Permalink to Be careful when using grep on CircleCI">Be careful when using grep on CircleCI</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p><code>grep</code> will exit 1 when no matching could be found. You won't notice this until you run it on CircleCI and the build job exit 1 with no error message at all.</p>
+  </blockquote>
+  <div>
+    <p>Quote from the man page of <code>grep</code>:</p>
+<blockquote>
+<p>EXIT STATUS<br>
+     Normally the exit status is 0 if a line is selected,<br>
+     1 if no lines were selected, and 2 if an error occurred.<br>
+     However, if the  -q  or  --quiet  or --silent is used and a line is selected,<br>
+     the exit status is 0 even if an error occurred.  </p>
+</blockquote>
+<h2>TL;DR</h2>
+<p><code>(grep $something || true)</code></p>
+<p>To force grep exit 0 when no mathing could be found.
+This also works with <code>grep -v</code> when you want to find the invert matching result.</p>
+<hr>
+<h2>Details</h2>
+<p>If your <code>grep</code> command might be ends with no matching,
+and you need the output of <code>grep</code> to combine with <code>awk</code>, <code>cut</code>, <code>xargs</code>, ...
+you should use <code>grep</code> on CircleCI like this:</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>grep ... <span class="o">||</span> <span class="nb">true</span><span class="o">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">(</span>grep ... <span class="o">||</span> :<span class="o">)</span>
+</pre></div>
+
+
+<p>This <code>()</code> syntax works for bash, sh, zsh</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">COMMAND_WITH_UNSURE_OUTPUT</span><span class="si">}</span> <span class="p">|</span> <span class="o">(</span>grep <span class="si">${</span><span class="nv">TARGET_STRING</span><span class="si">}</span> <span class="o">||</span> <span class="nb">true</span><span class="o">)</span> <span class="p">|</span> cut -d <span class="s1">&#39; &#39;</span> -f <span class="m">1</span> <span class="p">|</span> xargs ...
+</pre></div>
+
+
+<p>This will force grep return 0 even if no matching,
+and you could still pipe the output to another command.
+Unlike <code>grep -q</code> which returns 0 but no output could be used.</p>
+<hr>
+<h2>Alternatives</h2>
+<p>These commands do not have same effect.
+Might vary from different shells, use at your own risk and make sure you know what you are doing.</p>
+<div class="highlight"><pre><span></span><span class="o">(</span>grep <span class="nv">$something</span> <span class="o">||</span> <span class="nb">true</span><span class="o">)</span>
+<span class="o">{</span>grep <span class="nv">$something</span> <span class="o">||</span> true<span class="p">;</span><span class="o">}</span>
+
+<span class="o">(</span>grep <span class="nv">$something</span> <span class="o">||</span> <span class="nb">test</span> <span class="nv">$?</span> <span class="o">=</span> <span class="m">1</span><span class="o">)</span>
+<span class="o">{</span>grep <span class="nv">$something</span> <span class="o">||</span> <span class="nb">test</span> <span class="nv">$?</span> <span class="o">=</span> <span class="m">1</span><span class="p">;</span><span class="o">}</span>
+
+<span class="o">(</span>grep <span class="nv">$something</span> <span class="o">||</span> <span class="o">[[</span> <span class="nv">$?</span> <span class="o">==</span> <span class="m">1</span> <span class="o">]])</span>
+<span class="o">{</span>grep <span class="nv">$something</span> <span class="o">||</span> <span class="o">[[</span> <span class="nv">$?</span> <span class="o">==</span> <span class="m">1</span> <span class="o">]]</span><span class="p">;</span><span class="o">}</span>
+
+<span class="o">(</span>grep <span class="nv">$something</span> <span class="o">||</span> :<span class="o">)</span>
+<span class="o">{</span>grep <span class="nv">$something</span> <span class="o">||</span> :<span class="p">;</span><span class="o">}</span>
+</pre></div>
+
+
+<ul>
+<li><code>:</code> Do nothing beyond expanding arguments and performing redirections. The return status is zero.<ul>
+<li><a href="https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins">https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins</a></li>
+</ul>
+</li>
+</ul>
+<p>More discussions in here: <a href="https://unix.stackexchange.com/questions/330660/prevent-grep-from-exiting-in-case-of-nomatch">https://unix.stackexchange.com/questions/330660/prevent-grep-from-exiting-in-case-of-nomatch</a></p>
+<hr>
+<h2>Things about CircleCI</h2>
+<p>You might want to ask:
+"But, I pipe the output to another command and the result of <code>echo $?</code> is 0."</p>
+<p>According to <a href="https://circleci.com/docs/2.0/configuration-reference/#default-shell-options">https://circleci.com/docs/2.0/configuration-reference/#default-shell-options</a>
+CircleCI uses <code>/bin/bash -eo pipefail</code> for linux job.
+It will check the exit code of every command between pipes,
+not just the <code>$?</code> after the whole line of commands exectued.</p>
+<blockquote>
+<p><code>-e</code><br>
+Exit immediately if a pipeline (which may consist of a single simple command), a subshell command enclosed in parentheses, or one of the commands executed as part of a command list enclosed by braces exits with a non-zero status.</p>
+<p><code>-o pipefail</code><br>
+If pipefail is enabled, the pipeline’s return status is the value of the last (rightmost) command to exit with a non-zero status, or zero if all commands exit successfully. The shell waits for all commands in the pipeline to terminate before returning a value.</p>
+</blockquote>
+<p>Once your <code>grep</code> doesn't find any matching,
+You will get this error on CircleCI:</p>
+<div class="highlight"><pre><span></span>Exited with code exit status 1
+CircleCI received exit code 1
+</pre></div>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Be%20careful%20when%20using%20grep%20on%20CircleCI%0Ahttps%3A//blog.m157q.tw/posts/2021/06/09/be-careful-when-using-grep-on-circleci/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2021/06/09/be-careful-when-using-grep-on-circleci/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2021/06/09/be-careful-when-using-grep-on-circleci/&title=Be%20careful%20when%20using%20grep%20on%20CircleCI&summary=grep%20will%20exit%201%20when%20no%20matching%20could%20be%20found.%20You%20won%27t%20notice%20this%20until%20you%20run%20it%20on%20CircleCI%20and%20the%20build%20job%20exit%201%20with%20no%20error%20message%20at%20all.&source=https%3A//blog.m157q.tw/posts/2021/06/09/be-careful-when-using-grep-on-circleci/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Be%20careful%20when%20using%20grep%20on%20CircleCI&amp;body=https%3A//blog.m157q.tw/posts/2021/06/09/be-careful-when-using-grep-on-circleci/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2014/11/10/use-find-grep-xargs-to-rename-multiple-files/">Use find, grep, xargs to Rename Multiple Files</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/07/11/circleci-python-docker-image-cannot-connet-to-website-uses-tlsv1-0/">CircleCI Python docker image cannot connet to website uses TLSv1.0</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2021/06/09/be-careful-when-using-grep-on-circleci/";
+        var disqus_title = "Be careful when using grep on CircleCI";
+        var disqus_url = "https://blog.m157q.tw/posts/2021/06/09/be-careful-when-using-grep-on-circleci/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2021-06-09T22:09:43+08:00"><i class="fa fa-calendar"></i> Wed 09 June 2021</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/note/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="141 articles in this category">Note</a>
+              </p>
+            <a href="/tag/grep/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">grep</a>
+  <br>
+            <a href="/tag/circleci/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">CircleCI</a>
+  <br>
+            <a href="/tag/shell/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">shell</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2021/06/07/y2021w22/" title="Y2021W22"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2021/06/14/y2021w23/" title="Y2021W23"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.note.atom.xml"><i class="fa fa-rss"></i> Category: Note (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

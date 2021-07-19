@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Y2017W14
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.weekly.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Weekly - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/04/10/y2017w14/" rel="bookmark" title="Permalink to Y2017W14">Y2017W14</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Collection for Y2017W14 (2017-04-03 Mon 00:00:00 +0800 ~ 2017-04-10 Mon 00:00:00 +0800)</p>
+  </blockquote>
+  <div>
+    <h3>docker</h3>
+<ul>
+<li><a href="https://gist.github.com/anildigital/862675ec1b7bccabc311">Remove dangling docker images</a>  <ul>
+<li>
+<blockquote>
+<p>Remove dangling docker images View gist:862675ec1b7bccabc311 Raw gistfile1.  </p>
+</blockquote>
+</li>
+<li>因為同事問了，所以就找了一下。  </li>
+<li>我自己是用 <code>docker images -aqf dangling=true | xargs --no-run-if-empty docker rmi</code>  </li>
+</ul>
+</li>
+</ul>
+<h3>gcp</h3>
+<ul>
+<li><a href="https://cloud-playground.appspot.com/playground/">Cloud Playground</a>  <ul>
+<li><a href="https://github.com/googlearchive/cloud-playground">https://github.com/googlearchive/cloud-playground</a>  </li>
+<li>算是 Google App Engine 的火力展示吧，用 GAE 架了一個可以快速 fork and deploy GAE service 的網站  </li>
+</ul>
+</li>
+</ul>
+<h3>git</h3>
+<ul>
+<li><a href="http://stackoverflow.com/questions/7813194/how-do-i-edit-an-existing-tag-message-in-git">git tag - How do I edit an existing tag message in git? - Stack Overflow</a>  <ul>
+<li><code>git tag &lt;tag name&gt; &lt;tag name&gt; -f -m "&lt;new message&gt;"</code>  </li>
+<li>基本上就是強制 overwrite  </li>
+</ul>
+</li>
+<li><a href="http://stackoverflow.com/questions/1028649/how-do-you-rename-a-git-tag">How do you rename a Git tag? - Stack Overflow</a>  <ul>
+<li><code>git tag new old</code>  </li>
+<li><code>git tag -d old</code>  </li>
+<li><code>git push origin :refs/tags/old</code>  </li>
+<li><code>git push --tags</code>  </li>
+<li>基本上就是把舊的複製到新的以後，在把舊的 local 跟 remote 砍掉，再把更新 push 到 remote  </li>
+</ul>
+</li>
+</ul>
+<h3>golang</h3>
+<ul>
+<li><a href="https://blog.wu-boy.com/2017/04/5-reasons-why-we-switched-from-python-to-go/">五大理由從 Python 轉到 Go 語言 | 小惡魔 - 電腦技術 - 工作筆記 - AppleBOY</a>  <ul>
+<li>都算滿務實的理由  </li>
+</ul>
+</li>
+</ul>
+<h3>job</h3>
+<ul>
+<li><a href="https://www.ptt.cc/bbs/Soft_Job/M.1491689771.A.CCF.html">[心得] 歐洲工作&amp;面試心得 - 看板 Soft_Job - 批踢踢實業坊</a>  <ul>
+<li>挺不錯的經驗，在阿姆斯特丹工作好像真的很棒啊。  </li>
+</ul>
+</li>
+</ul>
+<h3>linux</h3>
+<ul>
+<li><a href="https://szlin.me/2017/04/05/linux-kernel-%e5%af%86%e7%a2%bc%e5%ad%b8%e6%bc%94%e7%ae%97%e6%b3%95%e5%af%a6%e4%bd%9c%e6%b5%81%e7%a8%8b/">Linux Kernel 密碼學演算法實作流程 – SZ Lin  &amp; Embedded Linux</a>  </li>
+</ul>
+<h3>misc</h3>
+<ul>
+<li><a href="http://mp.weixin.qq.com/s?__biz=MjM5MTE4Nzk1NA%3D%3D&amp;mid=2650741697&amp;idx=1&amp;sn=9e460ef496d57164c27b617ff17a78f8&amp;chksm=beb2ed5c89c5644a2161f4151ec3cca8e605538435b772a911646d62f9f7de4ccaa9d5125fd7&amp;mpshare=1&amp;scene=4&amp;srcid=0402GzvLtZhgODBSpKPlLwoC#rd">参与这场线上大战之后，我觉得人类未来还是有希望的</a>  <ul>
+<li>Reddit 的愚人節  </li>
+<li>好酷啊  </li>
+<li>完全沒有參與到  </li>
+</ul>
+</li>
+</ul>
+<h3>news</h3>
+<ul>
+<li><a href="https://opensource.googleblog.com/2017/04/noto-serif-cjk-is-here.html">Google Open Source Blog: Noto Serif CJK is here!</a>  </li>
+<li><a href="https://blog.gslin.org/archives/2017/04/04/7229/tim-berners-lee-%e6%8b%bf%e4%b8%8b-2016-%e5%b9%b4-turing-award/">Tim Berners-Lee 拿下 2016 年 Turing Award | Gea-Suan Lin's BLOG</a>  </li>
+<li><a href="https://blog.gslin.org/archives/2017/04/04/7224/adobe-%e8%88%87-google-%e5%90%88%e4%bd%9c%e6%8e%a8%e5%87%ba-noto-serif-cjk-%e6%80%9d%e6%ba%90%e5%ae%8b%e9%ab%94/">Adobe 與 Google 合作推出 Noto Serif CJK (思源宋體) | Gea-Suan Lin's BLOG</a>  </li>
+<li><a href="http://www.omgubuntu.co.uk/2017/04/ubuntu-18-04-ship-gnome-desktop-not-unity">Ubuntu 18.04 To Ship with GNOME Desktop, Not Unity - OMG! Ubuntu!</a>  <ul>
+<li>Ubuntu 18.04 LTS will use GNOME as its default desktop environment, and not Unity 8 — or even Unity 7.  </li>
+</ul>
+</li>
+</ul>
+<h3>ptt</h3>
+<ul>
+<li><a href="https://www.ptt.cc/bbs/CCRomance/M.1491078577.A.39F.html">[閒聊] 我媽的異國婚姻</a>  <ul>
+<li>大概是第一次花這麼多時間看 CCR 版的文章，作者的文筆很好，真的可以當小品文來看，有時候真實的人生就是比小說來的神奇啊。  </li>
+</ul>
+</li>
+</ul>
+<h3>python</h3>
+<ul>
+<li><a href="https://doughellmann.com/blog/2017/04/03/profile-and-pstats-performance-analysis-pymotw-3/">profile and pstats — Performance Analysis — PyMOTW 3 – Doug Hellmann</a>  <ul>
+<li>Python 的 built-in module 就有可以做 profiling 的工具  </li>
+</ul>
+</li>
+</ul>
+<h3>web</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Progressive_web_app">Progressive web app - Wikipedia</a>  <ul>
+<li>
+<blockquote>
+<p>Progressive Web App (PWA) is a term used to denote a new software development methodology. Unlike traditional applications, progressive web apps are a hybrid of regular web pages (or websites) and a mobile application.  </p>
+</blockquote>
+</li>
+<li>因為最近 <a href="https://mobile.twitter.com">https://mobile.twitter.com</a> 用 Node.js, React.js 重寫，改善了不少效能。裡頭提到了 PWA，因為沒聽過而去查了一下  </li>
+<li>看起來就是 website 但故意設計的跟 App 的感覺一樣，讓使用者在網頁版與手機上的 UX 是一樣的  </li>
+<li>詳細改寫的細節在 Twitter Engineering blog 這篇：<a href="https://blog.twitter.com/2017/how-we-built-twitter-lite">https://blog.twitter.com/2017/how-we-built-twitter-lite</a>  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>taiwan</h3>
+<ul>
+<li><a href="https://medium.com/%E9%AD%94%E9%AC%BC%E7%9A%84%E6%89%8B%E7%A8%BF/%E5%9C%8B%E9%81%93%E5%9B%9B%E6%96%AC%E9%A6%96%E4%BA%86%E5%8F%B0%E7%81%A3%E7%AC%AC%E4%B8%80%E6%A2%9D%E8%87%AA%E8%A1%8C%E8%BB%8A%E9%81%93-8ca7c80e6bd1">國道四斬首了台灣第一條自行車道 – 魔鬼的手稿 – Medium</a>  <ul>
+<li>
+<blockquote>
+<p>近20年來，國道四號，在老台中山區是一個非常複雜的概念。這一條高速公路，由台中清水起，大略沿大甲溪往東而行，至豐原東北止，已於2001年11月16日通車，但是，後續工程還沒完，國道四後面一分為二，還要接一條打山洞  </p>
+</blockquote>
+</li>
+<li>身為一個豐原人，沒看這篇還真的不知道東豐自行車隧道有這麼多的牽扯，大概是因為最近在看紙牌屋的關係，所以對於這些大概也能有些想像。  </li>
+</ul>
+</li>
+<li><a href="https://www.ptt.cc/bbs/TaichungBun/M.1491294485.A.A97.html">[食記] 全台最容易讓女友落淚的餐廳 - 看板 TaichungBun - 批踢踢實業坊</a>  <ul>
+<li>這餐廳... 「夜間X行」真的太狂了，超級像九把刀的小說會出現的內容...  </li>
+<li>雖然身為一個台中人，但沒聽過這間餐廳。  </li>
+</ul>
+</li>
+</ul>
+<h3>trivia</h3>
+<ul>
+<li><a href="http://0.30000000000000004.com/">0.30000000000000004 - Floating Point Math</a>  <ul>
+<li>好像還是有不少人不知道這問題  </li>
+<li>0.1+0.2 != 0.3  </li>
+<li>浮點數運算的誤差  </li>
+<li>數值方法的課程應該必提吧？  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Y2017W14%0Ahttps%3A//blog.m157q.tw/posts/2017/04/10/y2017w14/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/04/10/y2017w14/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/04/10/y2017w14/&title=Y2017W14&summary=Collection%20for%20Y2017W14%20%282017-04-03%20Mon%2000%3A00%3A00%20%2B0800%20%7E%202017-04-10%20Mon%2000%3A00%3A00%20%2B0800%29&source=https%3A//blog.m157q.tw/posts/2017/04/10/y2017w14/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Y2017W14&amp;body=https%3A//blog.m157q.tw/posts/2017/04/10/y2017w14/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/17/y2016w41/">Y2016W41</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/04/24/y2017w16/">Y2017W16</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/">Y2016W49</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/28/y2016w47/">Y2016W47</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/02/27/y2017w08/">Y2017W08</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/04/10/y2017w14/";
+        var disqus_title = "Y2017W14";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/04/10/y2017w14/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-04-10T10:29:16+08:00"><i class="fa fa-calendar"></i> Mon 10 April 2017</abbr></p>
+
+      <p><abbr title="2017-05-01T20:29:16+08:00"><i class="fa fa-pencil"></i>Mon 01 May 2017</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">M157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/weekly/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="105 articles in this category">Weekly</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/taiwan/" data-toggle="tooltip"
+      class="label label-default"
+      title="49 articles with this tag">taiwan</a>
+  <br>
+            <a href="/tag/linux/" data-toggle="tooltip"
+      class="label label-default"
+      title="44 articles with this tag">linux</a>
+  <br>
+            <a href="/tag/web/" data-toggle="tooltip"
+      class="label label-default"
+      title="37 articles with this tag">web</a>
+  <br>
+            <a href="/tag/misc/" data-toggle="tooltip"
+      class="label label-default"
+      title="33 articles with this tag">misc</a>
+  <br>
+            <a href="/tag/trivia/" data-toggle="tooltip"
+      class="label label-default"
+      title="28 articles with this tag">trivia</a>
+  <br>
+            <a href="/tag/gcp/" data-toggle="tooltip"
+      class="label label-default"
+      title="23 articles with this tag">GCP</a>
+  <br>
+            <a href="/tag/git/" data-toggle="tooltip"
+      class="label label-default"
+      title="20 articles with this tag">git</a>
+  <br>
+            <a href="/tag/golang/" data-toggle="tooltip"
+      class="label label-default"
+      title="17 articles with this tag">Golang</a>
+  <br>
+            <a href="/tag/docker/" data-toggle="tooltip"
+      class="label label-default"
+      title="16 articles with this tag">docker</a>
+  <br>
+            <a href="/tag/job/" data-toggle="tooltip"
+      class="label label-default"
+      title="12 articles with this tag">Job</a>
+  <br>
+            <a href="/tag/ptt/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">ptt</a>
+  <br>
+            <a href="/tag/news/" data-toggle="tooltip"
+      class="label label-default"
+      title="9 articles with this tag">news</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/04/03/y2017w13/" title="Y2017W13"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/04/17/y2017w15/" title="Y2017W15"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.weekly.atom.xml"><i class="fa fa-rss"></i> Category: Weekly (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

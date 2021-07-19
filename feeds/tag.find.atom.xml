@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - find</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.find.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-28T14:29:00+08:00</updated><entry><title>Recursively Delete Files with Specific Name in the Current Directory</title><link href="https://blog.m157q.tw/posts/2015/02/26/recursively-delete-files-with-specific-name-in-the-current-directory/" rel="alternate"></link><published>2015-02-26T15:42:42+08:00</published><updated>2015-10-28T14:11:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-02-26:/posts/2015/02/26/recursively-delete-files-with-specific-name-in-the-current-directory/</id><summary type="html">&lt;p&gt;Recursively delete files with specific name by using &lt;code&gt;find&lt;/code&gt; command&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Delete all the files which have same name with &lt;code&gt;${filename}&lt;/code&gt;.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find . -name &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;filename&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; -type f -delete  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Delete all files with .bak file extension in the current dir  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find . -name &lt;span class="s2"&gt;&amp;quot;*.bak&amp;quot;&lt;/span&gt; -type f -delete  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Doc&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;-name pattern  &lt;/span&gt;
+&lt;span class="err"&gt;    True if the last component of the pathname being examined matches pattern.  &lt;/span&gt;
+&lt;span class="err"&gt;    Special shell pattern matching characters (``[&amp;#39;&amp;#39;, ``]&amp;#39;&amp;#39;, ``*&amp;#39;&amp;#39;, and ``?&amp;#39;&amp;#39;) may be used as part of pattern.  &lt;/span&gt;
+&lt;span class="err"&gt;    These characters may be matched explicitly by escaping them with a backslash (``\&amp;#39;&amp;#39;).  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;or you can use regular expression for file matching.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;regex&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;True&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;whole&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;path&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;of&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;matches&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;using&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;regular&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;expression&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;To&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;match&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;file&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;named&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;``&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;xyzzy&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;you&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;can&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;use&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;the&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;regular&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;expression&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;``&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*/[&lt;/span&gt;&lt;span class="n"&gt;xyz&lt;/span&gt;&lt;span class="o"&gt;]*&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;``&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*/&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;but&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;not&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;``&lt;/span&gt;&lt;span class="n"&gt;xyzzy&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="ow"&gt;or&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="err"&gt;``&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="w"&gt;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://askubuntu.com/questions/377438/how-can-i-recursively-delete-all-files-of-a-specific-extension-in-the-current-di"&gt;command line - How can I recursively delete all files of a specific extension in the current directory? - Ask Ubuntu&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="find"></category><category term="one-liner"></category></entry><entry><title>Use find, grep, xargs to Rename Multiple Files</title><link href="https://blog.m157q.tw/posts/2014/11/10/use-find-grep-xargs-to-rename-multiple-files/" rel="alternate"></link><published>2014-11-10T13:44:00+08:00</published><updated>2015-10-28T13:51:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-11-10:/posts/2014/11/10/use-find-grep-xargs-to-rename-multiple-files/</id><summary type="html">&lt;p&gt;Recursively find filenames ends up …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recursively find filenames ends up with &lt;code&gt;.vh&lt;/code&gt; from pwd directory and change their names from &lt;code&gt;*.vh&lt;/code&gt; to &lt;code&gt;*.vhd&lt;/code&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find &lt;span class="p"&gt;|&lt;/span&gt; grep .vh$ &lt;span class="p"&gt;|&lt;/span&gt; xargs -I &lt;span class="o"&gt;{}&lt;/span&gt;.vh mv &lt;span class="o"&gt;{}&lt;/span&gt;.vh &lt;span class="o"&gt;{}&lt;/span&gt;.vhd  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;This Only works with BSD &lt;code&gt;xargs&lt;/code&gt; !!  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/10212192/how-to-grep-for-a-filename-instead-of-the-contents-of-a-file"&gt;http://stackoverflow.com/questions/10212192/how-to-grep-for-a-filename-instead-of-the-contents-of-a-file&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://viewsby.wordpress.com/2012/12/04/find-mvrename-with-xargs-example/"&gt;http://viewsby.wordpress.com/2012/12/04/find-mvrename-with-xargs-example/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="find"></category><category term="grep"></category><category term="xargs"></category><category term="mv"></category><category term="rename"></category></entry><entry><title>find 指令排除指定路徑</title><link href="https://blog.m157q.tw/posts/2014/05/21/exclude-path-in-find-command/" rel="alternate"></link><published>2014-05-21T15:10:00+08:00</published><updated>2015-10-28T14:29:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-05-21:/posts/2014/05/21/exclude-path-in-find-command/</id><summary type="html">&lt;p&gt;為了寫作業用到的&lt;br&gt;
+參考 &lt;a href="http://stackoverflow.com/questions/4210042/exclude-directory-from-find-command"&gt;linux - Exclude directory …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;為了寫作業用到的&lt;br&gt;
+參考 &lt;a href="http://stackoverflow.com/questions/4210042/exclude-directory-from-find-command"&gt;linux - Exclude directory from find . command - Stack Overflow&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;基本上就是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find &lt;span class="nv"&gt;$target_path&lt;/span&gt; -path &lt;span class="nv"&gt;$exclude_path&lt;/span&gt; -prune -o &lt;span class="o"&gt;[&lt;/span&gt;condition&lt;span class="o"&gt;]&lt;/span&gt; -print  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;我自己的用法是  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ find / -path /proc -prune -o -perm &lt;span class="nv"&gt;o&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;w -type f -print  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;用來 print 出整個 &lt;code&gt;/&lt;/code&gt; 底下除了 &lt;code&gt;/proc&lt;/code&gt; 以外所有的 global writable 的 file  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;解答中甚至給出了要排除多個資料夾路徑的寫法  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find &lt;span class="nv"&gt;$target_path&lt;/span&gt; -type d &lt;span class="se"&gt;\(&lt;/span&gt; -path &lt;span class="nv"&gt;$exclude_path1&lt;/span&gt; -o -path &lt;span class="nv"&gt;$exclude_path2&lt;/span&gt; -o -path &lt;span class="nv"&gt;$exclude_path3&lt;/span&gt; &lt;span class="se"&gt;\)&lt;/span&gt; -prune -o -print  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;h2&gt;Appendix&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-prune&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;This primary always evaluates to true.  It causes find to not descend into the current file.  Note, the -prune primary has no effect if the -d option was specified.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="find"></category><category term="sysadmin"></category></entry></feed>

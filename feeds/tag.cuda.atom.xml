@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - CUDA</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.cuda.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-26T14:04:00+08:00</updated><entry><title>Nice Series of CUDA Tutorials on ptt.cc</title><link href="https://blog.m157q.tw/posts/2015/08/15/nice-series-of-cuda-tutorials-on-ptt-cc/" rel="alternate"></link><published>2015-08-15T01:53:21+08:00</published><updated>2015-10-26T14:04:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2015-08-15:/posts/2015/08/15/nice-series-of-cuda-tutorials-on-ptt-cc/</id><summary type="html">&lt;p&gt;A series of nice tutorials about CUDA found on ptt.cc while I was preparing for the TSCC 5th competition.&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1222302747.A.CC4.html"&gt;[分享] CUDA 程式設計(1) -- 簡介 - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1222881899.A.C62.html"&gt;[分享] CUDA 程式設計(2) -- SIMT概觀 - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1223477316.A.1F8.html"&gt;[分享] CUDA 程式設計(3) -- CUDA 安裝 - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1223477872.A.1C2.html"&gt;[分享] CUDA 程式設計(4) -- 硬體規格簡介 &amp;amp; 採購參考 - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1224074823.A.786.html"&gt;[分享] CUDA 程式設計(5) -- 第一支程式 (向量加法) - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1224674233.A.4CC.html"&gt;[分享] CUDA 程式設計(6) -- 記憶體 - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1225285229.A.F15.html"&gt;[分享] CUDA 程式設計(7) -- 來玩泡泡吧 - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1225888236.A.79A.html"&gt;[分享] CUDA 程式設計(8) -- OpenMP vs. SIMT - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1225912100.A.5B0.html"&gt;[分享] CUDA 程式設計(9) -- 泡泡龍 part 2 - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1226501606.A.7E2.html"&gt;[分享] CUDA 程式設計(10) -- 速成篇(上) - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1227118854.A.0F1.html"&gt;[分享] CUDA 程式設計(11) -- 速成篇(中) - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1227708086.A.351.html"&gt;[分享] CUDA 程式設計(12) -- 速成篇(下) - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1228930736.A.779.html"&gt;[分享] CUDA 程式設計(13) -- 材質快取 (一) - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1231036765.A.649.html"&gt;[分享] CUDA 程式設計(14) -- 新年來開始 warp 吧 - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.ptt.cc/bbs/VideoCard/M.1233304220.A.98D.html"&gt;[分享] CUDA 程式設計(15) -- 翻譯 RWT P4 [CUDA API] - 看板 VideoCard - 批踢踢實業坊&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CUDA"></category><category term="GPU"></category><category term="Tutorial"></category></entry></feed>

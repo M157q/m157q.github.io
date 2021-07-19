@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - URL</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.url.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-26T14:57:00+08:00</updated><entry><title>Something about Facebook Photo URL</title><link href="https://blog.m157q.tw/posts/2014/04/15/something-about-facebook-photo-url/" rel="alternate"></link><published>2014-04-15T19:40:00+08:00</published><updated>2015-10-26T14:57:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-04-15:/posts/2014/04/15/something-about-facebook-photo-url/</id><summary type="html">&lt;p&gt;因為好奇而研究了一下一長串的 Facebook URL&lt;/p&gt;</summary><content type="html">&lt;p&gt;有 Facebook 相關開發經驗的應該就不必看了  &lt;/p&gt;
+&lt;p&gt;以最近很紅的一段網址來舉例  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;https://www.facebook.com/photo.php?fbid=710043139058199&amp;amp;set=a.231514793577705.59041.100001575585223&amp;amp;type=1  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;其中 &lt;code&gt;fbid=710043139058199&lt;/code&gt;，710043139058199 為此照片的ID，把這串數字接在 &lt;code&gt;www.facebook.com/&lt;/code&gt; 後面，就會連到該張照片的網址。ex: &lt;a href="https://www.facebook.com/710043139058199"&gt;https://www.facebook.com/710043139058199&lt;/a&gt; (看不到別怪我) (非循序流水號，估計跟使用者有關係)  &lt;/li&gt;
+&lt;li&gt;再來是 &lt;code&gt;set=a.231514793577705.59041.100001575585223&lt;/code&gt;，這邊可以看到三串數字，分別由 . 隔開。  &lt;ul&gt;
+&lt;li&gt;a 估計為 Album 的意思  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;231514793577705&lt;/code&gt; 代表該相片所在的相簿。接在 &lt;code&gt;www.facebook.com/&lt;/code&gt; 後面，可以直接連結到該相簿。 ex:&lt;a href="https://www.facebook.com/231514793577705"&gt;https://www.facebook.com/231514793577705&lt;/a&gt; (看不到也別怪我)  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;59041&lt;/code&gt; 目前未知  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;100001575585223&lt;/code&gt; 代表照片上傳者的 Facebook uid。 接在 &lt;code&gt;www.facebook.com/&lt;/code&gt; 後面，可以直接連結到該使用者的 Facebook 頁面。 ex:&lt;a href="https://www.facebook.com/100001575585223"&gt;https://www.facebook.com/100001575585223&lt;/a&gt; (看不到還是別怪我)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;type 只是相片檢視的模式，不重要。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;上面三種不同的連結必須在該使用者有開放相對應的瀏覽權限才看得到  &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;另外有一種長這樣，這種應該比較少看到。  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;https://www.facebook.com/photo.php?fbid=A&amp;amp;set=t.B&amp;amp;type=3&amp;amp;theater&lt;/code&gt;  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fbid=A&lt;/code&gt;: A 和上述的一樣，不再進行贅述。  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;set=t.B&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;t 估計為 timeline 的意思  &lt;/li&gt;
+&lt;li&gt;而 B 也會是某個使用者的 Facebook uid。前面接上 &lt;code&gt;www.facebook.com/&lt;/code&gt; 一樣可以連結到該使用者的 Facebook 個人頁面。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上自己無聊試出來的  &lt;/p&gt;
+&lt;p&gt;其中 Facebook uid 是流水號，也就是相鄰的數字都會是某個 FB 使用者。&lt;br&gt;
+這個我想很多人應該都知道。  &lt;/p&gt;
+&lt;p&gt;然後官方提供的 &lt;a href="http://graph.facebook.com"&gt;http://graph.facebook.com&lt;/a&gt; 不錯用&lt;br&gt;
+後面接上 /id 就會有 Open Graph 的資料出現&lt;br&gt;
+(官方工具是在 &lt;a href="https://developers.facebook.com/tools/explorer/"&gt;https://developers.facebook.com/tools/explorer/&lt;/a&gt; 須登入才能使用)&lt;br&gt;
+雖然這部分也會有預設權限就是&lt;br&gt;
+只要對方沒開放瀏覽權限，一樣看不到  &lt;/p&gt;
+&lt;p&gt;有空再來 Google 相關的東西或者翻翻 Facebook API 之類的文件，也許會有啥收穫。  &lt;/p&gt;</content><category term="facebook"></category><category term="URL"></category></entry></feed>

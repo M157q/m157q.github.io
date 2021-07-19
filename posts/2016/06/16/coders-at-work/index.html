@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  《編程人生》(Coders at Work)
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.reading.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Reading - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/06/16/coders-at-work/" rel="bookmark" title="Permalink to 《編程人生》(Coders at Work)">《編程人生》(Coders at Work)</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>《編程人生》讀後感</p>
+  </blockquote>
+  <div>
+    <h1>前言</h1>
+<p>其實這篇算重寫一次...<br>
+之前其實有寫好了，<br>
+而且當時已經拖了一個多月，<br>
+但是因為跟 git 還是不夠熟，<br>
+在為了新的 Makefile 做一些新的實驗時，<br>
+不小心把 git repo 搞炸了，<br>
+所以只好重新 clone...<br>
+然後就拖到了現在，<br>
+算起來離看完這本書過了三個月了，<br>
+只好憑印象寫一下心得，<br>
+剛好順便復習一下裡頭的內容。  </p>
+<hr>
+<h1>心得</h1>
+<p>原文是這本：  </p>
+<ul>
+<li><a href="http://www.codersatwork.com/">Coders at Work: Reflections on the Craft of Programming</a>  </li>
+</ul>
+<p>於 2009/09/16 出版  </p>
+<p>但我看的是在若水堂買的簡中翻譯版，分成上下冊兩本：  </p>
+<ul>
+<li><a href="http://www.waterlike.com.tw/bookdata.asp?NO=TP3C153043">編程人生：15 位軟件先驅訪談錄 (上卷)</a>  </li>
+<li><a href="http://www.waterlike.com.tw/bookdata.asp?NO=TP3C153044">編程人生：15 位軟件先驅訪談錄 (下卷)</a>  </li>
+</ul>
+<p>於 2015/01 出版 （竟然隔了 5 年多才被翻譯，個人覺得有點罕見。）  </p>
+<p>作者總共訪談了 15 位在資訊界都有著極大貢獻的人物，<br>
+上冊的 8 位：  </p>
+<ul>
+<li>第 1 篇 <a href="http://www.codersatwork.com/jamie-zawinski.html">Jamie Zawinski</a>  <ul>
+<li>Mozilla 計劃的先驅及主要貢獻者之一  </li>
+<li>XScreenSaver 的 Contributor  </li>
+</ul>
+</li>
+<li>第 2 篇 <a href="http://www.codersatwork.com/brad-fitzpatrick.html">Brad Fitzpatrick</a>  <ul>
+<li>LiveJournal, Memcached, OpenID 的 Owner  </li>
+</ul>
+</li>
+<li>第 3 篇 <a href="http://www.codersatwork.com/douglas-crockford.html">Douglas Crockford</a>  <ul>
+<li>"JavaScript: The Good Parts" 的作者  </li>
+<li>Yahoo! 資深 JavaScript 架構師  </li>
+</ul>
+</li>
+<li>第 4 篇 <a href="http://www.codersatwork.com/brendan-eich.html">Brendan Eich</a>  <ul>
+<li>JavaScript 之父  </li>
+<li>Mozilla 計劃的共同發起人，當過 Mozilla 的 CTO 和 CEO  </li>
+</ul>
+</li>
+<li>第 5 篇 <a href="http://www.codersatwork.com/joshua-bloch.html">Joshua Bloch</a>  <ul>
+<li>"Effective Java" 的作者  </li>
+<li>曾任職於 Sun 和 Google，在 Google 是擔任 Chief Java Architect  </li>
+</ul>
+</li>
+<li>第 6 篇 <a href="http://www.codersatwork.com/joe-armstrong.html">Joe Armstrong</a>  <ul>
+<li>Erlang 之父  </li>
+</ul>
+</li>
+<li>第 7 篇 <a href="http://www.codersatwork.com/simon-peyton-jones.html">Simon Peyton Jones</a>  <ul>
+<li>Haskell Contributor, Glasgow Haskell Compiler (GHC) 的主力開發者和架構師  </li>
+</ul>
+</li>
+<li>第 8 篇 <a href="http://www.codersatwork.com/peter-norvig.html">Peter Norvig</a>  <ul>
+<li>Director of Research at Google  </li>
+<li>co-author, with Stuart Russell, of "Artificial Intelligence: A Modern Approach"  </li>
+<li>was head of the Computational Sciences Division (now the Intelligent Systems Division) at NASA Ames Research Center  </li>
+</ul>
+</li>
+</ul>
+<p>下冊的 7 位：  </p>
+<ul>
+<li>第 1 篇 <a href="http://www.codersatwork.com/guy-steele.html">Guy Steele</a>  <ul>
+<li><a href="https://en.wikipedia.org/wiki/Guy_L._Steele_Jr.">https://en.wikipedia.org/wiki/Guy_L._Steele_Jr.</a>  </li>
+<li>寫過非常多種程式語言  </li>
+<li>參與過許多程式語言的制定過程，是 Common Lisp 和 Scheme 的作者之一，也參與了 Fortran, C, ECMAScript 的標準制定過程。  </li>
+<li>曾被 Bill Joy 邀請加入 Sun 幫忙訂定 Java 的標準。  </li>
+<li>ACM Grace Murray Hopper Award 1988 年得主。  </li>
+</ul>
+</li>
+<li>第 2 篇 <a href="http://www.codersatwork.com/dan-ingalls.html">Dan Ingalls</a>  <ul>
+<li><a href="https://en.wikipedia.org/wiki/Daniel_Henry_Holmes_Ingalls,_Jr.">https://en.wikipedia.org/wiki/Daniel_Henry_Holmes_Ingalls,_Jr.</a>  </li>
+<li>物件導向先驅之一  </li>
+<li>對於 Smalltalk 程式語言貢獻極多，1976 年設計了 bytecoded virtual machine 使得 Smalltalk 得以實作。  </li>
+<li>ACM Grace Murray Hopper Award 1984 年得主。  </li>
+</ul>
+</li>
+<li>第 3 篇 <a href="http://www.codersatwork.com/l-peter-deutsch.html">L Peter Deutsch</a>  <ul>
+<li><a href="https://en.wikipedia.org/wiki/L_Peter_Deutsch">https://en.wikipedia.org/wiki/L_Peter_Deutsch</a>  </li>
+<li>11 歲開始寫程式，過沒多久就開始在 MIT 閒晃，在 PDP-1 上實作 Lisp，和比自己年紀大了快兩倍的 MIT Hackers 一起寫程式。（有出現在<a href="http://www.books.com.tw/products/0010548392">《黑客列傳：電腦革命俠客誌》（Hackers: Heroes of the Computer Revolution）</a> 這本書裏面）  </li>
+<li>在 UC Berkeley 當大二生的時候，他參與了 Project Genie（最早的 minicomputer-based timesharing system 之一），他負責撰寫這個作業系統大部分的 kernel。  </li>
+<li>在 Project Genie 商業化失敗後，他到了 Xerox PARC 這間公司，負責 Interlisp system 和 Smalltalk virtual machine，協助 JIT compilation 技術的部份。  </li>
+</ul>
+</li>
+<li>第 4 篇 <a href="http://www.codersatwork.com/ken-thompson.html">Ken Thompson</a>  <ul>
+<li><a href="https://en.wikipedia.org/wiki/Ken_Thompson">https://en.wikipedia.org/wiki/Ken_Thompson</a>  </li>
+<li>MULTICS, UNIX, B programming language, Plan 9, UTF-8, golang  </li>
+<li>1983 年圖靈獎得主之一 （和 Dennis Ritchie 共同獲得）  </li>
+</ul>
+</li>
+<li>第 5 篇 <a href="http://www.codersatwork.com/fran-allen.html">Fran Allen</a>  <ul>
+<li><a href="https://en.wikipedia.org/wiki/Frances_E._Allen">https://en.wikipedia.org/wiki/Frances_E._Allen</a>  </li>
+<li>2006 年圖靈獎得主  </li>
+<li>在 IBM 待了 45 年，負責一系列的編譯器相關的專案。  </li>
+<li>似乎是這本書的受訪者裡頭唯一一位女性  </li>
+</ul>
+</li>
+<li>第 6 篇 <a href="http://www.codersatwork.com/bernie-cosell.html">Bernie Cosell</a>  <ul>
+<li>參與了 ARPANET 早期使用的 IMP (Interface Message Processors) 的實作。  </li>
+<li>在 BBN 待了 26 年，基本上裡面的專案都有碰，因其精湛的除錯技巧，而贏得了 Master debugger 跟 Fixer 的稱號。  </li>
+</ul>
+</li>
+<li>第 7 篇 <a href="http://www.codersatwork.com/donald-knuth.html">Donald Knuth</a> （高德納）  <ul>
+<li><a href="https://en.wikipedia.org/wiki/Donald_Knuth">https://en.wikipedia.org/wiki/Donald_Knuth</a>  </li>
+<li>"The Art of Computer Programming" 一書的作者  </li>
+<li>TeX, METAFONT  </li>
+<li>1971 年 Grace Murray Hopper Award 得主、1974 年圖靈獎得主、1995 年 John von Neumann Medal 得主、...  </li>
+</ul>
+</li>
+</ul>
+<p>因為作者 Peter Siebel 本身也是會寫程式的人，<br>
+然後對整個圈子的生態和歷史也很瞭解，<br>
+所以問的許多問題都還蠻犀利的，<br>
+除了問每一位受訪者共同的問題，像是：  </p>
+<ul>
+<li>「你對其他工程師推薦哪些書籍？」  </li>
+<li>「你有看完 The Art of Programming 嗎？你對這本書的想法是什麼？」  </li>
+<li>「你覺得自己應該算是下列哪一項：藝術家？工程師？建築師？專家？程式設計師？」  </li>
+<li>「你覺得數學對於寫程式有沒有幫助？是不是每一位寫程式的人都要會的？」  </li>
+<li>「在你寫程式的生涯中，遇到最棘手的 Bug 是哪類型的？你當時怎麼解決的？」  </li>
+<li>「如果讓你重選一次，你還會寫程式嗎？」（我記得應該有這問題，沒有的話就是我記錯了。）  </li>
+</ul>
+<p>其中也有針對受訪者詢問不同的軟體工程相關問題：  </p>
+<ul>
+<li>「你認為 Pair Programming 對於寫程式有沒有幫助？」  </li>
+<li>「你對 Agile Programming, Extreme Programming 和 Waterfall 有什麼看法？」  </li>
+<li>「你認為 unit testing 是不是必須的？」  </li>
+<li>「你對於 Marting Fowler 的《人月神話》和《沒有銀彈》有什麼看法？」  </li>
+<li>「你開發一個程式的時候是習慣 Top-down 還是 Bottom-up？」  </li>
+<li>「接手一個程式的時候你是傾向重寫它還是瞭解之前的人在寫什麼然後試圖修改它？」  </li>
+<li>「你有寫文件的習慣嗎？你覺得寫文件的重要性如何？」  </li>
+<li>「你對 Code Review 有什麼看法？你覺得對開發有幫助嗎？」  </li>
+</ul>
+<p>也會針對受訪者問個別的問題：  </p>
+<ul>
+<li>Jamin Zawinski  <ul>
+<li>Netscape 和 Firefox 當時的狀況  </li>
+<li>Lisp  </li>
+</ul>
+</li>
+<li>Brad Fitzpatrick  <ul>
+<li>LiveJournal, Memcached, OpenID, Go  </li>
+</ul>
+</li>
+<li>Douglas Crockford  <ul>
+<li>JavaScript, JSON, JSLint, JSMin, FORTRAN  </li>
+</ul>
+</li>
+<li>Brendan Eich  <ul>
+<li>JavaScript 的誕生、設計過程、優缺點以及未來有哪些計劃  </li>
+</ul>
+</li>
+<li>Joshua Bloch  <ul>
+<li>Java 還有關於 SUN 和在 Google 的經驗  </li>
+</ul>
+</li>
+<li>Joe Armstrong  <ul>
+<li>Erlang 的開發過程和未來的想法  </li>
+</ul>
+</li>
+<li>Simon Peyton Jones  <ul>
+<li>Haskell 和開發 GHC 的經驗談  </li>
+</ul>
+</li>
+<li>Peter Norvig  <ul>
+<li>NASA, AI, Google  </li>
+</ul>
+</li>
+<li>Guy Steele  <ul>
+<li>（忘了）  </li>
+</ul>
+</li>
+<li>Dan Ingalls  <ul>
+<li>（忘了）  </li>
+</ul>
+</li>
+<li>LPeter Deutsch  <ul>
+<li>（忘了）  </li>
+</ul>
+</li>
+<li>Ken Thompson  <ul>
+<li>針對 UNIX 的開發還有問一些 Denis Ritchie 的事  </li>
+</ul>
+</li>
+<li>Fran Allen  <ul>
+<li>（忘了）  </li>
+</ul>
+</li>
+<li>Bernie Cosell  <ul>
+<li>（忘了）  </li>
+</ul>
+</li>
+<li>Donald Knuth  <ul>
+<li>問 LaTeX 還有 The Art of Programming  </li>
+</ul>
+</li>
+</ul>
+<p>而且由於受訪者的領域和慣用語言不盡相同，<br>
+所以每個人的想法也都不太一樣，<br>
+但也沒有說誰對誰錯的問題，<br>
+每個人都因為自己的成長過程和人格特質而對寫程式這件事有不同的見解，<br>
+我想這也證明了這個圈子的多元性。  </p>
+<p>但其中也有一致認同的地方，<br>
+像是：  </p>
+<ul>
+<li>「數學雖然不是必須的，但對寫程式有一定程度以上的幫助。」  </li>
+<li>「寫程式是很花時間及講求經驗的」  </li>
+</ul>
+<p>我覺得如果有個把作者問所有受訪者的共同問題和回答整合起來的筆記應該會很有趣。  </p>
+<p>整本書看下來讓我覺得就像是看著作者和受訪者在眼前對談，<br>
+甚至從文字中的描述我就能感受到每位受訪者不同的風格，<br>
+所以我選擇慢慢品嚐，然後就花了兩個月才看完。Orz<br>
+不知道為啥我看程式相關的書籍的速度都特別慢...<br>
+之後應該會選擇看快一點吧，<br>
+反正正常看也是會忘，<br>
+看太慢也是會忘，<br>
+那倒不如看快一點還有機會多看幾次。  </p>
+<hr>
+<h1>References</h1>
+<ul>
+<li><a href="http://www.codersatwork.com/">Coders at Work: Reflections on the Craft of Programming</a>  </li>
+<li><a href="https://en.wikipedia.org/wiki/Coders_at_work">Coders at work - Wikipedia, the free encyclopedia</a>  </li>
+<li><a href="https://en.wikipedia.org/wiki/PARC_(company)">PARC (company) - Wikipedia, the free encyclopedia</a>  </li>
+<li><a href="https://twitter.com/ruanyf/status/743420600840912898">ruanyf on Twitter: "Erlang语言的发明者Armstrong回忆说：“刚进公司时，我喜欢帮别人Debug，同事会买杯啤酒感谢我。后来，我们就用啤酒表示bug的难度，这个是两杯啤酒bug，那个是三杯啤酒bug……” #书摘"</a>  </li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E3%80%8A%E7%B7%A8%E7%A8%8B%E4%BA%BA%E7%94%9F%E3%80%8B%28Coders%20at%20Work%29%0Ahttps%3A//blog.m157q.tw/posts/2016/06/16/coders-at-work/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/06/16/coders-at-work/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/06/16/coders-at-work/&title=%E3%80%8A%E7%B7%A8%E7%A8%8B%E4%BA%BA%E7%94%9F%E3%80%8B%28Coders%20at%20Work%29&summary=%E3%80%8A%E7%B7%A8%E7%A8%8B%E4%BA%BA%E7%94%9F%E3%80%8B%E8%AE%80%E5%BE%8C%E6%84%9F&source=https%3A//blog.m157q.tw/posts/2016/06/16/coders-at-work/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E3%80%8A%E7%B7%A8%E7%A8%8B%E4%BA%BA%E7%94%9F%E3%80%8B%28Coders%20at%20Work%29&amp;body=https%3A//blog.m157q.tw/posts/2016/06/16/coders-at-work/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2017/03/06/y2017w09/">Y2017W09</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/06/12/y2017w23/">Y2017W23</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/05/y2016w35/">Y2016W35</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2021/05/10/y2021w18/">Y2021W18</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/07/17/y2017w28/">Y2017W28</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/06/16/coders-at-work/";
+        var disqus_title = "《編程人生》(Coders at Work)";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/06/16/coders-at-work/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-06-16T10:07:42+08:00"><i class="fa fa-calendar"></i> Thu 16 June 2016</abbr></p>
+
+      <p><abbr title="2016-06-16T20:54:00+08:00"><i class="fa fa-pencil"></i>Thu 16 June 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/reading/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="19 articles in this category">Reading</a>
+              </p>
+            <a href="/tag/programmer/" data-toggle="tooltip"
+      class="label label-default"
+      title="29 articles with this tag">programmer</a>
+  <br>
+            <a href="/tag/book/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">book</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/06/09/lexking-typewriter-68-keys-blue-switch-mechanical-keyboard/" title="雷斯特 68 鍵凱華青軸機械式打字機鍵盤"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/" title="Cat System Workshop #7 Skymizer intelligent compiler"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.reading.atom.xml"><i class="fa fa-rss"></i> Category: Reading (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - grpconv</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.grpconv.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2014-08-12T20:45:00+08:00</updated><entry><title>Manage /etc/group and /etc/gshadow</title><link href="https://blog.m157q.tw/posts/2014/08/12/manage-etcgroup-and-etcgshadow/" rel="alternate"></link><published>2014-08-12T20:45:00+08:00</published><updated>2014-08-12T20:45:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-08-12:/posts/2014/08/12/manage-etcgroup-and-etcgshadow/</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;# vigr&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;edit &lt;code&gt;/etc/group&lt;/code&gt; file …&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;# vigr&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;edit &lt;code&gt;/etc/group&lt;/code&gt; file  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;# grpconv&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;generate new &lt;code&gt;/etc/gshadow&lt;/code&gt; file based on &lt;code&gt;/etc/group&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;# grpck&lt;/code&gt;  &lt;ul&gt;
+&lt;li&gt;cross-comparison the members in groups of &lt;code&gt;/etc/group&lt;/code&gt; and &lt;code&gt;/etc/gshadow&lt;/code&gt;, it will also detect wrong or useless syntax.  &lt;/li&gt;
+&lt;li&gt;(For me, it's a little bit like tell you the result of &lt;code&gt;vimdiff /etc/group /etc/gshadow&lt;/code&gt; directly)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="sysadmin"></category><category term="vigr"></category><category term="grpck"></category><category term="grpconv"></category><category term="gshadow"></category></entry></feed>

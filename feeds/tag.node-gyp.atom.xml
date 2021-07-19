@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - node-gyp</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.node-gyp.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2017-09-01T16:25:08+08:00</updated><entry><title>Error: contextify@0.1.15 install: `node-gyp rebuild`</title><link href="https://blog.m157q.tw/posts/2017/09/01/error-contextify-0-1-15-install-node-gyp-rebuild/" rel="alternate"></link><published>2017-09-01T16:25:08+08:00</published><updated>2017-09-01T16:25:08+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2017-09-01:/posts/2017/09/01/error-contextify-0-1-15-install-node-gyp-rebuild/</id><summary type="html">&lt;p&gt;Note for solution of "Error: contextify@0.1.15 install: &lt;code&gt;node-gyp rebuild&lt;/code&gt;"&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;Encountered this error of one build on Travis CI of some project.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;Downgrade node to 6.11 which is LTS version can solve this problem.  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;- nvm install v6.11.2  &lt;/span&gt;
+&lt;span class="err"&gt;- nvm use v6.11.2  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Add these two lines into &lt;code&gt;install&lt;/code&gt; part of &lt;code&gt;.travis.yml&lt;/code&gt;.  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/blackjk3/react-form-builder/issues/11#issuecomment-319307464"&gt;https://github.com/blackjk3/react-form-builder/issues/11#issuecomment-319307464&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Node.js"></category><category term="node-gyp"></category></entry></feed>

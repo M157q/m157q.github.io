@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Skymizer</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.skymizer.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2016-10-11T19:46:58+08:00</updated><entry><title>Cat System Workshop #12: SkyPat: C++ Performance Analysis and Testing Framework</title><link href="https://blog.m157q.tw/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/" rel="alternate"></link><published>2016-10-11T19:46:58+08:00</published><updated>2016-10-11T19:46:58+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2016-10-11:/posts/2016/10/11/cat-system-workshop-12-skypat-c-performance-analysis-and-testing-framework/</id><summary type="html">&lt;p&gt;Note for Cat System Workshop #11 (2016/10/11)&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Info&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Speaker: Peter Chang  &lt;/li&gt;
+&lt;li&gt;Event Link: &lt;a href="http://www.accupass.com/go/cat1011"&gt;http://www.accupass.com/go/cat1011&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;GitHub Repo: &lt;a href="https://github.com/skymizer/SkyPat"&gt;https://github.com/skymizer/SkyPat&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Note&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Regions of code  &lt;/li&gt;
+&lt;li&gt;SkyPat  &lt;ul&gt;
+&lt;li&gt;Define unittest, checking both correctness and performance for you.  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#include &amp;lt;pat/pat.h&amp;gt;&lt;/code&gt;  &lt;/li&gt;
+&lt;li&gt;A glace at SkyPat  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;pat/pat.h&amp;gt;  &lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+&lt;span class="c1"&gt;// In MathCase, fibonacci_test  &lt;/span&gt;
+&lt;span class="n"&gt;PAT_F&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;MathCase&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fibonacci_test&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="p"&gt;{&lt;/span&gt;  
+    &lt;span class="n"&gt;ASSERT_TRUE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+    &lt;span class="n"&gt;EXPECT_EQ&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+    &lt;span class="n"&gt;PERFORM&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  
+        &lt;span class="n"&gt;fibonacci&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+    &lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;  
+
+&lt;span class="c1"&gt;// 一個 case 裏面有很多個 tests  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Loop-Intensive  &lt;ul&gt;
+&lt;li&gt;Benefic Compiler Optimization  &lt;/li&gt;
+&lt;li&gt;比較容易展開  &lt;/li&gt;
+&lt;li&gt;測試效能也比較沒那麼困難，主要就看這段 code 要被執行幾次。  &lt;/li&gt;
+&lt;li&gt;Example:  &lt;ul&gt;
+&lt;li&gt;GIMP  &lt;/li&gt;
+&lt;li&gt;Skymizer  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Call Intensive  &lt;ul&gt;
+&lt;li&gt;Damage Compilter Optimization  &lt;/li&gt;
+&lt;li&gt;Difficult to Evaluate  &lt;/li&gt;
+&lt;li&gt;比較難處理  &lt;/li&gt;
+&lt;li&gt;如果產生得出夠完整的 call graph，可能可以做些優化  &lt;/li&gt;
+&lt;li&gt;Loop 展開不太有效果  &lt;/li&gt;
+&lt;li&gt;只能試試看能不能減少呼叫  &lt;/li&gt;
+&lt;li&gt;有很多不知道的小瓶頸  &lt;/li&gt;
+&lt;li&gt;Example:  &lt;ul&gt;
+&lt;li&gt;Browsers (Chrome, Firefox)  &lt;/li&gt;
+&lt;li&gt;Editors (Evernote, ...)  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;SkyPat 就是專門用來處理 Call Intensive 這種惱人的效能分析的  &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;perf&lt;/code&gt; cannot evaluate regions of code.  &lt;/li&gt;
+&lt;li&gt;SkyPat integrates &lt;code&gt;perf_event&lt;/code&gt; to evaluate regions of code.  &lt;/li&gt;
+&lt;li&gt;"Software Task Clock" is still not cycle-accurate  &lt;/li&gt;
+&lt;li&gt;Only cycle-accurate timer w/o OS interference.  &lt;/li&gt;
+&lt;li&gt;Can evaluate call-intensive program  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;Install:  &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ git clone https://github.com/skymizer/SkyPat.git&lt;/code&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Usage  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;pat/pat.h&amp;gt;  &lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[])&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  
+    &lt;span class="n"&gt;pat&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Test&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+    &lt;span class="n"&gt;pat&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Test&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;RunAll&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;SkyPat v3.0 will be released at Oct 30th.  &lt;/li&gt;
+&lt;li&gt;Add more Perf events  &lt;/li&gt;
+&lt;li&gt;Welcome feedbac and patches  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;其他的 tool 只能測量 function level，&lt;br&gt;
+但 SkyPat 可以測量 block level。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;目前還是非常初步的產品，&lt;br&gt;
+也歡迎使用者、貢獻者開 Issues 跟 Pull Request，&lt;br&gt;
+一起討論也很歡迎。  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Related links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/google/googletest"&gt;GitHub - google/googletest: Google Test&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Skymizer"></category><category term="Cat System Workshop"></category><category term="Meetup"></category><category term="C++"></category><category term="Performance"></category><category term="Unit-test"></category><category term="framework"></category></entry></feed>

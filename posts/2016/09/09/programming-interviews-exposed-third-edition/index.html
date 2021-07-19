@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  《程序員面試攻略》第三版（簡中）
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.reading.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Reading - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/09/09/programming-interviews-exposed-third-edition/" rel="bookmark" title="Permalink to 《程序員面試攻略》第三版（簡中）">《程序員面試攻略》第三版（簡中）</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>讀《程序員面試攻略》(Programming Interviews Exposed: Secrets to Landing Your Net Job, Third Edition)</p>
+  </blockquote>
+  <div>
+    <p><img alt="front cover" src="/files/programming-interviews-exposed-third-edition/front_cover.jpg"><br>
+<img alt="back cover" src="/files/programming-interviews-exposed-third-edition/back_cover.jpg">  </p>
+<hr>
+<h2>前言</h2>
+<p>又是一本買了很久才看完的書，<br>
+這本書沒記錯的話應該是大學還沒畢業的時候就買了。<br>
+應該是大四的時候，<br>
+逛清大對面的若水堂看到這本，<br>
+翻了一下覺得內容還不錯就買了。  </p>
+<p>直到去年準備要找工作的時候才開始看，<br>
+仍舊是用我那龜速的看速度。<br>
+我印象最深的就是去年底跑去台南的時候也帶著這本書在看，<br>
+jserv 安排了一天三場分別由 MediaTek, Google, Facebook 的工程師演講那天，<br>
+中午聚餐吃完飯在等待的時間拿出來看，<br>
+然後就被 jserv 嗆：  </p>
+<blockquote>
+<p>不要再看什麼書了啦，<br>
+裝什麼認真，<br>
+旁邊有這麼多強者現場就可以問，<br>
+還不趕快去找他們聊天，<br>
+有什麼想問的就趕快問，<br>
+這是書上學不到的經驗，<br>
+書自己找時間再看就好啦，<br>
+懂嗎？  </p>
+</blockquote>
+<p>直到現在猶如當頭棒喝。  </p>
+<p>然後這本書在我找到工作後就這麼擱著，<br>
+直到最近才又拿出來閱讀，<br>
+然後在上個月 25 號讀完了。<br>
+至於為什麼會拿出來看，<br>
+那又是另外一個故事了。  </p>
+<hr>
+<h2>紀錄</h2>
+<p>我覺得這本書大略可以分成 3 個部份：  </p>
+<ol>
+<li>第 0~3 章  <ul>
+<li>介紹求職應該有什麼樣的心態、注意事項以及面試時回答問題和談薪水的技巧。  </li>
+</ul>
+</li>
+<li>第 4~13 章  <ul>
+<li>基本的資訊學科相關問題，包含：Linked List, Tree, Graph, Array, String, Recursion, Sorting, Concurrency, Object-Oriented, Design Pattern, Database, Bitwise operation.  </li>
+</ul>
+</li>
+<li>第 14~17 章和附錄  <ul>
+<li>一些估算與智力測驗相關還有非技術性的問題（為了瞭解人格特質是否適合團隊）。然後附錄是如何撰寫 Resume 的範例，有給出改過前後的對比以及講說大概要怎麼寫。  </li>
+<li>但第 16 章又回到比較技術性的問題，主要是在做一些名詞解釋以及比較的問答。  </li>
+</ul>
+</li>
+</ol>
+<p>之前是看到 Sorting 的部份，<br>
+最近才從 Concurrency 的部份繼續看完。<br>
+個人覺得裡頭提到的技術相關問題真的都算蠻基本的題目，<br>
+畢竟也沒有深入到問些 Operating System, Computer Architecture, Compiler 底層實作和效能比較相關的問題，<br>
+至於第 16 章針對各種不同的名詞解釋並比較其優缺點，<br>
+列出來的內容也算蠻基本的，<br>
+我覺得也算是面試中常常會被問到的問題。  </p>
+<p>然後我自己覺得收穫比較多的應該算是一些非技術性的部份，<br>
+像是第一部份提到的，<br>
+關於找工作的心態、談薪水的技巧、解程式問題時的思路還有該如何跟面試官討論等等，<br>
+還有第三部份講到一些智力測驗問題的估算還有人格特質會影響拿不拿得到 offer 等等。  </p>
+<p>至於附錄的履歷撰寫部份，<br>
+因為之前找工作的時候有紀錄了一篇 <a href="/posts/2016/01/22/how-to-write-a-resume-for-programming-jobs/">程式設計師的履歷撰寫要點</a>，<br>
+個人覺得講的差不多，<br>
+所以就沒有細看。  </p>
+<hr>
+<h2>結論</h2>
+<p>這本書我覺得無法拿來準備些技術性比較深的面試，<br>
+然後偏 Web front-end 跟 App 開發的人可能也比較不太適合看這本書，<br>
+因為很多東西可能不需要用到，<br>
+但就看面試的公司會出什麼樣的題目吧。<br>
+（前陣子也是看到一堆美國的公司在找網頁前端開發人員要考演算法、資料結構的）  </p>
+<p>至於比較偏 Operation System, Computer Architecture, Compiler 這塊的人，<br>
+看這本書的技術性相關的部份應該會覺得非常簡單，<br>
+所以比較有收穫的應該會是關於非技術性的面試技巧的部份吧。  </p>
+<p>總之這本書我最近應該會再快速翻閱一次就是。  </p>
+<blockquote>
+<p>所以結論是這本書大概就是給我這種基礎學科沒學好的人來複習用的 (?)  </p>
+</blockquote>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=%E3%80%8A%E7%A8%8B%E5%BA%8F%E5%93%A1%E9%9D%A2%E8%A9%A6%E6%94%BB%E7%95%A5%E3%80%8B%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%88%E7%B0%A1%E4%B8%AD%EF%BC%89%0Ahttps%3A//blog.m157q.tw/posts/2016/09/09/programming-interviews-exposed-third-edition/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/09/09/programming-interviews-exposed-third-edition/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/09/09/programming-interviews-exposed-third-edition/&title=%E3%80%8A%E7%A8%8B%E5%BA%8F%E5%93%A1%E9%9D%A2%E8%A9%A6%E6%94%BB%E7%95%A5%E3%80%8B%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%88%E7%B0%A1%E4%B8%AD%EF%BC%89&summary=%E8%AE%80%E3%80%8A%E7%A8%8B%E5%BA%8F%E5%93%A1%E9%9D%A2%E8%A9%A6%E6%94%BB%E7%95%A5%E3%80%8B%28Programming%20Interviews%20Exposed%3A%20Secrets%20to%20Landing%20Your%20Net%20Job%2C%20Third%20Edition%29&source=https%3A//blog.m157q.tw/posts/2016/09/09/programming-interviews-exposed-third-edition/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=%E3%80%8A%E7%A8%8B%E5%BA%8F%E5%93%A1%E9%9D%A2%E8%A9%A6%E6%94%BB%E7%95%A5%E3%80%8B%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%88%E7%B0%A1%E4%B8%AD%EF%BC%89&amp;body=https%3A//blog.m157q.tw/posts/2016/09/09/programming-interviews-exposed-third-edition/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/07/y2016w44/">Y2016W44</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2018/01/12/articles-related-to-interview/">整理一些跟面試相關的文章</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/05/15/y2017w19/">Y2017W19</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/11/y2016w36/">Y2016W36</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/02/20/y2017w07/">Y2017W07</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/09/09/programming-interviews-exposed-third-edition/";
+        var disqus_title = "《程序員面試攻略》第三版（簡中）";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/09/09/programming-interviews-exposed-third-edition/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-09-09T12:40:59+08:00"><i class="fa fa-calendar"></i> Fri 09 September 2016</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/reading/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="19 articles in this category">Reading</a>
+              </p>
+            <a href="/tag/interview/" data-toggle="tooltip"
+      class="label label-default"
+      title="14 articles with this tag">Interview</a>
+  <br>
+            <a href="/tag/programming-job/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Programming Job</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/07/cross-origin-resource-sharing/" title="紀錄一下和 CORS (Cross-Origin Resource Sharing) 有關的問題"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/11/y2016w36/" title="Y2016W36"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.reading.atom.xml"><i class="fa fa-rss"></i> Category: Reading (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

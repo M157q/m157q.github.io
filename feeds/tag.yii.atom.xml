@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - Yii</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.yii.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2015-10-27T22:40:00+08:00</updated><entry><title>Pass PHP Variables to JavaScript in Yii</title><link href="https://blog.m157q.tw/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/" rel="alternate"></link><published>2014-02-27T13:55:00+08:00</published><updated>2015-10-27T22:40:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-02-27:/posts/2014/02/27/pass-php-variables-to-javascript-in-yii/</id><summary type="html">&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;因為網站需求 想找看看有沒有可以把 PHP 中的變數傳給 …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Preface&lt;/h2&gt;
+&lt;p&gt;因為網站需求 想找看看有沒有可以把 PHP 中的變數傳給 JavaScript 使用的方法  &lt;/p&gt;
+&lt;p&gt;主要是因為 URL 不想像之前一樣是寫死在 JavaScript 裡面  &lt;/p&gt;
+&lt;p&gt;不然之後 URL routing 又改的話 又得重新修改 實在很麻煩  &lt;/p&gt;
+&lt;p&gt;想用 &lt;code&gt;Yii::app()-&amp;gt;createAbsoluteUrl('');&lt;/code&gt; 生成該頁面的網址之後  &lt;/p&gt;
+&lt;p&gt;再丟給 JavaScript  &lt;/p&gt;
+&lt;p&gt;這樣就不用把網址寫死在裡面  &lt;/p&gt;
+&lt;p&gt;其實找了有點久 好像沒找比較好的解法  &lt;/p&gt;
+&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;p&gt;所以最後用了 &lt;a href="http://stackoverflow.com/questions/8912548/in-yii-pass-php-variables-to-javascript"&gt;stackoverflow 上的這篇&lt;/a&gt; 中最底下的回覆  &lt;/p&gt;
+&lt;p&gt;但裡面的寫法有一點點小錯誤  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;Yii::app()-&amp;gt;clientScript-&amp;gt;registerScript(&amp;quot;myVarList&amp;quot;,  &lt;/span&gt;
+&lt;span class="x"&gt;    &amp;#39;myVarList = jQuery.parseJSON(&amp;#39;.CJSON::encode($myVarList).&amp;#39;);&amp;#39;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;小括號的內層必須再多一對單引號  &lt;/p&gt;
+&lt;p&gt;不然 &lt;a href="https://api.jquery.com/jQuery.parseJSON/"&gt;jQuery.parseJSON&lt;/a&gt; 會出錯  &lt;/p&gt;
+&lt;p&gt;所以最後寫的 Code 長這樣  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;  
+&lt;span class="nv"&gt;$myVar&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;url&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;Yii&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="na"&gt;app&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;createAbsoluteUrl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;module&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/default/list/json/1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)];&lt;/span&gt;  
+&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;  &lt;/span&gt;
+
+&lt;span class="cp"&gt;&amp;lt;?php&lt;/span&gt;  
+&lt;span class="nx"&gt;Yii&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="na"&gt;app&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;clientScript&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="na"&gt;registerScript&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;myVar = jQuery.parseJSON(&amp;#39;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;CJSON&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="na"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;$myVar&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&amp;#39;);&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;EOD&lt;/span&gt;  
+&lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="nf"&gt;updateList&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  
+&lt;span class="p"&gt;{&lt;/span&gt;  
+    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#company-list&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;html&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#loading-tmpl&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;text&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;  
+    &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;getJSON&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;myVar&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;name&lt;/span&gt; &lt;span class="o"&gt;!==&lt;/span&gt; &lt;span class="k"&gt;null&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/name/&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="k"&gt;function&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;  
+        &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#company-list&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="k"&gt;empty&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;  
+        &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#company-tmpl&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;tmpl&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;appendTo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;#company-list&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;  
+    &lt;span class="p"&gt;});&lt;/span&gt;  
+&lt;span class="p"&gt;}&lt;/span&gt;  
+
+&lt;span class="o"&gt;...&lt;/span&gt;  
+&lt;span class="cp"&gt;?&amp;gt;&lt;/span&gt;&lt;span class="x"&gt;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;在 JavaScript 中，可以透過 &lt;code&gt;myVar.url&lt;/code&gt; 順利拿到 URL  &lt;/p&gt;
+&lt;h2&gt;Appendix&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;&amp;lt;&amp;lt;&amp;lt;EOD  &lt;/span&gt;
+&lt;span class="x"&gt;...  &lt;/span&gt;
+&lt;span class="x"&gt;EOD;  &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;此種寫法在 PHP 中稱為 &lt;code&gt;HEREDOC&lt;/code&gt;  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A third way to delimit strings is the heredoc syntax: &amp;lt;&amp;lt;&amp;lt;.&lt;br&gt;
+After this operator, an identifier is provided, then a newline.&lt;br&gt;
+The string itself follows, and then the same identifier again to close the quotation.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;詳見官方說明 &lt;a href="http://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc"&gt;PHP - HEREDOC syntax&lt;/a&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/8912548/in-yii-pass-php-variables-to-javascript" title="In Yii, pass PHP variables to JavaScript"&gt;In Yii, pass PHP variables to JavaScript&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://api.jquery.com/jQuery.parseJSON/"&gt;jQuery.parseJSON&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://api.jquery.com/jquery.getjson/"&gt;jQuery.getJSON&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.yiiframework.com/doc/api/1.1/CClientScript#registerScript-detail"&gt;Yii - CClientScript &lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.yiiframework.com/doc/api/1.1/CJSON#encode-detail"&gt;Yii - CJSON&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/6924193/what-is-the-use-of-eod-in-php"&gt;What is the use of &amp;lt;&amp;lt;&amp;lt;EOD in PHP?&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="Web"></category><category term="JavaScript"></category><category term="PHP"></category><category term="jQuery"></category><category term="Yii"></category></entry></feed>

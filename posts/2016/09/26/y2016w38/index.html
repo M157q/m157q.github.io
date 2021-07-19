@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Y2016W38
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.weekly.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Weekly - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/09/26/y2016w38/" rel="bookmark" title="Permalink to Y2016W38">Y2016W38</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Collection for Y2016W38 (2016-09-19 Mon 00:00:00 +0800 ~ 2016-09-26 Mon 00:00:00 +0800)</p>
+  </blockquote>
+  <div>
+    <h3>django</h3>
+<ul>
+<li><a href="http://amir.rachum.com/blog/2013/07/13/django-querysets-fucking-awesome-yes/">Django QuerySets: Fucking Awesome? Yes</a>  <ul>
+<li>就最近接手了一個公司內的專案，裡頭大量使用了 Django 的 QuerySet。  </li>
+<li>找到這篇，覺得講的還不錯，所以存個檔（？）  </li>
+</ul>
+</li>
+</ul>
+<h3>docker</h3>
+<ul>
+<li><a href="https://blog.wu-boy.com/2016/09/docker-cache-on-travis/">在 Travis 實現 Docker Cache</a>  <ul>
+<li>這好像可以用來解決之前用 Travis 自動上版到 GKE 的時候 build image 都要很久的問題  </li>
+</ul>
+</li>
+<li><a href="https://github.com/how2dock/docbook">how2dock/docbook: Sample code and Vagrant files for O'Reilly Docker cookbook</a>  <ul>
+<li>歐萊禮系列的《Docker 錦囊妙計》中的範例程式碼  </li>
+</ul>
+</li>
+</ul>
+<h3>firefox</h3>
+<ul>
+<li><a href="https://www.servethehome.com/firefox-is-eating-your-ssd-here-is-how-to-fix-it/">Firefox is eating your SSD - here is how to fix it</a>  <ul>
+<li>預設每 15 秒就會把 session 存入硬碟，於是造成硬碟寫入的 loading 非常高，對 SSD 這種寫入次數有限的東西非常傷，文中有提供解法。  </li>
+<li>開啟 <code>about:config</code> 頁面，把 <code>browser.sessionstore.interval</code> 從預設的 <code>15000</code> (15 秒) 改成 <code>1800000</code> (30 分鐘) 後，硬碟寫入的 loading 明顯降低了。  </li>
+</ul>
+</li>
+</ul>
+<h3>cli, htop</h3>
+<ul>
+<li><a href="http://serverfault.com/questions/180711/what-exactly-do-the-colors-in-htop-status-bars-mean">linux - What exactly do the colors in htop status bars mean? - Server Fault</a>  <ul>
+<li>之前看 htop 都只有看數字而已，於是查了一下 CPU 跟 RAM 的 status bar 中不同顏色代表什麼意思，節錄一下。  </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Hitting <code>F1</code> or <code>h</code> will show you the key. But for reference, the default colors are:  </p>
+<p>CPU:  </p>
+<ul>
+<li>Blue = Low priority threads  </li>
+<li>Green = Normal priority threads  </li>
+<li>Red = Kernel threads  </li>
+</ul>
+<p>Memory:  </p>
+<ul>
+<li>Green = Used memory  </li>
+<li>Blue = Buffers  </li>
+<li>Yellow/Orange = Cache  </li>
+</ul>
+<p>There are a couple of different color-schemes available, you can see them through hitting <code>F2</code>.  </p>
+</blockquote>
+<h3>job</h3>
+<ul>
+<li><a href="https://www.ptt.cc/bbs/Soft_Job/M.1474342684.A.3BA.html">[徵才] Opera TV: C   Developers with Linux - 看板 Soft_Job - 批踢踢實業坊</a>  <ul>
+<li>原來那個做瀏覽器的 Opera 在內湖有辦公室啊  </li>
+<li>月薪 100k 起跳還算不錯耶，雖然還是比國外的便宜就是。  </li>
+</ul>
+</li>
+</ul>
+<h3>programmer</h3>
+<ul>
+<li><a href="http://www.evanlin.com/developer-after-40/">[好文共賞] Being A Developer After 40 (如何在四十歲後繼續從事軟體開發)</a>  <ul>
+<li>很棒的翻譯文章，一個國外的、具有 18 年開發經驗的開發者的分享，期許自己也能像他一樣，在寫程式這方面努力不懈。  </li>
+</ul>
+</li>
+</ul>
+<h3>python</h3>
+<ul>
+<li><a href="http://github.com/crazyguitar/pysheeet">Python Cheatsheet https://www.pythonsheets.com</a>  <ul>
+<li>Python 小抄，整理的還不算少，無聊的時候可以看看。  <ul>
+<li>網站的部份在這： <a href="https://www.pythonsheets.com/">https://www.pythonsheets.com/</a>  </li>
+</ul>
+</li>
+<li>順便整理幾個類似的文章在這邊備忘好了  <ul>
+<li><a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html">Code Like a Pythonista: Idiomatic Python</a>  </li>
+<li><a href="https://jeffknupp.com/blog/2012/10/04/writing-idiomatic-python/">Writing Idiomatic Python</a>  </li>
+<li><a href="http://docs.python-guide.org/en/latest/">The Hitchhiker’s Guide to Python! — The Hitchhiker's Guide to Python</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="http://www.dongwm.com/archives/liao-liao-pythonmian-shi-zhe-jian-shi-er/">聊聊 python 面試這件事兒 - 小明明 s à domicile</a>  <ul>
+<li>還滿不錯的一篇關於 Python 面試的文章，有作者自己的心得還有經驗分享，以及最後有分享一些 Python 面試題目的連結。  </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p>第一次面試被電的部份  </p>
+<ol>
+<li>他们觉得我买了好多书, 想看想学的很多, 但是都没有深入. 建议我砍掉一半的兴趣, 把这些时间专注于做其中的几件  </li>
+<li>一个领域学习1，2个就好了. 比如web框架. 只要学好django或者flask, 理解原理. 用什么框架已经不重要了  </li>
+<li>好好学习一个编辑器. 驾驭好它, 让它提高你的工作效率.  </li>
+<li>python学的不够深入, 建议我在细节上一个一个的抠, 力争弄清楚每一个, 积少成多  </li>
+</ol>
+</li>
+<li>
+<p>後來做的努力  </p>
+<ol>
+<li>去某公司面试前, 或者立志要去该公司. 最好先了解公司用到的python相关的技术栈, 这样可以有针对的准备相关内容  </li>
+<li>针对性的准备想要做的职位的python技能需求. 比如面试运维开发, 多准备系统, 数据库, 配置管理相关的知识, 比如web框架(除非了解到该职位需要)  </li>
+<li>及时关注python技能最新用法, 或者推荐用法. 多了解python3的趋势, 有可能会被面试官问到.  </li>
+<li>有个github账号. 能把自己的想法实践出来的python项目, 这样就多了了解你的机会. 可能在面试中就会少问你对应的技术点  </li>
+</ol>
+</li>
+</ul>
+</blockquote>
+<p>收錄一下面試題目的連結們  </p>
+<blockquote>
+<p><a href="http://programmers.stackexchange.com/questions/21917/python-interview-questions">http://programmers.stackexchange.com/questions/21917/python-interview-questions</a><br>
+<a href="https://github.com/sigmavirus24/python-interview-questions">https://github.com/sigmavirus24/python-interview-questions</a><br>
+<a href="https://gist.github.com/xiangzhuyuan/7454001522d275021b2d">https://gist.github.com/xiangzhuyuan/7454001522d275021b2d</a><br>
+<a href="https://github.com/ContinuumIO/interview-questions">https://github.com/ContinuumIO/interview-questions</a><br>
+<a href="https://github.com/Flowerowl/python_articles">https://github.com/Flowerowl/python_articles</a><br>
+<a href="http://marselester.com/preparation-to-python-interview.html">http://marselester.com/preparation-to-python-interview.html</a><br>
+<a href="https://github.com/zachwill/cracking-the-coding-interview">https://github.com/zachwill/cracking-the-coding-interview</a><br>
+<a href="http://www.bogotobogo.com/python/python_interview_questions.php">http://www.bogotobogo.com/python/python_interview_questions.php</a><br>
+<a href="https://www.quora.com/What-are-good-Python-interview-questions">https://www.quora.com/What-are-good-Python-interview-questions</a><br>
+<a href="https://www.reddit.com/r/Python/comments/1knw7z/python_interview_questions">https://www.reddit.com/r/Python/comments/1knw7z/python_interview_questions</a><br>
+<a href="https://github.com/1st/interview/blob/master/python.md">https://github.com/1st/interview/blob/master/python.md</a>  </p>
+<p>还有2个中文:  </p>
+<p><a href="https://github.com/taizilongxu/interview_python">https://github.com/taizilongxu/interview_python</a><br>
+<a href="https://gist.github.com/prim/3e7f814187c715541ef2">https://gist.github.com/prim/3e7f814187c715541ef2</a>  </p>
+</blockquote>
+<h3>tool</h3>
+<p>就一些檢測中國網路連線狀況的工具，<br>
+最近工作上再處理一個把網站架在中國網路的大客戶，<br>
+所以一直遇到跟中國網路有關的問題，<br>
+之後有空應該會整理成一篇文章吧。  </p>
+<ul>
+<li><a href="http://tools.cloudxns.net/">首頁 --CloudXNS 運維工具箱_智能 DNS 運維工具箱_最好用的 DNS 檢測工具_永久免費</a>  </li>
+<li><a href="http://ping.chinaz.com/">多个地点Ping服务器,网站测速 - 站长工具</a>  </li>
+</ul>
+<hr>
+<h3>trivia</h3>
+<ul>
+<li><a href="https://www.zhihu.com/question/35239964">宇宙中有哪些超出常人想像的現象？ - 自然科學 - 知乎</a>  <ul>
+<li>最多人按讚的那個算是滿易懂的有關黑洞的天文科普吧。  </li>
+<li>想起高中科展做的有關黑洞的專題啊...  </li>
+</ul>
+</li>
+</ul>
+<h3>taiwan</h3>
+<ul>
+<li><a href="http://www.mobile01.com/topicdetail.php?f=177&amp;t=83330">蘋果週邊綜合 - 大家的電腦桌周邊是如何～分享一下吧＠＠ - 蘋果討論區 - Mobile01</a>  <ul>
+<li>我的天啊... 十年前的電腦配置的照片，好懷念啊。  </li>
+</ul>
+</li>
+<li><a href="https://www.ptt.cc/bbs/Baseball/M.1457362742.A.F5B.html">Re: [問題] 為何陳金鋒是神?</a>  <ul>
+<li>雖然沒有很常看棒球但淚推 QQ  </li>
+</ul>
+</li>
+</ul>
+<h3>misc</h3>
+<ul>
+<li><a href="https://www.facebook.com/cowbeiNTHU/posts/1087778498001953">靠北清大</a>  <ul>
+<li>這篇好中肯啊，只好附個截圖了。  </li>
+<li><img alt="靠北清大38597" src="/files/y2016w38/cowbeiNTHU38597.png">  </li>
+</ul>
+</li>
+<li><a href="http://cool.ptt01.cc/post_1213">10 年過了！當年「宋岳庭」打敗方文山和周杰倫的『Life's A Struggle』終於聽懂這首歌它在說什麼！，回頭才知道他早已不在人世... | </a>  <ul>
+<li>真的好好聽啊，聽了以後就停不下來了。  </li>
+<li>公視人生劇展短篇影集《他們在畢業前一天爆炸》有出現這首歌，以前看的時候完全沒有注意到，這個週末耍廢花了一個下午重看一次，才發現這首歌原來這麼猛。  </li>
+<li>第一次聽到這麼清楚的 Rap，而且歌詞不是亂罵一堆有的沒的髒話，是對這個社會的諷刺還有個人的反思，可惜天妒英才。  </li>
+</ul>
+</li>
+</ul>
+<h3>ptt</h3>
+<ul>
+<li><a href="https://www.ptt.cc/bbs/gossiping/M.1474389994.A.56D.html">Re: [問卦] 交大讀四年，母豬賽貂蟬？ - 看板 Gossiping - 批踢踢實業坊</a>  <ul>
+<li>交大唸了四年，完全沒聽過虎二... 只好節錄一下了。  </li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>講到虎二喔?  </p>
+<p>那就來講虎二掘起的八卦吧。  </p>
+<p>話說男生多的地方必定要尻尻，沒有色情圖片也要有色情小說。  </p>
+<p>在民國八十年那個蠻荒時代，交大獨步全台，做為施振榮的母校，<br>
+網路大管電腦多，在別的學校網路只拉到計算機中心的時代，<br>
+交大就把網路拉到學生宿舍，在別的學校一個學校建一個 BBS 的<br>
+時代，交大就已經進入了一間房間四個 BBS 的光榮時代。  </p>
+<p>網路元年大家只能登入學校工作站，按學號找人 Talk。  </p>
+<p>要練英文。  </p>
+<p>所以當年的網路文章充滿了  </p>
+<p>ji31vu042y941ulgji 15j/ 1jp61531s/61m/415k415j/31z; 1z831<br>
+(我現在要說中文只能用這種方法)(注音輸入法)  </p>
+<p>這種只有聰明人才看得懂的密碼。  </p>
+<p>進入網路二年，全交大的年輕人矢志中文化，不論是中文化 VTerm<br>
+還是中文化 XWindow, 總之，想盡辦法講中文。  </p>
+<p>而有了網路就有論壇，最早當然就是 Mail List 與 USENEWS，<br>
+交大資工的學生很早就都使用 TIN/CTIN 在看 News, 學校的論壇<br>
+不是用 Notes 就是用 News；當然，最可怕的就是交大總計中<br>
+的 Notes 系統上的 Anonymous 板，那可是集中所有反政府學生<br>
+討論如何對抗學校當局的言論中心。  </p>
+<p>然後，在民國八十二年四月就發生了  </p>
+<p>「拒吃二餐快餐部運動」  </p>
+<p>與  </p>
+<p>「在環校道路上散步運動」  </p>
+<p>前者是為了對抗難吃到要命的交大二餐快餐部，結果就是運動當天晚上<br>
+快餐部營業額是 0 (相對的我在自助餐當工讀生夾菜夾到手快要斷掉..)  </p>
+<p>後者則是針對交大特有的「睦鄰行為」: 允許園區上下班汽機車通過交大<br>
+校園通勤卻禁止交大學生在校內騎機車。  </p>
+<p>結果當天在交大行政大樓前聚集了大約三四百名學生，讓計中主任都出來<br>
+說話:「我們絕對不會關掉 Note」.....  </p>
+<p>(當天晚上 Notes 系統就變成唯讀禁止發言，所謂交大校方的說話與國民黨<br>
+ 政府的保證一樣完全是放P。)  </p>
+<p>好，沒有了 Notes,  BBS 興起了。  </p>
+<p>民國八十一年中山大學建置了西子灣 BBS 站。坦白說我同學當初介紹我用<br>
+的時候我還覺得它的介面靠北難用(不過跟現在 PTT 一樣)。不過呢，<br>
+連中山那個鄉下學校都有了 BBS ，交大怎能沒有?  </p>
+<p>所以那年春天在計中關閉了 Notes 系統之後，交大各系如雨後狗尿苔一樣<br>
+建立了各式BBS..........BBS一多，逛 BBS 就很不方便，每次都要登入<br>
+各個 BBS 去看文章。  </p>
+<p>於是我們系上就開始想到利用 News Server 把各大 BBS 的文章統一轉載，<br>
+也就是民國八十年代所謂的  </p>
+<p>連線板  </p>
+<p>而在那個法律管不到的時代呢，自然 SEX 板上就開始有人講色情話題，久了<br>
+之後女性不堪其擾屢屢找我們網管靠北，還說我們不處理就讓校方來處理....  </p>
+<p>開玩笑，讓校方處理跟關站沒啥兩樣。  </p>
+<p>於是，SEX 板就分流出一個 SEXSTORY 板，專放色情小說，提供登徒子們滿足<br>
+性幻想的園地。  </p>
+<p>一時間，連線 SEXSTORY 板成了最紅的板面。  </p>
+<p>人紅是非多，板紅有人找碴，沒多久交大資工系接獲政府公文說有人利用<br>
+學術網路刊載色情資訊違反善良風俗等廢話五千言，限時刪除。  </p>
+<p>此時，網路傳奇名人 Tiger 2 學弟就跳出來說:  </p>
+<p>「這樣吧，我捐一台電腦來放這些資料....」  </p>
+<p>於是全台最著名的地下 BBS 站，需要有人介紹才能找到 IP 登入的 Tiger 2<br>
+站就此誕生。  </p>
+<p>爾後此站幾度易手，學長傳學弟，一路不知所終，而 Tiger 2 學弟也去澳洲<br>
+開公司放牧綿羊好不快活，喝的酒都比俺的薪水還多。  </p>
+<p>回首前塵不覺已二十數年矣....................  </p>
+</blockquote>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Y2016W38%0Ahttps%3A//blog.m157q.tw/posts/2016/09/26/y2016w38/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/09/26/y2016w38/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/09/26/y2016w38/&title=Y2016W38&summary=Collection%20for%20Y2016W38%20%282016-09-19%20Mon%2000%3A00%3A00%20%2B0800%20%7E%202016-09-26%20Mon%2000%3A00%3A00%20%2B0800%29&source=https%3A//blog.m157q.tw/posts/2016/09/26/y2016w38/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Y2016W38&amp;body=https%3A//blog.m157q.tw/posts/2016/09/26/y2016w38/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/17/y2016w41/">Y2016W41</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/12/12/y2016w49/">Y2016W49</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/02/13/y2017w06/">Y2017W06</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/04/10/y2017w14/">Y2017W14</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/01/09/y2017w01/">Y2017W01</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/09/26/y2016w38/";
+        var disqus_title = "Y2016W38";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/09/26/y2016w38/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-09-26T22:39:26+08:00"><i class="fa fa-calendar"></i> Mon 26 September 2016</abbr></p>
+
+      <p><abbr title="2016-11-04T02:15:26+08:00"><i class="fa fa-pencil"></i>Fri 04 November 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">M157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/weekly/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="105 articles in this category">Weekly</a>
+              </p>
+            <a href="/tag/python/" data-toggle="tooltip"
+      class="label label-default"
+      title="78 articles with this tag">Python</a>
+  <br>
+            <a href="/tag/taiwan/" data-toggle="tooltip"
+      class="label label-default"
+      title="49 articles with this tag">taiwan</a>
+  <br>
+            <a href="/tag/cli/" data-toggle="tooltip"
+      class="label label-default"
+      title="43 articles with this tag">cli</a>
+  <br>
+            <a href="/tag/misc/" data-toggle="tooltip"
+      class="label label-default"
+      title="33 articles with this tag">misc</a>
+  <br>
+            <a href="/tag/programmer/" data-toggle="tooltip"
+      class="label label-default"
+      title="29 articles with this tag">programmer</a>
+  <br>
+            <a href="/tag/trivia/" data-toggle="tooltip"
+      class="label label-default"
+      title="28 articles with this tag">trivia</a>
+  <br>
+            <a href="/tag/docker/" data-toggle="tooltip"
+      class="label label-default"
+      title="16 articles with this tag">docker</a>
+  <br>
+            <a href="/tag/job/" data-toggle="tooltip"
+      class="label label-default"
+      title="12 articles with this tag">Job</a>
+  <br>
+            <a href="/tag/ptt/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">ptt</a>
+  <br>
+            <a href="/tag/django/" data-toggle="tooltip"
+      class="label label-default"
+      title="11 articles with this tag">Django</a>
+  <br>
+            <a href="/tag/tool/" data-toggle="tooltip"
+      class="label label-default"
+      title="4 articles with this tag">tool</a>
+  <br>
+            <a href="/tag/htop/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">htop</a>
+  <br>
+            <a href="/tag/firefox/" data-toggle="tooltip"
+      class="label label-default"
+      title="2 articles with this tag">firefox</a>
+  <br>
+            <a href="/tag/tol/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">tol</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/09/21/cat-system-workshop-11-dynamically-hacking-the-kernel-with-containers/" title="Cat System Workshop #11 Dynamically Hacking the Kernel with Containers"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/10/03/y2016w39/" title="Y2016W39"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.weekly.atom.xml"><i class="fa fa-rss"></i> Category: Weekly (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,18 @@
+# syntax: servername  options
+# 常用選項
+# ansible_ssh_host -- Remote Host IP
+# ansible_ssh_user -- Remote SSH User Name
+# ansible_ssh_private_key_file -- SSH Key
+# ansible_ssh_port -- ssh port
+# ansible_ssh_pass -- ssh password
+
+# 如果有定義到 ansible.cfg 的 [ defaults ] 就可以不列出
+# testserver   ansible_ssh_host=xxx.xxx.xxx.xxx ansible_ssh_port=xx ansible_ssh_pass
+
+test ansible_ssh_host= ansible_ssh_port= ansible_ssh_pass=StudyArea2015
+
+# 針對不同的平台可能 key 以及使用者不一樣可以額外指定
+
+# 也可以用群組的方式
+[sa]
+test

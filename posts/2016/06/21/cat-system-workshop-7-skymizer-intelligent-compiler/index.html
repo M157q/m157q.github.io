@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Cat System Workshop #7 Skymizer intelligent compiler
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/" rel="bookmark" title="Permalink to Cat System Workshop #7 Skymizer intelligent compiler">Cat System Workshop #7 Skymizer intelligent compiler</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for Cat System Workshop #7</p>
+  </blockquote>
+  <div>
+    <p>Event link: <a href="http://skymizer.kktix.cc/events/cat0621">http://skymizer.kktix.cc/events/cat0621</a>  </p>
+<blockquote>
+<p>Q: iPhone 為什麼兩顆 core?<br>
+A: 人類寫出來的程式碼平行度平均約 1.8，所以兩顆就夠了。  </p>
+</blockquote>
+<h3>CPU 效能</h3>
+<ul>
+<li>2004 年以前，每年改善 50%  </li>
+<li>2004 年之後，每年改善 21%  </li>
+<li>原因  <ul>
+<li>電子漂移  </li>
+<li>Power wall - faster computers get really hot  </li>
+<li>Memory wall - memory bandwidth becomes one of the bottlenecks  </li>
+<li>ILP wall - exploit performance from parallelism is diffifult  <ul>
+<li>指令集的平行度已經遇到瓶頸  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>這 3 個問題都在 2004 年發生，所以突然驟降。  </li>
+<li>什麼時候會掉到 0 %?  <ul>
+<li>半年前已經達到了。從半年前開始，CPU 效能已經沒有提升了。  </li>
+<li>大家都不敢講，怕產品銷售受影響。  </li>
+<li>現在只要有改善效能就贏其他人了  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>製程</h3>
+<ul>
+<li>明年 Q1 達到 10 nm, 7 nm  </li>
+</ul>
+<hr>
+<h3>The Best way to speed up Computer</h3>
+<ul>
+<li>Manual  </li>
+<li>Compiler  </li>
+<li>(...)  </li>
+<li>(...)  </li>
+</ul>
+<hr>
+<h3>Improvement</h3>
+<ul>
+<li>中國 H 社去年改善 150%，用飛的。  </li>
+</ul>
+<hr>
+<h3>Skymizer Cloud Compiler</h3>
+<ul>
+<li>Cloud compiler is a kind of <strong>iterative compiler</strong>  </li>
+</ul>
+<hr>
+<h3>Challenges of Iterative Compilers</h3>
+<ul>
+<li>Very long compilation time  <ul>
+<li>GCC has ~250 optimization flags  <ul>
+<li>~200 machine independent flags  </li>
+<li>~50 machine-level optimization  </li>
+</ul>
+</li>
+<li>There are at least 10^60 combination of flags  </li>
+</ul>
+</li>
+<li>High cost of scripting  <ul>
+<li>A compilation unit needs at least four actions to keep the iteration smooth  <ul>
+<li>run.sh, kill.sh, clean.sh, build.sh  </li>
+<li>Users need to tell iterative compiler at least how to run the program  </li>
+</ul>
+</li>
+<li>A system, take WebKit for example, may have ~25,000 compilation units  </li>
+<li>Different systems have very different building systems  </li>
+</ul>
+</li>
+<li>Precise performance data  <ul>
+<li>An optimization phase has only ~3% impact to performance  </li>
+<li>Application variance of performance are usually about 8%~20%  </li>
+<li>Iterative compilers need precise performance data to ensure analyzed results  </li>
+<li>準確率很重要，如果收集了一大堆資料但準確率很差的話，只是 garbage in garbege out.  </li>
+</ul>
+</li>
+<li>Unstable optimization results  <ul>
+<li>Optimizing compilers don't guarantee performance imporvement  </li>
+</ul>
+</li>
+<li>Unstable compilers  <ul>
+<li>GCC  <ul>
+<li>GCC in average produces on incorrect results in 10,000 iterations  </li>
+<li>GCC in average gets a segmentation fault every 100,000 compilation  </li>
+</ul>
+</li>
+<li>LLVM  <ul>
+<li>LLVM in average produces one incorrect results in 1000 iterations  </li>
+<li>LLVM in average gets a segmentation fault every 3 compilation  </li>
+<li>所以 LLVM 在 iterative compiler 是不堪用的  </li>
+</ul>
+</li>
+<li>重新 compile 也不會過的錯誤，Compiler 本身的 bug，極為難抓。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Iterative compiler before ten years</h3>
+<ul>
+<li>Since 1994. Most researches appear since 2001.  </li>
+<li>24 distinguished works. Only seven works have significant contribution.  </li>
+<li>很多論文都只是看到後你知道「喔，這個人畢業了。」的等級  </li>
+</ul>
+<h3>2001~2004 Expert System in iterative compilers</h3>
+<ul>
+<li>Dr. Options and OSE represent this era.  </li>
+<li>Expert system shortens compilation time.  </li>
+<li>Dr.Options, expert system, TI and HP  </li>
+<li>OSE, pruning by key insights and performance emulators, Princeton.  </li>
+</ul>
+<h3>ACME - we have more exploration space than you can imagine</h3>
+<ul>
+<li>Optimization phases can interchange their order.  </li>
+<li>Sequence increases the exploration space from 10^60 to 250^250  </li>
+<li>Although ACME success to eliminate exploraiton space, but we can not use it in practice.  <ul>
+<li>GCC re-call phases to simulate order change  </li>
+<li>LLVM can not reorder any phases  </li>
+</ul>
+</li>
+</ul>
+<h3>Subtraction is more important then Exploration</h3>
+<ul>
+<li>如果一開始就不要嘗試這麼多 optimization，或許可以比較容易找到更有效的方式。  </li>
+<li>PEAK - eliminate space by identifying harmful optimizations  <ul>
+<li>先找壞的，把他們刪掉。  </li>
+<li>Batch elimination  </li>
+<li>Iterative elimination  </li>
+</ul>
+</li>
+<li>VISTA - eliminate space by pruning dormant phases  <ul>
+<li>先找好的  </li>
+<li>把真正常用的、有效的挑出來，這些彼此之間衝突的做分群，然後再去嘗試  </li>
+</ul>
+</li>
+</ul>
+<h3>Social Network can help!</h3>
+<ul>
+<li>cTuning  </li>
+<li>工人智慧  </li>
+<li><a href="http://ctuning.org/wiki/index.php/CTools:MilepostGCC">MILEPOST GCC</a>  <ul>
+<li><a href="https://en.wikipedia.org/wiki/MILEPOST_GCC">https://en.wikipedia.org/wiki/MILEPOST_GCC</a>  </li>
+</ul>
+</li>
+<li>Collective TUNING  <ul>
+<li>每個人都用他的 compiler，他就會偷偷把你的 source code 送回去他的 server，然後再去用 AI 分析該 source code 可不可以做更好的 optimization，藉此收集很多的資料來作為優化的依據。  <blockquote>
+<p>xatier: 這不是跟微軟最近在 VS 的 profiler 塞了一個 entrypoint 是一樣的事情嗎？ XD  </p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>集眾人之力的群眾 Compile  </li>
+<li>在 4 年前就沒在動了  </li>
+</ul>
+<h3>Skymizer Intelligent Compiler</h3>
+<ul>
+<li>Sky Gold  <ul>
+<li>Testing Framework  </li>
+<li>Result Repository  <ul>
+<li>Fast build (from hours to seconds)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Sky Knight  <ul>
+<li>Distributed compilation  </li>
+<li>之後考慮改成用 p2p 的模式，下班電腦開著就可以加入 distributed compilation 的一部份。  </li>
+</ul>
+</li>
+<li>Sky Dragon  <ul>
+<li>Software Hypervisor Precise OS  </li>
+<li>CPU 要跟客戶的一樣才有辦法  </li>
+</ul>
+</li>
+<li>
+<p>Sky Wizard  </p>
+<ul>
+<li>Fast exploration  <ul>
+<li>Guide optimization direction  </li>
+</ul>
+</li>
+<li>只要拿到 characteristics，不會拿到客戶的 source code，所以客戶能夠接受。  </li>
+</ul>
+</li>
+<li>
+<p>把使用者 compiler 偷偷換掉  </p>
+</li>
+<li>把使用者 compile 的過程都紀錄下來  </li>
+<li>找到最好的 object file (<code>*.o</code>) 之後，check-in 回去給 user，user 只會覺得之後愈用愈快&gt;  </li>
+<li>優點  <ul>
+<li>user 實際上 99.9% 的 code 不會動，所以會一直穩定得嘗試 compile 出更快的 object file，再回傳給 user  </li>
+</ul>
+</li>
+<li>目前遇到客戶反應的問題  <ul>
+<li>回傳回去的 object file 沒有做版本控制，導致無法客戶拿某個時期的 object file 來做測試。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Q&amp;A</h3>
+<ul>
+<li>有支援 <a href="https://en.wikipedia.org/wiki/Profile-guided_optimization">Profile-guided optimization</a> 嗎？  <ul>
+<li>目前沒有支援  </li>
+</ul>
+</li>
+<li>為什麼剛剛說 opentuner 是來亂的？  <ul>
+<li><a href="http://opentuner.org/">opentuner</a> 沒有解決任何問題，只是提供一個優雅的方式來把 run, kill, clean, build scirpts。  </li>
+</ul>
+</li>
+<li>客戶使用你們的 compiler 不會造成 debug 很困難嗎？  <ul>
+<li>會，這也是我們目前被罵的地方。  </li>
+</ul>
+</li>
+<li>你們收費怎麼算？  <ul>
+<li>很貴，因為我們的客戶幾乎都是大公司，但因為很貴，所以也很難談。  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Cat%20System%20Workshop%20%237%20Skymizer%20intelligent%20compiler%0Ahttps%3A//blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/&title=Cat%20System%20Workshop%20%237%20Skymizer%20intelligent%20compiler&summary=Note%20for%20Cat%20System%20Workshop%20%237&source=https%3A//blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Cat%20System%20Workshop%20%237%20Skymizer%20intelligent%20compiler&amp;body=https%3A//blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/07/11/y2016w27/">Y2016W27</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/24/compiler-design-week-5/">Compiler Design Week 5</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/04/07/compiler-design-week-7/">Compiler Design Week 7</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/03/compiler-design-week-2/">Compiler Design week 2</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/10/compiler-design-week-3/">Compiler Design Week 3</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/";
+        var disqus_title = "Cat System Workshop #7 Skymizer intelligent compiler";
+        var disqus_url = "https://blog.m157q.tw/posts/2016/06/21/cat-system-workshop-7-skymizer-intelligent-compiler/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2016-06-21T20:44:23+08:00"><i class="fa fa-calendar"></i> Tue 21 June 2016</abbr></p>
+
+      <p><abbr title="2016-07-05T21:36:00+08:00"><i class="fa fa-pencil"></i>Tue 05 July 2016</abbr></p>
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/compiler/" data-toggle="tooltip"
+      class="label label-default"
+      title="9 articles with this tag">Compiler</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2016/06/16/coders-at-work/" title="《編程人生》(Coders at Work)"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2016/06/23/認識虛擬化技術的第一本書/" title="《認識虛擬化技術的第一本書》"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  CloudMile Google Cloud Ad Tech Seminar
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/" rel="bookmark" title="Permalink to CloudMile Google Cloud Ad Tech Seminar">CloudMile Google Cloud Ad Tech Seminar</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for <a href="https://www.mile.cloud/Google-Cloud-AD-Tech-Seminar/">https://www.mile.cloud/Google-Cloud-AD-Tech-Seminar/</a></p>
+  </blockquote>
+  <div>
+    <h2>GCP 簡介及 AD Tech 應用趨勢</h2>
+<p>Speaker: Harry Lin, Google Cloud Customer Engineer Lead  </p>
+<ul>
+<li>Challenges  <ul>
+<li>Data lives in silos  <ul>
+<li>資料是各自獨立的  </li>
+</ul>
+</li>
+<li>For marketers - especially difficult to get a single view  <ul>
+<li>Web Analytics, SEM, Ad Server, DSP, ...  </li>
+</ul>
+</li>
+<li>Understading your customer?  <ul>
+<li>資料完全分散，無法連結的話就無法得到有價值的資訊，也就無法瞭解使用者。  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>How can Google Cloud help you?  <ul>
+<li>Google Analytics  <ul>
+<li>Features  <ul>
+<li>Acquisition &amp; Behaviour Report  </li>
+<li>Enhanced e-commerce  </li>
+</ul>
+</li>
+<li>Scenarios  <ul>
+<li>有多種不同的資料來源  <ul>
+<li>有 GA 的資料  </li>
+<li>有自己收集的資料  </li>
+<li>有跟其他合作伙伴拿到的資料  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Insight 1-2-3  <ol>
+<li>Collect the data  <ul>
+<li>BigQuery Data Transfer Service: Adwords, Double Click, Youtube  </li>
+<li>Direct Connectivity: Google Analytics 360 Suite, Firebase  </li>
+<li>Connectivity via Partners: informatica, Segment, talend, ...  </li>
+<li>三種途徑將所有的資料都匯入 BigQuery  </li>
+</ul>
+</li>
+<li>Cleanse the data  <ul>
+<li>BigQuery (Raw Data) =&gt; Cloud Dataprep (Data Analysts), Cloud Dataflow (Data Engineers) =&gt; BigQuery (Clean Data)  </li>
+</ul>
+</li>
+<li>Analyze &amp; Visualize  <ul>
+<li>Analyze: BigQuery, Microsoft Excel, Google Sheets, JDBC/ODBS connectors  </li>
+<li>Visualize: Google Data Studio, tableau, looker, BI/Analytics  </li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Attribution Modeling: Which of my Channels Drive the Most Success?  <ul>
+<li>Multi-channel  <ul>
+<li>透過結合不同的 Custom ID，將資料一起灌到 BigQuery 分析，把使用者的行為連接起來。  <ul>
+<li>Youtube, DoubleClick, Adwords, CRM  </li>
+</ul>
+</li>
+<li>Cookie based or Session based mapping 得透過 CRM 的 Custom ID 連接  </li>
+</ul>
+</li>
+<li>Data lifecycle on Google  <ul>
+<li>Capture  </li>
+<li>Process  </li>
+<li>Store  </li>
+<li>Analyze  </li>
+<li>Use  </li>
+</ul>
+</li>
+<li>Segment high value customers by behaviour  <ul>
+<li>Fantasy Bingers  </li>
+<li>Action Weekly Tune-ins  </li>
+<li>Nightly Updates  </li>
+<li>Touch-and-Go Nature Clippers  </li>
+</ul>
+</li>
+<li>Ingest Data into BigQuery  <ul>
+<li>有乾淨整理好的資料才能訓練出有用的模型，否則只是 garbage in, garbage out.  </li>
+<li>Indigest Data  </li>
+<li>Transform Data with Dataflow pipeline  </li>
+<li>Customer-Segmentation using ML/Clustering  <ul>
+<li>Google Cloud Datalab  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Snapchat  <ul>
+<li>QPS second only to Gmail  </li>
+<li>Bandwidth second only to Youtube  </li>
+<li>Monetization - Ads and Geofilters  <ul>
+<li>In-App Image Search  </li>
+<li>3V - Vertical Video Views  </li>
+<li>Custom Geofilters  </li>
+<li>Early Adopters  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>AD Tech 在 GCP 上的應用技術簡介及國外案例</h2>
+<ul>
+<li>Impact of Maching Learning  <ul>
+<li><a href="https://www.hbrtaiwan.com/article_content_AR0007025.html">資料分析運用四大階段</a>  <ul>
+<li>描述型分析：發生了什麼  </li>
+<li>診斷型分析：為什麼發生  </li>
+<li>預測型分析：未來會不會發生  </li>
+<li>指示型分析：如何讓它發生  </li>
+</ul>
+</li>
+<li>汽車業  <ul>
+<li>物件偵測  </li>
+<li>自動駕駛  </li>
+</ul>
+</li>
+<li>醫療業  <ul>
+<li>醫療影像辨識  </li>
+<li>個人化投藥  </li>
+</ul>
+</li>
+<li>金融業  <ul>
+<li>金融趨勢分析  </li>
+<li>異常偵測  <ul>
+<li>盜刷  </li>
+<li>是否被詐騙  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>電商  <ul>
+<li>分析使用者行為  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Impact of Ad Tech  <ul>
+<li>精準投放  </li>
+<li>Programmatic Buying  </li>
+<li>Media Planning Flow  <ul>
+<li>What?  </li>
+<li>Who?  </li>
+<li>Where?  </li>
+<li>When?  </li>
+<li>How much?  </li>
+</ul>
+</li>
+<li>Recommendation Engine  <ul>
+<li>相似廣告推薦  </li>
+<li>相似廣告受眾推薦  </li>
+<li>即時性推薦  <ul>
+<li>根據使用者當下的時間點、地點、溫度、溼度做推薦  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Personalization  <ul>
+<li>抓出受眾的各個特徵  <ul>
+<li>比較不容易得到的是偏向心理層面的特徵，可能得透過平常的行為去進行分析。  </li>
+</ul>
+</li>
+<li>86% 的消費者證實個人化行銷會影響他們的購買決策  </li>
+</ul>
+</li>
+<li>Audience Classification  <ul>
+<li>Predict Click  <ul>
+<li>將有點擊廣告和沒點擊廣告的歷史資訊拿來訓練出模型，之後就可以拿來預測是否會點擊廣告。  </li>
+<li>更複雜一點的就可以再加入更多的條件去做分類  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Clustering  <ul>
+<li>Lookalike audience  <ul>
+<li>可以達到不需要浪費過多的資源就達成有效的廣告頭放  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Smart Bidding: Right time, Right user, Right bid  <ul>
+<li>Google Adwords: 將行銷列表、時間、瀏覽器、作業系統等等作為競價條件  </li>
+<li>Real Time Budget Allocation  <ul>
+<li>不同的時間點設定不同的競價條件，達到即時動態調整預算，節省開銷且提升精準度  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cases  <ul>
+<li>MainAd  <ul>
+<li>捨棄描述型的分析，採用了預測型的分析  <ul>
+<li>描述型分析：先競價、再驗收、後預測  </li>
+<li>預測型分析：先預測、再競價、後驗收  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Jivox  <ul>
+<li>Creative Optimizer  </li>
+<li>Ad Content Recommendation Engine  </li>
+<li>Dynamic Audience Scoring  </li>
+<li>作法  <ul>
+<li>Know =&gt; Personalize =&gt; Engage  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>總結  <ul>
+<li>只要有最佳化、預測的需求，就有機會利用 ML 達到最好的成果。  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>Google Cloud Platform 客戶實例分享</h2>
+<ul>
+<li>禾多  <ul>
+<li>推播  </li>
+<li>Firebase  </li>
+<li>一天約上百萬到上千萬則推播  </li>
+<li>Datalab  <ul>
+<li>sklearn, TensorFlow  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Koodata  <ul>
+<li>從 AWS 轉換過來  </li>
+<li>機房在台灣，速度比較快  </li>
+<li>AI 相關應用  </li>
+<li>因為有使用 Google Adwords  </li>
+</ul>
+</li>
+<li>GMobi  <ul>
+<li>IoT，最近新增了手機廣告平台  </li>
+<li>需求：Realtime, Scalibility, Pricing, Reliability  </li>
+</ul>
+</li>
+<li>UrAd  <ul>
+<li>Data Source 較多元，得經過非常多的處理。  </li>
+<li>Data business 相關的架構轉移到 GCP  <ul>
+<li>Pub/Sub  </li>
+<li>分析：Dataflow, Dataproc, Dataprep  </li>
+<li>儲存：BigQuery, Cloud Storage  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=CloudMile%20Google%20Cloud%20Ad%20Tech%20Seminar%0Ahttps%3A//blog.m157q.tw/posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/&title=CloudMile%20Google%20Cloud%20Ad%20Tech%20Seminar&summary=Note%20for%20https%3A//www.mile.cloud/Google-Cloud-AD-Tech-Seminar/&source=https%3A//blog.m157q.tw/posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=CloudMile%20Google%20Cloud%20Ad%20Tech%20Seminar&amp;body=https%3A//blog.m157q.tw/posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2016/11/21/y2016w46/">Y2016W46</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/10/03/y2016w39/">Y2016W39</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/01/16/y2017w02/">Y2017W02</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2016/09/05/y2016w35/">Y2016W35</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2020/07/11/make-google-cloud-cdn-serve-gzip-compressed-content-for-nginx-server/">Make Google Cloud CDN serve gzip compressed content for Nginx server</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/";
+        var disqus_title = "CloudMile Google Cloud Ad Tech Seminar";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/09/22/cloudmile-google-cloud-ad-tech-seminar/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-09-22T15:27:22+08:00"><i class="fa fa-calendar"></i> Fri 22 September 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/gcp/" data-toggle="tooltip"
+      class="label label-default"
+      title="23 articles with this tag">GCP</a>
+  <br>
+            <a href="/tag/ad-tech/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">Ad Tech</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/09/17/pacman-rdd-gcc-multilib-gcc-libs-multilib/" title="pacman -Rdd gcc-multilib gcc-libs-multilib"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/09/27/facebook-developer-circle-taipei-meetup-4/" title="Facebook Developer Circle: Taipei - Meetup #4"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

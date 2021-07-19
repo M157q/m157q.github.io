@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - VirtualBox</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.virtualbox.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2016-05-03T20:32:00+08:00</updated><entry><title>Boot LiveUSB in VirtualBox 4.3.18</title><link href="https://blog.m157q.tw/posts/2014/12/04/boot-liveusb-in-virtualbox-4-3-18/" rel="alternate"></link><published>2014-12-04T04:21:00+08:00</published><updated>2015-10-28T14:36:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-12-04:/posts/2014/12/04/boot-liveusb-in-virtualbox-4-3-18/</id><summary type="html">&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;h3&gt;1.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo chown m157q …&lt;/pre&gt;&lt;/div&gt;</summary><content type="html">&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;h3&gt;1.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo chown m157q /dev/disk1  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;2.&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ VBoxManage internalcommands createrawvmdk -filename ~/VirtualBox&lt;span class="se"&gt;\ &lt;/span&gt;VMs/win7_test.vmdk -rawdisk /dev/disk1  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;3.&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Create New Machine in VirtualBox and select the generated .vmdk file as the hard drive.  &lt;ul&gt;
+&lt;li&gt;Use an existing virtual hard drive file while addding the Hard drive.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;4.&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Boot the virtual machine.  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://blog.xuite.net/yh96301/blog/64131045-VirtualBox+4.3.4%E4%BD%BF%E7%94%A8USB%E9%9A%A8%E8%BA%AB%E7%A2%9F%E9%96%8B%E6%A9%9F"&gt;VirtualBox 4.3.4使用USB隨身碟開機 @ 軟體使用教學 :: 隨意窩 Xuite日誌&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://gordon168.tw/?p=324"&gt;VirtualBox設定由USB隨身碟開機 « 高登工作室&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://forums.virtualbox.org/viewtopic.php?t=9223"&gt;virtualbox.org • View topic - Using a raw hard disk on Mac OS X&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://forums.virtualbox.org/viewtopic.php?f=8&amp;amp;p=99406"&gt;virtualbox.org • View topic - VERR_ACCESS_DENIED&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="VirtualBox"></category><category term="LiveUSB"></category><category term="sysadmin"></category></entry><entry><title>VirtualBox Guest additions upgrade: install_x11_startup_app: no script given</title><link href="https://blog.m157q.tw/posts/2014/11/10/virtualbox-guest-additions-upgrade-install_x11_startup_app-no-script-given/" rel="alternate"></link><published>2014-11-10T11:14:00+08:00</published><updated>2015-10-28T14:41:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-11-10:/posts/2014/11/10/virtualbox-guest-additions-upgrade-install_x11_startup_app-no-script-given/</id><summary type="html">&lt;p&gt;I encountered this problem while …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I encountered this problem while I was doing the upgrade for the guest additions of VirtualBox.  &lt;/p&gt;
+&lt;h3&gt;Guest OS: Ubuntu 14.04&lt;/h3&gt;
+&lt;p&gt;Remove the following symlinks before you install the new version of the Guest addtions  &lt;/p&gt;
+&lt;p&gt;&lt;code&gt;# rm /usr/lib/x86_64-linux-gnu/VBoxGuestAdditions&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;# rm /usr/lib/VBoxGuestAdditions&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;# rm /usr/share/VBoxGuestAdditions&lt;/code&gt;  &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Reference&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://gallinar.blogspot.tw/2012/07/virtualbox-guest-additions-upgrade.html"&gt;A bozo's blog: VirtualBox Guest additions upgrade: install_x11_startup_app: no script given&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="VirtualBox"></category><category term="Guest Additions"></category><category term="install_x11_startup_app"></category><category term="sysadmin"></category></entry><entry><title>Solution for the Failure to Attach USB Device in VirtualBox</title><link href="https://blog.m157q.tw/posts/2014/10/16/solution-for-the-failure-to-attach-usb-device-in-virtualbox/" rel="alternate"></link><published>2014-10-16T08:05:00+08:00</published><updated>2016-05-03T20:32:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-10-16:/posts/2014/10/16/solution-for-the-failure-to-attach-usb-device-in-virtualbox/</id><summary type="html">&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://forums.virtualbox.org/viewtopic.php?t=10276"&gt;virtualbox.org • View topic …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h2&gt;Solution&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://forums.virtualbox.org/viewtopic.php?t=10276"&gt;virtualbox.org • View topic - Failed to Attach the USB Device SigmaTel, Inc. STIr42xx&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Steps&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Settings  &lt;/li&gt;
+&lt;li&gt;Ports  &lt;/li&gt;
+&lt;li&gt;USB  &lt;/li&gt;
+&lt;li&gt;Add a new USB Filter  &lt;/li&gt;
+&lt;li&gt;Choose device which cannot be attached  &lt;/li&gt;
+&lt;li&gt;Clear all fields except the name  &lt;/li&gt;
+&lt;li&gt;Unplug the USB device  &lt;/li&gt;
+&lt;li&gt;Plug in the USB device again  &lt;/li&gt;
+&lt;li&gt;Attach the USB device to guest  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This method should work.  &lt;/p&gt;</content><category term="VirtualBox"></category><category term="USB"></category></entry></feed>

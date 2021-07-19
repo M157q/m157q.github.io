@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>  Cat System Workshop #17 Full-Stack IoT Development 探索之旅
+ | Just for noting</title>
+
+    <meta name="author" content="m157q"/>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/jquery.mglass.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/pygment-solarized-dark.css"/>
+    <link rel="stylesheet" href="https://blog.m157q.tw/theme/css/style.css"/>
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Istok+Web' rel='stylesheet' type='text/css'/>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+
+    <link rel="icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://blog.m157q.tw/favicon.ico" type="image/x-icon">
+
+    <!-- Feeds -->
+      <link href="https://blog.m157q.tw/feeds/all.feed.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - All posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Latest posts - Atom Feed"/>
+      <link href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml" type="application/atom+xml" rel="alternate" title="Just for noting - Category: Conf/Meetup - Atom Feed"/>
+
+    <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45367183-2', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1><a href="https://blog.m157q.tw">Just for noting</a> <small></small></h1>
+      </div>
+
+      <nav class="navbar navbar-default">
+
+        <!-- Hamburger menu for mobile -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#plumage-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://blog.m157q.tw" title="">Just for noting</a>
+        </div>
+
+        <!-- Menus and search forms -->
+        <div class="collapse navbar-collapse" id="plumage-navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+<li >
+                <a href="/categories">Categories</a>
+              </li>
+<li >
+                <a href="/archives">Archives</a>
+              </li>
+<li >
+                <a href="/tags">Tags</a>
+              </li>
+          </ul>
+
+
+            <form class="navbar-form navbar-right" role="search" action="https://blog.m157q.tw/search.html" onsubmit="return validateForm(this.elements['q'].value);">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" name="q" id="tipue_search_input" class="form-control search-query" placeholder="Search" required />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa
+                        fa-search fa-fw"></i></button>
+                  </span>
+                </div>
+              </div>
+            </form>
+
+        </div>
+
+      </nav>
+
+    </div>
+
+
+    <div class="container main">
+
+
+      <div class="row">
+        <div class=" col-md-9  ">
+  <h1>
+    <a href="https://blog.m157q.tw/posts/2017/03/14/cat-system-workshop-17-full-stack-iot-development-探索之旅/" rel="bookmark" title="Permalink to Cat System Workshop #17 Full-Stack IoT Development 探索之旅">Cat System Workshop #17 Full-Stack IoT Development 探索之旅</a>
+  </h1>
+        </div>
+      </div>
+
+      <div class="row">
+
+
+        <div class=" col-md-9 " id="content" role="main">
+  
+
+  <blockquote>
+    <p>Note for <a href="http://skymizer.kktix.cc/events/cat170314">http://skymizer.kktix.cc/events/cat170314</a></p>
+  </blockquote>
+  <div>
+    <p>Speaker: <a href="https://github.com/simenkid">Simen</a>@<a href="http://www.sivann.com.tw/">sivann</a>  </p>
+<blockquote>
+<p>前半段是 IoT Development 相關<br>
+後半段則是 JavaScript Web development 和 Node.js 開發大全  </p>
+</blockquote>
+<hr>
+<h3>Google Weave</h3>
+<ul>
+<li><a href="https://developers.google.com/weave/">https://developers.google.com/weave/</a>  </li>
+</ul>
+<hr>
+<h3>Android Things (Brillo)</h3>
+<p><a href="https://developer.android.com/things/hardware/index.html">https://developer.android.com/things/hardware/index.html</a>  </p>
+<ul>
+<li>專為 IoT 設計的 OS  </li>
+<li>35 MB RAM  </li>
+</ul>
+<hr>
+<h3>Apple HomeKit</h3>
+<ul>
+<li>體系相對封閉  </li>
+<li>語音助手 (Siri)  </li>
+<li>認証: MFi  </li>
+</ul>
+<p>iOS (SDK)<br>
+HomeKit API<br>
+HomeKit Accessory Protocol (HAP)  </p>
+<hr>
+<h3>Eclipse IoT Working Group</h3>
+<ul>
+<li>Open Source and Open Standards for IoT  <ul>
+<li>New and Existing Devices  </li>
+<li>IoT Gateways  </li>
+<li>Network Carriers  </li>
+<li>Backend Systems  </li>
+</ul>
+</li>
+<li>IoT Suite  <ul>
+<li>oneM2M: REST interface  </li>
+<li>OMA LWM2M Server - Leshan  </li>
+<li>Gateway stack - Kura  </li>
+<li>CoAP - Californium (Java)  </li>
+<li>MQTT - Mosquitto/Paho  <ul>
+<li>Paho 提供了不同語言實作的 MQTT client  <ul>
+<li>有 C++, Java, JavaScript ...  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>MQTTSN (Eclipse 自己設計的)  </li>
+</ul>
+</li>
+</ul>
+<h4>Kura - IoT Gateway Stack/ App Framework</h4>
+<ul>
+<li>Edge Nodes (clients, 連網的裝置)  <ul>
+<li>Local Automation  </li>
+</ul>
+</li>
+<li>M2M Integration Platform  </li>
+<li>Enterprise Interfaces  <ul>
+<li>Business Applications (Mobile Apps, Web Apps, ...)  </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Web Of Things</h3>
+<h4>Google Physical Web</h4>
+<ul>
+<li>Eddystone  <ul>
+<li><a href="https://en.wikipedia.org/wiki/Eddystone_(Google)">https://en.wikipedia.org/wiki/Eddystone_(Google)</a>  </li>
+<li><a href="https://github.com/google/eddystone">https://github.com/google/eddystone</a>  </li>
+<li><a href="https://developers.google.com/beacons/">https://developers.google.com/beacons/</a>  </li>
+</ul>
+</li>
+<li>MT7697  </li>
+</ul>
+<hr>
+<p>IoT Platform  </p>
+<ul>
+<li><a href="https://www.aylanetworks.com/">Ayla</a>  </li>
+<li><a href="https://ubiworx.com/">ubiworx</a>  </li>
+<li><a href="https://www.smartthings.com/">SAMSUNG SmartThings</a>  </li>
+</ul>
+<hr>
+<h3>Front-end and Back-end</h3>
+<ul>
+<li>Web Front-end  <ul>
+<li>Web 1.0  <ul>
+<li>F5 刷新  </li>
+</ul>
+</li>
+<li>Web 2.0+  <ul>
+<li>HTML RSP  </li>
+<li>AJAX  </li>
+<li>HTML5  </li>
+<li><a href="https://tools.ietf.org/html/rfc6455">WS (WebSocket)</a>  </li>
+<li><a href="https://www.w3.org/TR/2011/WD-eventsource-20110208/">SSE (Server-Sent Events)</a>  </li>
+</ul>
+</li>
+<li>MVP (Web 2.0+)  <ul>
+<li>代表性的案例：jQuery  </li>
+</ul>
+</li>
+<li>MVVM (Framework)  <ul>
+<li>V (user), VM (framework), M &lt;---client-side-----------server-side---&gt; M  </li>
+<li>server 一有資料更新就會 push 過來或是背後會一直去跟 server 要資料，所以使用者端會覺得資料是即時的  </li>
+</ul>
+</li>
+<li>React.js  <ul>
+<li>使用 JavaScript (JSX) 撰寫 View (React)  </li>
+<li>Virtual DOM  </li>
+<li>Controller View = View + State Machine + Controller  </li>
+<li>單向數據流架構化 (Flux)  </li>
+<li>單一數據源、狀態大總管 (Redux)  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Web Back-end (JavaScript related)  <ul>
+<li>Package Manager  </li>
+<li>Task Runner  <ul>
+<li>grunt, gulp, npm, webpack  </li>
+</ul>
+</li>
+<li>Pre-compiler Transpiler  </li>
+<li>Linter  </li>
+<li>Utils  </li>
+<li>Bundler  <ul>
+<li>webpack, RequireJS (AMD), Browserify (CommonJS)  </li>
+</ul>
+</li>
+<li>Dev Server  <ul>
+<li>uglify, watchify  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>Node.js</h3>
+<ul>
+<li>Server-side, JS runtime  </li>
+<li>Async I/O - libuv  </li>
+<li>Concurrenty - Event Loop  <ul>
+<li>timers  </li>
+<li>I/O callbacks  </li>
+<li>idle, prepare  </li>
+<li>poll  </li>
+<li>check  </li>
+<li>close callbacks  </li>
+</ul>
+</li>
+<li><a href="https://simeneer.blogspot.tw/2016/09/nodejs-eventemitter.html">https://simeneer.blogspot.tw/2016/09/nodejs-eventemitter.html</a>  </li>
+<li>除錯工具  <ul>
+<li>原生除錯工具  <ul>
+<li><code>break;</code>  </li>
+<li><code>$ node debug app.js  # c, n, s, o</code>  </li>
+</ul>
+</li>
+<li>第三方工具  <ul>
+<li>node-inspector  <ul>
+<li><code>$ node-debug app.js</code>  </li>
+</ul>
+</li>
+<li>iron-node  <ul>
+<li><code>$ iron-node app.js</code>  </li>
+</ul>
+</li>
+<li>devtool  <ul>
+<li><code>$ devtool app.js</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IDE 內建的除錯模組  </li>
+</ul>
+</li>
+<li>除錯訊息與日誌 (Logging)  <ul>
+<li>stdout / stderr [+ pipe][+ redirect]  <ul>
+<li><code>console.log();</code>  </li>
+<li><code>console.error();</code>  </li>
+</ul>
+</li>
+<li>第三方模組  <ul>
+<li><code>$ npm install debug --save</code>, <code>$ DEBUG=namespace node app.js</code>  </li>
+<li><code>$ npm install winston --save</code>, <code>$ node app.js</code>  </li>
+<li><code>$ npm install bunyan --save</code>, <code>$ node app.js | bunyan [opts]</code>  </li>
+<li><code>$ npm install pino --save</code>, <code>$ node app.js | pino-&lt;xxx&gt;</code>  <ul>
+<li>號稱 Node.js 的 logging module 裡頭速度最快的  </li>
+</ul>
+</li>
+<li>intel, log4js, loggly, bole  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>測試框架/工具  <ul>
+<li>Hosted CI Services  <ul>
+<li>Travis CI, Circle CI, GitLab Ci, wercker, codeship  </li>
+</ul>
+</li>
+<li>Test Framework  <ul>
+<li>mocha, jasmie-node, tape, tap  </li>
+</ul>
+</li>
+<li>Assertions  <ul>
+<li>assert, should, expect, chai  </li>
+</ul>
+</li>
+<li>Test Double  <ul>
+<li>sinon.js  </li>
+</ul>
+</li>
+<li>Code Coverage  <ul>
+<li>istanbul, JSCover, blanket.js  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>物聯網大亂鬥</h3>
+<ul>
+<li>Network Topology  <ul>
+<li>p2p  </li>
+<li>star  <ul>
+<li>目前的藍芽  </li>
+</ul>
+</li>
+<li>star-of-star  </li>
+<li>Mesh  <ul>
+<li>有自我修復的功能  </li>
+<li>ZigBee  <ul>
+<li><a href="https://en.wikipedia.org/wiki/ZigBee">https://en.wikipedia.org/wiki/ZigBee</a>  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>依區域範疇劃分  <ul>
+<li>Near Field  <ul>
+<li>&lt; 10 cm  </li>
+<li>NFC Forum  </li>
+</ul>
+</li>
+<li>PAN  <ul>
+<li>1m ~ 50m  </li>
+<li>Bluetooth, ZigBee, Thread, IEEE 802.15.4  </li>
+</ul>
+</li>
+<li>LAN  <ul>
+<li>50m ~ 1km  </li>
+<li>Wi-Fi, Ethernet  </li>
+</ul>
+</li>
+<li>(LP)WAN  <ul>
+<li>1km ~ 50km  </li>
+<li><a href="https://en.wikipedia.org/wiki/Sigfox">SigFox</a>, <a href="http://www.semtech.com/wireless-rf/internet-of-things/what-is-lora/">LoRa</a>, 5G, 4G, 3G, Internet  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常見 PAN/WAN 之特性  <ul>
+<li>EnOcean  </li>
+<li>ZigBee  </li>
+<li>Thread  </li>
+<li>BLE  </li>
+<li>WiFi  </li>
+</ul>
+</li>
+</ul>
+  </div>
+
+    <hr>
+    <section>
+        <p id="post-share-links">
+            <h3>Share</h3>
+            <a href="https://twitter.com/intent/tweet?text=Cat%20System%20Workshop%20%2317%20Full-Stack%20IoT%20Development%20%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85%0Ahttps%3A//blog.m157q.tw/posts/2017/03/14/cat-system-workshop-17-full-stack-iot-development-%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85/%0Avia%20%40M157q%0A" target="_blank" title="Share on Twitter"><i class="fa fa-twitter-square fa-3x"></i></a>
+            <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A//blog.m157q.tw/posts/2017/03/14/cat-system-workshop-17-full-stack-iot-development-%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85/" target="_blank" title="Share on Facebook"><i class="fa fa-facebook-square fa-3x"></i></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//blog.m157q.tw/posts/2017/03/14/cat-system-workshop-17-full-stack-iot-development-%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85/&title=Cat%20System%20Workshop%20%2317%20Full-Stack%20IoT%20Development%20%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85&summary=Note%20for%20http%3A//skymizer.kktix.cc/events/cat170314&source=https%3A//blog.m157q.tw/posts/2017/03/14/cat-system-workshop-17-full-stack-iot-development-%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85/" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin-square fa-3x"></i></a>
+            <a href="mailto:?subject=Cat%20System%20Workshop%20%2317%20Full-Stack%20IoT%20Development%20%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85&amp;body=https%3A//blog.m157q.tw/posts/2017/03/14/cat-system-workshop-17-full-stack-iot-development-%E6%8E%A2%E7%B4%A2%E4%B9%8B%E6%97%85/" target="_blank" title="Share via Email"><i class="fa fa-envelope-o fa-3x"></i></a>
+        </p>
+    </section>
+
+<hr>
+<section id="donation">
+    <h3>Donation</h3>
+    <p id="donation-chinese">
+      如果覺得這篇文章對你有幫助，
+      除了留言讓我知道外，
+      或許也可以考慮請我喝杯咖啡，
+      不論金額多寡我都會非常感激且能鼓勵我繼續寫出對你有幫助的文章。
+    </p>
+    <p id="donation-english">
+      If this blog post happens to be helpful to you, besides of leaving a reply, you may consider buy me a cup of coffee to support me. It would help me write more articles helpful to you in the future and I would really appreciate it.
+    </p>
+    <ul id="donation-address">
+			<li><a href="https://payment.opay.tw/Broadcaster/Donate/4E163AAE10E448A30DB244CF85527271">歐付寶</a></li>
+
+        <li><a href="https://buymeacoffee.com/M157q">Buy Me a Coffee</a></li>
+
+
+			<li>BTC: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>USDT Omni: <a href="https://blockchain.info/address/3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6">3QZy3cHvoZcszuqWK5CdCutLEJLeAX5ip6</a></li>
+
+			<li>ETH: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>USDT ERC20: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>DAI: <a href="https://etherscan.io/address/0x926bf92b29de4C6E15CbCE99e0a7aB053877181b">0x926bf92b29de4C6E15CbCE99e0a7aB053877181b</a></li>
+
+			<li>LTC: <a href="https://chainz.cryptoid.info/ltc/address.dws?MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM.htm">MD26bUR4VsykGp8Ky2QbstejoFGJaj3hpM</a></li>
+    </ul>
+</section>
+
+    <hr>
+    <h3>Related Posts</h3>
+    <!-- TODO: Use fancier related layout, as in http://kevin.deldycke.com/2012/04/beautify-contextual-related-posts-wordpress-plugin/ -->
+    <ul>
+        <li><a href="https://blog.m157q.tw/posts/2015/03/11/sitcon-2015-android-repackaged-app-detection-system/">SITCON 2015 - Android Repackaged App Detection System</a></li>
+        <li><a href="https://blog.m157q.tw/posts/2017/09/01/error-contextify-0-1-15-install-node-gyp-rebuild/">Error: contextify@0.1.15 install: `node-gyp rebuild`</a></li>
+      </ul>
+
+    <div class="comments">
+      <div id="disqus_thread"></div>
+	  <script type="text/javascript">
+        var disqus_shortname = 'm157q-logdown';
+        var disqus_identifier = "posts/2017/03/14/cat-system-workshop-17-full-stack-iot-development-探索之旅/";
+        var disqus_title = "Cat System Workshop #17 Full-Stack IoT Development 探索之旅";
+        var disqus_url = "https://blog.m157q.tw/posts/2017/03/14/cat-system-workshop-17-full-stack-iot-development-探索之旅/";
+
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+        };
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus</a>.</noscript>
+    </div>
+
+        </div>
+
+          <div class="col-md-3">
+  <div class="well">
+
+    <p><abbr title="2017-03-14T22:31:17+08:00"><i class="fa fa-calendar"></i> Tue 14 March 2017</abbr></p>
+
+
+      <p><address>
+        <i class="fa fa-user"></i> By
+          <a href="https://blog.m157q.tw/author/m157q.html" rel="author">m157q</a>
+      </address></p>
+
+    <hr/>
+
+      <p>
+              <p>
+              <a href="https://blog.m157q.tw/category/confmeetup/" rel="tag"
+                  data-toggle="tooltip"
+                  class="label label-info"
+                  title="49 articles in this category">Conf/Meetup</a>
+              </p>
+            <a href="/tag/nodejs/" data-toggle="tooltip"
+      class="label label-default"
+      title="3 articles with this tag">Node.js</a>
+  <br>
+            <a href="/tag/iot/" data-toggle="tooltip"
+      class="label label-default"
+      title="1 article with this tag">IoT</a>
+  <br>
+      </p>
+      <hr/>
+
+
+      <nav>
+        <ul class="pager">
+          <li class="previous ">
+            <a  href="https://blog.m157q.tw/posts/2017/03/13/y2017w10/" title="Y2017W10"  rel="prev">
+              <span aria-hidden="true">←</span> Older
+            </a>
+          </li>
+          <li class="next ">
+            <a  href="https://blog.m157q.tw/posts/2017/03/20/y2017w11/" title="Y2017W11"  rel="next">
+              Newer <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+  </div>
+            
+          </div>
+
+      </div>
+
+    </div>
+
+    <!-- TODO: make footer sticky -->
+    <footer class="container-fluid">
+      <div class="container">
+        <div class="row">
+
+            <div class="col-md-2">
+                <h5>Social</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="https://github.com/M157q">
+      <i class="fa fa-github"></i>
+    GitHub
+  </a></li>
+                  <li>  <a href="https://twitter.com/M157q">
+      <i class="fa fa-twitter"></i>
+    Twitter
+  </a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                  <li>  <a href="http://getpelican.com/">
+      <img src="https://www.google.com/s2/favicons?domain=getpelican.com" width="16" height="16" class="icon" alt="getpelican.com icon"/>
+    Pelican
+  </a></li>
+                  <li>  <a href="http://python.org/">
+      <img src="https://www.google.com/s2/favicons?domain=python.org" width="16" height="16" class="icon" alt="python.org icon"/>
+    Python.org
+  </a></li>
+                  <li>  <a href="http://jinja.pocoo.org/">
+      <img src="https://www.google.com/s2/favicons?domain=jinja.pocoo.org" width="16" height="16" class="icon" alt="jinja.pocoo.org icon"/>
+    Jinja2
+  </a></li>
+                </ul>
+            </div>
+
+          <div class="col-md-2">
+            <h5>Browse content by</h5>
+            <ul class="list-unstyled">
+                <li><a href="https://blog.m157q.tw/categories/index.html"><i class="fa fa-tags"></i> Categories</a></li>
+                <li><a href="https://blog.m157q.tw/archives/index.html"><i class="fa fa-calendar"></i> Dates</a></li>
+                <li><a href="https://blog.m157q.tw/tags/index.html"><i class="fa fa-tag"></i> Tags</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Copyright notice</h5>
+            <p>© Copyright 2013-2021 m157q.</p>
+          </div>
+
+          <div class="col-md-2 text-muted">
+            <h5>Disclaimer</h5>
+              <p>All opinions expressed in this site are my own personal opinions and are not endorsed by, nor do they represent the opinions of my previous, current and future employers or any of its affiliates, partners or customers.</p>
+          </div>
+
+          <div class="col-md-2">
+              <h5>Feeds</h5>
+              <ul class="list-unstyled">
+                  <li><small><a href="https://blog.m157q.tw/feeds/all.feed.atom.xml"><i class="fa fa-rss"></i> All posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/atom.xml"><i class="fa fa-rss"></i> Latest posts (Atom)</a></small></li>
+                  <li><small><a href="https://blog.m157q.tw/feeds/category.confmeetup.atom.xml"><i class="fa fa-rss"></i> Category: Conf/Meetup (Atom)</a></small></li>
+              </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <h5 class="text-right"><a href="#"><i class="fa fa-arrow-up"></i> Back to top</a></h5>
+
+      <div class="container">
+        <div class="row col-md-12 text-muted text-center">
+          Site generated by <a href="https://getpelican.com"> Pelican</a>.<br/>
+          <a href="https://github.com/kdeldycke/plumage"> Plumage</a> theme by <a href="https://kevin.deldycke.com">Kevin Deldycke</a>.
+        </div>
+      </div>
+
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/jquery.mglass.js"></script>
+    <script src="https://blog.m157q.tw/theme/js/application.js"></script>
+
+  </body>
+</html>

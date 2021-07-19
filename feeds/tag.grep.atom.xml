@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just for noting - grep</title><link href="https://blog.m157q.tw/" rel="alternate"></link><link href="https://blog.m157q.tw/feeds/tag.grep.atom.xml" rel="self"></link><id>https://blog.m157q.tw/</id><updated>2021-06-09T22:09:43+08:00</updated><entry><title>Be careful when using grep on CircleCI</title><link href="https://blog.m157q.tw/posts/2021/06/09/be-careful-when-using-grep-on-circleci/" rel="alternate"></link><published>2021-06-09T22:09:43+08:00</published><updated>2021-06-09T22:09:43+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2021-06-09:/posts/2021/06/09/be-careful-when-using-grep-on-circleci/</id><summary type="html">&lt;p&gt;&lt;code&gt;grep&lt;/code&gt; will exit 1 when no matching could be found. You won't notice this until you run it on CircleCI and the build job exit 1 with no error message at all.&lt;/p&gt;</summary><content type="html">&lt;p&gt;Quote from the man page of &lt;code&gt;grep&lt;/code&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;EXIT STATUS&lt;br&gt;
+     Normally the exit status is 0 if a line is selected,&lt;br&gt;
+     1 if no lines were selected, and 2 if an error occurred.&lt;br&gt;
+     However, if the  -q  or  --quiet  or --silent is used and a line is selected,&lt;br&gt;
+     the exit status is 0 even if an error occurred.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;TL;DR&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;(grep $something || true)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;To force grep exit 0 when no mathing could be found.
+This also works with &lt;code&gt;grep -v&lt;/code&gt; when you want to find the invert matching result.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Details&lt;/h2&gt;
+&lt;p&gt;If your &lt;code&gt;grep&lt;/code&gt; command might be ends with no matching,
+and you need the output of &lt;code&gt;grep&lt;/code&gt; to combine with &lt;code&gt;awk&lt;/code&gt;, &lt;code&gt;cut&lt;/code&gt;, &lt;code&gt;xargs&lt;/code&gt;, ...
+you should use &lt;code&gt;grep&lt;/code&gt; on CircleCI like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;grep ... &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;grep ... &lt;span class="o"&gt;||&lt;/span&gt; :&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This &lt;code&gt;()&lt;/code&gt; syntax works for bash, sh, zsh&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;COMMAND_WITH_UNSURE_OUTPUT&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;grep &lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;TARGET_STRING&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; cut -d &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt; -f &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; xargs ...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will force grep return 0 even if no matching,
+and you could still pipe the output to another command.
+Unlike &lt;code&gt;grep -q&lt;/code&gt; which returns 0 but no output could be used.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Alternatives&lt;/h2&gt;
+&lt;p&gt;These commands do not have same effect.
+Might vary from different shells, use at your own risk and make sure you know what you are doing.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;grep &lt;span class="nv"&gt;$something&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;true&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;grep &lt;span class="nv"&gt;$something&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; true&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;(&lt;/span&gt;grep &lt;span class="nv"&gt;$something&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;test&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;grep &lt;span class="nv"&gt;$something&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;test&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;(&lt;/span&gt;grep &lt;span class="nv"&gt;$something&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]])&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;grep &lt;span class="nv"&gt;$something&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="o"&gt;[[&lt;/span&gt; &lt;span class="nv"&gt;$?&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="o"&gt;]]&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;(&lt;/span&gt;grep &lt;span class="nv"&gt;$something&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; :&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;grep &lt;span class="nv"&gt;$something&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; :&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;:&lt;/code&gt; Do nothing beyond expanding arguments and performing redirections. The return status is zero.&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins"&gt;https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html#Bourne-Shell-Builtins&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;More discussions in here: &lt;a href="https://unix.stackexchange.com/questions/330660/prevent-grep-from-exiting-in-case-of-nomatch"&gt;https://unix.stackexchange.com/questions/330660/prevent-grep-from-exiting-in-case-of-nomatch&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Things about CircleCI&lt;/h2&gt;
+&lt;p&gt;You might want to ask:
+"But, I pipe the output to another command and the result of &lt;code&gt;echo $?&lt;/code&gt; is 0."&lt;/p&gt;
+&lt;p&gt;According to &lt;a href="https://circleci.com/docs/2.0/configuration-reference/#default-shell-options"&gt;https://circleci.com/docs/2.0/configuration-reference/#default-shell-options&lt;/a&gt;
+CircleCI uses &lt;code&gt;/bin/bash -eo pipefail&lt;/code&gt; for linux job.
+It will check the exit code of every command between pipes,
+not just the &lt;code&gt;$?&lt;/code&gt; after the whole line of commands exectued.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;-e&lt;/code&gt;&lt;br&gt;
+Exit immediately if a pipeline (which may consist of a single simple command), a subshell command enclosed in parentheses, or one of the commands executed as part of a command list enclosed by braces exits with a non-zero status.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;-o pipefail&lt;/code&gt;&lt;br&gt;
+If pipefail is enabled, the pipeline’s return status is the value of the last (rightmost) command to exit with a non-zero status, or zero if all commands exit successfully. The shell waits for all commands in the pipeline to terminate before returning a value.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Once your &lt;code&gt;grep&lt;/code&gt; doesn't find any matching,
+You will get this error on CircleCI:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Exited with code exit status 1
+CircleCI received exit code 1
+&lt;/pre&gt;&lt;/div&gt;</content><category term="CircleCI"></category><category term="grep"></category><category term="shell"></category></entry><entry><title>Use find, grep, xargs to Rename Multiple Files</title><link href="https://blog.m157q.tw/posts/2014/11/10/use-find-grep-xargs-to-rename-multiple-files/" rel="alternate"></link><published>2014-11-10T13:44:00+08:00</published><updated>2015-10-28T13:51:00+08:00</updated><author><name>m157q</name></author><id>tag:blog.m157q.tw,2014-11-10:/posts/2014/11/10/use-find-grep-xargs-to-rename-multiple-files/</id><summary type="html">&lt;p&gt;Recursively find filenames ends up …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Recursively find filenames ends up with &lt;code&gt;.vh&lt;/code&gt; from pwd directory and change their names from &lt;code&gt;*.vh&lt;/code&gt; to &lt;code&gt;*.vhd&lt;/code&gt;  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find &lt;span class="p"&gt;|&lt;/span&gt; grep .vh$ &lt;span class="p"&gt;|&lt;/span&gt; xargs -I &lt;span class="o"&gt;{}&lt;/span&gt;.vh mv &lt;span class="o"&gt;{}&lt;/span&gt;.vh &lt;span class="o"&gt;{}&lt;/span&gt;.vhd  
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;This Only works with BSD &lt;code&gt;xargs&lt;/code&gt; !!  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://stackoverflow.com/questions/10212192/how-to-grep-for-a-filename-instead-of-the-contents-of-a-file"&gt;http://stackoverflow.com/questions/10212192/how-to-grep-for-a-filename-instead-of-the-contents-of-a-file&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://viewsby.wordpress.com/2012/12/04/find-mvrename-with-xargs-example/"&gt;http://viewsby.wordpress.com/2012/12/04/find-mvrename-with-xargs-example/&lt;/a&gt;  &lt;/li&gt;
+&lt;/ul&gt;</content><category term="CLI"></category><category term="find"></category><category term="grep"></category><category term="xargs"></category><category term="mv"></category><category term="rename"></category></entry></feed>
